@@ -1,34 +1,24 @@
-/// <reference path="./jsx-runtime.ts" />
-
-import { jsx, jsxDEV } from "./jsx-runtime"
-import THREE, { BoxGeometry, Mesh, MeshToonMaterial, PerspectiveCamera, Scene, WebGLRenderer } from "three"
-import { render, $ } from "voby"
-
+// / <reference path="./jsx-runtime" />
+/** @jsxImportSource ./jsx-runtime */
+import { BoxGeometry, Camera, Mesh, MeshBasicMaterial, MeshToonMaterial, PerspectiveCamera, Scene, WebGLRenderer } from "three"
+import { $, } from "voby"
+import { render } from "./jsx-runtime/jsx-dev-runtime"
+import { canvas3D } from "./canvas3D"
+// import "./types/Canvas"
 const App = () => {
-    
+
     const ref = $<JSX.IntrinsicElements['mesh']>()
-    const geometry = new BoxGeometry(1, 1, 1)
     const material = new MeshToonMaterial({ color: 0x00ff00 })
-    
+
     return (
-            <webGLRenderer >
-                <scene>
-                    <perspectiveCamera >
-                        <mesh ref={ref}  >
+        <canvas3D scene={new Scene()} camera={new PerspectiveCamera()} size={[500, 500]} >
+            <mesh geometry={new BoxGeometry()} material={new MeshBasicMaterial()}>
+            </mesh>     
 
-                        </mesh>
-                    </perspectiveCamera>
-                </scene>
-             </webGLRenderer>
+        </canvas3D >
 
-        // <Scene>
-        //     <PerspectiveCamera>
-        //         <WebGLRenderer>
-        //             <Mesh />
-        //         </WebGLRenderer>
-        //     </PerspectiveCamera>
-        // </Scene>
+
     )
 }
 
-render(<App />, document.body)
+render(App, document.body)

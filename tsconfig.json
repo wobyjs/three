@@ -41,7 +41,7 @@
         "target": "es2020",
         "useDefineForClassFields": false,
         "useUnknownInCatchVariables": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
         "rootDir": "./",
@@ -65,8 +65,7 @@
         "*.test.ts*",
         "vite.config.ts",
         "vite.config.*.ts",
-    ]
-    // "include": [
-    //   "../voby/src/jsx"
-    // ]
+    ],
+    "include": ["./src/**/*", "./types"],
+
 }

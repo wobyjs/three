@@ -1,4 +1,5 @@
-const components = {
+export const components = {
+    canvas3D: "canvas3D",
     //animations
     booleanKeyframeTrack: "BooleanKeyFrameTrack",
     colorKeyframeTrack: "ColorKeyFrameTrack",
@@ -17,7 +18,7 @@ const components = {
     //audio
     audio: "Audio",
     audioAnalyser: "AudioAnalyser",
-    audioContext: "AudioContext",
+    // audioContext: "AudioContext", namespace
     audioListener: "AudioListener",
     positionalAudio: "PositionalAudio",
     //Cameras
@@ -47,7 +48,7 @@ const components = {
     //extras
     curve: "Curve",
     curvePath: "CurvePath",
-    interpolations: "Interpolations",
+    // interpolations: "Interpolations", functions
     path: "Path",
     shape: "Shape",
     shapePath: "ShapePath",
@@ -55,18 +56,18 @@ const components = {
     catmullRomCurve3: "CatmullRomCurve3",
     cubicBezierCurve: "CubicBezierCurve",
     cubicBezierCurve3: "CubicBezierCurve3",
-    curves: "Curves",
+    // curves: "Curves", IMPORTS
     ellipseCurve: "EllipseCurve",
     lineCurve: "LineCurve",
     lineCurve3: "LineCurve3",
     quadraticBezierCurve: "QuadraticBezierCurve",
     quadraticBezierCurve3: "QuadraticBezierCurve3",
     splineCurve: "SplineCurve",
-    dataUtils: "DataUtils",
-    earcut: "Earcut",
-    imageUtils: "ImageUtils",
+    // dataUtils: "DataUtils", FUNCTIONS
+    // earcut: "Earcut", FUNCTION
+    // imageUtils: "ImageUtils", FUNCTIONS
     pMREMGenerator: "PMREMGenerator",
-    shapeUtils: "ShapeUtils",
+    // shapeUtils: "ShapeUtils", FUNCTIONS
     //geometeries
     boxGeometry: "BoxGeometry",
     capsuleGeometry: "CapsuleGeometry",
@@ -76,7 +77,7 @@ const components = {
     dodecahedronGeometry: "DodecahedronGeometry",
     edgesGeometry: "EdgesGeometry",
     extrudeGeometry: "ExtrudeGeometry",
-    geometries: "Geometries",
+    // geometries: "Geometries", IMPORTS
     icosahedronGeometry: "IcosahedronGeometry",
     latheGeometry: "LatheGeometry",
     octahedronGeometry: "OctahedronGeometry",
@@ -115,15 +116,15 @@ const components = {
     lightProbe: "LightProbe",
     lightShadow: "LightShadow",
     pointLight: "PointLight",
-    pointLightShadow: "PointLightShadow",
+    // pointLightShadow: "PointLightShadow", no constructor
     rectAreaLight: "RectAreaLight",
     spotLight: "SpotLight",
-    spotLightShadow: "SpotLightShadow",
+    // spotLightShadow: "SpotLightShadow", no constructor
     //loader
     animationLoader: "AnimationLoader",
     audioLoader: "AudioLoader",
     bufferGeometryLoader: "BufferGeometryLoader",
-    cache: "Cache",
+    // cache: "Cache", namespace
     compressedTextureLoader: "CompressedTextureLoader",
     cubeTextureLoader: "CubeTextureLoader",
     dataTextureLoader: "DataTextureLoader",
@@ -131,7 +132,7 @@ const components = {
     imageBitmapLoader: "ImageBitmapLoader",
     imageLoader: "ImageLoader",
     loader: "Loader",
-    loaderUtils: "Loader",
+    // loaderUtils: "LoaderUtils", interface
     loadingManager: "LoadingManager",
     materialLoader: "MaterialLoader",
     objectLoader: "ObjectLoader",
@@ -140,7 +141,7 @@ const components = {
     lineBasicMaterial: "LineBasicMaterial",
     lineDashedMaterial: "LineDashedMaterial",
     material: "Material",
-    materials: "Material",
+    // materials: "Materials", imports
     meshBasicMaterial: "MeshBasicMaterial",
     meshDepthMaterial: "MeshDepthMaterial",
     meshDistanceMaterial: "MeshDistanceMaterial",
@@ -224,7 +225,7 @@ const components = {
     webGLState:"WebGLState",
     webGLTextures:"WebGLTextures",
     webGLUniforms:"WebGLUniforms",
-    webGLUniformsGroups:"WebGLUniformsGroups",
+    // webGLUniformsGroups:"WebGLUniformsGroups", functions
     webGLUtils:"WebGLUtils",
     webXRController: "WebXRController",
     webXRManager:"WebXRManager",
