@@ -1,36 +1,44 @@
 import * as three from "three"
+import { useContext, createContext } from "voby"
 
+const frames = createContext([])
 
+export const useFrames = () => useContext(frames)
+
+export const useFrame = (fn: () => void) => {
+    const fs = useFrames()
+    fs.push(fn)
+}
 
 export class Canvas3D {
     webGlRenderer: three.WebGLRenderer
     scene: three.Scene
     camera: three.Camera
-
+    private _width = window.innerWidth
+    private _height = window.innerHeight
 
     constructor(scene: three.Scene = new three.Scene(), camera: three.Camera = new three.PerspectiveCamera()) {
         this.scene = scene
         this.camera = camera
         this.webGlRenderer = new three.WebGLRenderer()
+        this.webGlRenderer.setSize(this._width, this._height)
         this.animate()
     }
 
-    frame: () => void
 
     animate() {
-        requestAnimationFrame(() => this.animate);
-
-        this.frame?.()
+        const fs = useFrames()
+        requestAnimationFrame(() => this.animate());
+        fs.forEach(f => f())
 
         this.webGlRenderer.render(this.scene, this.camera)
+
     }
 
     get domElement() {
         return this.webGlRenderer.domElement
     }
 
-    private _width = 300
-    private _height = 300
     set width(val: number) {
         this.webGlRenderer.setSize(this._width = val, this._height)
     }
@@ -41,10 +49,15 @@ export class Canvas3D {
     }
 
     set size([width, height]: [number, number]) {
-            this.webGlRenderer.setSize(width, height)
+        this.webGlRenderer.setSize(width, height)
     }
 
-    set children(val: three.Object3D<three.Event>[]){
-        this.scene.add(val)
+    set children(val: three.Object3D<three.Event>[]) {
+        this.camera.position.setZ(5)
+        val.forEach((obj) => {
+            this.scene.add(obj)
+        })
+        this.animate()
+
     }
 }

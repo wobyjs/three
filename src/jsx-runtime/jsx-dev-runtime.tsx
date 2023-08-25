@@ -2,9 +2,10 @@
 /* IMPORT */
 import * as three from "three"
 import { Wrapper } from '../types'
-import { $$, $, getMeta,  wrapCloneElement } from "voby"
+import { $$, $, getMeta, wrapCloneElement } from "voby"
 import { param, paramTypes } from '../params'
-import { Canvas3D } from "../canvas3D"
+import { Canvas3D, Frames } from "../canvas3D"
+
 import { cons } from "../types"
 
 const Three = { ...three }
@@ -33,18 +34,27 @@ const defaults = {
     meshToonMaterial: {}
 }
 
+//check whether props is Object3Dnode
+const test = () => {
+
+}
 const toUpper1 = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
-const renderer = $<three.WebGLRenderer>()
+
+const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any) => any => typeof f === 'function'
 
 const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[K] & { children?: JSX.Child[] }>(component: K, props: P & { args: [] }, key?: string) => {
+    if (isFunction(component)) {
+        return component(props)
+    }
     const meta = [$$(props.children)].flat()
         .filter(r => !!r).map(c => getMeta(c as any))
 
     const consP = (pn = undefined, pt = undefined) => {
         //case1 = object in constructor parameter (at children, at props)
         //case2 = primitive in constructor parameters, use args[]
-        //case3 = set remaining props using Object.assign 
+        //case3 = set remaining props using Object.assign
+        if (Object.keys(props).length == 0) return  
         const paramName: string[] = pn ?? param[component as any]
         const paramType: string[] = pt ?? paramTypes[component as any]
 
@@ -69,19 +79,25 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
         ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
     Object.assign(r, remainingProps)
 
-    if(Object.hasOwn(r, 'children')){
+    if (Object.hasOwn(props, 'children')) {
         //under construction
-        r.children = children
+        r.children = [children]
     }
     return r
 }
 const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[K] & { children?: JSX.Child[] }>(component: K, props: P & { args: [] }, key?: string): JSX.Element => {
-
-    return wrapCloneElement(createElement(component as any, props, key), component, props);
+    if (component === "canvas3D") {
+        return (
+            <Frames.Provider value={[]} >
+                {wrapCloneElement(createElement(component as any, props, key), component, props)}
+            </Frames.Provider>
+        )
+    }
+    return wrapCloneElement(createElement(component as any, props, key), component, props)
 };
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
-    ($$(parent) as HTMLElement).appendChild(($$(children) as any).webGlRenderer.domElement)
+    ($$(parent) as HTMLElement).appendChild(($$(children)() as any).webGlRenderer.domElement)
 }
 
 /* EXPORT */

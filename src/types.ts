@@ -1,5 +1,4 @@
 import THREE from "three";
-import { Canvas } from "./Canvas"
 import { Canvas3D } from "./canvas3D";
 
 export type cons = {
