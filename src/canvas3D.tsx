@@ -1,9 +1,10 @@
 import * as three from "three"
 import { useContext, createContext } from "voby"
 
-const frames = createContext([])
+export const Frames = createContext<(() => void)[]>([])
+export const Frame = createContext<() => void>()
 
-export const useFrames = () => useContext(frames)
+export const useFrames = () => useContext(Frames)
 
 export const useFrame = (fn: () => void) => {
     const fs = useFrames()
@@ -22,6 +23,7 @@ export class Canvas3D {
         this.camera = camera
         this.webGlRenderer = new three.WebGLRenderer()
         this.webGlRenderer.setSize(this._width, this._height)
+
         this.animate()
     }
 
@@ -52,12 +54,12 @@ export class Canvas3D {
         this.webGlRenderer.setSize(width, height)
     }
 
+
     set children(val: three.Object3D<three.Event>[]) {
-        this.camera.position.setZ(5)
-        val.forEach((obj) => {
+        this.camera.position.z = 5
+        val.flat().forEach((obj) => {
             this.scene.add(obj)
         })
         this.animate()
-
     }
 }

@@ -26,8 +26,9 @@ declare global {
     }
 }
 const defaults = {
+    canvas3D: { scene: () => new Three.Scene(), camera: () => { throw new Error("Camera needed") } },
     scene: {},
-    mesh: { geometry: () => new Three.BufferGeometry(), material: () => new Three.MeshBasicMaterial() },
+    mesh: { geometry: () => new Three.BoxGeometry(), material: () => new Three.MeshBasicMaterial() },
     perspectiveCamera: { fov: 50, aspect: 1, near: 0.1, far: 2000 },
     webGLRenderer: {},
     boxGeometry: { width: 1, height: 1, depth: 1, widthSegments: 1, heightSegments: 1, depthSegments: 1 },
@@ -38,7 +39,7 @@ const defaults = {
 const test = () => {
 
 }
-const toUpper1 = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
+const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
 
 const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any) => any => typeof f === 'function'
@@ -47,14 +48,15 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
     if (isFunction(component)) {
         return component(props)
     }
+
+    //get children from jsx
     const meta = [$$(props.children)].flat()
         .filter(r => !!r).map(c => getMeta(c as any))
 
     const consP = (pn = undefined, pt = undefined) => {
         //case1 = object in constructor parameter (at children, at props)
         //case2 = primitive in constructor parameters, use args[]
-        //case3 = set remaining props using Object.assign
-        if (Object.keys(props).length == 0) return  
+        //case3 = set remaining props using Object.assign 
         const paramName: string[] = pn ?? param[component as any]
         const paramType: string[] = pt ?? paramTypes[component as any]
 
@@ -64,17 +66,22 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
         paramName.map(key => r[key] = props[key])
         paramType.map((paramKey, i) => {
             const m = meta.filter(m => (m.component + '').endsWith(paramKey))[0]
-
             const paramName = param[component as any][i]
-            if (!r[paramName]) {
+            if (!r[paramName] && m?.component) {
                 r[paramName] = jsx(m.component as any, m.props as any)
             }
         })
+
+        //use defaults if there is undefined components
+        paramName.map((key) => {
+            r[key] = !r[key] ? $$(defaults[component as any][key]) : r[key]
+        })
+
         return r
     }
 
     const p = Object.values(consP())
-    const r = new Three[toUpper1(component as any)](...p)
+    const r = new Three[toUpper(component as any)](...p)
     const { children, args, ...remainingProps } = props
         ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
     Object.assign(r, remainingProps)
