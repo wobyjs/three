@@ -4,7 +4,7 @@ import { param, paramTypes } from "./params"
 import { BoxGeometry, MeshBasicMaterial, PerspectiveCamera, Scene } from "three"
 
 const defaults = {
-    canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
+    canvas3D: { scene: () => new Scene(), camera: () =>  new PerspectiveCamera() },
     scene: {},
     mesh: { geometry: () => new BoxGeometry(), material: () => new MeshBasicMaterial() },
     perspectiveCamera: { fov: 50, aspect: 1, near: 0.1, far: 2000 },
@@ -13,7 +13,7 @@ const defaults = {
     meshToonMaterial: {}
 }
 
-export const consP = (pn = undefined, pt = undefined, meta, props, component) => {
+export const consP = (pn = undefined, pt = undefined, meta: any[], props, component: string) => {
     //case1 = object in constructor parameter (at children, at props)
     //case2 = primitive in constructor parameters, use args[]
     //case3 = set remaining props using Object.assign 
@@ -34,7 +34,7 @@ export const consP = (pn = undefined, pt = undefined, meta, props, component) =>
 
     //use defaults if there is undefined components
     paramName.map((key) => {
-        r[key] = !r[key] ? $$(defaults[component as any][key]) : r[key]
+        r[key] = !r[key]  ? $$(defaults[component as any][key]) : r[key]
     })
 
     return r

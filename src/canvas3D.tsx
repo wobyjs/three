@@ -1,65 +1,94 @@
+// / <reference path="./jsx-runtime" />
+/** @jsxImportSource ./jsx-runtime */
+
 import * as three from "three"
-import { useContext, createContext } from "voby"
+import { useContext, createContext, Observable, useEffect, $$, $, ObservableMaybe, isObservable, getMeta, useMemo } from "voby"
+import { param, paramTypes } from "./params"
+import { consP } from "./consP"
 
-export const Frames = createContext<(() => void)[]>([])
-export const Frame = createContext<() => void>()
+type canvasProperties = {
+    frame?: [],
+    renderer?: Observable<three.WebGLRenderer>,
+    scene?: ObservableMaybe<three.Scene>,
+    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    domElement?: ObservableMaybe<HTMLCanvasElement>,
+    width?: ObservableMaybe<number>,
+    height?: ObservableMaybe<number>
 
-export const useFrames = () => useContext(Frames)
+}
+const t = () => {
+    const t = {
+        frame: [],
+        renderer: $(new three.WebGLRenderer()),
+        scene: $(new three.Scene()),
+        camera: $(new three.PerspectiveCamera()),
+        domElement: useMemo(() => $$(t.renderer)?.domElement),
+        width: window.innerWidth,
+        height: window.innerHeight
+    } as canvasProperties
+    return t
+}
+
+
+export const threeContext = createContext<canvasProperties>(t())
+export const useFrames = () => useContext(threeContext)['frame'] as (() => void)[]
+export const useWidth = () => useContext(threeContext)['width']
+
+
+export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
+    const t = useContext(threeContext)
+    const vv = isObservable(v) ? v : $(v)
+    if (t[key] && !v) {
+        return t[key]
+    }
+
+    t[key] = vv
+    return vv
+}
+
 
 export const useFrame = (fn: () => void) => {
     const fs = useFrames()
     fs.push(fn)
 }
 
-export class Canvas3D {
-    webGlRenderer: three.WebGLRenderer
-    scene: three.Scene
-    camera: three.Camera
-    private _width = window.innerWidth
-    private _height = window.innerHeight
-
-    constructor(scene: three.Scene = new three.Scene(), camera: three.Camera = new three.PerspectiveCamera()) {
-        this.scene = scene
-        this.camera = camera
-        this.webGlRenderer = new three.WebGLRenderer()
-        this.webGlRenderer.setSize(this._width, this._height)
-
-        this.animate()
-    }
 
 
-    animate() {
-        const fs = useFrames()
-        requestAnimationFrame(() => this.animate());
-        fs.forEach(f => f())
+export const Canvas3D = (props) => {
+    const R = () => {
 
-        this.webGlRenderer.render(this.scene, this.camera)
+        const { renderer, scene, camera, domElement, width, height } = useContext(threeContext)
+        const animate = () => {
+            const fs = useFrames()
+            requestAnimationFrame(() => animate());
+            fs.forEach(f => f())
 
-    }
+            useEffect(() => {
+                $$(renderer).render($$(scene), $$(camera))
+            })
 
-    get domElement() {
-        return this.webGlRenderer.domElement
-    }
+        }
+        const meta = [$$(props.children)].flat()
+            .filter(r => !!r).map(c => getMeta(c as any))
 
-    set width(val: number) {
-        this.webGlRenderer.setSize(this._width = val, this._height)
-    }
+        let children = Object.values(consP(param['canvas3D'], paramTypes['canvas3D'], meta, props, 'canvas3D'))
+        if (props.children) {
+            children = children.concat([props.children])
+        }
+        debugger
+        $$(renderer).setSize($$(width), $$(height))
 
-    set height(val: number) {
-        this.webGlRenderer.setSize(this._width, this._height = val)
-
-    }
-
-    set size([width, height]: [number, number]) {
-        this.webGlRenderer.setSize(width, height)
-    }
-
-
-    set children(val: three.Object3D<three.Event>[]) {
-        this.camera.position.z = 5
-        val.flat().forEach((obj) => {
-            this.scene.add(obj)
+        $$(camera).position.z = 5
+        children.flat().forEach((obj) => {
+            $$(scene).add(obj as any)
         })
-        this.animate()
+        animate()
+        return domElement
     }
+
+    return (
+        <threeContext.Provider value={t()}>
+            <R />
+        </threeContext.Provider>
+    )
 }

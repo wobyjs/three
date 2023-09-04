@@ -1,5 +1,5 @@
 export const param = {
-    canvas3D : ["scene", "Camera"],
+    canvas3D : ["scene", "camera"],
     //animations
     booleanKeyframeTrack: ["name", "times", "values"],
     colorKeyframeTrack: ["name", "times", "values", "interpolation"],

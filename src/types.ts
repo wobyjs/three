@@ -292,7 +292,8 @@ export type constructorsA = {
     boxGeometry: ConstructorParameters<typeof THREE.BoxGeometry>,
     meshToonMaterial: ConstructorParameters<typeof THREE.MeshToonMaterial>
     webGLRenderer: ConstructorParameters<typeof THREE.WebGLRenderer>,
-    canvas3D: ConstructorParameters<typeof Canvas3D>
+    canvas3D: ConstructorParameters<typeof Canvas3D>,
+    meshStandardMaterial: ConstructorParameters<typeof THREE.MeshStandardMaterial>
     
 }
 
@@ -303,7 +304,9 @@ export type constructorsB = {
     boxGeometry: ConstructorParametersIndices<typeof THREE.BoxGeometry>,
     meshToonMaterial: ConstructorParametersIndices<typeof THREE.MeshToonMaterial>,
     webGLRenderer: ConstructorParametersIndices<typeof THREE.WebGLRenderer>,
-    canvas3D: ConstructorParametersIndices<typeof Canvas3D>
+    canvas3D: ConstructorParametersIndices<typeof Canvas3D>,
+    meshStandardMaterial: ConstructorParametersIndices<typeof THREE.MeshStandardMaterial>
+
 
 }
 //@ts-ignore

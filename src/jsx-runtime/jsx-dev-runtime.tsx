@@ -4,8 +4,7 @@ import * as three from "three"
 import { Wrapper } from '../types'
 import { $$, $, getMeta, wrapCloneElement } from "voby"
 import { param, paramTypes } from '../params'
-import { Canvas3D, Frames } from "../canvas3D"
-import { cons } from "../types"
+import { Canvas3D, Frames, threeContext } from "../canvas3D"
 import { consP } from "../consP"
 
 const Three = { ...three }
@@ -21,11 +20,11 @@ declare global {
             webGLRenderer: Wrapper<three.WebGLRenderer, 'webGLRenderer'>,
             boxGeometry: Wrapper<three.BoxGeometry, 'boxGeometry'>
             meshToonMaterial: Wrapper<three.MeshToonMaterial, "meshToonMaterial">,
-            canvas3D: Wrapper<Canvas3D, 'canvas3D'>
+            canvas3D: Wrapper<Canvas3D, 'canvas3D'>,
+            meshStandardMaterial: Wrapper<three.MeshStandardMaterial, "meshStandardMaterial">
         }
     }
 }
-
 
 const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
@@ -59,16 +58,15 @@ const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicEleme
     (component: K, props: P & { args: [] }, key?: string): JSX.Element => {
     if (component === "canvas3D") {
         return (
-            <Frames.Provider value={[]} >
-                {wrapCloneElement(createElement(component as any, props, key), component, props)}
-            </Frames.Provider>
+            <Canvas3D {...props} />
         )
     }
     return wrapCloneElement(createElement(component as any, props, key), component, props)
 };
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
-    ($$(parent) as HTMLElement).appendChild(($$(children)() as any).webGlRenderer.domElement)
+    //@ts-ignore
+    ($$(parent) as HTMLElement).appendChild(($$(children)()()))
 }
 
 /* EXPORT */
