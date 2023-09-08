@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { Canvas3D } from 'three'
+import { canvasProps } from './canvas3D'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -112,7 +112,8 @@ export type Object3DNode<T, P> = Overwrite<
     matrix?: Matrix4
     quaternion?: Quaternion
     layers?: Layers
-    dispose?: (() => void) | null
+    dispose?: (() => void) | null,
+    ref?: JSX.Refs<P>
   }
 > &
   EventHandlers
@@ -475,7 +476,7 @@ export interface ThreeElements {
 declare global {
   namespace JSX {
     interface IntrinsicElements extends ThreeElements {
-      canvas3D: Wrapper<Canvas3D, "canvas3D">
+      canvas3D: Object3DNode<canvasProps, canvasProps>
     }
   }
 }

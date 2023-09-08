@@ -1,7 +1,7 @@
 
 /* IMPORT */
 import * as three from "three"
-import { $$, getMeta, wrapCloneElement } from "voby"
+import { $$, Ref, getMeta, wrapCloneElement } from "voby"
 import { param, paramTypes } from '../params'
 import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
@@ -65,7 +65,7 @@ const checkProps = (props) => {
     return props
 }
 
-const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[] }>
+const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]> }>
     (component: K, props: P & { args: [] }, key?: string) => {
     let checkedProps = checkProps(props)
 
@@ -80,6 +80,12 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
     const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, checkedProps, component))
     debugger
     const r = new Three[toUpper(component as any)](...p)
+
+    if (props.ref) {
+        //used to assign ref 
+        [props.ref].flat().forEach((rr) => (rr as Ref)?.(r))
+    }
+
     const { children, args, ...remainingProps } = checkedProps
         ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
     Object.assign(r, remainingProps)

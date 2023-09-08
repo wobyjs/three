@@ -9,21 +9,30 @@ import { consP } from "./consP"
 type canvasProperties = {
     frame?: [],
     renderer?: Observable<three.WebGLRenderer>,
-    scene?: ObservableMaybe<three.Scene>,
+    defaultScene?: ObservableMaybe<three.Scene>,
     defaultCamera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
     domElement?: ObservableMaybe<HTMLCanvasElement>,
-    width?: ObservableMaybe<number>,
-    height?: ObservableMaybe<number>
+    defaultWidth?: ObservableMaybe<number>,
+    defaultHeight?: ObservableMaybe<number>
 }
+
+export type canvasProps = {
+    scene?: ObservableMaybe<three.Scene>,
+    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
+    width?: ObservableMaybe<number>,
+    height?: ObservableMaybe<number>,
+    children?: JSX.Child
+}
+
 const t = () => {
     const t = {
         frame: [],
         renderer: $(new three.WebGLRenderer()),
-        scene: $(new three.Scene()),
+        defaultScene: $(new three.Scene()),
         defaultCamera: $(new three.PerspectiveCamera()),
         domElement: useMemo(() => $$(t.renderer)?.domElement),
-        width: window.innerWidth,
-        height: window.innerHeight
+        defaultWidth: window.innerWidth,
+        defaultHeight: window.innerHeight
     } as canvasProperties
     return t
 }
@@ -52,13 +61,15 @@ export const useFrame = (fn: () => void) => {
 }
 
 
-
-export const Canvas3D = (props) => {
+export const Canvas3D = (props: canvasProps) => {
     const R = () => {
 
-        const { renderer, scene, defaultCamera, domElement, width, height } = useContext(threeContext)
+        const { renderer, defaultScene, defaultCamera, domElement, defaultWidth, defaultHeight } = useContext(threeContext)
+        const scene = props.scene ? props.scene : defaultScene
         const camera = props.camera ? props.camera : defaultCamera
-        
+        const width = props.width ? props.width : defaultWidth
+        const height = props.height ? props.height : defaultHeight
+
         const animate = () => {
             const fs = useFrames()
             requestAnimationFrame(() => animate());
@@ -77,7 +88,7 @@ export const Canvas3D = (props) => {
         if (props.children) {
             children = children.concat([props.children])
         }
-        
+        //check props and put ref prop into observable
         debugger
         $$(renderer).setSize($$(width), $$(height))
 
