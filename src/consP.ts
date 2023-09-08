@@ -1,16 +1,30 @@
 import { $$ } from "voby"
-import { jsx } from "./jsx-runtime/jsx-dev-runtime"
+import { jsx, toUpper } from "./jsx-runtime/jsx-dev-runtime"
 import { param, paramTypes } from "./params"
-import { BoxGeometry, MeshBasicMaterial, PerspectiveCamera, Scene } from "three"
+import { AmbientLight, BoxGeometry, Color, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene, Vector2 } from "three"
 
 const defaults = {
-    canvas3D: { scene: () => new Scene(), camera: () =>  new PerspectiveCamera() },
+    canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
     scene: {},
     mesh: { geometry: () => new BoxGeometry(), material: () => new MeshBasicMaterial() },
     perspectiveCamera: { fov: 50, aspect: 1, near: 0.1, far: 2000 },
+    orthographicCamera: { left: -1, right: 1, top: 1, bottom: -1, near: 0.1, far: 2000 },
     webGLRenderer: {},
     boxGeometry: { width: 1, height: 1, depth: 1, widthSegments: 1, heightSegments: 1, depthSegments: 1 },
-    meshToonMaterial: {}
+    meshToonMaterial: {},
+    meshStandardMaterial: { parameters: () => new MeshStandardMaterial() },
+    meshBasicMaterial: { parameters: () => new MeshBasicMaterial() },
+    ambientLight: { color: 0xffffff, intensity: 1 },
+    spotLight: {
+        color: 0xffffff, intensity: 1,
+        distance: 0,
+        angle: Math.PI / 3,
+        penumbra: 0,
+        decay: 2,
+    },
+    pointLight: { color: 0xffffff, intensity: 1, distance: 0, decay: 2 }
+
+
 }
 
 export const consP = (pn = undefined, pt = undefined, meta: any[], props, component: string) => {
@@ -25,7 +39,7 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
     const r = []
     paramName.map(key => r[key] = props[key])
     paramType.map((paramKey, i) => {
-        const m = meta.filter(m => (m.component + '').endsWith(paramKey))[0]
+        const m = meta.filter(m => (m.component + '').endsWith(toUpper(paramKey)))[0]
         const paramName = param[component as any][i]
         if (!r[paramName] && m?.component) {
             r[paramName] = jsx(m.component as any, m.props as any)
@@ -34,7 +48,7 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
 
     //use defaults if there is undefined components
     paramName.map((key) => {
-        r[key] = !r[key]  ? $$(defaults[component as any][key]) : r[key]
+        r[key] = !r[key] ? $$(defaults[component as any][key]) : r[key]
     })
 
     return r

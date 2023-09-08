@@ -10,18 +10,17 @@ type canvasProperties = {
     frame?: [],
     renderer?: Observable<three.WebGLRenderer>,
     scene?: ObservableMaybe<three.Scene>,
-    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    defaultCamera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
     domElement?: ObservableMaybe<HTMLCanvasElement>,
     width?: ObservableMaybe<number>,
     height?: ObservableMaybe<number>
-
 }
 const t = () => {
     const t = {
         frame: [],
         renderer: $(new three.WebGLRenderer()),
         scene: $(new three.Scene()),
-        camera: $(new three.PerspectiveCamera()),
+        defaultCamera: $(new three.PerspectiveCamera()),
         domElement: useMemo(() => $$(t.renderer)?.domElement),
         width: window.innerWidth,
         height: window.innerHeight
@@ -57,7 +56,9 @@ export const useFrame = (fn: () => void) => {
 export const Canvas3D = (props) => {
     const R = () => {
 
-        const { renderer, scene, camera, domElement, width, height } = useContext(threeContext)
+        const { renderer, scene, defaultCamera, domElement, width, height } = useContext(threeContext)
+        const camera = props.camera ? props.camera : defaultCamera
+        
         const animate = () => {
             const fs = useFrames()
             requestAnimationFrame(() => animate());
@@ -68,6 +69,7 @@ export const Canvas3D = (props) => {
             })
 
         }
+
         const meta = [$$(props.children)].flat()
             .filter(r => !!r).map(c => getMeta(c as any))
 
@@ -75,6 +77,7 @@ export const Canvas3D = (props) => {
         if (props.children) {
             children = children.concat([props.children])
         }
+        
         debugger
         $$(renderer).setSize($$(width), $$(height))
 
