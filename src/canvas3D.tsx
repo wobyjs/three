@@ -63,33 +63,50 @@ export const useFrame = (fn: () => void) => {
 
 export const Canvas3D = (props: canvasProps) => {
     const R = () => {
+        const { renderer, defaultScene: scene, defaultCamera: camera, domElement, defaultWidth: width, defaultHeight: height } = useContext(threeContext)
         const raycaster = new three.Raycaster();
         const pointer = new three.Vector2();
+        const meshObj = []
 
         const onPointerMove = (event) => {
-
+            event.stopPropagation()
             // calculate pointer position in normalized device coordinates
             // (-1 to +1) for both components
 
             pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
             pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
+            raycaster.setFromCamera(pointer, $$(camera));
+            const intersects = raycaster.intersectObjects($$(scene).children)
+
+            //todo throttle??
+            if (intersects.length > 0) {
+                meshObj.push(intersects[0].object)
+                //@ts-ignore
+                intersects[0].object.onPointerOver?.(event)
+
+            }
+            else {
+                console.log("onpointerout", meshObj[0])
+                meshObj[0].onPointerOut?.(event)
+                meshObj.pop()
+            }
+
         }
 
-        const onClick = (event) => {
+        const onClick = (event: PointerEvent) => {
             event.preventDefault()
             raycaster.setFromCamera(pointer, $$(camera));
             const intersects = raycaster.intersectObjects($$(scene).children)
             if (intersects.length > 0) {
-                for ( let i = 0; i < intersects.length; i ++ ) {
-                    debugger
+                for (let i = 0; i < intersects.length; i++) {
+                    //@ts-ignore
                     intersects[i].object.onClick?.(event)
                 }
-            
+
             }
         }
 
-        const { renderer, defaultScene: scene, defaultCamera: camera, domElement, defaultWidth: width, defaultHeight: height } = useContext(threeContext)
 
         const animate = () => {
             const fs = useFrames()
