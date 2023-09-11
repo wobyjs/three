@@ -476,7 +476,7 @@ export interface ThreeElements {
 declare global {
   namespace JSX {
     interface IntrinsicElements extends ThreeElements {
-      canvas3D: Object3DNode<canvasProps, canvasProps>
+      canvas3D: canvasProps
     }
   }
 }

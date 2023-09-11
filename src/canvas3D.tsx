@@ -24,15 +24,15 @@ export type canvasProps = {
     children?: JSX.Child
 }
 
-const t = () => {
+const t = (props?: canvasProps) => {
     const t = {
         frame: [],
         renderer: $(new three.WebGLRenderer()),
-        defaultScene: $(new three.Scene()),
-        defaultCamera: $(new three.PerspectiveCamera()),
+        defaultScene: $(props?.scene ?? new three.Scene()),
+        defaultCamera: $(props?.camera ?? new three.PerspectiveCamera()),
         domElement: useMemo(() => $$(t.renderer)?.domElement),
-        defaultWidth: window.innerWidth,
-        defaultHeight: window.innerHeight
+        defaultWidth: props?.width ?? window.innerWidth,
+        defaultHeight: props?.width ?? window.innerHeight
     } as canvasProperties
     return t
 }
@@ -54,7 +54,7 @@ export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
     return vv
 }
 
-
+export const useCamera = () => useContext(threeContext).defaultCamera
 export const useFrame = (fn: () => void) => {
     const fs = useFrames()
     fs.push(fn)
@@ -63,12 +63,33 @@ export const useFrame = (fn: () => void) => {
 
 export const Canvas3D = (props: canvasProps) => {
     const R = () => {
+        const raycaster = new three.Raycaster();
+        const pointer = new three.Vector2();
 
-        const { renderer, defaultScene, defaultCamera, domElement, defaultWidth, defaultHeight } = useContext(threeContext)
-        const scene = props.scene ? props.scene : defaultScene
-        const camera = props.camera ? props.camera : defaultCamera
-        const width = props.width ? props.width : defaultWidth
-        const height = props.height ? props.height : defaultHeight
+        const onPointerMove = (event) => {
+
+            // calculate pointer position in normalized device coordinates
+            // (-1 to +1) for both components
+
+            pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+            pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+        }
+
+        const onClick = (event) => {
+            event.preventDefault()
+            raycaster.setFromCamera(pointer, $$(camera));
+            const intersects = raycaster.intersectObjects($$(scene).children)
+            if (intersects.length > 0) {
+                for ( let i = 0; i < intersects.length; i ++ ) {
+                    debugger
+                    intersects[i].object.onClick?.(event)
+                }
+            
+            }
+        }
+
+        const { renderer, defaultScene: scene, defaultCamera: camera, domElement, defaultWidth: width, defaultHeight: height } = useContext(threeContext)
 
         const animate = () => {
             const fs = useFrames()
@@ -88,20 +109,22 @@ export const Canvas3D = (props: canvasProps) => {
         if (props.children) {
             children = children.concat([props.children])
         }
-        //check props and put ref prop into observable
-        debugger
         $$(renderer).setSize($$(width), $$(height))
 
         $$(camera).position.z = 5
         children.flat().forEach((obj) => {
             $$(scene).add(obj as any)
         })
+
+        $$(domElement).addEventListener('pointermove', onPointerMove);
+        $$(domElement).addEventListener('pointerdown', onClick);
+
         animate()
         return domElement
     }
 
     return (
-        <threeContext.Provider value={t()}>
+        <threeContext.Provider value={t(props)}>
             <R />
         </threeContext.Provider>
     )
