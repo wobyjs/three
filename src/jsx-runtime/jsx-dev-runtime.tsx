@@ -1,10 +1,11 @@
 
 /* IMPORT */
 import * as three from "three"
-import { $$, Ref, getMeta, wrapCloneElement } from "voby"
+import { $$, Ref, getMeta, isObservable, useEffect, wrapCloneElement } from "voby"
 import { param, paramTypes } from '../params'
 import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
+import { ThreeElements } from "src/three-types"
 
 const Three = { ...three }
 //@ts-ignore
@@ -17,7 +18,7 @@ const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any
 const checkProps = (props) => {
     if (props.color) {
         if (typeof props.color === "number" || typeof props.color === "string") {
-            props.color = new Three.Color(props.color)
+            props.color = new Three.Color($$(props.color))
         }
     }
 
@@ -65,9 +66,84 @@ const checkProps = (props) => {
     return props
 }
 
+const fixReactiveProps = (props: any, name: string, component: ThreeElements) => {
+    // switch (name) {
+    //     case "position":
+    //     case "scale":
+    //     case "rotate":
+    //     case "rotation":
+    //     case "up":
+    //     case "matrix":
+    //     case "layer":
+    //     case "dispose":
+    //         useEffect(() => {
+    //             if (Array.isArray(props[name]) || typeof props[name] === 'object') {
+    //                 component[name].set(...$$(props[name]))
+    //             }
+    //             else{
+    //                 component[name].set($$(props[name]))
+    //             }
+    //         })
+    //         break
+    //     case "color":
+    //         if (component[name]) {
+    //             useEffect(() => {
+    //                 component[name].set($$(props[name]))
+    //             })
+    //         }
+    //         else {
+    //             useEffect(() => {
+    //                 component[name] = (typeof $$(props.color) === "number" || typeof props.color === "string") ?
+
+    //                     new Three.Color($$(props[name])) : ($$(props[name]))
+    //             })
+    //         }
+
+    if (props[name]) {
+        //check if observable function
+        const propFunctionRef = props[name]
+        if (isFunction(props[name])) {
+            if (name.startsWith("on")) {
+                //event listeners
+                component[name] = propFunctionRef
+            }
+
+            else if (Array.isArray($$(propFunctionRef))) {
+                //handle array values
+                useEffect(() => {
+                    component[name].set(...$$(propFunctionRef))
+                })
+                delete props[name]
+
+            }
+            else {
+                useEffect(() => {
+                    if (Array.isArray($$(propFunctionRef)) || typeof $$(propFunctionRef) == "object") {
+                        component[name].set(...$$(propFunctionRef))
+                    }
+                    else {
+                        component[name].set($$(propFunctionRef))
+                    }
+                })
+            }
+        }
+        else {
+            if (Array.isArray($$(propFunctionRef)) || typeof $$(propFunctionRef) == "object") {
+                component[name].set(...$$(propFunctionRef))
+            }
+            else {
+                component[name].set($$(propFunctionRef))
+            }
+
+            delete props[name]
+        }
+    }
+}
+
+
 const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]> }>
     (component: K, props: P & { args: [] }, key?: string) => {
-    let checkedProps = checkProps(props)
+    let checkedProps = (props)
 
     if (isFunction(component)) {
         return component(checkedProps)
@@ -76,9 +152,8 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
     //get children from props
     const meta = [$$(checkedProps.children)].flat()
         .filter(r => !!r).map(c => getMeta(c as any))
-
-    const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, checkedProps, component))
     debugger
+    const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, checkedProps, component))
     const r = new Three[toUpper(component as any)](...p)
 
     if (props.ref) {
@@ -86,14 +161,29 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
         [props.ref].flat().forEach((rr) => (rr as Ref)?.(r))
     }
 
+
+    //set readonly variables to component
+    fixReactiveProps(props, "position", r)
+    fixReactiveProps(props, "scale", r)
+
+    fixReactiveProps(props, "color", r)
+    fixReactiveProps(props, "rotation", r)
+    fixReactiveProps(props, "onPointerOver", r)
+
+
     const { children, args, ...remainingProps } = checkedProps
         ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
-    Object.assign(r, remainingProps)
+    Object.keys(remainingProps).forEach((k) => {
+        // if (isObservable(remainingProps[k])) {
+        //     useEffect(() => {
+        //         r[k] = $$(remainingProps[k])
+        //     })
+        // }
+         if (k.startsWith("on")) {
+            r[k] = remainingProps[k]
+        }
+    })
 
-    // if (Object.hasOwn(checkedProps, 'children')) {
-    //     //under construction
-    //     r.children = [children]
-    // }
     return r
 }
 
@@ -101,9 +191,11 @@ const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicEleme
     (component: K, props: P & { args: [] }, key?: string): JSX.Element => {
     if (component === "canvas3D") {
         return (
+            //@ts-ignore
             <Canvas3D {...props} />
         )
     }
+    //@ts-ignore
     return wrapCloneElement(createElement(component as any, props, key), component, props)
 };
 
@@ -112,6 +204,8 @@ const render = (children: JSX.Child, parent: JSX.Child) => {
     ($$(parent) as HTMLElement).appendChild(($$(children)()()))
 }
 
+
+
 /* EXPORT */
 
-export { jsx, jsx as jsxDEV, render };
+export { jsx, jsx as jsxDEV, render }
