@@ -67,38 +67,6 @@ const checkProps = (props) => {
 }
 
 const fixReactiveProps = (props: any, name: string, component: ThreeElements) => {
-    // switch (name) {
-    //     case "position":
-    //     case "scale":
-    //     case "rotate":
-    //     case "rotation":
-    //     case "up":
-    //     case "matrix":
-    //     case "layer":
-    //     case "dispose":
-    //         useEffect(() => {
-    //             if (Array.isArray(props[name]) || typeof props[name] === 'object') {
-    //                 component[name].set(...$$(props[name]))
-    //             }
-    //             else{
-    //                 component[name].set($$(props[name]))
-    //             }
-    //         })
-    //         break
-    //     case "color":
-    //         if (component[name]) {
-    //             useEffect(() => {
-    //                 component[name].set($$(props[name]))
-    //             })
-    //         }
-    //         else {
-    //             useEffect(() => {
-    //                 component[name] = (typeof $$(props.color) === "number" || typeof props.color === "string") ?
-
-    //                     new Three.Color($$(props[name])) : ($$(props[name]))
-    //             })
-    //         }
-
     if (props[name]) {
         //check if observable function
         const propFunctionRef = props[name]
@@ -174,12 +142,7 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
     const { children, args, ...remainingProps } = checkedProps
         ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
     Object.keys(remainingProps).forEach((k) => {
-        // if (isObservable(remainingProps[k])) {
-        //     useEffect(() => {
-        //         r[k] = $$(remainingProps[k])
-        //     })
-        // }
-         if (k.startsWith("on")) {
+        if (k.startsWith("on")) {
             r[k] = remainingProps[k]
         }
     })

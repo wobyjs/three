@@ -105,7 +105,7 @@ export type Node<T, P> = ExtendedColors<Overwrite<Partial<T>, NodeProps<T, P>>>
 export type Object3DNode<T, P> = Overwrite<
   Node<T, P>,
   {
-    position?: Vector3
+    position?: Vector3 | number[]
     up?: Vector3
     scale?: Vector3
     rotation?: Euler
