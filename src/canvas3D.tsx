@@ -59,6 +59,18 @@ export const useFrame = (fn: () => void) => {
     const fs = useFrames()
     fs.push(fn)
 }
+function throttle(callback, limit) {
+    var waiting = false;                      // Initially, we're not waiting
+    return function () {                      // We return a throttled function
+        if (!waiting) {                       // If we're not waiting
+            callback();  // Execute users function
+            waiting = true;                   // Prevent future invocations
+            setTimeout(function () {          // After a period of time
+                waiting = false;              // And allow future invocations
+            }, limit);
+        }
+    }
+}
 
 
 export const Canvas3D = (props: canvasProps) => {
@@ -66,7 +78,7 @@ export const Canvas3D = (props: canvasProps) => {
         const { renderer, defaultScene: scene, defaultCamera: camera, domElement, defaultWidth: width, defaultHeight: height } = useContext(threeContext)
         const raycaster = new three.Raycaster();
         const pointer = new three.Vector2();
-        const meshObj = []
+        const meshObj: {obj?: any} = {}
 
         const onPointerMove = (event) => {
             event.stopPropagation()
@@ -81,15 +93,17 @@ export const Canvas3D = (props: canvasProps) => {
 
             //todo throttle??
             if (intersects.length > 0) {
-                meshObj.push(intersects[0].object)
+                    // meshObj.push(intersects[0].object)
+                    meshObj.obj = intersects[0].object
                 //@ts-ignore
-                intersects[0].object.onPointerOver?.(event)
+                throttle(intersects[0].object.onPointerOver?.(event), 1000)
+                console.log("called hovering", meshObj)
 
             }
             else {
-                console.log("onpointerout", meshObj[0])
-                meshObj[0].onPointerOut?.(event)
-                meshObj.pop()
+                throttle(meshObj.obj.onPointerOut?.(event),1000)
+                
+                console.log("called on hover out", meshObj)
             }
 
         }
@@ -129,6 +143,7 @@ export const Canvas3D = (props: canvasProps) => {
         $$(renderer).setSize($$(width), $$(height))
 
         $$(camera).position.z = 5
+        $$(scene).background = new three.Color("white")
         children.flat().forEach((obj) => {
             $$(scene).add(obj as any)
         })

@@ -39,10 +39,16 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
     const r = []
     paramName.map(key => r[key] = props[key])
     paramType.map((paramKey, i) => {
-        const m = meta.filter(m => (m.component + '').endsWith(toUpper(paramKey)))[0]
         const paramName = param[component as any][i]
-        if (!r[paramName] && m?.component) {
-            r[paramName] = jsx(m.component as any, m.props as any)
+
+        if (props[paramName]) {
+            r[paramName] = props[paramName]
+        }
+        else {
+            const m = meta.filter(m => (m.component + '').endsWith(toUpper(paramKey)))[0]
+            if (!r[paramName] && m?.component) {
+                r[paramName] = jsx(m.component as any, m.props as any)
+            }
         }
     })
 
