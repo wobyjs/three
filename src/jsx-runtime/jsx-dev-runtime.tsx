@@ -1,15 +1,16 @@
-
 /* IMPORT */
 import * as three from "three"
-import { $$, Ref, getMeta, isObservable, useEffect, wrapCloneElement } from "voby"
+import { $$, Ref, getMeta, useEffect, wrapCloneElement } from "voby"
 import { param, paramTypes } from '../params'
 import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
 import { ThreeElements } from "src/three-types"
+import { orbitControls } from "../OrbitControls"
 
 const Three = { ...three }
 //@ts-ignore
 Three.Canvas3D = Canvas3D
+Three.OrbitControls = orbitControls
 
 export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 

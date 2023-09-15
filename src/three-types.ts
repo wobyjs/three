@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { canvasProps } from './canvas3D'
+import { orbitProps } from './OrbitControls'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -477,6 +478,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements extends ThreeElements {
       canvas3D: canvasProps
+      orbitControls: orbitProps
     }
   }
 }

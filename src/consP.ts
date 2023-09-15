@@ -1,10 +1,11 @@
 import { $$ } from "voby"
 import { jsx, toUpper } from "./jsx-runtime/jsx-dev-runtime"
 import { param, paramTypes } from "./params"
-import { AmbientLight, BoxGeometry, Color, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene, Vector2 } from "three"
+import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
 
 const defaults = {
     canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
+    orbitControls: { camera: null, domElement: null, enableDamping: false },
     scene: {},
     mesh: { geometry: () => new BoxGeometry(), material: () => new MeshBasicMaterial() },
     perspectiveCamera: { fov: 50, aspect: 1, near: 0.1, far: 2000 },

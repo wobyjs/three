@@ -9,11 +9,11 @@ import { consP } from "./consP"
 type canvasProperties = {
     frame?: [],
     renderer?: Observable<three.WebGLRenderer>,
-    defaultScene?: ObservableMaybe<three.Scene>,
-    defaultCamera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    scene?: ObservableMaybe<three.Scene>,
+    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
     domElement?: ObservableMaybe<HTMLCanvasElement>,
-    defaultWidth?: ObservableMaybe<number>,
-    defaultHeight?: ObservableMaybe<number>
+    width?: ObservableMaybe<number>,
+    height?: ObservableMaybe<number>
 }
 
 export type canvasProps = {
@@ -28,11 +28,11 @@ const t = (props?: canvasProps) => {
     const t = {
         frame: [],
         renderer: $(new three.WebGLRenderer()),
-        defaultScene: $(props?.scene ?? new three.Scene()),
-        defaultCamera: $(props?.camera ?? new three.PerspectiveCamera()),
+        scene: $(props?.scene ?? new three.Scene()),
+        camera: $(props?.camera ?? new three.PerspectiveCamera()),
         domElement: useMemo(() => $$(t.renderer)?.domElement),
-        defaultWidth: props?.width ?? window.innerWidth,
-        defaultHeight: props?.width ?? window.innerHeight
+        width: props?.width ?? window.innerWidth,
+        height: props?.width ?? window.innerHeight
     } as canvasProperties
     return t
 }
@@ -54,7 +54,7 @@ export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
     return vv
 }
 
-export const useCamera = () => useContext(threeContext).defaultCamera
+export const useCamera = () => useContext(threeContext).camera
 export const useFrame = (fn: () => void) => {
     const fs = useFrames()
     fs.push(fn)
@@ -75,10 +75,10 @@ function throttle(callback, limit) {
 
 export const Canvas3D = (props: canvasProps) => {
     const R = () => {
-        const { renderer, defaultScene: scene, defaultCamera: camera, domElement, defaultWidth: width, defaultHeight: height } = useContext(threeContext)
+        const { renderer, scene, camera, domElement, width, height } = useContext(threeContext)
         const raycaster = new three.Raycaster();
         const pointer = new three.Vector2();
-        const meshObj: {obj?: any} = {}
+        const meshObj: { obj?: any } = {}
 
         const onPointerMove = (event) => {
             event.stopPropagation()
@@ -91,19 +91,15 @@ export const Canvas3D = (props: canvasProps) => {
             raycaster.setFromCamera(pointer, $$(camera));
             const intersects = raycaster.intersectObjects($$(scene).children)
 
-            //todo throttle??
             if (intersects.length > 0) {
-                    // meshObj.push(intersects[0].object)
-                    meshObj.obj = intersects[0].object
+                // meshObj.push(intersects[0].object)
+                meshObj.obj = intersects[0].object
                 //@ts-ignore
                 throttle(intersects[0].object.onPointerOver?.(event), 1000)
-                console.log("called hovering", meshObj)
 
             }
             else {
-                throttle(meshObj.obj.onPointerOut?.(event),1000)
-                
-                console.log("called on hover out", meshObj)
+                throttle(meshObj.obj.onPointerOut?.(event), 1000)
             }
 
         }
@@ -143,7 +139,8 @@ export const Canvas3D = (props: canvasProps) => {
         $$(renderer).setSize($$(width), $$(height))
 
         $$(camera).position.z = 5
-        $$(scene).background = new three.Color("white")
+        // $$(scene).background = new three.Color("white")
+
         children.flat().forEach((obj) => {
             $$(scene).add(obj as any)
         })
