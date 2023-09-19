@@ -1,4 +1,4 @@
-import { $$, $, useEffect } from "voby";
+import { $$ } from "voby";
 import { useFrame, useThree } from "./canvas3D"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 

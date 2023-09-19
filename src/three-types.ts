@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { canvasProps } from './canvas3D'
 import { orbitProps } from './OrbitControls'
+import { textGeometryProps } from './textGeometry'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -113,7 +114,8 @@ export type Object3DNode<T, P> = Overwrite<
     matrix?: Matrix4
     quaternion?: Quaternion
     layers?: Layers
-    dispose?: (() => void) | null,
+    // dispose?: (() => void) | null,
+    dispose? : boolean
     ref?: JSX.Refs<P>
   }
 > &
@@ -479,6 +481,7 @@ declare global {
     interface IntrinsicElements extends ThreeElements {
       canvas3D: canvasProps
       orbitControls: orbitProps
+      textGeometry: textGeometryProps
     }
   }
 }

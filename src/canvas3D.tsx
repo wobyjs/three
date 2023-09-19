@@ -5,6 +5,7 @@ import * as three from "three"
 import { useContext, createContext, Observable, useEffect, $$, $, ObservableMaybe, isObservable, getMeta, useMemo } from "voby"
 import { param, paramTypes } from "./params"
 import { consP } from "./consP"
+import { isFunction } from "./jsx-runtime/jsx-dev-runtime"
 
 type canvasProperties = {
     frame?: [],
@@ -21,7 +22,7 @@ export type canvasProps = {
     camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
     width?: ObservableMaybe<number>,
     height?: ObservableMaybe<number>,
-    children?: JSX.Child
+    children?: JSX.Child[]
 }
 
 const t = (props?: canvasProps) => {
@@ -80,6 +81,14 @@ export const Canvas3D = (props: canvasProps) => {
         const pointer = new three.Vector2();
         const meshObj: { obj?: any } = {}
 
+        useEffect(() => () => {
+            //dispose all object 
+            props.children.forEach(c => {
+                //@ts-ignore
+                $$(scene).remove(c)
+            })
+        })
+
         const onPointerMove = (event) => {
             event.stopPropagation()
             // calculate pointer position in normalized device coordinates
@@ -92,7 +101,6 @@ export const Canvas3D = (props: canvasProps) => {
             const intersects = raycaster.intersectObjects($$(scene).children)
 
             if (intersects.length > 0) {
-                // meshObj.push(intersects[0].object)
                 meshObj.obj = intersects[0].object
                 //@ts-ignore
                 throttle(intersects[0].object.onPointerOver?.(event), 1000)
@@ -128,8 +136,15 @@ export const Canvas3D = (props: canvasProps) => {
             })
 
         }
+        const childProps = $$(props.children).forEach((index) => {
+            if (isFunction(index)) {
+                useEffect(() => {
+                    index()
+                })
+            }
+        })
 
-        const meta = [$$(props.children)].flat()
+        const meta = [$$(childProps)].flat()
             .filter(r => !!r).map(c => getMeta(c as any))
 
         let children = Object.values(consP(param['canvas3D'], paramTypes['canvas3D'], meta, props, 'canvas3D'))
@@ -137,12 +152,30 @@ export const Canvas3D = (props: canvasProps) => {
             children = children.concat([props.children])
         }
         $$(renderer).setSize($$(width), $$(height))
-
         $$(camera).position.z = 5
-        // $$(scene).background = new three.Color("white")
+        $$(scene).background = new three.Color("white")
 
         children.flat().forEach((obj) => {
-            $$(scene).add(obj as any)
+            if (isFunction(obj)) {
+                useEffect(() => {
+
+                    const r = $$(obj)
+                    if (r.dispose) {
+                        $$(scene).add(r as any)
+
+                        return () => {
+
+                            $$(scene).remove(r)
+                            r.geometry.dispose()
+                            r.material.dispose()
+                        }
+                    }
+                    else {
+                        return () => { }
+                    }
+                })
+            }
+            else $$(scene).add(obj as any)
         })
 
         $$(domElement).addEventListener('pointermove', onPointerMove);

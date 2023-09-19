@@ -6,15 +6,17 @@ import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
 import { ThreeElements } from "src/three-types"
 import { orbitControls } from "../OrbitControls"
+import { textGeometry } from "../textGeometry"
 
 const Three = { ...three }
 //@ts-ignore
 Three.Canvas3D = Canvas3D
 Three.OrbitControls = orbitControls
+Three.TextGeometry = textGeometry
 
 export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
-const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any) => any => typeof f === 'function'
+export const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any) => any => typeof f === 'function'
 
 const checkProps = (props) => {
     if (props.color) {
@@ -82,7 +84,6 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
                 useEffect(() => {
                     component[name].set(...$$(propFunctionRef))
                 })
-                delete props[name]
 
             }
             else {
@@ -96,6 +97,13 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
                 })
             }
         }
+        else if (name == "map") {
+            useEffect(() => {
+
+                component[name] = $$(propFunctionRef)
+            })
+
+        }
         else {
             if (Array.isArray($$(propFunctionRef)) || typeof $$(propFunctionRef) == "object") {
                 component[name].set(...$$(propFunctionRef))
@@ -104,7 +112,6 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
                 component[name].set($$(propFunctionRef))
             }
 
-            delete props[name]
         }
     }
 }
@@ -121,7 +128,6 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
     //get children from props
     const meta = [$$(checkedProps.children)].flat()
         .filter(r => !!r).map(c => getMeta(c as any))
-    debugger
     const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, checkedProps, component))
     const r = new Three[toUpper(component as any)](...p)
 
@@ -133,6 +139,7 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
 
     //set readonly variables to component
     fixReactiveProps(props, "position", r)
+    fixReactiveProps(props, "map", r)
     fixReactiveProps(props, "scale", r)
 
     fixReactiveProps(props, "color", r)
@@ -143,7 +150,7 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
     const { children, args, ...remainingProps } = checkedProps
         ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
     Object.keys(remainingProps).forEach((k) => {
-        if (k.startsWith("on")) {
+        if (k.startsWith("on") || k == "dispose") {
             r[k] = remainingProps[k]
         }
     })
