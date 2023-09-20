@@ -6,13 +6,13 @@ import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
 import { ThreeElements } from "src/three-types"
 import { orbitControls } from "../OrbitControls"
-import { textGeometry } from "../textGeometry"
+import { Text } from "../Text"
 
 const Three = { ...three }
 //@ts-ignore
 Three.Canvas3D = Canvas3D
 Three.OrbitControls = orbitControls
-Three.TextGeometry = textGeometry
+Three.Text = Text
 
 export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 

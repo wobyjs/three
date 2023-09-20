@@ -1,7 +1,8 @@
 import * as THREE from 'three'
 import { canvasProps } from './canvas3D'
 import { orbitProps } from './OrbitControls'
-import { textGeometryProps } from './textGeometry'
+import { textGeometryProps } from './Text'
+import { Observable, ObservableMaybe } from 'voby'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -100,9 +101,22 @@ export interface NodeProps<T, P> {
   children?: JSX.Child
   onUpdate?: (self: T) => void
 }
+type NonNullable<T> = T & {}
+
+export type Unobservant<T> = T extends object
+  ? { [K in keyof T]: T[K] extends ObservableMaybe<infer U> ? NonNullable<U> : T[K] }
+  : T
+
+
+export type Observant<T> = T extends object
+  ? { [K in keyof T]: T[K] extends Function ? T[K] :
+    T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<U> : Observable<T[K]> } : T
+
+
+export type UnobservantMaybe<T> = Unobservant<T> | T
 
 export type ExtendedColors<T> = { [K in keyof T]: T[K] extends THREE.Color | undefined ? Color : T[K] }
-export type Node<T, P> = ExtendedColors<Overwrite<Partial<T>, NodeProps<T, P>>>
+export type Node<T, P> = Observant<ExtendedColors<Overwrite<Partial<T>, NodeProps<T, P>>>>
 
 export type Object3DNode<T, P> = Overwrite<
   Node<T, P>,
@@ -115,7 +129,7 @@ export type Object3DNode<T, P> = Overwrite<
     quaternion?: Quaternion
     layers?: Layers
     // dispose?: (() => void) | null,
-    dispose? : boolean
+    dispose?: boolean
     ref?: JSX.Refs<P>
   }
 > &
@@ -481,7 +495,7 @@ declare global {
     interface IntrinsicElements extends ThreeElements {
       canvas3D: canvasProps
       orbitControls: orbitProps
-      textGeometry: textGeometryProps
+      text: textGeometryProps
     }
   }
 }
