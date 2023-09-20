@@ -22,7 +22,7 @@ export type canvasProps = {
     camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
     width?: ObservableMaybe<number>,
     height?: ObservableMaybe<number>,
-    children?: JSX.Child[]
+    children?: JSX.Child
 }
 
 const t = (props?: canvasProps) => {
@@ -136,7 +136,7 @@ export const Canvas3D = (props: canvasProps) => {
             })
 
         }
-        const childProps = $$(props.children).forEach((index) => {
+        const childProps = [$$(props.children)].forEach((index) => {
             if (isFunction(index)) {
                 useEffect(() => {
                     index()
@@ -160,19 +160,19 @@ export const Canvas3D = (props: canvasProps) => {
                 useEffect(() => {
 
                     const r = $$(obj)
-                    if (r.dispose) {
-                        $$(scene).add(r as any)
 
-                        return () => {
+                    $$(scene).add(r as any)
 
-                            $$(scene).remove(r)
+                    return () => {
+                        $$(scene).remove(r)
+                        debugger
+                        if (r.geometry.selfDispose)
                             r.geometry.dispose()
+
+                        if (r.material.selfDispose)
                             r.material.dispose()
-                        }
                     }
-                    else {
-                        return () => { }
-                    }
+
                 })
             }
             else $$(scene).add(obj as any)
