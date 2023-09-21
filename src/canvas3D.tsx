@@ -6,6 +6,7 @@ import { useContext, createContext, Observable, useEffect, $$, $, ObservableMayb
 import { param, paramTypes } from "./params"
 import { consP } from "./consP"
 import { isFunction } from "./jsx-runtime/jsx-dev-runtime"
+import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
 
 type canvasProperties = {
     frame?: [],
@@ -28,6 +29,7 @@ export type canvasProps = {
 const t = (props?: canvasProps) => {
     const t = {
         frame: [],
+        fonts: {},
         renderer: $(new three.WebGLRenderer()),
         scene: $(props?.scene ?? new three.Scene()),
         camera: $(props?.camera ?? new three.PerspectiveCamera()),
@@ -41,6 +43,7 @@ const t = (props?: canvasProps) => {
 
 export const threeContext = createContext<canvasProperties>(t())
 export const useFrames = () => useContext(threeContext)['frame'] as (() => void)[]
+export const useFonts = () => useContext(threeContext)['fonts'] as Record<string, Observable<Font>>
 export const useWidth = () => useContext(threeContext)['width']
 
 
@@ -56,10 +59,31 @@ export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
 }
 
 export const useCamera = () => useContext(threeContext).camera
+
+export const useFont = (path: string) => {
+    const fonts = useFonts();
+    if (fonts[path]) {
+        return fonts[path]
+    }
+    else {
+        fonts[path] = $();
+        (async () => {
+            const loader = new FontLoader();
+
+            const loadFont = await loader.loadAsync(path)
+            fonts[path](loadFont)
+        })()
+    }
+
+    return fonts[path]
+
+
+}
 export const useFrame = (fn: () => void) => {
     const fs = useFrames()
     fs.push(fn)
 }
+
 function throttle(callback, limit) {
     var waiting = false;                      // Initially, we're not waiting
     return function () {                      // We return a throttled function
@@ -84,7 +108,6 @@ export const Canvas3D = (props: canvasProps) => {
         useEffect(() => () => {
             //dispose all object 
             props.children.forEach(c => {
-                //@ts-ignore
                 $$(scene).remove(c)
             })
         })
@@ -144,8 +167,8 @@ export const Canvas3D = (props: canvasProps) => {
             }
         })
 
-        const meta = [$$(childProps)].flat()
-            .filter(r => !!r).map(c => getMeta(c as any))
+        //@ts-ignore
+        const meta = [$$(childProps)].flat().filter(r => !!r).map(c => getMeta(c as any))
 
         let children = Object.values(consP(param['canvas3D'], paramTypes['canvas3D'], meta, props, 'canvas3D'))
         if (props.children) {
@@ -165,11 +188,11 @@ export const Canvas3D = (props: canvasProps) => {
 
                     return () => {
                         $$(scene).remove(r)
-                        debugger
-                        if (r.geometry.selfDispose)
+
+                        if (r?.geometry.selfDispose)
                             r.geometry.dispose()
 
-                        if (r.material.selfDispose)
+                        if (r?.material.selfDispose)
                             r.material.dispose()
                     }
 
