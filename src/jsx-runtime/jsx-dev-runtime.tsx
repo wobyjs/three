@@ -7,12 +7,12 @@ import { consP } from "../consP"
 import { ThreeElements } from "src/three-types"
 import { orbitControls } from "../OrbitControls"
 import { Text } from "../Text"
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 
 const Three = { ...three }
-//@ts-ignore
 Three.Canvas3D = Canvas3D
 Three.OrbitControls = orbitControls
-Three.Text = Text
+Three.TextGeometry = TextGeometry
 
 export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
@@ -69,6 +69,28 @@ const checkProps = (props) => {
     return props
 }
 
+export const isPromise = (obj) => {
+    if (obj instanceof Promise) {
+        return true
+    }
+
+    else if (typeof obj == "object") {
+        const properties = Object.values(obj)
+        //iterate over all property
+        for (let i = 0; i < properties.length; i++) {
+            if (typeof $$(properties[i])?.then === "function") {
+                return true
+            }
+        }
+        return false
+
+    }
+    else {
+        return typeof obj?.then === "function"
+    }
+
+}
+
 const fixReactiveProps = (props: any, name: string, component: ThreeElements) => {
     if (props[name]) {
         //check if observable function
@@ -119,43 +141,99 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
 
 const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]> }>
     (component: K, props: P & { args: [] }, key?: string) => {
-    let checkedProps = (props)
 
     if (isFunction(component)) {
-        return component(checkedProps)
+        return component(props)
     }
 
     //get children from props
-    const meta = [$$(checkedProps.children)].flat()
+    const meta = [$$(props.children)].flat()
         .filter(r => !!r).map(c => getMeta(c as any))
-    const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, checkedProps, component))
-    const r = new Three[toUpper(component as any)](...p)
 
-    if (props.ref) {
-        //used to assign ref 
-        [props.ref].flat().forEach((rr) => (rr as Ref)?.(r))
+    if (Object.values(props).some(k => isPromise($$(k)))) {
+        const ps = { ...props }
+        return new Promise((resolve, reject) => {
+            (async () => {
+
+                const all = Object.values(ps).filter(k => isPromise($$(k))).map((k) => $$(k) as Promise<any>)
+                await Promise.all(all);
+
+                const key = Object.keys(ps)
+                for (let i = 0; i < key.length; i++) {
+                    const k = key[i]
+                    if (isPromise($$(ps[k]))) {
+                        const properties = Object.values(ps[k])
+                        const keys = Object.keys(ps[k])
+
+                        //iterate over all properties inside an object 
+                        for (let j = 0; j < properties.length; j++) {
+                            ps[k][keys[j]] = await $$(properties[j])
+                        }
+                    }
+                }
+
+                const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, ps, component))
+                const r = new Three[toUpper(component as any)](...p)
+
+                if (ps.ref) {
+                    //used to assign ref 
+                    [ps.ref].flat().forEach((rr) => (rr as Ref)?.(r))
+                }
+
+
+                //set readonly variables to component
+                fixReactiveProps(ps, "position", r)
+                fixReactiveProps(ps, "map", r)
+                fixReactiveProps(ps, "scale", r)
+
+                fixReactiveProps(ps, "color", r)
+                fixReactiveProps(ps, "rotation", r)
+                fixReactiveProps(ps, "onPointerOver", r)
+
+
+                const { children, args, ...remainingProps } = ps
+                    ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
+                Object.keys(remainingProps).forEach((k) => {
+                    if (k.startsWith("on") || k == "dispose") {
+                        r[k] = remainingProps[k]
+                    }
+                })
+
+                resolve(r)
+            })()
+
+        })
     }
+    else {
+        const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, props, component))
+        const r = new Three[toUpper(component as any)](...p)
 
-
-    //set readonly variables to component
-    fixReactiveProps(props, "position", r)
-    fixReactiveProps(props, "map", r)
-    fixReactiveProps(props, "scale", r)
-
-    fixReactiveProps(props, "color", r)
-    fixReactiveProps(props, "rotation", r)
-    fixReactiveProps(props, "onPointerOver", r)
-
-
-    const { children, args, ...remainingProps } = checkedProps
-        ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
-    Object.keys(remainingProps).forEach((k) => {
-        if (k.startsWith("on") || k == "dispose") {
-            r[k] = remainingProps[k]
+        if (props.ref) {
+            //used to assign ref 
+            [props.ref].flat().forEach((rr) => (rr as Ref)?.(r))
         }
-    })
 
-    return r
+
+        //set readonly variables to component
+        fixReactiveProps(props, "position", r)
+        fixReactiveProps(props, "map", r)
+        fixReactiveProps(props, "scale", r)
+
+        fixReactiveProps(props, "color", r)
+        fixReactiveProps(props, "rotation", r)
+        fixReactiveProps(props, "onPointerOver", r)
+
+
+        const { children, args, ...remainingProps } = props
+            ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
+        Object.keys(remainingProps).forEach((k) => {
+            if (k.startsWith("on") || k == "dispose") {
+                r[k] = remainingProps[k]
+            }
+        })
+
+        return r
+    }
 }
 
 const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[K] & { children?: JSX.Child[] }>

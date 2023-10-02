@@ -3,6 +3,7 @@ import { canvasProps } from './canvas3D'
 import { orbitProps } from './OrbitControls'
 import { textGeometryProps } from './Text'
 import { Observable, ObservableMaybe } from 'voby'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -110,8 +111,7 @@ export type Unobservant<T> = T extends object
 
 export type Observant<T> = T extends object
   ? { [K in keyof T]: T[K] extends Function ? T[K] :
-    T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<U> : Observable<T[K]> } : T
-
+    T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<PromiseLike<U>> : Observable<PromiseLike<T[K]>> } : T
 
 export type UnobservantMaybe<T> = Unobservant<T> | T
 
@@ -241,6 +241,7 @@ export type ConeGeometryProps = BufferGeometryNode<THREE.ConeGeometry, typeof TH
 export type CylinderGeometryProps = BufferGeometryNode<THREE.CylinderGeometry, typeof THREE.CylinderGeometry>
 export type CircleGeometryProps = BufferGeometryNode<THREE.CircleGeometry, typeof THREE.CircleGeometry>
 export type BoxGeometryProps = BufferGeometryNode<THREE.BoxGeometry, typeof THREE.BoxGeometry>
+export type TextGeometryProps = BufferGeometryNode<TextGeometry, typeof TextGeometry>
 export type CapsuleGeometryProps = BufferGeometryNode<THREE.CapsuleGeometry, typeof THREE.CapsuleGeometry>
 
 export type MaterialProps = MaterialNode<THREE.Material, [THREE.MaterialParameters]>
@@ -399,7 +400,8 @@ export interface ThreeElements {
   cylinderGeometry: CylinderGeometryProps
   circleGeometry: CircleGeometryProps
   boxGeometry: BoxGeometryProps
-  capsuleGeometry: CapsuleGeometryProps
+  capsuleGeometry: CapsuleGeometryProps,
+  textGeometry: TextGeometryProps
 
   // materials
   material: MaterialProps
@@ -495,7 +497,8 @@ declare global {
     interface IntrinsicElements extends ThreeElements {
       canvas3D: canvasProps
       orbitControls: orbitProps
-      text: textGeometryProps
+      // text: textGeometryProps,
+      textGeometry: TextGeometryProps
     }
   }
 }

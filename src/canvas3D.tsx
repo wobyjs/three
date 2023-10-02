@@ -5,8 +5,9 @@ import * as three from "three"
 import { useContext, createContext, Observable, useEffect, $$, $, ObservableMaybe, isObservable, getMeta, useMemo } from "voby"
 import { param, paramTypes } from "./params"
 import { consP } from "./consP"
-import { isFunction } from "./jsx-runtime/jsx-dev-runtime"
+import { isFunction, isPromise } from "./jsx-runtime/jsx-dev-runtime"
 import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
+import { Loader } from "three"
 
 type canvasProperties = {
     frame?: [],
@@ -46,7 +47,6 @@ export const useFrames = () => useContext(threeContext)['frame'] as (() => void)
 export const useFonts = () => useContext(threeContext)['fonts'] as Record<string, Observable<Font>>
 export const useWidth = () => useContext(threeContext)['width']
 
-
 export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
     const t = useContext(threeContext)
     const vv = isObservable(v) ? v : $(v)
@@ -58,6 +58,17 @@ export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
     return vv
 }
 
+
+export const useLoader = (loader, path) => {
+    const loaderInstance: Loader = new loader();
+    const obj = $();
+    (async () => {
+        const object = loaderInstance.loadAsync(path)
+        obj(object)
+    })()
+
+    return obj
+}
 export const useCamera = () => useContext(threeContext).camera
 
 export const useFont = (path: string) => {
@@ -178,24 +189,44 @@ export const Canvas3D = (props: canvasProps) => {
         $$(camera).position.z = 5
         $$(scene).background = new three.Color("white")
 
+        const r = $();
+
         children.flat().forEach((obj) => {
-            if (isFunction(obj)) {
+            if (isFunction(obj) || isPromise(obj)) {
                 useEffect(() => {
 
-                    const r = $$(obj)
+                    if (isPromise(obj)) {
+                        (async () => {
+                            r(await obj)
 
-                    $$(scene).add(r as any)
+                        })()
+                        $$(scene).add(r() as any)
 
-                    return () => {
-                        $$(scene).remove(r)
+                        return () => {
+                            $$(scene).remove(r())
 
-                        if (r?.geometry.selfDispose)
-                            r.geometry.dispose()
+                            if (r?.geometry?.selfDispose)
+                                r.geometry.dispose()
 
-                        if (r?.material.selfDispose)
-                            r.material.dispose()
+                            if (r?.material?.selfDispose)
+                                r.material.dispose()
+                        }
                     }
+                    else {
+                        const r = $$(obj)
 
+                        $$(scene).add(r as any)
+
+                        return () => {
+                            $$(scene).remove(r)
+
+                            if (r?.geometry?.selfDispose)
+                                r.geometry.dispose()
+
+                            if (r?.material?.selfDispose)
+                                r.material.dispose()
+                        }
+                    }
                 })
             }
             else $$(scene).add(obj as any)
