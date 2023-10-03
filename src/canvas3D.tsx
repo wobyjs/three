@@ -59,16 +59,30 @@ export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
 }
 
 
-export const useLoader = (loader, path) => {
-    const loaderInstance: Loader = new loader();
-    const obj = $();
+export const useLoader = <T extends Loader, V>(loader: new () => T & { loadAsync: (path: string) => V }, options: { path: string, init?: (instance: T) => void }): Observable<V> => {
+    const loaderInstance = new loader();
+    options.init?.(loaderInstance)
+
+    const obj = $<V>();
     (async () => {
-        const object = loaderInstance.loadAsync(path)
+        const object = loaderInstance.loadAsync(options.path)
         obj(object)
     })()
 
     return obj
 }
+
+export const useAwait = <T,>(obj: Observable<Promise<T>>): Observable<T> => {
+    const o = $<T>()
+    useEffect(() => {
+        (async () => {
+            o(await $$(obj))
+        })()
+    })
+
+    return o
+}
+
 export const useCamera = () => useContext(threeContext).camera
 
 export const useFont = (path: string) => {
@@ -90,6 +104,7 @@ export const useFont = (path: string) => {
 
 
 }
+
 export const useFrame = (fn: () => void) => {
     const fs = useFrames()
     fs.push(fn)

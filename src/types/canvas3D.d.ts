@@ -8,6 +8,7 @@ declare module 'three' {
     let Canvas3D: Canvas3D
     let OrbitControls: orbitControls
     let Text: text
+    let gltf: glf
 }
 
 

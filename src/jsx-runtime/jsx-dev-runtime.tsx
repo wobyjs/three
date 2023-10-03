@@ -1,18 +1,19 @@
 /* IMPORT */
 import * as three from "three"
-import { $$, Ref, getMeta, useEffect, wrapCloneElement } from "voby"
+import { $$, Ref, getMeta, isObservable, useEffect, wrapCloneElement } from "voby"
 import { param, paramTypes } from '../params'
 import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
 import { ThreeElements } from "src/three-types"
 import { orbitControls } from "../OrbitControls"
-import { Text } from "../Text"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
+import { gltf } from "../gltf"
 
 const Three = { ...three }
 Three.Canvas3D = Canvas3D
 Three.OrbitControls = orbitControls
 Three.TextGeometry = TextGeometry
+Three.Gltf = gltf
 
 export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
@@ -95,7 +96,7 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
     if (props[name]) {
         //check if observable function
         const propFunctionRef = props[name]
-        if (isFunction(props[name])) {
+        if (isFunction(props[name]) || isObservable(component)) {
             if (name.startsWith("on")) {
                 //event listeners
                 component[name] = propFunctionRef
@@ -104,7 +105,7 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
             else if (Array.isArray($$(propFunctionRef))) {
                 //handle array values
                 useEffect(() => {
-                    component[name].set(...$$(propFunctionRef))
+                    $$(component)?.[name].set(...$$(propFunctionRef))
                 })
 
             }
@@ -209,8 +210,14 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
         const r = new Three[toUpper(component as any)](...p)
 
         if (props.ref) {
-            //used to assign ref 
-            [props.ref].flat().forEach((rr) => (rr as Ref)?.(r))
+            if (isObservable(r)) {
+                useEffect(() => {
+                    [props.ref].flat().forEach((rr) => (rr as Ref)?.($$(r)))
+                })
+            }
+            else
+                //used to assign ref 
+                [props.ref].flat().forEach((rr) => (rr as Ref)?.(r))
         }
 
 

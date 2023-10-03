@@ -4,6 +4,7 @@ import { orbitProps } from './OrbitControls'
 import { textGeometryProps } from './Text'
 import { Observable, ObservableMaybe } from 'voby'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { GLTFProps } from './gltf'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -499,6 +500,7 @@ declare global {
       orbitControls: orbitProps
       // text: textGeometryProps,
       textGeometry: TextGeometryProps
+      gltf: GLTFProps
     }
   }
 }

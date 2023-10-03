@@ -1,7 +1,8 @@
 export const param = {
     canvas3D: ["scene", "camera"],
     orbitControls: ["camera", "domElement", "enableDamping"],
-    textGeometry: ["str", "parameters" ],
+    textGeometry: ["str", "parameters"],
+    gltf: ["path"],
     //animations
     booleanKeyframeTrack: ["name", "times", "values"],
     colorKeyframeTrack: ["name", "times", "values", "interpolation"],
@@ -260,7 +261,8 @@ export const param = {
 export const paramTypes = {
     canvas3D: ["scene", "camera"],
     orbitControls: ["camera", "domElement", "enableDamping"],
-    textGeometry: ["str","parameters"],
+    textGeometry: ["str", "parameters"],
+    gltf: ["path"],
     //animations
     booleanKeyframeTrack: ["name", "times", "values"],
     colorKeyframeTrack: ["name", "times", "values", "interpolation"],
