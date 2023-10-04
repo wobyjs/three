@@ -10,13 +10,13 @@ import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { Loader } from "three"
 
 type canvasProperties = {
-    frame?: [],
+    frame?: Observable<(() => void)[]>,
     renderer?: Observable<three.WebGLRenderer>,
-    scene?: ObservableMaybe<three.Scene>,
-    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,//?
-    domElement?: ObservableMaybe<HTMLCanvasElement>,
-    width?: ObservableMaybe<number>,
-    height?: ObservableMaybe<number>
+    scene?: Observable<three.Scene>,
+    camera?: Observable<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    domElement?: Observable<HTMLCanvasElement>,
+    width?: Observable<number>,
+    height?: Observable<number>
 }
 
 export type canvasProps = {
@@ -24,38 +24,39 @@ export type canvasProps = {
     camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
     width?: ObservableMaybe<number>,
     height?: ObservableMaybe<number>,
-    children?: JSX.Child
+    children?: JSX.Child,
 }
 
 const t = (props?: canvasProps) => {
     const t = {
-        frame: [],
-        fonts: {},
+        frame: $([]),
+        fonts: $({}),
         renderer: $(new three.WebGLRenderer()),
         scene: $(props?.scene ?? new three.Scene()),
         camera: $(props?.camera ?? new three.PerspectiveCamera()),
         domElement: useMemo(() => $$(t.renderer)?.domElement),
-        width: props?.width ?? window.innerWidth,
-        height: props?.width ?? window.innerHeight
+        width: $(props?.width ?? window.innerWidth),
+        height: $(props?.width ?? window.innerHeight)
     } as canvasProperties
     return t
 }
 
 
 export const threeContext = createContext<canvasProperties>(t())
-export const useFrames = () => useContext(threeContext)['frame'] as (() => void)[]
+export const useFrames = () => useContext(threeContext)['frame']
 export const useFonts = () => useContext(threeContext)['fonts'] as Record<string, Observable<Font>>
 export const useWidth = () => useContext(threeContext)['width']
 
-export const useThree = <T,>(key: string, v?: ObservableMaybe<T>) => {
-    const t = useContext(threeContext)
-    const vv = isObservable(v) ? v : $(v)
-    if (t[key] && !v) {
-        return t[key]
+export const useThree = <T, K extends keyof canvasProperties>(key: K, v?: ObservableMaybe<T>): canvasProperties[K] => {
+    const t = useContext(threeContext) as any as canvasProperties
+    // const vv = isObservable(v) ? v : $(v)
+    if (isObservable(t[key as any])) {
+        if (v)
+            //@ts-ignore
+            t[key]($$(v))
     }
 
-    t[key] = vv
-    return vv
+    return t[key] as any
 }
 
 
@@ -64,6 +65,7 @@ export const useLoader = <T extends Loader, V>(loader: new () => T & { loadAsync
     options.init?.(loaderInstance)
 
     const obj = $<V>();
+    //TODO array of paths
     (async () => {
         const object = loaderInstance.loadAsync(options.path)
         obj(object)
@@ -106,7 +108,7 @@ export const useFont = (path: string) => {
 }
 
 export const useFrame = (fn: () => void) => {
-    const fs = useFrames()
+    const fs = $$(useFrames())
     fs.push(fn)
 }
 
@@ -131,8 +133,8 @@ export const Canvas3D = (props: canvasProps) => {
         const pointer = new three.Vector2();
         const meshObj: { obj?: any } = {}
 
+        //dispose all object 
         useEffect(() => () => {
-            //dispose all object 
             props.children.forEach(c => {
                 $$(scene).remove(c)
             })
@@ -176,7 +178,7 @@ export const Canvas3D = (props: canvasProps) => {
 
 
         const animate = () => {
-            const fs = useFrames()
+            const fs = $$(useFrames())
             requestAnimationFrame(() => animate());
             fs.forEach(f => f())
 
@@ -185,6 +187,7 @@ export const Canvas3D = (props: canvasProps) => {
             })
 
         }
+
         const childProps = [$$(props.children)].forEach((index) => {
             if (isFunction(index)) {
                 useEffect(() => {
@@ -200,9 +203,9 @@ export const Canvas3D = (props: canvasProps) => {
         if (props.children) {
             children = children.concat([props.children])
         }
+
         $$(renderer).setSize($$(width), $$(height))
         $$(camera).position.z = 5
-        $$(scene).background = new three.Color("white")
 
         const r = $();
 

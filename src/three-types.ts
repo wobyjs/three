@@ -109,10 +109,11 @@ export type Unobservant<T> = T extends object
   ? { [K in keyof T]: T[K] extends ObservableMaybe<infer U> ? NonNullable<U> : T[K] }
   : T
 
+export type PromiseMaybe<T> = PromiseLike<T> | T
 
 export type Observant<T> = T extends object
   ? { [K in keyof T]: T[K] extends Function ? T[K] :
-    T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<PromiseLike<U>> : Observable<PromiseLike<T[K]>> } : T
+    T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<PromiseMaybe<U>> : Observable<PromiseMaybe<T[K]>> } : T
 
 export type UnobservantMaybe<T> = Unobservant<T> | T
 

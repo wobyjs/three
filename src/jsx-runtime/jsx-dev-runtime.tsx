@@ -107,6 +107,7 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
                 useEffect(() => {
                     $$(component)?.[name].set(...$$(propFunctionRef))
                 })
+                delete props[name]
 
             }
             else {
@@ -118,8 +119,10 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
                         component[name].set($$(propFunctionRef))
                     }
                 })
+                delete props[name]
             }
         }
+
         else if (name == "map") {
             useEffect(() => {
 
@@ -127,6 +130,7 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
             })
 
         }
+
         else {
             if (Array.isArray($$(propFunctionRef)) || typeof $$(propFunctionRef) == "object") {
                 component[name].set(...$$(propFunctionRef))
@@ -134,7 +138,7 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
             else {
                 component[name].set($$(propFunctionRef))
             }
-
+            delete props[name]
         }
     }
 }
@@ -234,9 +238,7 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
         const { children, args, ...remainingProps } = props
             ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
         Object.keys(remainingProps).forEach((k) => {
-            if (k.startsWith("on") || k == "dispose") {
-                r[k] = remainingProps[k]
-            }
+            r[k] = remainingProps[k]
         })
 
         return r
