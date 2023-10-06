@@ -65,7 +65,5 @@
         "*.test.ts*",
         "vite.config.ts",
         "vite.config.*.ts",
-    ],
-    "include": ["./src/**/*", "./types"],
-
+    ]
 }
