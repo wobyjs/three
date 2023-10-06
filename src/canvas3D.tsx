@@ -7,7 +7,7 @@ import { param, paramTypes } from "./params"
 import { consP } from "./consP"
 import { isFunction, isPromise } from "./jsx-runtime/jsx-dev-runtime"
 import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
-import { Loader } from "three"
+import { Color, Loader } from "three"
 
 type canvasProperties = {
     frame?: Observable<(() => void)[]>,
@@ -208,6 +208,7 @@ export const Canvas3D = (props: canvasProps) => {
         }
 
         $$(renderer).setSize($$(width), $$(height))
+        $$(scene).background = new Color("white")
         $$(camera).position.z = 5
 
         const r = $();
