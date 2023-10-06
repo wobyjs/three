@@ -5,13 +5,14 @@ import { param, paramTypes } from '../params'
 import { Canvas3D } from "../canvas3D"
 import { consP } from "../consP"
 import { ThreeElements } from "src/three-types"
-import { orbitControls } from "../OrbitControls"
+import { orbitControls } from "../orbitControls"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 import { gltf } from "../gltf"
 
 const Three = { ...three }
 Three.Canvas3D = Canvas3D
 Three.OrbitControls = orbitControls
+//@ts-ignore
 Three.TextGeometry = TextGeometry
 Three.Gltf = gltf
 
@@ -19,56 +20,56 @@ export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 
 export const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any) => any => typeof f === 'function'
 
-const checkProps = (props) => {
-    if (props.color) {
-        if (typeof props.color === "number" || typeof props.color === "string") {
-            props.color = new Three.Color($$(props.color))
-        }
-    }
+// const checkProps = (props) => {
+//     if (props.color) {
+//         if (typeof props.color === "number" || typeof props.color === "string") {
+//             props.color = new Three.Color($$(props.color))
+//         }
+//     }
 
-    if (props.position) {
-        if (Array.isArray(props.position)) {
-            props.position = new Three.Vector3(...props.position)
-        }
-    }
+//     if (props.position) {
+//         if (Array.isArray(props.position)) {
+//             props.position = new Three.Vector3(...props.position)
+//         }
+//     }
 
-    if (props.up) {
-        if (Array.isArray(props.up)) {
-            props.up = new Three.Vector3(...props.up)
-        }
-    }
+//     if (props.up) {
+//         if (Array.isArray(props.up)) {
+//             props.up = new Three.Vector3(...props.up)
+//         }
+//     }
 
-    if (props.scale) {
-        if (Array.isArray(props.scale)) {
-            props.scale = new Three.Vector3(...props.scale)
-        }
-    }
+//     if (props.scale) {
+//         if (Array.isArray(props.scale)) {
+//             props.scale = new Three.Vector3(...props.scale)
+//         }
+//     }
 
-    if (props.rotation) {
-        if (Array.isArray(props.rotation)) {
-            props.rotation = new Three.Euler(...props.rotation)
-        }
-    }
+//     if (props.rotation) {
+//         if (Array.isArray(props.rotation)) {
+//             props.rotation = new Three.Euler(...props.rotation)
+//         }
+//     }
 
-    if (props.matrix) {
-        if (Array.isArray(props.matrix)) {
-            props.matrix = new Three.Quaternion(...props.matrix)
-        }
-    }
+//     if (props.matrix) {
+//         if (Array.isArray(props.matrix)) {
+//             props.matrix = new Three.Quaternion(...props.matrix)
+//         }
+//     }
 
-    if (props.layers) {
-        if (Array.isArray(props.layers)) {
-            props.layers = new Three.Quaternion(...props.layers)
-        }
-    }
+//     if (props.layers) {
+//         if (Array.isArray(props.layers)) {
+//             props.layers = new Three.Quaternion(...props.layers)
+//         }
+//     }
 
-    if (props.dispose) {
-        if (Array.isArray(props.dispose)) {
-            props.dispose = new Three.Quaternion(...props.dispose)
-        }
-    }
-    return props
-}
+//     if (props.dispose) {
+//         if (Array.isArray(props.dispose)) {
+//             props.dispose = new Three.Quaternion(...props.dispose)
+//         }
+//     }
+//     return props
+// }
 
 export const isPromise = (obj) => {
     if (obj instanceof Promise) {
@@ -79,6 +80,7 @@ export const isPromise = (obj) => {
         const properties = Object.values(obj)
         //iterate over all property
         for (let i = 0; i < properties.length; i++) {
+            //@ts-ignore
             if (typeof $$(properties[i])?.then === "function") {
                 return true
             }
@@ -239,6 +241,13 @@ const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intr
             ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
         Object.keys(remainingProps).forEach((k) => {
             r[k] = remainingProps[k]
+
+            if (k.includes("shadow-camera")) {
+                const cameraVar = k.split("-")
+                if (r.castShadow) {
+                    r.shadow.camera[cameraVar[2]] = remainingProps[k]
+                }
+            }
         })
 
         return r

@@ -13,7 +13,7 @@ export type orbitProps = {
 
 export function orbitControls(camera?, domElement?, enableDamping?) {
     const camera1 = useThree("camera")
-    const domElement1 = useThree("domElement")
+    const domElement1 = domElement ?? useThree("domElement")
     const cameraControls = new OrbitControls($$(camera1), $$(domElement1));
 
     if (enableDamping) {

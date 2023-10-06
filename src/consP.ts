@@ -23,7 +23,9 @@ const defaults = {
         penumbra: 0,
         decay: 2,
     },
-    pointLight: { color: 0xffffff, intensity: 1, distance: 0, decay: 2 }
+    pointLight: { color: 0xffffff, intensity: 1, distance: 0, decay: 2 },
+    directionalLight: { color: 0xffffff, intensity: 1 },
+    textGeometry: {}
 
 
 }
@@ -56,6 +58,13 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
     //use defaults if there is undefined components
     paramName.map((key) => {
         r[key] = !r[key] ? $$(defaults[component as any][key]) : r[key]
+        // if (!$$(defaults[component as any][key])) {
+        //     throw Error("Update consP.ts default constructors according to node_modules/@types/three/src/*.d.ts")
+        // }
+        if (typeof $$(defaults[component as any][key]) === 'undefined') {
+            throw Error("Update consP.ts default constructors according to node_modules/@types/three/src/*.d.ts")
+        }
+
     })
 
     return r

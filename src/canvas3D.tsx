@@ -41,7 +41,6 @@ const t = (props?: canvasProps) => {
     return t
 }
 
-
 export const threeContext = createContext<canvasProperties>(t())
 export const useFrames = () => useContext(threeContext)['frame']
 export const useFonts = () => useContext(threeContext)['fonts'] as Record<string, Observable<Font>>
@@ -135,6 +134,7 @@ export const Canvas3D = (props: canvasProps) => {
 
         //dispose all object 
         useEffect(() => () => {
+            //@ts-ignore
             props.children.forEach(c => {
                 $$(scene).remove(c)
             })
@@ -150,7 +150,6 @@ export const Canvas3D = (props: canvasProps) => {
 
             raycaster.setFromCamera(pointer, $$(camera));
             const intersects = raycaster.intersectObjects($$(scene).children)
-
             if (intersects.length > 0) {
                 meshObj.obj = intersects[0].object
                 //@ts-ignore
@@ -165,6 +164,10 @@ export const Canvas3D = (props: canvasProps) => {
 
         const onClick = (event: PointerEvent) => {
             event.preventDefault()
+
+            pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+            pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
             raycaster.setFromCamera(pointer, $$(camera));
             const intersects = raycaster.intersectObjects($$(scene).children)
             if (intersects.length > 0) {
