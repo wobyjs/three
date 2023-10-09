@@ -55,15 +55,11 @@
             ],
         }
     },
-    "references": [
-        {
-            "path": "../woby"
-        }
-    ],
+   
     "exclude": [
-        "node_modules/*",
         "*.test.ts*",
         "vite.config.ts",
         "vite.config.*.ts",
+        "node_modules/"
     ]
 }

@@ -1,6 +1,6 @@
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Observable, useMemo, $$, ObservableReadonly } from "voby";
+import { useMemo, $$, ObservableReadonly } from "voby";
 import { useAwait, useLoader } from "./canvas3D";
 
 export interface GLTFProps {
@@ -8,7 +8,7 @@ export interface GLTFProps {
 
 }
 
-export function gltf<T,>(path: string): ObservableReadonly<T> {
+export function gltf(path: string): ObservableReadonly {
     const obj = useAwait(useLoader(GLTFLoader, {
         path: path, init: o => {
             const dracoLoader = new DRACOLoader();

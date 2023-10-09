@@ -2,20 +2,21 @@
   "name": "voby-three",
   "version": "1.0.0",
   "description": "Voby Wrapper for ThreeJS",
-  "main": "./dist/Appbar.es.js",
-  "module": "./dist/Appbar.es.js",
-  "types": "./dist/types/Appbar.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "browser": "./dist/index.umd.js",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "build": "vite build",
     "build:watch": "vite build --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sl1241/voby-appbar"
+    "url": ""
   },
   "keywords": [
     "jasmine",
-    "mock",
+    "threejs",
     "voby"
   ],
   "author": "Tan Jee Han",
@@ -23,16 +24,14 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^5.0.0",
     "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3",
     "vite": "^4.3.3",
     "vite-plugin-dts": "^2.3.0"
   },
   "peerDependencies": {
-    "voby": "workspace:../woby"
+    "voby": "workspace:../woby",
+    "three": "^0.155.0",
+    "@types/three": "^0.155.0"
   },
   "dependencies": {
-    "@types/three": "^0.155.0",
-    "three": "^0.155.0"
   }
 }

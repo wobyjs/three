@@ -265,7 +265,6 @@ const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicEleme
     //@ts-ignore
     return wrapCloneElement(createElement(component as any, props, key), component, props)
 };
-
 const render = (children: JSX.Child, parent: JSX.Child) => {
     //@ts-ignore
     ($$(parent) as HTMLElement).appendChild(($$(children)()()))

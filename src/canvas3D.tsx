@@ -7,7 +7,7 @@ import { param, paramTypes } from "./params"
 import { consP } from "./consP"
 import { isFunction, isPromise } from "./jsx-runtime/jsx-dev-runtime"
 import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
-import { Color, Loader } from "three"
+import { Color, Loader, Object3D } from "three"
 
 type canvasProperties = {
     frame?: Observable<(() => void)[]>,
@@ -211,7 +211,7 @@ export const Canvas3D = (props: canvasProps) => {
         $$(scene).background = new Color("white")
         $$(camera).position.z = 5
 
-        const r = $();
+        const r = $<Object3D>();
 
         children.flat().forEach((obj) => {
             if (isFunction(obj) || isPromise(obj)) {
@@ -219,7 +219,7 @@ export const Canvas3D = (props: canvasProps) => {
 
                     if (isPromise(obj)) {
                         (async () => {
-                            r(await obj)
+                            r(await obj as any)
 
                         })()
                         $$(scene).add(r() as any)
@@ -227,11 +227,11 @@ export const Canvas3D = (props: canvasProps) => {
                         return () => {
                             $$(scene).remove(r())
 
-                            if (r?.geometry?.selfDispose)
-                                r.geometry.dispose()
+                            if ($$(r as any)?.geometry?.selfDispose)
+                                $$(r as any).geometry.dispose()
 
-                            if (r?.material?.selfDispose)
-                                r.material.dispose()
+                            if ($$(r as any)?.material?.selfDispose)
+                                $$(r as any).material.dispose()
                         }
                     }
                     else {
@@ -240,13 +240,13 @@ export const Canvas3D = (props: canvasProps) => {
                         $$(scene).add(r as any)
 
                         return () => {
-                            $$(scene).remove(r)
+                            $$(scene).remove(r as any)
 
-                            if (r?.geometry?.selfDispose)
-                                r.geometry.dispose()
+                            if ((r as any)?.geometry?.selfDispose)
+                                (r as any).geometry.dispose()
 
-                            if (r?.material?.selfDispose)
-                                r.material.dispose()
+                            if ((r as any)?.material?.selfDispose)
+                                (r as any).material.dispose()
                         }
                     }
                 })
@@ -261,7 +261,7 @@ export const Canvas3D = (props: canvasProps) => {
         return domElement
     }
 
-    return (
+    return (//@ts-ignore
         <threeContext.Provider value={t(props)}>
             <R />
         </threeContext.Provider>

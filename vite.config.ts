@@ -6,22 +6,19 @@ const config = defineConfig({
     build: {
         minify: false,
         lib: {
-            entry: ["./src/Appbar.tsx"],
-            name: "voby-jasmine",
+            entry: ["./src/index.tsx"],
+            name: "voby-three",
             formats: ['es', 'cjs', 'umd'],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,
         rollupOptions: {
-            external: ['react', 'react-dom', 'voby', 'oby', "react/jsx-runtime", "react-dom/client"],
+            external: ['voby', 'oby', "voby/jsx-runtime",  "three"],
             output: {
                 globals: {
-                    'react': 'React',
-                    'react-dom': 'ReactDOM',
                     'voby': 'voby',
                     'oby': 'oby',
-                    "react/jsx-runtime": "jsxRuntime",
-                    "react-dom/client": "client"
+                    'three': "three"
                 }
             }
         },
