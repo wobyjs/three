@@ -1,57 +1,44 @@
 // / <reference path="../jsx-runtime" />
 /** @jsxImportSource ../jsx-runtime */
 
-import { BoxGeometry, Mesh, MeshBasicMaterial, PerspectiveCamera, TextureLoader } from "three"
+import { BoxGeometry, CameraHelper, Mesh, MeshBasicMaterial, OrthographicCamera, PerspectiveCamera, PointLight, TextureLoader, Vector3 } from "three"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
-import { useFrame, useLoader, } from "../canvas3D"
-import { $, useEffect, useMemo } from "voby"
-import { Text } from "../Text"
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
+import { useThree, } from "../canvas3D"
+import { $, $$, useEffect, useMemo } from "voby"
+import "../gltf"
+import "../orbitControls"
 
-// import "./types/Canvas"
 const App = () => {
     const clicked = $(false)
     const material = new MeshBasicMaterial({ color: "black" })
-    const parameters = { font: useLoader(FontLoader, { path: "fonts/helvetiker_regular.typeface.json" }), size: 1, height: 0.1 }
-
-    const Test = (props) => {
-        const ref = $<Mesh>()
-        const texture = new TextureLoader().load('../textures/usedSteel.png');
-        const texture1 = new TextureLoader().load('textures/rock.jpeg');
+    const ref = $()
+    const lightRef = $<PointLight>()
+    const scene = useThree("scene")
 
 
-        const material = new MeshBasicMaterial()
+    useEffect(() => {
+        if (!ref()) {
+            return
+        }
 
-        const box = new BoxGeometry(1, 1, 1)
-
-        useFrame(() => {
-            ref().rotateX(0.01)
-            ref().rotateY(0.01)
-            ref().rotateZ(0.01)
-        })
-
-        return (
-            <mesh ref={ref} {...props} >
-                <boxGeometry />
-                <meshBasicMaterial map={texture1} />
-            </mesh>
-        )
-    }
-
+        lightRef().castShadow = true
+        ref().castShadow = true
+        ref().receiveShadow = true
+        console.log(ref())
+    })
 
     return (
-
-        <canvas3D>
-            <Test onClick={() => { clicked(!clicked()) }} />
-            {/* <Text str={() => clicked() ? "ABCD" : "cde"} pathToFont="fonts/helvetiker_regular.typeface.json" /> */}
-            <orbitControls />
-            <mesh material={material}>
-                <textGeometry str={"abc"} parameters={parameters} />
-            </mesh>
+        <canvas3D camera={new OrthographicCamera()}>
+            <ambientLight intensity={0.5} />
+            <spotLight position={[0, 0, 0]} angle={0.15} penumbra={1} castShadow />
+            <pointLight position={[0, 0, 0]} ref={lightRef} />
+            <gltf path={"models/model.gltf"} ref={ref} position={[0, 0, 0]} />
+            <orbitControls enableDamping />
         </canvas3D >
 
-
     )
+
+
 }
 
 render(App, document.body)

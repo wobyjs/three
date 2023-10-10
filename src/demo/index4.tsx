@@ -5,7 +5,7 @@ import { $, $$, useEffect, useMemo } from "voby"
 import { useFrame, useThree } from "../canvas3D"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
 import { BackSide, BoxGeometry, CameraHelper, Color, Mesh, MeshPhongMaterial, MeshStandardMaterial, PointLight, PointLightHelper, TextureLoader } from "three"
-
+import "../orbitControls"
 
 function Box(props) {
     // This reference gives us direct access to the THREE.Mesh object
@@ -59,12 +59,6 @@ export default function App() {
             {useMemo(() => visible() ? box : null)}
             <Box position={[-2, 0.8, 0]} castShadow />
             <mesh geometry={cubeGeo} material={cubeMat} position={[0, cubeSize / 2 - 0.1, 0]} receiveShadow />
-
-
-            {/* <lod level={[1, 2, 3]}>
-                {i =>[[1,2,3].map(i=><mesh position={[0, 1, 0]} castShadow />), i * 75]}
-            </lod> */}
-
 
             <orbitControls enableDamping />
         </canvas3D>

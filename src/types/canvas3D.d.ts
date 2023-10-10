@@ -1,9 +1,5 @@
 
 import * as Three from "three"
-import { Canvas3D } from "../canvas3D"
-import { orbitControls } from "../OrbitControls"
-import { Text, textGeometryProps } from "../Text"
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 
 declare module 'three' {
     let Canvas3D: Canvas3D
@@ -13,7 +9,36 @@ declare module 'three' {
     let Gltf: gltf
 }
 
+type canvasProperties = {
+    frame?: Observable<(() => void)[]>,
+    renderer?: Observable<three.WebGLRenderer>,
+    scene?: Observable<three.Scene>,
+    camera?: Observable<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    domElement?: Observable<HTMLCanvasElement>,
+    width?: Observable<number>,
+    height?: Observable<number>
+}
 
+export type canvasProps = {
+    scene?: ObservableMaybe<three.Scene>,
+    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
+    width?: ObservableMaybe<number>,
+    height?: ObservableMaybe<number>,
+    children?: JSX.Child,
+}
+
+export interface GLTFProps {
+    path: string,
+}
+
+export type orbitProps = {
+    camera?: THREE.Camera
+    domElement?: HTMLElement
+    enableDamping?: boolean
+    // onChange?: (e?: OrbitControlsChangeEvent) => void
+    // onEnd?: (e?: Event) => void
+    // onStart?: (e?: Event) => void
+}
 
 
 

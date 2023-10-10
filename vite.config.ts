@@ -13,7 +13,7 @@ const config = defineConfig({
         },
         sourcemap: true,
         rollupOptions: {
-            external: ['voby', 'oby', "voby/jsx-runtime",  "three"],
+            external: ['voby', 'oby', "voby/jsx-runtime", "three"],
             output: {
                 globals: {
                     'voby': 'voby',
@@ -32,6 +32,9 @@ const config = defineConfig({
     resolve: {
         alias: {
             '~': path.resolve(__dirname, 'src'),
+            'voby/jsx-dev-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'voby/jsx-runtime',
+            'voby/jsx-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'voby/jsx-runtime',
+            'voby': process.argv.includes('dev') ? path.resolve('../woby/src') : 'voby'
         },
     },
 })

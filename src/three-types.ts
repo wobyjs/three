@@ -1,9 +1,7 @@
 import * as THREE from 'three'
-import { canvasProps } from './canvas3D'
-import { Observable, ObservableMaybe } from 'voby'
+import { canvasProps, GLTFProps, orbitProps } from './types/canvas3D'
+import { Observable, ObservableMaybe, type JSX } from 'voby'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
-import { GLTFProps } from './gltf'
-import { orbitProps } from './orbitControls'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
@@ -130,7 +128,7 @@ export type Object3DNode<T, P> = Overwrite<
     quaternion?: Quaternion
     layers?: Layers
     // dispose?: (() => void) | null,
-    dispose?: boolean
+    selfDispose?: boolean
     ref?: JSX.Refs<P>
   }
 > &

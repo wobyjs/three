@@ -46,14 +46,14 @@
         "baseUrl": ".",
         "rootDir": "./",
         "composite": true,
-        "paths": {
-            "voby/jsx-runtime": [
-                "../../../voby/dist/jsx"
-            ],
-            "voby/jsx-runtime/*": [
-                "../../../voby/dist/jsx/*"
-            ],
-        }
+        // "paths": {
+        //     "voby/jsx-runtime": [
+        //         "../../../voby/dist/jsx"
+        //     ],
+        //     "voby/jsx-runtime/*": [
+        //         "../../../voby/dist/jsx/*"
+        //     ],
+        // }
     },
    
     "exclude": [

@@ -4,19 +4,21 @@
 import { $, $$, useEffect, useMemo } from "voby"
 import { useFrame, useThree } from "../canvas3D"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
-import { BoxGeometry, CameraHelper, MeshStandardMaterial, PointLight, PointLightHelper, TextureLoader } from "three"
+import { TextureLoader } from "three"
+import "../orbitControls"
 
 
 function Box(props) {
     // This reference gives us direct access to the THREE.Mesh object
     const ref = $()
     const texture = new TextureLoader().load('../textures/usedSteel.png');
-
     // Hold state for hovered and clicked events
     const hovered = $(false)
     const clicked = $(false)
     // Subscribe this component to the render-loop, rotate the mesh every frame
     useFrame(() => (ref().rotation.x += 0.01))
+
+
     // Return the view, these are regular Threejs elements expressed in JSX
     return (
         <mesh
@@ -27,7 +29,7 @@ function Box(props) {
             onPointerOver={(event) => hovered(true)}
             onPointerOut={(event) => hovered(false)}>
             <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={() => $$(hovered) ? 'hotpink' : 'orange'} map={texture} />
+            <meshStandardMaterial color={() => $$(hovered) ? 'hotpink' : 'orange'}  />
         </mesh>
     )
 }
@@ -39,7 +41,7 @@ export default function App() {
         <canvas3D>
             <ambientLight intensity={0.5} />
             <spotLight position={[0, 0, 0]} angle={0.15} penumbra={1} />
-            <pointLight position={[0, 3, 0]}  />
+            <pointLight position={[0, 0, 0]}  />
             <Box position={[-1.2, 0, 0]} onClick={() => { visible(!visible()) }} />
             {/* {useMemo(() => visible() ? box : null)} */}
             <Box position={[1.2, 0, 0]} /> 

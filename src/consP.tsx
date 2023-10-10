@@ -1,7 +1,9 @@
-import { $$ } from "voby"
-import { jsx, toUpper } from "./jsx-runtime/jsx-dev-runtime"
+import { $$, type JSX, wrapCloneElement } from "voby"
+import { toUpper } from "./utils"
 import { param, paramTypes } from "./params"
+import { createElement } from "./createElement"
 import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
+import { Canvas3D } from "./canvas3D"
 
 const defaults = {
     canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
@@ -30,6 +32,17 @@ const defaults = {
 
 }
 
+export const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[K] & { children?: JSX.Child[] }>
+    (component: K, props: P & { args: [] }, key?: string): JSX.Element => {
+    if (component === "canvas3D") {
+        return (
+            <Canvas3D {...props} />
+        )
+    }
+    //@ts-ignore
+    return wrapCloneElement(createElement(component as any, props, key), component, props)
+};
+
 export const consP = (pn = undefined, pt = undefined, meta: any[], props, component: string) => {
     //case1 = object in constructor parameter (at children, at props)
     //case2 = primitive in constructor parameters, use args[]
@@ -48,9 +61,9 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
             r[paramName] = props[paramName]
         }
         else {
-            const m = meta.filter(m => (m.component + '').endsWith(toUpper(paramKey)))[0]
-            if (!r[paramName] && m?.component) {
-                r[paramName] = jsx(m.component as any, m.props as any)
+            const m = meta.filter(m => (m.Component + '').endsWith(toUpper(paramKey)))[0]
+            if (!r[paramName] && m?.Component) {
+                r[paramName] = jsx(m.Component as any, m.props as any)
             }
         }
     })

@@ -32,6 +32,7 @@ export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryP
             curveSegments: 12,
             ...props
         })
+        //@ts-ignore
         g.selfDispose = true
         geometry(g)
         mesh(new Mesh(geometry(), $$(material)))
@@ -39,10 +40,7 @@ export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryP
 
     })
 
-
     return (
         useMemo(() => $$(geometry) ? $$(mesh) : null)
     )
-
-
 }

@@ -6,7 +6,7 @@ import { useFrame, useThree } from "../canvas3D"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
 import { BackSide, BoxGeometry, CameraHelper, Color, DoubleSide, Mesh, MeshPhongMaterial, MeshStandardMaterial, PointLight, PointLightHelper, Raycaster, TextureLoader, Vector2 } from "three"
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer';
-
+import "../orbitControls"
 
 function Box(props) {
     // This reference gives us direct access to the THREE.Mesh object

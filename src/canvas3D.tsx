@@ -5,27 +5,11 @@ import * as three from "three"
 import { useContext, createContext, Observable, useEffect, $$, $, ObservableMaybe, isObservable, getMeta, useMemo } from "voby"
 import { param, paramTypes } from "./params"
 import { consP } from "./consP"
-import { isFunction, isPromise } from "./jsx-runtime/jsx-dev-runtime"
+import { isFunction, isPromise } from "./utils"
 import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { Color, Loader, Object3D } from "three"
-
-type canvasProperties = {
-    frame?: Observable<(() => void)[]>,
-    renderer?: Observable<three.WebGLRenderer>,
-    scene?: Observable<three.Scene>,
-    camera?: Observable<three.OrthographicCamera | three.PerspectiveCamera>,//?
-    domElement?: Observable<HTMLCanvasElement>,
-    width?: Observable<number>,
-    height?: Observable<number>
-}
-
-export type canvasProps = {
-    scene?: ObservableMaybe<three.Scene>,
-    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
-    width?: ObservableMaybe<number>,
-    height?: ObservableMaybe<number>,
-    children?: JSX.Child,
-}
+import { canvasProperties, canvasProps } from "./types/canvas3D"
+import { Three } from "./three"
 
 const t = (props?: canvasProps) => {
     const t = {
@@ -208,7 +192,6 @@ export const Canvas3D = (props: canvasProps) => {
         }
 
         $$(renderer).setSize($$(width), $$(height))
-        $$(scene).background = new Color("white")
         $$(camera).position.z = 5
 
         const r = $<Object3D>();
@@ -267,3 +250,6 @@ export const Canvas3D = (props: canvasProps) => {
         </threeContext.Provider>
     )
 }
+
+Three.Canvas3D = Canvas3D
+

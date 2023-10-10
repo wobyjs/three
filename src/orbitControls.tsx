@@ -1,15 +1,7 @@
 import { $$ } from "voby";
 import { useFrame, useThree } from "./canvas3D"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-
-export type orbitProps = {
-    camera?: THREE.Camera
-    domElement?: HTMLElement
-    enableDamping?: boolean
-    // onChange?: (e?: OrbitControlsChangeEvent) => void
-    // onEnd?: (e?: Event) => void
-    // onStart?: (e?: Event) => void
-}
+import { Three } from "./three"
 
 export function orbitControls(camera?, domElement?, enableDamping?) {
     const camera1 = useThree("camera")
@@ -29,6 +21,6 @@ export function orbitControls(camera?, domElement?, enableDamping?) {
         cameraControls.update();
 
     }
-
-
 }
+
+Three.OrbitControls = orbitControls

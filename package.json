@@ -8,7 +8,9 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "build": "vite build",
-    "build:watch": "vite build --watch"
+    "build:watch": "vite build --watch",
+    "dev": "vite --force --mode dev --host",
+    "prod": "vite --force"
   },
   "repository": {
     "type": "git",
@@ -28,10 +30,11 @@
     "vite-plugin-dts": "^2.3.0"
   },
   "peerDependencies": {
-    "voby": "workspace:../woby",
+    "@types/three": "^0.155.0",
     "three": "^0.155.0",
-    "@types/three": "^0.155.0"
+    "voby": "workspace:../woby"
   },
   "dependencies": {
+    "madge": "^6.1.0"
   }
 }
