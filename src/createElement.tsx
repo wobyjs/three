@@ -5,6 +5,7 @@ import { consP } from "./consP"
 import { ThreeElements } from "src/three-types"
 import { isFunction, isPromise, toUpper } from "./utils"
 import { Three } from "./three"
+import "./orbitControls"
 
 
 const fixReactiveProps = (props: any, name: string, component: ThreeElements) => {

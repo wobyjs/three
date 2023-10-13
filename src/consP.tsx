@@ -1,11 +1,15 @@
-import { $$, type JSX, wrapCloneElement } from "voby"
-import { toUpper } from "./utils"
-import { param, paramTypes } from "./params"
-import { createElement } from "./createElement"
-import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
-import { Canvas3D } from "./canvas3D"
+// / <reference path="./jsx-runtime" />
+/** @jsxImportSource ./jsx-runtime */
 
-const defaults = {
+import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
+import { $$, type JSX, wrapCloneElement } from "voby";
+import { param, paramTypes } from "./params";
+import { Canvas3D } from "./canvas3D";
+import { createElement } from "./createElement";
+import { toUpper } from "./utils";
+
+
+export const defaults = {
     canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
     orbitControls: { camera: null, domElement: null, enableDamping: false },
     scene: {},
@@ -28,9 +32,8 @@ const defaults = {
     pointLight: { color: 0xffffff, intensity: 1, distance: 0, decay: 2 },
     directionalLight: { color: 0xffffff, intensity: 1 },
     textGeometry: { str: "default" }
-
-
 }
+
 
 export const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[K] & { children?: JSX.Child[] }>
     (component: K, props: P & { args: [] }, key?: string): JSX.Element => {

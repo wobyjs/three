@@ -7,7 +7,7 @@ import { jsx } from "../consP"
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
     //@ts-ignore
-    ($$(parent) as HTMLElement).appendChild($$(children)()())
+    ($$(parent) as HTMLElement).appendChild($$($$($$(children))))
 }
 
 const Three = { ...three }
