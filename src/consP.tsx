@@ -2,12 +2,11 @@
 /** @jsxImportSource ./jsx-runtime */
 
 import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
-import { $$, type JSX, wrapCloneElement } from "voby";
+import { $$, type JSX, wrapCloneElement, jsx as vsx } from "voby";
 import { param, paramTypes } from "./params";
-import { Canvas3D } from "./canvas3D";
 import { createElement } from "./createElement";
 import { toUpper } from "./utils";
-
+import { Canvas3D } from "./canvas3D";
 
 export const defaults = {
     canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
@@ -39,9 +38,10 @@ export const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intrins
     (component: K, props: P & { args: [] }, key?: string): JSX.Element => {
     if (component === "canvas3D") {
         return (
-            <Canvas3D {...props} />
+            jsx(Canvas3D, props)
         )
     }
+    else
     //@ts-ignore
     return wrapCloneElement(createElement(component as any, props, key), component, props)
 };
@@ -66,7 +66,7 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
         else {
             const m = meta.filter(m => (m.Component + '').endsWith(toUpper(paramKey)))[0]
             if (!r[paramName] && m?.Component) {
-                r[paramName] = jsx(m.Component as any, m.props as any)
+                r[paramName] = $$(jsx(m.Component as any, m.props as any))
             }
         }
     })
@@ -76,7 +76,7 @@ export const consP = (pn = undefined, pt = undefined, meta: any[], props, compon
         if (typeof $$(defaults[component as any]?.[key]) === 'undefined' && !r[key]) {
             throw Error("Update consP.ts default constructors according to node_modules/@types/three/src/*.d.ts")
         }
-        r[key] = !r[key] ? $$(defaults[component as any][key]) : r[key]
+        r[key] = !r[key] ? defaults[component as any][key] : r[key]
 
 
     })
