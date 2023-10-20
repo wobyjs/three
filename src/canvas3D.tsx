@@ -2,111 +2,14 @@
 /** @jsxImportSource ./jsx-runtime */
 
 import * as three from "three"
-import { useContext, createContext, Observable, useEffect, $$, $, ObservableMaybe, isObservable, getMeta, useMemo } from "voby"
+import { useEffect, $$, $, getMeta, resolveChild, useContext } from "voby"
 import { param, paramTypes } from "./params"
-import { consP } from "./consP"
-import { isFunction, isPromise } from "./utils"
-import { Font, FontLoader } from "three/examples/jsm/loaders/FontLoader"
-import { Color, Loader, Object3D } from "three"
-import { canvasProperties, canvasProps } from "./types/canvas3D"
+import { consP, } from "./consP"
+import { isFunction, } from "./utils"
+import { Color, Object3D } from "three"
+import { canvasProps } from "./types/canvas3D"
 import { Three } from "./three"
-
-const t = (props?: canvasProps) => {
-    const t = {
-        frame: $([]),
-        fonts: $({}),
-        renderer: $(new three.WebGLRenderer()),
-        scene: $(props?.scene ?? new three.Scene()),
-        camera: $(props?.camera ?? new three.PerspectiveCamera()),
-        domElement: useMemo(() => $$(t.renderer)?.domElement),
-        width: $(props?.width ?? window.innerWidth),
-        height: $(props?.width ?? window.innerHeight)
-    } as canvasProperties
-    return t
-}
-
-export const threeContext = createContext<canvasProperties>(t())
-export const useFrames = () => useContext(threeContext)['frame']
-export const useFonts = () => useContext(threeContext)['fonts'] as Record<string, Observable<Font>>
-export const useWidth = () => useContext(threeContext)['width']
-
-export const useThree = <T, K extends keyof canvasProperties>(key: K, v?: ObservableMaybe<T>): canvasProperties[K] => {
-    const t = useContext(threeContext) as any as canvasProperties
-    // const vv = isObservable(v) ? v : $(v)
-    if (isObservable(t[key as any])) {
-        if (v)
-            //@ts-ignore
-            t[key]($$(v))
-    }
-
-    return t[key] as any
-}
-
-
-export const useLoader = <T extends Loader, V>(loader: new () => T & { loadAsync: (path: string) => V }, options: { path: string, init?: (instance: T) => void }): Observable<V> => {
-    const loaderInstance = new loader();
-    options.init?.(loaderInstance)
-
-    const obj = $<V>();
-    //TODO array of paths
-    (async () => {
-        const object = loaderInstance.loadAsync(options.path)
-        obj(object)
-    })()
-
-    return obj
-}
-
-export const useAwait = <T,>(obj: Observable<Promise<T>>): Observable<T> => {
-    const o = $<T>()
-    useEffect(() => {
-        (async () => {
-            o(await $$(obj))
-        })()
-    })
-
-    return o
-}
-
-export const useCamera = () => useContext(threeContext).camera
-
-export const useFont = (path: string) => {
-    const fonts = useFonts();
-    if (fonts[path]) {
-        return fonts[path]
-    }
-    else {
-        fonts[path] = $();
-        (async () => {
-            const loader = new FontLoader();
-
-            const loadFont = await loader.loadAsync(path)
-            fonts[path](loadFont)
-        })()
-    }
-
-    return fonts[path]
-
-
-}
-
-export const useFrame = (fn: () => void) => {
-    const fs = $$(useFrames())
-    fs.push(fn)
-}
-
-function throttle(callback, limit) {
-    var waiting = false;                      // Initially, we're not waiting
-    return function () {                      // We return a throttled function
-        if (!waiting) {                       // If we're not waiting
-            callback();  // Execute users function
-            waiting = true;                   // Prevent future invocations
-            setTimeout(function () {          // After a period of time
-                waiting = false;              // And allow future invocations
-            }, limit);
-        }
-    }
-}
+import { threeContext, t, throttle, } from "./context"
 
 
 export const Canvas3D = (props: canvasProps) => {
@@ -164,10 +67,11 @@ export const Canvas3D = (props: canvasProps) => {
         }
 
 
-        const animate = () => {
-            const fs = $$(useFrames())
-            requestAnimationFrame(() => animate());
-            fs.forEach(f => f())
+        const animate = (context?) => {
+            const fs = $$(context.frame)
+            fs.forEach((f: Function) => f())
+
+            requestAnimationFrame(() => animate(context));
 
             useEffect(() => {
                 $$(renderer).render($$(scene), $$(camera))
@@ -193,54 +97,58 @@ export const Canvas3D = (props: canvasProps) => {
 
         $$(renderer).setSize($$(width), $$(height))
         $$(camera).position.z = 5
+        $$(scene).background = new Color("white")
 
         const r = $<Object3D>();
+        const flat = children.flat()
+        for (let i = 0; i <= flat.length; i++) {
+            resolveChild(flat[i], (r) => $$(scene).add(r))
+        }
 
-        children.flat().forEach((obj) => {
-            if (isFunction(obj) || isPromise(obj)) {
-                useEffect(() => {
+        // children.flat().forEach((obj) => {
+        //     if (isFunction(obj) || isPromise(obj)) {
+        //         // useEffect(() => {
 
-                    if (isPromise(obj)) {
-                        (async () => {
-                            r(await obj as any)
+        //         // if (isPromise(obj)) {
+        //         //     (async () => {
+        //         //         r(await obj as any)
 
-                        })()
-                        $$(scene).add(r() as any)
+        //         //     })()
+        //         //     $$(scene).add(r() as any)
 
-                        return () => {
-                            $$(scene).remove(r())
+        //         //     return () => {
+        //         //         $$(scene).remove(r())
 
-                            if ($$(r as any)?.geometry?.selfDispose)
-                                $$(r as any).geometry.dispose()
+        //         //         if ($$(r as any)?.geometry?.selfDispose)
+        //         //             $$(r as any).geometry.dispose()
 
-                            if ($$(r as any)?.material?.selfDispose)
-                                $$(r as any).material.dispose()
-                        }
-                    }
-                    else {
-                        const r = $$(obj)
+        //         //         if ($$(r as any)?.material?.selfDispose)
+        //         //             $$(r as any).material.dispose()
+        //         //     }
+        //         // }
+        //         // else {
 
-                        $$(scene).add(r as any)
+        //         resolveChild(obj, (r) => $$(scene).add(r))
 
-                        return () => {
-                            $$(scene).remove(r as any)
+        //         // return () => {
+        //         //     $$(scene).remove(r as any)
 
-                            if ((r as any)?.geometry?.selfDispose)
-                                (r as any).geometry.dispose()
+        //         //     if ((r as any)?.geometry?.selfDispose)
+        //         //         (r as any).geometry.dispose()
 
-                            if ((r as any)?.material?.selfDispose)
-                                (r as any).material.dispose()
-                        }
-                    }
-                })
-            }
-            else $$(scene).add(obj as any)
-        })
+        //         //     if ((r as any)?.material?.selfDispose)
+        //         //         (r as any).material.dispose()
+        //         // }
+        //         // }
+        //         // })
+        //     }
+        //     else $$(scene).add(obj as any)
+        // })
 
         $$(domElement).addEventListener('pointermove', onPointerMove);
         $$(domElement).addEventListener('pointerdown', onClick);
 
-        animate()
+        animate(useContext(threeContext))
         return domElement
     }
 

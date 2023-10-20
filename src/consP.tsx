@@ -2,11 +2,11 @@
 /** @jsxImportSource ./jsx-runtime */
 
 import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
-import { $$, type JSX, wrapCloneElement, jsx as vsx } from "voby";
+import { $$, type JSX, wrapCloneElement } from "voby";
 import { param, paramTypes } from "./params";
 import { createElement } from "./createElement";
 import { toUpper } from "./utils";
-import { Canvas3D } from "./canvas3D";
+import { Canvas3D, } from "./canvas3D";
 
 export const defaults = {
     canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
@@ -38,12 +38,12 @@ export const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.Intrins
     (component: K, props: P & { args: [] }, key?: string): JSX.Element => {
     if (component === "canvas3D") {
         return (
-            jsx(Canvas3D, props)
+            <Canvas3D {...props} />
         )
     }
     else
-    //@ts-ignore
-    return wrapCloneElement(createElement(component as any, props, key), component, props)
+        //@ts-ignore
+        return wrapCloneElement(createElement(component as any, props, key), component, props)
 };
 
 export const consP = (pn = undefined, pt = undefined, meta: any[], props, component: string) => {

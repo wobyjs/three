@@ -1,5 +1,5 @@
 import { $$ } from "voby";
-import { useFrame, useThree } from "./canvas3D"
+import { useFrame, useThree } from "./context"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { Three } from "./three"
 

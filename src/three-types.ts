@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { canvasProps, GLTFProps, orbitProps } from './types/canvas3D'
-import { Observable, ObservableMaybe, type JSX } from 'voby'
+import { Observable, ObservableMaybe, type JSX, Context } from 'voby'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]
@@ -492,13 +492,15 @@ export interface ThreeElements {
 }
 
 declare global {
+  interface Window { threeContext: Context; }
+
   namespace JSX {
     interface IntrinsicElements extends ThreeElements {
       canvas3D: canvasProps
       orbitControls: orbitProps
       // text: textGeometryProps,
       textGeometry: TextGeometryProps
-      gltf: GLTFProps
+      gltf: GLTFProps,
     }
   }
 }

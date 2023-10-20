@@ -4,7 +4,7 @@
 import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry';
 import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "voby";
 import { Material, Mesh, MeshStandardMaterial } from "three";
-import { useFont } from "./canvas3D";
+import { useFont } from "./context";
 
 export type textGeometryProps = {
     pathToFont: string,
