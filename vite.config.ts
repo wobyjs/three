@@ -27,14 +27,14 @@ const config = defineConfig({
         jsx: 'automatic',
     },
     plugins: [
-        dts({ entryRoot: './src', outputDir: './dist/types', exclude: './nodes_modules' })
+        // dts({ entryRoot: './src', outputDir: './dist/types', exclude: './nodes_modules' })
     ],
     resolve: {
         alias: {
             '~': path.resolve(__dirname, 'src'),
-            'voby/jsx-dev-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'voby/jsx-runtime',
-            'voby/jsx-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'voby/jsx-runtime',
-            'voby': process.argv.includes('dev') ? path.resolve('../woby/src') : 'voby'
+            // 'voby/jsx-dev-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'voby/jsx-runtime',
+            // 'voby/jsx-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'voby/jsx-runtime',
+            // 'voby': process.argv.includes('dev') ? path.resolve('../woby/src') : 'voby'
         },
     },
 })
