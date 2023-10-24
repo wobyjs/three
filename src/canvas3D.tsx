@@ -3,9 +3,7 @@
 
 import * as three from "three"
 import { useEffect, $$, $, getMeta, resolveChild, useContext } from "voby"
-import { param, paramTypes } from "./params"
-import { consP, } from "./consP"
-import { isFunction, } from "./utils"
+import { isFunction, isPromise, } from "./utils"
 import { Color, Object3D } from "three"
 import { canvasProps } from "./types/canvas3D"
 import { Three } from "./three"
@@ -20,12 +18,12 @@ export const Canvas3D = (props: canvasProps) => {
         const meshObj: { obj?: any } = {}
 
         //dispose all object 
-        useEffect(() => () => {
-            //@ts-ignore
-            props.children.forEach(c => {
-                $$(scene).remove(c)
-            })
-        })
+        // useEffect(() => () => {
+        //     //@ts-ignore
+        //     props.children.forEach(c => {
+        //         $$(scene).remove(c)
+        //     })
+        // })
 
         const onPointerMove = (event) => {
             event.stopPropagation()
@@ -79,69 +77,84 @@ export const Canvas3D = (props: canvasProps) => {
 
         }
 
-        const childProps = [$$(props.children)].forEach((index) => {
-            if (isFunction(index)) {
-                useEffect(() => {
-                    index()
-                })
-            }
-        })
 
         //@ts-ignore
-        const meta = [$$(childProps)].flat().filter(r => !!r).map(c => getMeta(c as any))
+        const meta = [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
 
-        let children = Object.values(consP(param['canvas3D'], paramTypes['canvas3D'], meta, props, 'canvas3D'))
-        if (props.children) {
-            children = children.concat([props.children])
-        }
 
         $$(renderer).setSize($$(width), $$(height))
         $$(camera).position.z = 5
         $$(scene).background = new Color("white")
 
         const r = $<Object3D>();
-        const flat = children.flat()
-        for (let i = 0; i <= flat.length; i++) {
-            resolveChild(flat[i], (r) => $$(scene).add(r))
-        }
+        const flatChildren = [props.children].flat()
+
+
+        flatChildren.forEach((obj) => {
+
+            if (isFunction(obj) || isPromise(obj)) {
+
+                if (isPromise(obj)) {
+
+                    useEffect(() => {
+
+                        (async () => {
+                            r(await obj as any)
+
+                        })()
+                        // if (!r()) {
+                        //     return
+                        // }
+                        $$(scene).add(r() as any)
+                    })
+
+                }
+                else {
+
+                        resolveChild(obj, (r) => $$(scene).add(r))
+
+                }
+
+            }
+            else $$(scene).add(obj as any)
+
+        })
 
         // children.flat().forEach((obj) => {
-        //     if (isFunction(obj) || isPromise(obj)) {
-        //         // useEffect(() => {
+        // if (isFunction(obj) || isPromise(obj)) {
 
-        //         // if (isPromise(obj)) {
-        //         //     (async () => {
-        //         //         r(await obj as any)
+        //     if (isPromise(obj)) {
+        //         (async () => {
+        //             r(await obj as any)
 
-        //         //     })()
-        //         //     $$(scene).add(r() as any)
+        //         })()
+        //         $$(scene).add(r() as any)
 
-        //         //     return () => {
-        //         //         $$(scene).remove(r())
+        //         return () => {
+        //             $$(scene).remove(r())
 
-        //         //         if ($$(r as any)?.geometry?.selfDispose)
-        //         //             $$(r as any).geometry.dispose()
+        //             if ($$(r as any)?.geometry?.selfDispose)
+        //                 $$(r as any).geometry.dispose()
 
-        //         //         if ($$(r as any)?.material?.selfDispose)
-        //         //             $$(r as any).material.dispose()
-        //         //     }
-        //         // }
-        //         // else {
-
-        //         resolveChild(obj, (r) => $$(scene).add(r))
-
-        //         // return () => {
-        //         //     $$(scene).remove(r as any)
-
-        //         //     if ((r as any)?.geometry?.selfDispose)
-        //         //         (r as any).geometry.dispose()
-
-        //         //     if ((r as any)?.material?.selfDispose)
-        //         //         (r as any).material.dispose()
-        //         // }
-        //         // }
-        //         // })
+        //             if ($$(r as any)?.material?.selfDispose)
+        //                 $$(r as any).material.dispose()
+        //         }
         //     }
+        //     else {
+        // resolveChild(obj, (r) => $$(scene).add(r))
+
+        // return () => {
+        //     $$(scene).remove(r as any)
+
+        //     if ((r as any)?.geometry?.selfDispose)
+        //         (r as any).geometry.dispose()
+
+        //     if ((r as any)?.material?.selfDispose)
+        //         (r as any).material.dispose()
+        // }
+        //         }
+        //     }
+
         //     else $$(scene).add(obj as any)
         // })
 

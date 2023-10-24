@@ -9,7 +9,6 @@ import { toUpper } from "./utils";
 import { Canvas3D, } from "./canvas3D";
 
 export const defaults = {
-    canvas3D: { scene: () => new Scene(), camera: () => new PerspectiveCamera() },
     orbitControls: { camera: null, domElement: null, enableDamping: false },
     scene: {},
     mesh: { geometry: () => new BoxGeometry(), material: () => new MeshBasicMaterial() },

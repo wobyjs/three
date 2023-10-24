@@ -1,5 +1,4 @@
 export const param = {
-    canvas3D: ["scene", "camera"],
     orbitControls: ["camera", "domElement", "enableDamping"],
     textGeometry: ["str", "parameters"],
     gltf: ["path"],
@@ -259,7 +258,6 @@ export const param = {
 }
 
 export const paramTypes = {
-    canvas3D: ["scene", "camera"],
     orbitControls: ["camera", "domElement", "enableDamping"],
     textGeometry: ["str", "parameters"],
     gltf: ["path"],
