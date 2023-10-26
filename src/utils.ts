@@ -10,11 +10,9 @@ export const isPromise = (obj) => {
     }
 
     else if (typeof obj == "object") {
-        const properties = Object.values(obj)
         //iterate over all property
-        for (let i = 0; i < properties.length; i++) {
-            //@ts-ignore
-            if (typeof $$(properties[i])?.then === "function") {
+        for (const key in obj) {
+            if (!key.startsWith("on") && typeof $$(obj[key])?.then === "function") {
                 return true
             }
         }
