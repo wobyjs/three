@@ -5,6 +5,7 @@ import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometr
 import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "voby";
 import { Material, Mesh, MeshStandardMaterial } from "three";
 import { useFont } from "./context";
+import { Three } from './three';
 
 export type textGeometryProps = {
     pathToFont: string,
@@ -44,3 +45,5 @@ export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryP
         useMemo(() => $$(geometry) ? $$(mesh) : null)
     )
 }
+
+Three.TextGeometry = TextGeometry
