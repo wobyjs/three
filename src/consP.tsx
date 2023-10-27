@@ -1,7 +1,7 @@
 // / <reference path="./jsx-runtime" />
 /** @jsxImportSource ./jsx-runtime */
 
-import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, Scene } from "three"
+import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial } from "three"
 import { $$, type JSX, wrapCloneElement } from "voby";
 import { param, paramTypes } from "./params";
 import { createElement } from "./createElement";
@@ -35,6 +35,7 @@ export const defaults = {
 
 export const jsx = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[K] & { children?: JSX.Child[] }>
     (component: K, props: P & { args: [] }, key?: string): JSX.Element => {
+    //@ts-ignore
     if (component === "canvas3D") {
         return (
             <Canvas3D {...props} />
