@@ -102,20 +102,20 @@ export const Canvas3D = (props: canvasProps) => {
                             r(await obj as any)
 
                         })()
-                        // if (!r()) {
-                        //     return
-                        // }
                         $$(scene).add(r() as any)
                     })
 
                 }
+
                 else {
-
-                        resolveChild(obj, (r) => $$(scene).add(r))
-
+                    resolveChild(obj, (val) => {
+                        $$(scene).add(val)
+                    })
                 }
 
             }
+
+
             else $$(scene).add(obj as any)
 
         })
