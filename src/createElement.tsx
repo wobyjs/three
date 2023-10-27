@@ -10,7 +10,7 @@ import "./gltf"
 import "./Text"
 import { setRef } from "voby"
 
-const fixReactiveProps = (props: any, name: string, component: ThreeElements) => {
+const oldfixReactiveProps = (props: any, name: string, component: ThreeElements) => {
     if (props[name]) {
         //check if observable function
         const propFunctionRef = props[name]
@@ -58,13 +58,14 @@ const fixReactiveProps = (props: any, name: string, component: ThreeElements) =>
     }
 }
 
-const newfixReactiveProps = (props: any, component: ThreeElements) => {
+const fixReactiveProps = (props: any, component: ThreeElements) => {
     for (const key in props) {
         if (key.startsWith("on")) {
             //event listeners
             component[key] = props[key]
             continue
         }
+
         if (key == "ref") {
             if (isObservable(component)) {
                 useEffect(() => {
@@ -89,12 +90,12 @@ const newfixReactiveProps = (props: any, component: ThreeElements) => {
                 }
             })
         }
+
         catch {
-            // component[key] = props[key]
-            // console.log("problem", component, key)
         }
     }
 }
+
 export const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]> }>
     (component: K, props: P & { args: [] }, key?: string) => {
     const wrapElement = <T extends Function>(element: T): T => {
@@ -143,20 +144,21 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
                 const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, ps, component))
                 const r = new Three[toUpper(component as any)](...p)
 
-                if (ps.ref) {
-                    //used to assign ref 
-                    [ps.ref].flat().forEach((rr) => (rr as Ref)?.(r))
-                }
+                // if (ps.ref) {
+                //     //used to assign ref 
+                //     [ps.ref].flat().forEach((rr) => (rr as Ref)?.(r))
+                // }
 
 
                 //set readonly variables to component
-                fixReactiveProps(ps, "position", r)
-                fixReactiveProps(ps, "map", r)
-                fixReactiveProps(ps, "scale", r)
+                fixReactiveProps(props, r)
+                // fixReactiveProps(ps, "position", r)
+                // fixReactiveProps(ps, "map", r)
+                // fixReactiveProps(ps, "scale", r)
 
-                fixReactiveProps(ps, "color", r)
-                fixReactiveProps(ps, "rotation", r)
-                fixReactiveProps(ps, "onPointerOver", r)
+                // fixReactiveProps(ps, "color", r)
+                // fixReactiveProps(ps, "rotation", r)
+                // fixReactiveProps(ps, "onPointerOver", r)
 
 
                 const { children, args, ...remainingProps } = ps
@@ -178,32 +180,18 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
             const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, props, component))
             const r = new Three[toUpper(component as any)](...p)
 
-            if (props.ref) {
-                if (isObservable(r)) {
-                    useEffect(() => {
-                        setRef($$(r), props.ref)
-                    })
-                }
-                else {
-                    // used to assign ref
-                    setRef(r, props.ref)
-                }
-
-            }
-
-
             //set readonly variables to component
+            fixReactiveProps(props, r)
 
-            // newfixReactiveProps(props, r)
-            fixReactiveProps(props, "position", r)
-            fixReactiveProps(props, "map", r)
-            fixReactiveProps(props, "scale", r)
+            // fixReactiveProps(props, "position", r)
+            // fixReactiveProps(props, "map", r)
+            // fixReactiveProps(props, "scale", r)
 
-            fixReactiveProps(props, "color", r)
-            fixReactiveProps(props, "rotation", r)
-            fixReactiveProps(props, "onPointerOver", r)
+            // fixReactiveProps(props, "color", r)
+            // fixReactiveProps(props, "rotation", r)
+            // fixReactiveProps(props, "onPointerOver", r)
 
-            const excludedProps = ["position", 'map', "scale", "color", "rotation"]
+            const excludedProps = ["position", "scale", "color", "rotation"]
             const { children, args, ...remainingProps } = props
                 ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
             Object.keys(remainingProps).forEach((k) => {
