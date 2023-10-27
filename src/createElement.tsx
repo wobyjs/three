@@ -38,7 +38,13 @@ const fixReactiveProps = (props: any, component: ThreeElements) => {
                     $$(component)[key]?.set(...$$(props[key]))
 
                 else {
-                    $$(component)[key]?.set($$(props[key]))
+                    try {
+                        $$(component)[key]?.set($$(props[key]))
+                    }
+                    catch {
+                        $$(component)[key] = ($$(props[key]))
+
+                    }
                 }
             })
         }

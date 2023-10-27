@@ -11,6 +11,7 @@ import { threeContext, t, throttle, } from "./context"
 
 
 export const Canvas3D = (props: canvasProps) => {
+    const sceneDict = new Map<Function, Object3D>()
     const R = () => {
         const { renderer, scene, camera, domElement, width, height } = useContext(threeContext)
         const raycaster = new three.Raycaster();
@@ -109,7 +110,23 @@ export const Canvas3D = (props: canvasProps) => {
 
                 else {
                     resolveChild(obj, (val) => {
-                        $$(scene).add(val)
+                        //used to remove existing objects
+                        if (sceneDict.has(obj)) {
+                            if (sceneDict.get(obj) != val && !!sceneDict.get(obj)) {
+                                $$(scene).remove(sceneDict.get(obj))
+                                sceneDict.set(obj, val)
+                            }
+                            else {
+                                $$(scene).add(val)
+                                sceneDict.set(obj, val)
+                            }
+                        }
+
+                        else {
+
+                            $$(scene).add(val)
+                            sceneDict.set(obj, val)
+                        }
                     })
                 }
 
