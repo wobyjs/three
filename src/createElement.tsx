@@ -1,5 +1,5 @@
 /* IMPORT */
-import { $$, Ref, getMeta, isObservable, useEffect, type JSX, SYMBOL_UNTRACKED_UNWRAPPED, untrack, setProps } from "voby"
+import { $$, getMeta, isObservable, useEffect, type JSX, SYMBOL_UNTRACKED_UNWRAPPED, untrack } from "voby"
 import { param, paramTypes } from './params'
 import { consP } from "./consP"
 import { ThreeElements } from "src/three-types"
@@ -9,54 +9,6 @@ import "./orbitControls"
 import "./gltf"
 import "./Text"
 import { setRef } from "voby"
-
-const oldfixReactiveProps = (props: any, name: string, component: ThreeElements) => {
-    if (props[name]) {
-        //check if observable function
-        const propFunctionRef = props[name]
-        if (isFunction(props[name]) || isObservable(component)) {
-            if (name.startsWith("on")) {
-                //event listeners
-                component[name] = propFunctionRef
-            }
-
-            else if (Array.isArray($$(propFunctionRef))) {
-                //handle array values
-                useEffect(() => {
-                    $$(component)?.[name].set(...$$(propFunctionRef))
-                })
-
-            }
-            else {
-                useEffect(() => {
-                    if (Array.isArray($$(propFunctionRef)) || typeof $$(propFunctionRef) == "object") {
-                        component[name].set(...$$(propFunctionRef))
-                    }
-                    else {
-                        component[name].set($$(propFunctionRef))
-                    }
-                })
-            }
-        }
-
-        else if (name == "map") {
-            useEffect(() => {
-
-                component[name] = $$(propFunctionRef)
-            })
-
-        }
-
-        else {
-            if (Array.isArray($$(propFunctionRef)) || typeof $$(propFunctionRef) == "object") {
-                component[name].set(...$$(propFunctionRef))
-            }
-            else {
-                component[name].set($$(propFunctionRef))
-            }
-        }
-    }
-}
 
 const fixReactiveProps = (props: any, component: ThreeElements) => {
     for (const key in props) {
@@ -144,22 +96,8 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
                 const p = Object.values(consP(param[component as any], paramTypes[component as any], meta, ps, component))
                 const r = new Three[toUpper(component as any)](...p)
 
-                // if (ps.ref) {
-                //     //used to assign ref 
-                //     [ps.ref].flat().forEach((rr) => (rr as Ref)?.(r))
-                // }
-
-
                 //set readonly variables to component
                 fixReactiveProps(props, r)
-                // fixReactiveProps(ps, "position", r)
-                // fixReactiveProps(ps, "map", r)
-                // fixReactiveProps(ps, "scale", r)
-
-                // fixReactiveProps(ps, "color", r)
-                // fixReactiveProps(ps, "rotation", r)
-                // fixReactiveProps(ps, "onPointerOver", r)
-
 
                 const { children, args, ...remainingProps } = ps
                     ; (param[component as any] as string[]).map(paramName => delete remainingProps[paramName])
@@ -182,14 +120,6 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
 
             //set readonly variables to component
             fixReactiveProps(props, r)
-
-            // fixReactiveProps(props, "position", r)
-            // fixReactiveProps(props, "map", r)
-            // fixReactiveProps(props, "scale", r)
-
-            // fixReactiveProps(props, "color", r)
-            // fixReactiveProps(props, "rotation", r)
-            // fixReactiveProps(props, "onPointerOver", r)
 
             const excludedProps = ["position", "scale", "color", "rotation"]
             const { children, args, ...remainingProps } = props
