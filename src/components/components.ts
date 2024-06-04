@@ -1,3 +1,6 @@
+// / <reference path="../jsx-runtime" />
+/** @jsxImportSource ../jsx-runtime */
+
 export const components = {
     canvas3D: "canvas3D",
     //animations
@@ -5,7 +8,7 @@ export const components = {
     colorKeyframeTrack: "ColorKeyFrameTrack",
     numberKeyframeTrack: "NumberKeyFrameTrack",
     quaternionKeyframeTrack: "QuaternionKeyFrameTrack",
-    stringKeyframeTrack:"StringKeyframeTrack",
+    stringKeyframeTrack: "StringKeyframeTrack",
     vectorKeyframeTrack: "VectorKeyFrameTrack",
     animationAction: "AnimationAction",
     animationClip: "AnimationClip",
@@ -28,7 +31,8 @@ export const components = {
     orthographicCamera: "OrthographicCamera",
     perspectiveCamera: "PerspectiveCamera",
     stereoCamera: "StereoCamera",
-    //core
+
+    //Core
     bufferAttribute: "BufferAttributes",
     bufferGeometry: "BufferGeometry",
     clock: "Clock",
@@ -45,13 +49,17 @@ export const components = {
     renderTarget: "RenderTarget",
     uniform: "Uniform",
     uniformsGroup: "UniformsGroup",
-    //extras
+
+    //Extras
+    //Extras/Core
     curve: "Curve",
     curvePath: "CurvePath",
     // interpolations: "Interpolations", functions
     path: "Path",
     shape: "Shape",
     shapePath: "ShapePath",
+
+    //Extras/Curves
     arcCurve: "ArcCurve",
     catmullRomCurve3: "CatmullRomCurve3",
     cubicBezierCurve: "CubicBezierCurve",
@@ -63,12 +71,9 @@ export const components = {
     quadraticBezierCurve: "QuadraticBezierCurve",
     quadraticBezierCurve3: "QuadraticBezierCurve3",
     splineCurve: "SplineCurve",
-    // dataUtils: "DataUtils", FUNCTIONS
-    // earcut: "Earcut", FUNCTION
-    // imageUtils: "ImageUtils", FUNCTIONS
-    pMREMGenerator: "PMREMGenerator",
-    // shapeUtils: "ShapeUtils", FUNCTIONS
-    //geometeries
+
+
+    //Geometeries
     boxGeometry: "BoxGeometry",
     capsuleGeometry: "CapsuleGeometry",
     circleGeometry: "CircleGeometry",
@@ -91,7 +96,8 @@ export const components = {
     torusKnotGeometry: "TorusKnotGeometry",
     tubeGeometry: "TubeGeometry",
     wireframeGeometry: "WireframeGeometry",
-    //helpers
+
+    //Helpers
     arrowHelper: "ArrowHelper",
     axesHelper: "AxesHelper",
     box3Helper: "Box3Helper",
@@ -105,22 +111,23 @@ export const components = {
     polarGridHelper: "PolarGridHelper",
     skeletonHelper: "SkeletonHelper",
     spotLightHelper: "SpotLightHelper",
-    //lights
+
+    //Lights
     ambientLight: "AmbientLight",
-    ambientLightProbe: "AmbientLightProbe",
     directionalLight: "DirectionalLight",
-    directionalLightShadow: "DirectionalLightShadow",
     hemisphereLight: "HemisphereLight",
-    hemisphereLightProbe: "HemisphereLightProbe",
     light: "Light",
-    lightProbe: "LightProbe",
-    lightShadow: "LightShadow",
     pointLight: "PointLight",
-    // pointLightShadow: "PointLightShadow", no constructor
     rectAreaLight: "RectAreaLight",
     spotLight: "SpotLight",
-    // spotLightShadow: "SpotLightShadow", no constructor
-    //loader
+
+    // Lights / Shadows
+    lightShadow: "LightShadow",
+    pointLightShadow: "PointLightShadow",
+    directionalLightShadow: "DirectionalLightShadow",
+    spotLightShadow: "SpotLightShadow",
+
+    //Loader
     animationLoader: "AnimationLoader",
     audioLoader: "AudioLoader",
     bufferGeometryLoader: "BufferGeometryLoader",
@@ -133,15 +140,14 @@ export const components = {
     imageLoader: "ImageLoader",
     loader: "Loader",
     // loaderUtils: "LoaderUtils", interface
-    loadingManager: "LoadingManager",
     materialLoader: "MaterialLoader",
     objectLoader: "ObjectLoader",
     textureLoader: "TextureLoader",
-    //material
+
+    //Materials
     lineBasicMaterial: "LineBasicMaterial",
     lineDashedMaterial: "LineDashedMaterial",
     material: "Material",
-    // materials: "Materials", imports
     meshBasicMaterial: "MeshBasicMaterial",
     meshDepthMaterial: "MeshDepthMaterial",
     meshDistanceMaterial: "MeshDistanceMaterial",
@@ -157,101 +163,181 @@ export const components = {
     shaderMaterial: "ShaderMaterial",
     shadowMaterial: "ShadowMaterial",
     spriteMaterial: "SpriteMaterial",
-    //math
-    cubicInterpolant:"CubicInterpolant",
-    discreteInterpolant:"DiscreteInterpolant",
-    linearInterpolant:"LinearInterpolant",
-    quaternionLinearInterpolant:"QuaternionLinearInterpolant",
-    box2:"Box2",
-    box3:"Box3",
-    color:"Color",
-    colorManagement:"ColorManagement",
-    cylindrical:"Cylindrical",
-    euler:"Euler",
-    frustum:"Frustum",
-    interpolant:"Interpolant",
-    line3:"Line3",
-    mathUtils:"MathUtils",
-    matrix3:"Matrix3",
-    matrix4:"Matrix4",
-    plane:"Plane",
-    quaternion:"Quarternion",
-    ray:"Ray",
-    sphere:"Sphere",
-    spherical:"Spherical",
-    sphericalHarmonics3:"SphericalHarmonics3",
-    triangle:"Triangle",
-    vector2:"Vector2",
-    vector3:"Vector3",
-    vector4:"Vector4",
-    //objects
+
+    //Math
+    box2: "Box2",
+    box3: "Box3",
+    color: "Color",
+    cylindrical: "Cylindrical",
+    euler: "Euler",
+    frustum: "Frustum",
+    interpolant: "Interpolant",
+    line3: "Line3",
+    mathUtils: "MathUtils",
+    matrix3: "Matrix3",
+    matrix4: "Matrix4",
+    plane: "Plane",
+    quaternion: "Quarternion",
+    ray: "Ray",
+    sphere: "Sphere",
+    spherical: "Spherical",
+    sphericalHarmonics3: "SphericalHarmonics3",
+    triangle: "Triangle",
+    vector2: "Vector2",
+    vector3: "Vector3",
+    vector4: "Vector4",
+
+    //Math/Interpolants
+    cubicInterpolant: "CubicInterpolant",
+    discreteInterpolant: "DiscreteInterpolant",
+    linearInterpolant: "LinearInterpolant",
+    quaternionLinearInterpolant: "QuaternionLinearInterpolant",
+
+    //Objects
+    batchedMesh: "BatchedMesh",
     bone: "Bone",
-    group:"Group",
-    instancedMesh:"InstancedMesh",
-    line:"Line",
-    lineLoop:"LineLoop",
-    lineSegments:"LineSegments",
-    LOD:"LOD",
-    mesh:"Mesh",
-    points:"Points",
-    skeleton:"Skeleton",
-    skinnedMesh:"SkinnedMesh",
-    sprite:"Sprite",
-    //renderers
-    //shaders
-    // shaderChunk:"ShaderChunk",
-    // shaderLib:"ShaderLib",
-    // uniformsLib:"UniformLib",
-    // uniformsUtils:"UniformsUtils",
-    //webgl
-    webGLAttributes:"WebGLAttributes",
-    webGLBindingStates:"WebGLBindingStates",
-    webGLBufferRenderer:"WebGLBufferRenderer",
-    webGLCapabilities:"WebGLCapabilities",
-    webGLClipping:"WebGLClipping",
-    webGlCubeMaps:"WebGLCubeMaps",
-    webGLCubeUVMaps:"WebGLCubeUVMaps",
-    webGLExtensions:"WebGLExtensions",
-    webGLGeometries:"WebGLGeometries",
-    webGLIndexedBufferRenderer:"WebGLIndexedBufferRenderer",
-    webGLInfo:"WebGLInfo",
-    webGLLights:"WebGLLights",
-    webGLObjects:"WebGLObjects",
-    webGLPrograms:"WebGLPrograms",
-    webGlProperties:"WebGlProperties",
-    webGLRenderLists:"WebGLRenderLists",
-    webGLShaders:"WebGLShaders",
-    webGlShadowMap:"WebGlShadowMap",
-    webGLState:"WebGLState",
-    webGLTextures:"WebGLTextures",
-    webGLUniforms:"WebGLUniforms",
-    // webGLUniformsGroups:"WebGLUniformsGroups", functions
-    webGLUtils:"WebGLUtils",
-    webXRController: "WebXRController",
-    webXRManager:"WebXRManager",
-    webGL1Renderer:"WebGL1Renderer",
-    webGL3DRenderTarget:"WebGL3DRenderTarget",
-    webGLArrayRenderTarget:"WebGLArrayRenderTarget",
-    webGLCubeRenderTarget:"WebGLCubeRenderTarget",
-    webGLMultipleRenderTarget:"WebGLMultipleRenderTarget",
-    webGLRenderer:"WebGLRenderer",
-    webGLRenderTarget:"WebGLRenderTarget",
-    //scenes
-    fog:"Fog",
-    fogExp2:"FogExp2",
-    scene:"Scene",
-    //textures
-    canvasTexture:"CanvasTexture",
-    compressedArrayTexture:"CompressedArrayTexture",
-    compressedTexture:"CompressedTexture",
-    cubeTexture:"CubeTexture",
-    data3DTexture:"Data3DTexture",
-    dataArrayTexture:"DataArrayTexture",
-    dataTexture:"DataTexture",
-    depthTexture:"DepthTexture",
-    framebufferTexture:"FrameBufferTexture",
-    source:"Source",
-    texture:"Texture",
-    // types:"Types",
-    videoTexture:"VideoTexture",
+    group: "Group",
+    instancedMesh: "InstancedMesh",
+    line: "Line",
+    lineLoop: "LineLoop",
+    lineSegments: "LineSegments",
+    lod: "LOD",
+    mesh: "Mesh",
+    points: "Points",
+    skeleton: "Skeleton",
+    skinnedMesh: "SkinnedMesh",
+    sprite: "Sprite",
+
+    //Renderers
+    webGLRenderer: "WebGLRenderer",
+    webGLRenderTarget: "WebGLRenderTarget",
+    webGL3DRenderTarget: "WebGL3DRenderTarget",
+    webGLArrayRenderTarget: "WebGLArrayRenderTarget",
+    webGLCubeRenderTarget: "WebGLCubeRenderTarget",
+
+    // Renderers / Shaders
+    // ShaderChunk
+    // ShaderLib
+    // UniformsLib
+    // UniformsUtils
+
+    //Renderers / WebXR
+    webXRManager: "WebXRManager",
+
+    //Scenes
+    fog: "Fog",
+    fogExp2: "FogExp2",
+    scene: "Scene",
+
+    //Textures
+    canvasTexture: "CanvasTexture",
+    compressedArrayTexture: "CompressedArrayTexture",
+    compressedTexture: "CompressedTexture",
+    cubeTexture: "CubeTexture",
+    data3DTexture: "Data3DTexture",
+    dataArrayTexture: "DataArrayTexture",
+    dataTexture: "DataTexture",
+    depthTexture: "DepthTexture",
+    framebufferTexture: "FrameBufferTexture",
+    source: "Source",
+    texture: "Texture",
+    videoTexture: "VideoTexture",
+
+    // Addons
+    // Animations
+    cCDIKSolver: "CCDIKSolver",
+    mMDAnimationHelper: "MMDAnimationHelper",
+    mMDPhysics: "MMDPhysics",
+
+    // Controls
+    arcballControls: "ArcballControls",
+    dragControls: "DragControls",
+    firstPersonControls: "FirstPersonControls",
+    flyControls: "FlyControls",
+    mapControls: "MapControls",
+    orbitControls: "OrbitControls",
+    pointerLockControls: "PointerLockControls",
+    trackballControls: "TrackballControls",
+    transformControls: "TransformControls",
+
+    // Geometries
+    convexGeometry: "ConvexGeometry",
+    decalGeometry: "DecalGeometry",
+    parametricGeometry: "ParametricGeometry",
+    textGeometry: "TextGeometry",
+    sDFGeometryGenerator: "SDFGeometryGenerator",
+
+    //Helpers
+    lightProbeHelper: "LightProbeHelper",
+    positionalAudioHelper: "PositionalAudioHelper",
+    rectAreaLightHelper: "RectAreaLightHelper",
+    vertexNormalsHelper: "VertexNormalsHelper",
+    vertexTangentsHelper: "VertexTangentsHelper",
+
+    // Lights
+    // LightProbeGenerator //static
+
+    // Loaders
+    rhino3dmLoader: "Rhino3dmLoader",
+    dracoLoader: "DRACOLoader",
+    fontLoader: "FontLoader",
+    gltfLoader: "GLTFLoader",
+    ktx2Loader: "KTX2Loader",
+    lDrawLoader: "LDrawLoader",
+    lut3dlLoader: "LUT3dlLoader",
+    lutCubeLoader: "LUTCubeLoader",
+    mmdLoader: "MMDLoader",
+    mtlLoader: "MTLLoader",
+    objLoader: "OBJLoader",
+    pcdLoader: "PCDLoader",
+    pdbLoader: "PDBLoader",
+    svgLoader: "SVGLoader",
+    tgaLoader: "TGALoader",
+
+    // Objects
+    lensflare: "Lensflare",
+
+    //Post-Processing
+    effectComposer: "EffectComposer",
+    exporters: "Exporters",
+    dRACOExporter: "DRACOExporter",
+    eXRExporter: "EXRExporter",
+    gLTFExporter: "GLTFExporter",
+    oBJExporter: "OBJExporter",
+    pLYExporter: "PLYExporter",
+    sTLExporter: "STLExporter",
+
+    // Math
+    // LookupTable
+    lut: "Lut",
+    meshSurfaceSampler: "MeshSurfaceSampler",
+    obb: "OBB",
+
+    // Misc
+    timer: "Timer",
+
+    // ConvexHull
+    Face: "Face",
+    HalfEdge: "HalfEdge",
+    ConvexHull: "ConvexHull",
+    VertexNode: "VertexNode",
+    VertexList: "VertexList",
+    // Renderers
+    css2DRenderer: "CSS2DRenderer",
+    css3DRenderer: "CSS3DRenderer",
+    svgRenderer: "SVGRenderer",
+
+    // Utils
+    // BufferGeometryUtils
+    // CameraUtils
+    // SceneUtils
+    // SkeletonUtils
+
+    // WebXR
+    xrEstimatedLight: "XREstimatedLight",
+
+    // WebGLRenderer
+    // WebGLProgram
+
+
 }

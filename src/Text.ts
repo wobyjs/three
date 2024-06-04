@@ -1,11 +1,11 @@
 // / <reference path=". /jsx-runtime" />
 /** @jsxImportSource ./jsx-runtime */
 
-import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry';
-import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "voby";
-import { Material, Mesh, MeshStandardMaterial } from "three";
-import { useFont } from "./context";
-import { Three } from './three';
+import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry'
+import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "woby"
+import { Material, Mesh, MeshStandardMaterial } from "three"
+import { useFont } from "./hooks/useFont"
+import { Three } from './three'
 
 export type textGeometryProps = {
     pathToFont: string,
@@ -19,7 +19,7 @@ export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryP
     const geometry = $<TextGeometry>()
     const mesh = $<Mesh>()
     const font = useFont(pathToFont)
-    const material = mat ?? new MeshStandardMaterial();
+    const material = mat ?? new MeshStandardMaterial()
 
     useEffect(() => {
         if (!$$(font)) {
@@ -37,13 +37,11 @@ export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryP
         g.selfDispose = true
         geometry(g)
         mesh(new Mesh(geometry(), $$(material)))
-        mesh().position.set(1, 1, 1)
+        $$(mesh).position.set(1, 1, 1)
 
     })
 
-    return (
-        useMemo(() => $$(geometry) ? $$(mesh) : null)
-    )
+    return useMemo(() => $$(geometry) ? $$(mesh) : null)
 }
 
 Three.TextGeometry = TextGeometry

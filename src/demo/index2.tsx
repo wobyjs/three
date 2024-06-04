@@ -4,7 +4,7 @@
 import { BoxGeometry, Mesh, MeshBasicMaterial, PerspectiveCamera, TextureLoader } from "three"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
 import { useFrame, useLoader, } from "../canvas3D"
-import { $, useEffect, useMemo } from "voby"
+import { $, useEffect, useMemo } from "woby"
 import "../orbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 
@@ -25,9 +25,9 @@ const App = () => {
         const box = new BoxGeometry(1, 1, 1)
 
         useFrame(() => {
-            ref().rotateX(0.01)
-            ref().rotateY(0.01)
-            ref().rotateZ(0.01)
+            $$(ref).rotateX(0.01)
+            $$(ref).rotateY(0.01)
+            $$(ref).rotateZ(0.01)
         })
 
         return (

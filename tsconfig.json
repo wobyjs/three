@@ -5,7 +5,6 @@
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
         "alwaysStrict": true,
-        "declaration": true,
         "disableSizeLimit": true,
         "esModuleInterop": false,
         "forceConsistentCasingInFileNames": true,
@@ -13,7 +12,7 @@
         "inlineSources": false,
         // "isolatedModules": true,
         "jsx": "preserve",
-        "jsxImportSource": "voby",
+        "jsxImportSource": "woby",
         "lib": [
             "dom",
             "esnext"
@@ -29,7 +28,11 @@
         "noPropertyAccessFromIndexSignature": false,
         "noUnusedLocals": true,
         "noUnusedParameters": false,
-        "outDir": "./dist/",
+        "rootDir": "./src", /* Specify the root folder within your source files. */
+        "outDir": "./dist",
+        "declarationMap": true,
+        "declaration": true,
+        "declarationDir": "./dist/types",
         "pretty": true,
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
@@ -44,22 +47,22 @@
         "noImplicitAny": false,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
-        "rootDir": "./",
-        "composite": true,
+        // "composite": true,
         // "paths": {
-        //     "voby/jsx-runtime": [
-        //         "../../../voby/dist/jsx"
+        //     "woby/jsx-runtime": [
+        //         "../../../woby/dist/jsx"
         //     ],
-        //     "voby/jsx-runtime/*": [
-        //         "../../../voby/dist/jsx/*"
+        //     "woby/jsx-runtime/*": [
+        //         "../../../woby/dist/jsx/*"
         //     ],
         // }
     },
-   
     "exclude": [
+        "dist",
+        "./dist/types",
+        "./src/demo/",
         "*.test.ts*",
-        "vite.config.ts",
-        "vite.config.*.ts",
+        "vite.*.*ts",
         "node_modules/"
     ]
 }

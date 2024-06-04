@@ -14,7 +14,7 @@ dependencies:
   three:
     specifier: ^0.155.0
     version: 0.155.0
-  voby:
+  woby:
     specifier: workspace:../woby
     version: link:../woby
 

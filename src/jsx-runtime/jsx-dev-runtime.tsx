@@ -1,8 +1,8 @@
 /* IMPORT */
 import * as three from "three"
-import { useRoot, type JSX, setChild } from "voby"
+import { useRoot, type JSX, setChild } from "woby"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
-import { jsx } from "../consP"
+import { jsx } from "../components/ConstructorParam"
 
 
 const render = (children: JSX.Child, parent: JSX.Child) => {

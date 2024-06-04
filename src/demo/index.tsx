@@ -4,7 +4,7 @@
 import { BoxGeometry, CameraHelper, Mesh, MeshBasicMaterial, OrthographicCamera, PerspectiveCamera, PointLight, TextureLoader, Vector3 } from "three"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
 import { useThree, } from "../canvas3D"
-import { $, $$, useEffect, useMemo } from "voby"
+import { $, $$, useEffect, useMemo } from "woby"
 import "../gltf"
 import "../orbitControls"
 
@@ -17,14 +17,12 @@ const App = () => {
 
 
     useEffect(() => {
-        if (!ref()) {
-            return
-        }
+        if (!$$(ref)) return
 
-        lightRef().castShadow = true
-        ref().castShadow = true
-        ref().receiveShadow = true
-        console.log(ref())
+        $$(lightRef).castShadow = true
+        $$(ref).castShadow = true
+        $$(ref).receiveShadow = true
+        console.log($$(ref))
     })
 
     return (

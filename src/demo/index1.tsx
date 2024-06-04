@@ -1,7 +1,7 @@
 // / <reference path="../jsx-runtime" />
 /** @jsxImportSource ../jsx-runtime */
 
-import { $, $$, useEffect, useMemo } from "voby"
+import { $, $$, useEffect, useMemo } from "woby"
 import { useFrame, useThree } from "../canvas3D"
 import { render } from "../jsx-runtime/jsx-dev-runtime"
 import { TextureLoader } from "three"
@@ -16,7 +16,7 @@ function Box(props) {
     const hovered = $(false)
     const clicked = $(false)
     // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame(() => (ref().rotation.x += 0.01))
+    useFrame(() => ($$(ref).rotation.x += 0.01))
 
 
     // Return the view, these are regular Threejs elements expressed in JSX
