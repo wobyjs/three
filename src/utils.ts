@@ -1,4 +1,4 @@
-import { $$ } from "voby"
+import { $$ } from "woby"
 
 export const toUpper = (s: string) => s.charAt(0).toUpperCase() + s.substring(1)
 

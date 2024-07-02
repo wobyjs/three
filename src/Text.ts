@@ -1,32 +1,31 @@
-// / <reference path=". /jsx-runtime" />
 /** @jsxImportSource ./jsx-runtime */
 
-import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry';
-import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "voby";
-import { Material, Mesh, MeshStandardMaterial } from "three";
-import { useFont } from "./context";
-import { Three } from './three';
+import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry'
+import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "woby"
+import { Material, Mesh, MeshStandardMaterial } from "three"
+import { useFont } from "./context"
+import { Three } from './three'
+import { consParams } from './components/consParams'
+import { objParams } from './components/objParams'
+import { defaults } from './components/defaults'
 
-export type textGeometryProps = {
+export type textProps = {
     pathToFont: string,
-    str?: string | ObservableMaybe<string>,
+    text?: string | ObservableMaybe<string>,
     material?: ObservableMaybe<Material>,
-
 } & TextGeometryParameters
 
-export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryProps): Observable => {
-
+export const Text = ({ material: mat, text, pathToFont, ...props }: textProps): Observable => {
     const geometry = $<TextGeometry>()
     const mesh = $<Mesh>()
     const font = useFont(pathToFont)
-    const material = mat ?? new MeshStandardMaterial();
+    const material = mat ?? new MeshStandardMaterial()
 
     useEffect(() => {
-        if (!$$(font)) {
+        if (!$$(font))
             return
-        }
 
-        const g = new TextGeometry($$(str), {
+        const g = new TextGeometry($$(text), {
             font: font(),
             size: 1,
             height: 0.1,
@@ -41,9 +40,43 @@ export const Text = ({ material: mat, str, pathToFont, ...props }: textGeometryP
 
     })
 
-    return (
-        useMemo(() => $$(geometry) ? $$(mesh) : null)
-    )
+    return useMemo(() => $$(geometry) ? $$(mesh) : null)
 }
 
-Three.TextGeometry = TextGeometry
+
+// declare module './components/consParams' {
+//     interface consParams {
+//         text: string[]
+//     }
+// }
+
+//@ts-ignore
+consParams.text = [
+    ...consParams.textGeometry,
+    'pathToFont',
+    'text',
+    'material',
+].distinct()
+
+//@ts-ignore
+objParams.text = [...objParams.textGeometry,
+    'pathToFont',
+    'text',
+    'material',
+]
+
+//@ts-ignore
+defaults.text = { text: 'abc' }
+
+// three.TextGeometry = TextGeometry
+
+// const text = Text
+
+declare module './three' {
+    interface Three {
+        Text: Text
+    }
+}
+
+//@ts-ignore
+Three.Text = Text

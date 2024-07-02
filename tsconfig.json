@@ -6,6 +6,8 @@
         "allowUnusedLabels": false,
         "alwaysStrict": true,
         "declaration": true,
+        "declarationDir": "./dist/types",
+        "declarationMap": true,
         "disableSizeLimit": true,
         "esModuleInterop": false,
         "forceConsistentCasingInFileNames": true,
@@ -13,13 +15,13 @@
         "inlineSources": false,
         // "isolatedModules": true,
         "jsx": "preserve",
-        "jsxImportSource": "voby",
+        "jsxImportSource": "woby",
         "lib": [
             "dom",
             "esnext"
         ],
-        "module": "es2020",
-        "moduleResolution": "node",
+        "module": "ESNext",
+        "moduleResolution": "Node",
         "newLine": "lf",
         "noEmitOnError": false,
         "noFallthroughCasesInSwitch": true,
@@ -44,22 +46,24 @@
         "noImplicitAny": false,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
-        "rootDir": "./",
+        "rootDir": "./src",
         "composite": true,
         // "paths": {
-        //     "voby/jsx-runtime": [
-        //         "../../../voby/dist/jsx"
+        //     "woby/jsx-runtime": [
+        //         "../../../woby/dist/jsx"
         //     ],
-        //     "voby/jsx-runtime/*": [
-        //         "../../../voby/dist/jsx/*"
+        //     "woby/jsx-runtime/*": [
+        //         "../../../woby/dist/jsx/*"
         //     ],
         // }
     },
    
     "exclude": [
         "*.test.ts*",
-        "vite.config.ts",
-        "vite.config.*.ts",
-        "node_modules/"
+        "vite.config.*ts",
+        "vite.config.*.*ts",
+        "node_modules/",
+        "src/demo",
+        "dist"
     ]
 }

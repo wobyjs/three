@@ -1,0 +1,15 @@
+// / <reference path=". /jsx-runtime" />
+/** @jsxImportSource ./jsx-runtime */
+
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { Three } from './three'
+
+
+declare module './three' {
+    interface Three {
+        TextGeometry: TextGeometry
+    }
+}
+
+//@ts-ignore
+Three.TextGeometry = TextGeometry
