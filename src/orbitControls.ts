@@ -15,9 +15,7 @@ import { Three } from './three'
 
 
 export function orbitControls(camera?: three.Camera, domElement?: HTMLElement, enableDamping?: ObservableMaybe<boolean>) {
-    const cam = useThree("camera")
-    const dom = domElement ?? useThree("domElement")
-    const cameraControls = new OrbitControls($$(cam), $$(dom))
+
 
     // if (enableDamping) 
     //     cameraControls.enableDamping = true
@@ -28,6 +26,14 @@ export function orbitControls(camera?: three.Camera, domElement?: HTMLElement, e
     //     cameraControls.update()
 
     useEffect(() => {
+        const cam = useThree("camera")
+        const dom = domElement ?? useThree("domElement")
+
+        if (!$$(cam)) return
+        if (!$$(dom)) return
+
+        const cameraControls = new OrbitControls($$(cam), $$(dom))
+
         cameraControls.enableDamping = $$(enableDamping)
 
         if (cameraControls.enableDamping == true)

@@ -6823,39 +6823,15 @@ const p = {
     ].distinct(),
     //D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\libs\fflate.module.d.ts
     //D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\libs\lil-gui.module.min.d.ts
-    gui: [
-        /**
-         * Creates a panel that holds controllers.
-         * @example
-         * new GUI(,
-         * new GUI( { container.getElementById( 'custom' ) } ,
-         *
-         * @param [options]
-         * @param [options.autoPlace=true]
-         * Adds the GUI to `document.body` and fixes it to the top right of the page.
-         *
-         * @param [options.container]
-         * Adds the GUI to this.dOM element. Overrides `autoPlace`.
-         *
-         * @param [options.width=245]
-         * Width of the GUI in pixels, usually set when name labels become too long. Note that you can make
-         * name labels wider in css with `.lil‑gui { ‑‑name‑width% }`
-         *
-         * @param [options.title=Controls]
-         * Name to display in the title bar.
-         *
-         * @param [options.injectStyles=true]
-         * Injects the default stylesheet into the page if this.is the first GUI.
-         * Pass `false` to use your own stylesheet.
-         *
-         * @param [options.touchStyles=true]
-         * Makes controllers larger on touch devices. Pass `false` to disable touch styles.
-         *
-         * @param [options.parent]
-         * Adds this.gUI as a child in another GUI. Usually this.is done for you by `addFolder()`.
-         */
-        'options',
-    ].distinct(),
+    gui: ([
+        'autoPlace',
+        'container',
+        'width',
+        'title',
+        'injectStyles',
+        'touchStyles',
+        'parent',
+    ] as const).toObject(),
     get booleanController() {
         return [//...this.controller,
             'parent',
@@ -9862,7 +9838,6 @@ const p = {
         'primitive',
     ].distinct(),
     xrHandPrimitiveModel: [
-
         'handModel',
         'controller',
         'path',

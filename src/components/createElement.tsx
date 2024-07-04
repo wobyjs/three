@@ -2,7 +2,7 @@
 import { $$, getMeta, isObservable, useEffect, type JSX, SYMBOL_UNTRACKED_UNWRAPPED, untrack } from "woby"
 // import { paramTypes } from './params'
 import { ConstructorParam } from "./ConstructorParam"
-import { isFunction, isPromise, toUpper } from "../utils"
+import { isFunction, isPromiseR, toUpper, awaitAll } from "../utils"
 import { camelcase } from "../camelcase"
 import { Three } from "../three"
 import "../orbitControls"
@@ -13,7 +13,7 @@ import { setRef } from "woby"
 import { consParams } from "./consParams"
 import { objParams } from "./objParams"
 
-const fixReactiveProps = (props: any, component: JSX.Element) => {
+export const fixReactiveProps = (props: any, component: JSX.Element) => {
     for (const key in props) {
         if (key.startsWith("on")) {
             //event listeners
@@ -35,13 +35,13 @@ const fixReactiveProps = (props: any, component: JSX.Element) => {
                 if (typeof $$(component)?.[key]?.set === 'function')
                     $$(component)[key].set(...$$(props[key]))
                 else if (typeof $$(component)?.[key] === 'function')
-                    $$(component)[key]($$(props[key]))
+                    $$(component)[key](...$$(props[key]))
             }
             else
                 if (typeof $$(component)?.[key]?.set === 'function')
                     $$(component)[key]?.set($$(props[key]))
                 else if (typeof $$(component)?.[key] === 'function')
-                    $$(component)[key]($$(props[key]))
+                    $$(component)[key](...$$(props[key]))
                 else if ($$(component))
                     $$(component)[key] = ($$(props[key]))
         }
@@ -55,7 +55,7 @@ const fixReactiveProps = (props: any, component: JSX.Element) => {
     }
 }
 
-function setValue<T>(obj: any, keysString: string, value: T): void {
+export function setValue<T>(obj: any, keysString: string, value: T): void {
     const keys = keysString.split('-')
 
     keys.forEach((key, index) => {
@@ -140,10 +140,10 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
         fixReactiveProps(props, r)
 
         const { children, args, ...remainingProps } = props
-        if (Array.isArray(consParams[component as any]))
-            (consParams[component as any] as string[]).map(paramName => delete remainingProps[paramName])
+        if (Array.isArray(consParams[camelcase(component) as any]))
+            (consParams[camelcase(component) as any] as string[]).map(paramName => delete remainingProps[paramName])
         else
-            Object.keys(consParams[component as any]).map(paramName => delete remainingProps[paramName])
+            Object.keys(consParams[camelcase(component) as any]).map(paramName => delete remainingProps[paramName])
 
         Object.keys(remainingProps).forEach((k) => {
             if (k.startsWith("on") || k == "dispose")
@@ -155,7 +155,7 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
 
         return r
     }
-    if (Object.values(props).some(k => isPromise(k))) {
+    if (Object.values(props).some(k => isPromiseR(k))) {
         console.log("promise", component)
         return new Promise((resolve, reject) => {
             (async () => {
@@ -163,23 +163,23 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
                     console.error(`Three['${toUpper(component)}'] not found, please register it`)
                     return
                 }
-                // const props = { ...props }
 
-                const all = Object.values(props).filter(k => isPromise($$(k))).map((k) => $$(k) as Promise<any>)
-                await Promise.all(all)
+                // const all = Object.values(props).filter(v => isPromise(v)).map(v => $$(v) as Promise<any>)
+                // await Promise.all(all)
 
-                const key = Object.keys(props)
-                for (let i = 0; i < key.length; i++) {
-                    const k = key[i]
-                    if (isPromise($$(props[k]))) {
-                        const properties = Object.values(props[k])
-                        const keys = Object.keys(props[k])
+                // const key = Object.keys(props)
+                // for (let i = 0; i < key.length; i++) {
+                //     const k = key[i]
+                //     if (isPromiseR($$(props[k]))) {
+                //           for (const [key, value] of Object.entries(props[k])) {
 
-                        //iterate over all properties inside an object 
-                        for (let j = 0; j < properties.length; j++)
-                            props[k][keys[j]] = await $$(properties[j])
-                    }
-                }
+                //             props[k][key] = await $$(value);
+                //         }
+
+                //     }
+                // }
+
+                await awaitAll(props)
 
                 const r = getR()
                 resolve(r)

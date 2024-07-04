@@ -21,21 +21,22 @@ export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
 
 type MethodKeysWithParams<T> = {
     [K in keyof T]: T[K] extends (arg: any, ...args: any[]) => any ? K : never
-}[keyof T];
+}[keyof T]
 
 type PropertyKeys<T> = {
     [K in keyof T]: T[K] extends Function ? never : K
-}[keyof T];
+}[keyof T]
 
 type FunctionToProperty<T> = {
-    [K in MethodKeysWithParams<T>]: T[K] extends (arg: infer P, ...args: any[]) => any ? P : never
-};
+    [K in MethodKeysWithParams<T>]: T[K] extends (...args: infer P) => any ? FunctionMaybe<P> : never;
+}
 
 type AddProperties<T> = {
     [K in PropertyKeys<T>]: T[K]
-};
+}
 
-type Setter<T, C> = FunctionToProperty<T> & AddProperties<T> & C
+//type Setter<T, C> = FunctionToProperty<T> & AddProperties<T> & C
+type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & C & E
 
 type WrapFont<T> = {
     [K in keyof T]: T[K] extends Font ? ObservableMaybe<PromiseMaybe<T[K]>> : T[K]
@@ -132,10 +133,10 @@ export type AttachCallback = string | ((child: any, parentInstance: any) => void
 export interface NodeProps<T, P> {
     // attach?: AttachType
     /** Constructor arguments */
-    args?: Args<P>
+    args?: FunctionMaybe<Args<P>>
     children?: JSX.Child
     onUpdate?: (self: T) => void
-    ref?: JSX.Refs<T> 
+    ref?: JSX.Refs<T>
 }
 // type NonNullable<T> = T & {}
 
@@ -154,7 +155,7 @@ export type PromiseMaybe<T> = PromiseLike<T> | T
 /** Make every properties FunctionMayBe */
 export type Functionant<T> = T extends object
     ? { [K in keyof T]:
-        T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<U> :
+        // T[K] extends ObservableMaybe<infer U> ? FunctionMaybe<U> : //ObservableMaybe<U> :
         T[K] extends FunctionMaybe<infer U> ? FunctionMaybe<U> :
         T[K] extends Function ? T[K] : FunctionMaybe<T[K]>
     }
@@ -162,9 +163,12 @@ export type Functionant<T> = T extends object
 
 
 export type ExtendedColors<T> = { [K in keyof T]: T[K] extends THREE.Color | undefined ? FunctionMaybe<Color> : FunctionMaybe<T[K]> }
-export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>> 
+// export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>
+export type Node<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>> & NodeProps<T, P>
 
-export type Object3DNode<T, P, C> = Overwrite<
+// export type Node<T, P, C> = Partial<Functionant<Setter<Overwrite<T, NodeProps<T, P>>, C>>>
+
+export type Object3DNode<T, P, C> = Partial<Setter<Overwrite<
     Node<T, P, C>,
     {
         position?: FunctionMaybe<Vector3 | number[]>
@@ -177,7 +181,7 @@ export type Object3DNode<T, P, C> = Overwrite<
         // dispose?: (() => void) | null,
         selfDispose?: FunctionMaybe<boolean>
     }
-> & EventHandlers
+> & EventHandlers, C>>
 
 export type BufferGeometryNode<T extends THREE.BufferGeometry, P, C> = Node<T, P, C>
 export type MaterialNode<T extends THREE.Material, P> = Node<T, P, {}>
@@ -447,7 +451,7 @@ export type SpriteProps = Object3DNode<THREE.Sprite, typeof THREE.Sprite, { mate
 
 //node_modules\.pnpm\@types+three@0.164.0\node_modules\@types\three\src\renderers
 export type WebGLCubeRenderTargetProps = Node<THREE.WebGLCubeRenderTarget, typeof THREE.WebGLCubeRenderTarget, { size?: number, options?: THREE.RenderTargetOptions }>
-export type WebGLRendererProps = Node<THREE.WebGLRenderer, typeof THREE.WebGLRenderer, { parameters?: THREE.WebGLRendererParameters }>
+export type WebGLRendererProps = Node<THREE.WebGLRenderer, typeof THREE.WebGLRenderer, THREE.WebGLRendererParameters>
 export type WebGLRenderTargetProps = Node<THREE.WebGLRenderTarget, typeof THREE.WebGLRenderTarget, { width?: number, height?: number, options?: THREE.RenderTargetOptions }>
 export type WebGL3DRenderTargetProps = Node<THREE.WebGL3DRenderTarget, typeof THREE.WebGL3DRenderTarget, { width?: number, height?: number, depth?: number, options?: THREE.RenderTargetOptions }>
 export type WebGLArrayRenderTargetProps = Node<THREE.WebGLArrayRenderTarget, typeof THREE.WebGLArrayRenderTarget, { width?: number, height?: number, depth?: number, options?: THREE.RenderTargetOptions }>
@@ -692,10 +696,12 @@ export type SelectionHelperProps = Node<SelectionHelper, typeof SelectionHelper,
 //node_modules\@types\three\examples\jsm\libs
 
 import { } from 'three/examples/jsm/libs/fflate.module'
-import { } from 'three/examples/jsm/libs/lil-gui.module.min'
+import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min'
 import { } from 'three/examples/jsm/libs/meshopt_decoder.module'
 import { } from 'three/examples/jsm/libs/stats.module'
 import { } from 'three/examples/jsm/libs/tween.module'
+
+export type GuiProps = Node<GUI, typeof GUI, { autoPlace?: boolean, container?: HTMLElement, width?: number, title?: string, injectStyles?: boolean, touchStyles?: number, parent?: GUI, }>
 
 //node_modules\@types\three\examples\jsm\lights
 import IESSpotLight from 'three/examples/jsm/lights/IESSpotLight'
@@ -866,8 +872,8 @@ import { type Volume } from 'three/examples/jsm/misc/Volume'
 import { type VolumeSlice } from 'three/examples/jsm/misc/VolumeSlice'
 
 interface THREE_Curve {
-    getPointAt(u: number): Vector3;
-    getTangentAt(u: number): Vector3;
+    getPointAt(u: number): Vector3,
+    getTangentAt(u: number): Vector3,
 }
 
 
@@ -1345,7 +1351,7 @@ export type DotScreenPassProps = Node<DotScreenPass, typeof DotScreenPass, { cen
 export type EffectComposerProps = Node<EffectComposer, typeof EffectComposer, { renderer: THREE.WebGLRenderer, renderTarget?: THREE.WebGLRenderTarget }>
 export type FilmPassProps = Node<FilmPass, typeof FilmPass, { intensity?: number, grayscale?: boolean }>
 export type GlitchPassProps = Node<GlitchPass, typeof GlitchPass, { dt_size?: number }>
-export type GTAOPassProps = Node<GTAOPass, typeof GTAOPass, { scene: THREE.Scene, camera: THREE.Camera, width?: number | undefined, height?: number | undefined, parameters?: { depthTexture?: THREE.DepthTexture | undefined; normalTexture?: THREE.Texture | undefined } | undefined, }>
+export type GTAOPassProps = Node<GTAOPass, typeof GTAOPass, { scene: THREE.Scene, camera: THREE.Camera, width?: number | undefined, height?: number | undefined, parameters?: { depthTexture?: THREE.DepthTexture | undefined, normalTexture?: THREE.Texture | undefined } | undefined, }>
 export type HalftonePassProps = Node<HalftonePass, typeof HalftonePass, { width: number, height: number, params: HalftonePassParameters }>
 export type LUTPassProps = Node<LUTPass, typeof LUTPass, LUTPassParameters>
 export type MaskPassProps = Node<MaskPass, typeof MaskPass, { scene: THREE.Scene, camera: THREE.Camera }>
@@ -1409,7 +1415,7 @@ import { type WebGLNodeBuilder } from 'three/examples/jsm/renderers/webgl/nodes/
 // import { type WebGLNodes } from 'three/examples/jsm/renderers/webgl/nodes/WebGLNodes'
 
 export type SlotNodeProps<TNode extends ENode = ENode> = Node<SlotNode, typeof SlotNode, SlotNodeParameters<TNode>>
-export type WebGLNodeBuilderProps = Node<WebGLNodeBuilder, typeof WebGLNodeBuilder, { object: THREE.Object3D, renderer: Renderer, shader: { uniforms: any; vertexShader: any; fragmentShader: any }, }>
+export type WebGLNodeBuilderProps = Node<WebGLNodeBuilder, typeof WebGLNodeBuilder, { object: THREE.Object3D, renderer: Renderer, shader: { uniforms: any, vertexShader: any, fragmentShader: any }, }>
 // export type WebGLNodesProps = Node<WebGLNodes, typeof WebGLNodes>
 
 //node_modules\@types\three\examples\jsm\renderers\webgpu
@@ -1598,6 +1604,7 @@ import { WebGLCubeMaps } from 'three/src/renderers/webgl/WebGLCubeMaps'
 import { ShaderNodeObject, SwizzleOption } from 'three/examples/jsm/nodes/Nodes'
 import StorageBufferAttribute from 'three/examples/jsm/renderers/common/StorageBufferAttribute'
 import StorageInstancedBufferAttribute from 'three/examples/jsm/renderers/common/StorageInstancedBufferAttribute'
+import { ThreeContext } from './context'
 
 // export type ARButtonProps = Node<ARButton, typeof ARButton>
 export type OculusHandModelProps = Node<OculusHandModel, typeof OculusHandModel, { controller: THREE.Object3D, loader?: THREE.Loader<GLTF> | null, onLoad?: ((object: THREE.Object3D) => void) | null }>
@@ -2051,8 +2058,10 @@ declare module 'woby' {
             selectionBox: SelectionBoxProps,
             selectionHelper: SelectionHelperProps,
 
+
             //node_modules\@types\three\examples\jsm\libs
             //node_modules\@types\three\examples\jsm\lights
+            gui: GuiProps,
             // import {type LightProbeGenerator} from 'three/examples/jsm/lights/LightProbeGenerator'
             // import { type RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib'
             iesSpotLight: IESSpotLightProps,
@@ -2472,7 +2481,7 @@ declare module 'woby' {
 }
 
 declare global {
-    interface Window { threeContext: Context }
+    interface Window { threeContext: Context<ThreeContext> }
 
     namespace JSX {
         interface IntrinsicElements extends woby.JSX.IntrinsicElements {
@@ -2645,3 +2654,30 @@ declare global {
         }
     }
 }
+
+// //export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>
+
+// type Node1<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>>
+// type WebGLRendererProps1 = Node1<THREE.WebGLRenderer, typeof THREE.WebGLRenderer, THREE.WebGLRendererParameters>
+// type BoxHelperProps1 = Node1<THREE.BoxHelper, typeof THREE.BoxHelper, { object: THREE.Object3D, color?: THREE.ColorRepresentation }>
+// type BoxHelperProps2 = Functionant<Setter<THREE.BoxHelper, { object: THREE.Object3D, color?: THREE.ColorRepresentation }>>
+
+
+// const a = {} as Functionant<Setter<THREE.WebGLRenderer, THREE.WebGLRendererParameters>> // WebGLRendererProps1
+// const c1 = {} as BoxHelperProps1
+// const c2 = {} as BoxHelperProps2
+// // const w = {} as WebGLRendererProps1
+
+// a.setSize = [1, 2, true]
+// c1.color = () => 1
+// c1.color = 1
+// c1.setFromObject = [null as THREE.Object3D<THREE.Object3DEventMap>]
+
+// c2.color = () => 1
+// c2.color = 1
+// c2.setFromObject = [null as THREE.Object3D<THREE.Object3DEventMap>]
+
+// // w.setClearColor
+
+// const a ={} as JSX.IntrinsicElements['bufferGeometry']
+// a.ref

@@ -6,6 +6,7 @@ import { Three } from './three'
 export function bufferGeometry(points: ObservableMaybe<three.Vector3[] | three.Vector2[]>) {
     const g = new three.BufferGeometry()
     useEffect(() => {
+        if (!$$(points)) return
         g.setFromPoints($$(points))
     })
 
