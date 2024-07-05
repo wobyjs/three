@@ -26,7 +26,6 @@ const box = new THREE.BoxGeometry( 1, 1, 1 )
 const boxDom = <boxGeometry args={[1, 1, 1]} />
 
 
-
 const light = new THREE.PointLight( 0xff0000, 1, 100 );
 const lightDom = <pointLight position={[0, 5, 0]} intensity={10} castShadow shadow-camera-far={333} shadow-camera-near={0.1} />
 
@@ -47,7 +46,7 @@ const renderer = <webGLRenderer antialias setPixelRatio={[window.devicePixelRati
 
 
 ## Examples
-Explore the [woby-three-demo](https://github.com/wongchichong/woby-three-demo) repository for practical examples and demos of what you can build with woby-three. These examples showcase various use cases, from basic scenes with basic interactive.
+Explore the [woby-three-demo](https://github.com/wongchichong/woby-three-demo) repository for practical examples and [demos](https://woby-three-demo.web.app/) of what you can build with woby-three. These examples showcase various use cases, from basic scenes with basic interactive.
 
 
 ## Sample Code
