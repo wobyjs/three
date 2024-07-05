@@ -10,7 +10,7 @@
 import * as THREE from 'three'
 import { GLTFProps } from './components/gltf'
 import { CanvasProps } from './components/Canvas3D'
-import { ObservableMaybe, type JSX, Context, FunctionMaybe } from 'woby'
+import { type JSX, Context, FunctionMaybe } from 'woby'
 import { Node as ENode } from 'three/examples/jsm/nodes/Nodes'
 
 import * as woby from 'woby'
@@ -39,7 +39,7 @@ type AddProperties<T> = {
 type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & C & E
 
 type WrapFont<T> = {
-    [K in keyof T]: T[K] extends Font ? ObservableMaybe<PromiseMaybe<T[K]>> : T[K]
+    [K in keyof T]: T[K] extends Font ? woby.ObservableMaybe<PromiseMaybe<T[K]>> : T[K]
 }
 
 export type AttachFnType = (parent: Instance, self: Instance) => () => void
