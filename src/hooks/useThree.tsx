@@ -15,7 +15,7 @@ export type ThreeContext = {
     fonts: Observable<Record<string, Observable<Font>>>,
     renderer: Observable<three.Renderer>,
     scene: Observable<three.Scene>,
-    camera: Observable<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    camera: Observable<three.Camera>,//?
     domElement: ObservableReadonly<HTMLCanvasElement>,
     width: Observable<number>,
     height: Observable<number>
