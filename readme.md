@@ -33,11 +33,10 @@ const lightDom = <pointLight position={[0, 5, 0]} intensity={10} castShadow shad
 light.shadow.camera.far = 333 // inline property assignment equivalence 
 
 
-
 const renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.setClearColor( 0x000000, 0.0 );
+renderer.setPixelRatio( window.devicePixelRatio );
+renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setClearColor( 0x000000, 0.0 );
 
 const renderer = <webGLRenderer antialias setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} setClearColor={[0x000000, 0.0]} />
 //setPixelRatio, setSize & setClearColor direct function call in element's attribute
