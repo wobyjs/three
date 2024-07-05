@@ -1,5 +1,6 @@
 import {  Observable, useEffect, $$, $ } from "woby"
 
+
 export const useAwait = <T,>(obj: Observable<Promise<T>>): Observable<T> => {
     const o = $<T>()
     useEffect(() => {
@@ -10,4 +11,3 @@ export const useAwait = <T,>(obj: Observable<Promise<T>>): Observable<T> => {
 
     return o
 }
-

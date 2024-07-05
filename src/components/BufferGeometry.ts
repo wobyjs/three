@@ -1,6 +1,6 @@
 import { useEffect, $$, ObservableMaybe } from "woby"
 import * as three from 'three'
-import { Three } from './three'
+import { Three } from '../three/three'
 
 
 export function bufferGeometry(points: ObservableMaybe<three.Vector3[] | three.Vector2[]>) {
@@ -13,7 +13,7 @@ export function bufferGeometry(points: ObservableMaybe<three.Vector3[] | three.V
     return g
 }
 
-declare module './three' {
+declare module '../three/three' {
     interface Three {
         BufferGeometry: typeof bufferGeometry
     }
@@ -21,7 +21,6 @@ declare module './three' {
 
 //@ts-ignore
 Three.BufferGeometry = bufferGeometry
-
 
 // //@ts-ignore
 // consParams.orbitControls = [

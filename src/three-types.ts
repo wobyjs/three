@@ -8,8 +8,8 @@
  * 
  */
 import * as THREE from 'three'
-import { GLTFProps } from './gltf'
-import { canvasProps } from './canvas3D'
+import { GLTFProps } from './components/gltf'
+import { CanvasProps } from './components/Canvas3D'
 import { ObservableMaybe, type JSX, Context, FunctionMaybe } from 'woby'
 import { Node as ENode } from 'three/examples/jsm/nodes/Nodes'
 
@@ -1409,13 +1409,6 @@ import WebGLBackend from 'three/examples/jsm/renderers/webgl/WebGLBackend'
 export type WebGLBackendProps = Node<WebGLBackend, typeof WebGLBackend, BackendParameters>
 
 //node_modules\@types\three\examples\jsm\renderers\webgl\nodes
-import SlotNode, { SlotNodeParameters } from 'three/examples/jsm/renderers/webgl/nodes/SlotNode'
-import { type WebGLNodeBuilder } from 'three/examples/jsm/renderers/webgl/nodes/WebGLNodeBuilder'
-// import { type WebGLNodes } from 'three/examples/jsm/renderers/webgl/nodes/WebGLNodes'
-
-export type SlotNodeProps<TNode extends ENode = ENode> = Node<SlotNode, typeof SlotNode, SlotNodeParameters<TNode>>
-export type WebGLNodeBuilderProps = Node<WebGLNodeBuilder, typeof WebGLNodeBuilder, { object: THREE.Object3D, renderer: Renderer, shader: { uniforms: any, vertexShader: any, fragmentShader: any }, }>
-// export type WebGLNodesProps = Node<WebGLNodes, typeof WebGLNodes>
 
 //node_modules\@types\three\examples\jsm\renderers\webgpu
 import WebGPUBackend, { WebGPUBackendParameters } from 'three/examples/jsm/renderers/webgpu/WebGPUBackend'
@@ -1603,7 +1596,7 @@ import { WebGLCubeMaps } from 'three/src/renderers/webgl/WebGLCubeMaps'
 import { ShaderNodeObject, SwizzleOption } from 'three/examples/jsm/nodes/Nodes'
 import StorageBufferAttribute from 'three/examples/jsm/renderers/common/StorageBufferAttribute'
 import StorageInstancedBufferAttribute from 'three/examples/jsm/renderers/common/StorageInstancedBufferAttribute'
-import { ThreeContext } from './context'
+import { ThreeContext } from './hooks'
 
 // export type ARButtonProps = Node<ARButton, typeof ARButton>
 export type OculusHandModelProps = Node<OculusHandModel, typeof OculusHandModel, { controller: THREE.Object3D, loader?: THREE.Loader<GLTF> | null, onLoad?: ((object: THREE.Object3D) => void) | null }>
@@ -1636,7 +1629,7 @@ export type Uint32BufferAttributeProps = Node<THREE.Uint32BufferAttribute, typeo
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
-            canvas3D: canvasProps
+            canvas3D: CanvasProps
             // text: textGeometryProps,
             // textGeometry: TextGeometryProps
             gltf: GLTFProps,
@@ -2412,9 +2405,6 @@ declare module 'woby' {
             //node_modules\@types\three\examples\jsm\renderers\webgl
             webGLBackend: WebGLBackendProps,
 
-            //node_modules\@types\three\examples\jsm\renderers\webgl\nodes
-            slotNode: SlotNodeProps,
-            webGLNodeBuilder: WebGLNodeBuilderProps,
             // webGLNodes:WebGLNodesProps,
 
             //node_modules\@types\three\examples\jsm\renderers\webgpu

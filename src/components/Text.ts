@@ -3,11 +3,11 @@
 import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry'
 import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "woby"
 import { Material, Mesh, MeshStandardMaterial } from "three"
-import { useFont } from "./context"
-import { Three } from './three'
-import { consParams } from './components/consParams'
-import { objParams } from './components/objParams'
-import { defaults } from './components/defaults'
+import { useFont } from "../hooks"
+import { Three } from '../three/three'
+import { consParams } from '../three/consParams'
+import { objParams } from '../three/objParams'
+import { defaults } from '../three/defaults'
 
 export type textProps = {
     pathToFont: string,
@@ -72,7 +72,7 @@ defaults.text = { text: 'abc' }
 
 // const text = Text
 
-declare module './three' {
+declare module '../three/three' {
     interface Three {
         Text: Text
     }

@@ -1,14 +1,14 @@
 /* IMPORT */
 import { $$, getMeta, isObservable, useEffect, type JSX, SYMBOL_UNTRACKED_UNWRAPPED, untrack } from "woby"
 // import { paramTypes } from './params'
-import { ConstructorParam } from "./ConstructorParam"
+import { getConstructorParams } from "./getConstructorParams"
 import { isFunction, isPromiseR, toUpper, awaitAll } from "../utils"
 import { camelcase } from "../camelcase"
-import { Three } from "../three"
-import "../orbitControls"
-import '../BufferGeometry'
-import "../gltf"
-import "../Text"
+import { Three } from "../three/three"
+import "../components/orbitControls"
+import '../components/BufferGeometry'
+import "../components/gltf"
+import "../components/Text"
 import { setRef } from "woby"
 import { consParams } from "./consParams"
 import { objParams } from "./objParams"
@@ -72,42 +72,6 @@ export function setValue<T>(obj: any, keysString: string, value: T): void {
     })
 }
 
-// function getValue<T>(obj: any, keysString: string): T {
-//     const keys = keysString.split('-')
-
-//     for (const key of keys) {zz
-//         if (obj[key] === undefined) {
-//             return undefined
-//         }
-//         obj = obj[key]
-//     }
-
-//     return obj
-// }
-
-// function union<T>(a: T[], b: T[]): T[] {
-//     return Array.from(new Set([...a, ...b]))
-// }
-
-// function intersection<T>(a: T[], b: T[]): T[] {
-//     const setB = new Set(b)
-//     return a.filter(element => setB.has(element))
-// }
-
-// function difference<T>(a: T[], b: T[]): T[] {
-//     const setB = new Set(b)
-//     return a.filter(element => !setB.has(element))
-// }
-
-// function symmetricDifference<T>(a: T[], b: T[]): T[] {
-//     const setA = new Set(a)
-//     const setB = new Set(b)
-//     return [
-//         ...a.filter(element => !setB.has(element)),
-//         ...b.filter(element => !setA.has(element))
-//     ]
-// }
-
 
 export const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]> }>
     (component: K, props: P & { args: [] }, key?: string) => {
@@ -119,16 +83,11 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
     if (isFunction(component))
         return wrapElement(() => untrack(() => component.call(component, props as P)))
 
-    // const p = difference(Object.keys(Three).map(c => camelcase(c)), Object.keys(objParams))
-    // const c = difference(Object.keys(Three).map(c => camelcase(c)), Object.keys(consParams))
-    // const s = symmetricDifference(Object.keys(Three), Object.keys(objParams))
-    // const s = symmetricDifference(Object.keys(Three), Object.keys(objParams))
-
     //get children from props
     const meta = !isObservable(props.children) && !Array.isArray(props.children) ? (props.children ? [getMeta(props.children)] : []) : [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
 
-    const getR = () => {
-        const p = ConstructorParam(consParams[camelcase(component as any)], objParams[camelcase(component as any)], meta, props, component)
+    const getInstance = () => {
+        const p = getConstructorParams(consParams[camelcase(component as any)], objParams[camelcase(component as any)], meta, props, component)
 
         if (!Three[toUpper(component as any)])
             console.error(`Three.${toUpper(component as any)} not register`)
@@ -164,24 +123,9 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
                     return
                 }
 
-                // const all = Object.values(props).filter(v => isPromise(v)).map(v => $$(v) as Promise<any>)
-                // await Promise.all(all)
-
-                // const key = Object.keys(props)
-                // for (let i = 0; i < key.length; i++) {
-                //     const k = key[i]
-                //     if (isPromiseR($$(props[k]))) {
-                //           for (const [key, value] of Object.entries(props[k])) {
-
-                //             props[k][key] = await $$(value);
-                //         }
-
-                //     }
-                // }
-
                 await awaitAll(props)
 
-                const r = getR()
+                const r = getInstance()
                 resolve(r)
             })()
 
@@ -190,7 +134,7 @@ export const createElement = <K extends keyof JSX.IntrinsicElements, P extends J
 
     else {
         return wrapElement(() => {
-            const r = getR()
+            const r = getInstance()
 
             untrack(r)
 

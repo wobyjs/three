@@ -1,40 +1,61 @@
-// / <reference path="./jsx-runtime" />
+// / <reference path='./jsx-runtime' />
 /** @jsxImportSource ./jsx-runtime */
 
-import * as three from "three"
-import { createContext, useContext,  $$, $, ObservableMaybe, isObservable, useMemo, Context } from "woby"
-import { canvasProperties } from "../types/canvas3D"
-import { type canvasProps } from '../canvas3D'
+import * as three from 'three'
+import { createContext, useContext, $$, $, ObservableMaybe, isObservable, useMemo, Observable, useEffect, ObservableReadonly } from 'woby'
+import { Font } from 'three/examples/jsm/loaders/FontLoader'
 
-export const t = (props?: canvasProps) => {
-    const t = {
-        frame: $([]),
-        fonts: $({}),
-        renderer: $(new three.WebGLRenderer()),
-        scene: $(props?.scene ?? new three.Scene()),
-        camera: $(props?.camera ?? new three.PerspectiveCamera()),
-        domElement: useMemo(() => $$(t.renderer)?.domElement),
-        width: $(props?.width ?? window.innerWidth),
-        height: $(props?.width ?? window.innerHeight)
-    } as canvasProperties
-    return t
+import { type CanvasProps } from '../components/Canvas3D'
+
+export type Unobservable<T> = T extends Observable<infer U> ? U : T;
+export type ToObservableMaybe<T> = T extends Observable<infer U> ? ObservableMaybe<U> : T;
+
+export type ThreeContext = {
+    frame: Observable<(() => void)[]>,
+    fonts: Observable<Record<string, Observable<Font>>>,
+    renderer: Observable<three.Renderer>,
+    scene: Observable<three.Scene>,
+    camera: Observable<three.OrthographicCamera | three.PerspectiveCamera>,//?
+    domElement: ObservableReadonly<HTMLCanvasElement>,
+    width: Observable<number>,
+    height: Observable<number>
 }
 
-//TODO fix context initialized twice
-export const threeContext: Context<canvasProperties> = window.threeContext ?? createContext<canvasProperties>()
-window.threeContext = threeContext
+export const defaultContext = (props?: CanvasProps) => ({
+    frame: $([]),
+    fonts: $({}),
+    renderer: isObservable(props?.renderer) ? props.renderer : $(props?.renderer ?? new three.WebGLRenderer({ antialias: true })),
+    scene: isObservable(props?.scene) ? props.scene : $(props?.scene ?? new three.Scene()),
+    camera: isObservable(props?.camera) ? props.camera : $(props?.camera ?? new three.PerspectiveCamera()),
+    get domElement() { return useMemo(() => $$(this.renderer)?.domElement) },
+    width: isObservable(props?.width) ? props.width : $(props?.width ?? window.innerWidth),
+    height: isObservable(props?.height) ? props.height : $(props?.height ?? window.innerHeight)
+} as ThreeContext)
 
-export const useThree = <T, K extends keyof canvasProperties>(key: K, v?: ObservableMaybe<T>): canvasProperties[K] => {
-    const t = useContext(threeContext) as canvasProperties
-    if (isObservable(t[key as any])) {
-        if (v)
+
+if (!window.threeContext)
+    window.threeContext = createContext<ThreeContext>()
+export const threeContext = window.threeContext
+
+
+export function useThree(): ThreeContext
+export function useThree<K extends keyof ThreeContext = keyof ThreeContext, T extends ThreeContext[K] = ThreeContext[K]>(key?: K, v?: ToObservableMaybe<T>): T
+export function useThree<K extends keyof ThreeContext = keyof ThreeContext, T extends ThreeContext[K] = ThreeContext[K]>(key?: K, v?: ToObservableMaybe<T>): T | ThreeContext {
+    const t = useContext(threeContext) as ThreeContext
+
+    if (!key)
+        return t as ThreeContext
+
+    if (isObservable(t[key]))
+        useEffect(() => {
             //@ts-ignore
-            t[key]($$(v))
-    }
+            if (!!$$(v))
+                //@ts-ignore
+                (t[key] as Observable)($$(v))
+        })
 
-    return t[key] as any
+    return t[key] as T
 }
-
 
 export function throttle(callback, limit) {
     var waiting = false;                      // Initially, we're not waiting

@@ -1,5 +1,4 @@
-import { useContext,  } from "woby"
-import { threeContext } from "./useThree"
+import { Observable } from "woby"
+import { useThree, Unobservable, ThreeContext } from "./useThree"
 
-
-export const useCamera = () => useContext(threeContext).camera
+export const useCamera = <T extends Unobservable<ThreeContext['camera']> = Unobservable<ThreeContext['camera']>>(v?: T) => useThree('camera', v) as any as Observable<T>

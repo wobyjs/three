@@ -1,29 +1,28 @@
-// / <reference path="./jsx" />
-/** @jsxImportSource ./jsx */
+// / <reference path="../jsx" />
+/** @jsxImportSource ../jsx */
 
-import { useEffect, $$, $, getMeta, resolveChild, useContext, ObservableMaybe, type JSX, isObservable } from "woby"
-import { isFunction, isPromiseR, } from "./utils"
+import { useEffect, $$, $, getMeta, resolveChild, useContext, isObservable, type JSX, ObservableMaybe, Observable } from "woby"
+import { isFunction, isPromiseR, } from "../utils"
 import { Color, Object3D } from "three"
-import { threeContext, t, throttle, useThree, } from "./context"
-import { Three } from './three'
+import { threeContext, defaultContext, throttle, useThree, ThreeContext, } from "../hooks"
+import { Three } from '../three/three'
 import * as three from 'three'
-// import { consParams } from "./components/consParams"
-// import { objParams } from "./components/objParams"
-import {  setValue } from "./components/createElement"
-// import { defaults } from './components/defaults'
-// import { ConstructorParam } from "./components/ConstructorParam"
-// import { camelcase } from "./camelcase"
+import { setValue } from "../three/createElement"
 
-export type canvasProps = {
-    scene?: ObservableMaybe<three.Scene>,
-    camera?: ObservableMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
-    renderer?: ObservableMaybe<three.Renderer>,
-    width?: ObservableMaybe<number | string>,
-    height?: ObservableMaybe<number>,
+type Observable2Maybe<T> = {
+    [K in keyof T]: T[K] extends Observable<infer U>
+    ? ObservableMaybe<U>
+    : T[K] extends object
+    ? Observable2Maybe<T[K]>
+    : T[K];
+};
+
+export type CanvasProps = {
     children?: JSX.Child,
     noRender?: ObservableMaybe<boolean>
     background?: ObservableMaybe<string | number | Color | three.Texture | three.CubeTexture>
-}
+} & Partial<Observable2Maybe<ThreeContext>>
+
 
 const toColor = (color: ObservableMaybe<string | number | Color | three.Texture | three.CubeTexture>) => {
     const c = $$(color)
@@ -31,36 +30,26 @@ const toColor = (color: ObservableMaybe<string | number | Color | three.Texture 
         return c
     else if (c instanceof three.Texture)
         return c
-    // else if (c instanceof three.CubeTexture)
-    //     return c
 
     return new Color(c)
 }
 
 const param = ['scene', 'camera', 'renderer', 'width', 'height', 'children', 'noRender', 'background'] as const
-export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
+export const Canvas3D = ({ noRender, background, ...props }: CanvasProps) => {
     const sceneDict = new Map<Function, Object3D>()
 
     const meta = !isObservable(props.children) && !Array.isArray(props.children) ? (props.children ? [getMeta(props.children)] : []) : [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
 
     const consParam = param.toObject()
     const objParam = param
-    // const p = ConstructorParam(consParam, objParam, meta, props, 'Canvas3D')
 
-    const r = {
-    }
+    const r = {}
 
-    // // console.log(p, r)
-    // //set readonly variables to component
-    // fixReactiveProps(props, r)
 
     const { children, ...remainingProps } = props
     Object.keys(consParam).map(paramName => delete remainingProps[paramName])
 
     Object.keys(remainingProps).forEach((k) => {
-        // if (k.startsWith("on") || k == "dispose")
-        //     r[k] = remainingProps[k]
-
         if (k.includes("-"))
             setValue(r, k, remainingProps[k])
     })
@@ -70,9 +59,6 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
 
         if (!paramName) return
 
-        // if (props[paramName])
-        //     r[paramName] = props[paramName]
-        // else {
         const m = meta.filter(m => m && (m.Component + '').toLowerCase().endsWith(paramKey.toLowerCase()))[0]
         if (!r[paramName] && m?.Component) {
             const { props } = m as { props: { ref: JSX.Refs<any> } }
@@ -83,22 +69,21 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
 
             r[paramName] = Array.isArray(props.ref) ? props.ref[props.ref.length - 1] : props.ref  // jsx(m.Component as any, m.props as any)
         }
-        // }
     })
 
-    const R = () => {
+    const InContext = () => {
         const { renderer, scene, camera, domElement, width, height } = useThree()
         const raycaster = new Three.Raycaster()
         const pointer = new Three.Vector2()
         const meshObj: { obj?: any } = {}
 
-        //dispose all object 
-        // useEffect(() => () => {
-        //     //@ts-ignore
-        //     props.children.forEach(c => {
-        //         $$(scene).remove(c)
-        //     })
-        // })
+        // dispose all object 
+        useEffect(() => () => {
+            //@ts-ignore
+            props.children.forEach(c => {
+                $$(scene).remove(c)
+            })
+        })
 
         const onPointerMove = (event) => {
             event.stopPropagation()
@@ -128,7 +113,7 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
             raycaster.setFromCamera(pointer, $$(camera))
             const intersects = raycaster.intersectObjects($$(scene).children)
             if (intersects.length > 0) {
-                for (let i = 0; i < intersects.length; i++)
+                for (let i = 0; i < intersects.length; i++) {
                     //@ts-ignore
                     intersects[i].object.onClick?.(event)
                 }
@@ -193,43 +178,6 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
                 $$(scene).add(obj as any)
         })
 
-        // children.flat().forEach((obj) => {
-        // if (isFunction(obj) || isPromise(obj)) {
-
-        //     if (isPromise(obj)) {
-        //         (async () => {
-        //             r(await obj as any)
-
-        //         })()
-        //         $$(scene).add($$(r) as any)
-
-        //         return () => {
-        //             $$(scene).remove($$(r))
-
-        //             if ($$(r as any)?.geometry?.selfDispose)
-        //                 $$(r as any).geometry.dispose()
-
-        //             if ($$(r as any)?.material?.selfDispose)
-        //                 $$(r as any).material.dispose()
-        //         }
-        //     }
-        //     else {
-        // resolveChild(obj, (r) => $$(scene).add(r))
-
-        // return () => {
-        //     $$(scene).remove(r as any)
-
-        //     if ((r as any)?.geometry?.selfDispose)
-        //         (r as any).geometry.dispose()
-
-        //     if ((r as any)?.material?.selfDispose)
-        //         (r as any).material.dispose()
-        // }
-        //         }
-        //     }
-
-        //     else $$(scene).add(obj as any)
-        // })
 
         useEffect(() => {
             $$(domElement).addEventListener('pointermove', onPointerMove)
@@ -245,11 +193,10 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
         return domElement
     }
 
-    return (//@ts-ignore
-        <threeContext.Provider value={t(r)}>
-            <R />
-        </threeContext.Provider>
-    )
+    //@ts-ignore
+    return <threeContext.Provider value={defaultContext(r)}>
+        <InContext />
+    </threeContext.Provider>
 }
 
 // const canvas3d = Canvas3D
@@ -266,7 +213,7 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
 //     }
 // }
 
-declare module './three' {
+declare module '../three/three' {
     interface Three {
         Canvas3D: typeof Canvas3D
     }

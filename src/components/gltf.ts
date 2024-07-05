@@ -1,12 +1,12 @@
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { useMemo, $$, ObservableReadonly } from "woby"
-import { useAwait, useLoader } from "./context"
-import { Three } from './three'
+import { useAwait, useLoader } from "../hooks"
+import { Three } from '../three/three'
 import { Group } from "three"
-import { consParams } from "./components/consParams"
-import { objParams } from "./components/objParams"
-import { defaults } from "./components/defaults"
+import { consParams } from "../three/consParams"
+import { objParams } from "../three/objParams"
+import { defaults } from "../three/defaults"
 
 
 export interface GLTFProps {
@@ -30,7 +30,7 @@ export function Gltf(path: string): ObservableReadonly<Group> {
     return useMemo(() => $$(obj)?.scene)
 }
 
-declare module './three' {
+declare module '../three/three' {
     interface Three {
         Gltf: typeof Gltf
     }

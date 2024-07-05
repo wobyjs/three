@@ -1,8 +1,8 @@
 import { useEffect, $$, ObservableMaybe } from "woby"
-import { useFrame, useThree } from "./context"
+import { useFrame, useThree } from "../hooks"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import * as three from 'three'
-import { Three } from './three'
+import { Three } from '../three/three'
 
 // export type orbitProps = {
 //     camera?: three.Camera
@@ -44,7 +44,7 @@ export function orbitControls(camera?: three.Camera, domElement?: HTMLElement, e
 }
 
 
-declare module './three' {
+declare module '../three/three' {
     interface Three {
         OrbitControls: typeof orbitControls
     }

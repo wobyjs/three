@@ -1,6 +1,6 @@
 {
   "name": "woby-three",
-  "version": "0.2.0-beta",
+  "version": "0.2.1-beta",
   "description": "Voby Wrapper for ThreeJS",
   "//main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
@@ -61,8 +61,8 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
-    "@types/three": "^0.165.0",
-    "three": "^0.165.0",
+    "@types/three": "^0.166.0",
+    "three": "0.166.1",
     "woby": "workspace:../woby"
   },
   "dependencies": {

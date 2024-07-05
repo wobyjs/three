@@ -2,7 +2,7 @@
 // import * as three from "three"
 import { useRoot, type JSX, setChild } from "woby"
 // import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
-import { jsx } from "../components/ConstructorParam"
+import { jsx } from "../three/getConstructorParams"
 
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
