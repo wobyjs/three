@@ -161,7 +161,6 @@ export type Functionant<T> = T extends object
     }
     : T
 
-
 export type ExtendedColors<T> = { [K in keyof T]: T[K] extends THREE.Color | undefined ? FunctionMaybe<Color> : FunctionMaybe<T[K]> }
 // export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>
 export type Node<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>> & NodeProps<T, P>

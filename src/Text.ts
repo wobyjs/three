@@ -36,7 +36,7 @@ export const Text = ({ material: mat, text, pathToFont, ...props }: textProps): 
         g.selfDispose = true
         geometry(g)
         mesh(new Mesh(geometry(), $$(material)))
-        mesh().position.set(1, 1, 1)
+        $$(mesh).position.set(1, 1, 1)
 
     })
 

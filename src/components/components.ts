@@ -1,3 +1,6 @@
+// / <reference path="../jsx-runtime" />
+/** @jsxImportSource ../jsx-runtime */
+
 export const components = {
     canvas3D: "canvas3D",
     //animations

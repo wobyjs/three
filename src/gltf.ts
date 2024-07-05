@@ -21,7 +21,7 @@ export function Gltf(path: string): ObservableReadonly<Group> {
             useLoader(GLTFLoader, {
                 path: path, init: o => {
                     const dracoLoader = new DRACOLoader()
-                    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.6/")
+                    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
                     o.setDRACOLoader(dracoLoader)
                 }
             })

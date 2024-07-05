@@ -1,6 +1,7 @@
 // / <reference path="./jsx" />
 /** @jsxImportSource ./jsx */
 
+<<<<<<< HEAD
 import { useEffect, $$, $, getMeta, resolveChild, useContext, ObservableMaybe, type JSX, isObservable } from "woby"
 import { isFunction, isPromiseR, } from "./utils"
 import { Color, Object3D } from "three"
@@ -13,6 +14,25 @@ import {  setValue } from "./components/createElement"
 // import { defaults } from './components/defaults'
 // import { ConstructorParam } from "./components/ConstructorParam"
 // import { camelcase } from "./camelcase"
+=======
+import * as three from "three"
+//import * as Three from "three"
+
+import { useEffect, $$, $, getMeta, resolveChild, useContext, type JSX, FunctionMaybe } from "woby"
+import { isFunction, isPromise, } from "./components/utils"
+import { Color, Object3D } from "three"
+import { threeContext, t, throttle, } from "./hooks"
+import { Three } from "./three"
+
+
+export type canvasProps = {
+    scene?: FunctionMaybe<three.Scene>,
+    camera?: FunctionMaybe<three.OrthographicCamera | three.PerspectiveCamera>,
+    width?: FunctionMaybe<number | string>,
+    height?: FunctionMaybe<number | string>,
+    children?: JSX.Child,
+}
+>>>>>>> origin/main
 
 export type canvasProps = {
     scene?: ObservableMaybe<three.Scene>,
@@ -25,6 +45,7 @@ export type canvasProps = {
     background?: ObservableMaybe<string | number | Color | three.Texture | three.CubeTexture>
 }
 
+<<<<<<< HEAD
 const toColor = (color: ObservableMaybe<string | number | Color | three.Texture | three.CubeTexture>) => {
     const c = $$(color)
     if (c instanceof Color)
@@ -90,6 +111,14 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
         const { renderer, scene, camera, domElement, width, height } = useThree()
         const raycaster = new Three.Raycaster()
         const pointer = new Three.Vector2()
+=======
+export const Canvas3D = (props: canvasProps) => {
+    const sceneDict = new Map<JSX.Child, JSX.Child>()
+    const R = () => {
+        const { renderer, scene, camera, domElement, width, height } = useContext(threeContext)
+        const raycaster = new three.Raycaster()
+        const pointer = new three.Vector2()
+>>>>>>> origin/main
         const meshObj: { obj?: any } = {}
 
         //dispose all object 
@@ -128,10 +157,13 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
             raycaster.setFromCamera(pointer, $$(camera))
             const intersects = raycaster.intersectObjects($$(scene).children)
             if (intersects.length > 0) {
-                for (let i = 0; i < intersects.length; i++) {
+                for (let i = 0; i < intersects.length; i++)
                     //@ts-ignore
                     intersects[i].object.onClick?.(event)
+<<<<<<< HEAD
                 }
+=======
+>>>>>>> origin/main
             }
         }
 
@@ -141,38 +173,71 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
 
             requestAnimationFrame(() => animate(context))
 
+<<<<<<< HEAD
             if (!$$(noRender))
                 // useEffect(() => {
                 $$(renderer).render($$(scene), $$(camera))
             // })
+=======
+            useEffect(() => { $$(renderer).render($$(scene), $$(camera)) })
+>>>>>>> origin/main
         }
 
         //@ts-ignore
         const meta = [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
 
+<<<<<<< HEAD
         useEffect(() => { $$(renderer)?.setSize($$(width), $$(height)) })
         useEffect(() => { $$(camera)?.position && ($$(camera).position.z = 5) })
 
         useEffect(() => { if ($$(background)) $$(scene).background = toColor($$(background)) })
+=======
+        $$(renderer).setSize($$(width), $$(height))
+        $$(camera).position.z = 5
+        $$(scene).background = new Color("white")
+>>>>>>> origin/main
 
         const r = $<Object3D>()
         const flatChildren = [props.children].flat()
 
+<<<<<<< HEAD
         flatChildren.forEach(obj => {
             if (isFunction(obj) || isPromiseR(obj))
                 if (isPromiseR(obj))
+=======
+        flatChildren.forEach((obj) => {
+            if (isFunction(obj) || isPromise(obj))
+                if (isPromise(obj))
+>>>>>>> origin/main
                     useEffect(() => {
                         (async () => {
                             r(await obj as any)
                             $$(scene).add($$(r) as any)
                         })()
                     })
+<<<<<<< HEAD
                 else resolveChild(obj, val => {
                     //used to remove existing objects
                     if (sceneDict.has(obj as any)) {
                         if (sceneDict.get(obj as any) !== (val as any) && !!sceneDict.get(obj as any)) {
                             $$(scene).remove(sceneDict.get(obj as any))
                             sceneDict.set(obj as any, val as any)
+=======
+                else
+                    resolveChild(obj, (val) => {
+                        //used to remove existing objects
+                        if (!val) return
+
+                        if (sceneDict.has(obj)) {
+                            if (sceneDict.get(obj) != val as any && !!sceneDict.get(obj)) {
+                                $$(scene).remove(sceneDict.get(obj))
+                                sceneDict.set(obj, val as any)
+                            }
+                            else {
+                                $$(scene).add(val)
+                                sceneDict.set(obj, val as any)
+                            }
+>>>>>>> origin/main
                         }
                     }
 
@@ -181,6 +246,7 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
                         else if (val.constructor?.name.toLowerCase().endsWith('renderer'))
                             useThree('renderer', val as any)
                         else {
+<<<<<<< HEAD
                             // if (val.constructor?.name.toLowerCase().endsWith('camera'))
                             //     useThree('camera', val as any)
 
@@ -191,6 +257,20 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
                 })
             else if (!!obj)
                 $$(scene).add(obj as any)
+=======
+                            try {
+                                if (val instanceof Three.Object3D)
+                                    $$(scene).add(val)
+                            }
+                            catch (ex) {
+                                debugger
+                            }
+                            sceneDict.set(obj, val)
+                        }
+                    })
+            else $$(scene).add(obj as any)
+
+>>>>>>> origin/main
         })
 
         // children.flat().forEach((obj) => {
@@ -201,10 +281,10 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
         //             r(await obj as any)
 
         //         })()
-        //         $$(scene).add(r() as any)
+        //         $$(scene).add($$(r) as any)
 
         //         return () => {
-        //             $$(scene).remove(r())
+        //             $$(scene).remove($$(r))
 
         //             if ($$(r as any)?.geometry?.selfDispose)
         //                 $$(r as any).geometry.dispose()
@@ -231,6 +311,7 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
         //     else $$(scene).add(obj as any)
         // })
 
+<<<<<<< HEAD
         useEffect(() => {
             $$(domElement).addEventListener('pointermove', onPointerMove)
             $$(domElement).addEventListener('pointerdown', onClick)
@@ -240,6 +321,10 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
                 $$(domElement).removeEventListener('pointerdown', onClick)
             }
         })
+=======
+        $$(domElement).addEventListener('pointermove', onPointerMove)
+        $$(domElement).addEventListener('pointerdown', onClick)
+>>>>>>> origin/main
 
         animate(useContext(threeContext))
         return domElement
@@ -252,6 +337,7 @@ export const Canvas3D = ({ noRender, background, ...props }: canvasProps) => {
     )
 }
 
+<<<<<<< HEAD
 // const canvas3d = Canvas3D
 
 
@@ -273,5 +359,8 @@ declare module './three' {
 }
 
 //@ts-ignore
+=======
+
+>>>>>>> origin/main
 Three.Canvas3D = Canvas3D
 
