@@ -25,7 +25,7 @@
   },
   "scripts": {
     "git": "git add . && git commit -m \"Bump version\" && git push",
-    "bump": "pnpm version patch --preid beta",
+    "bump": "pnpm version patch",
     "npmjs": "pnpm publish",
     "release": "run-s -c git bump npmjs",
     "css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
