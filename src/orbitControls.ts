@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, $$, ObservableMaybe } from "woby"
 import { useFrame, useThree } from "./context"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
@@ -35,30 +34,6 @@ export function orbitControls(camera?: three.Camera, domElement?: HTMLElement, e
 
         const cameraControls = new OrbitControls($$(cam), $$(dom))
 
-=======
-import { useEffect, $$, ObservableMaybe, type JSX } from "woby"
-import { useFrame, useThree } from "./hooks"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-// import { OrbitControls } from "three/addons/controls/OrbitControls"
-import { Three } from "./three"
-import * as THREE from 'three'
-
-// export type orbitProps = {
-//     camera?: THREE.Camera
-//     domElement?: JSX.Element
-//     enableDamping?: ObservableMaybe<boolean>
-//     // onChange?: (e?: OrbitControlsChangeEvent) => void
-//     // onEnd?: (e?: Event) => void
-//     // onStart?: (e?: Event) => void
-// } & OrbitControls
-
-export function orbitControls(camera?: THREE.Camera, domElement?: JSX.Element, enableDamping?: ObservableMaybe<boolean>) {
-    const cam = useThree("camera")
-    const dom = domElement ?? useThree("domElement")
-    const cameraControls = new OrbitControls($$(cam), $$(dom))
-
-    useEffect(() => {
->>>>>>> origin/main
         cameraControls.enableDamping = $$(enableDamping)
 
         if (cameraControls.enableDamping == true)
@@ -66,7 +41,6 @@ export function orbitControls(camera?: THREE.Camera, domElement?: JSX.Element, e
         else
             cameraControls.update()
     })
-<<<<<<< HEAD
 }
 
 
@@ -74,8 +48,6 @@ declare module './three' {
     interface Three {
         OrbitControls: typeof orbitControls
     }
-=======
->>>>>>> origin/main
 }
 
 //@ts-ignore

@@ -31,11 +31,7 @@
         "noPropertyAccessFromIndexSignature": false,
         "noUnusedLocals": true,
         "noUnusedParameters": false,
-        "rootDir": "./src", /* Specify the root folder within your source files. */
         "outDir": "./dist",
-        "declarationMap": true,
-        "declaration": true,
-        "declarationDir": "./dist/types",
         "pretty": true,
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
@@ -50,12 +46,8 @@
         "noImplicitAny": false,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
-<<<<<<< HEAD
         "rootDir": "./src",
         "composite": true,
-=======
-        // "composite": true,
->>>>>>> origin/main
         // "paths": {
         //     "woby/jsx-runtime": [
         //         "../../../woby/dist/jsx"
@@ -70,15 +62,10 @@
         "./dist/types",
         "./src/demo/",
         "*.test.ts*",
-<<<<<<< HEAD
         "vite.config.*ts",
         "vite.config.*.*ts",
         "node_modules/",
         "src/demo",
         "dist"
-=======
-        "vite.*.*ts",
-        "node_modules/"
->>>>>>> origin/main
     ]
 }
