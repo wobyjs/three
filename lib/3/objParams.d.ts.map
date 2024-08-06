@@ -1,0 +1,1 @@
+{"version":3,"file":"objParams.d.ts","sourceRoot":"","sources":["../../code/lib/3/objParams.ts"],"names":[],"mappings":"AAAA,OAAO,qBAAqB,CAAA;AAE5B,MAAM,WAAW,SAAS;CAAI;AAE9B,OAAO,CAAC,MAAM,CAAC;IACX,UAAU,MAAM;QACZ,iBAAiB,EAAE,SAAS,CAAA;KAC/B;CACJ;AAMD,eAAO,MAAM,SAAS,EAAE,SAAoC,CAAA"}

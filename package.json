@@ -3,44 +3,60 @@
   "version": "0.2.3",
   "description": "Woby Wrapper for ThreeJS",
   "//main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "module": "./index.js",
   "//browser": "./dist/index.umd.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs.js",
-      "import": "./dist/index.es.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./index.js",
+      "import": "./index.js",
+      "types": "./index.d.ts"
     },
     "./jsx-runtime": {
-      "require": "./dist/jsx-runtime.cjs.js",
-      "import": "./dist/jsx-runtime.es.js",
-      "types": "./dist/types/jsx/jsx-runtime.d.ts"
+      "require": "./lib/jsx-runtime.js",
+      "import": "./lib/jsx-runtime.js",
+      "types": "./lib/jsx/jsx-runtime.d.ts"
     },
     "./jsx-dev-runtime": {
-      "require": "./dist/jsx-runtime.cjs.js",
-      "import": "./dist/jsx-runtime.es.js",
-      "types": "./dist/types/jsx/runtime.d.ts"
-    }
+      "require": "./lib/jsx-runtime.js",
+      "import": "./lib/jsx-runtime.js",
+      "types": "./lib/jsx/runtime.d.ts"
+    },
+    "./examples/fonts/*": "./examples/fonts/*",
+    "./examples/jsm/*": "./examples/jsm/*",
+    "./addons": "./examples/jsm/Addons.js",
+    "./addons/*": "./examples/jsm/*",
+    "./src/*": "./src/*",
+    "./lib/*": "./lib/*",
+    "./3": "./3/index.js",
+    "./nodes": "./examples/jsm/nodes/*"
   },
   "scripts": {
     "git": "git add . && git commit -m \"Bump version\" && git push",
     "bump": "pnpm version patch",
     "npmjs": "pnpm publish",
     "release": "run-s -c git bump npmjs",
-    "css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "css:watch": "tailwindcss -i ./code/lib/input.css -o ./dist/output.css --watch",
+    "css": "tailwindcss -i ./code/lib/input.css -o ./dist/output.css",
     "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
     "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose --watch",
     "watch": "run-p build:watch css:watch",
-    "build": "run-s css build:vite css declaration",
-    "build:web": "vite build --config=vite.config.web.ts --force --mode production",
-    "web": "vite preview --config=vite.config.web.ts --host",
+    "build": "run-s clean:all css build:tsc css",
     "dev:only": "vite --config=vite.config.web.ts --force --mode dev --host",
     "dev": "run-p css:watch dev:only",
-    "build:vite": "vite build",
-    "build:watch": "vite build --watch",
-    "preview": "vite preview --host"
+    "build:tsc": "tsc --build --force --declaration --declarationMap  --verbose",
+    "watch:tsc": "tsc --build --force --declaration --declarationMap  --verbose --watch",
+    "clean:3": "if exist 3 (rd 3 /s /q)",
+    "clean:index": "(del index.* /q)",
+    "clean:3types": "(del three-types.* /q)",
+    "clean:dist": "if exist dist (rd dist /s /q)",
+    "clean:examples": "if exist examples (rd examples /s /q)",
+    "clean:jsx": "if exist jsx-runtime (rd jsx-runtime /s /q)",
+    "clean:lib": "if exist lib (rd lib /s /q)",
+    "clean:src": "if exist src (rd src /s /q)",
+    "clean:3ts": "if exist 3.* (del 3.*)",
+    "clean:3dts": "if exist 3.*.* (del 3.*.*)",
+    "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:lib clean:src clean:3ts clean:3dts"
   },
   "repository": {
     "type": "git",
@@ -61,8 +77,8 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
-    "@types/three": "^0.166.0",
-    "three": "^0.166.1",
+    "@types/three": "^0.167.1",
+    "three": "^0.167.1",
     "woby": "workspace:../woby"
   },
   "dependencies": {
