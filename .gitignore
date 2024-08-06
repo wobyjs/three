@@ -1,2 +1,11 @@
 node_modules
 dist/
+3/
+index.*
+three-types.*
+examples/
+jsx/
+lib/
+src/
+3.*
+3.*.*
