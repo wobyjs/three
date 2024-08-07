@@ -1,1 +1,0 @@
-{"version":3,"file":"consParams.d.ts","sourceRoot":"","sources":["../../code/lib/3/consParams.ts"],"names":[],"mappings":"AAAA,OAAO,qBAAqB,CAAA;AAE5B,MAAM,WAAW,UAAU;CAAI;AAE/B,OAAO,CAAC,MAAM,CAAC;IACX,UAAU,MAAM;QACZ,kBAAkB,EAAE,UAAU,CAAA;KACjC;CACJ;AAMD,eAAO,MAAM,UAAU,EAAE,UAAsC,CAAA"}
