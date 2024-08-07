@@ -1,1 +1,0 @@
-//# sourceMappingURL=ParametricGeometries_TubeGeometry.d.ts.map
