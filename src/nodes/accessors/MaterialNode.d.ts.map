@@ -1,1 +1,0 @@
-{"version":3,"file":"MaterialNode.d.ts","sourceRoot":"","sources":["../../../code/src/nodes/accessors/MaterialNode.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,EAAE,EAAE,iBAAiB,EAAE,MAAM,2CAA2C,CAAA;AAC5F,OAAO,EAAE,YAAY,EAAE,MAAM,sBAAsB,CAAA;AAWnD,MAAM,MAAM,iBAAiB,GAAG,YAAY,CAAC,aAAa,EAAE,OAAO,aAAa,EAAE;IAAE,KAAK,CAAC,EAAE,iBAAiB,CAAC;CAAE,CAAC,CAAA"}
