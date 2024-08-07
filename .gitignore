@@ -3,9 +3,9 @@ dist/
 3/
 index.*
 three-types.*
-examples/
+examples/**
 jsx/
 lib/
-src/
+src/**
 3.*
 3.*.*
