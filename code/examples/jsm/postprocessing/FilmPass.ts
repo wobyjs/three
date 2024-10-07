@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/FilmPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        filmPass: string[]
+        filmPass: typeof filmPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        filmPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        filmPass: typeof _filmPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\FilmPass.d.ts
 
-consParams.filmPass = [
+
+const filmPass = ([
     'intensity',
     'grayscale',
-].distinct()
+] as const).distinct()
+consParams.filmPass = filmPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\FilmPass.d.ts    
 
-objParams.filmPass = [...objParams.pass,
+
+const _filmPass = ([...objProps.pass,
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.filmPass = _filmPass
 
 export type FilmPassProps = Node<FilmPass, typeof FilmPass, { intensity?: number; grayscale?: boolean; }>
 

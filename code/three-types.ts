@@ -11,24 +11,43 @@ export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? nev
 // export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
 export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
 
+// type MethodKeysWithParams<T> = {
+//     [K in keyof T]: T[K] extends (arg: any, ...args: any[]) => any ? K : never
+// }[keyof T]
+
 type MethodKeysWithParams<T> = {
-    [K in keyof T]: T[K] extends (arg: any, ...args: any[]) => any ? K : never
-}[keyof T]
+    [K in keyof T]:
+    T[K] extends (arg: any, ...args: any[]) => any
+    ? K
+    : never
+}[keyof T];
+
 
 type PropertyKeys<T> = {
     [K in keyof T]: T[K] extends Function ? never : K
 }[keyof T]
 
+
 type FunctionToProperty<T> = {
-    [K in MethodKeysWithParams<T>]: T[K] extends (...args: infer P) => any ? FunctionMaybe<P> : never;
+    [K in MethodKeysWithParams<T>]:
+    K extends `on${string}` // Exclude keys that start with "on"
+    ? T[K]
+    :
+    T[K] extends (...args: infer P) => any ? FunctionMaybe<P | P[]> : never;
 }
 
 type AddProperties<T> = {
-    [K in PropertyKeys<T>]: T[K]
+    [K in PropertyKeys<T>]: FunctionMaybe<T[K]>
 }
 
 //type Setter<T, C> = FunctionToProperty<T> & AddProperties<T> & C
-type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & C & E
+/**
+ * T type
+ * C constructor
+ * E excluded type
+ */
+// type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & Functionant<C> & E
+type Setter<T, C> = FunctionToProperty<T> & AddProperties<T> & Functionant<C>
 
 export type WrapAsString<T> = {
     [K in keyof T]: K;
@@ -37,7 +56,7 @@ export type WrapAsString<T> = {
 export type AttachFnType = (parent: Instance, self: Instance) => () => void
 export type AttachType = string | AttachFnType
 
-export type EventHandlers = {
+export type EventHandlers<T> = {
     onClick?: (event: ThreeEvent<MouseEvent>) => void
     onContextMenu?: (event: ThreeEvent<MouseEvent>) => void
     onDoubleClick?: (event: ThreeEvent<MouseEvent>) => void
@@ -51,6 +70,7 @@ export type EventHandlers = {
     onPointerMissed?: (event: MouseEvent) => void
     onPointerCancel?: (event: ThreeEvent<PointerEvent>) => void
     onWheel?: (event: ThreeEvent<WheelEvent>) => void
+    onFrame?: (instance: T) => void
 }
 
 
@@ -85,9 +105,8 @@ export interface IntersectionEvent<TSourceEvent> extends Intersection {
 
 export type ThreeEvent<TEvent> = IntersectionEvent<TEvent> & Properties<TEvent>
 
-
 export type BaseInstance = Omit<THREE.Object3D, 'children' | 'attach' | 'add' | 'remove' | 'raycast'> & {
-    children: Instance[]
+    children?: Instance[]
     remove: (...object: Instance[]) => Instance
     add: (...object: Instance[]) => Instance
     raycast?: (raycaster: THREE.Raycaster, intersects: THREE.Intersection[]) => void
@@ -96,7 +115,10 @@ export type Instance = BaseInstance & { [key: string]: any }
 /**
  * If **T** contains a constructor, @see ConstructorParameters must be used, otherwise **T**.
  */
-type Args<T> = T extends new (...args: any) => any ? ConstructorParameters<T> : T
+// type Args<T> = T extends new (...args: any) => any ? ConstructorParameters<T> : T
+type Args<T> = T extends new (...args: infer P) => any
+    ? { [K in keyof P]: Functionant<P[K]> }
+    : Functionant<T>
 
 export type Euler = THREE.Euler | Parameters<THREE.Euler['set']>
 export type Matrix4 = THREE.Matrix4 | Parameters<THREE.Matrix4['set']> | Readonly<THREE.Matrix4['set']>
@@ -122,6 +144,16 @@ export type Quaternion = THREE.Quaternion | Parameters<THREE.Quaternion['set']>
 
 export type AttachCallback = string | ((child: any, parentInstance: any) => void)
 
+export type ObservantMaybe<T> = T extends object
+    ? {
+        [K in keyof T]: T[K] extends Function
+        ? T[K]
+        : T[K] extends ObservableMaybe<infer U>
+        ? ObservableMaybe<U>
+        : ObservableMaybe<T[K]>
+    }
+    : T
+
 export interface NodeProps<T, P> {
     // attach?: AttachType
     /** Constructor arguments */
@@ -143,20 +175,23 @@ export interface NodeProps<T, P> {
 
 // export type UnobservantMaybe<T> = Unobservant<T> | T
 
+type Func<T = unknown> = () => T;
 /** Make every properties FunctionMayBe */
 export type Functionant<T> = T extends object
     ? { [K in keyof T]:
+        T[K] extends Func<infer U> ? Func<U> :
+        T[K] extends FunctionMaybe<infer U> ? FunctionMaybe<U> :
         T[K] extends ObservableMaybe<infer U> ? ObservableMaybe<U> : //FunctionMaybe<U> : //ObservableMaybe<U> :
         T[K] extends Observable<infer U> ? Observable<U> : //FunctionMaybe<U> : //ObservableMaybe<U> :
-        T[K] extends FunctionMaybe<infer U> ? FunctionMaybe<U> :
         T[K] extends () => infer U ? () => U :
         T[K] extends Function ? T[K] : FunctionMaybe<T[K]>
     }
     : T
 
-export type ExtendedColors<T> = { [K in keyof T]: T[K] extends THREE.Color | undefined ? FunctionMaybe<Color> : FunctionMaybe<T[K]> }
+export type ExtendedColors<T> = { [K in keyof T]: T[K] extends THREE.Color | undefined ? THREE.ColorRepresentation : T[K] }
 // export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>
-export type Node<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>> & NodeProps<T, P>
+// export type Node<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>> & NodeProps<T, P>
+export type Node<T, P, C> = Partial<Setter<ExtendedColors<T>, C>> & NodeProps<T, P>
 
 // export type Node<T, P, C> = Partial<Functionant<Setter<Overwrite<T, NodeProps<T, P>>, C>>>
 
@@ -164,6 +199,7 @@ export type Object3DNode<T, P, C> = Partial<Setter<Overwrite<
     Node<T, P, C>,
     {
         position?: FunctionMaybe<Vector3 | number[]>
+        center?: FunctionMaybe<Vector3 | number[]>
         up?: FunctionMaybe<VectorLike<THREE.Vector3>>
         scale?: FunctionMaybe<VectorLike<THREE.Vector3>>
         rotation?: FunctionMaybe<Euler>
@@ -173,7 +209,7 @@ export type Object3DNode<T, P, C> = Partial<Setter<Overwrite<
         // dispose?: (() => void) | null,
         selfDispose?: FunctionMaybe<boolean>
     }
-> & EventHandlers, C>>
+>, C>> & EventHandlers<T>
 
 //in example
 //node_modules\@types\three\examples\jsm\animation

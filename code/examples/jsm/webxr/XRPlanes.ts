@@ -4,7 +4,7 @@ import { XRPlanes } from 'three/examples/jsm/webxr/XRPlanes.js'
 export * from 'three/examples/jsm/webxr/XRPlanes.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrPlanes: string[]
+        xrPlanes: typeof xrPlanes
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrPlanes: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrPlanes: typeof _xrPlanes
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRPlanes.d.ts
 
-consParams.xrPlanes = [
+
+const xrPlanes = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.xrPlanes = xrPlanes
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRPlanes.d.ts    
 
-objParams.xrPlanes = [...objParams.object3d,
-].distinct()
+
+const _xrPlanes = ([...objProps.object3d,
+] as const).distinct()
+objProps.xrPlanes = _xrPlanes
 
 export type XRPlanesProps = Node<XRPlanes, typeof XRPlanes, { renderer: WebGLRenderer; }>
 

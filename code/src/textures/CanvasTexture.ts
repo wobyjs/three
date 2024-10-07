@@ -7,8 +7,9 @@ import {
 } from 'three/src/constants.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -29,17 +30,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        canvasTexture: string[]
+        canvasTexture: typeof canvasTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        canvasTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        canvasTexture: typeof _canvasTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CanvasTexture.d.ts
+
 /**
  * Creates a texture from a {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas element}.
  * @remarks
@@ -50,7 +51,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CanvasTexture.js}
  */
 
-consParams.canvasTexture = [
+const canvasTexture = ([
     /**
      * This creates a new {@link THREE.CanvasTexture} object.
      * @param canvas The HTML canvas element from which to load the texture.
@@ -73,9 +74,10 @@ consParams.canvasTexture = [
     'format',
     'type',
     'anisotropy',
-].distinct()
+] as const).distinct()
+consParams.canvasTexture = canvasTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CanvasTexture.d.ts
+
 /**
  * Creates a texture from a {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas | canvas element}.
  * @remarks
@@ -86,8 +88,9 @@ consParams.canvasTexture = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CanvasTexture.js | Source}
  */
 
-objParams.canvasTexture = [...objParams.texture,
-].distinct()
+const _canvasTexture = ([...objProps.texture,
+] as const).distinct()
+objProps.canvasTexture = _canvasTexture
 
 export type CanvasTextureProps = Node<CanvasTexture, typeof CanvasTexture, { canvas: TexImageSource | OffscreenCanvas; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; }>
 

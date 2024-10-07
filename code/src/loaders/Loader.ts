@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { Loader } from 'three/src/loaders/Loader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 
 declare module '../../lib/3/three'
@@ -25,23 +26,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        loader: string[]
+        loader: typeof loader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        loader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        loader: typeof _loader
     }
 }
 
 
-consParams.loader = [
+const loader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.loader = loader
 
 
-objParams.loader = [
+const _loader = ([
     /**
      * @default 'anonymous'
      */
@@ -63,7 +65,8 @@ objParams.loader = [
      * @default {}
      */
     'requestHeader',
-].distinct()
+] as const).distinct()
+objProps.loader = _loader
 
 export type LoaderProps = Node<Loader, typeof Loader, { manager?: LoadingManager }>
 

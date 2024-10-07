@@ -5,7 +5,7 @@ import StoargeArrayElementNode from 'three/src/nodes/utils/StorageArrayElementNo
 export { StoargeArrayElementNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './ArrayElementNode'
 
@@ -28,29 +28,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        storageArrayElementNode: string[]
+        storageArrayElementNode: typeof storageArrayElementNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        storageArrayElementNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        storageArrayElementNode: typeof _storageArrayElementNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\StoargeArrayElementNode.d.ts
 
-consParams.storageArrayElementNode = [
+
+const storageArrayElementNode = ([
     'storageBufferNode',
     'indexNode',
-].distinct()
+] as const).distinct()
+consParams.storageArrayElementNode = storageArrayElementNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\StoargeArrayElementNode.d.ts    
 
-objParams.storageArrayElementNode = [...objParams.arrayElementNode,
+
+const _storageArrayElementNode = ([...objProps.arrayElementNode,
     'node',
     'storageBufferNode',
-].distinct()
+] as const).distinct()
+objProps.storageArrayElementNode = _storageArrayElementNode
 
 export type StoargeArrayElementNodeProps = Node<StoargeArrayElementNode, typeof StoargeArrayElementNode, { storageBufferNode: StorageBufferNode; indexNode: ENode; }>
 

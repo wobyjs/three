@@ -4,7 +4,7 @@ import IrradianceNode from 'three/src/nodes/lighting/IrradianceNode.js'
 export { IrradianceNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        irradianceNode: string[]
+        irradianceNode: typeof irradianceNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        irradianceNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        irradianceNode: typeof _irradianceNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\IrradianceNode.d.ts
 
-consParams.irradianceNode = [
+
+const irradianceNode = ([
     'node',
-].distinct()
+] as const).distinct()
+consParams.irradianceNode = irradianceNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\IrradianceNode.d.ts    
 
-objParams.irradianceNode = [...objParams.lightingNode,
+
+const _irradianceNode = ([...objProps.lightingNode,
     'node',
-].distinct()
+] as const).distinct()
+objProps.irradianceNode = _irradianceNode
 
 export type IrradianceNodeProps = Node<IrradianceNode, typeof IrradianceNode, { node?: ENode | null; }>
 

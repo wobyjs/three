@@ -5,8 +5,9 @@ import { SkeletonHelper } from 'three/src/helpers/SkeletonHelper.js'
 export { SkeletonHelper } from 'three/src/helpers/SkeletonHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        skeletonHelper: string[]
+        skeletonHelper: typeof skeletonHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        skeletonHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        skeletonHelper: typeof _skeletonHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\SkeletonHelper.d.ts
+
 /**
  * A helper object to assist with visualizing a {@link Skeleton}
  * @remarks
@@ -54,16 +55,17 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/SkeletonHelper.js}
  */
 
-consParams.skeletonHelper = [
+const skeletonHelper = ([
     /**
      * Create a new instance of {@link SkeletonHelper}
      * @param object Usually an instance of {@link THREE.SkinnedMesh}.
      * However, any instance of {@link THREE.Object3d} can be used if it represents a hierarchy of {@link Bone}s (via {@link THREE.Object3d.children.children}).
      */
     'object',
-].distinct()
+] as const).distinct()
+consParams.skeletonHelper = skeletonHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\SkeletonHelper.d.ts
+
 /**
  * A helper object to assist with visualizing a {@link Skeleton | Skeleton}
  * @remarks
@@ -80,7 +82,7 @@ consParams.skeletonHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/SkeletonHelper.js | Source}
  */
 
-objParams.skeletonHelper = [...objParams.lineSegments,
+const _skeletonHelper = ([...objProps.lineSegments,
     /**
      * The list of bones that the helper renders as {@link Line | Lines}.
      */
@@ -99,7 +101,8 @@ objParams.skeletonHelper = [...objParams.lineSegments,
      * @defaultValue `false`.
      */
     'matrixAutoUpdate',
-].distinct()
+] as const).distinct()
+objProps.skeletonHelper = _skeletonHelper
 
 export type SkeletonHelperProps = Object3DNode<SkeletonHelper, typeof SkeletonHelper, { object: SkinnedMesh | Object3D; }>
 

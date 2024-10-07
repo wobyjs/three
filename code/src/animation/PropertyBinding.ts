@@ -1,10 +1,11 @@
-import { Object3DNode } from '../../three-types'
+import { Node } from '../../three-types'
 import { PropertyBinding } from 'three/src/animation/PropertyBinding.js'
 export { PropertyBinding } from 'three/src/animation/PropertyBinding.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,36 +26,38 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        propertyBinding: string[]
-        parseTrackNameResults: string[]
+        propertyBinding: typeof propertyBinding
+        parseTrackNameResults: typeof parseTrackNameResults
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        propertyBinding: string[]
-        parseTrackNameResults: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        propertyBinding: typeof _propertyBinding
+        parseTrackNameResults: typeof _parseTrackNameResults
     }
 }
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\PropertyBinding.d.ts
 
-consParams.parseTrackNameResults = [
+
+const parseTrackNameResults = ([
     'nodeName',
     'objectName',
     'objectIndex',
     'propertyName',
     'propertyIndex',
-].distinct()
+] as const).distinct()
+consParams.parseTrackNameResults = parseTrackNameResults
 
 
-consParams.propertyBinding = [
+const propertyBinding = ([
     'rootNode',
     'path',
     'parsedPath',
-].distinct()
+] as const).distinct()
+consParams.propertyBinding = propertyBinding
 
 
-objParams.propertyBinding = [
+const _propertyBinding = ([
     'path',
     'parsedPath',
     'node',
@@ -63,19 +66,21 @@ objParams.propertyBinding = [
     'Versioning',
     'GetterByBindingType',
     'SetterByBindingTypeAndVersioning',
-].distinct()
+] as const).distinct()
+objProps.propertyBinding = _propertyBinding
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\PropertyBinding.d.ts
 
-objParams.parseTrackNameResults = [
+
+const _parseTrackNameResults = ([
     'nodeName',
     'objectName',
     'objectIndex',
     'propertyName',
     'propertyIndex',
-].distinct()
+] as const).distinct()
+objProps.parseTrackNameResults = _parseTrackNameResults
 
-export type PropertyBindingProps = Object3DNode<PropertyBinding, typeof PropertyBinding, { targetGroup: any; path: any; parsedPath?: any; }>
+export type PropertyBindingProps = Node<PropertyBinding, typeof PropertyBinding, { targetGroup: any; path: any; parsedPath?: any; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

@@ -6,8 +6,9 @@ import { TubeGeometry } from 'three/src/geometries/TubeGeometry.js'
 export { TubeGeometry } from 'three/src/geometries/TubeGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -28,17 +29,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        tubeGeometry: string[]
+        tubeGeometry: typeof tubeGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        tubeGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        tubeGeometry: typeof _tubeGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\TubeGeometry.d.ts
+
 /**
  * Creates a tube that extrudes along a 3d curve.
  * @example
@@ -67,7 +68,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TubeGeometry.js}
  */
 
-consParams.tubeGeometry = [
+const tubeGeometry = ([
     /**
      * Create a new instance of {@link TubeGeometry}
      * @param path A 3d path that inherits from the {@link THREE.Curve} base class.
@@ -84,9 +85,10 @@ consParams.tubeGeometry = [
     'radius',
     'radialSegments',
     'closed',
-].distinct()
+] as const).distinct()
+consParams.tubeGeometry = tubeGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\TubeGeometry.d.ts
+
 /**
  * Creates a tube that extrudes along a 3d curve.
  * @example
@@ -115,7 +117,7 @@ consParams.tubeGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TubeGeometry.js | Source}
  */
 
-objParams.tubeGeometry = [...objParams.bufferGeometry, ...objParams.parametricGeometry,
+const _tubeGeometry = ([...objProps.bufferGeometry, ...objProps.parametricGeometry,
     /**
      * An array of {@link THREE.Vector3 | Vector3} tangents
      */
@@ -128,7 +130,8 @@ objParams.tubeGeometry = [...objParams.bufferGeometry, ...objParams.parametricGe
      * An array of {@link THREE.Vector3 | Vector3} binormals
      */
     'binormals',
-].distinct()
+] as const).distinct()
+objProps.tubeGeometry = _tubeGeometry
 
 export type TubeGeometryProps = BufferGeometryNode<TubeGeometry, typeof TubeGeometry, { path?: Curve<Vector2 | Vector3>; tubularSegments?: number; radius?: number; radialSegments?: number; closed?: boolean; }>
 

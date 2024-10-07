@@ -3,7 +3,7 @@ import ReflectorNode, { ReflectorNodeParameters } from 'three/src/nodes/utils/Re
 export { ReflectorNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../lib/three/extensions'
 import '../accessors/TextureNode'
@@ -32,14 +32,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        reflectorNode: string[]
-        reflectorNodeParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        reflectorNode: typeof _reflectorNode
+        reflectorNodeParameters: typeof _reflectorNodeParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\ReflectorNode.d.ts
+
 
 consParams.reflectorNodeParameters = ([
     'target',
@@ -51,24 +51,26 @@ consParams.reflectorNodeParameters = ([
 
 consParams.reflectorNode = { ...consParams.reflectorNodeParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\ReflectorNode.d.ts
 
-objParams.reflectorNodeParameters = [
+
+const _reflectorNodeParameters = ([
     'target',
     'resolution',
     'generateMipmaps',
     'bounces',
-].distinct()
+] as const).distinct()
+objProps.reflectorNodeParameters = _reflectorNodeParameters
 
 
-objParams.reflectorNode = [...objParams.textureNode,
+const _reflectorNode = ([...objProps.textureNode,
     'target',
     'resolution',
     'generateMipmaps',
     'bounces',
     'virtualCameras',
     'renderTargets',
-].distinct()
+] as const).distinct()
+objProps.reflectorNode = _reflectorNode
 
 export type ReflectorNodeProps = Node<ReflectorNode, typeof ReflectorNode, ReflectorNodeParameters>
 

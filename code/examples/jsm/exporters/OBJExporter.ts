@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/OBJExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        objExporter: string[]
+        objExporter: typeof objExporter
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        objExporter: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        objExporter: typeof _objExporter
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\OBJExporter.d.ts
 
-consParams.objExporter = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\OBJExporter.d.ts
+const objExporter = ([
+] as const).distinct()
+consParams.objExporter = objExporter
 
-objParams.objExporter = [
-].distinct()
+
+
+const _objExporter = ([
+] as const).distinct()
+objProps.objExporter = _objExporter
 
 export type OBJExporterProps = Node<OBJExporter, typeof OBJExporter, {}>
 

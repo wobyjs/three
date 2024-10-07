@@ -3,8 +3,9 @@ import { EventDispatcher } from 'three/src/core/EventDispatcher.js'
 export { EventDispatcher } from 'three/src/core/EventDispatcher.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,34 +26,36 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        eventDispatcher: string[]
-        baseEvent: string[]
-        event: string[]
+        eventDispatcher: typeof eventDispatcher
+        baseEvent: typeof baseEvent
+        event: typeof event
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        eventDispatcher: string[]
-        baseEvent: string[]
-        event: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        eventDispatcher: typeof _eventDispatcher
+        baseEvent: typeof _baseEvent
+        event: typeof _event
     }
 }
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\EventDispatcher.d.ts
+
 /**
  * The minimal basic Event that can be dispatched by a {@link EventDispatcher}.
  */
 
-consParams.baseEvent = [
-].distinct()
+const baseEvent = ([
+] as const).distinct()
+consParams.baseEvent = baseEvent
 /**
  * The minimal expected contract of a fired Event that was dispatched by a {@link EventDispatcher}.
  */
 
-consParams.event = [
-].distinct()
+const event = ([
+] as const).distinct()
+consParams.event = event
 /**
  * JavaScript events for custom objects
  * @example
@@ -76,23 +79,26 @@ consParams.event = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/EventDispatcher.js}
  */
 
-consParams.eventDispatcher = [
-].distinct()
+const eventDispatcher = ([
+] as const).distinct()
+consParams.eventDispatcher = eventDispatcher
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\EventDispatcher.d.ts
+
 /**
  * The minimal basic Event that can be dispatched by a {@link EventDispatcher}.
  */
 
-objParams.baseEvent = [
-].distinct()
+const _baseEvent = ([
+] as const).distinct()
+objProps.baseEvent = _baseEvent
 /**
  * The minimal expected contract of a fired Event that was dispatched by a {@link EventDispatcher}.
  */
 
-objParams.event = [
-].distinct()
+const _event = ([
+] as const).distinct()
+objProps.event = _event
 /**
  * JavaScript events for custom objects
  * @example
@@ -116,8 +122,9 @@ objParams.event = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/EventDispatcher.js | Source}
  */
 
-objParams.eventDispatcher = [
-].distinct()
+const _eventDispatcher = ([
+] as const).distinct()
+objProps.eventDispatcher = _eventDispatcher
 
 export type EventDispatcherProps = Node<EventDispatcher, typeof EventDispatcher, {}>
 

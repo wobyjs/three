@@ -3,8 +3,9 @@ import { Bone } from 'three/src/objects/Bone.js'
 export { Bone } from 'three/src/objects/Bone.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        bone: string[]
+        bone: typeof bone
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        bone: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        bone: typeof _bone
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Bone.d.ts
+
 /**
  * A {@link Bone} which is part of a {@link THREE.Skeleton}
  * @remarks
@@ -52,10 +53,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Bone.js}
  */
 
-consParams.bone = [
-].distinct()
+const bone = ([
+] as const).distinct()
+consParams.bone = bone
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Bone.d.ts
+
 /**
  * A {@link Bone} which is part of a {@link THREE.Skeleton | Skeleton}
  * @remarks
@@ -72,8 +74,9 @@ consParams.bone = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Bone.js | Source}
  */
 
-objParams.bone = [
-].distinct()
+const _bone = ([
+] as const).distinct()
+objProps.bone = _bone
 
 export type BoneProps = Object3DNode<Bone, typeof Bone, {}>
 

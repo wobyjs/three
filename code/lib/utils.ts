@@ -1,4 +1,4 @@
-import { $, $$, ObservableMaybe, isObservable, useEffect, type JSX } from "woby"
+import { $, $$, ObservableMaybe, isObservable, useEffect, type JSX, Observable, isObject, isPrimitive } from "woby"
 import { PromiseMaybe } from "../three-types"
 
 export const toUpper = (s: string) => {
@@ -6,8 +6,10 @@ export const toUpper = (s: string) => {
 
     if (!s.startsWith('lut'))
         s = s.replace('3d', '3D')
+    s = s.replace('2d', '2D')
     s = s.replace('gui', 'GUI')
     s = s.replace('ccdik', 'CCDIK')
+    s = s.replace('fxaa', 'FXAA')
     s = s.replace('mmd', 'MMD')
     s = s.replace('gpu', 'GPU')
     s = s.replace('csm', 'CSM')
@@ -17,13 +19,15 @@ export const toUpper = (s: string) => {
     s = s.replace('exr', 'EXR')
     s = s.replace('gltf', 'GLTF')
     s = s.replace('ktx', 'KTX')
-    s = s.replace('obj', 'OBJ')
+    s = s.replace('objLoader', 'OBJLoader')
+    s = s.replace('objExporter', 'OBJExporter')
     s = s.replace('ply', 'PLY')
     s = s.replace('stl', 'STL')
     s = s.replace('usdz', 'USDZ')
 
     s = s.replace('stf', 'STF')
 
+    s = s.replace('threeMf', 'ThreeMF')
     s = s.replace('amf', 'AMF')
     s = s.replace('bvh', 'BVH')
     s = s.replace('dds', 'DDS')
@@ -71,25 +75,110 @@ export const toUpper = (s: string) => {
     s = s.replace('pmrem', 'PMREM')
     s = s.replace('ao', 'AO')
     s = s.replace('lod', 'LOD')
+    s = s.replace('rtt', 'RTT')
     s = s.replace('wgsl', 'WGSL')
+    // s = s.replace('lineThree', 'line')
 
     return s.charAt(0).toUpperCase() + s.substring(1)
 }
 
-export const isFunction = <T extends (props: any) => any>(f: T | any): f is (props: any) => any => typeof f === 'function'
+export const IN_CONTEXT = Symbol('IN_CONTEXT')
+export const PROMISE = Symbol('PROMISE')
+export const RESOLVED_VALUE = Symbol('RESOLVED_VALUE')
+export const WOBY3_OPTIONAL = Symbol('WOBY3_OPTIONAL')
+export const WOBY3_CHILD = Symbol('WOBY3_CHILD')
+export const WOBY3_PROP = Symbol('WOBY3_PROP')
+export const WOBY3_CONSTRUCTOR = Symbol('WOBY3_CONSTRUCTOR')
 
-export const isPromiseR = <T extends JSX.Child | any>(obj: ObservableMaybe<PromiseMaybe<T>>) => {
+export const isOptional = <T extends Function>(element: T): boolean => hasSymbol(element, WOBY3_OPTIONAL)
+export const isProp = <T extends Function>(element: T): boolean => hasSymbol(element, WOBY3_PROP)
+export const isChild = <T extends Function>(element: T): boolean => hasSymbol(element, WOBY3_CHILD)
+export const isConstructor = <T extends Function>(element: T): boolean => hasSymbol(element, WOBY3_CONSTRUCTOR)
+export const hasPromise = <T extends object>(element: T): boolean => hasSymbol(element, RESOLVED_VALUE)
+
+export const hasValue = <T extends object>(element: T): boolean => !!element && RESOLVED_VALUE in element
+
+export const wrapValue = <T, V>(element: T, value: V) => {
+    element[RESOLVED_VALUE] = value
+    return element as T & { [RESOLVED_VALUE]: V }
+}
+
+export const wrapSymbol = <T extends Function | Object>(element: T, ...syms: symbol[]): T => {
+    if (isPrimitive(element)) return element
+
+    syms.forEach(sym => element[sym] = true)
+    return element
+}
+export const unwrapSymbol = <T extends Function | Object>(element: T, sym: symbol) => delete element[sym]
+
+export const hasSymbol = <T,>(element: T, sym: symbol) => element?.[sym] === true
+
+export const woby3Child = <T extends Function | Object>(element: T): T => wrapSymbol(element, WOBY3_CHILD)
+export const woby3Prop = <T extends Function | Object>(element: T): T => wrapSymbol(element, WOBY3_PROP)
+export const woby3Constructor = <T extends Function | Object>(element: T): T => wrapSymbol(element, WOBY3_CONSTRUCTOR)
+
+export const isFunction = <T extends Function>(f: T | any): f is Function => typeof f === 'function'
+
+export const isObjectLiteral = (obj: any) => obj !== null && typeof obj === 'object' && Object.getPrototypeOf(obj) === Object.prototype
+
+/** Check is null recursively */
+export const isNullR = <T>(oo: ObservableMaybe<T>) => {
+    if (typeof oo === 'undefined' || oo === null) return true
+
+    if (!(isConstructor(oo as any) || isProp(oo as any)))
+        return false
+
+    if (!(Array.isArray(oo) || isObjectLiteral(oo))) // do not detect class base 1st
+        return false
+
+    const o = $$(oo)
+    if (isObject(o))
+        return Object.keys(o).some(key => key !== 'ref' /* && (isChild(o[key]) || isAttr(o[key])) */ && isNullR(o[key]))
+
+    return typeof o === 'undefined' //!o && o !== 0
+}
+
+/** @param optional true, optional props or elements not take into account
+ *  skip ref
+*/
+export const isFunctionR = <T>(obj, optional = true) => {
+    if (!obj) return false
+
+    if (!(optional && hasSymbol(obj, WOBY3_OPTIONAL)) && isFunction(obj)) return true
+
+    if (typeof obj === "object" && obj !== null && (isObjectLiteral(obj) || Array.isArray(obj)))
+        return Object.keys(obj).some(key => key !== 'ref' && isFunctionR(obj[key], optional))
+
+    return false
+}
+
+/** Recursive check isObservable 
+ *  skip ref
+*/
+export const isObservableR = <T>(obj: T): obj is T & Observable => {
+    if (isObservable(obj)) return true
+
+    if (isFunction(obj)) return false
+    if (!obj) return false
+
+    if (typeof obj === 'object')
+        return Object.keys(obj).some(key => key !== 'ref' && isObservableR(obj[key]))
+
+    return false
+}
+
+/** Recursive check Promise */
+export const isPromiseR = <T>(obj: T) => {
     const o = isObservable(obj) ? $$(obj) : obj
     if (!o) return false
 
-    if (isPromise(o))
-        return true
+    if (isPromise(o)) return true
+    if (hasSymbol(o, PROMISE)) return true
 
-    //iterate over all property, 1st level
-    if (typeof o === "object" && o !== null)
-        for (const key in o)
-            if (!key.startsWith("on") && isPromiseR(o[key]))
-                return true
+    if (isFunction(o)) return false
+
+    if (typeof o === "object" && o !== null && (isObjectLiteral(o) || Array.isArray(o)))
+        return Object.keys(obj).some(key => !key.startsWith("on") && isPromiseR(o[key]))
 
     return false
 }
@@ -101,7 +190,7 @@ export const isPromise = <T extends JSX.Child | any>(obj: ObservableMaybe<Promis
     if (o instanceof Promise)
         return true
 
-    return typeof (o as any).then === 'function'
+    return isFunction((o as any).then)
 }
 
 export const promise2$ = <T extends JSX.Child | any>(props: ObservableMaybe<PromiseMaybe<T>>): ObservableMaybe<PromiseMaybe<T>> => {
@@ -122,13 +211,21 @@ export const promise2$ = <T extends JSX.Child | any>(props: ObservableMaybe<Prom
 export const awaitAll = async <T extends JSX.Child | any>(props: ObservableMaybe<PromiseMaybe<T>>): Promise<ObservableMaybe<PromiseMaybe<T>>> => {
     const o = isObservable(props) ? $$(props) : props
     for (const key in (o as any)) {
-        const value = $$(o[key]);
-        if (isPromise(value)) {
-            props[key] = await value;
-        } else if (typeof value === "object" && value !== null) {
-            props[key] = await awaitAll(value);
-        } else
-            props[key] = value;
+        const v = o[key]
+
+        if (isFunction(v) && hasSymbol(v, PROMISE))
+            props[key] = await awaitAll(v())
+        else if ((isFunction(v) && !key.startsWith('on')) || isObservable(v)) {
+            // if (!objProps?.includes(key))  // must reinitialize
+            props[key] = v()
+            //else
+            //done in fixReactiveProps
+        } else if (isPromise(v))
+            props[key] = await v;
+        else if (typeof v === "object" && v !== null && isPromiseR(v))  //array
+            props[key] = await awaitAll(v)
+        else
+            props[key] = v
     }
-    return props;
+    return props
 };

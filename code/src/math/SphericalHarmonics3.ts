@@ -3,8 +3,9 @@ import { SphericalHarmonics3 } from 'three/src/math/SphericalHarmonics3.js'
 export { SphericalHarmonics3 } from 'three/src/math/SphericalHarmonics3.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,31 +26,29 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        sphericalHarmonics3: string[]
+        sphericalHarmonics3: typeof sphericalHarmonics3
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        sphericalHarmonics3: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        sphericalHarmonics3: typeof _sphericalHarmonics3
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\SphericalHarmonics3.d.ts
 
-consParams.sphericalHarmonics3 = [
-].distinct()
+const sphericalHarmonics3 = ([
+] as const).distinct()
+consParams.sphericalHarmonics3 = sphericalHarmonics3
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\SphericalHarmonics3.d.ts
-
-objParams.sphericalHarmonics3 = [
+const _sphericalHarmonics3 = ([
     /**
      * @default [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),
-     * new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()].distinct()
-
+     * new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()] as const).distinct()
      */
     'coefficients',
-].distinct()
+] as const).distinct()
+objProps.sphericalHarmonics3 = _sphericalHarmonics3
 
 export type SphericalHarmonics3Props = Node<SphericalHarmonics3, typeof SphericalHarmonics3, {}>
 

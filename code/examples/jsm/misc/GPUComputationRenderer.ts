@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/misc/GPUComputationRenderer.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,19 +27,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        gpuComputationRenderer: string[]
+        gpuComputationRenderer: typeof gpuComputationRenderer
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gpuComputationRenderer: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gpuComputationRenderer: typeof _gpuComputationRenderer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\GpuComputationRenderer.d.ts
 
-// consParams.variable = [
+
+// const variable = ([
 //     'name',
 //     'initialValueTexture',
 //     'material',
@@ -49,18 +49,21 @@ declare module '../../../lib/3/objParams' {
 //     'wrapT',
 //     'minFilter',
 //     'magFilter',
-// ].distinct()
+// ] as const).distinct()
+// consParams.variable = variable
 
-consParams.gpuComputationRenderer = [
+const gpuComputationRenderer = ([
     'sizeX',
     'sizeY',
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.gpuComputationRenderer = gpuComputationRenderer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\GpuComputationRenderer.d.ts
 
-objParams.gpuComputationRenderer = [
-].distinct()
+
+const _gpuComputationRenderer = ([
+] as const).distinct()
+objProps.gpuComputationRenderer = _gpuComputationRenderer
 
 export type GPUComputationRendererProps = Node<GPUComputationRenderer, typeof GPUComputationRenderer, { sizeX: number; sizeY: number; renderer: WebGLRenderer; }>
 

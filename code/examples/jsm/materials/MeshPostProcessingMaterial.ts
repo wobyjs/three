@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/materials/MeshPostProcessingMaterial.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import { WrapAsString } from '../../../three-types'
 import { MeshPhysicalMaterialParameters } from 'three/src/materials/MeshPhysicalMaterial'
@@ -33,31 +33,33 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        meshPostProcessingMaterial: string[]
-        meshPostProcessingMaterialParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        meshPostProcessingMaterial: typeof _meshPostProcessingMaterial
+        meshPostProcessingMaterialParameters: typeof _meshPostProcessingMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\materials\MeshPostProcessingMaterial.d.ts
+
 
 consParams.meshPostProcessingMaterialParameters = { ...consParams.meshPhysicalMaterialParameters }
 
 
 consParams.meshPostProcessingMaterial = { ...consParams.meshPostProcessingMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\materials\MeshPostProcessingMaterial.d.ts    
 
-objParams.meshPostProcessingMaterialParameters = [...objParams.meshPhysicalMaterial,
+
+const _meshPostProcessingMaterialParameters = ([...objProps.meshPhysicalMaterial,
     'aoPassMap',
     'aoPassMapScale',
-].distinct()
+] as const).distinct()
+objProps.meshPostProcessingMaterialParameters = _meshPostProcessingMaterialParameters
 
 
-objParams.meshPostProcessingMaterial = [...objParams.meshPhysicalMaterial,
+const _meshPostProcessingMaterial = ([...objProps.meshPhysicalMaterial,
     'aoPassMap',
-].distinct()
+] as const).distinct()
+objProps.meshPostProcessingMaterial = _meshPostProcessingMaterial
 
 export type MeshPostProcessingMaterialProps = MaterialNode<MeshPostProcessingMaterial, typeof MeshPostProcessingMaterial>
 

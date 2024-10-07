@@ -4,8 +4,9 @@ import { ShapeGeometry } from 'three/src/geometries/ShapeGeometry.js'
 export { ShapeGeometry } from 'three/src/geometries/ShapeGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        shapeGeometry: string[]
+        shapeGeometry: typeof shapeGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        shapeGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        shapeGeometry: typeof _shapeGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\ShapeGeometry.d.ts
+
 /**
  * Creates an one-sided polygonal geometry from one or more path shapes.
  * @example
@@ -61,7 +62,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ShapeGeometry.js}
  */
 
-consParams.shapeGeometry = [
+const shapeGeometry = ([
     /**
      * Create a new instance of {@link ShapeGeometry}
      * @param shapes Array of shapes or a single {@link THREE.Shape}. Default `new Shape([new Vector2(0, 0.5), new Vector2(-0.5,
@@ -71,9 +72,10 @@ consParams.shapeGeometry = [
      */
     'shapes',
     'curveSegments',
-].distinct()
+] as const).distinct()
+consParams.shapeGeometry = shapeGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\ShapeGeometry.d.ts
+
 /**
  * Creates an one-sided polygonal geometry from one or more path shapes.
  * @example
@@ -98,8 +100,9 @@ consParams.shapeGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ShapeGeometry.js | Source}
  */
 
-objParams.shapeGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _shapeGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.shapeGeometry = _shapeGeometry
 
 
 export type ShapeGeometryProps = BufferGeometryNode<ShapeGeometry, typeof ShapeGeometry, { shapes?: Shape | Shape[]; curveSegments?: number; }>

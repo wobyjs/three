@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/VTKLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        vtkLoader: string[]
+        vtkLoader: typeof vtkLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        vtkLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        vtkLoader: typeof _vtkLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\VTKLoader.d.ts
 
-consParams.vtkLoader = [
+
+const vtkLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.vtkLoader = vtkLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\VTKLoader.d.ts    
 
-objParams.vtkLoader = [...objParams.loader,
-].distinct()
+
+const _vtkLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.vtkLoader = _vtkLoader
 
 export type VTKLoaderProps = Node<VTKLoader, typeof VTKLoader, { manager?: LoadingManager; }>
 

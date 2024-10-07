@@ -3,8 +3,9 @@ import { Material, MaterialParameters } from 'three/src/materials/Material.js'
 export { Material } from 'three/src/materials/Material.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
 
@@ -32,14 +33,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        material: string[]
-        materialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        material: typeof _material
+        materialParameters: typeof _materialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\Material.d.ts
+
 
 consParams.materialParameters = ([
     'alphaHash',
@@ -95,9 +96,9 @@ consParams.materialParameters = ([
     consParams.material = { ...consParams.materialParameters }
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\Materials.d.ts
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshBasicMaterial.d.ts
+
+
 /**
  * parameters is an object with one or more properties defining the material's appearance.
  */
@@ -126,9 +127,9 @@ consParams.meshBasicMaterialParameters = {
     ] as const).toObject()
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\Material.d.ts    
 
-objParams.materialParameters = [
+
+const _materialParameters = ([
     'alphaHash',
     'alphaTest',
     'alphaToCoverage',
@@ -174,13 +175,14 @@ objParams.materialParameters = [
     'stencilZFail',
     'stencilZPass',
     'userData',
-].distinct()
+] as const).distinct()
+objProps.materialParameters = _materialParameters
 
 /**
  * Materials describe the appearance of objects. They are defined in a (mostly) renderer-independent way, so you don't have to rewrite materials if you decide to use a different renderer.
  */
 
-objParams.material = [
+const _material = ([
     /**
      * Enables alpha hashed transparency, an alternative to {@link .transparent} or {@link .alphaTest}. The material
      * will not be rendered if opacity is lower than a random threshold. Randomization introduces some grain or noise,
@@ -435,7 +437,8 @@ objParams.material = [
      * @default 0
      */
     'version',
-].distinct()
+] as const).distinct()
+objProps.material = _material
 
 export type MaterialProps = MaterialNode<Material, MaterialParameters>
 

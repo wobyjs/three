@@ -3,8 +3,9 @@ import { StereoCamera } from 'three/src/cameras/StereoCamera.js'
 export { StereoCamera } from 'three/src/cameras/StereoCamera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Camera'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        stereoCamera: string[]
+        stereoCamera: typeof stereoCamera
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        stereoCamera: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        stereoCamera: typeof _stereoCamera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\StereoCamera.d.ts
+
 /**
  * Dual {@link PerspectiveCamera}s used for effects such as
  * {@link https://en.wikipedia.org/wiki/Anaglyph_3d Anaglyph} or
@@ -48,10 +49,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/StereoCamera.js}
  */
 
-consParams.stereoCamera = [
-].distinct()
+const stereoCamera = ([
+] as const).distinct()
+consParams.stereoCamera = stereoCamera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\StereoCamera.d.ts
+
 /**
  * Dual {@link PerspectiveCamera | PerspectiveCamera}s used for effects such as
  * {@link https://en.wikipedia.org/wiki/Anaglyph_3d | 3d Anaglyph} or
@@ -63,7 +65,7 @@ consParams.stereoCamera = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/StereoCamera.js | Source}
  */
 
-objParams.stereoCamera = [...objParams.camera,
+const _stereoCamera = ([...objProps.camera,
     /**
      * @remarks Expects a `Float`
      * @defaultValue `1`
@@ -86,7 +88,8 @@ objParams.stereoCamera = [...objParams.camera,
      * @remarks Objects to be rendered by the **right** camera must also be added to this layer.
      */
     'cameraR',
-].distinct()
+] as const).distinct()
+objProps.stereoCamera = _stereoCamera
 
 export type StereoCameraProps = Object3DNode<StereoCamera, typeof StereoCamera, {}>
 

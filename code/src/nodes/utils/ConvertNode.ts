@@ -4,7 +4,7 @@ import ConvertNode from 'three/src/nodes/utils/ConvertNode.js'
 export { ConvertNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/NodeAttribute'
 
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        convertNode: string[]
+        convertNode: typeof convertNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        convertNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        convertNode: typeof _convertNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\ConvertNode.d.ts
 
-consParams.convertNode = [
+
+const convertNode = ([
     'node',
     'convertTo',
-].distinct()
+] as const).distinct()
+consParams.convertNode = convertNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\ConvertNode.d.ts    
 
-objParams.convertNode = [...objParams.node,
+
+const _convertNode = ([...objProps.node,
     'node',
     'convertTo',
-].distinct()
+] as const).distinct()
+objProps.convertNode = _convertNode
 
 export type ConvertNodeProps = Node<ConvertNode, typeof ConvertNode, { node: ENode; convertTo: string; }>
 

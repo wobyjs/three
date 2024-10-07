@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/lines/Wireframe.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,29 +28,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        wireframe: string[]
+        wireframe: typeof wireframe
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        wireframe: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        wireframe: typeof _wireframe
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\Wireframe.d.ts
 
-consParams.wireframe = [
+
+const wireframe = ([
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.wireframe = wireframe
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\Wireframe.d.ts    
 
-objParams.wireframe = [
+
+const _wireframe = ([
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+objProps.wireframe = _wireframe
 
 export type WireframeProps = Object3DNode<Wireframe, typeof Wireframe, { geometry?: LineSegmentsGeometry; material?: LineMaterial; }>
 

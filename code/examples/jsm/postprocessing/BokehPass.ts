@@ -5,7 +5,7 @@ import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,45 +27,48 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        bokehPass: string[]
-        bokehPassParamters: string[]
+        bokehPass: typeof bokehPass
+        bokehPassParamters: typeof bokehPassParamters
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        bokehPass: string[]
-        bokehPassParamters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        bokehPass: typeof _bokehPass
+        bokehPassParamters: typeof _bokehPassParamters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\BokehPass.d.ts
 
-consParams.bokehPassParamters = [
+
+const bokehPassParamters = ([
     'focus',
     'aspect',
     'aperture',
     'maxblur',
-].distinct()
+] as const).distinct()
+consParams.bokehPassParamters = bokehPassParamters
 
 
-consParams.bokehPass = [
+const bokehPass = ([
     'scene',
     'camera',
     'params',
-].distinct()
+] as const).distinct()
+consParams.bokehPass = bokehPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\BokehPass.d.ts
 
-objParams.bokehPassParamters = [
+
+const _bokehPassParamters = ([
     'focus',
     'aspect',
     'aperture',
     'maxblur',
-].distinct()
+] as const).distinct()
+objProps.bokehPassParamters = _bokehPassParamters
 
 
-objParams.bokehPass = [...objParams.pass,
+const _bokehPass = ([...objProps.pass,
     'scene',
     'camera',
     'renderTargetColor',
@@ -75,7 +78,8 @@ objParams.bokehPass = [...objParams.pass,
     'uniforms',
     'fsQuad',
     'oldClearColor',
-].distinct()
+] as const).distinct()
+objProps.bokehPass = _bokehPass
 
 export type BokehPassProps = Node<BokehPass, typeof BokehPass, { scene: Scene; camera: Camera; params: BokehPassParamters; }>
 

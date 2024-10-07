@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/AfterimagePass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,26 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        afterimagePass: string[]
+        afterimagePass: typeof afterimagePass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        afterimagePass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        afterimagePass: typeof _afterimagePass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\AfterimagePass.d.ts
 
-consParams.afterimagePass = [
+
+const afterimagePass = ([
     'damp',
-].distinct()
+] as const).distinct()
+consParams.afterimagePass = afterimagePass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\AfterimagePass.d.ts    
 
-objParams.afterimagePass = [...objParams.pass,
+
+const _afterimagePass = ([...objProps.pass,
     'shader',
     'uniforms',
     'textureComp',
@@ -52,7 +53,8 @@ objParams.afterimagePass = [...objParams.pass,
     'shaderMaterial',
     'compFsQuad',
     'copyFsQuad',
-].distinct()
+] as const).distinct()
+objProps.afterimagePass = _afterimagePass
 
 export type AfterimagePassProps = Node<AfterimagePass, typeof AfterimagePass, { damp?: number; }>
 

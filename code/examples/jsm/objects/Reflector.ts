@@ -4,7 +4,7 @@ import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,49 +26,53 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        reflector: string[]
-        reflectorOptions: string[]
+        reflector: typeof reflector
+        reflectorOptions: typeof reflectorOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        reflector: string[]
-        reflectorOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        reflector: typeof _reflector
+        reflectorOptions: typeof _reflectorOptions
     }
 }
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Reflector.d.ts
 
-consParams.reflectorOptions = [
+
+const reflectorOptions = ([
     'color',
     'textureWidth',
     'textureHeight',
     'clipBias',
     'shader',
     'multisample',
-].distinct()
+] as const).distinct()
+consParams.reflectorOptions = reflectorOptions
 
 
-consParams.reflector = [
+const reflector = ([
     'geometry',
     'options',
-].distinct()
+] as const).distinct()
+consParams.reflector = reflector
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Reflector.d.ts
 
-objParams.reflectorOptions = [
+
+const _reflectorOptions = ([
     'color',
     'textureWidth',
     'textureHeight',
     'clipBias',
     'shader',
     'multisample',
-].distinct()
+] as const).distinct()
+objProps.reflectorOptions = _reflectorOptions
 
 
-objParams.reflector = [...objParams.mesh,
+const _reflector = ([...objProps.mesh,
     'camera',
-].distinct()
+] as const).distinct()
+objProps.reflector = _reflector
 
 export type ReflectorProps = Node<Reflector, typeof Reflector, { geometry?: BufferGeometry; options?: ReflectorOptions; }>
 

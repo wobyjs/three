@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/interactive/InteractiveGroup.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,23 +26,23 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        interactiveGroup: string[]
-        interactiveObject3dEventMap: string[]
-        interactiveObject3d: string[]
+        interactiveGroup: typeof interactiveGroup
+        interactiveObject3dEventMap: typeof interactiveObject3dEventMap
+        interactiveObject3d: typeof interactiveObject3d
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        interactiveGroup: string[]
-        interactiveObject3dEventMap: string[]
-        interactiveObject3d: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        interactiveGroup: typeof _interactiveGroup
+        interactiveObject3dEventMap: typeof _interactiveObject3dEventMap
+        interactiveObject3d: typeof _interactiveObject3d
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\interactive\InteractiveGroup.d.ts
 
-consParams.interactiveObject3dEventMap = [
+
+const interactiveObject3dEventMap = ([
     'hoveron',
     'pointerdown',
     'pointerup',
@@ -51,19 +51,22 @@ consParams.interactiveObject3dEventMap = [
     'mouseup',
     'mousemove',
     'click',
-].distinct()
+] as const).distinct()
+consParams.interactiveObject3dEventMap = interactiveObject3dEventMap
 
 
-consParams.interactiveObject3d = [
-].distinct()
+const interactiveObject3d = ([
+] as const).distinct()
+consParams.interactiveObject3d = interactiveObject3d
 
 
-consParams.interactiveGroup = [
-].distinct()
+const interactiveGroup = ([
+] as const).distinct()
+consParams.interactiveGroup = interactiveGroup
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\interactive\InteractiveGroup.d.ts    
 
-objParams.interactiveObject3dEventMap = [...objParams.object3dEventMap,
+
+const _interactiveObject3dEventMap = ([...objProps.object3dEventMap,
     'hoveron',
     'pointerdown',
     'pointerup',
@@ -72,15 +75,18 @@ objParams.interactiveObject3dEventMap = [...objParams.object3dEventMap,
     'mouseup',
     'mousemove',
     'click',
-].distinct()
+] as const).distinct()
+objProps.interactiveObject3dEventMap = _interactiveObject3dEventMap
 
 
-objParams.interactiveObject3d = [...objParams.object3d,
-].distinct()
+const _interactiveObject3d = ([...objProps.object3d,
+] as const).distinct()
+objProps.interactiveObject3d = _interactiveObject3d
 
 
-objParams.interactiveGroup = [...objParams.group,
-].distinct()
+const _interactiveGroup = ([...objProps.group,
+] as const).distinct()
+objProps.interactiveGroup = _interactiveGroup
 
 export type InteractiveGroupProps = Node<InteractiveGroup, typeof InteractiveGroup, {}>
 

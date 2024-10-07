@@ -4,7 +4,7 @@ import PhysicalLightingModel from 'three/src/nodes/functions/PhysicalLightingMod
 export { PhysicalLightingModel }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,30 +26,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        physicalLightingModel: string[]
+        physicalLightingModel: typeof physicalLightingModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        physicalLightingModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        physicalLightingModel: typeof _physicalLightingModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\functions\PhysicalLightingModel.d.ts
 
-consParams.physicalLightingModel = [
+
+const physicalLightingModel = ([
 
     'clearcoat',
     'sheen',
     'iridescence',
     'anisotropy',
     'transmission',
-].distinct()
+] as const).distinct()
+consParams.physicalLightingModel = physicalLightingModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\functions\PhysicalLightingModel.d.ts    
 
-objParams.physicalLightingModel = [...objParams.lightingModel,
+
+const _physicalLightingModel = ([...objProps.lightingModel,
     'clearcoat',
     'sheen',
     'iridescence',
@@ -62,7 +63,8 @@ objParams.physicalLightingModel = [...objParams.lightingModel,
     'sheenSpecularIndirect',
     'iridescenceFresnel',
     'iridescenceF0',
-].distinct()
+] as const).distinct()
+objProps.physicalLightingModel = _physicalLightingModel
 
 export type PhysicalLightingModelProps = Node<PhysicalLightingModel, typeof PhysicalLightingModel, { singleScatter: ENode; multiScatter: ENode; specularF90: ENode; }>
 

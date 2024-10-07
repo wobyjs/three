@@ -7,7 +7,7 @@ export * from 'three/examples/jsm/postprocessing/RenderPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -30,36 +30,38 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        renderPass: string[]
+        renderPass: typeof renderPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        renderPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        renderPass: typeof _renderPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\RenderPass.d.ts
 
-consParams.renderPass = [
+
+const renderPass = ([
     'scene',
     'camera',
     'overrideMaterial',
     'clearColor',
     'clearAlpha',
-].distinct()
+] as const).distinct()
+consParams.renderPass = renderPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\RenderPass.d.ts    
 
-objParams.renderPass = [...objParams.pass,
+
+const _renderPass = ([...objProps.pass,
     'scene',
     'camera',
     'overrideMaterial',
     'clearColor',
     'clearAlpha',
     'clearDepth',
-].distinct()
+] as const).distinct()
+objProps.renderPass = _renderPass
 
 export type RenderPassProps = Node<RenderPass, typeof RenderPass, { scene: Scene; camera: Camera; overrideMaterial?: Material | null; clearColor?: Color | null; clearAlpha?: number | null; }>
 

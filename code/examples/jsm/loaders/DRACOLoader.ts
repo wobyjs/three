@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/DRACOLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        dracoLoader: string[]
+        dracoLoader: typeof dracoLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        dracoLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        dracoLoader: typeof _dracoLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\DRACOLoader.d.ts
 
-consParams.dracoLoader = [
+
+const dracoLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.dracoLoader = dracoLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\DRACOLoader.d.ts    
 
-objParams.dracoLoader = [...objParams.loader,
-].distinct()
+
+const _dracoLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.dracoLoader = _dracoLoader
 
 export type DRACOLoaderProps = Node<DRACOLoader, typeof DRACOLoader, { manager?: LoadingManager; }>
 

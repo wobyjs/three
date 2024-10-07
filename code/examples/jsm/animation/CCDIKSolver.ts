@@ -4,7 +4,7 @@ import { IK, CCDIKSolver } from 'three/examples/jsm/animation/CCDIKSolver.js'
 export * from 'three/examples/jsm/animation/CCDIKSolver.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,76 +26,83 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ccdikSolver: string[]
-        animationClipCreator: string[]
-        ccdikHelper: string[]
-        iK: string[]
+        ccdikSolver: typeof ccdikSolver
+        animationClipCreator: typeof animationClipCreator
+        ccdikHelper: typeof ccdikHelper
+        iK: typeof iK
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ccdikSolver: string[]
-        animationClipCreator: string[]
-        ccdikHelper: string[]
-        iK: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ccdikSolver: typeof _ccdikSolver
+        animationClipCreator: typeof _animationClipCreator
+        ccdikHelper: typeof _ccdikHelper
+        iK: typeof _iK
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\AnimationClipCreator.d.ts
 
-consParams.animationClipCreator = [
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\CCDIKSolver.d.ts
+
+const animationClipCreator = ([
+] as const).distinct()
+consParams.animationClipCreator = animationClipCreator
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 
-consParams.iK = [
+const iK = ([
     'effector',
     'iteration',
     'links',
     'minAngle',
     'maxAngle',
     'target',
-].distinct()
+] as const).distinct()
+consParams.iK = iK
 
-consParams.ccdikSolver = [
+const ccdikSolver = ([
     'mesh',
     'iks',
-].distinct()
+] as const).distinct()
+consParams.ccdikSolver = ccdikSolver
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\Addons.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\AnimationClipCreator.d.ts
 
-objParams.animationClipCreator = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\CCDIKSolver.d.ts
+
+const _animationClipCreator = ([
+] as const).distinct()
+objProps.animationClipCreator = _animationClipCreator
+
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 
-objParams.iK = [
+const _iK = ([
     'effector',
     'iteration',
     'links',
     'minAngle',
     'maxAngle',
     'target',
-].distinct()
+] as const).distinct()
+objProps.iK = _iK
 
 
-objParams.ccdikSolver = [
+const _ccdikSolver = ([
     'mesh',
     'iks',
-].distinct()
+] as const).distinct()
+objProps.ccdikSolver = _ccdikSolver
 
 
-consParams.ccdikHelper = [
+const ccdikHelper = ([
     'mesh',
     'iks',
     'sphereSize',
-].distinct()
+] as const).distinct()
+consParams.ccdikHelper = ccdikHelper
 
 
-objParams.ccdikHelper = [...objParams.object3d,
+const _ccdikHelper = ([...objProps.object3d,
     'root',
     'iks',
     'sphereGeometry',
@@ -103,7 +110,8 @@ objParams.ccdikHelper = [...objParams.object3d,
     'effectorSphereMaterial',
     'linkSphereMaterial',
     'lineMaterial',
-].distinct()
+] as const).distinct()
+objProps.ccdikHelper = _ccdikHelper
 
 export type CCDIKSolverProps = Node<CCDIKSolver, typeof CCDIKSolver, { mesh: SkinnedMesh; iks?: IK[]; }>
 

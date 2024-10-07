@@ -5,7 +5,7 @@ import LightingContextNode from 'three/src/nodes/lighting/LightingContextNode.js
 export { LightingContextNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,33 +27,35 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lightingContextNode: string[]
+        lightingContextNode: typeof lightingContextNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lightingContextNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lightingContextNode: typeof _lightingContextNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\LightingContextNode.d.ts
 
-consParams.lightingContextNode = [
+
+const lightingContextNode = ([
 
     'node',
     'lightingModel',
     'backdropNode',
     'backdropAlphaNode',
-].distinct()
+] as const).distinct()
+consParams.lightingContextNode = lightingContextNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\LightingContextNode.d.ts    
 
-objParams.lightingContextNode = [...objParams.contextNode,
+
+const _lightingContextNode = ([...objProps.contextNode,
     'lightingModelNode',
     'backdropNode',
     'backdropAlphaNode',
-].distinct()
+] as const).distinct()
+objProps.lightingContextNode = _lightingContextNode
 
 export type LightingContextNodeProps = Node<LightingContextNode, typeof LightingContextNode, { node: ENode; lightingModel?: LightingModel | null; backdropNode?: ENode | null; backdropAlphaNode?: ENode | null; }>
 

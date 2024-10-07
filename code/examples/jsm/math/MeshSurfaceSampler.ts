@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/math/MeshSurfaceSampler.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        meshSurfaceSampler: string[]
+        meshSurfaceSampler: typeof meshSurfaceSampler
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        meshSurfaceSampler: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        meshSurfaceSampler: typeof _meshSurfaceSampler
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\MeshSurfaceSampler.d.ts
 
-consParams.meshSurfaceSampler = [
+
+const meshSurfaceSampler = ([
     'mesh',
-].distinct()
+] as const).distinct()
+consParams.meshSurfaceSampler = meshSurfaceSampler
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\MeshSurfaceSampler.d.ts
 
-objParams.meshSurfaceSampler = [
+
+const _meshSurfaceSampler = ([
     'distribution',
     'geometry',
     'positionAttribute',
     'weightAttribute',
-].distinct()
+] as const).distinct()
+objProps.meshSurfaceSampler = _meshSurfaceSampler
 
 export type MeshSurfaceSamplerProps = Node<MeshSurfaceSampler, typeof MeshSurfaceSampler, { mesh: Mesh; }>
 

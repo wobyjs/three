@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 export * from 'three/examples/jsm/controls/OrbitControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,25 +27,26 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        orbitControls: string[]
-        orbitControlsEventMap: string[]
+        orbitControls: typeof orbitControls
+        orbitControlsEventMap: typeof orbitControlsEventMap
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        orbitControls: string[]
-        orbitControlsEventMap: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        orbitControls: typeof _orbitControls
+        orbitControlsEventMap: typeof _orbitControlsEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\OrbitControls.d.ts
 
-consParams.orbitControlsEventMap = [
+
+const orbitControlsEventMap = ([
     'change',
     'start',
     'end',
-].distinct()
+] as const).distinct()
+consParams.orbitControlsEventMap = orbitControlsEventMap
 
 /**
  * Orbit controls allow the camera to orbit around a target.
@@ -55,7 +56,7 @@ consParams.orbitControlsEventMap = [
  * event listeners.
  */
 
-consParams.orbitControls = [
+const orbitControls = ([
     /**
   * The camera being controlled.
   */
@@ -66,15 +67,17 @@ consParams.orbitControls = [
      * changing it here will not set up new event listeners.
      */
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.orbitControls = orbitControls
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\OrbitControls.d.ts
 
-objParams.orbitControlsEventMap = [
+
+const _orbitControlsEventMap = ([
     'change',
     'start',
     'end',
-].distinct()
+] as const).distinct()
+objProps.orbitControlsEventMap = _orbitControlsEventMap
 
 /**
  * Orbit controls allow the camera to orbit around a target.
@@ -84,7 +87,7 @@ objParams.orbitControlsEventMap = [
  * event listeners.
  */
 
-objParams.orbitControls = [
+const _orbitControls = ([
     /**
      * The camera being controlled.
      */
@@ -157,8 +160,7 @@ objParams.orbitControls = [
     'maxPolarAngle',
     /**
      * How far you can orbit horizontally, lower limit.
-     * If set, the interval [ min, max ].distinct()
-
+     * If set, the interval [ min, max ] 
      * must be a sub-interval of [ - 2 PI, 2 PI ].distinct()
 
      * with ( max - min < 2 PI ).
@@ -285,7 +287,8 @@ objParams.orbitControls = [
      * Used internally by the .saveState and .reset methods.
      */
     'zoom0',
-].distinct()
+] as const).distinct()
+objProps.orbitControls = _orbitControls
 
 export type OrbitControlsProps = Node<OrbitControls, typeof OrbitControls, { camera: Camera; domElement: HTMLElement; }>
 

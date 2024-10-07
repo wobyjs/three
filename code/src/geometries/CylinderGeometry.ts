@@ -3,8 +3,9 @@ import { CylinderGeometry } from 'three/src/geometries/CylinderGeometry.js'
 export { CylinderGeometry } from 'three/src/geometries/CylinderGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        cylinderGeometry: string[]
+        cylinderGeometry: typeof cylinderGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        cylinderGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        cylinderGeometry: typeof _cylinderGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\CylinderGeometry.d.ts
+
 /**
  * A class for generating cylinder geometries.
  * @example
@@ -51,7 +52,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CylinderGeometry.js}
  */
 
-consParams.cylinderGeometry = [
+const cylinderGeometry = ([
     /**
      * Create a new instance of {@link CylinderGeometry}
      * @param radiusTop Radius of the cylinder at the top. Default `1`
@@ -72,9 +73,10 @@ consParams.cylinderGeometry = [
     'openEnded',
     'thetaStart',
     'thetaLength',
-].distinct()
+] as const).distinct()
+consParams.cylinderGeometry = cylinderGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\CylinderGeometry.d.ts
+
 /**
  * A class for generating cylinder geometries.
  * @example
@@ -90,8 +92,9 @@ consParams.cylinderGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CylinderGeometry.js | Source}
  */
 
-objParams.cylinderGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _cylinderGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.cylinderGeometry = _cylinderGeometry
 
 export type CylinderGeometryProps = BufferGeometryNode<CylinderGeometry, typeof CylinderGeometry, { radiusTop?: number; radiusBottom?: number; height?: number; radialSegments?: number; heightSegments?: number; openEnded?: boolean; thetaStart?: number; thetaLength?: number; }>
 

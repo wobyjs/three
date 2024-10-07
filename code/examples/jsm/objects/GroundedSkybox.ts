@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/objects/GroundedSkybox.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        groundedSkybox: string[]
+        groundedSkybox: typeof groundedSkybox
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        groundedSkybox: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        groundedSkybox: typeof _groundedSkybox
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\GroundedSkybox.d.ts
 
-consParams.groundedSkybox = [
+
+const groundedSkybox = ([
     'map',
     'height',
     'radius',
     'resolution',
-].distinct()
+] as const).distinct()
+consParams.groundedSkybox = groundedSkybox
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\GroundedSkybox.d.ts    
 
-objParams.groundedSkybox = [...objParams.mesh,
-].distinct()
+
+const _groundedSkybox = ([...objProps.mesh,
+] as const).distinct()
+objProps.groundedSkybox = _groundedSkybox
 
 export type GroundedSkyboxProps = Node<GroundedSkybox, typeof GroundedSkybox, { map: Texture; height: number; radius: number; resolution?: number; }>
 

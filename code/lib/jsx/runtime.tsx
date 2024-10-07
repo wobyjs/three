@@ -1,10 +1,7 @@
-import { useRoot, type JSX, setChild } from "woby"
-import { jsx } from "../three/getConstructorParams"
-
+import { useRoot, setChild, type JSX } from "woby"
+import { jsx } from "../three/jsx"
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
-    //@ts-ignore
-
     if (!parent || !(parent instanceof HTMLElement)) throw new Error('Invalid parent node')
 
     parent.textContent = ''
@@ -23,9 +20,6 @@ const render = (children: JSX.Child, parent: JSX.Child) => {
     })
 }
 
-// //@ts-ignore
-// three.TextGeometry = TextGeometry
-
-/* EXPORT */
+export const Fragment = ({ children }: { children: [] }) => Array.isArray(children) ? [...children] : [children]
 
 export { jsx, jsx as jsxs, jsx as jsxDEV, render }

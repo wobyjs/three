@@ -18,8 +18,9 @@ import { CompressedCubeTexture } from 'three/src/textures/CompressedCubeTexture.
 export { CompressedCubeTexture } from 'three/src/textures/CompressedCubeTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './CompressedTexture'
 
 declare module '../../lib/3/three'
@@ -41,28 +42,30 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        compressedCubeTexture: string[]
+        compressedCubeTexture: typeof compressedCubeTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        compressedCubeTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        compressedCubeTexture: typeof _compressedCubeTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CompressedCubeTexture.d.ts
 
-consParams.compressedCubeTexture = [
+
+const compressedCubeTexture = ([
     'images',
     'format',
     'type',
-].distinct()
+] as const).distinct()
+consParams.compressedCubeTexture = compressedCubeTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CompressedCubeTexture.d.ts    
 
-objParams.compressedCubeTexture = [...objParams.compressedTexture,
-].distinct()
+
+const _compressedCubeTexture = ([...objProps.compressedTexture,
+] as const).distinct()
+objProps.compressedCubeTexture = _compressedCubeTexture
 
 
 export type CompressedCubeTextureProps = Node<CompressedCubeTexture, typeof CompressedCubeTexture, { mipmaps: ImageData[]; width: number; height: number; format: CompressedPixelFormat; type?: TextureDataType; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; anisotropy?: number; colorSpace?: ColorSpace; }>

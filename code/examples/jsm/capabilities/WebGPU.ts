@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/capabilities/WebGPU.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webGpu: string[]
+        webGpu: typeof webGpu
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webGpu: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webGpu: typeof _webGpu
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\capabilities\WebGpu.d.ts
+
 // tslint:disable-next-line:no-unnecessary-class
 
-consParams.webGpu = [
-].distinct()
+const webGpu = ([
+] as const).distinct()
+consParams.webGpu = webGpu
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\capabilities\WebGpu.d.ts
+
 // tslint:disable-next-line:no-unnecessary-class
 
-objParams.webGpu = [
-].distinct()
+const _webGpu = ([
+] as const).distinct()
+objProps.webGpu = _webGpu
 
 export type WebGPUProps = Node<WebGPU, typeof WebGPU, {}>
 

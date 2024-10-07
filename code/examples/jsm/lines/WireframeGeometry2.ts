@@ -1,11 +1,11 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { WireframeGeometry2 } from 'three/examples/jsm/lines/WireframeGeometry2.js'
 export * from 'three/examples/jsm/lines/WireframeGeometry2.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './LineSegmentsGeometry'
 
@@ -28,28 +28,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        wireframeGeometry2: string[]
+        wireframeGeometry2: typeof wireframeGeometry2
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        wireframeGeometry2: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        wireframeGeometry2: typeof _wireframeGeometry2
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\WireframeGeometry2.d.ts
 
-consParams.wireframeGeometry2 = [
+
+const wireframeGeometry2 = ([
     'geometry',
-].distinct()
+] as const).distinct()
+consParams.wireframeGeometry2 = wireframeGeometry2
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\WireframeGeometry2.d.ts    
 
-objParams.wireframeGeometry2 = [...objParams.lineSegmentsGeometry,
-].distinct()
 
-export type WireframeGeometry2Props = Object3DNode<WireframeGeometry2, typeof WireframeGeometry2, { geometry: BufferGeometry; }>
+const _wireframeGeometry2 = ([...objProps.lineSegmentsGeometry,
+] as const).distinct()
+objProps.wireframeGeometry2 = _wireframeGeometry2
+
+export type WireframeGeometry2Props = Node<WireframeGeometry2, typeof WireframeGeometry2, { geometry: BufferGeometry; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

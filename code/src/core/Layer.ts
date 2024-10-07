@@ -4,8 +4,9 @@ import { Layers } from 'three/src/core/Layers.js'
 export { Layers } from 'three/src/core/Layers.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        layers: string[]
+        layers: typeof layers
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        layers: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        layers: typeof _layers
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Layers.d.ts
+
 /**
  * A {@link THREE.Layers} object assigns an {@link THREE.Object3d} to 1 or more of 32 layers numbered `0` to `31` - internally the
  * layers are stored as a {@link https://en.wikipedia.org/wiki/Mask_(computing) mask and
@@ -51,10 +52,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Layers.js}
  */
 
-consParams.layers = [
-].distinct()
+const layers = ([
+] as const).distinct()
+consParams.layers = layers
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Layers.d.ts
+
 /**
  * A {@link THREE.Layers | Layers} object assigns an {@link THREE.Object3d | Object3d} to 1 or more of 32 layers numbered `0` to `31` - internally the
  * layers are stored as a {@link https://en.wikipedia.org/wiki/Mask_(computing) | bit mask and
@@ -69,14 +71,15 @@ consParams.layers = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Layers.js | Source}
  */
 
-objParams.layers = [
+const _layers = ([
     /**
      * A bit mask storing which of the 32 layers this layers object is currently a member of.
      * @defaultValue `1 | 0`
      * @remarks Expects a `Integer`
      */
     'mask',
-].distinct()
+] as const).distinct()
+objProps.layers = _layers
 
 export type LayersProps = Node<Layers, typeof Layers, { array: TypedArray; itemSize: number; normalized?: boolean; meshPerAttribute?: number; }>
 

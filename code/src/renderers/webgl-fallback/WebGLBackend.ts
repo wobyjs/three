@@ -4,7 +4,7 @@ import WebGLBackend, { WebGLBackendParameters } from 'three/src/renderers/webgl-
 export { WebGLBackend }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import '../common/Backend'
@@ -33,14 +33,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglBackend: string[]
-        webglBackendParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglBackend: typeof _webglBackend
+        webglBackendParameters: typeof _webglBackendParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgl\WebGlBackend.d.ts
+
 
 consParams.webglBackendParameters = {
     ...consParams.backendParameters,
@@ -51,15 +51,17 @@ consParams.webglBackendParameters = {
 
 consParams.webglBackend = { ...consParams.backendParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgl\WebGlBackend.d.ts    
 
-objParams.webglBackendParameters = [...objParams.backendParameters,
+
+const _webglBackendParameters = ([...objProps.backendParameters,
     'trackTimestamp',
-].distinct()
+] as const).distinct()
+objProps.webglBackendParameters = _webglBackendParameters
 
 
-objParams.webglBackend = [...objParams.backend,
-].distinct()
+const _webglBackend = ([...objProps.backend,
+] as const).distinct()
+objProps.webglBackend = _webglBackend
 
 export type WebGLBackendProps = Node<WebGLBackend, typeof WebGLBackend, BackendParameters>
 

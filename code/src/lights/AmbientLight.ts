@@ -4,8 +4,9 @@ import { AmbientLight } from 'three/src/lights/AmbientLight.js'
 export { AmbientLight } from 'three/src/lights/AmbientLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 import './Light'
 
@@ -28,17 +29,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        ambientLight: string[]
+        ambientLight: typeof ambientLight
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        ambientLight: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        ambientLight: typeof _ambientLight
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\AmbientLight.d.ts
+
 /**
  * This light globally illuminates all objects in the scene equally.
  * @remarks This light cannot be used to cast shadows as it does not have a direction.
@@ -51,7 +52,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/AmbientLight.js}
  */
 
-consParams.ambientLight = [
+const ambientLight = ([
     /**
      * Creates a new {@link AmbientLight}.
      * @param color Numeric value of the rgb component of the color. Default `0xffffff`
@@ -59,9 +60,10 @@ consParams.ambientLight = [
      */
     'color',
     'intensity',
-].distinct()
+] as const).distinct()
+consParams.ambientLight = ambientLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\AmbientLight.d.ts
+
 /**
  * This light globally illuminates all objects in the scene equally.
  * @remarks This light cannot be used to cast shadows as it does not have a direction.
@@ -74,8 +76,9 @@ consParams.ambientLight = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/AmbientLight.js | Source}
  */
 
-objParams.ambientLight = [...objParams.light,
-].distinct()
+const _ambientLight = ([...objProps.light,
+] as const).distinct()
+objProps.ambientLight = _ambientLight
 
 export type AmbientLightProps = LightNode<AmbientLight, typeof AmbientLight, { color?: ColorRepresentation; intensity?: number; }>
 

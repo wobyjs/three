@@ -2,7 +2,7 @@ import { WebGLInfo } from 'three/src/renderers/webgl/WebGLInfo.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -24,31 +24,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglInfo: string[]
+        webglInfo: typeof webglInfo
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglInfo: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglInfo: typeof _webglInfo
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlInfo.d.ts
+
 /**
  * An object with a series of statistical information about the graphics board memory and the rendering process.
  */
 
-consParams.webglInfo = [
+const webglInfo = ([
     'gl',
-].distinct()
+] as const).distinct()
+consParams.webglInfo = webglInfo
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlInfo.d.ts
+
 /**
  * An object with a series of statistical information about the graphics board memory and the rendering process.
  */
 
-objParams.webglInfo = [
+const _webglInfo = ([
     /**
      * @default true
      */
@@ -65,7 +66,8 @@ objParams.webglInfo = [
      * @default { frame: 0, calls: 0, triangles: 0, points: 0, lines: 0 }
      */
     'render',
-].distinct()
+] as const).distinct()
+objProps.webglInfo = _webglInfo
 
 export type WebGLInfoProps = Node<WebGLInfo, typeof WebGLInfo, { gl: WebGLRenderingContext; }>
 

@@ -3,8 +3,9 @@ import { Camera } from 'three/src/cameras/Camera.js'
 export { Camera } from 'three/src/cameras/Camera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../core/Object3D'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        camera: string[]
+        camera: typeof camera
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        camera: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        camera: typeof _camera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\Camera.d.ts
+
 /**
  * Abstract base class for cameras
  * @remarks
@@ -45,10 +46,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/Camera.js}
  */
 
-consParams.camera = [
-].distinct()
+const camera = ([
+] as const).distinct()
+consParams.camera = camera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\Camera.d.ts
+
 /**
  * Abstract base class for cameras
  * @remarks
@@ -57,7 +59,7 @@ consParams.camera = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/Camera.js | Source}
  */
 
-objParams.camera = [...objParams.object3d,
+const _camera = ([...objProps.object3d,
     /**
      * @override
      * The {@link THREE.Layers | layers} that the {@link Camera} is a member of.
@@ -83,7 +85,8 @@ objParams.camera = [...objParams.object3d,
     'projectionMatrixInverse',
     'coordinateSystem',
     'viewport',
-].distinct()
+] as const).distinct()
+objProps.camera = _camera
 
 export type CameraProps = Object3DNode<Camera, typeof Camera, {}>
 

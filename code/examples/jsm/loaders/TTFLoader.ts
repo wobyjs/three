@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/TTFLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ttfLoader: string[]
+        ttfLoader: typeof ttfLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ttfLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ttfLoader: typeof _ttfLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TTFLoader.d.ts
 
-consParams.ttfLoader = [
+
+const ttfLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.ttfLoader = ttfLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TTFLoader.d.ts    
 
-objParams.ttfLoader = [...objParams.loader,
+
+const _ttfLoader = ([...objProps.loader,
     'reversed',
-].distinct()
+] as const).distinct()
+objProps.ttfLoader = _ttfLoader
 
 export type TTFLoaderProps = Node<TTFLoader, typeof TTFLoader, { manager?: LoadingManager; }>
 

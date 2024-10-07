@@ -4,7 +4,7 @@ import ViewportDepthNode, { ViewportDepthNodeScope } from 'three/src/nodes/displ
 export { ViewportDepthNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,29 +26,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        viewportDepthNode: string[]
+        viewportDepthNode: typeof viewportDepthNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        viewportDepthNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        viewportDepthNode: typeof _viewportDepthNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportDepthNode.d.ts
 
-consParams.viewportDepthNode = [
+
+const viewportDepthNode = ([
     'scope',
     'valueNode',
-].distinct()
+] as const).distinct()
+consParams.viewportDepthNode = viewportDepthNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportDepthNode.d.ts    
 
-objParams.viewportDepthNode = [...objParams.node,
+
+const _viewportDepthNode = ([...objProps.node,
     'scope',
     'valueNode',
-].distinct()
+] as const).distinct()
+objProps.viewportDepthNode = _viewportDepthNode
 
 export type ViewportDepthNodeProps = Node<ViewportDepthNode, typeof ViewportDepthNode, { scope: ViewportDepthNodeScope; valueNode?: ENode | null; }>
 

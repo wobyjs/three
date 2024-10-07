@@ -4,7 +4,7 @@ import { MapControls } from 'three/examples/jsm/controls/MapControls.js'
 export * from 'three/examples/jsm/controls/MapControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mapControls: string[]
+        mapControls: typeof mapControls
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mapControls: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mapControls: typeof _mapControls
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\MapControls.d.ts
+
 /**
  * MapControls performs orbiting, dollying (zooming), and panning.
  * Unlike TrackballControls, it maintains the "up" direction
@@ -53,12 +53,13 @@ declare module '../../../lib/3/objParams' {
  * event listeners.
  */
 
-consParams.mapControls = [
+const mapControls = ([
     'object',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.mapControls = mapControls
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\MapControls.d.ts
+
 /**
  * MapControls performs orbiting, dollying (zooming), and panning.
  * Unlike TrackballControls, it maintains the "up" direction
@@ -75,8 +76,9 @@ consParams.mapControls = [
  * event listeners.
  */
 
-objParams.mapControls = [...objParams.orbitControls,
-].distinct()
+const _mapControls = ([...objProps.orbitControls,
+] as const).distinct()
+objProps.mapControls = _mapControls
 
 export type MapControlsProps = Node<MapControls, typeof MapControls, { object: Camera; domElement?: HTMLElement; }>
 

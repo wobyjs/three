@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { ImageBitmapLoader } from 'three/src/loaders/ImageBitmapLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        imageBitmapLoader: string[]
+        imageBitmapLoader: typeof imageBitmapLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        imageBitmapLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        imageBitmapLoader: typeof _imageBitmapLoader
     }
 }
 
 
-consParams.imageBitmapLoader = [
+const imageBitmapLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.imageBitmapLoader = imageBitmapLoader
 
 
-objParams.imageBitmapLoader = [...objParams.loader,
+const _imageBitmapLoader = ([...objProps.loader,
     /**
     * @default { premultiplyAlpha: 'none' }
     */
     'options',
-]
+] as const).distinct()
+objProps.imageBitmapLoader = _imageBitmapLoader
 
 export type ImageBitmapLoaderProps = Node<ImageBitmapLoader, typeof ImageBitmapLoader, { manager?: LoadingManager }>
 

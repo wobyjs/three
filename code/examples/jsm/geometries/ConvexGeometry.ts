@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/geometries/ConvexGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        convexGeometry: string[]
+        convexGeometry: typeof convexGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        convexGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        convexGeometry: typeof _convexGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\ConvexGeometry.d.ts
 
-consParams.convexGeometry = [
+
+const convexGeometry = ([
     'points',
-].distinct()
+] as const).distinct()
+consParams.convexGeometry = convexGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\ConvexGeometry.d.ts    
 
-objParams.convexGeometry = [...objParams.bufferGeometry,
-].distinct()
+
+const _convexGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.convexGeometry = _convexGeometry
 
 export type ConvexGeometryProps = BufferGeometryNode<ConvexGeometry, typeof ConvexGeometry, { points?: Vector3[]; }>
 

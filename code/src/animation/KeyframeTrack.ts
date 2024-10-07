@@ -1,11 +1,12 @@
-import { Object3DNode } from '../../three-types'
+import { Node } from '../../three-types'
 import { InterpolationModes } from 'three/src/constants.js'
 import { KeyframeTrack } from 'three/src/animation/KeyframeTrack.js'
 export { KeyframeTrack } from 'three/src/animation/KeyframeTrack.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,20 +27,20 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        keyframeTrack: string[]
+        keyframeTrack: typeof keyframeTrack
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        keyframeTrack: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        keyframeTrack: typeof _keyframeTrack
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\AnimationUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\KeyframeTrack.d.ts
 
-consParams.keyframeTrack = [
+
+
+const keyframeTrack = ([
     /**
      * @param name
      * @param times
@@ -50,21 +51,23 @@ consParams.keyframeTrack = [
     'times',
     'values',
     'interpolation',
-].distinct()
+] as const).distinct()
+consParams.keyframeTrack = keyframeTrack
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\AnimationUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\KeyframeTrack.d.ts    
 
-objParams.keyframeTrack = [
+
+
+const _keyframeTrack = ([
     'name',
     'times',
     'values',
     'ValueTypeName',
     'TimeBufferType',
     'ValueBufferType',
-].distinct()
+] as const).distinct()
+objProps.keyframeTrack = _keyframeTrack
 
-export type KeyframeTrackProps = Object3DNode<KeyframeTrack, typeof KeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<any>; interpolation?: InterpolationModes; }>
+export type KeyframeTrackProps = Node<KeyframeTrack, typeof KeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<any>; interpolation?: InterpolationModes; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

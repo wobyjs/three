@@ -4,8 +4,9 @@ import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGL3DRenderTarget } from 'three/src/renderers/WebGL3DRenderTarget.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,22 +27,22 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        webgl3dRenderTarget: string[]
+        webgl3dRenderTarget: typeof webgl3dRenderTarget
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        webgl3dRenderTarget: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        webgl3dRenderTarget: typeof _webgl3dRenderTarget
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGl3dRenderTarget.d.ts
+
 /**
  * Represents a three-dimensional render target.
  */
 
-consParams.webgl3dRenderTarget = [
+const webgl3dRenderTarget = ([
     /**
      * Creates a new WebGl3dRenderTarget.
      *
@@ -55,14 +56,15 @@ consParams.webgl3dRenderTarget = [
     'height',
     'depth',
     'options',
-].distinct()
+] as const).distinct()
+consParams.webgl3dRenderTarget = webgl3dRenderTarget
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGl3dRenderTarget.d.ts
+
 /**
  * Represents a three-dimensional render target.
  */
 
-objParams.webgl3dRenderTarget = [...objParams.webglRenderTarget,
+const _webgl3dRenderTarget = ([...objProps.webglRenderTarget,
     /**
      * Creates a new WebGl3dRenderTarget.
      *
@@ -77,7 +79,8 @@ objParams.webgl3dRenderTarget = [...objParams.webglRenderTarget,
      * The texture property is overwritten with an instance of {@link Data3dTexture}.
      */
     'texture',
-].distinct()
+] as const).distinct()
+objProps.webgl3dRenderTarget = _webgl3dRenderTarget
 
 
 export type WebGL3DRenderTargetProps = Node<WebGL3DRenderTarget, typeof WebGL3DRenderTarget, { width?: number; height?: number; depth?: number; options?: RenderTargetOptions; }>

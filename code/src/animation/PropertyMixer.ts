@@ -1,10 +1,11 @@
-import { Object3DNode } from '../../three-types'
+import { Node } from '../../three-types'
 import { PropertyMixer } from 'three/src/animation/PropertyMixer.js'
 export { PropertyMixer } from 'three/src/animation/PropertyMixer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        propertyMixer: string[]
+        propertyMixer: typeof propertyMixer
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        propertyMixer: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        propertyMixer: typeof _propertyMixer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\PropertyMixer.d.ts
 
-consParams.propertyMixer = [
+
+const propertyMixer = ([
     'binding',
     'typeName',
     'valueSize',
-].distinct()
+] as const).distinct()
+consParams.propertyMixer = propertyMixer
 
 
-objParams.propertyMixer = [
+const _propertyMixer = ([
     'binding',
     'valueSize',
     'buffer',
@@ -52,9 +54,10 @@ objParams.propertyMixer = [
     'cumulativeWeightAdditive',
     'useCount',
     'referenceCount',
-].distinct()
+] as const).distinct()
+objProps.propertyMixer = _propertyMixer
 
-export type PropertyMixerProps = Object3DNode<PropertyMixer, typeof PropertyMixer, { binding: any; typeName: string; valueSize: number; }>
+export type PropertyMixerProps = Node<PropertyMixer, typeof PropertyMixer, { binding: any; typeName: string; valueSize: number; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

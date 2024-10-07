@@ -3,8 +3,9 @@ import { PlaneGeometry } from 'three/src/geometries/PlaneGeometry.js'
 export { PlaneGeometry } from 'three/src/geometries/PlaneGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../core/BufferGeometry'
 import '../../examples/jsm/geometries/ParametricGeometry'
 
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        planeGeometry: string[]
+        planeGeometry: typeof planeGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        planeGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        planeGeometry: typeof _planeGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\PlaneGeometry.d.ts
+
 /**
  * A class for generating plane geometries.
  * @example
@@ -54,7 +55,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/PlaneGeometry.js}
  */
 
-consParams.planeGeometry = [
+const planeGeometry = ([
     /**
      * Create a new instance of {@link PlaneGeometry}
      * @param width Width along the X axis. Expects a `Float`. Default `1`
@@ -66,9 +67,10 @@ consParams.planeGeometry = [
     'height',
     'widthSegments',
     'heightSegments',
-].distinct()
+] as const).distinct()
+consParams.planeGeometry = planeGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\PlaneGeometry.d.ts
+
 /**
  * A class for generating plane geometries.
  * @example
@@ -85,8 +87,9 @@ consParams.planeGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/PlaneGeometry.js | Source}
  */
 
-objParams.planeGeometry = [...objParams.bufferGeometry, ...objParams.parametricGeometry,
-].distinct()
+const _planeGeometry = ([...objProps.bufferGeometry, ...objProps.parametricGeometry,
+] as const).distinct()
+objProps.planeGeometry = _planeGeometry
 
 export type PlaneGeometryProps = BufferGeometryNode<PlaneGeometry, typeof PlaneGeometry, { width?: number; height?: number; widthSegments?: number; heightSegments?: number; }>
 

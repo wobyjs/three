@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/TIFFLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,48 +27,52 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tiffLoader: string[]
-        tiffResult: string[]
+        tiffLoader: typeof tiffLoader
+        tiffResult: typeof tiffResult
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tiffLoader: string[]
-        tiffResult: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tiffLoader: typeof _tiffLoader
+        tiffResult: typeof _tiffResult
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TIFFLoader.d.ts
 
-consParams.tiffResult = [
+
+const tiffResult = ([
     'width',
     'height',
     'data',
     'flipY',
     'magFilter',
     'minFilter',
-].distinct()
+] as const).distinct()
+consParams.tiffResult = tiffResult
 
 
-consParams.tiffLoader = [
+const tiffLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.tiffLoader = tiffLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TIFFLoader.d.ts
 
-objParams.tiffResult = [
+
+const _tiffResult = ([
     'width',
     'height',
     'data',
     'flipY',
     'magFilter',
     'minFilter',
-].distinct()
+] as const).distinct()
+objProps.tiffResult = _tiffResult
 
 
-objParams.tiffLoader = [...objParams.dataTextureLoader,
-].distinct()
+const _tiffLoader = ([...objProps.dataTextureLoader,
+] as const).distinct()
+objProps.tiffLoader = _tiffLoader
 
 export type TIFFLoaderProps = Node<TIFFLoader, typeof TIFFLoader, { manager?: LoadingManager; }>
 

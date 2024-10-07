@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/helpers/RectAreaLightHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,29 +28,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        rectAreaLightHelper: string[]
+        rectAreaLightHelper: typeof rectAreaLightHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        rectAreaLightHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        rectAreaLightHelper: typeof _rectAreaLightHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\RectAreaLightHelper.d.ts
 
-consParams.rectAreaLightHelper = [
+
+const rectAreaLightHelper = ([
     'light',
     'color',
-].distinct()
+] as const).distinct()
+consParams.rectAreaLightHelper = rectAreaLightHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\RectAreaLightHelper.d.ts    
 
-objParams.rectAreaLightHelper = [...objParams.line,
+
+const _rectAreaLightHelper = ([...objProps.line,
     'light',
     'color',
-].distinct()
+] as const).distinct()
+objProps.rectAreaLightHelper = _rectAreaLightHelper
 
 export type RectAreaLightHelperProps = Node<RectAreaLightHelper, typeof RectAreaLightHelper, { light: RectAreaLight; color?: ColorRepresentation; }>
 

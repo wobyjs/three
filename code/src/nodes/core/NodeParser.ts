@@ -3,7 +3,7 @@ import NodeParser from 'three/src/nodes/core/NodeParser.js'
 export { NodeParser }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeParser: string[]
+        nodeParser: typeof nodeParser
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeParser: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeParser: typeof _nodeParser
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeParser.d.ts
 
-consParams.nodeParser = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeParser.d.ts
+const nodeParser = ([
+] as const).distinct()
+consParams.nodeParser = nodeParser
 
-objParams.nodeParser = [
-].distinct()
+
+
+const _nodeParser = ([
+] as const).distinct()
+objProps.nodeParser = _nodeParser
 
 export type NodeParserProps = Node<NodeParser, typeof NodeParser, {}>
 

@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { BooleanKeyframeTrack } from 'three/src/animation/tracks/BooleanKeyframeTrack.js'
 export { BooleanKeyframeTrack } from 'three/src/animation/tracks/BooleanKeyframeTrack.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,34 +25,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        booleanKeyframeTrack: string[]
+        booleanKeyframeTrack: typeof booleanKeyframeTrack
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        booleanKeyframeTrack: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        booleanKeyframeTrack: typeof _booleanKeyframeTrack
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\BooleanKeyframeTrack.d.ts
 
-consParams.booleanKeyframeTrack = [
+
+const booleanKeyframeTrack = ([
     'name',
     'times',
     'values',
-].distinct()
+] as const).distinct()
+consParams.booleanKeyframeTrack = booleanKeyframeTrack
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\BooleanKeyframeTrack.d.ts    
 
-objParams.booleanKeyframeTrack = [...objParams.keyframeTrack,
+
+const _booleanKeyframeTrack = ([...objProps.keyframeTrack,
     /**
      * @default 'bool'
      */
     'ValueTypeName',
-].distinct()
+] as const).distinct()
+objProps.booleanKeyframeTrack = _booleanKeyframeTrack
 
-export type BooleanKeyframeTrackProps = Object3DNode<BooleanKeyframeTrack, typeof BooleanKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<any> }>
+export type BooleanKeyframeTrackProps = Node<BooleanKeyframeTrack, typeof BooleanKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<any> }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

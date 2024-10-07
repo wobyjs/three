@@ -3,8 +3,9 @@ import { TorusKnotGeometry } from 'three/src/geometries/TorusKnotGeometry.js'
 export { TorusKnotGeometry } from 'three/src/geometries/TorusKnotGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../core/BufferGeometry'
 import '../geometries/TubeGeometry'
 
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        torusKnotGeometry: string[]
+        torusKnotGeometry: typeof torusKnotGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        torusKnotGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        torusKnotGeometry: typeof _torusKnotGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\TorusKnotGeometry.d.ts
+
 /**
  * Creates a torus knot, the particular shape of which is defined by a pair of coprime integers, p and q
  * If p and q are not coprime, the result will be a torus link.
@@ -54,7 +55,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TorusKnotGeometry.js}
  */
 
-consParams.torusKnotGeometry = [
+const torusKnotGeometry = ([
     /**
      * Create a new instance of {@link TorusKnotGeometry}
      * @param radius Radius of the torus.. Default `1`.
@@ -71,9 +72,10 @@ consParams.torusKnotGeometry = [
     'radialSegments',
     'p',
     'q',
-].distinct()
+] as const).distinct()
+consParams.torusKnotGeometry = torusKnotGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\TorusKnotGeometry.d.ts
+
 /**
  * Creates a torus knot, the particular shape of which is defined by a pair of coprime integers, p and q
  * If p and q are not coprime, the result will be a torus link.
@@ -90,8 +92,9 @@ consParams.torusKnotGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TorusKnotGeometry.js | Source}
  */
 
-objParams.torusKnotGeometry = [...objParams.bufferGeometry, ...objParams.tubeGeometry,
-].distinct()
+const _torusKnotGeometry = ([...objProps.bufferGeometry, ...objProps.tubeGeometry,
+] as const).distinct()
+objProps.torusKnotGeometry = _torusKnotGeometry
 
 export type TorusKnotGeometryProps = BufferGeometryNode<TorusKnotGeometry, typeof TorusKnotGeometry, { radius?: number; tube?: number; tubularSegments?: number; radialSegments?: number; p?: number; q?: number; }>
 

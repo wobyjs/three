@@ -3,7 +3,7 @@ import IndexNode, { IndexNodeScope } from 'three/src/nodes/core/IndexNode.js'
 export { IndexNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        indexNode: string[]
+        indexNode: typeof indexNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        indexNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        indexNode: typeof _indexNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\IndexNode.d.ts
 
-consParams.indexNode = [
+
+const indexNode = ([
     'scope',
-].distinct()
+] as const).distinct()
+consParams.indexNode = indexNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\IndexNode.d.ts    
 
-objParams.indexNode = [...objParams.node,
+
+const _indexNode = ([...objProps.node,
     'scope',
-].distinct()
+] as const).distinct()
+objProps.indexNode = _indexNode
 
 export type IndexNodeProps = Node<IndexNode, typeof IndexNode, { scope: IndexNodeScope; }>
 

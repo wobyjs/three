@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/effects/PeppersGhostEffect.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        peppersGhostEffect: string[]
+        peppersGhostEffect: typeof peppersGhostEffect
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        peppersGhostEffect: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        peppersGhostEffect: typeof _peppersGhostEffect
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\PeppersGhostEffect.d.ts
 
-consParams.peppersGhostEffect = [
+
+const peppersGhostEffect = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.peppersGhostEffect = peppersGhostEffect
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\PeppersGhostEffect.d.ts
 
-objParams.peppersGhostEffect = [
+
+const _peppersGhostEffect = ([
     'cameraDistance',
     'reflectFromAbove',
-].distinct()
+] as const).distinct()
+objProps.peppersGhostEffect = _peppersGhostEffect
 
 export type PeppersGhostEffectProps = Node<PeppersGhostEffect, typeof PeppersGhostEffect, { renderer: WebGLRenderer; }>
 

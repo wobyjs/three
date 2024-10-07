@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { ImageLoader } from 'three/src/loaders/ImageLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,23 +27,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        imageLoader: string[]
+        imageLoader: typeof imageLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        imageLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        imageLoader: typeof _imageLoader
     }
 }
 
 
-consParams.imageLoader = [
+const imageLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.imageLoader = imageLoader
 
-
-objParams.imageLoader = [...objParams.loader]
+const _imageLoader = ([...objProps.loader] as const).distinct()
+objProps.imageLoader = _imageLoader
 
 export type ImageLoaderProps = Node<ImageLoader, typeof ImageLoader, { manager?: LoadingManager }>
 

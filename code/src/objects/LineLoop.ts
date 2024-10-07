@@ -5,8 +5,9 @@ import { LineLoop } from 'three/src/objects/LineLoop.js'
 export { LineLoop } from 'three/src/objects/LineLoop.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        lineLoop: string[]
+        lineLoop: typeof lineLoop
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lineLoop: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lineLoop: typeof _lineLoop
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\LineLoop.d.ts
+
 /**
  * A continuous line that connects back to the start.
  * @remarks
@@ -49,7 +50,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LineLoop.js}
  */
 
-consParams.lineLoop = [
+const lineLoop = ([
     /**
      * Create a new instance of {@link LineLoop}
      * @param geometry  List of vertices representing points on the line loop. Default {@link THREE.BufferGeometry | `new THREE.BufferGeometry()`}.
@@ -57,9 +58,10 @@ consParams.lineLoop = [
      */
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.lineLoop = lineLoop
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\LineLoop.d.ts
+
 /**
  * A continuous line that connects back to the start.
  * @remarks
@@ -71,8 +73,9 @@ consParams.lineLoop = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LineLoop.js | Source}
  */
 
-objParams.lineLoop = [...objParams.line,
-].distinct()
+const _lineLoop = ([...objProps.line,
+] as const).distinct()
+objProps.lineLoop = _lineLoop
 
 export type LineLoopProps<
     TGeometry extends BufferGeometry = BufferGeometry,

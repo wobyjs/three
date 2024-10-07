@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/capabilities/WebGL.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webgl: string[]
+        webgl: typeof webgl
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webgl: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webgl: typeof _webgl
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\capabilities\WebGl.d.ts
+
 // tslint:disable-next-line:no-unnecessary-class
 
-consParams.webgl = [
-].distinct()
+const webgl = ([
+] as const).distinct()
+consParams.webgl = webgl
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\capabilities\WebGl.d.ts
+
 // tslint:disable-next-line:no-unnecessary-class
 
-objParams.webgl = [
-].distinct()
+const _webgl = ([
+] as const).distinct()
+objProps.webgl = _webgl
 
 export type WebGLProps = Node<WebGL, typeof WebGL, {}>
 

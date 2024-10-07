@@ -2,7 +2,7 @@ import { RollerCoasterGeometry, RollerCoasterLiftersGeometry, RollerCoasterShado
 import { Vector3, Node } from '../../../three-types'
 import { Mesh } from 'three/src/objects/Mesh.js'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -19,76 +19,86 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        rollerCoasterGeometry: string[]
-        rollerCoasterLiftersGeometry: string[]
-        rollerCoasterShadowGeometry: string[]
-        skyGeometry: string[]
-        treesGeometry: string[]
+        rollerCoasterGeometry: typeof rollerCoasterGeometry
+        rollerCoasterLiftersGeometry: typeof rollerCoasterLiftersGeometry
+        rollerCoasterShadowGeometry: typeof rollerCoasterShadowGeometry
+        skyGeometry: typeof skyGeometry
+        treesGeometry: typeof treesGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        rollerCoasterGeometry: string[]
-        rollerCoasterLiftersGeometry: string[]
-        rollerCoasterShadowGeometry: string[]
-        skyGeometry: string[]
-        treesGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        rollerCoasterGeometry: typeof _rollerCoasterGeometry
+        rollerCoasterLiftersGeometry: typeof _rollerCoasterLiftersGeometry
+        rollerCoasterShadowGeometry: typeof _rollerCoasterShadowGeometry
+        skyGeometry: typeof _skyGeometry
+        treesGeometry: typeof _treesGeometry
     }
 }
-interface THREE_Curve {
+export interface THREE_Curve {
     getPointAt(u: number): Vector3;
     getTangentAt(u: number): Vector3;
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\RollerCoaster.d.ts
 
-consParams.rollerCoasterGeometry = [
+
+const rollerCoasterGeometry = ([
     'curve',
     'divisions',
-].distinct()
+] as const).distinct()
+consParams.rollerCoasterGeometry = rollerCoasterGeometry
 
 
-consParams.rollerCoasterLiftersGeometry = [
+const rollerCoasterLiftersGeometry = ([
     'curve',
     'divisions',
-].distinct()
+] as const).distinct()
+consParams.rollerCoasterLiftersGeometry = rollerCoasterLiftersGeometry
 
 
-consParams.rollerCoasterShadowGeometry = [
+const rollerCoasterShadowGeometry = ([
     'curve',
     'divisions',
-].distinct()
+] as const).distinct()
+consParams.rollerCoasterShadowGeometry = rollerCoasterShadowGeometry
 
 
-consParams.skyGeometry = [
-].distinct()
+const skyGeometry = ([
+] as const).distinct()
+consParams.skyGeometry = skyGeometry
 
 
-consParams.treesGeometry = [
+const treesGeometry = ([
     'landscape',
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\RollerCoaster.d.ts
-
-objParams.rollerCoasterGeometry = [...objParams.bufferGeometry,
-].distinct()
+] as const).distinct()
+consParams.treesGeometry = treesGeometry
 
 
-objParams.rollerCoasterLiftersGeometry = [...objParams.bufferGeometry,
-].distinct()
+
+const _rollerCoasterGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.rollerCoasterGeometry = _rollerCoasterGeometry
 
 
-objParams.rollerCoasterShadowGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _rollerCoasterLiftersGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.rollerCoasterLiftersGeometry = _rollerCoasterLiftersGeometry
 
 
-objParams.skyGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _rollerCoasterShadowGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.rollerCoasterShadowGeometry = _rollerCoasterShadowGeometry
 
 
-objParams.treesGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _skyGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.skyGeometry = _skyGeometry
+
+
+const _treesGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.treesGeometry = _treesGeometry
 
 export type RollerCoasterGeometryProps = Node<RollerCoasterGeometry, typeof RollerCoasterGeometry, { curve: THREE_Curve; divisions: number; }>
 

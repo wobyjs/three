@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { BatchedMesh } from 'three/src/objects/BatchedMesh.js'
 import BatchNode from 'three/src/nodes/accessors/BatchNode.js'
 export { BatchNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,31 +26,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        batchNode: string[]
+        batchNode: typeof batchNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        batchNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        batchNode: typeof _batchNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\BatchNode.d.ts
 
-consParams.batchNode = [
+
+const batchNode = ([
     'batchMesh',
-].distinct()
+] as const).distinct()
+consParams.batchNode = batchNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\BatchNode.d.ts    
 
-objParams.batchNode = [...objParams.node,
+
+const _batchNode = ([...objProps.node,
     'batchMesh',
     'instanceColorNode',
     'batchingIdNode',
-].distinct()
+] as const).distinct()
+objProps.batchNode = _batchNode
 
-export type BatchNodeProps = Object3DNode<BatchNode, typeof BatchNode, { batchMesh: BatchedMesh; }>
+export type BatchNodeProps = Node<BatchNode, typeof BatchNode, { batchMesh: BatchedMesh; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

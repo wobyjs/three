@@ -3,7 +3,7 @@ import NodeBuilder from 'three/src/nodes/core/NodeBuilder.js'
 export { NodeBuilder }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,53 +25,58 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeBuilder: string[]
-        flowData: string[]
-        nodeData: string[]
+        nodeBuilder: typeof nodeBuilder
+        flowData: typeof flowData
+        nodeData: typeof nodeData
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeBuilder: string[]
-        flowData: string[]
-        nodeData: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeBuilder: typeof _nodeBuilder
+        flowData: typeof _flowData
+        nodeData: typeof _nodeData
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeBuilder.d.ts
 
-consParams.flowData = [
+
+const flowData = ([
     'code',
-].distinct()
+] as const).distinct()
+consParams.flowData = flowData
 
 
-consParams.nodeData = [
+const nodeData = ([
     'vertex',
     'fragment',
     'compute',
-].distinct()
+] as const).distinct()
+consParams.nodeData = nodeData
 
 
-consParams.nodeBuilder = [
+const nodeBuilder = ([
 
-].distinct()
+] as const).distinct()
+consParams.nodeBuilder = nodeBuilder
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeBuilder.d.ts
 
-objParams.flowData = [
+
+const _flowData = ([
     'code',
-].distinct()
+] as const).distinct()
+objProps.flowData = _flowData
 
 
-objParams.nodeData = [
+const _nodeData = ([
     'vertex',
     'fragment',
     'compute',
-].distinct()
+] as const).distinct()
+objProps.nodeData = _nodeData
 
 
-objParams.nodeBuilder = [
+const _nodeBuilder = ([
     'object',
     'material',
     'geometry',
@@ -94,7 +99,8 @@ objParams.nodeBuilder = [
     'shaderStage',
     'buildStage',
     'stack',
-].distinct()
+] as const).distinct()
+objProps.nodeBuilder = _nodeBuilder
 
 export type NodeBuilderProps = Node<NodeBuilder, typeof NodeBuilder, {}>
 

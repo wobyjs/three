@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/modifiers/EdgeSplitModifier.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        edgeSplitModifier: string[]
+        edgeSplitModifier: typeof edgeSplitModifier
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        edgeSplitModifier: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        edgeSplitModifier: typeof _edgeSplitModifier
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\modifiers\EdgeSplitModifier.d.ts
 
-consParams.edgeSplitModifier = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\modifiers\EdgeSplitModifier.d.ts
+const edgeSplitModifier = ([
+] as const).distinct()
+consParams.edgeSplitModifier = edgeSplitModifier
 
-objParams.edgeSplitModifier = [
-].distinct()
+
+
+const _edgeSplitModifier = ([
+] as const).distinct()
+objProps.edgeSplitModifier = _edgeSplitModifier
 
 export type EdgeSplitModifierProps = Node<EdgeSplitModifier, typeof EdgeSplitModifier, {}>
 

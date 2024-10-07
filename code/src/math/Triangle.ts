@@ -3,8 +3,9 @@ import { Triangle } from 'three/src/math/Triangle.js'
 export { Triangle } from 'three/src/math/Triangle.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,27 +26,28 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        triangle: string[]
+        triangle: typeof triangle
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        triangle: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        triangle: typeof _triangle
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Triangle.d.ts
 
-consParams.triangle = [
+
+const triangle = ([
     'a',
     'b',
     'c',
-].distinct()
+] as const).distinct()
+consParams.triangle = triangle
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Triangle.d.ts
 
-objParams.triangle = [
+
+const _triangle = ([
     /**
      * @default new THREE.Vector3()
      */
@@ -58,7 +60,8 @@ objParams.triangle = [
      * @default new THREE.Vector3()
      */
     'c',
-].distinct()
+] as const).distinct()
+objProps.triangle = _triangle
 
 export type TriangleProps = Node<Triangle, typeof Triangle, { a?: Vector3; b?: Vector3; c?: Vector3; }>
 

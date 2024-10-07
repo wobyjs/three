@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/EXRExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import { HalfFloatType } from 'three/src/constants'
 
@@ -27,19 +27,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        exrExporter: string[]
-        exrExporterParseOptions: string[]
+        exrExporter: typeof exrExporter
+        exrExporterParseOptions: typeof exrExporterParseOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        exrExporter: string[]
-        exrExporterParseOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        exrExporter: typeof _exrExporter
+        exrExporterParseOptions: typeof _exrExporterParseOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\EXRExporter.d.ts
+
 /**
  * @author sciecode / https://github.com/sciecode
  *
@@ -47,15 +47,17 @@ declare module '../../../lib/3/objParams' {
  * https://www.openexr.com/documentation/openexrfilelayout.pdf
  */
 
-consParams.exrExporterParseOptions = [
+const exrExporterParseOptions = ([
     'compression',
     'type',
-].distinct()
+] as const).distinct()
+consParams.exrExporterParseOptions = exrExporterParseOptions
 
 
-consParams.exrExporter = [
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\EXRExporter.d.ts
+const exrExporter = ([
+] as const).distinct()
+consParams.exrExporter = exrExporter
+
 /**
  * @author sciecode / https://github.com/sciecode
  *
@@ -63,14 +65,16 @@ consParams.exrExporter = [
  * https://www.openexr.com/documentation/openexrfilelayout.pdf
  */
 
-objParams.exrExporterParseOptions = [
+const _exrExporterParseOptions = ([
     'compression',
     'type',
-].distinct()
+] as const).distinct()
+objProps.exrExporterParseOptions = _exrExporterParseOptions
 
 
-objParams.exrExporter = [
-].distinct()
+const _exrExporter = ([
+] as const).distinct()
+objProps.exrExporter = _exrExporter
 
 export type EXRExporterProps = Node<EXRExporter, typeof EXRExporter, {}>
 

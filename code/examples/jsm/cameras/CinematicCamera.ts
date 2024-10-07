@@ -3,7 +3,7 @@ import { CinematicCamera } from 'three/examples/jsm/cameras/CinematicCamera.js'
 export * from 'three/examples/jsm/cameras/CinematicCamera.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,28 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        cinematicCamera: string[]
+        cinematicCamera: typeof cinematicCamera
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        cinematicCamera: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        cinematicCamera: typeof _cinematicCamera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\cameras\CinematicCamera.d.ts
 
-consParams.cinematicCamera = [
+
+const cinematicCamera = ([
     'fov',
     'aspect',
     'near',
     'far',
-].distinct()
+] as const).distinct()
+consParams.cinematicCamera = cinematicCamera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\cameras\CinematicCamera.d.ts    
 
-objParams.cinematicCamera = [...objParams.perspectiveCamera,
+
+const _cinematicCamera = ([...objProps.perspectiveCamera,
     'postprocessing',
     'shaderSettings',
     'materialDepth',
@@ -55,7 +56,8 @@ objParams.cinematicCamera = [...objParams.perspectiveCamera,
     'fNumber',
     'hyperFocal',
     'filmGauge',
-].distinct()
+] as const).distinct()
+objProps.cinematicCamera = _cinematicCamera
 
 export type CinematicCameraProps = Node<CinematicCamera, typeof CinematicCamera, { fov: number; aspect: number; near: number; far: number; }>
 

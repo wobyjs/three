@@ -4,8 +4,9 @@ import NodeAttribute from 'three/src/nodes/core/NodeAttribute.js'
 export { NodeAttribute }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+export * from 'three/src/nodes/Nodes'
 
 declare module '../../../lib/3/three'
 {
@@ -26,48 +27,52 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeAttribute: string[]
-        node: string[]
+        nodeAttribute: typeof nodeAttribute
+        node: typeof node
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeAttribute: string[]
-        node: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeAttribute: typeof _nodeAttribute
+        node: typeof _node
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\Node.d.ts
 
-consParams.node = [
+
+const node = ([
     'nodeType',
-].distinct()
+] as const).distinct()
+consParams.node = node
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\Node.d.ts
 
-objParams.node = [
+
+const _node = ([
     'nodeType',
     'updateType',
     'updateBeforeType',
     'uuid',
     'version',
-].distinct()
+] as const).distinct()
+objProps.node = _node
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeAttribute.d.ts
 
-consParams.nodeAttribute = [
+
+const nodeAttribute = ([
     'name',
     'type',
-].distinct()
+] as const).distinct()
+consParams.nodeAttribute = nodeAttribute
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeAttribute.d.ts
 
-objParams.nodeAttribute = [
+
+const _nodeAttribute = ([
     'isNodeAttribute',
     'name',
     'type',
-].distinct()
+] as const).distinct()
+objProps.nodeAttribute = _nodeAttribute
 
 export type NodeAttributeProps = Node<NodeAttribute, typeof NodeAttribute, { name: string; type: string | null; node?: ENode | null; }>
 

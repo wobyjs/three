@@ -3,8 +3,9 @@ import { Vector2 } from 'three/src/math/Vector2.js'
 export { Vector2 } from 'three/src/math/Vector2.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,41 +26,44 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        vector2: string[]
-        vector2Like: string[]
+        vector2: typeof vector2
+        vector2Like: typeof vector2Like
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        vector2: string[]
-        vector2Like: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        vector2: typeof _vector2
+        vector2Like: typeof _vector2Like
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Vector2.d.ts
 
-consParams.vector2Like = [
-].distinct()
+
+const vector2Like = ([
+] as const).distinct()
+consParams.vector2Like = vector2Like
 /**
  * 2D vector.
  */
 
-consParams.vector2 = [
+const vector2 = ([
     'x',
     'y',
-].distinct()
+] as const).distinct()
+consParams.vector2 = vector2
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Vector2.d.ts
 
-objParams.vector2Like = [
-].distinct()
+
+const _vector2Like = ([
+] as const).distinct()
+objProps.vector2Like = _vector2Like
 
 /**
  * 2d vector.
  */
 
-objParams.vector2 = [
+const _vector2 = ([
     /**
      * @default 0
      */
@@ -70,7 +74,8 @@ objParams.vector2 = [
     'y',
     'width',
     'height',
-].distinct()
+] as const).distinct()
+objProps.vector2 = _vector2
 
 export type Vector2Props = Node<Vector2, typeof Vector2, { x?: number; y?: number; }>
 

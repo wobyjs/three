@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/OutputPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        outputPass: string[]
+        outputPass: typeof outputPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        outputPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        outputPass: typeof _outputPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\OutputPass.d.ts
 
-consParams.outputPass = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\OutputPass.d.ts    
+const outputPass = ([
+] as const).distinct()
+consParams.outputPass = outputPass
 
-objParams.outputPass = [...objParams.pass,
+
+
+const _outputPass = ([...objProps.pass,
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.outputPass = _outputPass
 
 export type OutputPassProps = Node<OutputPass, typeof OutputPass, {}>
 

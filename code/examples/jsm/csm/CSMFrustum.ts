@@ -3,7 +3,7 @@ import { CSMFrustum, CSMFrustumParameters } from 'three/examples/jsm/csm/CSMFrus
 export default CSMFrustum
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 
@@ -26,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        csmFrustum: string[]
-        csmFrustumVerticies: string[]
+        csmFrustum: typeof csmFrustum
+        csmFrustumVerticies: typeof csmFrustumVerticies
         csmFrustumParameters: WrapAsString<CSMFrustumParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        csmFrustum: string[]
-        csmFrustumVerticies: string[]
-        csmFrustumParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        csmFrustum: typeof _csmFrustum
+        csmFrustumVerticies: typeof _csmFrustumVerticies
+        csmFrustumParameters: typeof _csmFrustumParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\csm\CSMFrustum.d.ts
 
-consParams.csmFrustumVerticies = [
+
+const csmFrustumVerticies = ([
     'near',
     'far',
-].distinct()
+] as const).distinct()
+consParams.csmFrustumVerticies = csmFrustumVerticies
 
 
 consParams.csmFrustumParameters = ([
@@ -54,26 +55,30 @@ consParams.csmFrustumParameters = ([
 ] as const).toObject()
 
 
-consParams.csmFrustum = [
+const csmFrustum = ([
     'data',
-].distinct()
+] as const).distinct()
+consParams.csmFrustum = csmFrustum
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\csm\CSMFrustum.d.ts
 
-objParams.csmFrustumVerticies = [
+
+const _csmFrustumVerticies = ([
     'near',
     'far',
-].distinct()
+] as const).distinct()
+objProps.csmFrustumVerticies = _csmFrustumVerticies
 
-objParams.csmFrustumParameters = [
+const _csmFrustumParameters = ([
     'projectionMatrix',
     'maxFar',
-].distinct()
+] as const).distinct()
+objProps.csmFrustumParameters = _csmFrustumParameters
 
 
-objParams.csmFrustum = [
+const _csmFrustum = ([
     'vertices',
-].distinct()
+] as const).distinct()
+objProps.csmFrustum = _csmFrustum
 
 export type CSMFrustumProps = Node<CSMFrustum, typeof CSMFrustum, { data?: CSMFrustumParameters; }>
 

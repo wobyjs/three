@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/KTXLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,48 +27,52 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ktxLoader: string[]
-        ktx: string[]
+        ktxLoader: typeof ktxLoader
+        ktx: typeof ktx
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ktxLoader: string[]
-        ktx: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ktxLoader: typeof _ktxLoader
+        ktx: typeof _ktx
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\KTXLoader.d.ts
 
-consParams.ktx = [
+
+const ktx = ([
     'mipmaps',
     'width',
     'height',
     'format',
     'mipmapCount',
     'isCubemap',
-].distinct()
+] as const).distinct()
+consParams.ktx = ktx
 
 
-consParams.ktxLoader = [
+const ktxLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.ktxLoader = ktxLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\KTXLoader.d.ts
 
-objParams.ktx = [
+
+const _ktx = ([
     'mipmaps',
     'width',
     'height',
     'format',
     'mipmapCount',
     'isCubemap',
-].distinct()
+] as const).distinct()
+objProps.ktx = _ktx
 
 
-objParams.ktxLoader = [...objParams.compressedTextureLoader,
-].distinct()
+const _ktxLoader = ([...objProps.compressedTextureLoader,
+] as const).distinct()
+objProps.ktxLoader = _ktxLoader
 
 export type KTXLoaderProps = Node<KTXLoader, typeof KTXLoader, { manager?: LoadingManager; }>
 

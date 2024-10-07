@@ -4,8 +4,9 @@ import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        webglCubeRenderTarget: string[]
+        webglCubeRenderTarget: typeof webglCubeRenderTarget
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        webglCubeRenderTarget: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        webglCubeRenderTarget: typeof _webglCubeRenderTarget
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlCubeRenderTarget.d.ts
 
-consParams.webglCubeRenderTarget = [
+
+const webglCubeRenderTarget = ([
     'size',
     'options',
-].distinct()
+] as const).distinct()
+consParams.webglCubeRenderTarget = webglCubeRenderTarget
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlCubeRenderTarget.d.ts    
 
-objParams.webglCubeRenderTarget = [...objParams.webglRenderTarget,
+
+const _webglCubeRenderTarget = ([...objProps.webglRenderTarget,
     'textures',
     'texture',
-].distinct()
+] as const).distinct()
+objProps.webglCubeRenderTarget = _webglCubeRenderTarget
 
 export type WebGLCubeRenderTargetProps = Node<WebGLCubeRenderTarget, typeof WebGLCubeRenderTarget, { size?: number; options?: RenderTargetOptions; }>
 

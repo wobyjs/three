@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/VOXLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,66 +27,74 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        voxLoader: string[]
-        chunk: string[]
-        voxMesh: string[]
-        voxData3dTexture: string[]
+        voxLoader: typeof voxLoader
+        chunk: typeof chunk
+        voxMesh: typeof voxMesh
+        voxData3dTexture: typeof voxData3dTexture
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        voxLoader: string[]
-        chunk: string[]
-        voxMesh: string[]
-        voxData3dTexture: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        voxLoader: typeof _voxLoader
+        chunk: typeof _chunk
+        voxMesh: typeof _voxMesh
+        voxData3dTexture: typeof _voxData3dTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\VOXLoader.d.ts
 
-consParams.chunk = [
+
+const chunk = ([
     'palette',
     'size',
     'data',
-].distinct()
+] as const).distinct()
+consParams.chunk = chunk
 
 
-consParams.voxLoader = [
+const voxLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.voxLoader = voxLoader
 
 
-consParams.voxMesh = [
+const voxMesh = ([
     'chunk',
-].distinct()
+] as const).distinct()
+consParams.voxMesh = voxMesh
 
 
-consParams.voxData3dTexture = [
+const voxData3dTexture = ([
     'chunk',
-].distinct()
+] as const).distinct()
+consParams.voxData3dTexture = voxData3dTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\VOXLoader.d.ts
 
-objParams.chunk = [
+
+const _chunk = ([
     'palette',
     'size',
     'data',
-].distinct()
+] as const).distinct()
+objProps.chunk = _chunk
 
 
-objParams.voxLoader = [...objParams.loader,
-].distinct()
-
-
-
-objParams.voxMesh = [...objParams.mesh,
-].distinct()
+const _voxLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.voxLoader = _voxLoader
 
 
 
-objParams.voxData3dTexture = [...objParams.data3dTexture,
-].distinct()
+const _voxMesh = ([...objProps.mesh,
+] as const).distinct()
+objProps.voxMesh = _voxMesh
+
+
+
+const _voxData3dTexture = ([...objProps.data3dTexture,
+] as const).distinct()
+objProps.voxData3dTexture = _voxData3dTexture
 
 export type VOXLoaderProps = Node<VOXLoader, typeof VOXLoader, { manager?: LoadingManager; }>
 

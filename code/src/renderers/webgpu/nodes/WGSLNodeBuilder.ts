@@ -3,7 +3,7 @@ import WGSLNodeBuilder from 'three/src/renderers/webgpu/nodes/WGSLNodeBuilder.js
 export { WGSLNodeBuilder }
 import { Three } from '../../../../lib/3/three'
 import { consParams } from '../../../../lib/3/consParams'
-import { objParams } from '../../../../lib/3/objParams'
+import { objProps } from '../../../../lib/3/objProps'
 import { defaults } from '../../../../lib/3/defaults'
 
 declare module '../../../../lib/3/three'
@@ -25,28 +25,30 @@ declare module 'woby' {
 
 declare module '../../../../lib/3/consParams' {
     interface consParams {
-        wgslNodeBuilder: string[]
+        wgslNodeBuilder: typeof wgslNodeBuilder
     }
 }
 
-declare module '../../../../lib/3/objParams' {
-    interface objParams {
-        wgslNodeBuilder: string[]
+declare module '../../../../lib/3/objProps' {
+    interface objProps {
+        wgslNodeBuilder: typeof _wgslNodeBuilder
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgl\nodes\WebGlNodeBuilder.d.ts
 
-consParams.wgslNodeBuilder = [
+
+const wgslNodeBuilder = ([
     'object',
     'renderer',
     'shader',
-].distinct()
+] as const).distinct()
+consParams.wgslNodeBuilder = wgslNodeBuilder
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgl\nodes\WebGlNodeBuilder.d.ts    
 
-objParams.wgslNodeBuilder = [...objParams.nodeBuilder,
-].distinct()
+
+const _wgslNodeBuilder = ([...objProps.nodeBuilder,
+] as const).distinct()
+objProps.wgslNodeBuilder = _wgslNodeBuilder
 
 export type WGSLNodeBuilderProps = Node<WGSLNodeBuilder, typeof WGSLNodeBuilder, {}>
 

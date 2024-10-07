@@ -3,8 +3,9 @@ import TempNode from 'three/src/nodes/core/TempNode.js'
 export { TempNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import './NodeAttribute'
 
 declare module '../../../lib/3/three'
 {
@@ -25,27 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tempNode: string[]
+        tempNode: typeof tempNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tempNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tempNode: typeof _tempNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\TempNode.d.ts
 
-consParams.tempNode = [
+const tempNode = ([
     'type',
-].distinct()
+] as const).distinct()
+consParams.tempNode = tempNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\TempNode.d.ts    
 
-objParams.tempNode = [...objParams.node,
+
+const _tempNode = ([...objProps.node,
     'isTempNode',
-].distinct()
+] as const).distinct()
+objProps.tempNode = _tempNode
 
 export type TempNodeProps = Node<TempNode, typeof TempNode, { type: string | null; }>
 

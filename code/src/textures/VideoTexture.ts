@@ -7,8 +7,9 @@ import {
 export { VideoTexture } from 'three/src/textures/VideoTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Texture'
 
 declare module '../../lib/3/three'
@@ -30,34 +31,36 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        videoTexture: string[]
-        textureImageData: string[]
-        texture3dImageData: string[]
+        videoTexture: typeof videoTexture
+        textureImageData: typeof textureImageData
+        texture3dImageData: typeof texture3dImageData
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        videoTexture: string[]
-        textureImageData: string[]
-        texture3dImageData: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        videoTexture: typeof _videoTexture
+        textureImageData: typeof _textureImageData
+        texture3dImageData: typeof _texture3dImageData
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\types.d.ts
 
-consParams.textureImageData = [
+
+const textureImageData = ([
     'data',
     'height',
     'width',
-].distinct()
+] as const).distinct()
+consParams.textureImageData = textureImageData
 
 
-consParams.texture3dImageData = [
+const texture3dImageData = ([
     'depth',
-].distinct()
+] as const).distinct()
+consParams.texture3dImageData = texture3dImageData
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\VideoTexture.d.ts
+
 /**
  * Creates a texture for use with a video.
  * @remarks
@@ -78,7 +81,7 @@ consParams.texture3dImageData = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/VideoTexture.js}
  */
 
-consParams.videoTexture = [
+const videoTexture = ([
     /**
      * Create a new instance of {@link VideoTexture}
      * @param video The video element to use as the texture.
@@ -101,24 +104,27 @@ consParams.videoTexture = [
     'format',
     'type',
     'anisotropy',
-].distinct()
+] as const).distinct()
+consParams.videoTexture = videoTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\types.d.ts    
 
-objParams.textureImageData = [
+
+const _textureImageData = ([
     'data',
     'height',
     'width',
-].distinct()
+] as const).distinct()
+objProps.textureImageData = _textureImageData
 
 
 
-objParams.texture3dImageData = [...objParams.textureImageData,
+const _texture3dImageData = ([...objProps.textureImageData,
     'depth',
-].distinct()
+] as const).distinct()
+objProps.texture3dImageData = _texture3dImageData
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\VideoTexture.d.ts
+
 /**
  * Creates a texture for use with a video.
  * @remarks
@@ -139,7 +145,7 @@ objParams.texture3dImageData = [...objParams.textureImageData,
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/VideoTexture.js | Source}
  */
 
-objParams.videoTexture = [...objParams.texture,
+const _videoTexture = ([...objProps.texture,
     /**
      * @override
      * @defaultValue {@link THREE.LinearFilter}
@@ -155,7 +161,8 @@ objParams.videoTexture = [...objParams.texture,
      * @defaultValue `false`
      */
     'generateMipmaps',
-].distinct()
+] as const).distinct()
+objProps.videoTexture = _videoTexture
 
 export type VideoTextureProps = Node<VideoTexture, typeof VideoTexture, { video: HTMLVideoElement; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; }>
 

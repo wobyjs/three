@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/LottieLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lottieLoader: string[]
+        lottieLoader: typeof lottieLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lottieLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lottieLoader: typeof _lottieLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LottieLoader.d.ts
 
-consParams.lottieLoader = [
+
+const lottieLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.lottieLoader = lottieLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LottieLoader.d.ts    
 
-objParams.lottieLoader = [...objParams.loader,
-].distinct()
+
+const _lottieLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.lottieLoader = _lottieLoader
 
 export type LottieLoaderProps = Node<LottieLoader, typeof LottieLoader, { manager?: LoadingManager; }>
 

@@ -7,8 +7,9 @@ import { DepthTexture } from 'three/src/textures/DepthTexture.js'
 export { DepthTexture } from 'three/src/textures/DepthTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -29,17 +30,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        depthTexture: string[]
+        depthTexture: typeof depthTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        depthTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        depthTexture: typeof _depthTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\DepthTexture.d.ts
+
 /**
  * This class can be used to automatically save the depth information of a rendering into a texture
  * @see Example: {@link https://threejs.org/examples/#webgl_depth_texture / texture}
@@ -47,7 +48,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DepthTexture.js}
  */
 
-consParams.depthTexture = [
+const depthTexture = ([
     /**
      * Create a new instance of {@link DepthTexture}
      * @param width Width of the texture.
@@ -72,9 +73,10 @@ consParams.depthTexture = [
     'minFilter',
     'anisotropy',
     'format',
-].distinct()
+] as const).distinct()
+consParams.depthTexture = depthTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\DepthTexture.d.ts
+
 /**
  * This class can be used to automatically save the depth information of a rendering into a texture
  * @see Example: {@link https://threejs.org/examples/#webgl_depth_texture | depth / texture}
@@ -82,7 +84,7 @@ consParams.depthTexture = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DepthTexture.js | Source}
  */
 
-objParams.depthTexture = [...objParams.texture,
+const _depthTexture = ([...objProps.texture,
     /**
      * Overridden with a record type holding width and height.
      * @override
@@ -127,7 +129,8 @@ objParams.depthTexture = [...objParams.texture,
      * See {@link THREE.TextureComparisonFunction} for functions.
      */
     'compareFunction',
-].distinct()
+] as const).distinct()
+objProps.depthTexture = _depthTexture
 
 export type DepthTextureProps = Node<DepthTexture, typeof DepthTexture, { width: number; height: number; type?: TextureDataType; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; anisotropy?: number; format?: DepthTexturePixelFormat; }>
 

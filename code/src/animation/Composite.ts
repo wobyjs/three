@@ -2,7 +2,7 @@ import { PropertyBinding, PropertyBindingProps } from './PropertyBinding'
 
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 // import { defaults } from '../../lib/3/defaults'
 
 declare module '../../lib/3/three'
@@ -24,27 +24,29 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        composite: string[]
-        propertyBinding_Composite: string[]
+        composite: typeof consParams.propertyBinding
+        propertyBinding_Composite: typeof propertyBinding_Composite
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        composite: string[]
-        propertyBinding_Composite: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        composite: typeof objProps.propertyBinding
+        propertyBinding_Composite: typeof _propertyBinding_Composite
     }
 }
 
 
-consParams.propertyBinding_Composite = [
+const propertyBinding_Composite = ([
     'targetGroup',
     'path',
     'parsedPath',
-].distinct()
+] as const).distinct()
+consParams.propertyBinding_Composite = propertyBinding_Composite
 
 
-objParams.propertyBinding_Composite = [].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\PropertyMixer.d.ts
+const _propertyBinding_Composite = ([] as const).distinct()
+objProps.propertyBinding_Composite = _propertyBinding_Composite
+
 
 export type CompositeProps = PropertyBindingProps;

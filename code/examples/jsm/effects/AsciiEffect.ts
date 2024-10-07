@@ -4,7 +4,7 @@ import { Node } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,51 +26,55 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        asciiEffect: string[]
-        asciiEffectOptions: string[]
+        asciiEffect: typeof asciiEffect
+        asciiEffectOptions: typeof asciiEffectOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        asciiEffect: string[]
-        asciiEffectOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        asciiEffect: typeof _asciiEffect
+        asciiEffectOptions: typeof _asciiEffectOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\AsciiEffect.d.ts
 
-consParams.asciiEffectOptions = [
+
+const asciiEffectOptions = ([
     'resolution',
     'scale',
     'color',
     'alpha',
     'block',
     'invert',
-].distinct()
+] as const).distinct()
+consParams.asciiEffectOptions = asciiEffectOptions
 
 
-consParams.asciiEffect = [
+const asciiEffect = ([
     'renderer',
     'charSet',
     'options',
-].distinct()
+] as const).distinct()
+consParams.asciiEffect = asciiEffect
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\AsciiEffect.d.ts
 
-objParams.asciiEffectOptions = [
+
+const _asciiEffectOptions = ([
     'resolution',
     'scale',
     'color',
     'alpha',
     'block',
     'invert',
-].distinct()
+] as const).distinct()
+objProps.asciiEffectOptions = _asciiEffectOptions
 
 
-objParams.asciiEffect = [
+const _asciiEffect = ([
     'domElement',
-].distinct()
+] as const).distinct()
+objProps.asciiEffect = _asciiEffect
 
 export type AsciiEffectProps = Node<AsciiEffect, typeof AsciiEffect, { renderer: WebGLRenderer; charSet?: string; options?: AsciiEffectOptions; }>
 

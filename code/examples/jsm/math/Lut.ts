@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/math/Lut.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,50 +26,54 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lut: string[]
-        colorMapKeywords: string[]
+        lut: typeof lut
+        colorMapKeywords: typeof colorMapKeywords
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lut: string[]
-        colorMapKeywords: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lut: typeof _lut
+        colorMapKeywords: typeof _colorMapKeywords
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\Lut.d.ts
 
-consParams.lut = [
+
+const lut = ([
     'colormap',
     'numberofcolors',
-].distinct()
+] as const).distinct()
+consParams.lut = lut
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\Lut.d.ts
 
-objParams.lut = [
+
+const _lut = ([
     'lut',
     'map',
     'n',
     'minV',
     'maxV',
-].distinct()
+] as const).distinct()
+objProps.lut = _lut
 
 
-consParams.colorMapKeywords = [
+const colorMapKeywords = ([
     'rainbow',
     'cooltowarm',
     'blackbody',
     'grayscale',
-].distinct()
+] as const).distinct()
+consParams.colorMapKeywords = colorMapKeywords
 
 
-objParams.colorMapKeywords = [
+const _colorMapKeywords = ([
     'rainbow',
     'cooltowarm',
     'blackbody',
     'grayscale',
-].distinct()
+] as const).distinct()
+objProps.colorMapKeywords = _colorMapKeywords
 
 export type LutProps = Node<Lut, typeof Lut, { colormap?: string; numberofcolors?: number; }>
 

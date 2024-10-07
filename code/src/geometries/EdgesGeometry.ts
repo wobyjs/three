@@ -1,10 +1,12 @@
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { EdgesGeometry } from 'three/src/geometries/EdgesGeometry.js'
+export * from 'three/src/geometries/EdgesGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        edgesGeometry: string[]
+        edgesGeometry: typeof edgesGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        edgesGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        edgesGeometry: typeof _edgesGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\EdgesGeometry.d.ts
+
 /**
  * This can be used as a helper object to view the edges of a {@link THREE.BufferGeometry}.
  * @example
@@ -52,7 +54,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/EdgesGeometry.js}
  */
 
-consParams.edgesGeometry = [
+const edgesGeometry = ([
     /**
      * Create a new instance of {@link EdgesGeometry}
      * @param geometry Any geometry object. Default `null`.
@@ -60,9 +62,10 @@ consParams.edgesGeometry = [
      */
     'geometry',
     'thresholdAngle',
-].distinct()
+] as const).distinct()
+consParams.edgesGeometry = edgesGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\EdgesGeometry.d.ts
+
 /**
  * This can be used as a helper object to view the edges of a {@link THREE.BufferGeometry | geometry}.
  * @example
@@ -79,8 +82,9 @@ consParams.edgesGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/EdgesGeometry.js | Source}
  */
 
-objParams.edgesGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _edgesGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.edgesGeometry = _edgesGeometry
 
 export type EdgesGeometryProps<TBufferGeometry extends BufferGeometry = BufferGeometry> = BufferGeometryNode<EdgesGeometry<TBufferGeometry>, typeof EdgesGeometry, { geometry?: TBufferGeometry | null; thresholdAngle?: number; }>
 

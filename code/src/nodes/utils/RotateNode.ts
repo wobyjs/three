@@ -4,7 +4,7 @@ import RotateNode from 'three/src/nodes/utils/RotateNode.js'
 export { RotateNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/TempNode'
 
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        rotateNode: string[]
+        rotateNode: typeof rotateNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        rotateNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        rotateNode: typeof _rotateNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\RotateNode.d.ts
 
-consParams.rotateNode = [
+
+const rotateNode = ([
     'positionNode',
     'rotationNode',
-].distinct()
+] as const).distinct()
+consParams.rotateNode = rotateNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\RotateNode.d.ts    
 
-objParams.rotateNode = [...objParams.tempNode,
+
+const _rotateNode = ([...objProps.tempNode,
     'positionNode',
     'rotationNode',
-].distinct()
+] as const).distinct()
+objProps.rotateNode = _rotateNode
 
 export type RotateNodeProps = Node<RotateNode, typeof RotateNode, { positionNode: ENode; rotationNode: ENode; }>
 

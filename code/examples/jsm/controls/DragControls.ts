@@ -5,7 +5,7 @@ import { DragControls } from 'three/examples/jsm/controls/DragControls.js'
 export * from 'three/examples/jsm/controls/DragControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,21 +27,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        dragControls: string[]
-        dragControlsEventMap: string[]
+        dragControls: typeof dragControls
+        dragControlsEventMap: typeof dragControlsEventMap
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        dragControls: string[]
-        dragControlsEventMap: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        dragControls: typeof _dragControls
+        dragControlsEventMap: typeof _dragControlsEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\DragControls.d.ts
 
-consParams.dragControlsEventMap = [
+
+const dragControlsEventMap = ([
     /**
      * Fires when the pointer is moved onto a 3d object, or onto one of its children.
      */
@@ -62,10 +62,11 @@ consParams.dragControlsEventMap = [
      * Fires when the user has finished dragging a 3d object.
      */
     'dragend',
-].distinct()
+] as const).distinct()
+consParams.dragControlsEventMap = dragControlsEventMap
 
 
-consParams.dragControls = [
+const dragControls = ([
     /**
      * Creates a new instance of DragControls.
      * @param objects An array of draggable 3d objects.
@@ -75,106 +76,11 @@ consParams.dragControls = [
     'objects',
     'camera',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.dragControls = dragControls
 
 
-objParams.arcballControls = [
-    'camera',
-    'domElement',
-    'scene',
-    /**
-     * @default 500
-     */
-    'focusAnimationTime',
-    /**
-     * @default true
-     */
-    'enabled',
-    /**
-     * @default true
-     */
-    'enablePan',
-    /**
-     * @default true
-     */
-    'enableRotate',
-    /**
-     * @default true
-     */
-    'enableZoom',
-    /**
-     * @default true
-     */
-    'enableGizmos',
-    /**
-     * @default true
-     */
-    'adjustNearFar',
-    /**
-     * @default 1.1
-     */
-    'scaleFactor',
-    /**
-     * @default 25
-     */
-    'dampingFactor',
-    /**
-     * @default 20
-     */
-    'wMax', // maximum angular velocity allowed
-    /**
-     * @default true
-     */
-    'enableAnimations', // if animations should be performed
-    /**
-     * @default false
-     */
-    'enableGrid', // if grid should be showed during pan operation
-    /**
-     * @default false
-     */
-    'cursorZoom', // if wheel zoom should be cursor centered
-    /**
-     * @default 5
-     */
-    'minFov',
-    /**
-     * @default 90
-     */
-    'maxFov',
-    /**
-     * @default 0
-     */
-    'minDistance',
-    /**
-     * @default Infinity
-     */
-    'maxDistance',
-    /**
-     * @default 0
-     */
-    'minZoom',
-    /**
-     * @default Infinity
-     */
-    'maxZoom',
-    /**
-     * @default Vector3(0,0,0)
-     */
-    'target',
-    /**
-     * @default 0.67
-     */
-    'radiusFactor',
-    /**
-     * @default 1
-     */
-    'rotateSpeed',
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\DragControls.d.ts
-
-objParams.dragControlsEventMap = [
+const _dragControlsEventMap = ([
     /**
      * Fires when the pointer is moved onto a 3d object, or onto one of its children.
      */
@@ -195,10 +101,11 @@ objParams.dragControlsEventMap = [
      * Fires when the user has finished dragging a 3d object.
      */
     'dragend',
-].distinct()
+] as const).distinct()
+objProps.dragControlsEventMap = _dragControlsEventMap
 
 
-objParams.dragControls = [
+const _dragControls = ([
     /**
      * Creates a new instance of DragControls.
      * @param objects An array of draggable 3d objects.
@@ -247,7 +154,8 @@ objParams.dragControls = [
      * Returns the internal {@link Raycaster} instance that is used for intersection tests.
      */
     'getRaycaster',
-].distinct()
+] as const).distinct()
+objProps.dragControls = _dragControls
 
 export type DragControlsProps = Node<DragControls, typeof DragControls, { objects: Object3D[]; camera: Camera; domElement?: HTMLElement; }>
 

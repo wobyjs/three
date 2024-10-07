@@ -4,7 +4,7 @@ import ViewportDepthTextureNode from 'three/src/nodes/display/ViewportDepthTextu
 export { ViewportDepthTextureNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        viewportDepthTextureNode: string[]
+        viewportDepthTextureNode: typeof viewportDepthTextureNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        viewportDepthTextureNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        viewportDepthTextureNode: typeof _viewportDepthTextureNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportDepthTextureNode.d.ts
 
-consParams.viewportDepthTextureNode = [
+
+const viewportDepthTextureNode = ([
     'uvNode',
     'levelNode',
-].distinct()
+] as const).distinct()
+consParams.viewportDepthTextureNode = viewportDepthTextureNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportDepthTextureNode.d.ts    
 
-objParams.viewportDepthTextureNode = [...objParams.viewportTextureNode,
-].distinct()
+
+const _viewportDepthTextureNode = ([...objProps.viewportTextureNode,
+] as const).distinct()
+objProps.viewportDepthTextureNode = _viewportDepthTextureNode
 
 export type ViewportDepthTextureNodeProps = Node<ViewportDepthTextureNode, typeof ViewportDepthTextureNode, { uvNode?: ENode; levelNode?: ENode | null; }>
 

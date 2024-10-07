@@ -2,7 +2,7 @@ import { Node } from '../../../three-types'
 import InputNode from 'three/src/nodes/core/InputNode.js'
 export { InputNode }
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -15,30 +15,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        inputNode: string[]
+        inputNode: typeof inputNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        inputNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        inputNode: typeof _inputNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\InputNode.d.ts
 
-consParams.inputNode = [
+
+const inputNode = ([
     'value',
     'nodeType',
-].distinct()
+] as const).distinct()
+consParams.inputNode = inputNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\InputNode.d.ts    
 
-objParams.inputNode = [...objParams.node,
+
+const _inputNode = ([...objProps.node,
     'isInputNode',
     'value',
     'precision',
-].distinct()
+] as const).distinct()
+objProps.inputNode = _inputNode
 
 export type InputNodeProps<T> = Node<InputNode<T>, typeof InputNode<T>, { value: T; nodeType?: string | null; }>
 

@@ -3,9 +3,11 @@ import { WebGLRenderer, WebGLRendererParameters } from 'three/src/renderers/WebG
 export * from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './common/Renderer'
+import { RendererEx, rendererEx } from './RendererEx'
 
 declare module '../../lib/3/three'
 {
@@ -26,21 +28,21 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        webglDebug: string[]
+        webglDebug: typeof webglDebug
         webglRenderer: WrapAsString<WebGLRendererParameters>
         webglRendererParameters: WrapAsString<WebGLRendererParameters>
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        webglRenderer: string[]
-        webglRendererParameters: string[]
-        webglDebug: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        webglRenderer: typeof _webglRenderer
+        webglRendererParameters: typeof _webglRendererParameters
+        webglDebug: typeof _webglDebug
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlRenderer.d.ts
+
 
 consParams.webglRendererParameters = ([
     /**
@@ -106,8 +108,7 @@ consParams.webglRendererParameters = ([
     'failIfMajorPerformanceCaveat',
 ] as const).toObject()
 
-//@ts-ignore
-consParams.webglDebug = [
+const webglDebug = ([
     /**
      * Enables error checking and reporting when shader programs are being compiled.
      */
@@ -119,7 +120,8 @@ consParams.webglDebug = [
      * @default `null`
      */
     'onShaderError',
-].distinct()
+] as const).distinct()
+consParams.webglDebug = webglDebug
 /**
  * The WebGl renderer displays your beautifully crafted scenes using WebGl, if your device supports it.
  * This renderer has way better performance than CanvasRenderer.
@@ -130,9 +132,9 @@ consParams.webglDebug = [
 
 consParams.webglRenderer = { ...consParams.webglRendererParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlRenderer.d.ts
 
-objParams.webglRendererParameters = [
+
+const _webglRendererParameters = ([...rendererEx,
     /**
      * A Canvas where the renderer draws its output.
      */
@@ -183,10 +185,11 @@ objParams.webglRendererParameters = [
      * default is false.
      */
     'failIfMajorPerformanceCaveat',
-].distinct()
+] as const).distinct()
+objProps.webglRendererParameters = _webglRendererParameters
 
 
-objParams.webglDebug = [
+const _webglDebug = ([
     /**
      * Enables error checking and reporting when shader programs are being compiled.
      */
@@ -198,7 +201,8 @@ objParams.webglDebug = [
      * @default `null`
      */
     'onShaderError',
-].distinct()
+] as const).distinct()
+objProps.webglDebug = _webglDebug
 
 /**
  * The WebGl renderer displays your beautifully crafted scenes using WebGl, if your device supports it.
@@ -207,7 +211,7 @@ objParams.webglDebug = [
  * see {@link https://github.com/mrdoob/three.js/blob/master/src/renderers/WebGlRenderer.js|src/renderers/WebGlRenderer.js}
  */
 
-objParams.webglRenderer = [...objParams.renderer,
+const _webglRenderer = ([...objProps.renderer,
     /**
      * parameters is an optional object with properties defining the renderer's behaviour.
      * The constructor also accepts no parameters at all.
@@ -250,8 +254,7 @@ objParams.webglRenderer = [...objParams.renderer,
      */
     'sortObjects',
     /**
-     * @default [].distinct()
-
+     * @default []
      */
     'clippingPlanes',
     /**
@@ -303,14 +306,150 @@ objParams.webglRenderer = [...objParams.renderer,
      * @deprecated Use {@link WebGlShadowMap#cullFace .shadowMap.cullFace} instead.
      */
     'shadowMapCullFace',
-].distinct()
 
-export type WebGLRendererProps = Node<WebGLRenderer, typeof WebGLRenderer, WebGLRendererParameters>
+
+    'setPixelRatio',
+    'setDrawingBufferSize',
+
+    /**
+     * Resizes the output canvas to (width, height), and also sets the viewport to fit that size, starting in (0, 0).
+     */
+    'setSize',
+    /**
+     * Sets the viewport to render from (x, y) to (x + width, y + height).
+     * (x, y) is the lower-left corner of the region.
+     */
+    'setViewport',
+    /**
+     * Sets the scissor area from (x, y) to (x + width, y + height).
+     */
+    'setScissor',
+    /**
+     * Enable the scissor test. When this is enabled, only the pixels within the defined scissor area will be affected by further renderer actions.
+     */
+    'setScissorTest',
+    /**
+     * Sets the custom opaque sort function for the WebGLRenderLists. Pass null to use the default painterSortStable function.
+     */
+    'setOpaqueSort',
+    /**
+     * Sets the custom transparent sort function for the WebGLRenderLists. Pass null to use the default reversePainterSortStable function.
+     */
+    'setTransparentSort',
+    /**
+     * Sets the clear color, using color for the color and alpha for the opacity.
+     */
+    'setClearColor',
+    'setClearAlpha',
+    /**
+     * Tells the renderer to clear its color, depth or stencil drawing buffer(s).
+     * Arguments default to true
+     */
+    'clear',
+    'clearTarget',
+    'renderBufferDirect',
+    /**
+     * A build in function that can be used instead of requestAnimationFrame. For WebXR projects this function must be used.
+     * @param callback The function will be called every available frame. If `null` is passed it will stop any already ongoing animation.
+     */
+    'setAnimationLoop',
+    /**
+     * @deprecated Use {@link WebGLRenderer#setAnimationLoop .setAnimationLoop()} instead.
+     */
+    'animate',
+    /**
+     * Compiles all materials in the scene with the camera. This is useful to precompile shaders before the first
+     * rendering. If you want to add a 3D object to an existing scene, use the third optional parameter for applying the
+     * target scene.
+     * Note that the (target) scene's lighting should be configured before calling this method.
+     */
+    'compile',
+    /**
+     * Asynchronous version of {@link compile}(). The method returns a Promise that resolves when the given scene can be
+     * rendered without unnecessary stalling due to shader compilation.
+     * This method makes use of the KHR_parallel_shader_compile WebGL extension.
+     */
+    'compileAsync',
+    /**
+     * Render a scene or an object using a camera.
+     * The render is done to a previously specified {@link WebGLRenderTarget#renderTarget .renderTarget} set by calling
+     * {@link WebGLRenderer#setRenderTarget .setRenderTarget} or to the canvas as usual.
+     *
+     * By default render buffers are cleared before rendering but you can prevent this by setting the property
+     * {@link WebGLRenderer#autoClear autoClear} to false. If you want to prevent only certain buffers being cleared
+     * you can set either the {@link WebGLRenderer#autoClearColor autoClearColor},
+     * {@link WebGLRenderer#autoClearStencil autoClearStencil} or {@link WebGLRenderer#autoClearDepth autoClearDepth}
+     * properties to false. To forcibly clear one ore more buffers call {@link WebGLRenderer#clear .clear}.
+     */
+    'render',
+    /**
+     * Sets the active render target.
+     *
+     * @param renderTarget The {@link WebGLRenderTarget renderTarget} that needs to be activated. When `null` is given, the canvas is set as the active render target instead.
+     * @param activeCubeFace Specifies the active cube side (PX 0, NX 1, PY 2, NY 3, PZ 4, NZ 5) of {@link WebGLCubeRenderTarget}.
+     * @param activeMipmapLevel Specifies the active mipmap level.
+     */
+    'setRenderTarget',
+    'readRenderTargetPixels',
+    'readRenderTargetPixelsAsync',
+    /**
+     * Copies a region of the currently bound framebuffer into the selected mipmap level of the selected texture.
+     * This region is defined by the size of the destination texture's mip level, offset by the input position.
+     *
+     * @param texture Specifies the destination texture.
+     * @param position Specifies the pixel offset from which to copy out of the framebuffer.
+     * @param level Specifies the destination mipmap level of the texture.
+     */
+    'copyFramebufferToTexture',
+    /**
+     * Copies the pixels of a texture in the bounds `srcRegion` in the destination texture starting from the given
+     * position.
+     *
+     * @param srcTexture Specifies the source texture.
+     * @param dstTexture Specifies the destination texture.
+     * @param srcRegion Specifies the bounds
+     * @param dstPosition Specifies the pixel offset into the dstTexture where the copy will occur.
+     * @param level Specifies the destination mipmap level of the texture.
+     */
+    'copyTextureToTexture',
+    /**
+     * Copies the pixels of a texture in the bounds `srcRegion` in the destination texture starting from the given
+     * position.
+     *
+     * @param srcTexture Specifies the source texture.
+     * @param dstTexture Specifies the destination texture.
+     * @param srcRegion Specifies the bounds
+     * @param dstPosition Specifies the pixel offset into the dstTexture where the copy will occur.
+     * @param level Specifies the destination mipmap level of the texture.
+     */
+    'copyTextureToTexture3D',
+    /**
+     * Initializes the given WebGLRenderTarget memory. Useful for initializing a render target so data can be copied
+     * into it using {@link WebGLRenderer.copyTextureToTexture} before it has been rendered to.
+     * @param target
+     */
+    'initRenderTarget',
+    /**
+     * Initializes the given texture. Can be used to preload a texture rather than waiting until first render (which can cause noticeable lags due to decode and GPU upload overhead).
+     *
+     * @param texture The texture to Initialize.
+     */
+    'initTexture',
+    /**
+     * @deprecated Use {@link WebGLRenderer#setScissorTest .setScissorTest()} instead.
+     */
+    'enableScissorTest',
+] as const).distinct()
+
+objProps.webglRenderer = _webglRenderer
+
+export type WebGLRendererProps = Node<WebGLRenderer, typeof WebGLRenderer, WebGLRendererParameters & RendererEx>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        webglRenderer: WebGLRendererParameters
+        webglRenderer: WebGLRendererParameters & RendererEx
     }
 }
 
 defaults.webglRenderer = {}
+

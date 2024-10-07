@@ -3,7 +3,7 @@ import TSLEncoder from 'three/examples/jsm/transpiler/TSLEncoder.js'
 export * from 'three/examples/jsm/transpiler/TSLEncoder.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tslEncoder: string[]
+        tslEncoder: typeof tslEncoder
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tslEncoder: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tslEncoder: typeof _tslEncoder
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\TSLEncoder.d.ts
 
-consParams.tslEncoder = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\TSLEncoder.d.ts
+const tslEncoder = ([
+] as const).distinct()
+consParams.tslEncoder = tslEncoder
 
-objParams.tslEncoder = [
-].distinct()
+
+
+const _tslEncoder = ([
+] as const).distinct()
+objProps.tslEncoder = _tslEncoder
 
 export type TSLEncoderProps = Node<TSLEncoder, typeof TSLEncoder, {}>
 

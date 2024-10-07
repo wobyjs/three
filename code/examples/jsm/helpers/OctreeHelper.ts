@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/helpers/OctreeHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,33 +28,35 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        octreeHelper: string[]
+        octreeHelper: typeof octreeHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        octreeHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        octreeHelper: typeof _octreeHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\OctreeHelper.d.ts
 
-consParams.octreeHelper = [
+
+const octreeHelper = ([
     'octree',
     'color',
-].distinct()
+] as const).distinct()
+consParams.octreeHelper = octreeHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\OctreeHelper.d.ts    
 
-objParams.octreeHelper = [...objParams.lineSegments,
+
+const _octreeHelper = ([...objProps.lineSegments,
     'octree',
     'color',
     /**
      * @default 'OctreeHelper'
      */
     'type',
-].distinct()
+] as const).distinct()
+objProps.octreeHelper = _octreeHelper
 
 export type OctreeHelperProps = Node<OctreeHelper, typeof OctreeHelper, { octree: Octree; color?: ColorRepresentation; }>
 

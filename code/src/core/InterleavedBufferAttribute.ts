@@ -4,8 +4,9 @@ import { InterleavedBufferAttribute } from 'three/src/core/InterleavedBufferAttr
 export { InterleavedBufferAttribute } from 'three/src/core/InterleavedBufferAttribute.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,23 +27,23 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        interleavedBufferAttribute: string[]
+        interleavedBufferAttribute: typeof interleavedBufferAttribute
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        interleavedBufferAttribute: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        interleavedBufferAttribute: typeof _interleavedBufferAttribute
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InterleavedBufferAttribute.d.ts
+
 /**
  * @see {@link https://threejs.org/docs/index.html#api/en/core/InterleavedBufferAttribute Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InterleavedBufferAttribute.js}
  */
 
-consParams.interleavedBufferAttribute = [
+const interleavedBufferAttribute = ([
     /**
      * Create a new instance of {@link THREE.InterleavedBufferAttribute}.
      * @param interleavedBuffer
@@ -54,15 +55,16 @@ consParams.interleavedBufferAttribute = [
     'itemSize',
     'offset',
     'normalized',
-].distinct()
+] as const).distinct()
+consParams.interleavedBufferAttribute = interleavedBufferAttribute
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InterleavedBufferAttribute.d.ts
+
 /**
  * @see {@link https://threejs.org/docs/index.html#api/en/core/InterleavedBufferAttribute | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InterleavedBufferAttribute.js | Source}
  */
 
-objParams.interleavedBufferAttribute = [
+const _interleavedBufferAttribute = ([
     /**
      * Optional name for this attribute instance.
      * @defaultValue `''`
@@ -86,7 +88,8 @@ objParams.interleavedBufferAttribute = [
      * @defaultValue `false`
      */
     'normalized',
-].distinct()
+] as const).distinct()
+objProps.interleavedBufferAttribute = _interleavedBufferAttribute
 
 export type InterleavedBufferAttributeProps = Node<InterleavedBufferAttribute, typeof InterleavedBufferAttribute, { interleavedBuffer: InterleavedBuffer; itemSize: number; offset: number; normalized?: boolean; }>
 

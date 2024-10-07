@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/MDDLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,40 +27,44 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mddLoader: string[]
-        mdd: string[]
+        mddLoader: typeof mddLoader
+        mdd: typeof mdd
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mddLoader: string[]
-        mdd: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mddLoader: typeof _mddLoader
+        mdd: typeof _mdd
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\MDDLoader.d.ts
 
-consParams.mdd = [
+
+const mdd = ([
     'morphTargets',
     'clip',
-].distinct()
+] as const).distinct()
+consParams.mdd = mdd
 
 
-consParams.mddLoader = [
+const mddLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.mddLoader = mddLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\MDDLoader.d.ts
 
-objParams.mdd = [
+
+const _mdd = ([
     'morphTargets',
     'clip',
-].distinct()
+] as const).distinct()
+objProps.mdd = _mdd
 
 
-objParams.mddLoader = [...objParams.loader,
-].distinct()
+const _mddLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.mddLoader = _mddLoader
 
 export type MDDLoaderProps = Node<MDDLoader, typeof MDDLoader, { manager?: LoadingManager; }>
 

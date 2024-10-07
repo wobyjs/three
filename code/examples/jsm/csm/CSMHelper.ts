@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/csm/CSMHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,25 +27,26 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        csmHelper: string[]
+        csmHelper: typeof csmHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        csmHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        csmHelper: typeof _csmHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\csm\CSMHelper.d.ts
 
-consParams.csmHelper = [
+
+const csmHelper = ([
     'csm',
-].distinct()
+] as const).distinct()
+consParams.csmHelper = csmHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\csm\CSMHelper.d.ts    
 
-objParams.csmHelper = [...objParams.group,
+
+const _csmHelper = ([...objProps.group,
     'csm',
     'displayFrustum',
     'displayPlanes',
@@ -54,7 +55,8 @@ objParams.csmHelper = [...objParams.group,
     'cascadeLines',
     'cascadePlanes',
     'shadowLines',
-].distinct()
+] as const).distinct()
+objProps.csmHelper = _csmHelper
 
 export type CSMHelperProps<TCSM extends CSM = CSM> = Node<CSMHelper<TCSM>, typeof CSMHelper<TCSM>, { csm: TCSM; }>
 

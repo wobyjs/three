@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/SMAAPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,26 +27,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        smaaPass: string[]
+        smaaPass: typeof smaaPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        smaaPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        smaaPass: typeof _smaaPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SMAAPass.d.ts
 
-consParams.smaaPass = [
+
+const smaaPass = ([
     'width',
     'height',
-].distinct()
+] as const).distinct()
+consParams.smaaPass = smaaPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SMAAPass.d.ts    
 
-objParams.smaaPass = [...objParams.pass,
+
+const _smaaPass = ([...objProps.pass,
     'edgesRT',
     'weightsRT',
     'areaTexture',
@@ -58,7 +59,8 @@ objParams.smaaPass = [...objParams.pass,
     'uniformsBlend',
     'materialBlend',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.smaaPass = _smaaPass
 
 export type SMAAPassProps = Node<SMAAPass, typeof SMAAPass, { shader: object; textureID?: string; }>
 

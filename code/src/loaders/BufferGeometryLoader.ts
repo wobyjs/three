@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { BufferGeometryLoader } from 'three/src/loaders/BufferGeometryLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,23 +27,25 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        bufferGeometryLoader: string[]
+        bufferGeometryLoader: typeof bufferGeometryLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        bufferGeometryLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        bufferGeometryLoader: typeof _bufferGeometryLoader
     }
 }
 
 
-consParams.bufferGeometryLoader = [
+const bufferGeometryLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.bufferGeometryLoader = bufferGeometryLoader
 
 
-objParams.bufferGeometryLoader = [...objParams.loader]
+const _bufferGeometryLoader = ([...objProps.loader] as const).distinct()
+objProps.bufferGeometryLoader = _bufferGeometryLoader
 
 export type BufferGeometryLoaderProps = Node<BufferGeometryLoader, typeof BufferGeometryLoader, { manager?: LoadingManager }>
 

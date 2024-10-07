@@ -5,7 +5,7 @@ import PostProcessing from 'three/src/renderers/common/PostProcessing.js'
 export { PostProcessing }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        postProcessing: string[]
+        postProcessing: typeof postProcessing
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        postProcessing: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        postProcessing: typeof _postProcessing
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\PostProcessing.d.ts
 
-consParams.postProcessing = [
+
+const postProcessing = ([
     'renderer',
     'outputNode',
-].distinct()
+] as const).distinct()
+consParams.postProcessing = postProcessing
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\PostProcessing.d.ts
 
-objParams.postProcessing = [
+
+const _postProcessing = ([
     'renderer',
     'outputNode',
-].distinct()
+] as const).distinct()
+objProps.postProcessing = _postProcessing
 
 export type PostProcessingProps = Node<PostProcessing, typeof PostProcessing, { renderer: Renderer; outputNode?: ENode; }>
 

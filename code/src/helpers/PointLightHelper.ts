@@ -5,8 +5,9 @@ import { PointLightHelper } from 'three/src/helpers/PointLightHelper.js'
 export { PointLightHelper } from 'three/src/helpers/PointLightHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        pointLightHelper: string[]
+        pointLightHelper: typeof pointLightHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        pointLightHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        pointLightHelper: typeof _pointLightHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\PointLightHelper.d.ts
+
 /**
  * This displays a helper object consisting of a spherical {@link THREE.Mesh} for visualizing a {@link THREE.PointLight}.
  * @example
@@ -54,7 +55,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PointLightHelper.js}
  */
 
-consParams.pointLightHelper = [
+const pointLightHelper = ([
     /**
      * Create a new instance of {@link PointLightHelper}
      * @param light The light to be visualized.
@@ -64,9 +65,10 @@ consParams.pointLightHelper = [
     'light',
     'sphereSize',
     'color',
-].distinct()
+] as const).distinct()
+consParams.pointLightHelper = pointLightHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\PointLightHelper.d.ts
+
 /**
  * This displays a helper object consisting of a spherical {@link THREE.Mesh | Mesh} for visualizing a {@link THREE.PointLight | PointLight}.
  * @example
@@ -83,7 +85,7 @@ consParams.pointLightHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PointLightHelper.js | Source}
  */
 
-objParams.pointLightHelper = [...objParams.object3d,
+const _pointLightHelper = ([...objProps.object3d,
     /**
      * The {@link THREE.PointLight | PointLight} that is being visualized.
      */
@@ -104,7 +106,8 @@ objParams.pointLightHelper = [...objParams.object3d,
      * @defaultValue `false`.
      */
     'matrixAutoUpdate',
-].distinct()
+] as const).distinct()
+objProps.pointLightHelper = _pointLightHelper
 
 export type PointLightHelperProps = Object3DNode<PointLightHelper, typeof PointLightHelper, { light: PointLight; sphereSize?: number; color?: ColorRepresentation; }>
 

@@ -1,10 +1,9 @@
 import { Node as ENode, FogNode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
-export * from '../../../three-types'
-
+export { FogNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,28 +25,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        fogNode: string[]
+        fogNode: typeof fogNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        fogNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        fogNode: typeof _fogNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\fog\FogNode.d.ts
 
-consParams.fogNode = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\fog\FogNode.d.ts    
+const fogNode = ([
+] as const).distinct()
+consParams.fogNode = fogNode
 
-objParams.fogNode = [...objParams.node,
+
+
+const _fogNode = ([...objProps.node,
     'isFogNode',
     'colorNode',
     'factorNode',
-].distinct()
+] as const).distinct()
+objProps.fogNode = _fogNode
 
 export type FogNodeProps = Node<FogNode, typeof FogNode, { colorNode: ENode | null; factorNode: ENode | null; }>
 

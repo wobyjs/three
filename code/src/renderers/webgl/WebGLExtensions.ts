@@ -3,7 +3,7 @@ import { WebGLExtensions } from 'three/src/renderers/webgl/WebGLExtensions.js'
 export { WebGLExtensions } from 'three/src/renderers/webgl/WebGLExtensions.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,26 +25,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglExtensions: string[]
+        webglExtensions: typeof webglExtensions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglExtensions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglExtensions: typeof _webglExtensions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlExtensions.d.ts
 
-consParams.webglExtensions = [
+
+const webglExtensions = ([
     'gl',
-].distinct()
+] as const).distinct()
+consParams.webglExtensions = webglExtensions
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlExtensions.d.ts
 
-objParams.webglExtensions = [
-].distinct()
+
+const _webglExtensions = ([
+] as const).distinct()
+objProps.webglExtensions = _webglExtensions
 
 export type WebGLExtensionsProps = Node<WebGLExtensions, typeof WebGLExtensions, { gl: WebGLRenderingContext; }>
 

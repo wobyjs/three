@@ -3,7 +3,7 @@ import WebGPUBackend, { WebGPUBackendParameters } from 'three/src/renderers/webg
 export { WebGPUBackend }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import '../../examples/jsm/renderers/common/Backend'
@@ -34,17 +34,16 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webGpuBackend: string[]
-        backendParameters: string[]
-        webGpuBackendParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webGpuBackend: typeof _webGpuBackend
+        backendParameters: typeof _backendParameters
+        webGpuBackendParameters: typeof _webGpuBackendParameters
     }
 }
 
 consParams.backendParameters = (['canvas'] as const).toObject()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgpu\WebGpuBackend.d.ts
 
 consParams.webGpuBackendParameters = {
     ...consParams.backendParameters,
@@ -58,18 +57,25 @@ consParams.webGpuBackendParameters = {
 
 consParams.webGpuBackend = { ...consParams.webGpuBackendParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgpu\WebGpuBackend.d.ts    
 
-objParams.webGpuBackendParameters = [...objParams.backendParameters,
+
+const _webGpuBackendParameters = ([...objProps.backendParameters,
     'alpha',
     'antialias',
     'sampleCount',
     'trackTimestamp',
-].distinct()
+] as const).distinct()
+objProps.webGpuBackendParameters = _webGpuBackendParameters
 
 
-objParams.webGpuBackend = [...objParams.backend,
-].distinct()
+const _webGpuBackend = ([...objProps.backend,
+] as const).distinct()
+objProps.webGpuBackend = _webGpuBackend
+
+const _backendParameters = ([
+    'canvas',
+] as const).distinct()
+objProps.backendParameters = _backendParameters
 
 export type WebGPUBackendProps = Node<WebGPUBackend, typeof WebGPUBackend, WebGPUBackendParameters>
 

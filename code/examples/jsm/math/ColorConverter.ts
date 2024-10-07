@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/math/ColorConverter.js'
 
 // import { Three } from '../../../lib/3/index'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,41 +26,49 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        hsl: string[]
-        cmyk: string[]
+        hsl: typeof hsl
+        cmyk: typeof cmyk
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        hsl: string[]
-        cmyk: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        hsl: typeof _hsl
+        cmyk: typeof _cmyk
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\ColorConverter.d.ts
 
-consParams.cmyk = [
+
+const cmyk = ([
     'c',
     'm',
     'y',
     'k',
-].distinct()
+] as const).distinct()
+consParams.cmyk = cmyk
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\ColorConverter.d.ts
-
-objParams.hsl = [
+const hsl = ([
     'h',
     's',
     'l',
-].distinct()
+] as const).distinct()
+consParams.hsl = hsl
 
-objParams.cmyk = [
+const _hsl = ([
+    'h',
+    's',
+    'l',
+] as const).distinct()
+objProps.hsl = _hsl
+
+const _cmyk = ([
     'c',
     'm',
     'y',
     'k',
-].distinct()
+] as const).distinct()
+objProps.cmyk = _cmyk
 
 export type HSLProps = Node<HSL, HSL, { h: number; s: number; l: number; }>
 

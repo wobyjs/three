@@ -3,7 +3,7 @@ import NodeVar from 'three/src/nodes/core/NodeVar.js'
 export { NodeVar }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,30 +25,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeVar: string[]
+        nodeVar: typeof nodeVar
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeVar: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeVar: typeof _nodeVar
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeVar.d.ts
 
-consParams.nodeVar = [
+
+const nodeVar = ([
     'name',
     'type',
-].distinct()
+] as const).distinct()
+consParams.nodeVar = nodeVar
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeVar.d.ts
 
-objParams.nodeVar = [
+
+const _nodeVar = ([
     'isNodeVar',
     'name',
     'type',
-].distinct()
+] as const).distinct()
+objProps.nodeVar = _nodeVar
 
 export type NodeVarProps = Node<NodeVar, typeof NodeVar, { name: string; type: string | null; }>
 

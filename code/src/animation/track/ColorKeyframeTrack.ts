@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { InterpolationModes } from 'three/src/constants.js'
 import { ColorKeyframeTrack } from 'three/src/animation/tracks/ColorKeyframeTrack.js'
 export { ColorKeyframeTrack } from 'three/src/animation/tracks/ColorKeyframeTrack.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,35 +26,37 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        colorKeyframeTrack: string[]
+        colorKeyframeTrack: typeof colorKeyframeTrack
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        colorKeyframeTrack: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        colorKeyframeTrack: typeof _colorKeyframeTrack
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\ColorKeyframeTrack.d.ts
 
-consParams.colorKeyframeTrack = [
+
+const colorKeyframeTrack = ([
     'name',
     'times',
     'values',
     'interpolation',
-].distinct()
+] as const).distinct()
+consParams.colorKeyframeTrack = colorKeyframeTrack
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\ColorKeyframeTrack.d.ts    
 
-objParams.colorKeyframeTrack = [...objParams.keyframeTrack,
+
+const _colorKeyframeTrack = ([...objProps.keyframeTrack,
     /**
      * @default 'color'
      */
     'ValueTypeName',
-].distinct()
+] as const).distinct()
+objProps.colorKeyframeTrack = _colorKeyframeTrack
 
-export type ColorKeyframeTrackProps = Object3DNode<ColorKeyframeTrack, typeof ColorKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<number>; interpolation?: InterpolationModes; }>
+export type ColorKeyframeTrackProps = Node<ColorKeyframeTrack, typeof ColorKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<number>; interpolation?: InterpolationModes; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

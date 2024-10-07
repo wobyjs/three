@@ -3,8 +3,9 @@ import { CircleGeometry } from 'three/src/geometries/CircleGeometry.js'
 export { CircleGeometry } from 'three/src/geometries/CircleGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        circleGeometry: string[]
+        circleGeometry: typeof circleGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        circleGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        circleGeometry: typeof _circleGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\CircleGeometry.d.ts
+
 /**
  * {@link CircleGeometry} is a simple shape of Euclidean geometry
  * @remarks
@@ -55,7 +56,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CircleGeometry.js}
  */
 
-consParams.circleGeometry = [
+const circleGeometry = ([
     /**
      * Create a new instance of {@link CircleGeometry}
      * @param radius Radius of the circle. Expects a `Float`. Default `1`
@@ -67,9 +68,10 @@ consParams.circleGeometry = [
     'segments',
     'thetaStart',
     'thetaLength',
-].distinct()
+] as const).distinct()
+consParams.circleGeometry = circleGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\CircleGeometry.d.ts
+
 /**
  * {@link CircleGeometry} is a simple shape of Euclidean geometry
  * @remarks
@@ -89,8 +91,9 @@ consParams.circleGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CircleGeometry.js | Source}
  */
 
-objParams.circleGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _circleGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.circleGeometry = _circleGeometry
 
 export type CircleGeometryProps = BufferGeometryNode<CircleGeometry, typeof CircleGeometry, { radius?: number; segments?: number; thetaStart?: number; thetaLength?: number; }>
 

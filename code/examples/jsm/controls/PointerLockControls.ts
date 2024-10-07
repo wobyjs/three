@@ -4,7 +4,7 @@ import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockCont
 export * from 'three/examples/jsm/controls/PointerLockControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        pointerLockControls: string[]
+        pointerLockControls: typeof pointerLockControls
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        pointerLockControls: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        pointerLockControls: typeof _pointerLockControls
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\PointerLockControls.d.ts
 
-consParams.pointerLockControls = [
+
+const pointerLockControls = ([
     'camera',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.pointerLockControls = pointerLockControls
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\PointerLockControls.d.ts    
 
-objParams.pointerLockControls = [
+
+const _pointerLockControls = ([
     'camera',
     'domElement',
     // API
@@ -53,7 +54,8 @@ objParams.pointerLockControls = [
     'minPolarAngle',
     'maxPolarAngle',
     'pointerSpeed',
-].distinct()
+] as const).distinct()
+objProps.pointerLockControls = _pointerLockControls
 
 
 export type PointerLockControlsProps = Node<PointerLockControls, typeof PointerLockControls, { object: Camera; domElement: HTMLElement; }>

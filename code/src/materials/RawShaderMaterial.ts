@@ -4,8 +4,9 @@ import { RawShaderMaterial } from 'three/src/materials/RawShaderMaterial.js'
 export { RawShaderMaterial } from 'three/src/materials/RawShaderMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { WrapAsString } from '../../three-types'
 
 import './Material'
@@ -34,20 +35,21 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        rawShaderMaterial: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        rawShaderMaterial: typeof _rawShaderMaterial
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\RawShaderMaterial.d.ts
+
 
 consParams.rawShaderMaterial = { ...consParams.shaderMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\RawShaderMaterial.d.ts    
 
-objParams.rawShaderMaterial = [...objParams.shaderMaterial,
-].distinct()
+
+const _rawShaderMaterial = ([...objProps.shaderMaterial,
+] as const).distinct()
+objProps.rawShaderMaterial = _rawShaderMaterial
 
 export type RawShaderMaterialProps = MaterialNode<RawShaderMaterial, ShaderMaterialParameters>
 

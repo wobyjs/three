@@ -3,8 +3,9 @@ import { MeshToonMaterial, MeshToonMaterialParameters } from 'three/src/material
 export { MeshToonMaterial } from 'three/src/materials/MeshToonMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import { WrapAsString } from '../../three-types'
 
@@ -32,14 +33,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshToonMaterial: string[]
-        meshToonMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshToonMaterial: typeof _meshToonMaterial
+        meshToonMaterialParameters: typeof _meshToonMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshToonMaterial.d.ts
+
 
 consParams.meshToonMaterialParameters = {
     ...consParams.materialParameters,
@@ -75,9 +76,9 @@ consParams.meshToonMaterialParameters = {
 
 consParams.meshToonMaterial = { ...consParams.meshToonMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshToonMaterial.d.ts    
 
-objParams.meshToonMaterialParameters = [...objParams.materialParameters,
+
+const _meshToonMaterialParameters = ([...objProps.materialParameters,
     /** geometry color in hexadecimal. Default is 0xffffff. */
     'color',
     'opacity',
@@ -104,10 +105,11 @@ objParams.meshToonMaterialParameters = [...objParams.materialParameters,
     'wireframeLinecap',
     'wireframeLinejoin',
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshToonMaterialParameters = _meshToonMaterialParameters
 
 
-objParams.meshToonMaterial = [...objParams.material,
+const _meshToonMaterial = ([...objProps.material,
     /**
      * @default 'MeshToonMaterial'
      */
@@ -213,7 +215,8 @@ objParams.meshToonMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshToonMaterial = _meshToonMaterial
 
 export type MeshToonMaterialProps = MaterialNode<MeshToonMaterial, MeshToonMaterialParameters>
 

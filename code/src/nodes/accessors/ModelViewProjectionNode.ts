@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import ModelViewProjectionNode from 'three/src/nodes/accessors/ModelViewProjectionNode.js'
 export { ModelViewProjectionNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,28 +26,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        modelViewProjectionNode: string[]
+        modelViewProjectionNode: typeof modelViewProjectionNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        modelViewProjectionNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        modelViewProjectionNode: typeof _modelViewProjectionNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\ModelViewProjectionNode.d.ts
 
-consParams.modelViewProjectionNode = [
+
+const modelViewProjectionNode = ([
     'positionNode',
-].distinct()
+] as const).distinct()
+consParams.modelViewProjectionNode = modelViewProjectionNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\ModelViewProjectionNode.d.ts    
 
-objParams.modelViewProjectionNode = [...objParams.node,
-].distinct()
 
-export type ModelViewProjectionNodeProps = Object3DNode<ModelViewProjectionNode, typeof ModelViewProjectionNode, { positionNode?: ENode; }>
+const _modelViewProjectionNode = ([...objProps.node,
+] as const).distinct()
+objProps.modelViewProjectionNode = _modelViewProjectionNode
+
+export type ModelViewProjectionNodeProps = Node<ModelViewProjectionNode, typeof ModelViewProjectionNode, { positionNode?: ENode; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

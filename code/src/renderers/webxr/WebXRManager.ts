@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { WebXRManager } from 'three/src/renderers/webxr/WebXRManager.js'
 export { WebXRManager } from 'three/src/renderers/webxr/WebXRManager.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,53 +26,54 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webxrManager: string[]
-        webXrManagerEventMap: string[]
-        webXrManager: string[]
+        webXrManagerEventMap: typeof webXrManagerEventMap
+        webXrManager: typeof webXrManager
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webxrManager: string[]
-        webXrManagerEventMap: string[]
-        webXrManager: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webXrManagerEventMap: typeof _webXrManagerEventMap
+        webXrManager: typeof _webXrManager
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webxr\WebXRManager.d.ts
+
 // https://threejs.org/docs/#api/en/renderers/webxr/WebXRManager
 /// 
 
-consParams.webXrManagerEventMap = [
+const webXrManagerEventMap = ([
     'sessionstart',
     'sessionend',
     'planeadded',
     'planeremoved',
     'planechanged',
     'planesdetected',
-].distinct()
+] as const).distinct()
+consParams.webXrManagerEventMap = webXrManagerEventMap
 
-consParams.webXrManager = [
+const webXrManager = ([
     'renderer',
     'gl',
-].distinct()
+] as const).distinct()
+consParams.webXrManager = webXrManager
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webxr\WebXRManager.d.ts
+
 // https://threejs.org/docs/#api/en/renderers/webxr/WebXRManager
 /// 
 
-objParams.webXrManagerEventMap = [
+const _webXrManagerEventMap = ([
     'sessionstart',
     'sessionend',
     'planeadded',
     'planeremoved',
     'planechanged',
     'planesdetected',
-].distinct()
+] as const).distinct()
+objProps.webXrManagerEventMap = _webXrManagerEventMap
 
 
-objParams.webXrManager = [
+const _webXrManager = ([
     /**
      * @default false
      */
@@ -85,10 +86,11 @@ objParams.webXrManager = [
      * @default true
      */
     'cameraAutoUpdate',
-].distinct()
+] as const).distinct()
+objProps.webXrManager = _webXrManager
 
 
-export type WebXRManagerProps = Object3DNode<WebXRManager, typeof WebXRManager, { renderer: WebGLRenderer; gl: WebGLRenderingContext; }>
+export type WebXRManagerProps = Node<WebXRManager, typeof WebXRManager, { renderer: WebGLRenderer; gl: WebGLRenderingContext; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

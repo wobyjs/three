@@ -4,8 +4,9 @@ import { ArrayCamera } from 'three/src/cameras/ArrayCamera.js'
 export { ArrayCamera } from 'three/src/cameras/ArrayCamera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        arrayCamera: string[]
+        arrayCamera: typeof arrayCamera
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        arrayCamera: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        arrayCamera: typeof _arrayCamera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\ArrayCamera.d.ts
+
 /**
  * {@link ArrayCamera} can be used in order to efficiently render a scene with a predefined set of cameras
  * @remarks
@@ -48,15 +49,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/ArrayCamera.js}
  */
 
-consParams.arrayCamera = [
+const arrayCamera = ([
     /**
      * An array of cameras.
      * @param array. Default `[]`.
      */
     'cameras',
-].distinct()
+] as const).distinct()
+consParams.arrayCamera = arrayCamera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\ArrayCamera.d.ts
+
 /**
  * {@link ArrayCamera} can be used in order to efficiently render a scene with a predefined set of cameras
  * @remarks
@@ -68,13 +70,14 @@ consParams.arrayCamera = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/ArrayCamera.js | Source}
  */
 
-objParams.arrayCamera = [...objParams.perspectiveCamera,
+const _arrayCamera = ([...objProps.perspectiveCamera,
     /**
      * An array of cameras.
-     * @defaultValue `[].distinct()`
+     * @defaultValue []
      */
     'cameras',
-].distinct()
+] as const).distinct()
+objProps.arrayCamera = _arrayCamera
 
 export type ArrayCameraProps = Object3DNode<ArrayCamera, typeof ArrayCamera, { cameras?: PerspectiveCamera[]; }>
 

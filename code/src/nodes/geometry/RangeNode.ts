@@ -3,7 +3,7 @@ import RangeNode, { RangeModeBound } from 'three/src/nodes/geometry/RangeNode.js
 export { RangeNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,30 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        rangeNode: string[]
+        rangeNode: typeof rangeNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        rangeNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        rangeNode: typeof _rangeNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\geometry\RangeNode.d.ts
-
-consParams.rangeNode = [
+const rangeNode = ([
     'min',
     'max',
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\gpgpu\ComputeNode.d.ts    
+] as const).distinct()
+consParams.rangeNode = rangeNode
 
-objParams.computeNode = [...objParams.node,
+const _rangeNode = ([...objProps.node,
     'isComputeNode',
     'count',
     'workgroupSize',
     'dispatchCount',
-].distinct()
+] as const).distinct()
+objProps.rangeNode = _rangeNode
 
 export type RangeNodeProps = Node<RangeNode, typeof RangeNode, { min: RangeModeBound; max: RangeModeBound; }>
 

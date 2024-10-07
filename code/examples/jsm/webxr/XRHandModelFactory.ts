@@ -6,7 +6,7 @@ import { XRHandModelFactory } from 'three/examples/jsm/webxr/XRHandModelFactory.
 export * from 'three/examples/jsm/webxr/XRHandModelFactory.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,37 +28,41 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrHandModelFactory: string[]
-        xrHandModel: string[]
+        xrHandModelFactory: typeof xrHandModelFactory
+        xrHandModel: typeof xrHandModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrHandModelFactory: string[]
-        xrHandModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrHandModelFactory: typeof _xrHandModelFactory
+        xrHandModel: typeof _xrHandModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRHandModelFactory.d.ts
 
-consParams.xrHandModel = [
-].distinct()
 
-consParams.xrHandModelFactory = [
-].distinct()
+const xrHandModel = ([
+] as const).distinct()
+consParams.xrHandModel = xrHandModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRHandModelFactory.d.ts    
+const xrHandModelFactory = ([
+] as const).distinct()
+consParams.xrHandModelFactory = xrHandModelFactory
 
-objParams.xrHandModel = [...objParams.object3d,
+
+
+const _xrHandModel = ([...objProps.object3d,
     'motionController',
-].distinct()
+] as const).distinct()
+objProps.xrHandModel = _xrHandModel
 
-objParams.xrHandModelFactory = [
+const _xrHandModelFactory = ([
     'gltfLoader',
     'path',
     'onLoad',
-].distinct()
+] as const).distinct()
+objProps.xrHandModelFactory = _xrHandModelFactory
 
 export type XRHandModelFactoryProps = Node<XRHandModelFactory, typeof XRHandModelFactory, { gltfLoader?: Loader<GLTF> | null; onLoad?: ((object: Object3D) => void) | null; }>
 

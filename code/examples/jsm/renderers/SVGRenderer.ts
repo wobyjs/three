@@ -4,8 +4,9 @@ export * from 'three/examples/jsm/renderers/SVGRenderer.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import { RendererEx, rendererEx } from '../../../src/renderers/RendererEx'
 
 declare module '../../../lib/3/three'
 {
@@ -26,35 +27,38 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        svgRenderer: string[]
-        svgObject: string[]
+        svgRenderer: typeof svgRenderer
+        svgObject: typeof svgObject
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        svgRenderer: string[]
-        svgObject: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        svgRenderer: typeof _svgRenderer
+        svgObject: typeof _svgObject
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\svgRenderer.d.ts
 
-consParams.svgObject = [
+
+const svgObject = ([
     'node',
-].distinct()
+] as const).distinct()
+consParams.svgObject = svgObject
 
 
-consParams.svgRenderer = [
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\SVGRenderer.d.ts    
+const svgRenderer = ([
+] as const).distinct()
+consParams.svgRenderer = svgRenderer
 
-objParams.svgObject = [...objParams.object3d,
+
+const _svgObject = ([...objProps.object3d,
     'node',
-].distinct()
+] as const).distinct()
+objProps.svgObject = _svgObject
 
 
-objParams.svgRenderer = [
+const _svgRenderer = ([...rendererEx,
     'domElement',
     'autoClear',
     'sortObjects',
@@ -62,13 +66,14 @@ objParams.svgRenderer = [
     'overdraw',
     'outputColorSpace',
     'info',
-].distinct()
+] as const).distinct()
+objProps.svgRenderer = _svgRenderer
 
-export type SVGRendererProps = Node<SVGRenderer, typeof SVGRenderer, {}>
+export type SVGRendererProps = Node<SVGRenderer, typeof SVGRenderer, RendererEx>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        svgRenderer: {}
+        svgRenderer: RendererEx
     }
 }
 

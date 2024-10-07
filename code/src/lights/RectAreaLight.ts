@@ -4,8 +4,9 @@ import { RectAreaLight } from 'three/src/lights/RectAreaLight.js'
 export { RectAreaLight } from 'three/src/lights/RectAreaLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        rectAreaLight: string[]
+        rectAreaLight: typeof rectAreaLight
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        rectAreaLight: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        rectAreaLight: typeof _rectAreaLight
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\RectAreaLight.d.ts
+
 /**
  * {@link RectAreaLight} emits light uniformly across the face a rectangular plane
  * @remarks
@@ -63,7 +64,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/RectAreaLight.js}
  */
 
-consParams.rectAreaLight = [
+const rectAreaLight = ([
     /**
      * Creates a new {@link RectAreaLight}.
      * @param color Hexadecimal color of the light. Default `0xffffff` _(white)_.
@@ -75,9 +76,10 @@ consParams.rectAreaLight = [
     'intensity',
     'width',
     'height',
-].distinct()
+] as const).distinct()
+consParams.rectAreaLight = rectAreaLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\RectAreaLight.d.ts
+
 /**
  * {@link RectAreaLight} emits light uniformly across the face a rectangular plane
  * @remarks
@@ -103,7 +105,7 @@ consParams.rectAreaLight = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/RectAreaLight.js | Source}
  */
 
-objParams.rectAreaLight = [...objParams.light,
+const _rectAreaLight = ([...objProps.light,
     /**
      * The width of the light.
      * @remarks Expects a `Float`
@@ -131,7 +133,8 @@ objParams.rectAreaLight = [...objParams.light,
      * @remarks Expects a `Float`
      */
     'power',
-].distinct()
+] as const).distinct()
+objProps.rectAreaLight = _rectAreaLight
 
 export type RectAreaLightProps = LightNode<RectAreaLight, typeof RectAreaLight, { color?: ColorRepresentation; intensity?: number; width?: number; height?: number; }>
 

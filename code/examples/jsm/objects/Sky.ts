@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/objects/Sky.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        sky: string[]
+        sky: typeof sky
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        sky: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        sky: typeof _sky
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Sky.d.ts
 
-consParams.sky = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Sky.d.ts    
+const sky = ([
+] as const).distinct()
+consParams.sky = sky
 
-objParams.sky = [...objParams.mesh,
+
+
+const _sky = ([...objProps.mesh,
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+objProps.sky = _sky
 
 export type SkyProps = Node<Sky, typeof Sky, {}>
 

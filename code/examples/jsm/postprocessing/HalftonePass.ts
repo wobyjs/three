@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/postprocessing/HalftonePass.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import './Pass'
@@ -27,21 +27,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        halftonePass: string[]
-        halftonePassParameters: string[]
+        halftonePass: typeof halftonePass
+        halftonePassParameters: typeof halftonePassParameters
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        halftonePass: string[]
-        halftonePassParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        halftonePass: typeof _halftonePass
+        halftonePassParameters: typeof _halftonePassParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\HalftonePass.d.ts
 
-consParams.halftonePassParameters = [
+
+const halftonePassParameters = ([
     'shape',
     'radius',
     'rotateR',
@@ -52,18 +52,20 @@ consParams.halftonePassParameters = [
     'blendingMode',
     'greyscale',
     'disable',
-].distinct()
+] as const).distinct()
+consParams.halftonePassParameters = halftonePassParameters
 
 
-consParams.halftonePass = [
+const halftonePass = ([
     'width',
     'height',
     'params',
-].distinct()
+] as const).distinct()
+consParams.halftonePass = halftonePass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\HalftonePass.d.ts
 
-objParams.halftonePassParameters = [
+
+const _halftonePassParameters = ([
     'shape',
     'radius',
     'rotateR',
@@ -74,14 +76,16 @@ objParams.halftonePassParameters = [
     'blendingMode',
     'greyscale',
     'disable',
-].distinct()
+] as const).distinct()
+objProps.halftonePassParameters = _halftonePassParameters
 
 
-objParams.halftonePass = [...objParams.pass,
+const _halftonePass = ([...objProps.pass,
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.halftonePass = _halftonePass
 
 export type HalftonePassProps = Node<HalftonePass, typeof HalftonePass, { width: number; height: number; params: HalftonePassParameters; }>
 

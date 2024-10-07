@@ -3,8 +3,9 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader.js'
 export * from 'three/src/loaders/TextureLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 export * from 'three/src/loaders/LoadingManager.js'
 
@@ -29,23 +30,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        textureLoader: string[]
+        textureLoader: typeof textureLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        textureLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        textureLoader: typeof _textureLoader
     }
 }
 
 
-consParams.textureLoader = [
+const textureLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.textureLoader = textureLoader
 
-
-objParams.textureLoader = [...objParams.loader]
+const _textureLoader = ([...objProps.loader] as const).distinct()
+objProps.textureLoader = _textureLoader
 
 export type TextureLoaderProps = Node<TextureLoader, typeof TextureLoader, { manager?: LoadingManager }>
 

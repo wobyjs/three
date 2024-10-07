@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/misc/TubePainter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tubePainter: string[]
+        tubePainter: typeof tubePainter
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tubePainter: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tubePainter: typeof _tubePainter
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\TubePainter.d.ts
 
-consParams.tubePainter = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\TubePainter.d.ts
+const tubePainter = ([
+] as const).distinct()
+consParams.tubePainter = tubePainter
 
-objParams.tubePainter = [
+
+
+const _tubePainter = ([
     'mesh',
-].distinct()
+] as const).distinct()
+objProps.tubePainter = _tubePainter
 
 export type TubePainterProps = Node<TubePainter, typeof TubePainter, {}>
 

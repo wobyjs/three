@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/interactive/HTMLMesh.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        htmlMesh: string[]
+        htmlMesh: typeof htmlMesh
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        htmlMesh: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        htmlMesh: typeof _htmlMesh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\interactive\HTMLMesh.d.ts
 
-consParams.htmlMesh = [
+
+const htmlMesh = ([
     'dom',
-].distinct()
+] as const).distinct()
+consParams.htmlMesh = htmlMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\interactive\HTMLMesh.d.ts    
 
-objParams.htmlMesh = [...objParams.mesh,
-].distinct()
+
+const _htmlMesh = ([...objProps.mesh,
+] as const).distinct()
+objProps.htmlMesh = _htmlMesh
 
 export type HTMLMeshProps = Node<HTMLMesh, typeof HTMLMesh, { dom: HTMLElement; }>
 

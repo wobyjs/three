@@ -4,7 +4,7 @@ import FunctionNode from 'three/src/nodes/code/FunctionNode.js'
 import FunctionCallNode from 'three/src/nodes/code/FunctionCallNode.js'
 export { FunctionCallNode }
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -17,28 +17,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        functionCallNode: string[]
+        functionCallNode: typeof functionCallNode
     }
 }
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        functionCallNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        functionCallNode: typeof _functionCallNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\code\FunctionCallNode.d.ts
 
-consParams.functionCallNode = [
+
+const functionCallNode = ([
     'functionNode',
     'parameters', //{ [name: string]: Node }
-].distinct()
+] as const).distinct()
+consParams.functionCallNode = functionCallNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\code\FunctionCallNode.d.ts    
 
-objParams.functionCallNode = [...objParams.tempNode,
+
+const _functionCallNode = ([...objProps.tempNode,
     'functionNode',
     'parameters',
-].distinct()
+] as const).distinct()
+objProps.functionCallNode = _functionCallNode
 
 export type FunctionCallNodeProps<T extends Node_[] | { [name: string]: Node_; }> = Node<FunctionCallNode<T>, typeof FunctionCallNode<T>, { functionNode?: FunctionNode<T>; parameters?: T; }>
 

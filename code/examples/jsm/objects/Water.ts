@@ -4,7 +4,7 @@ import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,21 +26,20 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        water: string[]
-        waterOptions: string[]
+        water: typeof water
+        waterOptions: typeof waterOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        water: string[]
-        waterOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        water: typeof _water
+        waterOptions: typeof _waterOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Water.d.ts
 
-consParams.waterOptions = [
+const waterOptions = ([
     'textureWidth',
     'textureHeight',
     'clipBias',
@@ -54,17 +53,18 @@ consParams.waterOptions = [
     'distortionScale',
     'side',
     'fog',
-].distinct()
+] as const).distinct()
+consParams.waterOptions = waterOptions
 
 
-consParams.water = [
+const water = ([
     'geometry',
     'options',
-].distinct()
+] as const).distinct()
+consParams.water = water
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Water.d.ts
 
-objParams.waterOptions = [
+const _waterOptions = ([
     'textureWidth',
     'textureHeight',
     'clipBias',
@@ -78,12 +78,14 @@ objParams.waterOptions = [
     'distortionScale',
     'side',
     'fog',
-].distinct()
+] as const).distinct()
+objProps.waterOptions = _waterOptions
 
 
-objParams.water = [...objParams.mesh,
+const _water = ([...objProps.mesh,
     'material',
-].distinct()
+] as const).distinct()
+objProps.water = _water
 
 export type WaterProps = Node<Water, typeof Water, { geometry: BufferGeometry; options: WaterOptions; }>
 

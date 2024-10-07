@@ -3,7 +3,7 @@ import ShadowMaskModel from 'three/src/nodes/functions/ShadowMaskModel.js'
 export { ShadowMaskModel }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,26 +25,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        shadowMaskModel: string[]
+        shadowMaskModel: typeof shadowMaskModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        shadowMaskModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        shadowMaskModel: typeof _shadowMaskModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\functions\ShadowMaskModel.d.ts
 
-consParams.shadowMaskModel = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\functions\ShadowMaskModel.d.ts    
+const shadowMaskModel = ([
+] as const).distinct()
+consParams.shadowMaskModel = shadowMaskModel
 
-objParams.shadowMaskModel = [...objParams.lightingModel,
+
+
+const _shadowMaskModel = ([...objProps.lightingModel,
     'shadowNode',
-].distinct()
+] as const).distinct()
+objProps.shadowMaskModel = _shadowMaskModel
 
 export type ShadowMaskModelProps = Node<ShadowMaskModel, typeof ShadowMaskModel, {}>
 

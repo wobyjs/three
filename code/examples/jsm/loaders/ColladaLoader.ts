@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/ColladaLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,41 +27,45 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        colladaLoader: string[]
-        collada: string[]
+        colladaLoader: typeof colladaLoader
+        collada: typeof collada
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        colladaLoader: string[]
-        collada: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        colladaLoader: typeof _colladaLoader
+        collada: typeof _collada
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\ColladaLoader.d.ts
 
-consParams.collada = [
+
+const collada = ([
     'kinematics',
     'library',
     'scene',
-].distinct()
+] as const).distinct()
+consParams.collada = collada
 
 
-consParams.colladaLoader = [
-].distinct()
+const colladaLoader = ([
+] as const).distinct()
+consParams.colladaLoader = colladaLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\ColladaLoader.d.ts
 
-objParams.collada = [
+
+const _collada = ([
     'kinematics',
     'library',
     'scene',
-].distinct()
+] as const).distinct()
+objProps.collada = _collada
 
 
-objParams.colladaLoader = [...objParams.loader,
-].distinct()
+const _colladaLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.colladaLoader = _colladaLoader
 
 export type ColladaLoaderProps = Node<ColladaLoader, typeof ColladaLoader, { manager?: LoadingManager; }>
 

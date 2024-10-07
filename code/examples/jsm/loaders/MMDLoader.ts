@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/MMDLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,45 +27,49 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mmdLoader: string[]
-        mmdLoaderAnimationObject: string[]
+        mmdLoader: typeof mmdLoader
+        mmdLoaderAnimationObject: typeof mmdLoaderAnimationObject
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mmdLoader: string[]
-        mmdLoaderAnimationObject: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mmdLoader: typeof _mmdLoader
+        mmdLoaderAnimationObject: typeof _mmdLoaderAnimationObject
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\MMDLoader.d.ts
 
-consParams.mmdLoaderAnimationObject = [
+
+const mmdLoaderAnimationObject = ([
     'animation',
     'mesh',
-].distinct()
+] as const).distinct()
+consParams.mmdLoaderAnimationObject = mmdLoaderAnimationObject
 
 
-consParams.mmdLoader = [
+const mmdLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.mmdLoader = mmdLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\MMDLoader.d.ts
 
-objParams.mmdLoaderAnimationObject = [
+
+const _mmdLoaderAnimationObject = ([
     'animation',
     'mesh',
-].distinct()
+] as const).distinct()
+objProps.mmdLoaderAnimationObject = _mmdLoaderAnimationObject
 
 
-objParams.mmdLoader = [...objParams.loader,
+const _mmdLoader = ([...objProps.loader,
     'animationBuilder',
     'animationPath',
     'loader',
     'meshBuilder',
     'parser',
-].distinct()
+] as const).distinct()
+objProps.mmdLoader = _mmdLoader
 
 export type MMDLoaderProps = Node<MMDLoader, typeof MMDLoader, { manager?: LoadingManager; }>
 

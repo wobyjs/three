@@ -4,8 +4,9 @@ import GaussianBlurNode from 'three/src/nodes/display/GaussianBlurNode.js'
 export { GaussianBlurNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/TempNode'
 
 declare module '../../../lib/3/three'
 {
@@ -26,31 +27,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        gaussianBlurNode: string[]
+        gaussianBlurNode: typeof gaussianBlurNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gaussianBlurNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gaussianBlurNode: typeof _gaussianBlurNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\GaussianBlurNode.d.ts
 
-consParams.gaussianBlurNode = [
+
+const gaussianBlurNode = ([
     'textureNode',
     'sigma',
-].distinct()
+] as const).distinct()
+consParams.gaussianBlurNode = gaussianBlurNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\GaussianBlurNode.d.ts    
 
-objParams.gaussianBlurNode = [...objParams.tempNode,
+
+const _gaussianBlurNode = ([...objProps.tempNode,
     'textureNode',
     'sigma',
     'directionNode',
     'resolution',
-].distinct()
+] as const).distinct()
+objProps.gaussianBlurNode = _gaussianBlurNode
 
 export type GaussianBlurNodeProps = Node<GaussianBlurNode, typeof GaussianBlurNode, { textureNode: TextureNode; sigma?: number; }>
 

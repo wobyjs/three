@@ -3,8 +3,9 @@ import { MeshMatcapMaterial, MeshMatcapMaterialParameters } from 'three/src/mate
 export { MeshMatcapMaterial } from 'three/src/materials/MeshMatcapMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshMatcapMaterial: string[]
-        meshMatcapMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshMatcapMaterial: typeof _meshMatcapMaterial
+        meshMatcapMaterialParameters: typeof _meshMatcapMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshMatcapMaterial.d.ts
+
 
 consParams.meshMatcapMaterialParameters = {
     ...consParams.materialParameters,
@@ -64,9 +65,9 @@ consParams.meshMatcapMaterialParameters = {
 
 consParams.meshMatcapMaterial = { ...consParams.meshMatcapMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshMatcapMaterial.d.ts    
 
-objParams.meshMatcapMaterialParameters = [...objParams.materialParameters,
+
+const _meshMatcapMaterialParameters = ([...objProps.materialParameters,
     'color',
     'matcap',
     'map',
@@ -81,10 +82,11 @@ objParams.meshMatcapMaterialParameters = [...objParams.materialParameters,
     'alphaMap',
     'fog',
     'flatShading',
-].distinct()
+] as const).distinct()
+objProps.meshMatcapMaterialParameters = _meshMatcapMaterialParameters
 
 
-objParams.meshMatcapMaterial = [...objParams.material,
+const _meshMatcapMaterial = ([...objProps.material,
     /**
      * @default 'MeshMatcapMaterial'
      */
@@ -151,7 +153,8 @@ objParams.meshMatcapMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshMatcapMaterial = _meshMatcapMaterial
 
 export type MeshMatcapMaterialProps = MaterialNode<MeshMatcapMaterial, MeshMatcapMaterialParameters>
 

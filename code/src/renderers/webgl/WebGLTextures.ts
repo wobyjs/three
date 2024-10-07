@@ -9,7 +9,7 @@ import { WebGLTextures } from 'three/src/renderers/webgl/WebGLTextures.js'
 export { WebGLTextures } from 'three/src/renderers/webgl/WebGLTextures.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -31,19 +31,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglTextures: string[]
+        webglTextures: typeof webglTextures
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglTextures: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglTextures: typeof _webglTextures
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlTextures.d.ts
 
-consParams.webglTextures = [
+
+const webglTextures = ([
 
     'gl',
     'extensions',
@@ -53,12 +53,14 @@ consParams.webglTextures = [
     'utils',
     'info',
     ,
-].distinct()
+] as const).distinct()
+consParams.webglTextures = webglTextures
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlTextures.d.ts
 
-objParams.webglTextures = [
-].distinct()
+
+const _webglTextures = ([
+] as const).distinct()
+objProps.webglTextures = _webglTextures
 
 export type WebGLTexturesProps = Node<WebGLTextures, typeof WebGLTextures, { gl: WebGLRenderingContext; extensions: WebGLExtensions; state: WebGLState; properties: WebGLProperties; capabilities: WebGLCapabilities; utils: WebGLUtils; info: WebGLInfo; }>
 

@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/geometries/TextGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import '../../../src/geometries/ExtrudeGeometry'
@@ -30,19 +30,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        textGeometry: string[]
+        textGeometry: typeof textGeometry
         textGeometryParameters: WrapAsString<TextGeometryParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        textGeometry: string[]
-        textGeometryParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        textGeometry: typeof _textGeometry
+        textGeometryParameters: typeof _textGeometryParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\TextGeometry.d.ts
+
 
 consParams.textGeometryParameters = {
     ...consParams.extrudeGeometryOptions,
@@ -132,7 +132,7 @@ consParams.textGeometryParameters = {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/examples/jsm/geometries/TextGeometry.js}
  */
 
-consParams.textGeometry = [
+const textGeometry = ([
     /**
      * Create a new instance of {@link TextGeometry}
      * @param text The text that needs to be shown.
@@ -140,11 +140,12 @@ consParams.textGeometry = [
      */
     'text',
     'parameters', //textGeometryParameters
-].distinct()
+] as const).distinct()
+consParams.textGeometry = textGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\TextGeometry.d.ts    
 
-objParams.textGeometryParameters = [...objParams.extrudeGeometryOptions,
+
+const _textGeometryParameters = ([...objProps.extrudeGeometryOptions,
     'font',
     /**
      * Size of the text
@@ -200,7 +201,8 @@ objParams.textGeometryParameters = [...objParams.extrudeGeometryOptions,
      * @defaultValue `3`
      */
     'bevelSegments',
-].distinct()
+] as const).distinct()
+objProps.textGeometryParameters = _textGeometryParameters
 
 /**
  * A class for generating text as a single geometry
@@ -229,8 +231,9 @@ objParams.textGeometryParameters = [...objParams.extrudeGeometryOptions,
  * @see {@link https://github.com/mrdoob/three.js/blob/master/examples/jsm/geometries/TextGeometry.js | Source}
  */
 
-objParams.textGeometry = [...objParams.extrudeGeometry,
-].distinct()
+const _textGeometry = ([...objProps.extrudeGeometry,
+] as const).distinct()
+objProps.textGeometry = _textGeometry
 
 export type TextGeometryProps = BufferGeometryNode<Omit<TextGeometry, 'parameters'>, Omit<typeof TextGeometry, 'parameters'>, { text: string; parameters?: WrapFont<TextGeometryParameters> }>
 

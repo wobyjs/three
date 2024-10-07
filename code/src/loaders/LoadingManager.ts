@@ -1,8 +1,9 @@
 import { Node } from '../../three-types'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { DefaultLoadingManager, LoadingManager } from 'three/src/loaders/LoadingManager.js'
 export { DefaultLoadingManager, LoadingManager } //from 'three/src/loaders/LoadingManager.js'
 import './Loader'
@@ -26,25 +27,26 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        loadingManager: string[]
+        loadingManager: typeof loadingManager
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        loadingManager: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        loadingManager: typeof _loadingManager
     }
 }
 
 
-consParams.loadingManager = [
+const loadingManager = ([
     'onLoad',
     'onProgress',
     'onError',
-].distinct()
+] as const).distinct()
+consParams.loadingManager = loadingManager
 
 
-objParams.loadingManager = [
+const _loadingManager = ([
     /**
       * Will be called when loading of an item starts.
       * @param url The url of the item that started loading.
@@ -72,7 +74,8 @@ objParams.loadingManager = [
      * @param url The url of the item that errored.
      */
     'onError',
-]
+] as const).distinct()
+objProps.loadingManager = _loadingManager
 
 export type LoadingManagerProps = Node<LoadingManager, typeof LoadingManager, {
     onLoad?: () => void,

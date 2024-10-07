@@ -41,7 +41,7 @@ export * from 'three/examples/jsm/modifiers/CurveModifier.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import { BufferGeometry } from 'three/src/core/BufferGeometry'
 import { Mesh } from 'three/src/objects/Mesh'
@@ -69,69 +69,75 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        instancedFlow: string[]
-        flow: string[]
-        splineUniform: string[]
+        instancedFlow: typeof instancedFlow
+        flow: typeof flow
+        splineUniform: typeof splineUniform
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        instancedFlow: string[]
-        flow: string[]
-        splineUniform: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        instancedFlow: typeof _instancedFlow
+        flow: typeof _flow
+        splineUniform: typeof _splineUniform
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\modifiers\CurveModifier.d.ts
 
-consParams.splineUniform = [
+
+const splineUniform = ([
     'spineTexture',
     'pathOffset',
     'pathSegment',
     'spineOffset',
     'flow',
-].distinct()
+] as const).distinct()
+consParams.splineUniform = splineUniform
 
 
-consParams.flow = [
+const flow = ([
     'mesh',
     'numberOfCurves',
-].distinct()
+] as const).distinct()
+consParams.flow = flow
 
 
-consParams.instancedFlow = [
+const instancedFlow = ([
     'count',
     'curveCount',
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.instancedFlow = instancedFlow
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\modifiers\CurveModifier.d.ts
 
-objParams.splineUniform = [
+
+const _splineUniform = ([
     'spineTexture',
     'pathOffset',
     'pathSegment',
     'spineOffset',
     'flow',
-].distinct()
+] as const).distinct()
+objProps.splineUniform = _splineUniform
 
 
-objParams.flow = [
+const _flow = ([
     'curveArray',
     'curveLengthArray',
     'object3d',
     'splineTexure',
     'uniforms',
-].distinct()
+] as const).distinct()
+objProps.flow = _flow
 
 
-objParams.instancedFlow = [...objParams.flow,
+const _instancedFlow = ([...objProps.flow,
     'object3d',
     'offsets',
     'whichCurve',
-].distinct()
+] as const).distinct()
+objProps.instancedFlow = _instancedFlow
 
 
 export type InstancedFlowProps = Node<InstancedFlow, typeof InstancedFlow, { count: number, curveCount: number, geometry: BufferGeometry, material: Material }>

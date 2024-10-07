@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/misc/MorphAnimMesh.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,29 +28,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        morphAnimMesh: string[]
+        morphAnimMesh: typeof morphAnimMesh
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        morphAnimMesh: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        morphAnimMesh: typeof _morphAnimMesh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MorphAnimMesh.d.ts
 
-consParams.morphAnimMesh = [
+
+const morphAnimMesh = ([
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.morphAnimMesh = morphAnimMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MorphAnimMesh.d.ts    
 
-objParams.morphAnimMesh = [...objParams.mesh,
+
+const _morphAnimMesh = ([...objProps.mesh,
     'mixer',
     'activeAction',
-].distinct()
+] as const).distinct()
+objProps.morphAnimMesh = _morphAnimMesh
 
 export type MorphAnimMeshProps = Object3DNode<MorphAnimMesh, typeof MorphAnimMesh, { geometry: BufferGeometry; material: Material; }>
 

@@ -4,8 +4,9 @@ import { SpotLightShadow } from 'three/src/lights/SpotLightShadow.js'
 export { SpotLightShadow } from 'three/src/lights/SpotLightShadow.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './LightShadow'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        spotLightShadow: string[]
+        spotLightShadow: typeof spotLightShadow
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        spotLightShadow: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        spotLightShadow: typeof _spotLightShadow
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\SpotLightShadow.d.ts
+
 /**
  * This is used internally by {@link SpotLight} for calculating shadows.
  * @example
@@ -81,10 +82,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLightShadow.js}
  */
 
-consParams.spotLightShadow = [
-].distinct()
+const spotLightShadow = ([
+] as const).distinct()
+consParams.spotLightShadow = spotLightShadow
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\SpotLightShadow.d.ts
+
 /**
  * This is used internally by {@link SpotLight | SpotLights} for calculating shadows.
  * @example
@@ -128,7 +130,7 @@ consParams.spotLightShadow = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLightShadow.js | Source}
  */
 
-objParams.spotLightShadow = [...objParams.lightShadow,
+const _spotLightShadow = ([...objProps.lightShadow,
     /**
      * Read-only flag to check if a given object is of type {@link SpotLightShadow}.
      * @remarks This is a _constant_ value
@@ -147,11 +149,12 @@ objParams.spotLightShadow = [...objParams.lightShadow,
     'camera',
     /**
      * Used to focus the shadow camera.
-     * @remarks The camera's field of view is set as a percentage of the spotlight's field-of-view. Range is `[0, 1].distinct()`. 0`.
+     * @remarks The camera's field of view is set as a percentage of the spotlight's field-of-view. Range is `[0, 1]`. 0`.
      * @defaultValue `1`
      */
     'focus',
-].distinct()
+] as const).distinct()
+objProps.spotLightShadow = _spotLightShadow
 
 export type SpotLightShadowProps = Node<SpotLightShadow, typeof SpotLightShadow, { camera: PerspectiveCamera; }>
 

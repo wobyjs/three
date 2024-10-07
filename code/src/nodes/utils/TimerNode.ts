@@ -3,7 +3,7 @@ import TimerNode, { TimerNodeScope } from 'three/src/nodes/utils/TimerNode.js'
 export { TimerNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../accessors/UniformsNode'
 
@@ -26,30 +26,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        timerNode: string[]
+        timerNode: typeof timerNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        timerNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        timerNode: typeof _timerNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\TimerNode.d.ts
 
-consParams.timerNode = [
+
+const timerNode = ([
     'scope',
     'scale',
     'value',
-].distinct()
+] as const).distinct()
+consParams.timerNode = timerNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\TimerNode.d.ts    
 
-objParams.timerNode = [...objParams.uniformNode,
+
+const _timerNode = ([...objProps.uniformNode,
     'scope',
     'scale',
-].distinct()
+] as const).distinct()
+objProps.timerNode = _timerNode
 
 export type TimerNodeProps = Node<TimerNode, typeof TimerNode, { scope?: TimerNodeScope; scale?: number; value?: number; }>
 

@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/utils/PackedPhongMaterial.js'
 
 import { Three } from '../../../../lib/3/index'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../../lib/3/three'
@@ -26,38 +26,41 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        packedPhongMaterial: string[]
+        packedPhongMaterial: typeof packedPhongMaterial
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        packedPhongMaterial: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        packedPhongMaterial: typeof _packedPhongMaterial
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\AST.d.ts
 
-consParams.packedPhongMaterial = [
+
+const packedPhongMaterial = ([
     'parameters',
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\AST.d.ts
-
-objParams.packedPhongMaterial = [...objParams.meshPhongMaterialParameters,
-].distinct()
+] as const).distinct()
+consParams.packedPhongMaterial = packedPhongMaterial
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\utils\LDrawUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\utils\PackedPhongMaterial.d.ts
+
+const _packedPhongMaterial = ([...objProps.meshPhongMaterialParameters,
+] as const).distinct()
+objProps.packedPhongMaterial = _packedPhongMaterial
+
+
+
+
 /**
  * `PackedPhongMaterial` inherited from THREE.MeshPhongMaterial
  *
  * @param {Object} parameters
  */
 
-objParams.packedPhongMaterial = [...objParams.meshPhongMaterial,
-].distinct()
+const _packedPhongMaterial = ([...objProps.meshPhongMaterial,
+] as const).distinct()
+objProps.packedPhongMaterial = _packedPhongMaterial
 
 export type PackedPhongMaterialProps = Node<PackedPhongMaterial, typeof PackedPhongMaterial, { parameters: MeshPhongMaterialParameters }>
 

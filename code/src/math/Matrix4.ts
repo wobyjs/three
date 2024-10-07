@@ -3,8 +3,9 @@ import { Matrix4 } from 'three/src/math/Matrix4.js'
 // export { Matrix4 } from 'three/src/math/Matrix4.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Matrix3'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        matrix4: string[]
+        matrix4: typeof matrix4
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        matrix4: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        matrix4: typeof _matrix4
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Matrix4.d.ts
+
 /**
  * A 4x4 Matrix.
  *
@@ -56,7 +57,7 @@ declare module '../../lib/3/objParams' {
  * m.multiply( m3 ,
  */
 
-consParams.matrix4 = [
+const matrix4 = ([
     /**
      * Creates an identity matrix.
      */
@@ -80,9 +81,10 @@ consParams.matrix4 = [
     'n42',
     'n43',
     'n44',
-].distinct()
+] as const).distinct()
+consParams.matrix4 = matrix4
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Matrix4.d.ts
+
 /**
  * A 4x4 Matrix.
  *
@@ -102,14 +104,16 @@ consParams.matrix4 = [
  * m.multiply( m3 )
  */
 
-objParams.matrix4 = [...objParams.matrix,
+const _matrix4 = ([...objProps.matrix,
     /**
      * Array with matrix values.
-     * @default [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1].distinct()
+     * @default [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
 
      */
     'elements',
-].distinct()
+] as const).distinct()
+objProps.matrix4 = _matrix4
+
 export type Matrix4Props = Node<Matrix4, typeof Matrix4, { n11: number; n12: number; n13: number; n14: number; n21: number; n22: number; n23: number; n24: number; n31: number; n32: number; n33: number; n34: number; n41: number; n42: number; n43: number; n44: number; }>
 
 declare module '../../lib/3/defaults' {

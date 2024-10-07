@@ -1,10 +1,11 @@
 import { Node } from '../../three-types'
 import { Euler, EulerOrder } from 'three/src/math/Euler.js'
-// export { Euler, EulerOrder } from 'three/src/math/Euler.js'
+export * from 'three/src/math/Euler.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        euler: string[]
+        euler: typeof euler
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        euler: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        euler: typeof _euler
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Euler.d.ts
 
-consParams.euler = [
+
+const euler = ([
     /**
      * @default 0
      */
@@ -50,11 +51,12 @@ consParams.euler = [
      * @default 0
      */
     'z',
-].distinct()
+] as const).distinct()
+consParams.euler = euler
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Euler.d.ts
 
-objParams.euler = [
+
+const _euler = ([
     /**
      * @default 0
      */
@@ -71,7 +73,8 @@ objParams.euler = [
      * @default THREE.Euler.DEFAULT_ORDER
      */
     'order',
-].distinct()
+] as const).distinct()
+objProps.euler = _euler
 
 
 export type EulerProps = Node<Euler, typeof Euler, { x?: number; y?: number; z?: number; order?: EulerOrder; }>

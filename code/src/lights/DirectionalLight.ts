@@ -4,8 +4,9 @@ import { DirectionalLight } from 'three/src/lights/DirectionalLight.js'
 export { DirectionalLight } from 'three/src/lights/DirectionalLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        directionalLight: string[]
+        directionalLight: typeof directionalLight
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        directionalLight: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        directionalLight: typeof _directionalLight
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\DirectionalLight.d.ts
+
 /**
  * A light that gets emitted in a specific direction
  * @remarks
@@ -64,7 +65,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLight.js}
  */
 
-consParams.directionalLight = [
+const directionalLight = ([
     /**
      * Creates a new {@link DirectionalLight}.
      * @param color Hexadecimal color of the light. Default `0xffffff` _(white)_.
@@ -72,9 +73,10 @@ consParams.directionalLight = [
      */
     'color',
     'intensity',
-].distinct()
+] as const).distinct()
+consParams.directionalLight = directionalLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\DirectionalLight.d.ts
+
 /**
  * A light that gets emitted in a specific direction
  * @remarks
@@ -101,7 +103,7 @@ consParams.directionalLight = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLight.js | Source}
  */
 
-objParams.directionalLight = [...objParams.light,
+const _directionalLight = ([...objProps.light,
     /**
      * Whether the object gets rendered into shadow map.
      * @remarks
@@ -136,7 +138,8 @@ objParams.directionalLight = [...objParams.light,
      * @defaultValue `new THREE.Object3d()` at _(0, 0, 0)_
      */
     'target',
-].distinct()
+] as const).distinct()
+objProps.directionalLight = _directionalLight
 
 export type DirectionalLightProps = LightNode<DirectionalLight, typeof DirectionalLight, { color?: ColorRepresentation; intensity?: number; }>
 

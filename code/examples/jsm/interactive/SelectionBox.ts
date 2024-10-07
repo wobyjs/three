@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/interactive/SelectionBox.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,27 +28,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        selectionBox: string[]
+        selectionBox: typeof selectionBox
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        selectionBox: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        selectionBox: typeof _selectionBox
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\interactive\SelectionBox.d.ts
 
-consParams.selectionBox = [
+
+const selectionBox = ([
     'camera',
     'scene',
     'deep',
-].distinct()
+] as const).distinct()
+consParams.selectionBox = selectionBox
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\interactive\SelectionBox.d.ts
 
-objParams.selectionBox = [
+
+const _selectionBox = ([
     'camera',
     'collection',
     'deep',
@@ -56,7 +57,8 @@ objParams.selectionBox = [
     'scene',
     'startPoint',
     'instances',
-].distinct()
+] as const).distinct()
+objProps.selectionBox = _selectionBox
 
 export type SelectionBoxProps = Node<SelectionBox, typeof SelectionBox, { camera: Camera; scene: Scene; deep?: number; }>
 

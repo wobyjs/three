@@ -3,7 +3,7 @@ import StorageTexture from 'three/src/renderers/common/StorageTexture.js'
 export { StorageTexture }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        storageTexture: string[]
+        storageTexture: typeof storageTexture
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        storageTexture: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        storageTexture: typeof _storageTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\StorageTexture.d.ts
 
-consParams.storageTexture = [
+
+const storageTexture = ([
     'width',
     'height',
-].distinct()
+] as const).distinct()
+consParams.storageTexture = storageTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\StorageTexture.d.ts    
 
-objParams.storageTexture = [...objParams.texture,
-].distinct()
+
+const _storageTexture = ([...objProps.texture,
+] as const).distinct()
+objProps.storageTexture = _storageTexture
 
 export type StorageTextureProps = Node<StorageTexture, typeof StorageTexture, { width?: number; height?: number; }>
 

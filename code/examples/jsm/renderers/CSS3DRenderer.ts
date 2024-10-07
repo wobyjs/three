@@ -1,25 +1,30 @@
-import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
+import { CSS3DObject, CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 export * from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 import { Node, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
+import { RendererEx, rendererEx } from '../../../src/renderers/RendererEx'
+import '../../../src/core/Object3D'
 
 declare module '../../../lib/3/three'
 {
     interface Three {
         CSS3DRenderer: typeof CSS3DRenderer
+        CSS3DObject: typeof CSS3DObject
     }
 }
 
 Three.CSS3DRenderer = CSS3DRenderer
+Three.CSS3DObject = CSS3DObject
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
-            css3DRenderer: CSS3DRendererProps,
+            css3dRenderer: CSS3DRendererProps,
+            css3dObject: CSS3DObject,
         }
     }
 }
@@ -27,31 +32,33 @@ declare module 'woby' {
 declare module '../../../lib/3/consParams' {
     interface consParams {
         css3dRenderer: WrapAsString<CSS3DParameters>
-        css3dObject: string[]
-        css3dSprite: string[]
+        css3dObject: typeof css3dObject
+        css3dSprite: typeof css3dSprite
         css3dParameters: WrapAsString<CSS3DParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        css3dRenderer: string[]
-        css3dObject: string[]
-        css3dSprite: string[]
-        css3dParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        css3dRenderer: typeof _css3dRenderer
+        css3dObject: typeof _css3dObject
+        css3dSprite: typeof _css3dSprite
+        css3dParameters: typeof _css3dParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\css3dRenderer.d.ts
 
-consParams.css3dObject = [
+
+const css3dObject = ([ //...consParams.object3d,
     'element',
-].distinct()
+] as const).distinct()
+consParams.css3dObject = css3dObject
 
 
-consParams.css3dSprite = [
+const css3dSprite = ([
     'element',
-].distinct()
+] as const).distinct()
+consParams.css3dSprite = css3dSprite
 
 
 consParams.css3dParameters = ([
@@ -61,33 +68,40 @@ consParams.css3dParameters = ([
 
 consParams.css3dRenderer = { ...consParams.css3dParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\CSS3dRenderer.d.ts    
 
-objParams.css3dObject = [...objParams.object3d,
+
+const _css3dObject = ([...objProps.object3d,
     'element',
-].distinct()
+] as const).distinct()
+objProps.css3dObject = _css3dObject
 
 
-objParams.css3dSprite = [...objParams.css3dObject,
-].distinct()
+const _css3dSprite = ([...objProps.css3dObject,
+] as const).distinct()
+objProps.css3dSprite = _css3dSprite
 
 
-objParams.css3dParameters = [
+const _css3dParameters = ([...rendererEx,
     'element',
-].distinct()
+] as const).distinct()
+objProps.css3dParameters = _css3dParameters
 
 
-objParams.css3dRenderer = [
+const _css3dRenderer = ([...rendererEx,
     'domElement',
-].distinct()
+] as const).distinct()
+objProps.css3dRenderer = _css3dRenderer
 
-export type CSS3DRendererProps = Node<CSS3DRenderer, typeof CSS3DRenderer, CSS3DParameters>
+export type CSS3DRendererProps = Node<CSS3DRenderer, typeof CSS3DRenderer, CSS3DParameters & RendererEx>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        css3DRenderer: CSS3DParameters
+        css3dRenderer: CSS3DParameters & RendererEx
+        css3dObject: { element?: HTMLElement }
     }
 }
 
-defaults.css3DRenderer = {}
+defaults.css3dRenderer = {}
+defaults.css3dObject = {}
+
 

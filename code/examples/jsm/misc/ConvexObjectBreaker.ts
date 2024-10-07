@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/misc/ConvexObjectBreaker.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,41 +26,45 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        convexObjectBreaker: string[]
-        cutByPlaneOutput: string[]
+        convexObjectBreaker: typeof convexObjectBreaker
+        cutByPlaneOutput: typeof cutByPlaneOutput
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        convexObjectBreaker: string[]
-        cutByPlaneOutput: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        convexObjectBreaker: typeof _convexObjectBreaker
+        cutByPlaneOutput: typeof _cutByPlaneOutput
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\ConvexObjectBreaker.d.ts
 
-consParams.cutByPlaneOutput = [
+
+const cutByPlaneOutput = ([
     'object1',
     'object2',
-].distinct()
+] as const).distinct()
+consParams.cutByPlaneOutput = cutByPlaneOutput
 
 
-consParams.convexObjectBreaker = [
+const convexObjectBreaker = ([
     'minSizeForBreak',
     'smallDelta',
-].distinct()
+] as const).distinct()
+consParams.convexObjectBreaker = convexObjectBreaker
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\ConvexObjectBreaker.d.ts
 
-objParams.cutByPlaneOutput = [
+
+const _cutByPlaneOutput = ([
     'object1',
     'object2',
-].distinct()
+] as const).distinct()
+objProps.cutByPlaneOutput = _cutByPlaneOutput
 
 
-objParams.convexObjectBreaker = [
-].distinct()
+const _convexObjectBreaker = ([
+] as const).distinct()
+objProps.convexObjectBreaker = _convexObjectBreaker
 
 export type ConvexObjectBreakerProps = Node<ConvexObjectBreaker, typeof ConvexObjectBreaker, { minSizeForBreak?: number; smallDelta?: number; }>
 

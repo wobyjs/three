@@ -6,8 +6,9 @@ export * from 'three/src/constants.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/TempNode'
 
 declare module '../../../lib/3/three'
 {
@@ -28,33 +29,35 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        toneMappingNode: string[]
+        toneMappingNode: typeof toneMappingNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        toneMappingNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        toneMappingNode: typeof _toneMappingNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ToneMappingNode.d.ts
+
 // exposure only
 
-consParams.toneMappingNode = [
+const toneMappingNode = ([
     'toneMapping',
     'exposureNode',
     'colorNode',
-].distinct()
+] as const).distinct()
+consParams.toneMappingNode = toneMappingNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ToneMappingNode.d.ts
+
 // exposure only    
 
-objParams.toneMappingNode = [...objParams.tempNode,
+const _toneMappingNode = ([...objProps.tempNode,
     'toneMapping',
     'exposureNode',
     'colorNode',
-].distinct()
+] as const).distinct()
+objProps.toneMappingNode = _toneMappingNode
 
 export type ToneMappingNodeProps = Node<ToneMappingNode, typeof ToneMappingNode, { toneMapping: ToneMapping; exposureNode?: ENode; colorNode?: ENode | null; }>
 

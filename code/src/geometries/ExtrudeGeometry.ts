@@ -1,11 +1,12 @@
 import { Shape } from 'three/src/extras/core/Shape.js'
 import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { ExtrudeGeometry, ExtrudeGeometryOptions } from 'three/src/geometries/ExtrudeGeometry.js'
-export { ExtrudeGeometry, ExtrudeGeometryOptions } from 'three/src/geometries/ExtrudeGeometry.js'
+export * from 'three/src/geometries/ExtrudeGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
 
@@ -28,21 +29,21 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        extrudeGeometry: string[]
+        extrudeGeometry: typeof extrudeGeometry
         extrudeGeometryOptions: WrapAsString<ExtrudeGeometryOptions>
-        uvGenerator: string[]
+        uvGenerator: typeof uvGenerator
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        extrudeGeometry: string[]
-        extrudeGeometryOptions: string[]
-        uvGenerator: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        extrudeGeometry: typeof _extrudeGeometry
+        extrudeGeometryOptions: typeof _extrudeGeometryOptions
+        uvGenerator: typeof _uvGenerator
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\ExtrudeGeometry.d.ts
+
 
 consParams.extrudeGeometryOptions = ([
     /**
@@ -102,8 +103,9 @@ consParams.extrudeGeometryOptions = ([
 ] as const).toObject()
 
 
-consParams.uvGenerator = [
-].distinct()
+const uvGenerator = ([
+] as const).distinct()
+consParams.uvGenerator = uvGenerator
 /**
  * Creates extruded geometry from a path shape.
  * @remarks This object extrudes a 2D shape to a 3d geometry.
@@ -138,7 +140,7 @@ consParams.uvGenerator = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ExtrudeGeometry.js}
  */
 
-consParams.extrudeGeometry = [
+const extrudeGeometry = ([
     /**
      * Create a new instance of {@link ExtrudeGeometry}
      * @param shapes Shape or an array of shapes. Default `new Shape([new Vector2(0.5, 0.5), new Vector2(-0.5, 0.5), new Vector2(-0.5,
@@ -148,11 +150,12 @@ consParams.extrudeGeometry = [
      */
     'shapes',
     'options',
-].distinct()
+] as const).distinct()
+consParams.extrudeGeometry = extrudeGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\ExtrudeGeometry.d.ts
 
-objParams.extrudeGeometryOptions = [
+
+const _extrudeGeometryOptions = ([
     /**
      * Number of points on the curves.
      * Expects a `Integer`.
@@ -207,11 +210,13 @@ objParams.extrudeGeometryOptions = [
      * A object that provides Uv generator functions.
      */
     'UvGenerator',
-].distinct()
+] as const).distinct()
+objProps.extrudeGeometryOptions = _extrudeGeometryOptions
 
 
-objParams.uvGenerator = [
-].distinct()
+const _uvGenerator = ([
+] as const).distinct()
+objProps.uvGenerator = _uvGenerator
 /**
  * Creates extruded geometry from a path shape.
  * @remarks This object extrudes a 2d shape to a 3d geometry.
@@ -246,8 +251,9 @@ objParams.uvGenerator = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ExtrudeGeometry.js | Source}
  */
 
-objParams.extrudeGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _extrudeGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.extrudeGeometry = _extrudeGeometry
 
 export type ExtrudeGeometryProps = BufferGeometryNode<ExtrudeGeometry, typeof ExtrudeGeometry, { shapes?: Shape | Shape[]; options?: ExtrudeGeometryOptions; }>
 

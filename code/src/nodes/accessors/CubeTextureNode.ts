@@ -1,13 +1,13 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
-import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import { CubeTexture } from 'three/src/textures/CubeTexture.js'
 import CubeTextureNode from 'three/src/nodes/accessors/CubeTextureNode.js'
-export { CubeTextureNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import { ShaderNodeObject } from 'three/src/nodes/tsl/TSLCore'
+export { CubeTextureNode, ShaderNodeObject }
 
 declare module '../../../lib/3/three'
 {
@@ -28,33 +28,34 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        cubeTextureNode: string[]
+        cubeTextureNode: typeof cubeTextureNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        cubeTextureNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        cubeTextureNode: typeof _cubeTextureNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\CubeTextureNode.d.ts
 
-consParams.cubeTextureNode = [
+const cubeTextureNode = ([
     'value',
     'uvNode',
     'levelNode',
-].distinct()
+] as const).distinct()
+consParams.cubeTextureNode = cubeTextureNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\CubeTextureNode.d.ts    
 
-objParams.cubeTextureNode = [...objParams.textureNode,
+
+const _cubeTextureNode = ([...objProps.textureNode,
     'isCubeTextureNode',
     'uvNode',
     'levelNode',
-].distinct()
+] as const).distinct()
+objProps.cubeTextureNode = _cubeTextureNode
 
-export type CubeTextureNodeProps = Object3DNode<CubeTextureNode, typeof CubeTextureNode, { value: CubeTexture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null; }>
+export type CubeTextureNodeProps = Node<CubeTextureNode, typeof CubeTextureNode, { value: CubeTexture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

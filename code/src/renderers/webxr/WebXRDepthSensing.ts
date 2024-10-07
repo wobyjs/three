@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 // import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { WebXRDepthSensing } from 'three/src/renderers/webxr/WebXRDepthSensing.js'
 export { WebXRDepthSensing } from 'three/src/renderers/webxr/WebXRDepthSensing.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,42 +26,43 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webXRDepthSensing: string[]
-        xrWebGlDepthInformation: string[]
-        webXrDepthSensing: string[]
+        xrWebGlDepthInformation: typeof xrWebGlDepthInformation
+        webXrDepthSensing: typeof webXrDepthSensing
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webXRDepthSensing: string[]
-        xrWebGlDepthInformation: string[]
-        webXrDepthSensing: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrWebGlDepthInformation: typeof _xrWebGlDepthInformation
+        webXrDepthSensing: typeof _webXrDepthSensing
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webxr\WebXRDepthSensing.d.ts
+
 // FIXME Replace by XRWebGlDepthInformation when typed in @types/webxr
 
-consParams.xrWebGlDepthInformation = []
+const xrWebGlDepthInformation = ([] as const).distinct()
+consParams.xrWebGlDepthInformation = xrWebGlDepthInformation
 
-consParams.webXrDepthSensing = []
+const webXrDepthSensing = ([] as const).distinct()
+consParams.webXrDepthSensing = webXrDepthSensing
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webxr\WebXRDepthSensing.d.ts
 // FIXME Replace by XRWebGlDepthInformation when typed in @types/webxr
 
-objParams.xrWebGlDepthInformation = [].distinct()
+const _xrWebGlDepthInformation = ([] as const).distinct()
+objProps.xrWebGlDepthInformation = _xrWebGlDepthInformation
 
 
-objParams.webXRDepthSensing = [
+const _webXrDepthSensing = ([
     'texture',
     'mesh',
     'depthNear',
     'depthFar',
-].distinct()
+] as const).distinct()
 
+objProps.webXrDepthSensing = _webXrDepthSensing
 
-export type WebXRDepthSensingProps = Object3DNode<WebXRDepthSensing, typeof WebXRDepthSensing, {}>
+export type WebXRDepthSensingProps = Node<WebXRDepthSensing, typeof WebXRDepthSensing, {}>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -1,14 +1,15 @@
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
-import { Object3DNode } from '../../../three-types'
-import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
+import { Node } from '../../../three-types'
+// import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import { Texture } from 'three/src/textures/Texture.js'
 export * from 'three/src/textures/Texture.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import { ShaderNodeObject } from 'three/src/nodes/tsl/TSLCore'
 
 declare module '../../../lib/3/three'
 {
@@ -29,27 +30,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        textureNode: string[]
+        textureNode: typeof textureNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        textureNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        textureNode: typeof _textureNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\TextureNode.d.ts
 
-consParams.textureNode = [
+
+const textureNode = ([
     'value',
     'uvNode',
     'levelNode',
-].distinct()
+] as const).distinct()
+consParams.textureNode = textureNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\TextureNode.d.ts    
 
-objParams.textureNode = [...objParams.uniformNode,
+
+const _textureNode = ([...objProps.uniformNode,
     'uvNode',
     'levelNode',
     'compareNode',
@@ -58,9 +60,10 @@ objParams.textureNode = [...objParams.uniformNode,
     'sampler',
     'updateMatrix',
     'referenceNode',
-].distinct()
+] as const).distinct()
+objProps.textureNode = _textureNode
 
-export type TextureNodeProps = Object3DNode<TextureNode, typeof TextureNode, { value: Texture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null; }>
+export type TextureNodeProps = Node<TextureNode, typeof TextureNode, { value: Texture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -7,7 +7,7 @@ export * from 'three/examples/jsm/postprocessing/SSAARenderPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -30,28 +30,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ssaaRenderPass: string[]
+        ssaaRenderPass: typeof ssaaRenderPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ssaaRenderPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ssaaRenderPass: typeof _ssaaRenderPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SSAARenderPass.d.ts
 
-consParams.ssaaRenderPass = [
+
+const ssaaRenderPass = ([
     'scene',
     'camera',
     'clearColor',
     'clearAlpha',
-].distinct()
+] as const).distinct()
+consParams.ssaaRenderPass = ssaaRenderPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SSAARenderPass.d.ts    
 
-objParams.ssaaRenderPass = [...objParams.pass,
+
+const _ssaaRenderPass = ([...objProps.pass,
     'scene',
     'camera',
     'sampleLevel',
@@ -62,7 +63,8 @@ objParams.ssaaRenderPass = [...objParams.pass,
     'copyMaterial',
     'fsQuad',
     'sampleRenderTarget',
-].distinct()
+] as const).distinct()
+objProps.ssaaRenderPass = _ssaaRenderPass
 
 export type SSAARenderPassProps = Node<SSAARenderPass, typeof SSAARenderPass, { scene: Scene; camera: Camera; clearColor?: ColorRepresentation; clearAlpha?: number; }>
 

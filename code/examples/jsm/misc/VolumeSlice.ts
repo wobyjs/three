@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/misc/VolumeSlice.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        volumeSlice: string[]
+        volumeSlice: typeof volumeSlice
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        volumeSlice: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        volumeSlice: typeof _volumeSlice
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\VolumeSliceSlice.d.ts
 
-consParams.volumeSlice = [
+
+const volumeSlice = ([
     'volumeSlice',
     'index',
     'axis',
-].distinct()
+] as const).distinct()
+consParams.volumeSlice = volumeSlice
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\VolumeSliceSlice.d.ts
 
-objParams.volumeSlice = [
+
+const _volumeSlice = ([
     'index',
     'axis',
     'canvas',
@@ -59,7 +60,8 @@ objParams.volumeSlice = [
     'jLength',
     'iLength',
     'matrix',
-].distinct()
+] as const).distinct()
+objProps.volumeSlice = _volumeSlice
 
 export type VolumeSliceProps = Node<VolumeSlice, typeof VolumeSlice, { xLenvolumeSlice: VolumeSlice, index?: number, axis?: string }>
 

@@ -3,8 +3,9 @@ import { MeshLambertMaterial, MeshLambertMaterialParameters } from 'three/src/ma
 export { MeshLambertMaterial } from 'three/src/materials/MeshLambertMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshLambertMaterial: string[]
-        meshLambertMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshLambertMaterial: typeof _meshLambertMaterial
+        meshLambertMaterialParameters: typeof _meshLambertMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshLambertMaterial.d.ts
+
 
 consParams.meshLambertMaterialParameters = {
     ...consParams.materialParameters,
@@ -76,9 +77,9 @@ consParams.meshLambertMaterialParameters = {
     ] as const).toObject()
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshLambertMaterial.d.ts    
 
-objParams.meshLambertMaterialParameters = [...objParams.materialParameters,
+
+const _meshLambertMaterialParameters = ([...objProps.materialParameters,
     'bumpMap',
     'bumpScale',
     'color',
@@ -108,10 +109,11 @@ objParams.meshLambertMaterialParameters = [...objParams.materialParameters,
     'wireframeLinecap',
     'wireframeLinejoin',
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshLambertMaterialParameters = _meshLambertMaterialParameters
 
 
-objParams.meshLambertMaterial = [...objParams.material,
+const _meshLambertMaterial = ([...objProps.material,
     /**
      * @default 'MeshLambertMaterial'
      */
@@ -234,7 +236,8 @@ objParams.meshLambertMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshLambertMaterial = _meshLambertMaterial
 
 consParams.meshLambertMaterial = { ...consParams.meshLambertMaterialParameters }
 

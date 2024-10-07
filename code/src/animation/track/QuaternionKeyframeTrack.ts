@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { InterpolationModes } from 'three/src/constants.js'
 import { QuaternionKeyframeTrack } from 'three/src/animation/tracks/QuaternionKeyframeTrack.js'
 export { QuaternionKeyframeTrack } from 'three/src/animation/tracks/QuaternionKeyframeTrack.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,35 +26,37 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        quaternionKeyframeTrack: string[]
+        quaternionKeyframeTrack: typeof quaternionKeyframeTrack
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        quaternionKeyframeTrack: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        quaternionKeyframeTrack: typeof _quaternionKeyframeTrack
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\QuaternionKeyframeTrack.d.ts
 
-consParams.quaternionKeyframeTrack = [
+
+const quaternionKeyframeTrack = ([
     'name',
     'times',
     'values',
     'interpolation',
-].distinct()
+] as const).distinct()
+consParams.quaternionKeyframeTrack = quaternionKeyframeTrack
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\QuaternionKeyframeTrack.d.ts    
 
-objParams.quaternionKeyframeTrack = [...objParams.keyframeTrack,
+
+const _quaternionKeyframeTrack = ([...objProps.keyframeTrack,
     /**
      * @default 'quaternion'
      */
     'ValueTypeName',
-].distinct()
+] as const).distinct()
+objProps.quaternionKeyframeTrack = _quaternionKeyframeTrack
 
-export type QuaternionKeyframeTrackProps = Object3DNode<QuaternionKeyframeTrack, typeof QuaternionKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<number>; interpolation?: InterpolationModes; }>
+export type QuaternionKeyframeTrackProps = Node<QuaternionKeyframeTrack, typeof QuaternionKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<number>; interpolation?: InterpolationModes; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

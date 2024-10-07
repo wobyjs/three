@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/LDrawLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lDrawLoader: string[]
+        lDrawLoader: typeof lDrawLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lDrawLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lDrawLoader: typeof _lDrawLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LDrawLoader.d.ts
 
-consParams.lDrawLoader = [
+
+const lDrawLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.lDrawLoader = lDrawLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LDrawLoader.d.ts    
 
-objParams.lDrawLoader = [...objParams.loader,
+
+const _lDrawLoader = ([...objProps.loader,
     'materials',
     'materialsLibrary',
     'fileMap',
     'smoothNormals',
-].distinct()
+] as const).distinct()
+objProps.lDrawLoader = _lDrawLoader
 
 
 export type LDrawLoaderProps = Node<LDrawLoader, typeof LDrawLoader, { manager?: LoadingManager; }>

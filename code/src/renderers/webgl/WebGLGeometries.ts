@@ -5,7 +5,7 @@ import { WebGLInfo } from 'three/src/renderers/webgl/WebGLInfo.js'
 export { WebGLGeometries } from 'three/src/renderers/webgl/WebGLGeometries.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglGeometries: string[]
+        webglGeometries: typeof webglGeometries
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglGeometries: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglGeometries: typeof _webglGeometries
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlGeometries.d.ts
 
-consParams.webglGeometries = [
+
+const webglGeometries = ([
     'gl',
     'attributes',
     'info',
-].distinct()
+] as const).distinct()
+consParams.webglGeometries = webglGeometries
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlGeometries.d.ts
 
-objParams.webglGeometries = [
-].distinct()
+
+const _webglGeometries = ([
+] as const).distinct()
+objProps.webglGeometries = _webglGeometries
 
 export type WebGLGeometriesProps = Node<WebGLGeometries, typeof WebGLGeometries, { gl: WebGLRenderingContext; attributes: WebGLAttributes; info: WebGLInfo; }>
 

@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/misc/Volume.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,29 +26,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        volume: string[]
+        volume: typeof volume
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        volume: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        volume: typeof _volume
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\Volume.d.ts
 
-consParams.volume = [
+
+const volume = ([
     'xLength',
     'yLength',
     'zLength',
     'type',
     'arrayBuffer',
-].distinct()
+] as const).distinct()
+consParams.volume = volume
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\Volume.d.ts
 
-objParams.volume = [
+
+const _volume = ([
     'xLength',
     'yLength',
     'zLength',
@@ -60,7 +61,8 @@ objParams.volume = [
     'lowerThreshold',
     'upperThreshold',
     'sliceList',
-].distinct()
+] as const).distinct()
+objProps.volume = _volume
 
 export type VolumeProps = Node<Volume, typeof Volume, { xLength?: number; yLength?: number; zLength?: number; type?: string; arrayBuffer?: ArrayLike<number> }>
 

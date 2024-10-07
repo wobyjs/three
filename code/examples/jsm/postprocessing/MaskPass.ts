@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/postprocessing/MaskPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -30,38 +30,42 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        maskPass: string[]
-        clearMaskPass: string[]
+        maskPass: typeof maskPass
+        clearMaskPass: typeof clearMaskPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        maskPass: string[]
-        clearMaskPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        maskPass: typeof _maskPass
+        clearMaskPass: typeof _clearMaskPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\MaskPass.d.ts
 
-consParams.maskPass = [
+
+const maskPass = ([
     'scene',
     'camera',
-].distinct()
+] as const).distinct()
+consParams.maskPass = maskPass
 
-consParams.clearMaskPass = [
-].distinct()
+const clearMaskPass = ([
+] as const).distinct()
+consParams.clearMaskPass = clearMaskPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\MaskPass.d.ts    
 
-objParams.maskPass = [...objParams.pass,
+
+const _maskPass = ([...objProps.pass,
     'scene',
     'camera',
     'inverse',
-].distinct()
+] as const).distinct()
+objProps.maskPass = _maskPass
 
-objParams.clearMaskPass = [...objParams.pass,
-].distinct()
+const _clearMaskPass = ([...objProps.pass,
+] as const).distinct()
+objProps.clearMaskPass = _clearMaskPass
 
 export type MaskPassProps = Node<MaskPass, typeof MaskPass, { scene: Scene; camera: Camera; }>
 

@@ -3,8 +3,9 @@ import { Node } from '../../three-types'
 export { Vector4 } from 'three/src/math/Vector4.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,28 +26,29 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        vector4: string[]
-        vector4Like: string[]
+        vector4: typeof vector4
+        vector4Like: typeof vector4Like
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        vector4: string[]
-        vector4Like: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        vector4: typeof _vector4
+        vector4Like: typeof _vector4Like
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Vector4.d.ts
 
-consParams.vector4Like = [
-].distinct()
+
+const vector4Like = ([
+] as const).distinct()
+consParams.vector4Like = vector4Like
 
 /**
  * 4D vector.
  */
 
-consParams.vector4 = [
+const vector4 = ([
     /**
      * @default 0
      */
@@ -63,18 +65,20 @@ consParams.vector4 = [
      * @default 0
      */
     'w',
-].distinct()
+] as const).distinct()
+consParams.vector4 = vector4
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Vector4.d.ts
 
-objParams.vector4Like = [
-].distinct()
+
+const _vector4Like = ([
+] as const).distinct()
+objProps.vector4Like = _vector4Like
 
 /**
  * 4D vector.
  */
 
-objParams.vector4 = [
+const _vector4 = ([
     /**
      * @default 0
      */
@@ -93,7 +97,8 @@ objParams.vector4 = [
     'w',
     'width',
     'height',
-].distinct()
+] as const).distinct()
+objProps.vector4 = _vector4
 
 export type Vector4Props = Node<Vector4, typeof Vector4, { x?: number; y?: number; z?: number; w?: number; }>
 

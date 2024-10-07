@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/PDBLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,42 +27,46 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        pdbLoader: string[]
-        pdb: string[]
+        pdbLoader: typeof pdbLoader
+        pdb: typeof pdb
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        pdbLoader: string[]
-        pdb: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        pdbLoader: typeof _pdbLoader
+        pdb: typeof _pdb
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PDBLoader.d.ts
 
-consParams.pdb = [
+
+const pdb = ([
     'geometryAtoms',
     'geometryBonds',
     'json',
-].distinct()
+] as const).distinct()
+consParams.pdb = pdb
 
 
-consParams.pdbLoader = [
+const pdbLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.pdbLoader = pdbLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PDBLoader.d.ts
 
-objParams.pdb = [
+
+const _pdb = ([
     'geometryAtoms',
     'geometryBonds',
     'json',
-].distinct()
+] as const).distinct()
+objProps.pdb = _pdb
 
 
-objParams.pdbLoader = [...objParams.loader,
-].distinct()
+const _pdbLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.pdbLoader = _pdbLoader
 
 export type PDBLoaderProps = Node<PDBLoader, typeof PDBLoader, { manager?: LoadingManager; }>
 

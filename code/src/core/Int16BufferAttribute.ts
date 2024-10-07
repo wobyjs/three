@@ -3,8 +3,9 @@ import { Int16BufferAttribute } from 'three/src/core/BufferAttribute.js'
 export { Int16BufferAttribute } from 'three/src/core/BufferAttribute.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './BufferAttribute'
 
 declare module '../../lib/3/three'
@@ -26,13 +27,13 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        int16BufferAttribute: string[]
+        int16BufferAttribute: typeof int16BufferAttribute
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        int16BufferAttribute: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        int16BufferAttribute: typeof _int16BufferAttribute
     }
 }
 
@@ -44,7 +45,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js}
  */
 
-consParams.int16BufferAttribute = [
+const int16BufferAttribute = ([
     /**
      * This creates a new {@link THREE.Int16BufferAttribute} object.
      * @param array This can be a typed or untyped (normal) array or an integer length. An array value will be converted to `Int16Array`.
@@ -66,7 +67,8 @@ consParams.int16BufferAttribute = [
     'array',
     'itemSize',
     'normalized',
-].distinct()
+] as const).distinct()
+consParams.int16BufferAttribute = int16BufferAttribute
 
 /**
  * A {@link THREE.BufferAttribute | BufferAttribute} for {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array: Int16Array}
@@ -76,13 +78,15 @@ consParams.int16BufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-objParams.int16BufferAttribute = [...objParams.bufferAttribute,
-].distinct()
+const _int16BufferAttribute = ([...objProps.bufferAttribute,
+] as const).distinct()
+objProps.int16BufferAttribute = _int16BufferAttribute
 
 export type Int16BufferAttributeProps = Node<Int16BufferAttribute, typeof Int16BufferAttribute, { array: Iterable<number> | ArrayLike<number> | ArrayBuffer | number; itemSize: number; normalized?: boolean; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
+
         int16BufferAttribute: Partial<{ array: Iterable<number> | ArrayLike<number> | ArrayBuffer | number; itemSize: number; normalized?: boolean; }>
     }
 }

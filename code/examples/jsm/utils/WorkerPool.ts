@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/utils/WorkerPool.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,37 +26,39 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        workerPool: string[]
+        workerPool: typeof workerPool
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        workerPool: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        workerPool: typeof _workerPool
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\utils\WorkerPool.d.ts
+
 /**
  * @author Deepkolos / https://github.com/deepkolos
  */
 
-consParams.workerPool = [
+const workerPool = ([
     'pool',
-].distinct()
+] as const).distinct()
+consParams.workerPool = workerPool
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\utils\WorkerPool.d.ts
+
 /**
  * @author Deepkolos / https://github.com/deepkolos
  */
 
-objParams.workerPool = [
+const _workerPool = ([
     'pool',
     'quene',
     'workers',
     'workersResolve',
     'workerStatus',
-].distinct()
+] as const).distinct()
+objProps.workerPool = _workerPool
 
 export type WorkerPoolProps = Node<WorkerPool, typeof WorkerPool, { pool?: number }>
 

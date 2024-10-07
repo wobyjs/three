@@ -4,8 +4,9 @@ import PosterizeNode from 'three/src/nodes/display/PosterizeNode.js'
 export { PosterizeNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/NodeAttribute'
 
 declare module '../../../lib/3/three'
 {
@@ -26,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        posterizeNode: string[]
+        posterizeNode: typeof posterizeNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        posterizeNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        posterizeNode: typeof _posterizeNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\PosterizeNode.d.ts
 
-consParams.posterizeNode = [
+
+const posterizeNode = ([
     'sourceNode',
     'stepsNode',
-].distinct()
+] as const).distinct()
+consParams.posterizeNode = posterizeNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\PosterizeNode.d.ts    
 
-objParams.posterizeNode = [...objParams.node,
+
+const _posterizeNode = ([...objProps.node,
     'sourceNode',
     'stepsNode',
-].distinct()
+] as const).distinct()
+objProps.posterizeNode = _posterizeNode
 
 export type PosterizeNodeProps = Node<PosterizeNode, typeof PosterizeNode, { sourceNode: ENode; stepsNode: ENode; }>
 

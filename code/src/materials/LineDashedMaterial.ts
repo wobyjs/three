@@ -3,8 +3,9 @@ import { LineDashedMaterial, LineDashedMaterialParameters } from 'three/src/mate
 export { LineDashedMaterial } from 'three/src/materials/LineDashedMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './LineBasicMaterial'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lineDashedMaterial: string[]
-        lineDashedMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lineDashedMaterial: typeof _lineDashedMaterial
+        lineDashedMaterialParameters: typeof _lineDashedMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\LineDashedMaterial.d.ts
+
 
 consParams.lineDashedMaterialParameters = (['scale',
     'dashSize',
@@ -57,16 +58,17 @@ consParams.lineDashedMaterial = {
     ] as const).toObject(),
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\LineDashedMaterial.d.ts    
 
-objParams.lineDashedMaterialParameters = [...objParams.lineBasicMaterialParameters,
+
+const _lineDashedMaterialParameters = ([...objProps.lineBasicMaterialParameters,
     'scale',
     'dashSize',
     'gapSize',
-].distinct()
+] as const).distinct()
+objProps.lineDashedMaterialParameters = _lineDashedMaterialParameters
 
 
-objParams.lineDashedMaterial = [...objParams.lineBasicMaterial,
+const _lineDashedMaterial = ([...objProps.lineBasicMaterial,
     /**
      * @default 'LineDashedMaterial'
      */
@@ -83,7 +85,8 @@ objParams.lineDashedMaterial = [...objParams.lineBasicMaterial,
      * @default 1
      */
     'gapSize',
-].distinct()
+] as const).distinct()
+objProps.lineDashedMaterial = _lineDashedMaterial
 
 export type LineDashedMaterialProps = MaterialNode<LineDashedMaterial, LineDashedMaterialParameters>
 

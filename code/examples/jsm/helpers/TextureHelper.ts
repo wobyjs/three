@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/helpers/TextureHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        textureHelper: string[]
+        textureHelper: typeof textureHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        textureHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        textureHelper: typeof _textureHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\TextureHelper.d.ts
 
-consParams.textureHelper = [
+
+const textureHelper = ([
     'texture',
     'width',
     'height',
     'depth',
-].distinct()
+] as const).distinct()
+consParams.textureHelper = textureHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\TextureHelper.d.ts    
 
-objParams.textureHelper = [...objParams.mesh,
+
+const _textureHelper = ([...objProps.mesh,
     'texture',
-].distinct()
+] as const).distinct()
+objProps.textureHelper = _textureHelper
 
 export type TextureHelperProps = Node<TextureHelper, typeof TextureHelper, { texture: Texture; width?: number; height?: number; depth?: number; }>
 

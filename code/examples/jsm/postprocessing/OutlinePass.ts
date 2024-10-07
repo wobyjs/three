@@ -7,7 +7,7 @@ export * from 'three/examples/jsm/postprocessing/OutlinePass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -30,28 +30,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        outlinePass: string[]
+        outlinePass: typeof outlinePass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        outlinePass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        outlinePass: typeof _outlinePass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\OutlinePass.d.ts
 
-consParams.outlinePass = [
+
+const outlinePass = ([
     'resolution',
     'scene',
     'camera',
     'selectedObjects',
-].distinct()
+] as const).distinct()
+consParams.outlinePass = outlinePass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\OutlinePass.d.ts    
 
-objParams.outlinePass = [...objParams.pass,
+
+const _outlinePass = ([...objProps.pass,
     'renderScene',
     'renderCamera',
     'selectedObjects',
@@ -87,7 +88,8 @@ objParams.outlinePass = [...objParams.pass,
     'tempPulseColor1',
     'tempPulseColor2',
     'textureMatrix',
-].distinct()
+] as const).distinct()
+objProps.outlinePass = _outlinePass
 
 export type OutlinePassProps = Node<OutlinePass, typeof OutlinePass, { resolution: Vector2; scene: Scene; camera: Camera; selectedObjects?: Object3D[]; }>
 

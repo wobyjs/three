@@ -4,8 +4,9 @@ import { CompressedArrayTexture } from 'three/src/textures/CompressedArrayTextur
 export { CompressedArrayTexture } from 'three/src/textures/CompressedArrayTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        compressedArrayTexture: string[]
+        compressedArrayTexture: typeof compressedArrayTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        compressedArrayTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        compressedArrayTexture: typeof _compressedArrayTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CompressedArrayTexture.d.ts
+
 /**
  * Creates an texture 2D array based on data in compressed form, for example from a
  * {@link https://en.wikipedia.org/wiki/DirectDraw_Surface} file.
@@ -45,7 +46,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedArrayTexture.js}
  */
 
-consParams.compressedArrayTexture = [
+const compressedArrayTexture = ([
     /**
      * Create a new instance of {@link CompressedArrayTexture}
      * @param mipmaps The mipmaps array should contain objects with data, width and height.
@@ -63,9 +64,10 @@ consParams.compressedArrayTexture = [
     'depth',
     'format',
     'type',
-].distinct()
+] as const).distinct()
+consParams.compressedArrayTexture = compressedArrayTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CompressedArrayTexture.d.ts
+
 /**
  * Creates an texture 2d array based on data in compressed form, for example from a
  * {@link https://en.wikipedia.org/wiki/DirectDraw_Surface | DDS} file.
@@ -74,7 +76,7 @@ consParams.compressedArrayTexture = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedArrayTexture.js | Source}
  */
 
-objParams.compressedArrayTexture = [...objParams.compressedTexture,
+const _compressedArrayTexture = ([...objProps.compressedTexture,
     /**
      * Overridden with a object containing width and height.
      * @override
@@ -86,7 +88,8 @@ objParams.compressedArrayTexture = [...objParams.compressedTexture,
      * @defaultValue {@link THREE.ClampToEdgeWrapping}
      */
     'wrapR',
-].distinct()
+] as const).distinct()
+objProps.compressedArrayTexture = _compressedArrayTexture
 
 
 export type CompressedArrayTextureProps = Node<CompressedArrayTexture, typeof CompressedArrayTexture, { mipmaps: ImageData[]; width: number; height: number; depth: number; format: CompressedPixelFormat; type?: TextureDataType; }>

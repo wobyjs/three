@@ -1,9 +1,9 @@
-import { Object3DNode, Vector2 } from '../../../three-types'
+import { Node, Vector2 } from '../../../three-types'
 import { SplineCurve } from 'three/src/extras/curves/SplineCurve.js'
 export { SplineCurve } from 'three/src/extras/curves/SplineCurve.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/CurvePath'
 
@@ -26,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        splineCurve: string[]
+        splineCurve: typeof splineCurve
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        splineCurve: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        splineCurve: typeof _splineCurve
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\SplineCurve.d.ts
+
 /**
  * Create a smooth **2D** spline curve from a series of points.
  * @example
@@ -61,15 +61,16 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/SplineCurve.js}
  */
 
-consParams.splineCurve = [
+const splineCurve = ([
     /**
      * The array of {@link THREE.Vector2} points that define the curve.
      * @defaultValue `[]`
      */
     'points',
-].distinct()
+] as const).distinct()
+consParams.splineCurve = splineCurve
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\SplineCurve.d.ts
+
 /**
  * Create a smooth **2d** spline curve from a series of points.
  * @example
@@ -93,15 +94,16 @@ consParams.splineCurve = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/SplineCurve.js | Source}
  */
 
-objParams.splineCurve = [...objParams.curve,
+const _splineCurve = ([...objProps.curve,
     /**
      * The array of {@link THREE.Vector2 | Vector2} points that define the curve.
-     * @defaultValue `[].distinct()`
+     * @defaultValue []
      */
     'points',
-].distinct()
+] as const).distinct()
+objProps.splineCurve = _splineCurve
 
-export type SplineCurveProps = Object3DNode<SplineCurve, typeof SplineCurve, { points?: Vector2[]; }>
+export type SplineCurveProps = Node<SplineCurve, typeof SplineCurve, { points?: Vector2[]; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

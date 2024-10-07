@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/LUTCubeLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lutCubeLoader: string[]
-        lutCubeResult: string[]
+        lutCubeLoader: typeof lutCubeLoader
+        lutCubeResult: typeof lutCubeResult
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lutCubeLoader: string[]
-        lutCubeResult: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lutCubeLoader: typeof _lutCubeLoader
+        lutCubeResult: typeof _lutCubeResult
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LUTCubeLoader.d.ts
 
-consParams.lutCubeResult = [
+
+const lutCubeResult = ([
     'title',
     'size',
     'domainMin',
     'domainMax',
     'texture3d',
-].distinct()
+] as const).distinct()
+consParams.lutCubeResult = lutCubeResult
 /**
  * A 3d LUT loader that supports the .cube file format.
  *
@@ -56,23 +57,25 @@ consParams.lutCubeResult = [
  * https://wwwimages2.adobe.com/content/dam/acom/en/products/speedgrade/cc/pdfs/cube-lut-specification-1.0.pdf
  */
 
-consParams.lutCubeLoader = [
+const lutCubeLoader = ([
     /**
      * Creates a new {@link LUTCubeLoader}.
      * @param manager The LoadingManager to use. Defaults to {@link DefaultLoadingManager}
      */
     'manager',
-].distinct()
+] as const).distinct()
+consParams.lutCubeLoader = lutCubeLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LUTCubeLoader.d.ts
 
-objParams.lutCubeResult = [
+
+const _lutCubeResult = ([
     'title',
     'size',
     'domainMin',
     'domainMax',
     'texture3d',
-].distinct()
+] as const).distinct()
+objProps.lutCubeResult = _lutCubeResult
 
 /**
  * A 3d LUT loader that supports the .cube file format.
@@ -82,9 +85,10 @@ objParams.lutCubeResult = [
  * https://wwwimages2.adobe.com/content/dam/acom/en/products/speedgrade/cc/pdfs/cube-lut-specification-1.0.pdf
  */
 
-objParams.lutCubeLoader = [...objParams.loader,
+const _lutCubeLoader = ([...objProps.loader,
     'type',
-].distinct()
+] as const).distinct()
+objProps.lutCubeLoader = _lutCubeLoader
 
 export type LUTCubeLoaderProps = Node<LUTCubeLoader, typeof LUTCubeLoader, { manager?: LoadingManager; }>
 

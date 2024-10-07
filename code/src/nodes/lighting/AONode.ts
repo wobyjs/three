@@ -4,7 +4,7 @@ import AONode from 'three/src/nodes/lighting/AONode.js'
 export { AONode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        aoNode: string[]
+        aoNode: typeof aoNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        aoNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        aoNode: typeof _aoNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\AONode.d.ts
 
-consParams.aoNode = [
+
+const aoNode = ([
     'aoNode',
-].distinct()
+] as const).distinct()
+consParams.aoNode = aoNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\AONode.d.ts    
 
-objParams.aoNode = [...objParams.lightingNode,
+
+const _aoNode = ([...objProps.lightingNode,
     'aoNode',
-].distinct()
+] as const).distinct()
+objProps.aoNode = _aoNode
 
 export type AONodeProps = Node<AONode, typeof AONode, { aoNode?: ENode | null; }>
 

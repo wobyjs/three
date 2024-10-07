@@ -1,13 +1,14 @@
 import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
-import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
+// import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import EquirectUVNode from 'three/src/nodes/utils/EquirectUVNode.js'
 export { EquirectUVNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/TempNode'
+import { ShaderNodeObject } from 'three/src/nodes/tsl/TSLCore'
 
 declare module '../../../lib/3/three'
 {
@@ -28,26 +29,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        equirectUvNode: string[]
+        equirectUvNode: typeof equirectUvNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        equirectUvNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        equirectUvNode: typeof _equirectUvNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\EquirectUVNode.d.ts
 
-consParams.equirectUvNode = [
+const equirectUvNode = ([
     'dirNode',
-].distinct()
+] as const).distinct()
+consParams.equirectUvNode = equirectUvNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\EquirectUvNode.d.ts    
 
-objParams.equirectUvNode = [...objParams.tempNode,
-].distinct()
+
+const _equirectUvNode = ([...objProps.tempNode,
+] as const).distinct()
+objProps.equirectUvNode = _equirectUvNode
 
 export type EquirectUVNodeProps = Node<EquirectUVNode, typeof EquirectUVNode, { dirNode?: ShaderNodeObject<ENode> }>
 

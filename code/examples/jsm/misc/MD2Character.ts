@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/misc/MD2Character.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,42 +26,45 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        md2Character: string[]
-        md2PartsConfig: string[]
+        md2Character: typeof md2Character
+        md2PartsConfig: typeof md2PartsConfig
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        md2Character: string[]
-        md2PartsConfig: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        md2Character: typeof _md2Character
+        md2PartsConfig: typeof _md2PartsConfig
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MD2Character.d.ts
 
-consParams.md2PartsConfig = [
+
+const md2PartsConfig = ([
     'baseUrl',
     'body',
     'skins',
     'weapons',
-].distinct()
+] as const).distinct()
+consParams.md2PartsConfig = md2PartsConfig
 
 
-consParams.md2Character = [
-].distinct()
+const md2Character = ([
+] as const).distinct()
+consParams.md2Character = md2Character
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MD2Character.d.ts
 
-objParams.md2PartsConfig = [
+
+const _md2PartsConfig = ([
     'baseUrl',
     'body',
     'skins',
     'weapons',
-].distinct()
+] as const).distinct()
+objProps.md2PartsConfig = _md2PartsConfig
 
 
-objParams.md2Character = [
+const _md2Character = ([
     'scale',
     'animationFPS',
     'root',
@@ -73,7 +76,8 @@ objParams.md2Character = [
     'activeAnimation',
     'mixer',
     'loadCounter',
-].distinct()
+] as const).distinct()
+objProps.md2Character = _md2Character
 
 export type MD2CharacterProps = Node<MD2Character, typeof MD2Character, {}>
 

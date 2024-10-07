@@ -3,7 +3,7 @@ import NodeCode from 'three/src/nodes/core/NodeCode.js'
 export { NodeCode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,29 +25,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeCode: string[]
+        nodeCode: typeof nodeCode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeCode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeCode: typeof _nodeCode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeCode.d.ts
 
-consParams.nodeCode = [
+
+const nodeCode = ([
     'name',
     'type',
     'code',
-].distinct()
+] as const).distinct()
+consParams.nodeCode = nodeCode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeCode.d.ts
 
-objParams.nodeCode = [
+
+const _nodeCode = ([
     'isNodeCode',
-].distinct()
+] as const).distinct()
+objProps.nodeCode = _nodeCode
 
 export type NodeCodeProps = Node<NodeCode, typeof NodeCode, { name: string; type: string; code?: string; }>
 

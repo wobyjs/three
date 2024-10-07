@@ -3,8 +3,9 @@ import { BatchedMesh } from 'three/src/objects/BatchedMesh.js'
 export { BatchedMesh } from 'three/src/objects/BatchedMesh.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { Material } from 'three/src/materials/Material'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        batchedMesh: string[]
+        batchedMesh: typeof batchedMesh
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        batchedMesh: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        batchedMesh: typeof _batchedMesh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\BatchedMesh.d.ts
+
 /**
  * A special version of {@link Mesh} with multi draw batch rendering support. Use {@link BatchedMesh} if you have to
  * render a large number of objects with the same material but with different world transformations and geometry. The
@@ -65,7 +66,7 @@ declare module '../../lib/3/objParams' {
  * @also Example: {@link https://threejs.org/examples/#webgl_mesh_batch WebGl / mesh / batch}
  */
 
-consParams.batchedMesh = [
+const batchedMesh = ([
     /**
      * @param maxGeometryCount the max number of individual geometries planned to be added.
      * @param maxVertexCount the max number of vertices to be used by all geometries.
@@ -76,9 +77,10 @@ consParams.batchedMesh = [
     'maxVertexCount',
     'maxIndexCount',
     'material',
-].distinct()
+] as const).distinct()
+consParams.batchedMesh = batchedMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\BatchedMesh.d.ts
+
 /**
  * A special version of {@link Mesh} with multi draw batch rendering support. Use {@link BatchedMesh} if you have to
  * render a large number of objects with the same material but with different world transformations and geometry. The
@@ -107,7 +109,7 @@ consParams.batchedMesh = [
  * @also Example: {@link https://threejs.org/examples/#webgl_mesh_batch WebGl / mesh / batch}
  */
 
-objParams.batchedMesh = [...objParams.mesh,
+const _batchedMesh = ([...objProps.mesh,
     /**
      * This bounding box encloses all instances of the {@link BatchedMesh}. Can be calculated with
      * {@link .computeBoundingBox()}.
@@ -137,7 +139,8 @@ objParams.batchedMesh = [...objParams.mesh,
      * Read-only flag to check if a given object is of type {@link BatchedMesh}.
      */
     'isBatchedMesh',
-].distinct()
+] as const).distinct()
+objProps.batchedMesh = _batchedMesh
 
 
 export type BatchedMeshProps = Object3DNode<BatchedMesh, typeof BatchedMesh, { maxInstanceCount: number, maxVertexCount: number, maxIndexCount?: number, material?: Material }>

@@ -4,7 +4,7 @@ import VaryingNode from 'three/src/nodes/core/VaryingNode.js'
 export { VaryingNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,29 +26,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        varyingNode: string[]
+        varyingNode: typeof varyingNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        varyingNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        varyingNode: typeof _varyingNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\VaryingNode.d.ts
 
-consParams.varyingNode = [
+
+const varyingNode = ([
     'node',
     'name',
-].distinct()
+] as const).distinct()
+consParams.varyingNode = varyingNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\VaryingNode.d.ts    
 
-objParams.varyingNode = [...objParams.node,
+
+const _varyingNode = ([...objProps.node,
     'node',
     'name',
-].distinct()
+] as const).distinct()
+objProps.varyingNode = _varyingNode
 
 export type VaryingNodeProps = Node<VaryingNode, typeof VaryingNode, { node: ENode; name?: string | null; }>
 

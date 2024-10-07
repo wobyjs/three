@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/EXRLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,21 +27,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        exrLoader: string[]
-        exr: string[]
+        exrLoader: typeof exrLoader
+        exr: typeof exr
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        exrLoader: string[]
-        exr: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        exrLoader: typeof _exrLoader
+        exr: typeof _exr
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\EXRLoader.d.ts
 
-consParams.exr = [
+
+const exr = ([
     'header',
     'width',
     'height',
@@ -49,15 +49,17 @@ consParams.exr = [
     'format',
     'colorSpace',
     'type',
-].distinct()
+] as const).distinct()
+consParams.exr = exr
 
 
-consParams.exrLoader = [
+const exrLoader = ([
     'manager',
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\EXRLoader.d.ts
+] as const).distinct()
+consParams.exrLoader = exrLoader
 
-objParams.exr = [
+
+const _exr = ([
     'header',
     'width',
     'height',
@@ -65,12 +67,14 @@ objParams.exr = [
     'format',
     'colorSpace',
     'type',
-].distinct()
+] as const).distinct()
+objProps.exr = _exr
 
 
-objParams.exrLoader = [...objParams.dataTextureLoader,
+const _exrLoader = ([...objProps.dataTextureLoader,
     'type',
-].distinct()
+] as const).distinct()
+objProps.exrLoader = _exrLoader
 
 export type EXRLoaderProps = Node<EXRLoader, typeof EXRLoader, { manager?: LoadingManager; }>
 

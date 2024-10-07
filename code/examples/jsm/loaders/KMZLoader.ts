@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/KMZLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        kmzLoader: string[]
+        kmzLoader: typeof kmzLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        kmzLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        kmzLoader: typeof _kmzLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\KMZLoader.d.ts
 
-consParams.kmzLoader = [
+
+const kmzLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.kmzLoader = kmzLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\KMZLoader.d.ts    
 
-objParams.kmzLoader = [...objParams.loader,
-].distinct()
+
+const _kmzLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.kmzLoader = _kmzLoader
 
 export type KMZLoaderProps = Node<KMZLoader, typeof KMZLoader, { manager?: LoadingManager; }>
 

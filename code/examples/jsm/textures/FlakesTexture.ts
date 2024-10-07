@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/textures/FlakesTexture.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        flakesTexture: string[]
+        flakesTexture: typeof flakesTexture
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        flakesTexture: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        flakesTexture: typeof _flakesTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\textures\FlakesTexture.d.ts
 
-consParams.flakesTexture = [
+
+const flakesTexture = ([
     'width',
     'height',
-].distinct()
+] as const).distinct()
+consParams.flakesTexture = flakesTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\textures\FlakesTexture.d.ts    
 
-objParams.flakesTexture = [
-].distinct()
+
+const _flakesTexture = ([
+] as const).distinct()
+objProps.flakesTexture = _flakesTexture
 
 export type FlakesTextureProps = Node<FlakesTexture, typeof FlakesTexture, { width?: number; height?: number; }>
 

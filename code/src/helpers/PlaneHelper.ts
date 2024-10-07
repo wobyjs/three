@@ -4,8 +4,9 @@ import { PlaneHelper } from 'three/src/helpers/PlaneHelper.js'
 export { PlaneHelper } from 'three/src/helpers/PlaneHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        planeHelper: string[]
+        planeHelper: typeof planeHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        planeHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        planeHelper: typeof _planeHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\PlaneHelper.d.ts
+
 /**
  * Helper object to visualize a {@link THREE.Plane}.
  * @example
@@ -49,7 +50,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PlaneHelper.js}
  */
 
-consParams.planeHelper = [
+const planeHelper = ([
     /**
      * Creates a new wireframe representation of the passed plane.
      * @param plane The plane to visualize.
@@ -59,9 +60,10 @@ consParams.planeHelper = [
     'plane',
     'size',
     'color',
-].distinct()
+] as const).distinct()
+consParams.planeHelper = planeHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\PlaneHelper.d.ts
+
 /**
  * Helper object to visualize a {@link THREE.Plane | Plane}.
  * @example
@@ -74,7 +76,7 @@ consParams.planeHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PlaneHelper.js | Source}
  */
 
-objParams.planeHelper = [...objParams.lineSegments,
+const _planeHelper = ([...objProps.lineSegments,
     /**
      * The {@link Plane | plane} being visualized.
      */
@@ -85,7 +87,8 @@ objParams.planeHelper = [...objParams.lineSegments,
      * @defaultValue `1`
      */
     'size',
-].distinct()
+] as const).distinct()
+objProps.planeHelper = _planeHelper
 
 export type PlaneHelperProps = Object3DNode<PlaneHelper, typeof PlaneHelper, { plane: Plane; size?: number; color?: number; }>
 

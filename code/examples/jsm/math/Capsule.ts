@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/math/Capsule.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,31 +26,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        capsule: string[]
+        capsule: typeof capsule
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        capsule: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        capsule: typeof _capsule
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\Capsule.d.ts
 
-consParams.capsule = [
+
+const capsule = ([
     'start',
     'end',
     'radius',
-].distinct()
+] as const).distinct()
+consParams.capsule = capsule
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\Capsule.d.ts
 
-objParams.capsule = [
+
+const _capsule = ([
     'start',
     'end',
     'radius',
-].distinct()
+] as const).distinct()
+objProps.capsule = _capsule
 
 export type CapsuleProps = Node<Capsule, typeof Capsule, { start?: Vector3; end?: Vector3; radius?: number; }>
 

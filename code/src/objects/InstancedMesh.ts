@@ -5,8 +5,9 @@ import { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
 export { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,22 +28,23 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        instancedMesh: string[]
-        instancedMeshEventMap: string[]
+        instancedMesh: typeof instancedMesh
+        instancedMeshEventMap: typeof instancedMeshEventMap
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        instancedMesh: string[]
-        instancedMeshEventMap: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        instancedMesh: typeof _instancedMesh
+        instancedMeshEventMap: typeof _instancedMeshEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\InstancedMesh.d.ts
 
-consParams.instancedMeshEventMap = [
-].distinct()
+
+const instancedMeshEventMap = ([
+] as const).distinct()
+consParams.instancedMeshEventMap = instancedMeshEventMap
 
 /**
  * A special version of {@link THREE.Mesh} with instanced rendering support
@@ -58,7 +60,7 @@ consParams.instancedMeshEventMap = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/InstancedMesh.js}
  */
 
-consParams.instancedMesh = [
+const instancedMesh = ([
     /**
      * Create a new instance of {@link InstancedMesh}
      * @param geometry An instance of {@link THREE.BufferGeometry}.
@@ -68,12 +70,14 @@ consParams.instancedMesh = [
     'geometry',
     'material',
     'count',
-].distinct()
+] as const).distinct()
+consParams.instancedMesh = instancedMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\InstancedMesh.d.ts    
 
-objParams.instancedMeshEventMap = [...objParams.object3dEventMap,
-].distinct()
+
+const _instancedMeshEventMap = ([...objProps.object3dEventMap,
+] as const).distinct()
+objProps.instancedMeshEventMap = _instancedMeshEventMap
 
 
 /**
@@ -90,7 +94,7 @@ objParams.instancedMeshEventMap = [...objParams.object3dEventMap,
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/InstancedMesh.js | Source}
  */
 
-objParams.instancedMesh = [...objParams.mesh,
+const _instancedMesh = ([...objProps.mesh,
     /**
      * Create a new instance of {@link InstancedMesh}
      * @param geometry An instance of {@link THREE.BufferGeometry | BufferGeometry}.
@@ -118,7 +122,8 @@ objParams.instancedMesh = [...objParams.mesh,
      * The number of instances.
      * @remarks
      * The `count` value passed into the {@link InstancedMesh | constructor} represents the **maximum** number of instances of this mesh.
-     * You can change the number of instances at runtime to an integer value in the range `[0, count].distinct()
+     * You can change the number of instances at runtime to an integer value in the range `[0, count] as const).distinct()
+objProps.instancedMesh = _instancedMesh
 `.
      * @remarks If you need more instances than the original `count` value, you have to create a new InstancedMesh.
      * @remarks Expects a `Integer`
@@ -140,7 +145,7 @@ objParams.instancedMesh = [...objParams.mesh,
      * you modify instanced data via {@link .setMorphAt}.
      */
     'morphTexture',
-].distinct()
+] as const).distinct()
 
 export type InstancedMeshProps<
     TGeometry extends BufferGeometry = BufferGeometry,

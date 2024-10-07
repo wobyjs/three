@@ -3,11 +3,12 @@ import WebGPURenderer, { WebGPURendererParameters } from 'three/src/renderers/we
 export { WebGPURenderer }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import '../../code/examples/jsm/renderers/common/Renderer'
 import './WebGPUBackend'
+import { RendererEx } from '../RendererEx'
 
 declare module '../../../lib/3/three'
 {
@@ -33,14 +34,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webGpuRenderer: string[]
-        webGpuRendererParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webGpuRenderer: typeof _webGpuRenderer
+        webGpuRendererParameters: typeof _webGpuRendererParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgpu\WebGpuRenderer.d.ts
+
 
 consParams.webGpuRendererParameters = {
     ...consParams.rendererParameters, ...consParams.webGpuBackendParameters,
@@ -49,20 +50,22 @@ consParams.webGpuRendererParameters = {
 
 consParams.webGpuRenderer = { ...consParams.webGpuRendererParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\webgpu\WebGpuRenderer.d.ts    
 
-objParams.webGpuRendererParameters = [...objParams.rendererParameters, ...objParams.webGpuBackendParameters,
+
+const _webGpuRendererParameters = ([...objProps.rendererParameters, ...objProps.webGpuBackendParameters,
     'forceWebGl',
-].distinct()
+] as const).distinct()
+objProps.webGpuRendererParameters = _webGpuRendererParameters
 
-objParams.webGpuRenderer = [...objParams.renderer,
-].distinct()
+const _webGpuRenderer = ([...objProps.renderer,
+] as const).distinct()
+objProps.webGpuRenderer = _webGpuRenderer
 
-export type WebGPURendererProps = Node<WebGPURenderer, typeof WebGPURenderer, WebGPURendererParameters>
+export type WebGPURendererProps = Node<WebGPURenderer, typeof WebGPURenderer, WebGPURendererParameters & RendererEx>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        webGpuRenderer: WebGPURendererParameters
+        webGpuRenderer: WebGPURendererParameters & RendererEx
     }
 }
 

@@ -4,8 +4,9 @@ import { InstancedInterleavedBuffer } from 'three/src/core/InstancedInterleavedB
 export { InstancedInterleavedBuffer } from 'three/src/core/InstancedInterleavedBuffer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './InterleavedBuffer'
 
 declare module '../../lib/3/three'
@@ -28,24 +29,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        instancedInterleavedBuffer: string[]
+        instancedInterleavedBuffer: typeof instancedInterleavedBuffer
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        instancedInterleavedBuffer: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        instancedInterleavedBuffer: typeof _instancedInterleavedBuffer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InstancedInterleavedBuffer.d.ts
+
 /**
  * An instanced version of {@link THREE.InterleavedBuffer}.
  * @see {@link https://threejs.org/docs/index.html#api/en/core/InstancedInterleavedBuffer Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedInterleavedBuffer.js}
  */
 
-consParams.instancedInterleavedBuffer = [
+const instancedInterleavedBuffer = ([
     /**
      * Create a new instance of {@link InstancedInterleavedBuffer}
      * @param array
@@ -55,21 +56,23 @@ consParams.instancedInterleavedBuffer = [
     'array',
     'stride',
     'meshPerAttribute',
-].distinct()
+] as const).distinct()
+consParams.instancedInterleavedBuffer = instancedInterleavedBuffer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InstancedInterleavedBuffer.d.ts
+
 /**
  * An instanced version of {@link THREE.InterleavedBuffer | InterleavedBuffer}.
  * @see {@link https://threejs.org/docs/index.html#api/en/core/InstancedInterleavedBuffer | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedInterleavedBuffer.js | Source}
  */
 
-objParams.instancedInterleavedBuffer = [...objParams.interleavedBuffer,
+const _instancedInterleavedBuffer = ([...objProps.interleavedBuffer,
     /**
      * @defaultValue `1`
      */
     'meshPerAttribute',
-].distinct()
+] as const).distinct()
+objProps.instancedInterleavedBuffer = _instancedInterleavedBuffer
 
 export type InstancedInterleavedBufferProps = Node<InstancedInterleavedBuffer, typeof InstancedInterleavedBuffer, { array: TypedArray; stride: number; meshPerAttribute?: number; }>
 

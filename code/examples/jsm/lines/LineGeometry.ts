@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { LineGeometry } from 'three/examples/jsm/lines/LineGeometry.js'
 export * from 'three/examples/jsm/lines/LineGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './LineSegmentsGeometry'
 
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lineGeometry: string[]
+        lineGeometry: typeof lineGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lineGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lineGeometry: typeof _lineGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineGeometry.d.ts
 
-consParams.lineGeometry = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineGeometry.d.ts    
+const lineGeometry = ([
+] as const).distinct()
+consParams.lineGeometry = lineGeometry
 
-objParams.lineGeometry = [...objParams.lineSegmentsGeometry,
-].distinct()
 
-export type LineGeometryProps = Object3DNode<LineGeometry, typeof LineGeometry, {}>
+
+const _lineGeometry = ([...objProps.lineSegmentsGeometry,
+] as const).distinct()
+objProps.lineGeometry = _lineGeometry
+
+export type LineGeometryProps = Node<LineGeometry, typeof LineGeometry, {}>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

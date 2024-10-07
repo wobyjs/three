@@ -4,7 +4,7 @@ import { WebGLUtils } from 'three/src/renderers/webgl/WebGLUtils.js'
 export { WebGLUtils } from 'three/src/renderers/webgl/WebGLUtils.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,31 +26,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglUtils: string[]
+        webglUtils: typeof webglUtils
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglUtils: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglUtils: typeof _webglUtils
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlUniformsGroups.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlUtils.d.ts
 
-consParams.webglUtils = [
+
+
+const webglUtils = ([
 
     'gl',
     'extensions',
     ,
-].distinct()
+] as const).distinct()
+consParams.webglUtils = webglUtils
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlUniformsGroups.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlUtils.d.ts
 
-objParams.webglUtils = [
-].distinct()
+
+
+const _webglUtils = ([
+] as const).distinct()
+objProps.webglUtils = _webglUtils
 
 export type WebGLUtilsProps = Node<WebGLUtils, typeof WebGLUtils, { gl: WebGLRenderingContext | WebGL2RenderingContext; extensions: WebGLExtensions; }>
 

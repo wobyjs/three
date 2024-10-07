@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/misc/Timer.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        timer: string[]
-        fixedTimer: string[]
+        timer: typeof timer
+        fixedTimer: typeof fixedTimer
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        timer: string[]
-        fixedTimer: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        timer: typeof _timer
+        fixedTimer: typeof _fixedTimer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\Timer.d.ts
+
 /**
  * This class is an alternative to {@link THREE.Clock} with a different API design and behavior
  * The goal is to avoid the conceptual flaws that became apparent in {@link THREE.Clock} over time.
@@ -63,21 +63,23 @@ declare module '../../../lib/3/objParams' {
  * @see https://threejs.org/examples/#webgl_morphtargets_sphere
  */
 
-consParams.timer = [
-].distinct()
+const timer = ([
+] as const).distinct()
+consParams.timer = timer
 
 /**
  * A timer that uses a fixed delta.
  */
 
-consParams.fixedTimer = [
+const fixedTimer = ([
     /**
      * @param fps The desired fixed delta expressed in frames per second.
      */
     'fps',
-].distinct()
+] as const).distinct()
+consParams.fixedTimer = fixedTimer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\Timer.d.ts
+
 /**
  * This class is an alternative to {@link THREE.Clock} with a different API design and behavior
  * The goal is to avoid the conceptual flaws that became apparent in {@link THREE.Clock} over time.
@@ -102,15 +104,17 @@ consParams.fixedTimer = [
  * @see https://threejs.org/examples/#webgl_morphtargets_sphere
  */
 
-objParams.timer = [
-].distinct()
+const _timer = ([
+] as const).distinct()
+objProps.timer = _timer
 
 /**
  * A timer that uses a fixed delta.
  */
 
-objParams.fixedTimer = [...objParams.timer,
-].distinct()
+const _fixedTimer = ([...objProps.timer,
+] as const).distinct()
+objProps.fixedTimer = _fixedTimer
 
 export type TimerProps = Node<Timer, typeof Timer, {}>
 

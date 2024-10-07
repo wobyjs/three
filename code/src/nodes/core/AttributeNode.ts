@@ -4,7 +4,7 @@ import AttributeNode from 'three/src/nodes/core/AttributeNode.js'
 export { AttributeNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        attributeNode: string[]
+        attributeNode: typeof attributeNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        attributeNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        attributeNode: typeof _attributeNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\AttributeNode.d.ts
 
-consParams.attributeNode = [
+
+const attributeNode = ([
     'attributeName',
     'nodeType',
-].distinct()
+] as const).distinct()
+consParams.attributeNode = attributeNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\AttributeNode.d.ts    
 
-objParams.attributeNode = [...objParams.node,
-].distinct()
+
+const _attributeNode = ([...objProps.node,
+] as const).distinct()
+objProps.attributeNode = _attributeNode
 
 export type AttributeNodeProps = Node<AttributeNode, typeof AttributeNode, { attributeName: string; nodeType?: string | null; defaultNode?: ENode | null; }>
 

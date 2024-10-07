@@ -3,7 +3,7 @@ import { WebGLState } from 'three/src/renderers/webgl/WebGLState.js'
 export { WebGLState } from 'three/src/renderers/webgl/WebGLState.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglState: string[]
+        webglState: typeof webglState
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglState: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglState: typeof _webglState
     }
 }
 
 
-consParams.webglState = [
+const webglState = ([
     'gl',
-].distinct()
+] as const).distinct()
+consParams.webglState = webglState
 
 
-objParams.webglState = [
+const _webglState = ([
     'buffers',
-].distinct()
+] as const).distinct()
+objProps.webglState = _webglState
 
 export type WebGLStateProps = Node<WebGLState, typeof WebGLState, { gl: WebGLRenderingContext; }>
 

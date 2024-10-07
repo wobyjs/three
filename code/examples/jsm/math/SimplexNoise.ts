@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/math/SimplexNoise.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        simplexNoise: string[]
+        simplexNoise: typeof simplexNoise
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        simplexNoise: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        simplexNoise: typeof _simplexNoise
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\SimplexNoise.d.ts
 
-consParams.simplexNoise = [
+
+const simplexNoise = ([
     'r',
-].distinct()
+] as const).distinct()
+consParams.simplexNoise = simplexNoise
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\SimplexNoise.d.ts
 
-objParams.simplexNoise = [
-].distinct()
+
+const _simplexNoise = ([
+] as const).distinct()
+objProps.simplexNoise = _simplexNoise
 
 export type SimplexNoiseProps = Node<SimplexNoise, typeof SimplexNoise, { r?: object; }>
 

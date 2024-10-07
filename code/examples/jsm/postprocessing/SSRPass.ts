@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/postprocessing/SSRPass.js'
 import { Node, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -31,14 +31,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ssrPass: string[]
-        ssrPassParams: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ssrPass: typeof _ssrPass
+        ssrPassParams: typeof _ssrPassParams
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SSRPass.d.ts
+
 
 consParams.ssrPassParams = ([
     'renderer',
@@ -55,9 +55,9 @@ consParams.ssrPassParams = ([
 
 consParams.ssrPass = { ...consParams.ssrPassParams }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SSRPass.d.ts
 
-objParams.ssrPassParams = [
+
+const _ssrPassParams = ([
     'renderer',
     'scene',
     'camera',
@@ -67,10 +67,11 @@ objParams.ssrPassParams = [
     'isPerspectiveCamera',
     'isBouncing',
     'groundReflector',
-].distinct()
+] as const).distinct()
+objProps.ssrPassParams = _ssrPassParams
 
 
-objParams.ssrPass = [...objParams.pass,
+const _ssrPass = ([...objProps.pass,
     'width',
     'height',
     'clear',
@@ -107,7 +108,8 @@ objParams.ssrPass = [...objParams.pass,
     'copyMaterial',
     'fsQuad',
     'originalClearColor',
-].distinct()
+] as const).distinct()
+objProps.ssrPass = _ssrPass
 
 export type SSRPassProps = Node<SSRPass, typeof SSRPass, SSRPassParams>
 

@@ -2,7 +2,7 @@ import { Node } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -24,27 +24,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglProgram: string[]
+        webglProgram: typeof webglProgram
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglProgram: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglProgram: typeof _webglProgram
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlProgram.d.ts
 
-consParams.webglProgram = [
+
+const webglProgram = ([
     'renderer',
     'cacheKey',
     'parameters',
-].distinct()
+] as const).distinct()
+consParams.webglProgram = webglProgram
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlProgram.d.ts
 
-objParams.webglProgram = [
+
+const _webglProgram = ([
     'name',
     'id',
     'cacheKey', // unique identifier for this program, used for looking up compiled programs from cache.
@@ -63,7 +64,8 @@ objParams.webglProgram = [
      * @deprecated Use {@link WebGlProgram#getAttributes getAttributes()} instead.
      */
     'attributes',
-].distinct()
+] as const).distinct()
+objProps.webglProgram = _webglProgram
 
 export type WebGLProgramProps = Node<WebGLProgram, typeof WebGLProgram, { renderer: WebGLRenderer; cacheKey: string; parameters: object; }>
 

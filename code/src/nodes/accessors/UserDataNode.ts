@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import UserDataNode, { NodeUserData } from 'three/src/nodes/accessors/UserDataNode.js'
 export { UserDataNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,31 +25,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        userDataNode: string[]
+        userDataNode: typeof userDataNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        userDataNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        userDataNode: typeof _userDataNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\UserDataNode.d.ts
 
-consParams.userDataNode = [
+
+const userDataNode = ([
     'property',
     'inputType',
     'userData',
-].distinct()
+] as const).distinct()
+consParams.userDataNode = userDataNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\UserDataNode.d.ts    
 
-objParams.userDataNode = [...objParams.referenceNode,
+
+const _userDataNode = ([...objProps.referenceNode,
     'userData',
-].distinct()
+] as const).distinct()
+objProps.userDataNode = _userDataNode
 
-export type UserDataNodeProps = Object3DNode<UserDataNode, typeof UserDataNode, { property: string; inputType: string; userData?: NodeUserData | null; }>
+export type UserDataNodeProps = Node<UserDataNode, typeof UserDataNode, { property: string; inputType: string; userData?: NodeUserData | null; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

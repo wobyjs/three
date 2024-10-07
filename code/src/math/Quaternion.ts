@@ -3,8 +3,9 @@ import { Quaternion } from 'three/src/math/Quaternion.js'
 // export { Quaternion } from 'three/src/math/Quaternion.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        quaternion: string[]
-        quaternionLike: string[]
+        quaternion: typeof quaternion
+        quaternionLike: typeof quaternionLike
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        quaternion: string[]
-        quaternionLike: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        quaternion: typeof _quaternion
+        quaternionLike: typeof _quaternionLike
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Quaternion.d.ts
 
-consParams.quaternionLike = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Quaternion.d.ts
+const quaternionLike = ([
+] as const).distinct()
+consParams.quaternionLike = quaternionLike
 
-objParams.quaternionLike = [
-].distinct()
+
+
+const _quaternionLike = ([
+] as const).distinct()
+objProps.quaternionLike = _quaternionLike
 
 /**
  * Implementation of a quaternion. This is used for rotating things without incurring in the dreaded gimbal lock issue, amongst other advantages.
@@ -57,7 +60,7 @@ objParams.quaternionLike = [
  * vector.applyQuaternion( quaternion ,
  */
 
-consParams.quaternion = [
+const quaternion = ([
     /**
      * @default 0
      */
@@ -74,7 +77,8 @@ consParams.quaternion = [
      * @default 1
      */
     'w',
-].distinct()
+] as const).distinct()
+consParams.quaternion = quaternion
 
 /**
  * Implementation of a quaternion. This is used for rotating things without incurring in the dreaded gimbal lock issue, amongst other advantages.
@@ -86,7 +90,7 @@ consParams.quaternion = [
  * vector.applyQuaternion( quaternion )
  */
 
-objParams.quaternion = [
+const _quaternion = ([
     /**
      * @default 0
      */
@@ -103,7 +107,8 @@ objParams.quaternion = [
      * @default 1
      */
     'w',
-].distinct()
+] as const).distinct()
+objProps.quaternion = _quaternion
 
 export type QuaternionProps = Node<Quaternion, typeof Quaternion, { x?: number; y?: number; z?: number; w?: number; }>
 

@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/PCDLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        pcdLoader: string[]
+        pcdLoader: typeof pcdLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        pcdLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        pcdLoader: typeof _pcdLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PCDLoader.d.ts
 
-consParams.pcdLoader = [
+
+const pcdLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.pcdLoader = pcdLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PCDLoader.d.ts    
 
-objParams.pcdLoader = [...objParams.loader,
+
+const _pcdLoader = ([...objProps.loader,
     'littleEndian',
-].distinct()
+] as const).distinct()
+objProps.pcdLoader = _pcdLoader
 
 export type PCDLoaderProps = Node<PCDLoader, typeof PCDLoader, { manager?: LoadingManager; }>
 

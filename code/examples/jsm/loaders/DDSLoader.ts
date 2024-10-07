@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/DDSLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,48 +27,52 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ddsLoader: string[]
-        dds: string[]
+        ddsLoader: typeof ddsLoader
+        dds: typeof dds
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ddsLoader: string[]
-        dds: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ddsLoader: typeof _ddsLoader
+        dds: typeof _dds
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\DDSLoader.d.ts
 
-consParams.dds = [
+
+const dds = ([
     'mipmaps',
     'width',
     'height',
     'format',
     'mipmapCount',
     'isCubemap',
-].distinct()
+] as const).distinct()
+consParams.dds = dds
 
 
-consParams.ddsLoader = [
+const ddsLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.ddsLoader = ddsLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\DDSLoader.d.ts
 
-objParams.dds = [
+
+const _dds = ([
     'mipmaps',
     'width',
     'height',
     'format',
     'mipmapCount',
     'isCubemap',
-].distinct()
+] as const).distinct()
+objProps.dds = _dds
 
 
-objParams.ddsLoader = [...objParams.compressedTextureLoader,
-].distinct()
+const _ddsLoader = ([...objProps.compressedTextureLoader,
+] as const).distinct()
+objProps.ddsLoader = _ddsLoader
 
 export type DDSLoaderProps = Node<DDSLoader, typeof DDSLoader, { manager?: LoadingManager; }>
 

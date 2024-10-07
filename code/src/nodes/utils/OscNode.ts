@@ -4,7 +4,7 @@ import OscNode, { OscNodeMethod } from 'three/src/nodes/utils/OscNode.js'
 export { OscNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/NodeAttribute'
 
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        oscNode: string[]
+        oscNode: typeof oscNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        oscNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        oscNode: typeof _oscNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\OscNode.d.ts
 
-consParams.oscNode = [
+
+const oscNode = ([
     'method',
     'timeNode',
-].distinct()
+] as const).distinct()
+consParams.oscNode = oscNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\OscNode.d.ts    
 
-objParams.oscNode = [...objParams.node,
+
+const _oscNode = ([...objProps.node,
     'method',
     'timeNode',
-].distinct()
+] as const).distinct()
+objProps.oscNode = _oscNode
 
 export type OscNodeProps = Node<OscNode, typeof OscNode, { method: OscNodeMethod; timeNode?: ENode; }>
 

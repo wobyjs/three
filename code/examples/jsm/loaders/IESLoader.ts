@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/IESLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,25 +27,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        iesLoader: string[]
+        iesLoader: typeof iesLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        iesLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        iesLoader: typeof _iesLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\IESLoader.d.ts
 
-consParams.iesLoader = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\IESLoader.d.ts    
+const iesLoader = ([
+] as const).distinct()
+consParams.iesLoader = iesLoader
 
-objParams.iesLoader = [...objParams.loader,
-].distinct()
+
+
+const _iesLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.iesLoader = _iesLoader
 
 export type IESLoaderProps = Node<IESLoader, typeof IESLoader, { manager?: LoadingManager; }>
 

@@ -2,8 +2,9 @@ import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.js'
 export { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.js'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './BufferGeometry'
 
 declare module 'woby' {
@@ -16,34 +17,35 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        instancedBufferGeometry: string[]
+        instancedBufferGeometry: typeof instancedBufferGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        instancedBufferGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        instancedBufferGeometry: typeof _instancedBufferGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InstancedBufferGeometry.d.ts
+
 /**
  * An instanced version of {@link THREE.BufferGeometry}.
  * @see {@link https://threejs.org/docs/index.html#api/en/core/InstancedBufferGeometry Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedBufferGeometry.js}
  */
 
-consParams.instancedBufferGeometry = [
-].distinct()
+const instancedBufferGeometry = ([
+] as const).distinct()
+consParams.instancedBufferGeometry = instancedBufferGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InstancedBufferGeometry.d.ts
+
 /**
  * An instanced version of {@link THREE.BufferGeometry | BufferGeometry}.
  * @see {@link https://threejs.org/docs/index.html#api/en/core/InstancedBufferGeometry | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedBufferGeometry.js | Source}
  */
 
-objParams.instancedBufferGeometry = [...objParams.bufferGeometry,
+const _instancedBufferGeometry = ([...objProps.bufferGeometry,
     /**
     * @defaultValue `InstancedBufferGeometry`
     */
@@ -57,7 +59,8 @@ objParams.instancedBufferGeometry = [...objParams.bufferGeometry,
      * @defaultValue `Infinity`
      */
     'instanceCount',
-].distinct()
+] as const).distinct()
+objProps.instancedBufferGeometry = _instancedBufferGeometry
 
 export type InstancedBufferGeometryProps = BufferGeometryNode<InstancedBufferGeometry, typeof InstancedBufferGeometry, {}>
 

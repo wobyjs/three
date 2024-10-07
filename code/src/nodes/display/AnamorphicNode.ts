@@ -4,8 +4,9 @@ import AnamorphicNode from 'three/src/nodes/display/AnamorphicNode.js'
 export { AnamorphicNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/TempNode'
 
 declare module '../../../lib/3/three'
 {
@@ -26,34 +27,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        anamorphicNode: string[]
+        anamorphicNode: typeof anamorphicNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        anamorphicNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        anamorphicNode: typeof _anamorphicNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\AnamorphicNode.d.ts
 
-consParams.anamorphicNode = [
+
+const anamorphicNode = ([
     'textureNode',
     'thresholdNode',
     'scaleNode',
     'samples',
-].distinct()
+] as const).distinct()
+consParams.anamorphicNode = anamorphicNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\AnamorphicNode.d.ts    
 
-objParams.anamorphicNode = [...objParams.tempNode,
+
+const _anamorphicNode = ([...objProps.tempNode,
     'textureNode',
     'thresholdNode',
     'scaleNode',
     'samples',
     'resolution',
-].distinct()
+] as const).distinct()
+objProps.anamorphicNode = _anamorphicNode
 
 export type AnamorphicNodeProps = Node<AnamorphicNode, typeof AnamorphicNode, { textureNode: ENode; thresholdNode: ENode; scaleNode: ENode; samples: number; }>
 

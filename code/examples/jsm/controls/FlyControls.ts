@@ -4,7 +4,7 @@ import { FlyControls } from 'three/examples/jsm/controls/FlyControls.js'
 export * from 'three/examples/jsm/controls/FlyControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,36 +26,39 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        flyControls: string[]
-        flyControlsEventMap: string[]
+        flyControls: typeof flyControls
+        flyControlsEventMap: typeof flyControlsEventMap
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        flyControls: string[]
-        flyControlsEventMap: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        flyControls: typeof _flyControls
+        flyControlsEventMap: typeof _flyControlsEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\FlyControls.d.ts
 
-consParams.flyControlsEventMap = [
+
+const flyControlsEventMap = ([
     'change',
-].distinct()
+] as const).distinct()
+consParams.flyControlsEventMap = flyControlsEventMap
 
-consParams.flyControls = [
+const flyControls = ([
     'object',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.flyControls = flyControls
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\FlyControls.d.ts
 
-objParams.flyControlsEventMap = [
+
+const _flyControlsEventMap = ([
     'change',
-].distinct()
+] as const).distinct()
+objProps.flyControlsEventMap = _flyControlsEventMap
 
-objParams.flyControls = [
+const _flyControls = ([
     'autoForward',
     'domElement',
     'dragToLook',
@@ -63,7 +66,8 @@ objParams.flyControls = [
     'movementSpeed',
     'object',
     'rollSpeed',
-].distinct()
+] as const).distinct()
+objProps.flyControls = _flyControls
 
 export type FlyControlsProps = Node<FlyControls, typeof FlyControls, { object: Camera; domElement?: HTMLElement; }>
 

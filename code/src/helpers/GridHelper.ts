@@ -4,8 +4,9 @@ import { GridHelper } from 'three/src/helpers/GridHelper.js'
 export { GridHelper } from 'three/src/helpers/GridHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        gridHelper: string[]
+        gridHelper: typeof gridHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        gridHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        gridHelper: typeof _gridHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\GridHelper.d.ts
+
 /**
  * The {@link GridHelper} is an object to define grids
  * @remarks
@@ -53,7 +54,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/GridHelper.js}
  */
 
-consParams.gridHelper = [
+const gridHelper = ([
     /**
      * Creates a new {@link GridHelper} of size 'size' and divided into 'divisions' segments per side
      * @remarks
@@ -67,9 +68,10 @@ consParams.gridHelper = [
     'divisions',
     'colorCenterLine',
     'colorGrid',
-].distinct()
+] as const).distinct()
+consParams.gridHelper = gridHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\GridHelper.d.ts
+
 /**
  * The {@link GridHelper} is an object to define grids
  * @remarks
@@ -86,8 +88,9 @@ consParams.gridHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/GridHelper.js | Source}
  */
 
-objParams.gridHelper = [...objParams.lineSegments,
-].distinct()
+const _gridHelper = ([...objProps.lineSegments,
+] as const).distinct()
+objProps.gridHelper = _gridHelper
 
 export type GridHelperProps = Object3DNode<GridHelper, typeof GridHelper, { size?: number; divisions?: number; colorCenterLine?: ColorRepresentation; colorGrid?: ColorRepresentation; }>
 

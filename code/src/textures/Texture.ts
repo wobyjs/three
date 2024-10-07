@@ -4,8 +4,9 @@ import { ClampToEdgeWrapping, ColorSpace, MagnificationTextureFilter, Mapping, M
 export { Texture } from 'three/src/textures/Texture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        texture: string[]
-        eventTarget: string[]
-        offscreenCanvas: string[]
+        texture: typeof texture
+        eventTarget: typeof eventTarget
+        offscreenCanvas: typeof offscreenCanvas
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        texture: string[]
-        eventTarget: string[]
-        offscreenCanvas: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        texture: typeof _texture
+        eventTarget: typeof _eventTarget
+        offscreenCanvas: typeof _offscreenCanvas
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\Texture.d.ts
 
-consParams.eventTarget = [].distinct()
+
+const eventTarget = ([] as const).distinct()
+consParams.eventTarget = eventTarget
 /** Shim for OffscreenCanvas. */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 
-consParams.offscreenCanvas = [
-].distinct()
+const offscreenCanvas = ([
+] as const).distinct()
+consParams.offscreenCanvas = offscreenCanvas
 
 /**
  * Create a {@link Texture} to apply to a surface or as a reflection or refraction map.
@@ -69,7 +72,7 @@ consParams.offscreenCanvas = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/Textures/Texture.js}
  */
 
-consParams.texture = [
+const texture = ([
     /**
      * This creates a new {@link THREE.Texture} object.
      * @param image See {@link Texture.image | .image}. Default {@link THREE.Texture.DEFAULT_IMAGE}
@@ -94,18 +97,20 @@ consParams.texture = [
     'type',
     'anisotropy',
     'colorSpace',
-].distinct()
+] as const).distinct()
+consParams.texture = texture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\Texture.d.ts
 
-objParams.eventTarget = [],
-    /** Shim for OffscreenCanvas. */
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface    
-    //@ts-ignore
-    objParams.offscreenCanvas = [...objParams.eventTarget,
 
-    ].distinct()
+const _eventTarget = ([] as const).distinct()
+objProps.eventTarget = _eventTarget
 
+/** Shim for OffscreenCanvas. */
+// eslint-disable-next-line @typescript-eslint/no-empty-interface    
+//@ts-ignore
+const _offscreenCanvas = ([...objProps.eventTarget,
+] as const).distinct()
+objProps.offscreenCanvas = _offscreenCanvas
 
 /**
  * Create a {@link Texture} to apply to a surface or as a reflection or refraction map.
@@ -126,7 +131,7 @@ objParams.eventTarget = [],
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/Textures/Texture.js | Source}
  */
 
-objParams.texture = [
+const _texture = ([
     /**
      * {@link http://en.wikipedia.org/wiki/Universally_unique_identifier | UUID} of this object instance.
      * @remarks This gets automatically assigned and shouldn't be edited.
@@ -154,8 +159,7 @@ objParams.texture = [
     'image',
     /**
      * Array of user-specified mipmaps
-     * @defaultValue `[].distinct()
-`
+     * @defaultValue []
      */
     'mipmaps',
     /**
@@ -363,7 +367,8 @@ objParams.texture = [
      * textures)
      */
     'pmremVersion',
-].distinct()
+] as const).distinct()
+objProps.texture = _texture
 
 export type TextureProps = Node<Texture, typeof Texture, { image?: TexImageSource | OffscreenCanvas; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; colorSpace?: ColorSpace; }>
 

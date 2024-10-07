@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/objects/ShadowMesh.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        shadowMesh: string[]
+        shadowMesh: typeof shadowMesh
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        shadowMesh: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        shadowMesh: typeof _shadowMesh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\ShadowMesh.d.ts
 
-consParams.shadowMesh = [
+
+const shadowMesh = ([
     'mesh',
-].distinct()
+] as const).distinct()
+consParams.shadowMesh = shadowMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\ShadowMesh.d.ts    
 
-objParams.shadowMesh = [...objParams.mesh,
+
+const _shadowMesh = ([...objProps.mesh,
     'meshMatrix',
-].distinct()
+] as const).distinct()
+objProps.shadowMesh = _shadowMesh
 
 export type ShadowMeshProps = Node<ShadowMesh, typeof ShadowMesh, { mesh: Mesh; }>
 

@@ -3,7 +3,7 @@ import NodeFrame from 'three/src/nodes/core/NodeFrame.js'
 export { NodeFrame }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,24 +25,25 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeFrame: string[]
+        nodeFrame: typeof nodeFrame
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeFrame: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeFrame: typeof _nodeFrame
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeFrame.d.ts
 
-consParams.nodeFrame = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeFrame.d.ts
+const nodeFrame = ([
+] as const).distinct()
+consParams.nodeFrame = nodeFrame
 
-objParams.nodeFrame = [
+
+
+const _nodeFrame = ([
     'time',
     'deltaTime',
     'frameId',
@@ -57,7 +58,8 @@ objParams.nodeFrame = [
     'camera',
     'object',
     'scene',
-].distinct()
+] as const).distinct()
+objProps.nodeFrame = _nodeFrame
 
 export type NodeFrameProps = Node<NodeFrame, typeof NodeFrame, {}>
 

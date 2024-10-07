@@ -6,7 +6,7 @@ import { OculusHandModel } from 'three/examples/jsm/webxr/OculusHandModel.js'
 export * from 'three/examples/jsm/webxr/OculusHandModel.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,34 +28,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        oculusHandModel: string[]
+        oculusHandModel: typeof oculusHandModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        oculusHandModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        oculusHandModel: typeof _oculusHandModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\OculusHandModel.d.ts
 
-consParams.oculusHandModel = [
+
+const oculusHandModel = ([
     'controller',
     'loader',
     'onLoad',
-].distinct()
+] as const).distinct()
+consParams.oculusHandModel = oculusHandModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\OculusHandModel.d.ts    
 
-objParams.oculusHandModel = [...objParams.object3d,
+
+const _oculusHandModel = ([...objProps.object3d,
     'controller',
     'motionController',
     'envMap',
     'loader',
     'onLoad',
     'mesh',
-].distinct()
+] as const).distinct()
+objProps.oculusHandModel = _oculusHandModel
 
 export type OculusHandModelProps = Node<OculusHandModel, typeof OculusHandModel, { controller: Object3D; loader?: Loader<GLTF> | null; onLoad?: ((object: Object3D) => void) | null; }>
 

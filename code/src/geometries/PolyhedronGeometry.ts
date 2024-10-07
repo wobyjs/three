@@ -3,8 +3,9 @@ import { PolyhedronGeometry } from 'three/src/geometries/PolyhedronGeometry.js'
 export { PolyhedronGeometry } from 'three/src/geometries/PolyhedronGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        polyhedronGeometry: string[]
+        polyhedronGeometry: typeof polyhedronGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        polyhedronGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        polyhedronGeometry: typeof _polyhedronGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\PolyhedronGeometry.d.ts
+
 /**
  * A polyhedron is a solid in three dimensions with flat faces
  * @remarks
@@ -71,7 +72,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/PolyhedronGeometry.js}
  */
 
-consParams.polyhedronGeometry = [
+const polyhedronGeometry = ([
     /**
      * Create a new instance of {@link PolyhedronGeometry}
      * @param vertices Array of points of the form [1,1,1,-1,-1,-1,...this. ]. Default `[]`.
@@ -83,9 +84,10 @@ consParams.polyhedronGeometry = [
     'indices',
     'radius',
     'detail',
-].distinct()
+] as const).distinct()
+consParams.polyhedronGeometry = polyhedronGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\PolyhedronGeometry.d.ts
+
 /**
  * A polyhedron is a solid in three dimensions with flat faces
  * @remarks
@@ -108,8 +110,9 @@ consParams.polyhedronGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/PolyhedronGeometry.js | Source}
  */
 
-objParams.polyhedronGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _polyhedronGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.polyhedronGeometry = _polyhedronGeometry
 
 export type PolyhedronGeometryProps = BufferGeometryNode<PolyhedronGeometry, typeof PolyhedronGeometry, { vertices?: number[]; indices?: number[]; radius?: number; detail?: number; }>
 

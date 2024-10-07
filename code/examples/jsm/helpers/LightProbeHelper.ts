@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/helpers/LightProbeHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lightProbeHelper: string[]
+        lightProbeHelper: typeof lightProbeHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lightProbeHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lightProbeHelper: typeof _lightProbeHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\LightProbeHelper.d.ts
 
-consParams.lightProbeHelper = [
+
+const lightProbeHelper = ([
     'lightProbe',
     'size',
-].distinct()
+] as const).distinct()
+consParams.lightProbeHelper = lightProbeHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\LightProbeHelper.d.ts    
 
-objParams.lightProbeHelper = [...objParams.mesh,
+
+const _lightProbeHelper = ([...objProps.mesh,
     'lightProbe',
     'size',
-].distinct()
+] as const).distinct()
+objProps.lightProbeHelper = _lightProbeHelper
 
 export type LightProbeHelperProps = Node<LightProbeHelper, typeof LightProbeHelper, { lightProbe: LightProbe; size: number; }>
 

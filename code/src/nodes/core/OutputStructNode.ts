@@ -4,7 +4,7 @@ import OutputStructNode from 'three/src/nodes/core/OutputStructNode.js'
 export { OutputStructNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        outputStructNode: string[]
+        outputStructNode: typeof outputStructNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        outputStructNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        outputStructNode: typeof _outputStructNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\OutputStructNode.d.ts
 
-consParams.outputStructNode = [
+
+const outputStructNode = ([
     'members',
-].distinct()
+] as const).distinct()
+consParams.outputStructNode = outputStructNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\OutputStructNode.d.ts    
 
-objParams.outputStructNode = [...objParams.node,
+
+const _outputStructNode = ([...objProps.node,
     'members',
-].distinct()
+] as const).distinct()
+objProps.outputStructNode = _outputStructNode
 
 export type OutputStructNodeProps = Node<OutputStructNode, typeof OutputStructNode, { members: ENode[]; }>
 

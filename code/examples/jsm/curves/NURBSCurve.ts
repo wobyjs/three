@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/curves/NURBSCurve.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,36 +26,38 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nurbsCurve: string[]
+        nurbsCurve: typeof nurbsCurve
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nurbsCurve: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nurbsCurve: typeof _nurbsCurve
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\NURBSCurve.d.ts
 
-consParams.nurbsCurve = [
+
+const nurbsCurve = ([
 
     'degree',
     'knots',
     'controlPoints',
     'startKnot',
     'endKnot',
-].distinct()
+] as const).distinct()
+consParams.nurbsCurve = nurbsCurve
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\NURBSCurve.d.ts    
 
-objParams.nurbsCurve = [...objParams.curve,
+
+const _nurbsCurve = ([...objProps.curve,
     'degree',
     'knots',
     'controlPoints',
     'startKnot',
     'endKnot',
-].distinct()
+] as const).distinct()
+objProps.nurbsCurve = _nurbsCurve
 
 export type NURBSCurveProps = Node<NURBSCurve, typeof NURBSCurve, { degree: number; knots: number[]; controlPoints: Vector2[] | Vector3[] | Vector4[]; startKnot?: number; endKnot?: number; }>
 

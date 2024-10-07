@@ -3,8 +3,9 @@ import { MeshBasicMaterial, MeshBasicMaterialParameters } from 'three/src/materi
 export { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import { WrapAsString } from '../../three-types'
 
@@ -32,22 +33,22 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshBasicMaterial: string[]
-        meshBasicMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshBasicMaterial: typeof _meshBasicMaterial
+        meshBasicMaterialParameters: typeof _meshBasicMaterialParameters
     }
 }
 
 consParams.meshBasicMaterial = { ...consParams.meshBasicMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\Materials.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshBasicMaterial.d.ts
+
+
 /**
  * parameters is an object with one or more properties defining the material's appearance.
  */
 
-objParams.meshBasicMaterialParameters = [...objParams.materialParameters,
+const _meshBasicMaterialParameters = ([...objProps.materialParameters,
     'color',
     'opacity',
     'map',
@@ -67,10 +68,11 @@ objParams.meshBasicMaterialParameters = [...objParams.materialParameters,
     'wireframeLinewidth',
     'wireframeLinecap',
     'wireframeLinejoin',
-].distinct()
+] as const).distinct()
+objProps.meshBasicMaterialParameters = _meshBasicMaterialParameters
 
 
-objParams.meshBasicMaterial = [...objParams.material,
+const _meshBasicMaterial = ([...objProps.material,
     /**
      * @default 'MeshBasicMaterial'
      */
@@ -148,7 +150,8 @@ objParams.meshBasicMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshBasicMaterial = _meshBasicMaterial
 
 export type MeshBasicMaterialProps = MaterialNode<MeshBasicMaterial, MeshBasicMaterialParameters>
 

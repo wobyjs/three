@@ -4,7 +4,7 @@ import RemapNode from 'three/src/nodes/utils/RemapNode.js'
 export { RemapNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/NodeAttribute'
 
@@ -27,36 +27,38 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        remapNode: string[]
+        remapNode: typeof remapNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        remapNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        remapNode: typeof _remapNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\RemapNode.d.ts
 
-consParams.remapNode = [
+
+const remapNode = ([
     'node',
     'inLowNode',
     'inHighNode',
     'outLowNode',
     'outHighNode',
-].distinct()
+] as const).distinct()
+consParams.remapNode = remapNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\RemapNode.d.ts    
 
-objParams.remapNode = [...objParams.node,
+
+const _remapNode = ([...objProps.node,
     'node',
     'inLowNode',
     'inHighNode',
     'outLowNode',
     'outHighNode',
     'doClamp',
-].distinct()
+] as const).distinct()
+objProps.remapNode = _remapNode
 
 export type RemapNodeProps = Node<RemapNode, typeof RemapNode, { node: ENode; inLowNode: ENode; inHighNode: ENode; outLowNode?: ENode; outHighNode?: ENode; }>
 

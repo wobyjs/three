@@ -3,8 +3,9 @@ import { SpriteMaterial, SpriteMaterialParameters } from 'three/src/materials/Sp
 export { SpriteMaterial } from 'three/src/materials/SpriteMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        spriteMaterial: string[]
-        spriteMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        spriteMaterial: typeof _spriteMaterial
+        spriteMaterialParameters: typeof _spriteMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\SpriteMaterial.d.ts
+
 
 consParams.spriteMaterialParameters = {
     ...consParams.materialParameters,
@@ -56,19 +57,20 @@ consParams.spriteMaterialParameters = {
 
 consParams.spriteMaterial = { ...consParams.spriteMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\SpriteMaterial.d.ts    
 
-objParams.spriteMaterialParameters = [...objParams.materialParameters,
+
+const _spriteMaterialParameters = ([...objProps.materialParameters,
     'color',
     'map',
     'alphaMap',
     'rotation',
     'sizeAttenuation',
     'fog',
-].distinct()
+] as const).distinct()
+objProps.spriteMaterialParameters = _spriteMaterialParameters
 
 
-objParams.spriteMaterial = [...objParams.material,
+const _spriteMaterial = ([...objProps.material,
     /**
      * @default 'SpriteMaterial'
      */
@@ -102,7 +104,8 @@ objParams.spriteMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.spriteMaterial = _spriteMaterial
 
 export type SpriteMaterialProps = MaterialNode<SpriteMaterial, SpriteMaterialParameters>
 

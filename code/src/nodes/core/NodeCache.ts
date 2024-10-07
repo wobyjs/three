@@ -3,7 +3,7 @@ import NodeCache from 'three/src/nodes/core/NodeCache.js'
 export { NodeCache }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeCache: string[]
+        nodeCache: typeof nodeCache
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeCache: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeCache: typeof _nodeCache
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeCache.d.ts
 
-consParams.nodeCache = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeCache.d.ts
+const nodeCache = ([
+] as const).distinct()
+consParams.nodeCache = nodeCache
 
-objParams.nodeCache = [
+
+
+const _nodeCache = ([
     'id',
     'nodesData',
-].distinct()
+] as const).distinct()
+objProps.nodeCache = _nodeCache
 
 export type NodeCacheProps = Node<NodeCache, typeof NodeCache, {}>
 

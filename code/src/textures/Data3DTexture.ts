@@ -3,8 +3,9 @@ import { Data3DTexture } from 'three/src/textures/Data3dTexture.js'
 export { Data3DTexture } from 'three/src/textures/Data3dTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        data3dTexture: string[]
+        data3dTexture: typeof data3dTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        data3dTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        data3dTexture: typeof _data3dTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\Data3dTexture.d.ts
+
 /**
  * Creates a three-dimensional texture from raw data, with parameters to divide it into width, height, and depth
  * @example
@@ -69,7 +70,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/Data3dTexture.js | Source}
  */
 
-objParams.data3dTexture = [...objParams.texture,
+const _data3dTexture = ([...objProps.texture,
     /**
      * Create a new instance of {@link Data3dTexture}
      * @param data {@link https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView | ArrayBufferView} of the texture. Default `null`.
@@ -117,9 +118,10 @@ objParams.data3dTexture = [...objParams.texture,
      * @defaultValue `1`
      */
     'unpackAlignment',
-].distinct()
+] as const).distinct()
+objProps.data3dTexture = _data3dTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\Data3dTexture.d.ts
+
 /**
  * Creates a three-dimensional texture from raw data, with parameters to divide it into width, height, and depth
  * @example
@@ -151,7 +153,7 @@ objParams.data3dTexture = [...objParams.texture,
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/Data3dTexture.js}
  */
 
-consParams.data3dTexture = [
+const data3dTexture = ([
     /**
      * Create a new instance of {@link Data3dTexture}
      * @param data {@link https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView} of the texture. Default `null`.
@@ -163,7 +165,8 @@ consParams.data3dTexture = [
     'width',
     'height',
     'depth',
-].distinct()
+] as const).distinct()
+consParams.data3dTexture = data3dTexture
 
 export type Data3DTextureProps = Node<Data3DTexture, typeof Data3DTexture, { data?: BufferSource | null; width?: number; height?: number; depth?: number; }>
 

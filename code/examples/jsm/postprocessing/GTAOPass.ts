@@ -8,7 +8,7 @@ export * from 'three/examples/jsm/postprocessing/GTAOPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -31,29 +31,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        gtaoPass: string[]
+        gtaoPass: typeof gtaoPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gtaoPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gtaoPass: typeof _gtaoPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\GTAOPass.d.ts
 
-consParams.gtaoPass = [
+
+const gtaoPass = ([
     'scene',
     'camera',
     'width',
     'height',
     'parameters', //{ depthTexture?: DepthTexture | undefined; normalTexture?: Texture | undefined } | undefined
-].distinct()
+] as const).distinct()
+consParams.gtaoPass = gtaoPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\GTAOPass.d.ts    
 
-objParams.gtaoPass = [...objParams.pass,
+
+const _gtaoPass = ([...objProps.pass,
     'width',
     'height',
     'clear',
@@ -78,7 +79,8 @@ objParams.gtaoPass = [...objParams.pass,
     'originalClearColor',
     'depthTexture',
     'normalTexture',
-].distinct()
+] as const).distinct()
+objProps.gtaoPass = _gtaoPass
 
 export type GTAOPassProps = Node<GTAOPass, typeof GTAOPass, { scene: Scene; camera: Camera; width?: number | undefined; height?: number | undefined; parameters?: { depthTexture?: DepthTexture | undefined; normalTexture?: Texture | undefined; } | undefined; }>
 

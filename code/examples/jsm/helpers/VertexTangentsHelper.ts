@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/helpers/VertexTangentsHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        vertexTangentsHelper: string[]
+        vertexTangentsHelper: typeof vertexTangentsHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        vertexTangentsHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        vertexTangentsHelper: typeof _vertexTangentsHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\VertexTangentsHelper.d.ts
 
-consParams.vertexTangentsHelper = [
+
+const vertexTangentsHelper = ([
     'object',
     'size',
     'color',
-].distinct()
+] as const).distinct()
+consParams.vertexTangentsHelper = vertexTangentsHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\VertexTangentsHelper.d.ts    
 
-objParams.vertexTangentsHelper = [...objParams.lineSegments,
+
+const _vertexTangentsHelper = ([...objProps.lineSegments,
     'object',
     'size',
-].distinct()
+] as const).distinct()
+objProps.vertexTangentsHelper = _vertexTangentsHelper
 
 export type VertexTangentsHelperProps = Node<VertexTangentsHelper, typeof VertexTangentsHelper, { object: Object3D; size?: number; color?: number; }>
 

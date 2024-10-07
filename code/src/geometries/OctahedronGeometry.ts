@@ -3,8 +3,9 @@ import { OctahedronGeometry } from 'three/src/geometries/OctahedronGeometry.js'
 export { OctahedronGeometry } from 'three/src/geometries/OctahedronGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,24 +26,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        octahedronGeometry: string[]
+        octahedronGeometry: typeof octahedronGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        octahedronGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        octahedronGeometry: typeof _octahedronGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\OctahedronGeometry.d.ts
+
 /**
  * A class for generating an octahedron geometry.
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/OctahedronGeometry Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/OctahedronGeometry.js}
  */
 
-consParams.octahedronGeometry = [
+const octahedronGeometry = ([
     /**
      * Create a new instance of {@link OctahedronGeometry}
      * @param radius Radius of the octahedron. Expects a `Float`. Default `1`
@@ -50,17 +51,19 @@ consParams.octahedronGeometry = [
      */
     'radius',
     'detail',
-].distinct()
+] as const).distinct()
+consParams.octahedronGeometry = octahedronGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\OctahedronGeometry.d.ts
+
 /**
  * A class for generating an octahedron geometry.
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/OctahedronGeometry | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/OctahedronGeometry.js | Source}
  */
 
-objParams.octahedronGeometry = [...objParams.polyhedronGeometry,
-].distinct()
+const _octahedronGeometry = ([...objProps.polyhedronGeometry,
+] as const).distinct()
+objProps.octahedronGeometry = _octahedronGeometry
 
 
 export type OctahedronGeometryProps = BufferGeometryNode<OctahedronGeometry, typeof OctahedronGeometry, { radius?: number; detail?: number; }>

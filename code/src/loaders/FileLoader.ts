@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { FileLoader } from 'three/src/loaders/FileLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,23 +27,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        fileLoader: string[]
+        fileLoader: typeof fileLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        fileLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        fileLoader: typeof _fileLoader
     }
 }
 
 
-consParams.fileLoader = [
+const fileLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.fileLoader = fileLoader
 
-
-objParams.fileLoader = [...objParams.loader]
+const _fileLoader = ([...objProps.loader] as const).distinct()
+objProps.fileLoader = _fileLoader
 
 export type FileLoaderProps = Node<FileLoader, typeof FileLoader, { manager?: LoadingManager }>
 

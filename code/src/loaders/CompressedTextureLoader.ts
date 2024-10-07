@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { CompressedTextureLoader } from 'three/src/loaders/CompressedTextureLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,23 +27,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        compressedTextureLoader: string[]
+        compressedTextureLoader: typeof compressedTextureLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        compressedTextureLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        compressedTextureLoader: typeof _compressedTextureLoader
     }
 }
 
 
-consParams.compressedTextureLoader = [
+const compressedTextureLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.compressedTextureLoader = compressedTextureLoader
 
-
-objParams.compressedTextureLoader = [...objParams.loader]
+const _compressedTextureLoader = ([...objProps.loader] as const).distinct()
+objProps.compressedTextureLoader = _compressedTextureLoader
 
 export type CompressedTextureLoaderProps = Node<CompressedTextureLoader, typeof CompressedTextureLoader, { manager?: LoadingManager }>
 

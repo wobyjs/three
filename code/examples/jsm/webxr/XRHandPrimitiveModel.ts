@@ -5,7 +5,7 @@ import { XRHandPrimitiveModel, XRHandPrimitiveModelOptions } from 'three/example
 export * from 'three/examples/jsm/webxr/XRHandPrimitiveModel.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,45 +27,49 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrHandPrimitiveModel: string[]
-        xrHandPrimitiveModelOptions: string[]
+        xrHandPrimitiveModel: typeof xrHandPrimitiveModel
+        xrHandPrimitiveModelOptions: typeof xrHandPrimitiveModelOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrHandPrimitiveModel: string[]
-        xrHandPrimitiveModelOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrHandPrimitiveModel: typeof _xrHandPrimitiveModel
+        xrHandPrimitiveModelOptions: typeof _xrHandPrimitiveModelOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRHandPrimitiveModel.d.ts
 
-consParams.xrHandPrimitiveModelOptions = [
+
+const xrHandPrimitiveModelOptions = ([
     'primitive',
-].distinct()
+] as const).distinct()
+consParams.xrHandPrimitiveModelOptions = xrHandPrimitiveModelOptions
 
-consParams.xrHandPrimitiveModel = [
+const xrHandPrimitiveModel = ([
     'handModel',
     'controller',
     'path',
     'handedness',
     'options',
-].distinct()
+] as const).distinct()
+consParams.xrHandPrimitiveModel = xrHandPrimitiveModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRHandPrimitiveModel.d.ts
 
-objParams.xrHandPrimitiveModelOptions = [
+
+const _xrHandPrimitiveModelOptions = ([
     'primitive',
-].distinct()
+] as const).distinct()
+objProps.xrHandPrimitiveModelOptions = _xrHandPrimitiveModelOptions
 
-objParams.xrHandPrimitiveModel = [
+const _xrHandPrimitiveModel = ([
     'controller',
     'handModel',
     'envMap',
     'handMesh',
     'updateMesh',
-].distinct()
+] as const).distinct()
+objProps.xrHandPrimitiveModel = _xrHandPrimitiveModel
 
 export type XRHandPrimitiveModelProps = Node<XRHandPrimitiveModel, typeof XRHandPrimitiveModel, { handModel: XRHandModel; controller: Group; path: string; handedness: XRHandModelHandedness; options: XRHandPrimitiveModelOptions; }>
 

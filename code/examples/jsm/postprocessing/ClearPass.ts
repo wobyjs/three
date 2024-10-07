@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/postprocessing/ClearPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -28,29 +28,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        clearPass: string[]
+        clearPass: typeof clearPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        clearPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        clearPass: typeof _clearPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\ClearPass.d.ts
 
-consParams.clearPass = [
+
+const clearPass = ([
     'clearColor',
     'clearAlpha',
-].distinct()
+] as const).distinct()
+consParams.clearPass = clearPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\ClearPass.d.ts    
 
-objParams.clearPass = [...objParams.pass,
+
+const _clearPass = ([...objProps.pass,
     'clearColor',
     'clearAlpha',
-].distinct()
+] as const).distinct()
+objProps.clearPass = _clearPass
 
 export type ClearPassProps = Node<ClearPass, typeof ClearPass, { clearColor?: ColorRepresentation; clearAlpha?: number; }>
 

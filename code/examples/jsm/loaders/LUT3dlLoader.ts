@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/LUT3dlLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,24 +27,25 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lut3dlLoader: string[]
-        lut3dlResult: string[]
+        lut3dlLoader: typeof lut3dlLoader
+        lut3dlResult: typeof lut3dlResult
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lut3dlLoader: string[]
-        lut3dlResult: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lut3dlLoader: typeof _lut3dlLoader
+        lut3dlResult: typeof _lut3dlResult
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LUT3dlLoader.d.ts
 
-consParams.lut3dlResult = [
+
+const lut3dlResult = ([
     'size',
     'texture3d',
-].distinct()
+] as const).distinct()
+consParams.lut3dlResult = lut3dlResult
 /**
  * A 3d LUT loader that supports the .3dl file format.
  *
@@ -54,20 +55,22 @@ consParams.lut3dlResult = [
  * https://community.foundry.com/discuss/topic/103636/format-spec-for-3dl?mode=Post&postID=895258
  */
 
-consParams.lut3dlLoader = [
+const lut3dlLoader = ([
     /**
      * Creates a new {@link LUT3dlLoader}.
      * @param manager The LoadingManager to use. Defaults to {@link DefaultLoadingManager}
      */
     'manager',
-].distinct()
+] as const).distinct()
+consParams.lut3dlLoader = lut3dlLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LUT3dlLoader.d.ts
 
-objParams.lut3dlResult = [
+
+const _lut3dlResult = ([
     'size',
     'texture3d',
-].distinct()
+] as const).distinct()
+objProps.lut3dlResult = _lut3dlResult
 
 /**
  * A 3d LUT loader that supports the .3dl file format.
@@ -78,9 +81,10 @@ objParams.lut3dlResult = [
  * https://community.foundry.com/discuss/topic/103636/format-spec-for-3dl?mode=Post&postID=895258
  */
 
-objParams.lut3dlLoader = [...objParams.loader,
+const _lut3dlLoader = ([...objProps.loader,
     'type',
-].distinct()
+] as const).distinct()
+objProps.lut3dlLoader = _lut3dlLoader
 
 export type LUT3dlLoaderProps = Node<LUT3dlLoader, typeof LUT3dlLoader, { manager?: LoadingManager; }>
 

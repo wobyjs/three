@@ -5,7 +5,7 @@ import CacheNode from 'three/src/nodes/core/CacheNode.js'
 export { CacheNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        cacheNode: string[]
+        cacheNode: typeof cacheNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        cacheNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        cacheNode: typeof _cacheNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\CacheNode.d.ts
 
-consParams.cacheNode = [
+
+const cacheNode = ([
     'node',
     'cache',
-].distinct()
+] as const).distinct()
+consParams.cacheNode = cacheNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\CacheNode.d.ts    
 
-objParams.cacheNode = [...objParams.node,
+
+const _cacheNode = ([...objProps.node,
     'isCacheNode',
     'node',
     'cache',
-].distinct()
+] as const).distinct()
+objProps.cacheNode = _cacheNode
 
 export type CacheNodeProps = Node<CacheNode, typeof CacheNode, { node: ENode; cache?: NodeCache; }>
 

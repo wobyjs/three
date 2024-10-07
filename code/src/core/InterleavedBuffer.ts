@@ -4,8 +4,9 @@ import { InterleavedBuffer } from 'three/src/core/InterleavedBuffer.js'
 export { InterleavedBuffer } from 'three/src/core/InterleavedBuffer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        interleavedBuffer: string[]
+        interleavedBuffer: typeof interleavedBuffer
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        interleavedBuffer: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        interleavedBuffer: typeof _interleavedBuffer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InterleavedBuffer.d.ts
+
 /**
  * **"Interleaved"** means that multiple attributes, possibly of different types,
 (e.g., _position, normal, uv, color_) are packed into a single array buffer.
@@ -46,7 +47,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InterleavedBuffer.js}
  */
 
-consParams.interleavedBuffer = [
+const interleavedBuffer = ([
     /**
      * Create a new instance of {@link InterleavedBuffer}
      * @param array A {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray} with a shared buffer. Stores the geometry data.
@@ -54,9 +55,10 @@ consParams.interleavedBuffer = [
      */
     'array',
     'stride',
-].distinct()
+] as const).distinct()
+consParams.interleavedBuffer = interleavedBuffer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\InterleavedBuffer.d.ts
+
 /**
  * **"Interleaved"** means that multiple attributes, possibly of different types, (e.g., _position, normal, uv, color_) are packed into a single array buffer.
  * An introduction into interleaved arrays can be found here: {@link https://blog.tojicode.com/2011/05/interleaved-array-basics.html | Interleaved array basics}
@@ -65,7 +67,7 @@ consParams.interleavedBuffer = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InterleavedBuffer.js | Source}
  */
 
-objParams.interleavedBuffer = [
+const _interleavedBuffer = ([
     /**
      * A {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray | TypedArray} with a shared buffer. Stores the geometry data.
      */
@@ -114,7 +116,8 @@ objParams.interleavedBuffer = [
      * @remarks This gets automatically assigned and shouldn't be edited.
      */
     'uuid',
-].distinct()
+] as const).distinct()
+objProps.interleavedBuffer = _interleavedBuffer
 
 export type InterleavedBufferProps = Node<InterleavedBuffer, typeof InterleavedBuffer, { array: TypedArray; stride: number; }>
 

@@ -5,8 +5,9 @@ import { Box3Helper } from 'three/src/helpers/Box3Helper.js'
 export { Box3Helper } from 'three/src/helpers/Box3Helper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        box3Helper: string[]
+        box3Helper: typeof box3Helper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        box3Helper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        box3Helper: typeof _box3Helper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\Box3Helper.d.ts
+
 /**
  * Helper object to visualize a {@link THREE.Box3}.
  * @example
@@ -51,7 +52,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/Box3Helper.js}
  */
 
-consParams.box3Helper = [
+const box3Helper = ([
     /**
      * Creates a new wireframe box that represents the passed Box3.
      * @param box The Box3 to show.
@@ -59,9 +60,10 @@ consParams.box3Helper = [
      */
     'box',
     'color',
-].distinct()
+] as const).distinct()
+consParams.box3Helper = box3Helper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\Box3Helper.d.ts
+
 /**
  * Helper object to visualize a {@link THREE.Box3 | Box3}.
  * @example
@@ -75,12 +77,13 @@ consParams.box3Helper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/Box3Helper.js | Source}
  */
 
-objParams.box3Helper = [...objParams.lineSegments,
+const _box3Helper = ([...objProps.lineSegments,
     /**
      * The Box3 being visualized.
      */
     'box',
-].distinct()
+] as const).distinct()
+objProps.box3Helper = _box3Helper
 
 export type Box3HelperProps = Object3DNode<Box3Helper, typeof Box3Helper, { box: Box3; color?: ColorRepresentation; }>
 

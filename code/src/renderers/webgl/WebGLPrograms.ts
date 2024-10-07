@@ -9,7 +9,7 @@ import { WebGLProgramParameters, WebGLPrograms } from 'three/src/renderers/webgl
 export { WebGLPrograms } from 'three/src/renderers/webgl/WebGLPrograms.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 
@@ -32,21 +32,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglProgramParametersWithUniforms: string[]
-        webglPrograms: string[]
+        webglProgramParametersWithUniforms: typeof webglProgramParametersWithUniforms
+        webglPrograms: typeof webglPrograms
         webglProgramParameters: WrapAsString<WebGLProgramParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglPrograms: string[]
-        webglProgramParametersWithUniforms: string[]
-        webglProgramParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglPrograms: typeof _webglPrograms
+        webglProgramParametersWithUniforms: typeof _webglProgramParametersWithUniforms
+        webglProgramParameters: typeof _webglProgramParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlPrograms.d.ts
+
 
 consParams.webglProgramParameters = ([
     'shaderID',
@@ -184,13 +184,14 @@ consParams.webglProgramParameters = ([
 ] as const).toObject()
 
 
-consParams.webglProgramParametersWithUniforms = [
+const webglProgramParametersWithUniforms = ([
     'uniforms',
-].distinct()
+] as const).distinct()
+consParams.webglProgramParametersWithUniforms = webglProgramParametersWithUniforms
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlPrograms.d.ts
 
-objParams.webglProgramParameters = [
+
+const _webglProgramParameters = ([
     'shaderID',
     'shaderType',
     'shaderName',
@@ -322,10 +323,11 @@ objParams.webglProgramParameters = [
     'extensionMultiDraw',
     'rendererExtensionParallelShaderCompile',
     'customProgramCacheKey',
-].distinct()
+] as const).distinct()
+objProps.webglProgramParameters = _webglProgramParameters
 
 
-consParams.webglPrograms = [
+const webglPrograms = ([
     'renderer',
     'cubemaps',
     'extensions',
@@ -333,18 +335,21 @@ consParams.webglPrograms = [
     'bindingStates',
     'clipping',
     ,
-].distinct()
+] as const).distinct()
+consParams.webglPrograms = webglPrograms
 
 
-objParams.webglProgramParametersWithUniforms = [...objParams.webglProgramParameters,
+const _webglProgramParametersWithUniforms = ([...objProps.webglProgramParameters,
     'uniforms',
-].distinct()
+] as const).distinct()
+objProps.webglProgramParametersWithUniforms = _webglProgramParametersWithUniforms
 
 
 
-objParams.webglPrograms = [
+const _webglPrograms = ([
     'programs',
-].distinct()
+] as const).distinct()
+objProps.webglPrograms = _webglPrograms
 
 export type WebGLProgramsProps = Node<WebGLPrograms, typeof WebGLPrograms, { renderer: WebGLRenderer; cubemaps: WebGLCubeMaps; extensions: WebGLExtensions; capabilities: WebGLCapabilities; bindingStates: WebGLBindingStates; clipping: WebGLClipping; }>
 

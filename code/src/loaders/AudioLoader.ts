@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { AudioLoader } from 'three/src/loaders/AudioLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,23 +27,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        audioLoader: string[]
+        audioLoader: typeof audioLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        audioLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        audioLoader: typeof _audioLoader
     }
 }
 
 
-consParams.audioLoader = [
+const audioLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.audioLoader = audioLoader
 
-
-objParams.audioLoader = [...objParams.loader]
+const _audioLoader = ([...objProps.loader] as const).distinct()
+objProps.audioLoader = _audioLoader
 
 export type AudioLoaderProps = Node<AudioLoader, typeof AudioLoader, { manager?: LoadingManager }>
 

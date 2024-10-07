@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/USDZExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,39 +26,43 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        usdzExporter: string[]
-        usdzExporterOptions: string[]
+        usdzExporter: typeof usdzExporter
+        usdzExporterOptions: typeof usdzExporterOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        usdzExporter: string[]
-        usdzExporterOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        usdzExporter: typeof _usdzExporter
+        usdzExporterOptions: typeof _usdzExporterOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\usdzExporter.d.ts
 
-consParams.usdzExporterOptions = [
+
+const usdzExporterOptions = ([
     'quickLookCompatible',
     'maxTextureSize',
-].distinct()
+] as const).distinct()
+consParams.usdzExporterOptions = usdzExporterOptions
 
 
-consParams.usdzExporter = [
-].distinct()
+const usdzExporter = ([
+] as const).distinct()
+consParams.usdzExporter = usdzExporter
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\USDZExporter.d.ts
 
-objParams.usdzExporterOptions = [
+
+const _usdzExporterOptions = ([
     'quickLookCompatible',
     'maxTextureSize',
-].distinct()
+] as const).distinct()
+objProps.usdzExporterOptions = _usdzExporterOptions
 
 
-objParams.usdzExporter = [
-].distinct()
+const _usdzExporter = ([
+] as const).distinct()
+objProps.usdzExporter = _usdzExporter
 
 export type USDZExporterProps = Node<USDZExporter, typeof USDZExporter, {}>
 

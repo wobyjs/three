@@ -5,8 +5,9 @@ import { BoxHelper } from 'three/src/helpers/BoxHelper.js'
 export { BoxHelper } from 'three/src/helpers/BoxHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        boxHelper: string[]
+        boxHelper: typeof boxHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        boxHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        boxHelper: typeof _boxHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\BoxHelper.d.ts
+
 /**
  * Helper object to graphically show the world-axis-aligned bounding box around an object
  * @remarks
@@ -58,7 +59,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/BoxHelper.js}
  */
 
-consParams.boxHelper = [
+const boxHelper = ([
     /**
      * Creates a new wireframe box that bounds the passed object
      * @remarks
@@ -69,9 +70,10 @@ consParams.boxHelper = [
      */
     'object',
     'color',
-].distinct()
+] as const).distinct()
+consParams.boxHelper = boxHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\BoxHelper.d.ts
+
 /**
  * Helper object to graphically show the world-axis-aligned bounding box around an object
  * @remarks
@@ -92,8 +94,9 @@ consParams.boxHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/BoxHelper.js | Source}
  */
 
-objParams.boxHelper = [...objParams.lineSegments,
-].distinct()
+const _boxHelper = ([...objProps.lineSegments,
+] as const).distinct()
+objProps.boxHelper = _boxHelper
 
 export type BoxHelperProps = Object3DNode<BoxHelper, typeof BoxHelper, { object: Object3D; color?: ColorRepresentation; }>
 

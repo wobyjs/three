@@ -6,8 +6,9 @@ export * from 'three/src/cameras/Camera.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/TempNode'
 
 declare module '../../../lib/3/three'
 {
@@ -28,45 +29,49 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        passNode: string[]
-        passTextureNode: string[]
+        passNode: typeof passNode
+        passTextureNode: typeof passTextureNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        passNode: string[]
-        passTextureNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        passNode: typeof _passNode
+        passTextureNode: typeof _passTextureNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\PassNode.d.ts
 
-consParams.passTextureNode = [
+
+const passTextureNode = ([
     'passNode',
     'texture',
-].distinct()
+] as const).distinct()
+consParams.passTextureNode = passTextureNode
 
 
-consParams.passNode = [
+const passNode = ([
     'scope',
     'scene',
     'camera',
-].distinct()
+] as const).distinct()
+consParams.passNode = passNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\PassNode.d.ts    
 
-objParams.passTextureNode = [...objParams.textureNode,
+
+const _passTextureNode = ([...objProps.textureNode,
     'passNode',
-].distinct()
+] as const).distinct()
+objProps.passTextureNode = _passTextureNode
 
 
-objParams.passNode = [...objParams.tempNode,
+const _passNode = ([...objProps.tempNode,
     'scope',
     'scene',
     'camera',
     'renderTarget',
-].distinct()
+] as const).distinct()
+objProps.passNode = _passNode
 
 export type PassNodeProps = Node<PassNode, typeof PassNode, { scope: PassNodeScope; scene: Scene; camera: Camera; }>
 

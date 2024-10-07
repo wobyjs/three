@@ -4,8 +4,9 @@ import { Light } from 'three/src/lights/Light.js'
 export { Light } from 'three/src/lights/Light.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../../src/core/Object3D'
 
 declare module '../../lib/3/three'
@@ -27,23 +28,23 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        light: string[]
+        light: typeof light
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        light: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        light: typeof _light
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\Light.d.ts
+
 /**
  * Abstract base class for lights.
  * @remarks All other light types inherit the properties and methods described here.
  */
 
-consParams.light = [
+const light = ([
     /**
      * Creates a new {@link Light}
      * @remarks
@@ -53,15 +54,16 @@ consParams.light = [
      */
     'color',
     'intensity',
-].distinct()
+] as const).distinct()
+consParams.light = light
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\Light.d.ts
+
 /**
  * Abstract base class for lights.
  * @remarks All other light types inherit the properties and methods described here.
  */
 
-objParams.light = [...objParams.object3d,
+const _light = ([...objProps.object3d,
     /**
      * Color of the light. \
      * @defaultValue `new THREE.Color(0xffffff)` _(white)_.
@@ -78,7 +80,8 @@ objParams.light = [...objParams.object3d,
      * @remarks Available only on Light's that support shadows.
      */
     'shadow',
-].distinct()
+] as const).distinct()
+objProps.light = _light
 
 export type LightProps = LightNode<Light, typeof Light, { color?: ColorRepresentation; intensity?: number; }>
 

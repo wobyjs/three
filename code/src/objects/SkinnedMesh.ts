@@ -5,8 +5,9 @@ import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
 export { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Mesh'
 
 declare module '../../lib/3/three'
@@ -28,17 +29,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        skinnedMesh: string[]
+        skinnedMesh: typeof skinnedMesh
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        skinnedMesh: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        skinnedMesh: typeof _skinnedMesh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\SkinnedMesh.d.ts
+
 /**
  * A mesh that has a {@link THREE.Skeleton} with {@link Bone} that can then be used to animate the vertices of the geometry.
  * @example
@@ -77,7 +78,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/SkinnedMesh.js}
  */
 
-consParams.skinnedMesh = [
+const skinnedMesh = ([
     /**
      * Create a new instance of {@link SkinnedMesh}
      * @param geometry An instance of {@link THREE.BufferGeometry}. Default {@link THREE.BufferGeometry | `new THREE.BufferGeometry()`}.
@@ -86,9 +87,10 @@ consParams.skinnedMesh = [
     'geometry',
     'material',
     'useVertexTexture',
-].distinct()
+] as const).distinct()
+consParams.skinnedMesh = skinnedMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\SkinnedMesh.d.ts
+
 /**
  * A mesh that has a {@link THREE.Skeleton | Skeleton} with {@link Bone | bones} that can then be used to animate the vertices of the geometry.
  * @example
@@ -132,7 +134,7 @@ consParams.skinnedMesh = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/SkinnedMesh.js | Source}
  */
 
-objParams.skinnedMesh = [...objParams.mesh,
+const _skinnedMesh = ([...objProps.mesh,
     /**
      * Either {@link AttachedBindMode} or {@link DetachedBindMode}. {@link AttachedBindMode} means the skinned mesh
      * shares the same world space as the skeleton. This is not true when using {@link DetachedBindMode} which is useful
@@ -162,7 +164,8 @@ objParams.skinnedMesh = [...objParams.mesh,
      * {@link THREE.Skeleton | Skeleton} representing the bone hierarchy of the skinned mesh.
      */
     'skeleton',
-].distinct()
+] as const).distinct()
+objProps.skinnedMesh = _skinnedMesh
 
 export type SkinnedMeshProps<
     TGeometry extends BufferGeometry = BufferGeometry,

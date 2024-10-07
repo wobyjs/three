@@ -1,7 +1,7 @@
 import type { GrannyKnot, HeartCurve, VivianiCurve, KnotCurve, HelixCurve, TrefoilKnot, TorusKnot, CinquefoilKnot, TrefoilPolynomialKnot, FigureEightPolynomialKnot, DecoratedTorusKnot4a, DecoratedTorusKnot4b, DecoratedTorusKnot5a, DecoratedTorusKnot5c } from 'three/examples/jsm/curves/CurveExtras.js'
 import { Node } from '../../../three-types'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -27,151 +27,179 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        grannyKnot: string[]
-        heartCurve: string[]
-        vivianiCurve: string[]
-        knotCurve: string[]
-        helixCurve: string[]
-        trefoilKnot: string[]
-        torusKnot: string[]
-        cinquefoilKnot: string[]
-        trefoilPolynomialKnot: string[]
-        figureEightPolynomialKnot: string[]
-        decoratedTorusKnot4a: string[]
-        decoratedTorusKnot4b: string[]
-        decoratedTorusKnot5a: string[]
-        decoratedTorusKnot5c: string[]
+        grannyKnot: typeof grannyKnot
+        heartCurve: typeof heartCurve
+        vivianiCurve: typeof vivianiCurve
+        knotCurve: typeof knotCurve
+        helixCurve: typeof helixCurve
+        trefoilKnot: typeof trefoilKnot
+        torusKnot: typeof torusKnot
+        cinquefoilKnot: typeof cinquefoilKnot
+        trefoilPolynomialKnot: typeof trefoilPolynomialKnot
+        figureEightPolynomialKnot: typeof figureEightPolynomialKnot
+        decoratedTorusKnot4a: typeof decoratedTorusKnot4a
+        decoratedTorusKnot4b: typeof decoratedTorusKnot4b
+        decoratedTorusKnot5a: typeof decoratedTorusKnot5a
+        decoratedTorusKnot5c: typeof decoratedTorusKnot5c
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        grannyKnot: string[]
-        heartCurve: string[]
-        vivianiCurve: string[]
-        knotCurve: string[]
-        helixCurve: string[]
-        trefoilKnot: string[]
-        torusKnot: string[]
-        cinquefoilKnot: string[]
-        trefoilPolynomialKnot: string[]
-        figureEightPolynomialKnot: string[]
-        decoratedTorusKnot4a: string[]
-        decoratedTorusKnot4b: string[]
-        decoratedTorusKnot5a: string[]
-        decoratedTorusKnot5c: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        grannyKnot: typeof _grannyKnot
+        heartCurve: typeof _heartCurve
+        vivianiCurve: typeof _vivianiCurve
+        knotCurve: typeof _knotCurve
+        helixCurve: typeof _helixCurve
+        trefoilKnot: typeof _trefoilKnot
+        torusKnot: typeof _torusKnot
+        cinquefoilKnot: typeof _cinquefoilKnot
+        trefoilPolynomialKnot: typeof _trefoilPolynomialKnot
+        figureEightPolynomialKnot: typeof _figureEightPolynomialKnot
+        decoratedTorusKnot4a: typeof _decoratedTorusKnot4a
+        decoratedTorusKnot4b: typeof _decoratedTorusKnot4b
+        decoratedTorusKnot5a: typeof _decoratedTorusKnot5a
+        decoratedTorusKnot5c: typeof _decoratedTorusKnot5c
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\CurveExtras.d.ts
 
-consParams.grannyKnot = [
-].distinct()
 
-consParams.heartCurve = [
+const grannyKnot = ([
+] as const).distinct()
+consParams.grannyKnot = grannyKnot
+
+const heartCurve = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.heartCurve = heartCurve
 
-consParams.vivianiCurve = [
+const vivianiCurve = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.vivianiCurve = vivianiCurve
 
-consParams.knotCurve = [
-].distinct()
+const knotCurve = ([
+] as const).distinct()
+consParams.knotCurve = knotCurve
 
-consParams.helixCurve = [
-].distinct()
+const helixCurve = ([
+] as const).distinct()
+consParams.helixCurve = helixCurve
 
-consParams.trefoilKnot = [
+const trefoilKnot = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.trefoilKnot = trefoilKnot
 
-consParams.torusKnot = [
+const torusKnot = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.torusKnot = torusKnot
 
-consParams.cinquefoilKnot = [
+const cinquefoilKnot = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.cinquefoilKnot = cinquefoilKnot
 
-consParams.trefoilPolynomialKnot = [
+const trefoilPolynomialKnot = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.trefoilPolynomialKnot = trefoilPolynomialKnot
 
-consParams.figureEightPolynomialKnot = [
+const figureEightPolynomialKnot = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.figureEightPolynomialKnot = figureEightPolynomialKnot
 
-consParams.decoratedTorusKnot4a = [
+const decoratedTorusKnot4a = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.decoratedTorusKnot4a = decoratedTorusKnot4a
 
-consParams.decoratedTorusKnot4b = [
+const decoratedTorusKnot4b = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.decoratedTorusKnot4b = decoratedTorusKnot4b
 
-consParams.decoratedTorusKnot5a = [
+const decoratedTorusKnot5a = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.decoratedTorusKnot5a = decoratedTorusKnot5a
 
-consParams.decoratedTorusKnot5c = [
+const decoratedTorusKnot5c = ([
     'scale',
-].distinct()
+] as const).distinct()
+consParams.decoratedTorusKnot5c = decoratedTorusKnot5c
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\CurveExtras.d.ts    
 
-objParams.grannyKnot = [...objParams.curve,
-].distinct()
 
-objParams.heartCurve = [...objParams.curve,
+const _grannyKnot = ([...objProps.curve,
+] as const).distinct()
+objProps.grannyKnot = _grannyKnot
+
+const _heartCurve = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.heartCurve = _heartCurve
 
-objParams.vivianiCurve = [...objParams.curve,
+const _vivianiCurve = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.vivianiCurve = _vivianiCurve
 
-objParams.knotCurve = [...objParams.curve,
-].distinct()
+const _knotCurve = ([...objProps.curve,
+] as const).distinct()
+objProps.knotCurve = _knotCurve
 
-objParams.helixCurve = [...objParams.curve,
-].distinct()
+const _helixCurve = ([...objProps.curve,
+] as const).distinct()
+objProps.helixCurve = _helixCurve
 
-objParams.trefoilKnot = [...objParams.curve,
+const _trefoilKnot = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.trefoilKnot = _trefoilKnot
 
-objParams.torusKnot = [...objParams.curve,
+const _torusKnot = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.torusKnot = _torusKnot
 
-objParams.cinquefoilKnot = [...objParams.curve,
+const _cinquefoilKnot = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.cinquefoilKnot = _cinquefoilKnot
 
-objParams.trefoilPolynomialKnot = [...objParams.curve,
+const _trefoilPolynomialKnot = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.trefoilPolynomialKnot = _trefoilPolynomialKnot
 
-objParams.figureEightPolynomialKnot = [...objParams.curve,
+const _figureEightPolynomialKnot = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.figureEightPolynomialKnot = _figureEightPolynomialKnot
 
-objParams.decoratedTorusKnot4a = [...objParams.curve,
+const _decoratedTorusKnot4a = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.decoratedTorusKnot4a = _decoratedTorusKnot4a
 
-objParams.decoratedTorusKnot4b = [...objParams.curve,
+const _decoratedTorusKnot4b = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.decoratedTorusKnot4b = _decoratedTorusKnot4b
 
-objParams.decoratedTorusKnot5a = [...objParams.curve,
+const _decoratedTorusKnot5a = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.decoratedTorusKnot5a = _decoratedTorusKnot5a
 
-objParams.decoratedTorusKnot5c = [...objParams.curve,
+const _decoratedTorusKnot5c = ([...objProps.curve,
     'scale',
-].distinct()
+] as const).distinct()
+objProps.decoratedTorusKnot5c = _decoratedTorusKnot5c
 
 // import NURBSUtils from 'three/examples/jsm/curves/NURBSUtils.js'
 export type GrannyKnotProps = Node<GrannyKnot, typeof GrannyKnot, {}>

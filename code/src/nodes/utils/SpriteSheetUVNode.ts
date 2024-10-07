@@ -4,7 +4,7 @@ import SpriteSheetUVNode from 'three/src/nodes/utils/SpriteSheetUVNode.js'
 export { SpriteSheetUVNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/NodeAttribute'
 
@@ -27,31 +27,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        spriteSheetUvNode: string[]
+        spriteSheetUvNode: typeof spriteSheetUvNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        spriteSheetUvNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        spriteSheetUvNode: typeof _spriteSheetUvNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\SpriteSheetUVNode.d.ts
 
-consParams.spriteSheetUvNode = [
+
+const spriteSheetUvNode = ([
     'countNode',
     'uvNode',
     'frameNode',
-].distinct()
+] as const).distinct()
+consParams.spriteSheetUvNode = spriteSheetUvNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\SpriteSheetUvNode.d.ts    
 
-objParams.spriteSheetUvNode = [...objParams.node,
+
+const _spriteSheetUvNode = ([...objProps.node,
     'countNode',
     'uvNode',
     'frameNode',
-].distinct()
+] as const).distinct()
+objProps.spriteSheetUvNode = _spriteSheetUvNode
 
 export type SpriteSheetUVNodeProps = Node<SpriteSheetUVNode, typeof SpriteSheetUVNode, { countNode: ENode; uvNode?: ENode; frameNode?: ENode; }>
 

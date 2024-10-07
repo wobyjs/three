@@ -3,8 +3,9 @@ import { DataArrayTexture } from 'three/src/textures/DataArrayTexture.js'
 export { DataArrayTexture } from 'three/src/textures/DataArrayTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        dataArrayTexture: string[]
+        dataArrayTexture: typeof dataArrayTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        dataArrayTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        dataArrayTexture: typeof _dataArrayTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\DataArrayTexture.d.ts
+
 /**
  * Creates an array of textures directly from raw data, width and height and depth
  * @example
@@ -76,7 +77,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DataArrayTexture.js | Source}
  */
 
-objParams.dataArrayTexture = [...objParams.texture,
+const _dataArrayTexture = ([...objProps.texture,
     /**
      * Overridden with a record type holding data, width and height and depth.
      * @override
@@ -112,9 +113,10 @@ objParams.dataArrayTexture = [...objParams.texture,
      * @defaultValue `1`
      */
     'unpackAlignment',
-].distinct()
+] as const).distinct()
+objProps.dataArrayTexture = _dataArrayTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\DataArrayTexture.d.ts
+
 /**
  * Creates an array of textures directly from raw data, width and height and depth
  * @example
@@ -149,7 +151,7 @@ objParams.dataArrayTexture = [...objParams.texture,
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DataArrayTexture.js}
  */
 
-consParams.dataArrayTexture = [
+const dataArrayTexture = ([
     /**
      * This creates a new {@link THREE.DataArrayTexture} object.
      * @remarks The interpretation of the data depends on {@link format} and {@link type}.
@@ -171,7 +173,8 @@ consParams.dataArrayTexture = [
     'width',
     'height',
     'depth',
-].distinct()
+] as const).distinct()
+consParams.dataArrayTexture = dataArrayTexture
 
 export type DataArrayTextureProps = Node<DataArrayTexture, typeof DataArrayTexture, { data?: BufferSource | null; width?: number; height?: number; depth?: number; }>
 

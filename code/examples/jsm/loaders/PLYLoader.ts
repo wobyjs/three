@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/PLYLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        plyLoader: string[]
+        plyLoader: typeof plyLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        plyLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        plyLoader: typeof _plyLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\plyLoader.d.ts
 
-consParams.plyLoader = [
+
+const plyLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.plyLoader = plyLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PLYLoader.d.ts    
 
-objParams.plyLoader = [...objParams.loader,
+
+const _plyLoader = ([...objProps.loader,
     'propertyNameMapping',
     'customPropertyMapping',
-].distinct()
+] as const).distinct()
+objProps.plyLoader = _plyLoader
 
 export type PLYLoaderProps = Node<PLYLoader, typeof PLYLoader, { manager?: LoadingManager; }>
 

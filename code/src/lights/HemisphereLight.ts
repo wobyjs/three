@@ -4,8 +4,9 @@ import { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
 export { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        hemisphereLight: string[]
+        hemisphereLight: typeof hemisphereLight
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        hemisphereLight: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        hemisphereLight: typeof _hemisphereLight
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\HemisphereLight.d.ts
+
 /**
  * A light source positioned directly above the scene, with color fading from the sky color to the ground color.
  * @remarks This light cannot be used to cast shadows.
@@ -55,7 +56,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/HemisphereLight.js}
  */
 
-consParams.hemisphereLight = [
+const hemisphereLight = ([
     /**
      * Creates a new {@link HemisphereLight}.
      * @param skyColor Hexadecimal color of the sky. Expects a `Integer`. Default `0xffffff` _(white)_.
@@ -65,9 +66,10 @@ consParams.hemisphereLight = [
     'skyColor',
     'groundColor',
     'intensity',
-].distinct()
+] as const).distinct()
+consParams.hemisphereLight = hemisphereLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\HemisphereLight.d.ts
+
 /**
  * A light source positioned directly above the scene, with color fading from the sky color to the ground color.
  * @remarks This light cannot be used to cast shadows.
@@ -85,7 +87,7 @@ consParams.hemisphereLight = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/HemisphereLight.js | Source}
  */
 
-objParams.hemisphereLight = [...objParams.light,
+const _hemisphereLight = ([...objProps.light,
     /**
      * The light's sky color, as passed in the constructor.
      * @defaultValue `new THREE.Color()` set to white _(0xffffff)_.
@@ -96,7 +98,8 @@ objParams.hemisphereLight = [...objParams.light,
      * @defaultValue `new THREE.Color()` set to white _(0xffffff)_.
      */
     'groundColor',
-].distinct()
+] as const).distinct()
+objProps.hemisphereLight = _hemisphereLight
 
 export type HemisphereLightProps = LightNode<HemisphereLight, typeof HemisphereLight, { skyColor?: ColorRepresentation; groundColor?: ColorRepresentation; intensity?: number; }>
 

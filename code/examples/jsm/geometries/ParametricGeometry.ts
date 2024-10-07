@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/geometries/ParametricGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,34 +27,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        parametricGeometry: string[]
+        parametricGeometry: typeof parametricGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        parametricGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        parametricGeometry: typeof _parametricGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\ParametricGeometry.d.ts
 
-consParams.parametricGeometry = [
+
+const parametricGeometry = ([
     'func',
     'slices',
     'stacks',
-].distinct()
+] as const).distinct()
+consParams.parametricGeometry = parametricGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\ParametricGeometries.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\ParametricGeometry.d.ts    
 
-objParams.parametricGeometry = [...objParams.bufferGeometry,
+
+
+const _parametricGeometry = ([...objProps.bufferGeometry,
     /**
      * @default 'ParametricGeometry'
      */
     'type',
     'parameters',
-].distinct()
+] as const).distinct()
+objProps.parametricGeometry = _parametricGeometry
 
 export type ParametricGeometryProps = BufferGeometryNode<ParametricGeometry, typeof ParametricGeometry, { func?: (u: number, v: number, target: Vector3) => void; slices?: number; stacks?: number; }>
 

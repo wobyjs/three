@@ -1,10 +1,10 @@
 import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import SkinningNode from 'three/src/nodes/accessors/SkinningNode.js'
 export { SkinningNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        skinningNode: string[]
+        skinningNode: typeof skinningNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        skinningNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        skinningNode: typeof _skinningNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\SkinningNode.d.ts
 
-consParams.skinningNode = [
+
+const skinningNode = ([
     'skinnedMesh',
     'useReference',
-].distinct()
+] as const).distinct()
+consParams.skinningNode = skinningNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\SkinningNode.d.ts    
 
-objParams.skinningNode = [...objParams.node,
+
+const _skinningNode = ([...objProps.node,
     'skinnedMesh',
     'useReference',
     'skinIndexNode',
@@ -53,9 +54,10 @@ objParams.skinningNode = [...objParams.node,
     'bindMatrixNode',
     'bindMatrixInverseNode',
     'boneMatricesNode',
-].distinct()
+] as const).distinct()
+objProps.skinningNode = _skinningNode
 
-export type SkinningNodeProps = Object3DNode<SkinningNode, typeof SkinningNode, { skinnedMesh: SkinnedMesh; useReference?: boolean; }>
+export type SkinningNodeProps = Node<SkinningNode, typeof SkinningNode, { skinnedMesh: SkinnedMesh; useReference?: boolean; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

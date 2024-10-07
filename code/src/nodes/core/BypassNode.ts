@@ -4,7 +4,7 @@ import BypassNode from 'three/src/nodes/core/BypassNode.js'
 export { BypassNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,30 +26,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        bypassNode: string[]
+        bypassNode: typeof bypassNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        bypassNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        bypassNode: typeof _bypassNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\BypassNode.d.ts
 
-consParams.bypassNode = [
+
+const bypassNode = ([
     'returnNode',
     'callNode',
-].distinct()
+] as const).distinct()
+consParams.bypassNode = bypassNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\BypassNode.d.ts    
 
-objParams.bypassNode = [...objParams.node,
+
+const _bypassNode = ([...objProps.node,
     'isBypassNode',
     'outputNode',
     'callNode',
-].distinct()
+] as const).distinct()
+objProps.bypassNode = _bypassNode
 
 export type BypassNodeProps = Node<BypassNode, typeof BypassNode, { returnNode: ENode; callNode: ENode; }>
 

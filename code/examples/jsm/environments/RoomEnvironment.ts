@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/environments/RoomEnvironment.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        roomEnvironment: string[]
+        roomEnvironment: typeof roomEnvironment
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        roomEnvironment: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        roomEnvironment: typeof _roomEnvironment
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\environments\RoomEnvironment.d.ts
 
-consParams.roomEnvironment = [
+
+const roomEnvironment = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.roomEnvironment = roomEnvironment
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\environments\RoomEnvironment.d.ts    
 
-objParams.roomEnvironment = [...objParams.scene,
-].distinct()
+
+const _roomEnvironment = ([...objProps.scene,
+] as const).distinct()
+objProps.roomEnvironment = _roomEnvironment
 
 export type RoomEnvironmentProps = Node<RoomEnvironment, typeof RoomEnvironment, { renderer?: WebGLRenderer; }>
 

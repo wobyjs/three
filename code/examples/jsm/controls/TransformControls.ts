@@ -4,7 +4,7 @@ import { TransformControls } from 'three/examples/jsm/controls/TransformControls
 export * from 'three/examples/jsm/controls/TransformControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,25 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        transformControls: string[]
-        transformControlsEventMap: string[]
-        transformControlsGizmo: string[]
-        transformControlsPlane: string[]
+        transformControls: typeof transformControls
+        transformControlsEventMap: typeof transformControlsEventMap
+        transformControlsGizmo: typeof transformControlsGizmo
+        transformControlsPlane: typeof transformControlsPlane
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        transformControls: string[]
-        transformControlsEventMap: string[]
-        transformControlsGizmo: string[]
-        transformControlsPlane: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        transformControls: typeof _transformControls
+        transformControlsEventMap: typeof _transformControlsEventMap
+        transformControlsGizmo: typeof _transformControlsGizmo
+        transformControlsPlane: typeof _transformControlsPlane
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\TransformControls.d.ts
 
-consParams.transformControlsEventMap = [
+
+const transformControlsEventMap = ([
     'change',
     'mouseDown',
     'mouseUp',
@@ -74,22 +74,26 @@ consParams.transformControlsEventMap = [
     "rotationAxis-changed",
     "rotationAngle-changed",
     "eye-changed",
-].distinct()
+] as const).distinct()
+consParams.transformControlsEventMap = transformControlsEventMap
 
-consParams.transformControls = [
+const transformControls = ([
     'object',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.transformControls = transformControls
 
-consParams.transformControlsGizmo = [
-].distinct()
+const transformControlsGizmo = ([
+] as const).distinct()
+consParams.transformControlsGizmo = transformControlsGizmo
 
-consParams.transformControlsPlane = [
-].distinct()
+const transformControlsPlane = ([
+] as const).distinct()
+consParams.transformControlsPlane = transformControlsPlane
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\TransformControls.d.ts    
 
-objParams.transformControlsEventMap = [...objParams.object3dEventMap,
+
+const _transformControlsEventMap = ([...objProps.object3dEventMap,
     'change',
     'mouseDown',
     'mouseUp',
@@ -119,9 +123,10 @@ objParams.transformControlsEventMap = [...objParams.object3dEventMap,
     "rotationAxis-changed",
     "rotationAngle-changed",
     "eye-changed",
-].distinct()
+] as const).distinct()
+objProps.transformControlsEventMap = _transformControlsEventMap
 
-objParams.transformControls = [...objParams.object3d,
+const _transformControls = ([...objProps.object3d,
     'domElement',
     // API
     'camera',
@@ -139,16 +144,18 @@ objParams.transformControls = [...objParams.object3d,
     'showZ',
 
     'mouseButtons',
-].distinct()
+] as const).distinct()
+objProps.transformControls = _transformControls
 
-objParams.transformControlsGizmo = [...objParams.object3d,
+const _transformControlsGizmo = ([...objProps.object3d,
     'isTransformControlsGizmo',
     'gizmo',
     'helper',
     'picker',
-].distinct()
+] as const).distinct()
+objProps.transformControlsGizmo = _transformControlsGizmo
 
-objParams.transformControlsPlane = [...objParams.mesh,
+const _transformControlsPlane = ([...objProps.mesh,
     'isTransformControlsPlane',
     'mode',
     'axis',
@@ -156,7 +163,8 @@ objParams.transformControlsPlane = [...objParams.mesh,
     'eye',
     'worldPosition',
     'worldQuaternion',
-].distinct()
+] as const).distinct()
+objProps.transformControlsPlane = _transformControlsPlane
 
 export type TransformControlsProps = Node<TransformControls, typeof TransformControls, { object: Camera; domElement: HTMLElement; }>
 

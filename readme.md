@@ -108,7 +108,7 @@ Ported from threejs.org [Fat Lines](https://threejs.org/examples/?q=line#webgl_l
 /** @jsxImportSource woby-three */
 
 import * as three from 'three'
-import { Three, consParams, objParams, defaults, LineProps, useThree, useFrame, useRenderer, useCamera } from "woby-three"
+import { Three, consParams, objProps, defaults, LineProps, useThree, useFrame, useRenderer, useCamera } from "woby-three"
 import { $, $$, useEffect, } from "woby"
 import * as GeometryUtils from 'three/examples/jsm/utils/GeometryUtils'
 import { Line2 } from 'three/examples/jsm/lines/Line2' //'three/addons/lines/Line2.js';
@@ -132,7 +132,7 @@ Three.Line22 = Line2
 //@ts-ignore
 consParams.line22 = consParams.line2
 //@ts-ignore
-objParams.line22 = objParams.line2
+objProps.line22 = objProps.line2
 //@ts-ignore
 defaults.line22 = defaults.line
 

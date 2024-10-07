@@ -3,7 +3,7 @@ import ViewportNode, { ViewportNodeScope } from 'three/src/nodes/display/Viewpor
 export { ViewportNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,28 +25,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        viewportNode: string[]
+        viewportNode: typeof viewportNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        viewportNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        viewportNode: typeof _viewportNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportNode.d.ts
 
-consParams.viewportNode = [
+
+const viewportNode = ([
     'scope',
-].distinct()
+] as const).distinct()
+consParams.viewportNode = viewportNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportNode.d.ts    
 
-objParams.viewportNode = [...objParams.node,
+
+const _viewportNode = ([...objProps.node,
     'scope',
     'isViewportNode',
-].distinct()
+] as const).distinct()
+objProps.viewportNode = _viewportNode
 
 export type ViewportNodeProps = Node<ViewportNode, typeof ViewportNode, { scope: ViewportNodeScope; }>
 

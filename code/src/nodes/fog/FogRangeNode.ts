@@ -4,7 +4,7 @@ import FogRangeNode from 'three/src/nodes/fog/FogRangeNode.js'
 export { FogRangeNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,31 +26,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        fogRangeNode: string[]
+        fogRangeNode: typeof fogRangeNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        fogRangeNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        fogRangeNode: typeof _fogRangeNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\fog\FogRangeNode.d.ts
 
-consParams.fogRangeNode = [
+
+const fogRangeNode = ([
     'colorNode',
     'nearNode',
     'farNode',
-].distinct()
+] as const).distinct()
+consParams.fogRangeNode = fogRangeNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\fog\FogRangeNode.d.ts    
 
-objParams.fogRangeNode = [...objParams.fogNode,
+
+const _fogRangeNode = ([...objProps.fogNode,
     'isFogRangeNode',
     'nearNode',
     'farNode',
-].distinct()
+] as const).distinct()
+objProps.fogRangeNode = _fogRangeNode
 
 export type FogRangeNodeProps = Node<FogRangeNode, typeof FogRangeNode, { colorNode: ENode | null; nearNode: ENode | null; farNode: ENode | null; }>
 

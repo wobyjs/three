@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/misc/ProgressiveLightMap.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,56 +27,61 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        progressiveLightMap: string[]
-        uvBoxes: string[]
-        lightMapContainers: string[]
+        progressiveLightMap: typeof progressiveLightMap
+        uvBoxes: typeof uvBoxes
+        lightMapContainers: typeof lightMapContainers
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        progressiveLightMap: string[]
-        uvBoxes: string[]
-        lightMapContainers: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        progressiveLightMap: typeof _progressiveLightMap
+        uvBoxes: typeof _uvBoxes
+        lightMapContainers: typeof _lightMapContainers
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\ProgressiveLightMap.d.ts
 
-consParams.uvBoxes = [
+
+const uvBoxes = ([
     'w',
     'h',
     'index',
-].distinct()
+] as const).distinct()
+consParams.uvBoxes = uvBoxes
 
 
-consParams.lightMapContainers = [
+const lightMapContainers = ([
     'basicMat',
     'object',
-].distinct()
+] as const).distinct()
+consParams.lightMapContainers = lightMapContainers
 
 
-consParams.progressiveLightMap = [
+const progressiveLightMap = ([
     'renderer',
     'res',
-].distinct()
+] as const).distinct()
+consParams.progressiveLightMap = progressiveLightMap
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\ProgressiveLightMap.d.ts
 
-objParams.uvBoxes = [
+
+const _uvBoxes = ([
     'w',
     'h',
     'index',
-].distinct()
+] as const).distinct()
+objProps.uvBoxes = _uvBoxes
 
 
-objParams.lightMapContainers = [
+const _lightMapContainers = ([
     'basicMat',
     'object',
-].distinct()
+] as const).distinct()
+objProps.lightMapContainers = _lightMapContainers
 
 
-objParams.progressiveLightMap = [
+const _progressiveLightMap = ([
     'renderer',
     'res',
     'lightMapContainers',
@@ -94,7 +99,8 @@ objParams.progressiveLightMap = [
     'labelMaterial',
     'labelPlane',
     'labelMesh',
-].distinct()
+] as const).distinct()
+objProps.progressiveLightMap = _progressiveLightMap
 
 export type ProgressiveLightMapProps = Node<ProgressiveLightMap, typeof ProgressiveLightMap, { renderer: WebGLRenderer; res?: number; }>
 

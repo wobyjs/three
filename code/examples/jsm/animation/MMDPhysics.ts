@@ -4,7 +4,7 @@ import { MMDPhysicsParameter, MMDPhysics } from 'three/examples/jsm/animation/MM
 export * from 'three/examples/jsm/animation/MMDPhysics.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,58 +26,62 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mmdPhysics: string[]
-        mmdPhysicsParameter: string[]
-        resourceManager: string[]
-        rigidBody: string[]
-        constraint: string[]
-        mmdPhysicsHelper: string[]
+        mmdPhysics: typeof mmdPhysics
+        mmdPhysicsParameter: typeof mmdPhysicsParameter
+        resourceManager: typeof resourceManager
+        rigidBody: typeof rigidBody
+        constraint: typeof constraint
+        mmdPhysicsHelper: typeof mmdPhysicsHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mmdPhysics: string[]
-        mmdPhysicsParameter: string[]
-        resourceManager: string[]
-        rigidBody: string[]
-        constraint: string[]
-        mmdPhysicsHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mmdPhysics: typeof _mmdPhysics
+        mmdPhysicsParameter: typeof _mmdPhysicsParameter
+        resourceManager: typeof _resourceManager
+        rigidBody: typeof _rigidBody
+        constraint: typeof _constraint
+        mmdPhysicsHelper: typeof _mmdPhysicsHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\MMDPhysics.d.ts
 
-consParams.mmdPhysicsParameter = [
+
+const mmdPhysicsParameter = ([
     'unitStep',
     'maxStepNum',
     'gravity',
-].distinct()
+] as const).distinct()
+consParams.mmdPhysicsParameter = mmdPhysicsParameter
 
 
-consParams.mmdPhysics = [
+const mmdPhysics = ([
 
     'mesh',
     'rigidBodyParams',
     'constraintParams',
     'params',
     ,
-].distinct()
+] as const).distinct()
+consParams.mmdPhysics = mmdPhysics
 
 
-consParams.resourceManager = [
-].distinct()
+const resourceManager = ([
+] as const).distinct()
+consParams.resourceManager = resourceManager
 
 
-consParams.rigidBody = [
+const rigidBody = ([
     'mesh',
     'world',
     'params',
     'manager',
-].distinct()
+] as const).distinct()
+consParams.rigidBody = rigidBody
 
 
-consParams.constraint = [
+const constraint = ([
 
     'mesh',
     'world',
@@ -86,22 +90,25 @@ consParams.constraint = [
     'params',
     'manager',
     ,
-].distinct()
+] as const).distinct()
+consParams.constraint = constraint
 
-consParams.mmdPhysicsHelper = [
+const mmdPhysicsHelper = ([
     'physics',
-].distinct()
+] as const).distinct()
+consParams.mmdPhysicsHelper = mmdPhysicsHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\MMDPhysics.d.ts
 
-objParams.mmdPhysicsParameter = [
+
+const _mmdPhysicsParameter = ([
     'unitStep',
     'maxStepNum',
     'gravity',
-].distinct()
+] as const).distinct()
+objProps.mmdPhysicsParameter = _mmdPhysicsParameter
 
 
-objParams.mmdPhysics = [
+const _mmdPhysics = ([
     'manager',
     'mesh',
     'unitStep',
@@ -110,10 +117,11 @@ objParams.mmdPhysics = [
     'world',
     'bodies',
     'constraints',
-].distinct()
+] as const).distinct()
+objProps.mmdPhysics = _mmdPhysics
 
 
-objParams.resourceManager = [
+const _resourceManager = ([
     'threeVector3s',
     'threeMatrix4s',
     'threeQuaternions',
@@ -121,10 +129,11 @@ objParams.resourceManager = [
     'transforms',
     'quaternions',
     'vector3s',
-].distinct()
+] as const).distinct()
+objProps.resourceManager = _resourceManager
 
 
-objParams.rigidBody = [
+const _rigidBody = ([
     'mesh',
     'world',
     'params',
@@ -133,24 +142,27 @@ objParams.rigidBody = [
     'bone',
     'boneOffsetForm',
     'boneOffsetFormInverse',
-].distinct()
+] as const).distinct()
+objProps.rigidBody = _rigidBody
 
 
-objParams.constraint = [
+const _constraint = ([
     'mesh',
     'world',
     'bodyA',
     'bodyB',
     'params',
     'manager',
-].distinct()
+] as const).distinct()
+objProps.constraint = _constraint
 
 
-objParams.mmdPhysicsHelper = [...objParams.object3d,
+const _mmdPhysicsHelper = ([...objProps.object3d,
     'mesh',
     'physics',
     'materials',
-].distinct()
+] as const).distinct()
+objProps.mmdPhysicsHelper = _mmdPhysicsHelper
 
 export type MMDPhysicsProps = Node<MMDPhysics, typeof MMDPhysics, { mesh: SkinnedMesh; rigidBodyParams: object[]; constraintParams?: object[]; params?: MMDPhysicsParameter; }>
 

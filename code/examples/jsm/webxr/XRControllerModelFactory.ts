@@ -6,7 +6,7 @@ import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerM
 export * from 'three/examples/jsm/webxr/XRControllerModelFactory.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,41 +28,45 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrControllerModelFactory: string[]
-        xrControllerModel: string[]
+        xrControllerModelFactory: typeof xrControllerModelFactory
+        xrControllerModel: typeof xrControllerModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrControllerModelFactory: string[]
-        xrControllerModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrControllerModelFactory: typeof _xrControllerModelFactory
+        xrControllerModel: typeof _xrControllerModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRControllerModelFactory.d.ts
-
-consParams.xrControllerModel = [
-].distinct()
 
 
-consParams.xrControllerModelFactory = [
+const xrControllerModel = ([
+] as const).distinct()
+consParams.xrControllerModel = xrControllerModel
+
+
+const xrControllerModelFactory = ([
     'gltfLoader',
     'onLoad',
-].distinct()
+] as const).distinct()
+consParams.xrControllerModelFactory = xrControllerModelFactory
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRControllerModelFactory.d.ts    
 
-objParams.xrControllerModel = [...objParams.object3d,
+
+const _xrControllerModel = ([...objProps.object3d,
     'motionController',
     'envMap',
-].distinct()
+] as const).distinct()
+objProps.xrControllerModel = _xrControllerModel
 
 
-objParams.xrControllerModelFactory = [
+const _xrControllerModelFactory = ([
     'gltfLoader',
     'path',
-].distinct()
+] as const).distinct()
+objProps.xrControllerModelFactory = _xrControllerModelFactory
 
 export type XRControllerModelFactoryProps = Node<XRControllerModelFactory, typeof XRControllerModelFactory, { gltfLoader?: Loader<GLTF> | null; onLoad?: ((scene: Group) => void) | null; }>
 

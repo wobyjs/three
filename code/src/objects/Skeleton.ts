@@ -1,11 +1,12 @@
-import { Object3DNode, Matrix4 } from '../../three-types'
+import { Node, Matrix4 } from '../../three-types'
 import { Bone } from 'three/src/objects/Bone.js'
 import { Skeleton } from 'three/src/objects/Skeleton.js'
 export { Skeleton } from 'three/src/objects/Skeleton.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        skeleton: string[]
+        skeleton: typeof skeleton
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        skeleton: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        skeleton: typeof _skeleton
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Skeleton.d.ts
+
 /**
  * Use an array of {@link Bone} to create a {@link Skeleton} that can be used by a {@link THREE.SkinnedMesh}.
  * @example
@@ -62,7 +63,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Skeleton.js}
  */
 
-consParams.skeleton = [
+const skeleton = ([
     /**
      * Creates a new Skeleton.
      * @param bones The array of {@link THREE.Bone}. Default `[]`.
@@ -70,9 +71,10 @@ consParams.skeleton = [
      */
     'bones',
     'boneInverses',
-].distinct()
+] as const).distinct()
+consParams.skeleton = skeleton
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Skeleton.d.ts
+
 /**
  * Use an array of {@link Bone | bones} to create a {@link Skeleton} that can be used by a {@link THREE.SkinnedMesh | SkinnedMesh}.
  * @example
@@ -101,7 +103,7 @@ consParams.skeleton = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Skeleton.js | Source}
  */
 
-objParams.skeleton = [
+const _skeleton = ([
     /**
      * {@link http://en.wikipedia.org/wiki/Universally_unique_identifier | UUID} of this object instance.
      * @remarks This gets automatically assigned and shouldn't be edited.
@@ -125,9 +127,10 @@ objParams.skeleton = [
      */
     'boneTexture',
     'frame',
-].distinct()
+] as const).distinct()
+objProps.skeleton = _skeleton
 
-export type SkeletonProps = Object3DNode<Skeleton, typeof Skeleton, { bones?: Bone[]; boneInverses?: Matrix4[]; }>
+export type SkeletonProps = Node<Skeleton, typeof Skeleton, { bones?: Bone[]; boneInverses?: Matrix4[]; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

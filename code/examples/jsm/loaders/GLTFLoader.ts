@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,25 +27,25 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        gltfLoader: string[]
-        gltfReference: string[]
-        gltfParser: string[]
-        gltfLoaderPlugin: string[]
+        gltfLoader: typeof gltfLoader
+        gltfReference: typeof gltfReference
+        gltfParser: typeof gltfParser
+        gltfLoaderPlugin: typeof gltfLoaderPlugin
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gltfLoader: string[]
-        gltfReference: string[]
-        gltfParser: string[]
-        gltfLoaderPlugin: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gltfLoader: typeof _gltfLoader
+        gltfReference: typeof _gltfReference
+        gltfParser: typeof _gltfParser
+        gltfLoaderPlugin: typeof _gltfLoaderPlugin
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\gltfLoader.d.ts
+
 //@ts-ignore
-// consParams.gltf = [
+// const gltf = ([
 //     'path',
 //     'animations',
 //     'scene',
@@ -54,27 +54,31 @@ declare module '../../../lib/3/objParams' {
 //     'asset',
 //     'parser',
 //     'userData',
-// ].distinct()
+// ] as const).distinct()
+consParams.gltf = gltf
 
 //     
-consParams.gltfLoader = [
+const gltfLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.gltfLoader = gltfLoader
 
 
-consParams.gltfReference = [
+const gltfReference = ([
     'materials',
     'nodes',
     'textures',
     'meshes',
-].distinct()
+] as const).distinct()
+consParams.gltfReference = gltfReference
 
 
-consParams.gltfParser = [
-].distinct()
+const gltfParser = ([
+] as const).distinct()
+consParams.gltfParser = gltfParser
 
 
-consParams.gltfLoaderPlugin = [
+const gltfLoaderPlugin = ([
     'beforeRoot',
     'afterRoot',
     'loadNode',
@@ -86,11 +90,12 @@ consParams.gltfLoaderPlugin = [
     'extendMaterialParams',
     'createNodeMesh',
     'createNodeAttachment',
-].distinct()
+] as const).distinct()
+consParams.gltfLoaderPlugin = gltfLoaderPlugin
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\GlTFLoader.d.ts
+
 //@ts-ignore
-// objParams.gltf = [
+// const _gltf = ([
 //     'animations',
 //     'scene',
 //     'scenes',
@@ -98,24 +103,27 @@ consParams.gltfLoaderPlugin = [
 //     'asset',
 //     'parser',
 //     'userData',
-// ].distinct()
+// ] as const).distinct()
+objProps.gltf = _gltf
 
 
-objParams.gltfLoader = [...objParams.loader,
+const _gltfLoader = ([...objProps.loader,
     'dracoLoader',
-].distinct()
+] as const).distinct()
+objProps.gltfLoader = _gltfLoader
 
 
 
-objParams.gltfReference = [
+const _gltfReference = ([
     'materials',
     'nodes',
     'textures',
     'meshes',
-].distinct()
+] as const).distinct()
+objProps.gltfReference = _gltfReference
 
 
-objParams.gltfParser = [
+const _gltfParser = ([
     'json',
     'options',
     'fileLoader',
@@ -144,10 +152,11 @@ objParams.gltfParser = [
     'loadAnimation',
     'loadNode',
     'loadScene',
-].distinct()
+] as const).distinct()
+objProps.gltfParser = _gltfParser
 
 
-objParams.gltfLoaderPlugin = [
+const _gltfLoaderPlugin = ([
     'beforeRoot',
     'afterRoot',
     'loadNode',
@@ -159,7 +168,8 @@ objParams.gltfLoaderPlugin = [
     'extendMaterialParams',
     'createNodeMesh',
     'createNodeAttachment',
-].distinct()
+] as const).distinct()
+objProps.gltfLoaderPlugin = _gltfLoaderPlugin
 
 export type GLTFLoaderProps = Node<GLTFLoader, typeof GLTFLoader, { manager?: LoadingManager; }>
 

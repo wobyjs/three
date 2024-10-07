@@ -3,8 +3,9 @@ import { Matrix2 } from 'three/src/math/Matrix2.js'
 export * from 'three/src/math/Matrix2.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,51 +26,53 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        Matrix2: string[]
-        matrix: string[]
+        matrix2: typeof matrix2
+        matrix: typeof matrix
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        Matrix2: string[]
-        matrix: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        matrix2: typeof _matrix2
+        matrix: typeof _matrix
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\MathUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Matrix2.d.ts
+
+
 // https://threejs.org/docs/#api/en/math/Matrix2
 /**
  * ( interface Matrix )
  */
 
-consParams.matrix = [
+const matrix = ([
     /**
      * Array with matrix values.
      */
     'elements',
-].distinct()
+] as const).distinct()
+consParams.matrix = matrix
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\MathUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Matrix2.d.ts
+
+
 // https://threejs.org/docs/#api/en/math/Matrix2
 /**
  * ( interface Matrix )
  */
 
-objParams.matrix = [
+const _matrix = ([
     /**
      * Array with matrix values.
      */
     'elements',
-].distinct()
+] as const).distinct()
+objProps.matrix = _matrix
 
 /**
  * ( class Matrix2 implements Matrix )
  */
 
-consParams.Matrix2 = [
+const matrix2 = ([
     /**
      * Creates an identity matrix.
      */
@@ -86,20 +89,22 @@ consParams.Matrix2 = [
      * @default [1, 0, 0, 0, 1, 0, 0, 0, 1]
      */
     'elements',
-].distinct()
+] as const).distinct()
+consParams.matrix2 = matrix2
 
 /**
  * ( class Matrix2 implements Matrix )
  */
 
-objParams.Matrix2 = [...objParams.matrix,
+const _matrix2 = ([...objProps.matrix,
     /**
      * Array with matrix values.
-     * @default [1, 0, 0, 0, 1, 0, 0, 0, 1].distinct()
+     * @default [1, 0, 0, 0, 1, 0, 0, 0, 1]
 
      */
     'elements',
-].distinct()
+] as const).distinct()
+objProps.matrix2 = _matrix2
 
 export type Matrix2Props = Node<Matrix2, typeof Matrix2, { n11: number; n12: number; n21: number; n22: number; }>
 

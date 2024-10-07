@@ -3,8 +3,9 @@ import { ShadowMaterial, ShadowMaterialParameters } from 'three/src/materials/Sh
 export { ShadowMaterial } from 'three/src/materials/ShadowMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import { WrapAsString } from '../../three-types'
 
@@ -32,14 +33,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        shadowMaterial: string[]
-        shadowMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        shadowMaterial: typeof _shadowMaterial
+        shadowMaterialParameters: typeof _shadowMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\ShadowMaterial.d.ts
+
 
 consParams.shadowMaterialParameters = {
     ...consParams.shaderMaterialParameters,
@@ -76,15 +77,16 @@ consParams.shadowMaterial = {
     ] as const).toObject()
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\ShadowMaterial.d.ts    
 
-objParams.shadowMaterialParameters = [...objParams.materialParameters,
+
+const _shadowMaterialParameters = ([...objProps.materialParameters,
     'color',
     'fog',
-].distinct()
+] as const).distinct()
+objProps.shadowMaterialParameters = _shadowMaterialParameters
 
 
-objParams.shadowMaterial = [...objParams.material,
+const _shadowMaterial = ([...objProps.material,
     /**
      * @default 'ShadowMaterial'
      */
@@ -102,7 +104,8 @@ objParams.shadowMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.shadowMaterial = _shadowMaterial
 
 export type ShadowMaterialProps = MaterialNode<ShadowMaterial, ShadowMaterialParameters>
 

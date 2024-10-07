@@ -3,7 +3,7 @@ import MatcapUVNode from 'three/src/nodes/utils/MatcapUVNode.js'
 export { MatcapUVNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/TempNode'
 
@@ -26,25 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        matcapUvNode: string[]
+        matcapUvNode: typeof matcapUvNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        matcapUvNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        matcapUvNode: typeof _matcapUvNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\MatcapUVNode.d.ts
 
-consParams.matcapUvNode = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\MatcapUvNode.d.ts    
+const matcapUvNode = ([
+] as const).distinct()
+consParams.matcapUvNode = matcapUvNode
 
-objParams.matcapUvNode = [...objParams.tempNode,
-].distinct()
+
+
+const _matcapUvNode = ([...objProps.tempNode,
+] as const).distinct()
+objProps.matcapUvNode = _matcapUvNode
 
 export type MatcapUVNodeProps = Node<MatcapUVNode, typeof MatcapUVNode, {}>
 

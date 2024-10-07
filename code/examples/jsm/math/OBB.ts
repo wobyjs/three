@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/math/OBB.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,31 +27,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        obb: string[]
+        obb: typeof obb
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        obb: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        obb: typeof _obb
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\OBB.d.ts
 
-consParams.obb = [
+
+const obb = ([
     'center',
     'halfSize',
     'rotation',
-].distinct()
+] as const).distinct()
+consParams.obb = obb
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\OBB.d.ts
 
-objParams.obb = [
+
+const _obb = ([
     'center',
     'halfSize',
     'rotation',
-].distinct()
+] as const).distinct()
+objProps.obb = _obb
 
 export type OBBProps = Node<OBB, typeof OBB, { center?: Vector3; halfSize?: Vector3; rotation?: Matrix3; }>
 

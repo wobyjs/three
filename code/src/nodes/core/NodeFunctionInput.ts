@@ -3,7 +3,7 @@ import NodeFunctionInput from 'three/src/nodes/core/NodeFunctionInput.js'
 export { NodeFunctionInput }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,34 +25,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeFunctionInput: string[]
+        nodeFunctionInput: typeof nodeFunctionInput
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeFunctionInput: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeFunctionInput: typeof _nodeFunctionInput
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeFunctionInput.d.ts
 
-consParams.nodeFunctionInput = [
+
+const nodeFunctionInput = ([
     'type',
     'name',
     'count',
     'qualifier',
     'isConst',
-].distinct()
+] as const).distinct()
+consParams.nodeFunctionInput = nodeFunctionInput
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeFunctionInput.d.ts
 
-objParams.nodeFunctionInput = [
+
+const _nodeFunctionInput = ([
     'isNodeFunctionInput',
     'count',
     'qualifier',
     'isConst',
-].distinct()
+] as const).distinct()
+objProps.nodeFunctionInput = _nodeFunctionInput
 
 export type NodeFunctionInputProps = Node<NodeFunctionInput, typeof NodeFunctionInput, { type: string; name: string; count?: number; qualifier?: string; isConst?: boolean; }>
 

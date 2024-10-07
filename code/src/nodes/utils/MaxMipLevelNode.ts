@@ -4,7 +4,7 @@ import MaxMipLevelNode from 'three/src/nodes/utils/MaxMipLevelNode.js'
 export { MaxMipLevelNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/UniformNode'
 
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        maxMipLevelNode: string[]
+        maxMipLevelNode: typeof maxMipLevelNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        maxMipLevelNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        maxMipLevelNode: typeof _maxMipLevelNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\MaxMipLevelNode.d.ts
 
-consParams.maxMipLevelNode = [
+
+const maxMipLevelNode = ([
     'textureNode',
-].distinct()
+] as const).distinct()
+consParams.maxMipLevelNode = maxMipLevelNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\MaxMipLevelNode.d.ts    
 
-objParams.maxMipLevelNode = [...objParams.uniformNode,
+
+const _maxMipLevelNode = ([...objProps.uniformNode,
     'textureNode',
-].distinct()
+] as const).distinct()
+objProps.maxMipLevelNode = _maxMipLevelNode
 
 export type MaxMipLevelNodeProps = Node<MaxMipLevelNode, typeof MaxMipLevelNode, { textureNode: TextureNode; }>
 

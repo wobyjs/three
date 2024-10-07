@@ -4,7 +4,7 @@ import MathNode, { MathNodeMethod3 } from 'three/src/nodes/math/MathNode.js'
 export { MathNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,29 +26,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mathNode: string[]
-        nodeElements: string[]
+        mathNode: typeof mathNode
+        nodeElements: typeof nodeElements
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mathNode: string[]
-        nodeElements: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mathNode: typeof _mathNode
+        nodeElements: typeof _nodeElements
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\math\MathNode.d.ts
 
-consParams.mathNode = [
+
+const mathNode = ([
     'method',
     'aNode',
     'bNode',
     'cNode',
-].distinct()
+] as const).distinct()
+consParams.mathNode = mathNode
 
 
-consParams.nodeElements = [
+const nodeElements = ([
     'all',
     'any',
     'equals',
@@ -212,11 +213,12 @@ consParams.nodeElements = [
     'convert',
     'checker',
     'discard',
-].distinct()
+] as const).distinct()
+consParams.nodeElements = nodeElements
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\math\MathNode.d.ts    
 
-objParams.mathNode = [...objParams.tempNode,
+
+const _mathNode = ([...objProps.tempNode,
     // 1 input
     // 2 inputs
     // 3 inputs
@@ -224,10 +226,11 @@ objParams.mathNode = [...objParams.tempNode,
     'aNode',
     'bNode',
     'cNode',
-].distinct()
+] as const).distinct()
+objProps.mathNode = _mathNode
 
 
-objParams.nodeElements = [
+const _nodeElements = ([
     'all',
     'any',
     'equals',
@@ -391,7 +394,8 @@ objParams.nodeElements = [
     'convert',
     'checker',
     'discard',
-].distinct()
+] as const).distinct()
+objProps.nodeElements = _nodeElements
 
 export type MathNodeProps = Node<MathNode, typeof MathNode, { method: MathNodeMethod3; aNode?: ENode; bNode?: ENode; cNode?: ENode; }>
 

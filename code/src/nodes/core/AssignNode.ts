@@ -4,7 +4,7 @@ import AssignNode from 'three/src/nodes/core/AssignNode.js'
 export { AssignNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        assignNode: string[]
+        assignNode: typeof assignNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        assignNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        assignNode: typeof _assignNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\AssignNode.d.ts
 
-consParams.assignNode = [
+
+const assignNode = ([
     'targetNode',
     'sourceNode',
-].distinct()
+] as const).distinct()
+consParams.assignNode = assignNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\AssignNode.d.ts    
 
-objParams.assignNode = [...objParams.tempNode,
-].distinct()
+
+const _assignNode = ([...objProps.tempNode,
+] as const).distinct()
+objProps.assignNode = _assignNode
 
 export type AssignNodeProps = Node<AssignNode, typeof AssignNode, { targetNode: ENode; sourceNode: ENode; }>
 

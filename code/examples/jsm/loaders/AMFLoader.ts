@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/AMFLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        amfLoader: string[]
+        amfLoader: typeof amfLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        amfLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        amfLoader: typeof _amfLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\AMFLoader.d.ts
 
-consParams.amfLoader = [
+
+const amfLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.amfLoader = amfLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\AMFLoader.d.ts    
 
-objParams.amfLoader = [...objParams.loader,
-].distinct()
+
+const _amfLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.amfLoader = _amfLoader
 
 export type AMFLoaderProps = Node<AMFLoader, typeof AMFLoader, { manager?: LoadingManager; }>
 

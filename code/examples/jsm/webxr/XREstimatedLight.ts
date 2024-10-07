@@ -4,7 +4,7 @@ import { XREstimatedLight } from 'three/examples/jsm/webxr/XREstimatedLight.js'
 export * from 'three/examples/jsm/webxr/XREstimatedLight.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,33 +26,34 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrEstimatedLight: string[]
-        sessionLightProbe: string[]
-        xrEstimatedLightEventMap: string[]
+        xrEstimatedLight: typeof xrEstimatedLight
+        sessionLightProbe: typeof sessionLightProbe
+        xrEstimatedLightEventMap: typeof xrEstimatedLightEventMap
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrEstimatedLight: string[]
-        sessionLightProbe: string[]
-        xrEstimatedLightEventMap: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrEstimatedLight: typeof _xrEstimatedLight
+        sessionLightProbe: typeof _sessionLightProbe
+        xrEstimatedLightEventMap: typeof _xrEstimatedLightEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XREstimatedLight.d.ts
 
-consParams.sessionLightProbe = [
+
+const sessionLightProbe = ([
 
     'xrLight',
     'renderer',
     'lightProbe',
     'environmentEstimation',
     'estimationStartCallback',
-].distinct()
+] as const).distinct()
+consParams.sessionLightProbe = sessionLightProbe
 
 
-consParams.xrEstimatedLightEventMap = [
+const xrEstimatedLightEventMap = ([
     /**
      * Fires when the estimated lighting values start being updated.
      */
@@ -61,7 +62,8 @@ consParams.xrEstimatedLightEventMap = [
      * Fires when the estimated lighting values stop being updated.
      */
     'estimationend',
-].distinct()
+] as const).distinct()
+consParams.xrEstimatedLightEventMap = xrEstimatedLightEventMap
 
 /**
  * XREstimatedLight uses WebXR's light estimation to create a light probe, a directional light, and (optionally) an
@@ -78,18 +80,19 @@ consParams.xrEstimatedLightEventMap = [
  * To use this, as with all files in the /examples directory, you will have to include the file separately in your HTML.
  */
 
-consParams.xrEstimatedLight = [
+const xrEstimatedLight = ([
     /**
      * @param renderer The renderer used to render the Scene. Mainly used to interact with WebXRManager.
      * @param environmentEstimation If `true`, use WebXR to estimate an environment map.
      */
     'renderer',
     'environmentEstimation',
-].distinct()
+] as const).distinct()
+consParams.xrEstimatedLight = xrEstimatedLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XREstimatedLight.d.ts
 
-objParams.sessionLightProbe = [
+
+const _sessionLightProbe = ([
     'xrLight',
     'renderer',
     'lightProbe',
@@ -98,9 +101,10 @@ objParams.sessionLightProbe = [
     'updateReflection',
     'onXRFrame',
     'dispose',
-].distinct()
+] as const).distinct()
+objProps.sessionLightProbe = _sessionLightProbe
 
-objParams.xrEstimatedLightEventMap = [...objParams.object3dEventMap,
+const _xrEstimatedLightEventMap = ([...objProps.object3dEventMap,
     /**
      * Fires when the estimated lighting values start being updated.
      */
@@ -109,7 +113,8 @@ objParams.xrEstimatedLightEventMap = [...objParams.object3dEventMap,
      * Fires when the estimated lighting values stop being updated.
      */
     'estimationend',
-].distinct()
+] as const).distinct()
+objProps.xrEstimatedLightEventMap = _xrEstimatedLightEventMap
 
 /**
  * XREstimatedLight uses WebXR's light estimation to create a light probe, a directional light, and (optionally) an
@@ -126,7 +131,7 @@ objParams.xrEstimatedLightEventMap = [...objParams.object3dEventMap,
  * To use this, as with all files in the /examples directory, you will have to include the file separately in your HTML.
  */
 
-objParams.xrEstimatedLight = [...objParams.group,
+const _xrEstimatedLight = ([...objProps.group,
     'lightProbe',
     'directionalLight',
     /**
@@ -136,7 +141,8 @@ objParams.xrEstimatedLight = [...objParams.group,
      * {@link Scene.background}.
      */
     'environment',
-].distinct()
+] as const).distinct()
+objProps.xrEstimatedLight = _xrEstimatedLight
 
 export type XREstimatedLightProps = Node<XREstimatedLight, typeof XREstimatedLight, { renderer: WebGLRenderer; environmentEstimation?: boolean; }>
 

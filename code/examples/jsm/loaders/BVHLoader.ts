@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/BVHLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,42 +27,46 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        bvhLoader: string[]
-        bvh: string[]
+        bvhLoader: typeof bvhLoader
+        bvh: typeof bvh
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        bvhLoader: string[]
-        bvh: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        bvhLoader: typeof _bvhLoader
+        bvh: typeof _bvh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\BVHLoader.d.ts
 
-consParams.bvh = [
+
+const bvh = ([
     'clip',
     'skeleton',
-].distinct()
+] as const).distinct()
+consParams.bvh = bvh
 
 
-consParams.bvhLoader = [
+const bvhLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.bvhLoader = bvhLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\BVHLoader.d.ts
 
-objParams.bvh = [
+
+const _bvh = ([
     'clip',
     'skeleton',
-].distinct()
+] as const).distinct()
+objProps.bvh = _bvh
 
 
-objParams.bvhLoader = [...objParams.loader,
+const _bvhLoader = ([...objProps.loader,
     'animateBonePositions',
     'animateBoneRotations',
-].distinct()
+] as const).distinct()
+objProps.bvhLoader = _bvhLoader
 
 
 export type BVHLoaderProps = Node<BVHLoader, typeof BVHLoader, { manager?: LoadingManager; }>

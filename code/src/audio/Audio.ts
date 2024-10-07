@@ -4,8 +4,9 @@ import { Audio } from 'three/src/audio/Audio.js'
 export * from 'three/src/audio/Audio.js'
 
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module 'woby' {
     namespace JSX {
@@ -18,17 +19,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        audio: string[]
+        audio: typeof audio
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        audio: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        audio: typeof _audio
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\Audio.d.ts
+
 // Extras / Audio /////////////////////////////////////////////////////////////////////
 /**
  * Create a non-positional ( global ) {@link Audio} object.
@@ -55,15 +56,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/Audio.js}
  */
 
-consParams.audio = [
+const audio = ([
     /**
      * Create a new instance of {@link Audio}
      * @param listener (required) {@link AudioListener} instance.
      */
     'listener',
-].distinct()
+] as const).distinct()
+consParams.audio = audio
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\Audio.d.ts
+
 // Extras / Audio /////////////////////////////////////////////////////////////////////
 /**
  * Create a non-positional ( global ) {@link Audio} object.
@@ -90,7 +92,7 @@ consParams.audio = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/Audio.js | Source}
  */
 
-objParams.audio = [...objParams.object3d,
+const _audio = ([...objProps.object3d,
     /**
      * A reference to the listener object of this audio.
      */
@@ -169,10 +171,12 @@ objParams.audio = [...objParams.object3d,
      * Can be used to apply a variety of low-order filters to create more complex sound effects.
      * In most cases, the array contains instances of {@link https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode | BiquadFilterNodes}.
      * Filters are set via {@link THREE.Audio.setFilter | Audio.setFilter} or {@link THREE.Audio.setFilters | Audio.setFilters}.
-     * @defaultValue `[].distinct()`
+     * @defaultValue []
      */
     'filters',
-].distinct()
+] as const).distinct()
+
+objProps.audio = _audio
 
 export type AudioProps = Object3DNode<Audio, typeof Audio, { listener: AudioListener; }>
 

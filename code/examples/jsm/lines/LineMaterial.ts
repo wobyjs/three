@@ -3,7 +3,7 @@ import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
 export * from 'three/examples/jsm/lines/LineMaterial.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import { WrapAsString } from '../../../three-types'
 import { MaterialParameters } from 'three/src/materials/Material'
@@ -36,14 +36,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lineMaterial: string[]
-        lineMaterialParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lineMaterial: typeof _lineMaterial
+        lineMaterialParameters: typeof _lineMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineMaterial.d.ts
+
 
 consParams.lineMaterialParameters = {
     ...consParams.materialParameters,
@@ -64,9 +64,9 @@ consParams.lineMaterialParameters = {
 
 consParams.lineMaterial = { ...consParams.lineMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineMaterial.d.ts    
 
-objParams.lineMaterialParameters = [...objParams.materialParameters,
+
+const _lineMaterialParameters = ([...objProps.materialParameters,
     'alphaToCoverage',
     'color',
     'dashed',
@@ -78,11 +78,12 @@ objParams.lineMaterialParameters = [...objParams.materialParameters,
     'resolution',
     'wireframe',
     'worldUnits',
-].distinct()
+] as const).distinct()
+objProps.lineMaterialParameters = _lineMaterialParameters
 
 
 
-objParams.lineMaterial = [...objParams.shaderMaterial,
+const _lineMaterial = ([...objProps.shaderMaterial,
     'color',
     'dashed',
     'dashScale',
@@ -94,7 +95,8 @@ objParams.lineMaterial = [...objParams.shaderMaterial,
     'resolution',
     'alphaToCoverage',
     'worldUnits',
-].distinct()
+] as const).distinct()
+objProps.lineMaterial = _lineMaterial
 
 export type LineMaterialProps = MaterialNode<LineMaterial, typeof LineMaterial>
 

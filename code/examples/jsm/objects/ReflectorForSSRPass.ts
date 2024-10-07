@@ -4,7 +4,7 @@ import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,68 +26,73 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        reflectorForSsrPass: string[]
-        reflectorShader: string[]
-        reflectorForSsrPassOptions: string[]
+        reflectorForSsrPass: typeof reflectorForSsrPass
+        reflectorShader: typeof reflectorShader
+        reflectorForSsrPassOptions: typeof reflectorForSsrPassOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        reflectorForSsrPass: string[]
-        reflectorShader: string[]
-        reflectorForSsrPassOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        reflectorForSsrPass: typeof _reflectorForSsrPass
+        reflectorShader: typeof _reflectorShader
+        reflectorForSsrPassOptions: typeof _reflectorForSsrPassOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\ReflectorForSSRPass.d.ts
 
-consParams.reflectorShader = [
+
+const reflectorShader = ([
     'name',
     'defines',
     'uniforms',
     'vertexShader',
     'fragmentShader',
-].distinct()
+] as const).distinct()
+consParams.reflectorShader = reflectorShader
 
 
-consParams.reflectorForSsrPassOptions = [
+const reflectorForSsrPassOptions = ([
     'clipBias',
     'textureWidth',
     'textureHeight',
     'color',
     'useDepthTexture',
     'shader',
-].distinct()
+] as const).distinct()
+consParams.reflectorForSsrPassOptions = reflectorForSsrPassOptions
 
 
-consParams.reflectorForSsrPass = [
+const reflectorForSsrPass = ([
     'geometry',
     'options',
-].distinct()
+] as const).distinct()
+consParams.reflectorForSsrPass = reflectorForSsrPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\ReflectorForSSRPass.d.ts
 
-objParams.reflectorShader = [
+
+const _reflectorShader = ([
     'name',
     'defines',
     'uniforms',
     'vertexShader',
     'fragmentShader',
-].distinct()
+] as const).distinct()
+objProps.reflectorShader = _reflectorShader
 
 
-objParams.reflectorForSsrPassOptions = [
+const _reflectorForSsrPassOptions = ([
     'clipBias',
     'textureWidth',
     'textureHeight',
     'color',
     'useDepthTexture',
     'shader',
-].distinct()
+] as const).distinct()
+objProps.reflectorForSsrPassOptions = _reflectorForSsrPassOptions
 
 
-objParams.reflectorForSsrPass = [
+const _reflectorForSsrPass = ([
     'options',
     'needsUpdate',
     'maxDistance',
@@ -98,7 +103,8 @@ objParams.reflectorForSsrPass = [
     'fresnel',
     'material',
     'renderTarget',
-].distinct()
+] as const).distinct()
+objProps.reflectorForSsrPass = _reflectorForSsrPass
 
 export type ReflectorForSSRPassProps<TGeometry extends BufferGeometry = BufferGeometry> = Node<ReflectorForSSRPass<TGeometry>, typeof ReflectorForSSRPass<TGeometry>, { geometry: TGeometry; options: ReflectorForSSRPassOptions; }>
 

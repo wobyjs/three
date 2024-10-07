@@ -35,6 +35,8 @@ const config = defineConfig({
             // 'woby/jsx-dev-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'woby/jsx-runtime',
             // 'woby/jsx-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'woby/jsx-runtime',
             // 'woby': process.argv.includes('dev') ? path.resolve('../woby/src') : 'woby'
+            // 'oby': process.argv.includes('dev') ? path.resolve('../oby/src') : 'oby',
+            // 'oby/methods': process.argv.includes('dev') ? path.resolve('../oby/src/methods') : 'oby/dist/methods'
         },
     },
 })

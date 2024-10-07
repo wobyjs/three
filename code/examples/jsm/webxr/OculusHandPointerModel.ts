@@ -4,7 +4,7 @@ import { OculusHandPointerModel } from 'three/examples/jsm/webxr/OculusHandPoint
 export * from 'three/examples/jsm/webxr/OculusHandPointerModel.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        oculusHandPointerModel: string[]
+        oculusHandPointerModel: typeof oculusHandPointerModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        oculusHandPointerModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        oculusHandPointerModel: typeof _oculusHandPointerModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\OculusHandPointerModel.d.ts
 
-consParams.oculusHandPointerModel = [
+
+const oculusHandPointerModel = ([
     'hand',
     'controller',
-].distinct()
+] as const).distinct()
+consParams.oculusHandPointerModel = oculusHandPointerModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\OculusHandPointerModel.d.ts    
 
-objParams.oculusHandPointerModel = [...objParams.object3d,
+
+const _oculusHandPointerModel = ([...objProps.object3d,
     'hand',
     'controller',
     'motionController',
@@ -60,7 +61,8 @@ objParams.oculusHandPointerModel = [...objParams.object3d,
     'raycaster',
     'visible',
     'xrInputSource',
-].distinct()
+] as const).distinct()
+objProps.oculusHandPointerModel = _oculusHandPointerModel
 
 export type OculusHandPointerModelProps = Node<OculusHandPointerModel, typeof OculusHandPointerModel, { hand: Object3D; controller: Object3D; }>
 

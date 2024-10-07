@@ -7,8 +7,9 @@ import { CompressedTexture } from 'three/src/textures/CompressedTexture.js'
 export { CompressedTexture } from 'three/src/textures/CompressedTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -29,17 +30,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        compressedTexture: string[]
+        compressedTexture: typeof compressedTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        compressedTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        compressedTexture: typeof _compressedTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CompressedTexture.d.ts
+
 /**
  * Creates a texture based on data in compressed form, for example from a {@link https://en.wikipedia.org/wiki/DirectDraw_Surface} file.
  * @remarks For use with the {@link THREE.CompressedTextureLoader}.
@@ -47,7 +48,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedTexture.js}
  */
 
-consParams.compressedTexture = [
+const compressedTexture = ([
     /**
      * This creates a new {@link THREE.CompressedTexture} object.
      * @param mipmaps The mipmaps array should contain objects with data, width and height.
@@ -77,9 +78,10 @@ consParams.compressedTexture = [
     'minFilter',
     'anisotropy',
     'colorSpace',
-].distinct()
+] as const).distinct()
+consParams.compressedTexture = compressedTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CompressedTexture.d.ts
+
 /**
  * Creates a texture based on data in compressed form, for example from a {@link https://en.wikipedia.org/wiki/DirectDraw_Surface | DDS} file.
  * @remarks For use with the {@link THREE.CompressedTextureLoader | CompressedTextureLoader}.
@@ -87,7 +89,7 @@ consParams.compressedTexture = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedTexture.js | Source}
  */
 
-objParams.compressedTexture = [...objParams.texture,
+const _compressedTexture = ([...objProps.texture,
     /**
      * Overridden with a object containing width and height.
      * @override
@@ -113,7 +115,8 @@ objParams.compressedTexture = [...objParams.texture,
      * @defaultValue `false`
      */
     'generateMipmaps',
-].distinct()
+] as const).distinct()
+objProps.compressedTexture = _compressedTexture
 
 export type CompressedTextureProps = Node<CompressedTexture, typeof CompressedTexture, { mipmaps: ImageData[]; width: number; height: number; format: CompressedPixelFormat; type?: TextureDataType; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; anisotropy?: number; colorSpace?: ColorSpace; }>
 

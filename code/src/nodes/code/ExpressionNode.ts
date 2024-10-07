@@ -3,7 +3,7 @@ import ExpressionNode from 'three/src/nodes/code/ExpressionNode.js'
 export { ExpressionNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,28 +25,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        expressionNode: string[]
+        expressionNode: typeof expressionNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        expressionNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        expressionNode: typeof _expressionNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\code\ExpressionNode.d.ts
 
-consParams.expressionNode = [
+
+const expressionNode = ([
     'snipped',
     'nodeType',
-].distinct()
+] as const).distinct()
+consParams.expressionNode = expressionNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\code\ExpressionNode.d.ts    
 
-objParams.expressionNode = [...objParams.tempNode,
+
+const _expressionNode = ([...objProps.tempNode,
     'snipped',
-].distinct()
+] as const).distinct()
+objProps.expressionNode = _expressionNode
 
 export type ExpressionNodeProps = Node<ExpressionNode, typeof ExpressionNode, { snipped?: string; nodeType?: string; }>
 

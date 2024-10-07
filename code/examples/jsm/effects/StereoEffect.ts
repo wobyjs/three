@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/effects/StereoEffect.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        stereoEffect: string[]
+        stereoEffect: typeof stereoEffect
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        stereoEffect: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        stereoEffect: typeof _stereoEffect
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\StereoEffect.d.ts
 
-consParams.stereoEffect = [
+
+const stereoEffect = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.stereoEffect = stereoEffect
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\StereoEffect.d.ts
 
-objParams.stereoEffect = [
-].distinct()
+
+const _stereoEffect = ([
+] as const).distinct()
+objProps.stereoEffect = _stereoEffect
 
 export type StereoEffectProps = Node<StereoEffect, typeof StereoEffect, { renderer: WebGLRenderer; }>
 

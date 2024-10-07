@@ -4,7 +4,7 @@ import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 
@@ -27,26 +27,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lwoLoader: string[]
-        lwo: string[]
+        lwoLoader: typeof lwoLoader
+        lwo: typeof lwo
         lwoLoaderParameters: { resourcePath: 'resourcePath' }
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lwoLoader: string[]
-        lwo: string[]
-        lwoLoaderParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lwoLoader: typeof _lwoLoader
+        lwo: typeof _lwo
+        lwoLoaderParameters: typeof _lwoLoaderParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\lwoLoader.d.ts
 
-consParams.lwo = [
+
+const lwo = ([
     'materials',
     'meshes',
-].distinct()
+] as const).distinct()
+consParams.lwo = lwo
 
 
 consParams.lwoLoaderParameters = ([
@@ -57,29 +58,33 @@ consParams.lwoLoaderParameters = ([
 ] as const).toObject()
 
 
-consParams.lwoLoader = [
+const lwoLoader = ([
     'manager',
     'parameters', //lwoLoaderParameters
-].distinct()
+] as const).distinct()
+consParams.lwoLoader = lwoLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\LWOLoader.d.ts
 
-objParams.lwo = [
+
+const _lwo = ([
     'materials',
     'meshes',
-].distinct()
+] as const).distinct()
+objProps.lwo = _lwo
 
 
-objParams.lwoLoaderParameters = [
+const _lwoLoaderParameters = ([
     /**
      * Base content delivery folder path, use when it differs from Lightwave default structure
      */
     'resourcePath',
-].distinct()
+] as const).distinct()
+objProps.lwoLoaderParameters = _lwoLoaderParameters
 
 
-objParams.lwoLoader = [...objParams.loader,
-].distinct()
+const _lwoLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.lwoLoader = _lwoLoader
 
 export type LWOLoaderProps = Node<LWOLoader, typeof LWOLoader, { manager?: LoadingManager; parameters?: LWOLoaderParameters; }>
 

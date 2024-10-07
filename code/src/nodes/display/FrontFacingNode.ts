@@ -3,8 +3,9 @@ import FrontFacingNode from 'three/src/nodes/display/FrontFacingNode.js'
 export { FrontFacingNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/NodeAttribute'
 
 declare module '../../../lib/3/three'
 {
@@ -25,26 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        frontFacingNode: string[]
+        frontFacingNode: typeof frontFacingNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        frontFacingNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        frontFacingNode: typeof _frontFacingNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\FrontFacingNode.d.ts
 
-consParams.frontFacingNode = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\FrontFacingNode.d.ts    
+const frontFacingNode = ([
+] as const).distinct()
+consParams.frontFacingNode = frontFacingNode
 
-objParams.frontFacingNode = [...objParams.node,
+
+
+const _frontFacingNode = ([...objProps.node,
     'isFrontFacingNode',
-].distinct()
+] as const).distinct()
+objProps.frontFacingNode = _frontFacingNode
 
 export type FrontFacingNodeProps = Node<FrontFacingNode, typeof FrontFacingNode, {}>
 

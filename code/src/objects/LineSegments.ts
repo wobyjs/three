@@ -5,8 +5,9 @@ import { LineSegments } from 'three/src/objects/LineSegments.js'
 export { LineSegments } from 'three/src/objects/LineSegments.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Line'
 
 declare module '../../lib/3/three'
@@ -28,17 +29,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        lineSegments: string[]
+        lineSegments: typeof lineSegments
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lineSegments: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lineSegments: typeof _lineSegments
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\LineSegments.d.ts
+
 /**
  * A series of lines drawn between pairs of vertices.
  * @remarks
@@ -49,7 +50,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LineSegments.js}
  */
 
-consParams.lineSegments = [
+const lineSegments = ([
     /**
      * Create a new instance of {@link LineSegments}
      * @param geometry Pair(s) of vertices representing each line segment(s). Default {@link THREE.BufferGeometry | `new THREE.BufferGeometry()`}.
@@ -57,9 +58,10 @@ consParams.lineSegments = [
      */
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.lineSegments = lineSegments
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\LineSegments.d.ts
+
 /**
  * A series of lines drawn between pairs of vertices.
  * @remarks
@@ -70,8 +72,9 @@ consParams.lineSegments = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LineSegments.js | Source}
  */
 
-objParams.lineSegments = [...objParams.line,
-].distinct()
+const _lineSegments = ([...objProps.line,
+] as const).distinct()
+objProps.lineSegments = _lineSegments
 
 export type LineSegmentsProps<
     TGeometry extends BufferGeometry = BufferGeometry,

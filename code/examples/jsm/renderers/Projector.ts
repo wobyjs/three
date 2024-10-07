@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/renderers/Projector.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,62 +26,69 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        projector: string[]
-        renderableObject: string[]
-        renderableFace: string[]
-        renderableVertex: string[]
-        renderableLine: string[]
-        renderableSprite: string[]
+        projector: typeof projector
+        renderableObject: typeof renderableObject
+        renderableFace: typeof renderableFace
+        renderableVertex: typeof renderableVertex
+        renderableLine: typeof renderableLine
+        renderableSprite: typeof renderableSprite
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        projector: string[]
-        renderableObject: string[]
-        renderableFace: string[]
-        renderableVertex: string[]
-        renderableLine: string[]
-        renderableSprite: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        projector: typeof _projector
+        renderableObject: typeof _renderableObject
+        renderableFace: typeof _renderableFace
+        renderableVertex: typeof _renderableVertex
+        renderableLine: typeof _renderableLine
+        renderableSprite: typeof _renderableSprite
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\Projector.d.ts
-
-consParams.renderableObject = [
-].distinct()
 
 
-consParams.renderableFace = [
-].distinct()
+const renderableObject = ([
+] as const).distinct()
+consParams.renderableObject = renderableObject
 
 
-consParams.renderableVertex = [
-].distinct()
+const renderableFace = ([
+] as const).distinct()
+consParams.renderableFace = renderableFace
 
 
-consParams.renderableLine = [
-].distinct()
+const renderableVertex = ([
+] as const).distinct()
+consParams.renderableVertex = renderableVertex
 
 
-consParams.renderableSprite = [
-].distinct()
+const renderableLine = ([
+] as const).distinct()
+consParams.renderableLine = renderableLine
 
 
-consParams.projector = [
-].distinct()
+const renderableSprite = ([
+] as const).distinct()
+consParams.renderableSprite = renderableSprite
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\Projector.d.ts
 
-objParams.renderableObject = [
+const projector = ([
+] as const).distinct()
+consParams.projector = projector
+
+
+
+const _renderableObject = ([
     'id',
     'object',
     'z',
     'renderOrder',
-].distinct()
+] as const).distinct()
+objProps.renderableObject = _renderableObject
 
 
-objParams.renderableFace = [
+const _renderableFace = ([
     'id',
     'v1',
     'v2',
@@ -94,18 +101,20 @@ objParams.renderableFace = [
     'uvs',
     'z',
     'renderOrder',
-].distinct()
+] as const).distinct()
+objProps.renderableFace = _renderableFace
 
 
-objParams.renderableVertex = [
+const _renderableVertex = ([
     'position',
     'positionWorld',
     'positionScreen',
     'visible',
-].distinct()
+] as const).distinct()
+objProps.renderableVertex = _renderableVertex
 
 
-objParams.renderableLine = [
+const _renderableLine = ([
     'id',
     'v1',
     'v2',
@@ -113,10 +122,11 @@ objParams.renderableLine = [
     'material',
     'z',
     'renderOrder',
-].distinct()
+] as const).distinct()
+objProps.renderableLine = _renderableLine
 
 
-objParams.renderableSprite = [
+const _renderableSprite = ([
     'id',
     'object',
     'x',
@@ -126,11 +136,13 @@ objParams.renderableSprite = [
     'scale',
     'material',
     'renderOrder',
-].distinct()
+] as const).distinct()
+objProps.renderableSprite = _renderableSprite
 
 
-objParams.projector = [
-].distinct()
+const _projector = ([
+] as const).distinct()
+objProps.projector = _projector
 
 export type ProjectorProps = Node<Projector, typeof Projector, {}>
 

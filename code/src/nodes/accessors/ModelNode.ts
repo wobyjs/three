@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import ModelNode from 'three/src/nodes/accessors/ModelNode.js'
 export { ModelNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,34 +25,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        modelNode: string[]
+        modelNode: typeof modelNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        modelNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        modelNode: typeof _modelNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\ModelNode.d.ts
+
 /**
  * Similar to {@link Object3dNode} but the object comes from {@link NodeFrame}
  */
 
-consParams.modelNode = [
+const modelNode = ([
     'scope',
-].distinct()
+] as const).distinct()
+consParams.modelNode = modelNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\ModelNode.d.ts
+
 /**
  * Similar to {@link Object3dNode} but the object comes from {@link NodeFrame}
  */
 
-objParams.modelNode = [...objParams.object3dNode,
-].distinct()
+const _modelNode = ([...objProps.object3dNode,
+] as const).distinct()
+objProps.modelNode = _modelNode
 
-export type ModelNodeProps = Object3DNode<ModelNode, typeof ModelNode, { scope?: string; }>
+export type ModelNodeProps = Node<ModelNode, typeof ModelNode, { scope?: string; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

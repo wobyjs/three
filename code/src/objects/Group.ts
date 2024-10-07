@@ -3,7 +3,7 @@ import { Group } from 'three/src/objects/Group.js'
 export { Group } from 'three/src/objects/Group.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
 
 declare module '../../lib/3/three'
@@ -25,17 +25,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        group: string[]
+        group: typeof group
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        group: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        group: typeof _group
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Group.d.ts
+
 /**
  * Its purpose is to make working with groups of objects syntactically clearer.
  * @remarks This is almost identical to an {@link Object3d}
@@ -60,10 +60,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Group.js}
  */
 
-consParams.group = [
-].distinct()
+const group = ([
+] as const).distinct()
+consParams.group = group
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Group.d.ts
+
 /**
  * Its purpose is to make working with groups of objects syntactically clearer.
  * @remarks This is almost identical to an {@link Object3d | Object3d}
@@ -87,8 +88,10 @@ consParams.group = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Group.js | Source}
  */
 
-objParams.group = [
-].distinct()
+const _group = ([
+] as const).distinct()
+objProps.group = _group
+
 
 export type GroupProps = Object3DNode<Group, typeof Group, {}>
 

@@ -4,8 +4,9 @@ import { CameraHelper } from 'three/src/helpers/CameraHelper.js'
 export { CameraHelper } from 'three/src/helpers/CameraHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        cameraHelper: string[]
+        cameraHelper: typeof cameraHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        cameraHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        cameraHelper: typeof _cameraHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\CameraHelper.d.ts
+
 /**
  * This helps with visualizing what a camera contains in its frustum
  * @remarks
@@ -54,14 +55,15 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/CameraHelper.js}
  */
 
-consParams.cameraHelper = [
+const cameraHelper = ([
     /**
      * The camera being visualized.
      */
     'camera',
-].distinct()
+] as const).distinct()
+consParams.cameraHelper = cameraHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\CameraHelper.d.ts
+
 /**
  * This helps with visualizing what a camera contains in its frustum
  * @remarks
@@ -79,7 +81,7 @@ consParams.cameraHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/CameraHelper.js | Source}
  */
 
-objParams.cameraHelper = [...objParams.lineSegments,
+const _cameraHelper = ([...objProps.lineSegments,
     /**
      * The camera being visualized.
      */
@@ -92,7 +94,8 @@ objParams.cameraHelper = [...objParams.lineSegments,
      * Reference to the {@link THREE.Camera.matrixWorld | camera.matrixWorld}.
      */
     'matrix',
-].distinct()
+] as const).distinct()
+objProps.cameraHelper = _cameraHelper
 
 export type CameraHelperProps = Object3DNode<CameraHelper, typeof CameraHelper, { camera: Camera; }>
 

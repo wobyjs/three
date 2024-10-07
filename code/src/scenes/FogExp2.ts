@@ -4,8 +4,9 @@ import { FogExp2 } from 'three/src/scenes/FogExp2.js'
 export { FogExp2 } from 'three/src/scenes/FogExp2.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Fog'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        fogExp2: string[]
+        fogExp2: typeof fogExp2
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        fogExp2: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        fogExp2: typeof _fogExp2
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\scenes\FogExp2.d.ts
+
 /**
  * This class contains the parameters that define exponential squared fog, which gives a clear view near the camera and a faster than exponentially densening fog farther from the camera.
  * @example
@@ -50,7 +51,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/FogExp2.js}
  */
 
-consParams.fogExp2 = [
+const fogExp2 = ([
     /**
      * The color parameter is passed to the {@link THREE.Color} constructor to set the color property
      * @remarks Color can be a hexadecimal integer or a css-style string.
@@ -59,9 +60,10 @@ consParams.fogExp2 = [
      */
     'color',
     'density',
-].distinct()
+] as const).distinct()
+consParams.fogExp2 = fogExp2
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\scenes\FogExp2.d.ts
+
 /**
  * This class contains the parameters that define exponential squared fog, which gives a clear view near the camera and a faster than exponentially densening fog farther from the camera.
  * @example
@@ -74,7 +76,7 @@ consParams.fogExp2 = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/FogExp2.js | Source}
  */
 
-objParams.fogExp2 = [...objParams.fogBase,
+const _fogExp2 = ([...objProps.fogBase,
     /**
      * Optional name of the object
      * @remarks _(doesn't need to be unique)_.
@@ -92,7 +94,8 @@ objParams.fogExp2 = [...objParams.fogBase,
      * @remarks Expects a `Float`
      */
     'density',
-].distinct()
+] as const).distinct()
+objProps.fogExp2 = _fogExp2
 
 export type FogExp2Props = Node<FogExp2, typeof FogExp2, { color: ColorRepresentation; density?: number; }>
 

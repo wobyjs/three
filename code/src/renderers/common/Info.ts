@@ -3,7 +3,7 @@ import Info from 'three/src/renderers/common/Info.js'
 export { Info }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,31 +25,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        info: string[]
+        info: typeof info
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        info: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        info: typeof _info
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\Info.d.ts
 
-consParams.info = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\Info.d.ts
+const info = ([
+] as const).distinct()
+consParams.info = info
 
-objParams.info = [
+
+
+const _info = ([
     'autoReset',
     'frame',
     'calls',
     'render',
     'compute',
     'memory',
-].distinct()
+] as const).distinct()
+objProps.info = _info
 
 export type InfoProps = Node<Info, typeof Info, {}>
 

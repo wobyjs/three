@@ -5,7 +5,7 @@ import { DecalGeometry, DecalVertex } from 'three/examples/jsm/geometries/DecalG
 export * from 'three/examples/jsm/geometries/DecalGeometry.js'
 
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -19,41 +19,45 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        decalGeometry: string[]
-        decalVertex: string[]
+        decalGeometry: typeof decalGeometry
+        decalVertex: typeof decalVertex
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        decalGeometry: string[]
-        decalVertex: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        decalGeometry: typeof _decalGeometry
+        decalVertex: typeof _decalVertex
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\DecalGeometry.d.ts
 
-consParams.decalGeometry = [
+
+const decalGeometry = ([
     'mesh',
     'position',
     'orientation',
     'size',
-].distinct()
+] as const).distinct()
+consParams.decalGeometry = decalGeometry
 
 
-consParams.decalVertex = [
+const decalVertex = ([
     'position',
     'normal',
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\DecalGeometry.d.ts    
-
-objParams.decalGeometry = [...objParams.bufferGeometry,
-].distinct()
+] as const).distinct()
+consParams.decalVertex = decalVertex
 
 
-objParams.decalVertex = [
-].distinct()
+
+const _decalGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.decalGeometry = _decalGeometry
+
+
+const _decalVertex = ([
+] as const).distinct()
+objProps.decalVertex = _decalVertex
 
 export type DecalGeometryProps = BufferGeometryNode<DecalGeometry, typeof DecalGeometry, { mesh: Mesh; position: Vector3; orientation: Euler; size: Vector3; }>
 

@@ -2,7 +2,7 @@ import { Node } from '../../../three-types'
 import ConstNode from 'three/src/nodes/core/ConstNode.js'
 export { ConstNode }
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -15,47 +15,50 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        constNode: string[]
-        anyObject: string[]
+        constNode: typeof constNode
+        anyObject: typeof anyObject
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        constNode: string[]
-        anyObject: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        constNode: typeof _constNode
+        anyObject: typeof _anyObject
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\constants.d.ts
+
 /** Should be the same type as Object3d.userData */
 /** generic key value type,curretly used by nodes  */
 
-consParams.anyObject = [
-].distinct()
+const anyObject = ([
+] as const).distinct()
+consParams.anyObject = anyObject
 
 /** a generic JSON type, used by nodes only */
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\ConstNode.d.ts
 
-consParams.constNode = [
+
+const constNode = ([
     'value',
     'nodeType',
-].distinct()
+] as const).distinct()
+consParams.constNode = constNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\constants.d.ts
+
 /** generic key value type,curretly used by nodes  */
 
-objParams.anyObject = [
-    // [key: string].distinct()
-
-].distinct()
+const _anyObject = ([
+    // [key: string]
+] as const).distinct()
+objProps.anyObject = _anyObject
 
 /** a generic JSON type, used by nodes only */
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\ConstNode.d.ts
 
-objParams.constNode = [
+
+const _constNode = ([
     'isConstNode',
-].distinct()
+] as const).distinct()
+objProps.constNode = _constNode
 
 export type ConstNodeProps<T> = Node<ConstNode<T>, typeof ConstNode<T>, { value: T; nodeType?: string | null; }>
 

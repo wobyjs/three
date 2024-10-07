@@ -1,14 +1,14 @@
 import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
-import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import TriplanarTexturesNode from 'three/src/nodes/utils/TriplanarTexturesNode.js'
 export { TriplanarTexturesNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/NodeAttribute'
+import { ShaderNodeObject } from 'three/src/nodes/tsl/TSLCore'
 
 declare module '../../../lib/3/three'
 {
@@ -29,19 +29,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        triplanarTexturesNode: string[]
+        triplanarTexturesNode: typeof triplanarTexturesNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        triplanarTexturesNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        triplanarTexturesNode: typeof _triplanarTexturesNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\TriplanarTexturesNode.d.ts
 
-consParams.triplanarTexturesNode = [
+
+const triplanarTexturesNode = ([
 
     'textureXNode',
     'textureYNode',
@@ -49,18 +49,20 @@ consParams.triplanarTexturesNode = [
     'scaleNode',
     'positionNode',
     'normalNode',
-].distinct()
+] as const).distinct()
+consParams.triplanarTexturesNode = triplanarTexturesNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\TriplanarTexturesNode.d.ts    
 
-objParams.triplanarTexturesNode = [...objParams.node,
+
+const _triplanarTexturesNode = ([...objProps.node,
     'textureXNode',
     'textureYNode',
     'textureZNode',
     'scaleNode',
     'positionNode',
     'normalNode',
-].distinct()
+] as const).distinct()
+objProps.triplanarTexturesNode = _triplanarTexturesNode
 
 export type TriplanarTexturesNodeProps = Node<TriplanarTexturesNode, typeof TriplanarTexturesNode, { textureXNode: ENode; textureYNode?: TextureNode | null; textureZNode?: TextureNode | null; scaleNode?: ShaderNodeObject<ENode>; positionNode?: ShaderNodeObject<ENode>; normalNode?: ShaderNodeObject<ENode> }>
 

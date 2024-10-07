@@ -3,8 +3,9 @@ import { Sphere } from 'three/src/math/Sphere.js'
 export { Sphere } from 'three/src/math/Sphere.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        sphere: string[]
+        sphere: typeof sphere
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        sphere: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        sphere: typeof _sphere
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Sphere.d.ts
 
-consParams.sphere = [
+
+const sphere = ([
     'center',
     'radius',
-].distinct()
+] as const).distinct()
+consParams.sphere = sphere
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Sphere.d.ts
 
-objParams.sphere = [
+
+const _sphere = ([
     /**
      * @default new Vector3()
      */
@@ -53,7 +55,8 @@ objParams.sphere = [
      * @default 1
      */
     'radius',
-].distinct()
+] as const).distinct()
+objProps.sphere = _sphere
 
 export type SphereProps = Node<Sphere, typeof Sphere, { center?: Vector3; radius?: number; }>
 

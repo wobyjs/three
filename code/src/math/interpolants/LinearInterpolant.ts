@@ -3,7 +3,7 @@ import { LinearInterpolant } from 'three/src/math/interpolants/LinearInterpolant
 export { LinearInterpolant } from 'three/src/math/interpolants/LinearInterpolant.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,29 +25,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        linearInterpolant: string[]
+        linearInterpolant: typeof linearInterpolant
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        linearInterpolant: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        linearInterpolant: typeof _linearInterpolant
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\LinearInterpolant.d.ts
 
-consParams.linearInterpolant = [
+
+const linearInterpolant = ([
     'parameterPositions',
     'samplesValues',
     'sampleSize',
     'resultBuffer',
-].distinct()
+] as const).distinct()
+consParams.linearInterpolant = linearInterpolant
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\LinearInterpolant.d.ts    
 
-objParams.linearInterpolant = [...objParams.interpolant,
-].distinct()
+
+const _linearInterpolant = ([...objProps.interpolant,
+] as const).distinct()
+objProps.linearInterpolant = _linearInterpolant
 
 export type LinearInterpolantProps = Node<LinearInterpolant, typeof LinearInterpolant, { parameterPositions: any; samplesValues: any; sampleSize: number; resultBuffer?: any; }>
 

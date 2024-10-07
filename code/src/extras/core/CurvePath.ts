@@ -1,10 +1,10 @@
 import { Vector2 } from 'three/src/math/Vector2.js'
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { Vector3 } from 'three/src/math/Vector3.js'
 import { CurvePath } from 'three/src/extras/core/CurvePath.js'
 export { CurvePath } from 'three/src/extras/core/CurvePath.js'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 
 declare module 'woby' {
     namespace JSX {
@@ -16,15 +16,15 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        curve: string[]
-        curvePath: string[]
+        curve: typeof curve
+        curvePath: typeof curvePath
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        curve: string[]
-        curvePath: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        curve: typeof _curve
+        curvePath: typeof _curvePath
     }
 }
 
@@ -34,7 +34,7 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://threejs.org/docs/index.html#api/en/extras/ShapeUtils Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/ShapeUtils.js}
  */
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Curve.d.ts
+
 /**
  * An base class for creating a {@link Curve} object that contains methods for interpolation
  * @remarks
@@ -60,8 +60,9 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Curve.js}
  */
 
-consParams.curve = [
-].distinct()
+const curve = ([
+] as const).distinct()
+consParams.curve = curve
 
 /**
  * A class containing utility functions for shapes.
@@ -69,7 +70,7 @@ consParams.curve = [
  * @see {@link https://threejs.org/docs/index.html#api/en/extras/ShapeUtils | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/ShapeUtils.js | Source}
  */
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Curve.d.ts
+
 /**
  * An abstract base class for creating a {@link Curve} object that contains methods for interpolation
  * @remarks
@@ -95,7 +96,7 @@ consParams.curve = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Curve.js | Source}
  */
 
-objParams.curve = [
+const _curve = ([
     /**
      * This value determines the amount of divisions when calculating the cumulative segment lengths of a {@link Curve}
      * via {@link .getLengths}.
@@ -104,9 +105,10 @@ objParams.curve = [
      * @remarks Expects a `Integer`
      */
     'arcLengthDivisions',
-].distinct()
+] as const).distinct()
+objProps.curve = _curve
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\CurvePath.d.ts
+
 /**
  * Curved Path - a curve path is simply a array of connected curves, but retains the api of a curve.
  * @remarks
@@ -115,10 +117,11 @@ objParams.curve = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/CurvePath.js}
  */
 
-consParams.curvePath = [
-].distinct()
+const curvePath = ([
+] as const).distinct()
+consParams.curvePath = curvePath
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\CurvePath.d.ts
+
 /**
  * Curved Path - a curve path is simply a array of connected curves, but retains the api of a curve.
  * @remarks
@@ -127,11 +130,10 @@ consParams.curvePath = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/CurvePath.js | Source}
  */
 
-objParams.curvePath = [
+const _curvePath = ([
     /**
      * The array of {@link Curve | Curves}.
-     * @defaultValue `[].distinct()
-`
+     * @defaultValue []`
      */
     'curves',
     /**
@@ -139,6 +141,7 @@ objParams.curvePath = [
      * @defaultValue false
      */
     'autoClose',
-].distinct()
+] as const).distinct()
+objProps.curvePath = _curvePath
 
-export type CurvePathProps<T extends Vector2 | Vector3> = Object3DNode<CurvePath<T>, typeof CurvePath, {}>
+export type CurvePathProps<T extends Vector2 | Vector3> = Node<CurvePath<T>, typeof CurvePath, {}>

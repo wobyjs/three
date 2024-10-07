@@ -3,7 +3,7 @@ import LightingModel from 'three/src/nodes/core/LightingModel.js'
 export { LightingModel }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,41 +25,43 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lightingModel: string[]
-        lightingModelReflectedLight: string[]
-        lightingModelDirectInput: string[]
-        lightingModelIndirectInput: string[]
+        lightingModel: typeof lightingModel
+        lightingModelReflectedLight: typeof lightingModelReflectedLight
+        lightingModelDirectInput: typeof lightingModelDirectInput
+        lightingModelIndirectInput: typeof lightingModelIndirectInput
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lightingModel: string[]
-        lightingModelReflectedLight: string[]
-        lightingModelDirectInput: string[]
-        lightingModelIndirectInput: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lightingModel: typeof _lightingModel
+        lightingModelReflectedLight: typeof _lightingModelReflectedLight
+        lightingModelDirectInput: typeof _lightingModelDirectInput
+        lightingModelIndirectInput: typeof _lightingModelIndirectInput
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\LightingModel.d.ts
 
-consParams.lightingModelReflectedLight = [
+
+const lightingModelReflectedLight = ([
     'directDiffuse',
     'directSpecular',
     'indirectDiffuse',
     'indirectSpecular',
-].distinct()
+] as const).distinct()
+consParams.lightingModelReflectedLight = lightingModelReflectedLight
 
 
-consParams.lightingModelDirectInput = [
+const lightingModelDirectInput = ([
     'lightDirection',
     'lightColor',
     'reflectedLight',
     'shadowMask',
-].distinct()
+] as const).distinct()
+consParams.lightingModelDirectInput = lightingModelDirectInput
 
 
-consParams.lightingModelIndirectInput = [
+const lightingModelIndirectInput = ([
     'radiance',
     'irradiance',
     'iblIrradiance',
@@ -68,31 +70,35 @@ consParams.lightingModelIndirectInput = [
     'backdrop',
     'backdropAlpha',
     'outgoingLight',
-].distinct()
+] as const).distinct()
+consParams.lightingModelIndirectInput = lightingModelIndirectInput
 
 
-consParams.lightingModel = [
-].distinct()
+const lightingModel = ([
+] as const).distinct()
+consParams.lightingModel = lightingModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\LightingModel.d.ts
 
-objParams.lightingModelReflectedLight = [
+
+const _lightingModelReflectedLight = ([
     'directDiffuse',
     'directSpecular',
     'indirectDiffuse',
     'indirectSpecular',
-].distinct()
+] as const).distinct()
+objProps.lightingModelReflectedLight = _lightingModelReflectedLight
 
 
-objParams.lightingModelDirectInput = [
+const _lightingModelDirectInput = ([
     'lightDirection',
     'lightColor',
     'reflectedLight',
     'shadowMask',
-].distinct()
+] as const).distinct()
+objProps.lightingModelDirectInput = _lightingModelDirectInput
 
 
-objParams.lightingModelIndirectInput = [
+const _lightingModelIndirectInput = ([
     'radiance',
     'irradiance',
     'iblIrradiance',
@@ -101,11 +107,13 @@ objParams.lightingModelIndirectInput = [
     'backdrop',
     'backdropAlpha',
     'outgoingLight',
-].distinct()
+] as const).distinct()
+objProps.lightingModelIndirectInput = _lightingModelIndirectInput
 
 
-objParams.lightingModel = [
-].distinct()
+const _lightingModel = ([
+] as const).distinct()
+objProps.lightingModel = _lightingModel
 
 export type LightingModelProps = Node<LightingModel, typeof LightingModel, {}>
 

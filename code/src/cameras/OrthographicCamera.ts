@@ -3,8 +3,9 @@ import { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'
 export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Camera'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        orthographicCamera: string[]
+        orthographicCamera: typeof orthographicCamera
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        orthographicCamera: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        orthographicCamera: typeof _orthographicCamera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\OrthographicCamera.d.ts
+
 /**
  * Camera that uses {@link https://en.wikipedia.org/wiki/Orthographic_projection projection}.
  * In this.projection mode, an object's size in the rendered image stays constant regardless of its distance from the camera.
@@ -59,7 +60,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/OrthographicCamera.js}
  */
 
-consParams.orthographicCamera = [
+const orthographicCamera = ([
     /**
      * Creates a new {@link OrthographicCamera}.
      * @remarks Together these define the camera's {@link https://en.wikipedia.org/wiki/Viewing_frustum frustum}.
@@ -76,9 +77,10 @@ consParams.orthographicCamera = [
     'bottom',
     'near',
     'far',
-].distinct()
+] as const).distinct()
+consParams.orthographicCamera = orthographicCamera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\OrthographicCamera.d.ts
+
 /**
  * Camera that uses {@link https://en.wikipedia.org/wiki/Orthographic_projection | orthographic projection}.
  * In this projection mode, an object's size in the rendered image stays constant regardless of its distance from the camera.
@@ -101,7 +103,7 @@ consParams.orthographicCamera = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/OrthographicCamera.js | Source}
  */
 
-objParams.orthographicCamera = [...objParams.camera,
+const _orthographicCamera = ([...objProps.camera,
     /**
      * Gets or sets the zoom factor of the camera.
      * @defaultValue `1`
@@ -151,7 +153,8 @@ objParams.orthographicCamera = [...objParams.camera,
      * @defaultValue `2000`
      */
     'far',
-].distinct()
+] as const).distinct()
+objProps.orthographicCamera = _orthographicCamera
 
 export type OrthographicCameraProps = Object3DNode<OrthographicCamera, typeof OrthographicCamera, { left?: number; right?: number; top?: number; bottom?: number; near?: number; far?: number; }>
 

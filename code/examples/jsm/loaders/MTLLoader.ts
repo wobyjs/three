@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/MTLLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mtlLoader: string[]
-        materialCreatorOptions: string[]
-        materialInfo: string[]
-        texParams: string[]
-        materialCreator: string[]
+        mtlLoader: typeof mtlLoader
+        materialCreatorOptions: typeof materialCreatorOptions
+        materialInfo: typeof materialInfo
+        texParams: typeof texParams
+        materialCreator: typeof materialCreator
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mtlLoader: string[]
-        materialCreatorOptions: string[]
-        materialInfo: string[]
-        texParams: string[]
-        materialCreator: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mtlLoader: typeof _mtlLoader
+        materialCreatorOptions: typeof _materialCreatorOptions
+        materialInfo: typeof _materialInfo
+        texParams: typeof _texParams
+        materialCreator: typeof _materialCreator
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\MTLLoader.d.ts
 
-consParams.materialCreatorOptions = [
+
+const materialCreatorOptions = ([
     /**
      * side side to apply the material
      * THREE.FrontSide (default), THREE.BackSide, THREE.DoubleSide
@@ -74,15 +74,17 @@ consParams.materialCreatorOptions = [
      * Default
      */
     'invertTrProperty',
-].distinct()
+] as const).distinct()
+consParams.materialCreatorOptions = materialCreatorOptions
 
 
-consParams.mtlLoader = [
+const mtlLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.mtlLoader = mtlLoader
 
 
-consParams.materialInfo = [
+const materialInfo = ([
     'ks',
     'kd',
     'ke',
@@ -96,24 +98,27 @@ consParams.materialInfo = [
     'ns',
     'd',
     'tr',
-].distinct()
+] as const).distinct()
+consParams.materialInfo = materialInfo
 
 
-consParams.texParams = [
+const texParams = ([
     'scale',
     'offset',
     'url',
-].distinct()
+] as const).distinct()
+consParams.texParams = texParams
 
 
-consParams.materialCreator = [
+const materialCreator = ([
     'baseUrl',
     'options',
-].distinct()
+] as const).distinct()
+consParams.materialCreator = materialCreator
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\MTLLoader.d.ts
 
-objParams.materialCreatorOptions = [
+
+const _materialCreatorOptions = ([
     /**
      * side: Which side to apply the material
      * THREE.FrontSide (default), THREE.BackSide, THREE.DoubleSide
@@ -140,15 +145,17 @@ objParams.materialCreatorOptions = [
      * Default: false
      */
     'invertTrProperty',
-].distinct()
+] as const).distinct()
+objProps.materialCreatorOptions = _materialCreatorOptions
 
 
-objParams.mtlLoader = [...objParams.loader,
+const _mtlLoader = ([...objProps.loader,
     'materialOptions',
-].distinct()
+] as const).distinct()
+objProps.mtlLoader = _mtlLoader
 
 
-objParams.materialInfo = [
+const _materialInfo = ([
     'ks',
     'kd',
     'ke',
@@ -162,17 +169,19 @@ objParams.materialInfo = [
     'ns',
     'd',
     'tr',
-].distinct()
+] as const).distinct()
+objProps.materialInfo = _materialInfo
 
 
-objParams.texParams = [
+const _texParams = ([
     'scale',
     'offset',
     'url',
-].distinct()
+] as const).distinct()
+objProps.texParams = _texParams
 
 
-objParams.materialCreator = [
+const _materialCreator = ([
     'baseUrl',
     'options',
     'materialsInfo',
@@ -181,7 +190,8 @@ objParams.materialCreator = [
     'side',
     'wrap',
     'crossOrigin',
-].distinct()
+] as const).distinct()
+objProps.materialCreator = _materialCreator
 
 export type MTLLoaderProps = Node<MTLLoader, typeof MTLLoader, { manager?: LoadingManager; }>
 

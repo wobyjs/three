@@ -3,8 +3,9 @@ import { PointsMaterial, PointsMaterialParameters } from 'three/src/materials/Po
 export { PointsMaterial, PointsMaterialParameters } from 'three/src/materials/PointsMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import { WrapAsString } from '../../three-types'
 
@@ -32,14 +33,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        pointsMaterial: string[]
-        pointsMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        pointsMaterial: typeof _pointsMaterial
+        pointsMaterialParameters: typeof _pointsMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\PointsMaterial.d.ts
+
 
 consParams.pointsMaterialParameters = {
     ...consParams.materialParameters,
@@ -55,19 +56,20 @@ consParams.pointsMaterialParameters = {
 
 consParams.pointsMaterial = { ...consParams.pointsMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\PointsMaterial.d.ts    
 
-objParams.pointsMaterialParameters = [...objParams.materialParameters,
+
+const _pointsMaterialParameters = ([...objProps.materialParameters,
     'color',
     'map',
     'alphaMap',
     'size',
     'sizeAttenuation',
     'fog',
-].distinct()
+] as const).distinct()
+objProps.pointsMaterialParameters = _pointsMaterialParameters
 
 
-objParams.pointsMaterial = [...objParams.material,
+const _pointsMaterial = ([...objProps.material,
     /**
      * @default 'PointsMaterial'
      */
@@ -97,7 +99,8 @@ objParams.pointsMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.pointsMaterial = _pointsMaterial
 
 export type PointsMaterialProps = MaterialNode<PointsMaterial, PointsMaterialParameters>
 

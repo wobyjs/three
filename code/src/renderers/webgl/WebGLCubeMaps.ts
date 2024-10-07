@@ -4,7 +4,7 @@ import { WebGLCubeMaps } from 'three/src/renderers/webgl/WebGLCubeMaps.js'
 export { WebGLCubeMaps } from 'three/src/renderers/webgl/WebGLCubeMaps.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,26 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglCubeMaps: string[]
+        webglCubeMaps: typeof webglCubeMaps
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglCubeMaps: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglCubeMaps: typeof _webglCubeMaps
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlCubeMaps.d.ts
 
-consParams.webglCubeMaps = [
+
+const webglCubeMaps = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.webglCubeMaps = webglCubeMaps
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlCubeMaps.d.ts
 
-objParams.webglCubeMaps = []
+const _webglCubeMaps = ([] as const).distinct()
+objProps.webglCubeMaps = _webglCubeMaps
 
 export type WebGLCubeMapsProps = Node<WebGLCubeMaps, typeof WebGLCubeMaps, { renderer: WebGLRenderer; }>
 

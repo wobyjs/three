@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { ArcCurve } from 'three/src/extras/curves/ArcCurve.js'
 export { ArcCurve } from 'three/src/extras/curves/ArcCurve.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './EllipseCurve'
 
@@ -26,24 +26,24 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        arcCurve: string[]
+        arcCurve: typeof arcCurve
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        arcCurve: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        arcCurve: typeof _arcCurve
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\ArcCurve.d.ts
+
 /**
  * Alias for {@link THREE.EllipseCurve}.
  * @see {@link https://threejs.org/docs/index.html#api/en/extras/curves/ArcCurve Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/ArcCurve.js}
  */
 
-consParams.arcCurve = [
+const arcCurve = ([
     /**
      * This constructor creates a new {@link ArcCurve}.
      * @param aX The X center of the ellipse. Expects a `Float`. Default is `0`.
@@ -61,19 +61,21 @@ consParams.arcCurve = [
     'aStartAngle',
     'aEndAngle',
     'aClockwise',
-].distinct()
+] as const).distinct()
+consParams.arcCurve = arcCurve
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\ArcCurve.d.ts
+
 /**
  * Alias for {@link THREE.EllipseCurve | EllipseCurve}.
  * @see {@link https://threejs.org/docs/index.html#api/en/extras/curves/ArcCurve | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/ArcCurve.js | Source}
  */
 
-objParams.arcCurve = [...objParams.ellipseCurve,
-].distinct()
+const _arcCurve = ([...objProps.ellipseCurve,
+] as const).distinct()
+objProps.arcCurve = _arcCurve
 
-export type ArcCurveProps = Object3DNode<ArcCurve, typeof ArcCurve, { aX?: number; aY?: number; aRadius?: number; aStartAngle?: number; aEndAngle?: number; aClockwise?: boolean; }>
+export type ArcCurveProps = Node<ArcCurve, typeof ArcCurve, { aX?: number; aY?: number; aRadius?: number; aStartAngle?: number; aEndAngle?: number; aClockwise?: boolean; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -6,7 +6,7 @@ export * from 'three/src/textures/FramebufferTexture.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,30 +28,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        viewportTextureNode: string[]
+        viewportTextureNode: typeof viewportTextureNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        viewportTextureNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        viewportTextureNode: typeof _viewportTextureNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportTextureNode.d.ts
 
-consParams.viewportTextureNode = [
+
+const viewportTextureNode = ([
     'uvNode',
     'levelNode',
     'framebufferTexture',
-].distinct()
+] as const).distinct()
+consParams.viewportTextureNode = viewportTextureNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportTextureNode.d.ts    
 
-objParams.viewportTextureNode = [...objParams.textureNode,
+
+const _viewportTextureNode = ([...objProps.textureNode,
     'generateMipmaps',
     'updateBeforeType',
-].distinct()
+] as const).distinct()
+objProps.viewportTextureNode = _viewportTextureNode
 
 export type ViewportTextureNodeProps = Node<ViewportTextureNode, typeof ViewportTextureNode, { uvNode?: ENode; levelNode?: ENode | null; framebufferTexture?: FramebufferTexture | null; }>
 

@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/math/ConvexHull.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,75 +26,83 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        convexHull: string[]
-        halfEdge: string[]
-        vertexNode: string[]
-        vertexList: string[]
+        convexHull: typeof convexHull
+        halfEdge: typeof halfEdge
+        vertexNode: typeof vertexNode
+        vertexList: typeof vertexList
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        convexHull: string[]
-        halfEdge: string[]
-        vertexNode: string[]
-        vertexList: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        convexHull: typeof _convexHull
+        halfEdge: typeof _halfEdge
+        vertexNode: typeof _vertexNode
+        vertexList: typeof _vertexList
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\ConvexHull.d.ts
 
-consParams.halfEdge = [
+
+const halfEdge = ([
     'vertex',
     'face',
-].distinct()
+] as const).distinct()
+consParams.halfEdge = halfEdge
 
 
-consParams.vertexNode = [
+const vertexNode = ([
     'point',
-].distinct()
+] as const).distinct()
+consParams.vertexNode = vertexNode
 
 
-consParams.vertexList = [
-].distinct()
+const vertexList = ([
+] as const).distinct()
+consParams.vertexList = vertexList
 
 
-consParams.convexHull = [
-].distinct()
+const convexHull = ([
+] as const).distinct()
+consParams.convexHull = convexHull
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\math\ConvexHull.d.ts
 
-objParams.halfEdge = [
+
+const _halfEdge = ([
     'vertex',
     'prev',
     'next',
     'twin',
     'face',
-].distinct()
+] as const).distinct()
+objProps.halfEdge = _halfEdge
 
 
-objParams.vertexNode = [
+const _vertexNode = ([
     'point',
     'prev',
     'next',
     'face',
-].distinct()
+] as const).distinct()
+objProps.vertexNode = _vertexNode
 
 
-objParams.vertexList = [
+const _vertexList = ([
     'head',
     'tail',
-].distinct()
+] as const).distinct()
+objProps.vertexList = _vertexList
 
 
-objParams.convexHull = [
+const _convexHull = ([
     'tolerance',
     'faces',
     'newFaces',
     'assigned',
     'unassigned',
     'vertices',
-].distinct()
+] as const).distinct()
+objProps.convexHull = _convexHull
 
 export type ConvexHullProps = Node<ConvexHull, typeof ConvexHull, {}>
 

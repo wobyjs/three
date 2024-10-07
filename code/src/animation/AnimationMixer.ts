@@ -1,12 +1,13 @@
-import { Object3DNode } from '../../three-types'
+import { Node } from '../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { AnimationMixer } from 'three/src/animation/AnimationMixer.js'
 import { AnimationObjectGroup } from 'three/src/animation/AnimationObjectGroup.js'
 export { AnimationMixer } from 'three/src/animation/AnimationMixer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,37 +28,40 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        animationMixerEventMap: string[]
-        animationMixer: string[]
+        animationMixerEventMap: typeof animationMixerEventMap
+        animationMixer: typeof animationMixer
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        animationMixerEventMap: string[]
-        animationMixer: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        animationMixerEventMap: typeof _animationMixerEventMap
+        animationMixer: typeof _animationMixer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\AnimationMixer.d.ts
 
-consParams.animationMixerEventMap = [
+
+const animationMixerEventMap = ([
     'loop',
     'finished',
-].distinct()
+] as const).distinct()
+consParams.animationMixerEventMap = animationMixerEventMap
 
-consParams.animationMixer = [
+const animationMixer = ([
     'root',
-].distinct()
+] as const).distinct()
+consParams.animationMixer = animationMixer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\AnimationMixer.d.ts
 
-objParams.animationMixerEventMap = [
+
+const _animationMixerEventMap = ([
     'loop',
     'finished',
-].distinct()
+] as const).distinct()
+objProps.animationMixerEventMap = _animationMixerEventMap
 
-objParams.animationMixer = [
+const _animationMixer = ([
     /**
      * @default 0
      */
@@ -66,10 +70,11 @@ objParams.animationMixer = [
      * @default 1.0
      */
     'timeScale',
-].distinct()
+] as const).distinct()
+objProps.animationMixer = _animationMixer
 
 
-export type AnimationMixerProps = Object3DNode<AnimationMixer, typeof AnimationMixer, { root: Object3D | AnimationObjectGroup; }>
+export type AnimationMixerProps = Node<AnimationMixer, typeof AnimationMixer, { root: Object3D | AnimationObjectGroup; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

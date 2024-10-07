@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { LineSegmentsGeometry } from 'three/examples/jsm/lines/LineSegmentsGeometry.js'
 export * from 'three/examples/jsm/lines/LineSegmentsGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../src/core/InstancedBufferGeometry'
 
@@ -27,27 +27,38 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lineSegmentsGeometry: string[]
+        lineSegmentsGeometry: typeof lineSegmentsGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lineSegmentsGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lineSegmentsGeometry: typeof _lineSegmentsGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineSegmentsGeometry.d.ts
 
-consParams.lineSegmentsGeometry = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineSegmentsGeometry.d.ts    
+const lineSegmentsGeometry = ([
+] as const).distinct()
+consParams.lineSegmentsGeometry = lineSegmentsGeometry
 
-objParams.lineSegmentsGeometry = [...objParams.instancedBufferGeometry,
-].distinct()
 
-export type LineSegmentsGeometryProps = Object3DNode<LineSegmentsGeometry, typeof LineSegmentsGeometry, {}>
+
+const _lineSegmentsGeometry = ([...objProps.instancedBufferGeometry,
+    'applyMatrix4',
+    'computeBoundingBox',
+    'computeBoundingSphere',
+    'fromEdgesGeometry',
+    'fromLineSegments',
+    'fromMesh',
+    'fromWireframeGeometry',
+    'setColors',
+    'setPositions',
+] as const).distinct()
+objProps.lineSegmentsGeometry = _lineSegmentsGeometry
+
+export type LineSegmentsGeometryProps = Node<LineSegmentsGeometry, typeof LineSegmentsGeometry, {}>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

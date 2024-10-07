@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/effects/ParallaxBarrierEffect.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        parallaxBarrierEffect: string[]
+        parallaxBarrierEffect: typeof parallaxBarrierEffect
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        parallaxBarrierEffect: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        parallaxBarrierEffect: typeof _parallaxBarrierEffect
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\ParallaxBarrierEffect.d.ts
 
-consParams.parallaxBarrierEffect = [
+
+const parallaxBarrierEffect = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.parallaxBarrierEffect = parallaxBarrierEffect
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\ParallaxBarrierEffect.d.ts
 
-objParams.parallaxBarrierEffect = [
-].distinct()
+
+const _parallaxBarrierEffect = ([
+] as const).distinct()
+objProps.parallaxBarrierEffect = _parallaxBarrierEffect
 
 export type ParallaxBarrierEffectProps = Node<ParallaxBarrierEffect, typeof ParallaxBarrierEffect, { renderer: WebGLRenderer; }>
 

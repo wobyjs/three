@@ -3,8 +3,9 @@ import { Uniform } from 'three/src/core/Uniform.js'
 export { Uniform } from 'three/src/core/Uniform.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        uniform: string[]
+        uniform: typeof uniform
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        uniform: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        uniform: typeof _uniform
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Uniform.d.ts
+
 /**
  * Uniforms are global GlSL variables.
  * They are passed to shader programs.
@@ -55,15 +56,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Uniform.js}
  */
 
-consParams.uniform = [
+const uniform = ([
     /**
      * Create a new instance of {@link THREE.Uniform}
      * @param value An object containing the value to set up the uniform. It's type must be one of the Uniform Types described above.
      */
     'value',
-].distinct()
+] as const).distinct()
+consParams.uniform = uniform
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Uniform.d.ts
+
 /**
  * Uniforms are global GlSL variables.
  * They are passed to shader programs.
@@ -83,12 +85,13 @@ consParams.uniform = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Uniform.js | Source}
  */
 
-objParams.uniform = [
+const _uniform = ([
     /**
      * Current value of the uniform.
      */
     'value',
-].distinct()
+] as const).distinct()
+objProps.uniform = _uniform
 
 export type UniformProps<T = any> = Node<Uniform<T>, typeof Uniform<T>, { value: T; }>
 

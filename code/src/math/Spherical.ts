@@ -3,8 +3,9 @@ import { Spherical } from 'three/src/math/Spherical.js'
 export { Spherical } from 'three/src/math/Spherical.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,27 +26,28 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        spherical: string[]
+        spherical: typeof spherical
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        spherical: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        spherical: typeof _spherical
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Spherical.d.ts
 
-consParams.spherical = [
+
+const spherical = ([
     'radius',
     'phi',
     'theta',
-].distinct()
+] as const).distinct()
+consParams.spherical = spherical
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Spherical.d.ts
 
-objParams.spherical = [
+
+const _spherical = ([
     /**
      * @default 1
      */
@@ -58,7 +60,8 @@ objParams.spherical = [
      * @default 0
      */
     'theta',
-].distinct()
+] as const).distinct()
+objProps.spherical = _spherical
 
 export type SphericalProps = Node<Spherical, typeof Spherical, { radius?: number; phi?: number; theta?: number; }>
 

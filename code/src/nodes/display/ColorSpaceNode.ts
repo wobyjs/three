@@ -1,11 +1,13 @@
 import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
-import ColorSpaceNode, { ColorSpaceNodeMethod } from 'three/src/nodes/display/ColorSpaceNode.js'
+import ColorSpaceNode from 'three/src/nodes/display/ColorSpaceNode.js'
 export { ColorSpaceNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/TempNode'
+import { ColorSpace } from 'three/src/constants'
 
 declare module '../../../lib/3/three'
 {
@@ -26,35 +28,37 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        colorSpaceNode: string[]
+        colorSpaceNode: typeof colorSpaceNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        colorSpaceNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        colorSpaceNode: typeof _colorSpaceNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ColorSpaceNode.d.ts
 
-consParams.colorSpaceNode = [
+
+const colorSpaceNode = ([
     'method',
     'node',
-].distinct()
+] as const).distinct()
+consParams.colorSpaceNode = colorSpaceNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ColorSpaceNode.d.ts    
 
-objParams.colorSpaceNode = [...objParams.tempNode,
+
+const _colorSpaceNode = ([...objProps.tempNode,
     'method',
     'node',
-].distinct()
+] as const).distinct()
+objProps.colorSpaceNode = _colorSpaceNode
 
-export type ColorSpaceNodeProps = Node<ColorSpaceNode, typeof ColorSpaceNode, { method: ColorSpaceNodeMethod | null; node: ENode; }>
+export type ColorSpaceNodeProps = Node<ColorSpaceNode, typeof ColorSpaceNode, { colorNode: ENode, target?: ColorSpace | null, source?: ColorSpace | null }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        colorSpaceNode: Partial<{ method: ColorSpaceNodeMethod | null; node: ENode; }>
+        colorSpaceNode: Partial<{ colorNode: ENode, target?: ColorSpace | null, source?: ColorSpace | null }>
     }
 }
 

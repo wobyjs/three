@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/misc/MorphBlendMesh.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,29 +28,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        morphBlendMesh: string[]
+        morphBlendMesh: typeof morphBlendMesh
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        morphBlendMesh: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        morphBlendMesh: typeof _morphBlendMesh
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MorphBlendMesh.d.ts
 
-consParams.morphBlendMesh = [
+
+const morphBlendMesh = ([
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.morphBlendMesh = morphBlendMesh
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MorphBlendMesh.d.ts    
 
-objParams.morphBlendMesh = [...objParams.mesh,
+
+const _morphBlendMesh = ([...objProps.mesh,
     'animationsMap',
     'animationsList',
-].distinct()
+] as const).distinct()
+objProps.morphBlendMesh = _morphBlendMesh
 
 export type MorphBlendMeshProps = Object3DNode<MorphBlendMesh, typeof MorphBlendMesh, { geometry: BufferGeometry; material: Material; }>
 

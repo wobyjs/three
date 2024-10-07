@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/OBJLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        objLoader: string[]
+        objLoader: typeof objLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        objLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        objLoader: typeof _objLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\OBJLoader.d.ts
 
-consParams.objLoader = [
+
+const objLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.objLoader = objLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\OBJLoader.d.ts    
 
-objParams.objLoader = [...objParams.loader,
+
+const _objLoader = ([...objProps.loader,
     'materials',
-].distinct()
+] as const).distinct()
+objProps.objLoader = _objLoader
 
 export type OBJLoaderProps = Node<OBJLoader, typeof OBJLoader, { manager?: LoadingManager; }>
 

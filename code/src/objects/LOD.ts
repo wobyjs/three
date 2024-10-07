@@ -3,8 +3,9 @@ import { LOD } from 'three/src/objects/LOD.js'
 export { LOD } from 'three/src/objects/LOD.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        lod: string[]
+        lod: typeof lod
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lod: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lod: typeof _lod
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\LOD.d.ts
+
 /**
  * Every level is associated with an object, and rendering can be switched between them at the distances specified
  * @remarks
@@ -56,10 +57,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LOD.js}
  */
 
-consParams.lod = [
-].distinct()
+const lod = ([
+] as const).distinct()
+consParams.lod = lod
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\LOD.d.ts
+
 /**
  * Every level is associated with an object, and rendering can be switched between them at the distances specified
  * @remarks
@@ -80,7 +82,7 @@ consParams.lod = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LOD.js | Source}
  */
 
-objParams.lod = [
+const _lod = ([
     /**
      * An array of level objects
      */
@@ -91,7 +93,8 @@ objParams.lod = [
      * @defaultValue `true`
      */
     'autoUpdate',
-].distinct()
+] as const).distinct()
+objProps.lod = _lod
 
 export type LODProps = Object3DNode<LOD, typeof LOD, {}>
 

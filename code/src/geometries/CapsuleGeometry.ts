@@ -3,8 +3,9 @@ import { CapsuleGeometry } from 'three/src/geometries/CapsuleGeometry.js'
 export { CapsuleGeometry } from 'three/src/geometries/CapsuleGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        capsuleGeometry: string[]
+        capsuleGeometry: typeof capsuleGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        capsuleGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        capsuleGeometry: typeof _capsuleGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\CapsuleGeometry.d.ts
+
 /**
  * {@link CapsuleGeometry} is a geometry class for a capsule with given radii and height
  * @remarks It is constructed using a lathe.
@@ -52,7 +53,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CapsuleGeometry.js}
  */
 
-consParams.capsuleGeometry = [
+const capsuleGeometry = ([
     /**
      * Create a new instance of {@link CapsuleGeometry}
      * @param radius Radius of the capsule. Expects a `Float`. Default `1`
@@ -64,9 +65,10 @@ consParams.capsuleGeometry = [
     'length',
     'capSegments',
     'radialSegments',
-].distinct()
+] as const).distinct()
+consParams.capsuleGeometry = capsuleGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\CapsuleGeometry.d.ts
+
 /**
  * {@link CapsuleGeometry} is a geometry class for a capsule with given radii and height
  * @remarks It is constructed using a lathe.
@@ -83,8 +85,9 @@ consParams.capsuleGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CapsuleGeometry.js | Source}
  */
 
-objParams.capsuleGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _capsuleGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.capsuleGeometry = _capsuleGeometry
 
 export type CapsuleGeometryProps = BufferGeometryNode<CapsuleGeometry, typeof CapsuleGeometry, { radius?: number; length?: number; capSegments?: number; radialSegments?: number; }>
 

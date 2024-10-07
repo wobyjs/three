@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/TiltLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tiltLoader: string[]
+        tiltLoader: typeof tiltLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tiltLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tiltLoader: typeof _tiltLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TiltLoader.d.ts
 
-consParams.tiltLoader = [
+
+const tiltLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.tiltLoader = tiltLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TiltLoader.d.ts    
 
-objParams.tiltLoader = [...objParams.loader,
-].distinct()
+
+const _tiltLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.tiltLoader = _tiltLoader
 
 
 export type TiltLoaderProps = Node<TiltLoader, typeof TiltLoader, { manager?: LoadingManager; }>

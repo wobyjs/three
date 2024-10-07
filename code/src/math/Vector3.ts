@@ -3,8 +3,9 @@ import { Vector3 } from 'three/src/math/Vector3.js'
 export { Vector3 } from 'three/src/math/Vector3.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,22 +26,23 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        vector3: string[]
-        vector3Like: string[]
+        vector3: typeof vector3
+        vector3Like: typeof vector3Like
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        vector3: string[]
-        vector3Like: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        vector3: typeof _vector3
+        vector3Like: typeof _vector3Like
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Vector3.d.ts
 
-consParams.vector3Like = [
-].distinct()
+
+const vector3Like = ([
+] as const).distinct()
+consParams.vector3Like = vector3Like
 
 /**
  * 3d vector.
@@ -54,7 +56,7 @@ consParams.vector3Like = [
  * c.crossVectors( a, b ,
  */
 
-consParams.vector3 = [
+const vector3 = ([
     /**
      * @default 0
      */
@@ -67,12 +69,14 @@ consParams.vector3 = [
      * @default 0
      */
     'z',
-].distinct()
+] as const).distinct()
+consParams.vector3 = vector3
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Vector3.d.ts
 
-objParams.vector3Like = [
-].distinct()
+
+const _vector3Like = ([
+] as const).distinct()
+objProps.vector3Like = _vector3Like
 
 /**
  * 3d vector.
@@ -86,7 +90,7 @@ objParams.vector3Like = [
  * c.crossVectors( a, b )
  */
 
-objParams.vector3 = [
+const _vector3 = ([
     /**
      * @default 0
      */
@@ -99,7 +103,8 @@ objParams.vector3 = [
      * @default 0
      */
     'z',
-].distinct()
+] as const).distinct()
+objProps.vector3 = _vector3
 
 export type Vector3Props = Node<Vector3, typeof Vector3, { x?: number; y?: number; z?: number; }>
 

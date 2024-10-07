@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { WebXRController } from 'three/src/renderers/webxr/WebXRController.js'
 export { WebXRController } from 'three/src/renderers/webxr/WebXRController.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../src/objects/Group'
 
@@ -26,41 +26,43 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webxrController: string[]
-        xrJointSpace: string[]
-        xrHandInputState: string[]
-        webXrSpaceEventMap: string[]
-        xrHandSpace: string[]
-        xrTargetRaySpace: string[]
-        xrGripSpace: string[]
-        webXrController: string[]
+        webxrController: typeof webXrController
+        xrJointSpace: typeof xrJointSpace
+        xrHandInputState: typeof xrHandInputState
+        webXrSpaceEventMap: typeof webXrSpaceEventMap
+        xrHandSpace: typeof xrHandSpace
+        xrTargetRaySpace: typeof xrTargetRaySpace
+        xrGripSpace: typeof xrGripSpace
+        webXrController: typeof webXrController
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webxrController: string[]
-        xrJointSpace: string[]
-        xrHandInputState: string[]
-        webXrSpaceEventMap: string[]
-        xrHandSpace: string[]
-        xrTargetRaySpace: string[]
-        xrGripSpace: string[]
-        webXrController: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webxrController: typeof _webXrController
+        xrJointSpace: typeof _xrJointSpace
+        xrHandInputState: typeof _xrHandInputState
+        webXrSpaceEventMap: typeof _webXrSpaceEventMap
+        xrHandSpace: typeof _xrHandSpace
+        xrTargetRaySpace: typeof _xrTargetRaySpace
+        xrGripSpace: typeof _xrGripSpace
+        webXrController: typeof _webXrController
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webxr\WebXRController.d.ts
-
-consParams.xrJointSpace = [
-].distinct()
 
 
-consParams.xrHandInputState = [
+const xrJointSpace = ([
+] as const).distinct()
+consParams.xrJointSpace = xrJointSpace
+
+
+const xrHandInputState = ([
     'pinching',
-].distinct()
+] as const).distinct()
+consParams.xrHandInputState = xrHandInputState
 
-consParams.webXrSpaceEventMap = [
+const webXrSpaceEventMap = ([
     'select',
     'selectstart',
     'selectend',
@@ -72,37 +74,44 @@ consParams.webXrSpaceEventMap = [
     'pinchend',
     'pinchstart',
     'move',
-].distinct()
+] as const).distinct()
+consParams.webXrSpaceEventMap = webXrSpaceEventMap
 
 
-consParams.xrHandSpace = [
-].distinct()
+const xrHandSpace = ([
+] as const).distinct()
+consParams.xrHandSpace = xrHandSpace
 
 
-consParams.xrTargetRaySpace = [
-].distinct()
+const xrTargetRaySpace = ([
+] as const).distinct()
+consParams.xrTargetRaySpace = xrTargetRaySpace
 
 
-consParams.xrGripSpace = [
-].distinct()
+const xrGripSpace = ([
+] as const).distinct()
+consParams.xrGripSpace = xrGripSpace
 
 
-consParams.webXrController = [
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webxr\WebXRController.d.ts    
-
-objParams.xrJointSpace = [...objParams.group,
-].distinct()
+const webXrController = ([
+] as const).distinct()
+consParams.webXrController = webXrController
 
 
 
-objParams.xrHandInputState = [
+const _xrJointSpace = ([...objProps.group,
+] as const).distinct()
+objProps.xrJointSpace = _xrJointSpace
+
+
+
+const _xrHandInputState = ([
     'pinching',
-].distinct()
+] as const).distinct()
+objProps.xrHandInputState = _xrHandInputState
 
 
-objParams.webXrSpaceEventMap = [...objParams.object3dEventMap,
+const _webXrSpaceEventMap = ([...objProps.object3dEventMap,
     'select',
     'selectstart',
     'selectend',
@@ -114,25 +123,30 @@ objParams.webXrSpaceEventMap = [...objParams.object3dEventMap,
     'pinchend',
     'pinchstart',
     'move',
-].distinct()
+] as const).distinct()
+objProps.webXrSpaceEventMap = _webXrSpaceEventMap
 
-objParams.xrHandSpace = [...objParams.group,
-].distinct()
+const _xrHandSpace = ([...objProps.group,
+] as const).distinct()
+objProps.xrHandSpace = _xrHandSpace
 
-objParams.xrTargetRaySpace = [...objParams.group,
+const _xrTargetRaySpace = ([...objProps.group,
     'hasLinearVelocity',
     'hasAngularVelocity',
-].distinct()
+] as const).distinct()
+objProps.xrTargetRaySpace = _xrTargetRaySpace
 
-objParams.xrGripSpace = [...objParams.group,
+const _xrGripSpace = ([...objProps.group,
     'hasLinearVelocity',
     'hasAngularVelocity',
-].distinct()
+] as const).distinct()
+objProps.xrGripSpace = _xrGripSpace
 
-objParams.webXrController = [
-].distinct()
+const _webXrController = ([
+] as const).distinct()
+objProps.webXrController = _webXrController
 
-export type WebXRControllerProps = Object3DNode<WebXRController, typeof WebXRController, {}>
+export type WebXRControllerProps = Node<WebXRController, typeof WebXRController, {}>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/postprocessing/SAOPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -29,21 +29,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        saoPass: string[]
-        saoPassParams: string[]
+        saoPass: typeof saoPass
+        saoPassParams: typeof saoPassParams
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        saoPass: string[]
-        saoPassParams: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        saoPass: typeof _saoPass
+        saoPassParams: typeof _saoPassParams
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SAOPass.d.ts
 
-consParams.saoPassParams = [
+
+const saoPassParams = ([
     'output',
     'saoBias',
     'saoIntensity',
@@ -54,18 +54,20 @@ consParams.saoPassParams = [
     'saoBlurRadius',
     'saoBlurStdDev',
     'saoBlurDepthCutoff',
-].distinct()
+] as const).distinct()
+consParams.saoPassParams = saoPassParams
 
 
-consParams.saoPass = [
+const saoPass = ([
     'scene',
     'camera',
     'resolution',
-].distinct()
+] as const).distinct()
+consParams.saoPass = saoPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SAOPass.d.ts
 
-objParams.saoPassParams = [
+
+const _saoPassParams = ([
     'output',
     'saoBias',
     'saoIntensity',
@@ -76,10 +78,11 @@ objParams.saoPassParams = [
     'saoBlurRadius',
     'saoBlurStdDev',
     'saoBlurDepthCutoff',
-].distinct()
+] as const).distinct()
+objProps.saoPassParams = _saoPassParams
 
 
-objParams.saoPass = [...objParams.pass,
+const _saoPass = ([...objProps.pass,
     'scene',
     'camera',
     'originalClearColor',
@@ -96,7 +99,8 @@ objParams.saoPass = [...objParams.pass,
     'materialCopy',
     'fsQuad',
     'params',
-].distinct()
+] as const).distinct()
+objProps.saoPass = _saoPass
 
 export type SAOPassProps = Node<SAOPass, typeof SAOPass, { scene: Scene; camera: Camera; resolution?: Vector2; }>
 

@@ -1,10 +1,10 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { InterpolationModes } from 'three/src/constants.js'
 import { NumberKeyframeTrack } from 'three/src/animation/tracks/NumberKeyframeTrack.js'
 export { NumberKeyframeTrack } from 'three/src/animation/tracks/NumberKeyframeTrack.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,35 +26,37 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        numberKeyframeTrack: string[]
+        numberKeyframeTrack: typeof numberKeyframeTrack
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        numberKeyframeTrack: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        numberKeyframeTrack: typeof _numberKeyframeTrack
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\NumberKeyframeTrack.d.ts
 
-consParams.numberKeyframeTrack = [
+
+const numberKeyframeTrack = ([
     'name',
     'times',
     'values',
     'interpolation',
-].distinct()
+] as const).distinct()
+consParams.numberKeyframeTrack = numberKeyframeTrack
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\animation\tracks\NumberKeyframeTrack.d.ts    
 
-objParams.numberKeyframeTrack = [...objParams.keyframeTrack,
+
+const _numberKeyframeTrack = ([...objProps.keyframeTrack,
     /**
      * @default 'number'
      */
     'ValueTypeName',
-].distinct()
+] as const).distinct()
+objProps.numberKeyframeTrack = _numberKeyframeTrack
 
-export type NumberKeyframeTrackProps = Object3DNode<NumberKeyframeTrack, typeof NumberKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<number>; interpolation?: InterpolationModes; }>
+export type NumberKeyframeTrackProps = Node<NumberKeyframeTrack, typeof NumberKeyframeTrack, { name: string; times: ArrayLike<number>; values: ArrayLike<number>; interpolation?: InterpolationModes; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

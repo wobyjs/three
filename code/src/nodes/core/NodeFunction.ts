@@ -4,7 +4,7 @@ import NodeFunction from 'three/src/nodes/core/NodeFunction.js'
 export { NodeFunction }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,34 +26,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeFunction: string[]
+        nodeFunction: typeof nodeFunction
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeFunction: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeFunction: typeof _nodeFunction
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeFunction.d.ts
 
-consParams.nodeFunction = [
+
+const nodeFunction = ([
     'type',
     'inputs',
     'name',
     'presicion',
-].distinct()
+] as const).distinct()
+consParams.nodeFunction = nodeFunction
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeFunction.d.ts
 
-objParams.nodeFunction = [
+
+const _nodeFunction = ([
     'isNodeFunction',
     'type',
     'inputs',
     'name',
     'presicion',
-].distinct()
+] as const).distinct()
+objProps.nodeFunction = _nodeFunction
 
 export type NodeFunctionProps = Node<NodeFunction, typeof NodeFunction, { type: string; inputs: NodeFunctionInput[]; name?: string; presicion?: string; }>
 

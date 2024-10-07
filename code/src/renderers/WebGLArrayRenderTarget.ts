@@ -4,8 +4,9 @@ import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGLArrayRenderTarget } from 'three/src/renderers/WebGLArrayRenderTarget.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './WebGLRenderTarget'
 
 declare module '../../lib/3/three'
@@ -27,22 +28,22 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        webglArrayRenderTarget: string[]
+        webglArrayRenderTarget: typeof webglArrayRenderTarget
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        webglArrayRenderTarget: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        webglArrayRenderTarget: typeof _webglArrayRenderTarget
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlArrayRenderTarget.d.ts
+
 /**
  * This type of render target represents an array of textures.
  */
 
-consParams.webglArrayRenderTarget = [
+const webglArrayRenderTarget = ([
     /**
      * Creates a new WebGlArrayRenderTarget.
      *
@@ -56,14 +57,15 @@ consParams.webglArrayRenderTarget = [
     'height',
     'depth',
     'options',
-].distinct()
+] as const).distinct()
+consParams.webglArrayRenderTarget = webglArrayRenderTarget
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlArrayRenderTarget.d.ts
+
 /**
  * This type of render target represents an array of textures.
  */
 
-objParams.webglArrayRenderTarget = [...objParams.webglRenderTarget,
+const _webglArrayRenderTarget = ([...objProps.webglRenderTarget,
     /**
      * Creates a new WebGlArrayRenderTarget.
      *
@@ -78,7 +80,8 @@ objParams.webglArrayRenderTarget = [...objParams.webglRenderTarget,
      * The texture property is overwritten with an instance of {@link DataArrayTexture}.
      */
     'texture',
-].distinct()
+] as const).distinct()
+objProps.webglArrayRenderTarget = _webglArrayRenderTarget
 
 export type WebGLArrayRenderTargetProps = Node<WebGLArrayRenderTarget, typeof WebGLArrayRenderTarget, { width?: number; height?: number; depth?: number; options?: RenderTargetOptions; }>
 

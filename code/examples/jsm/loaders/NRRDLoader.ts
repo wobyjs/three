@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/NRRDLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nrrdLoader: string[]
+        nrrdLoader: typeof nrrdLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nrrdLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nrrdLoader: typeof _nrrdLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\NRRDLoader.d.ts
 
-consParams.nrrdLoader = [
+
+const nrrdLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.nrrdLoader = nrrdLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\NRRDLoader.d.ts    
 
-objParams.nrrdLoader = [...objParams.loader,
+
+const _nrrdLoader = ([...objProps.loader,
     'manager',
     'path',
     'fieldFunctions',
-].distinct()
+] as const).distinct()
+objProps.nrrdLoader = _nrrdLoader
 
 export type NRRDLoaderProps = Node<NRRDLoader, typeof NRRDLoader, { manager?: LoadingManager; }>
 

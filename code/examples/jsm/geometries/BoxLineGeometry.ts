@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/geometries/BoxLineGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        boxLineGeometry: string[]
+        boxLineGeometry: typeof boxLineGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        boxLineGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        boxLineGeometry: typeof _boxLineGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\BoxLineGeometry.d.ts
 
-consParams.boxLineGeometry = [
+
+const boxLineGeometry = ([
 
     'width',
     'height',
@@ -46,12 +46,14 @@ consParams.boxLineGeometry = [
     'widthSegments',
     'heightSegments',
     'depthSegments',
-].distinct()
+] as const).distinct()
+consParams.boxLineGeometry = boxLineGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\BoxLineGeometry.d.ts    
 
-objParams.boxLineGeometry = [...objParams.bufferGeometry,
-].distinct()
+
+const _boxLineGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.boxLineGeometry = _boxLineGeometry
 
 
 export type BoxLineGeometryProps = BufferGeometryNode<BoxLineGeometry, typeof BoxLineGeometry, { width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number; }>

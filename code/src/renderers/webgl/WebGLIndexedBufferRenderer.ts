@@ -3,7 +3,7 @@ import { WebGLIndexedBufferRenderer } from 'three/src/renderers/webgl/WebGLIndex
 export { WebGLIndexedBufferRenderer } from 'three/src/renderers/webgl/WebGLIndexedBufferRenderer.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,34 +25,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglIndexedBufferRenderer: string[]
+        webglIndexedBufferRenderer: typeof webglIndexedBufferRenderer
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglIndexedBufferRenderer: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglIndexedBufferRenderer: typeof _webglIndexedBufferRenderer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlIndexedBufferRenderer.d.ts
 
-consParams.webglIndexedBufferRenderer = [
+
+const webglIndexedBufferRenderer = ([
     'gl',
     'extensions',
     'info',
-].distinct()
+] as const).distinct()
+consParams.webglIndexedBufferRenderer = webglIndexedBufferRenderer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlIndexedBufferRenderer.d.ts
 
-objParams.webglIndexedBufferRenderer = [
+
+const _webglIndexedBufferRenderer = ([
     'setMode',
     'setIndex',
     'render',
     'renderInstances',
     'renderMultiDraw',
     'renderMultiDrawInstances',
-].distinct()
+] as const).distinct()
+objProps.webglIndexedBufferRenderer = _webglIndexedBufferRenderer
 
 export type WebGLIndexedBufferRendererProps = Node<WebGLIndexedBufferRenderer, typeof WebGLIndexedBufferRenderer, { gl: WebGLRenderingContext; extensions: any; info: any; }>
 

@@ -3,7 +3,7 @@ import { MMDAnimationHelperParameter, MMDAnimationHelper } from 'three/examples/
 export * from 'three/examples/jsm/animation/MMDAnimationHelper.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,40 +25,41 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        mmdAnimationHelper: string[]
-        mmdAnimationHelperParameter: string[]
-        mmdAnimationHelperAddParameter: string[]
-        mmdAnimationHelperPoseParameter: string[]
-        mmdAnimationHelperMixer: string[]
-        audioManagerParameter: string[]
-        audioManager: string[]
-        grantSolver: string[]
+        mmdAnimationHelper: typeof mmdAnimationHelper
+        mmdAnimationHelperParameter: typeof mmdAnimationHelperParameter
+        mmdAnimationHelperAddParameter: typeof mmdAnimationHelperAddParameter
+        mmdAnimationHelperPoseParameter: typeof mmdAnimationHelperPoseParameter
+        mmdAnimationHelperMixer: typeof mmdAnimationHelperMixer
+        audioManagerParameter: typeof audioManagerParameter
+        audioManager: typeof audioManager
+        grantSolver: typeof grantSolver
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        mmdAnimationHelper: string[]
-        mmdAnimationHelperParameter: string[]
-        mmdAnimationHelperAddParameter: string[]
-        mmdAnimationHelperPoseParameter: string[]
-        mmdAnimationHelperMixer: string[]
-        audioManagerParameter: string[]
-        audioManager: string[]
-        grantSolver: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        mmdAnimationHelper: typeof _mmdAnimationHelper
+        mmdAnimationHelperParameter: typeof _mmdAnimationHelperParameter
+        mmdAnimationHelperAddParameter: typeof _mmdAnimationHelperAddParameter
+        mmdAnimationHelperPoseParameter: typeof _mmdAnimationHelperPoseParameter
+        mmdAnimationHelperMixer: typeof _mmdAnimationHelperMixer
+        audioManagerParameter: typeof _audioManagerParameter
+        audioManager: typeof _audioManager
+        grantSolver: typeof _grantSolver
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\MMDAnimationHelper.d.ts
 
-consParams.mmdAnimationHelperParameter = [
+
+const mmdAnimationHelperParameter = ([
     'sync',
     'afterglow',
     'resetPhysicsOnLoop',
     'pmxAnimation',
-].distinct()
+] as const).distinct()
+consParams.mmdAnimationHelperParameter = mmdAnimationHelperParameter
 
-consParams.mmdAnimationHelperAddParameter = [
+const mmdAnimationHelperAddParameter = ([
     'animation',
     'physics',
     'warmup',
@@ -66,52 +67,60 @@ consParams.mmdAnimationHelperAddParameter = [
     'maxStepNum',
     'gravity',
     'delayTime',
-].distinct()
+] as const).distinct()
+consParams.mmdAnimationHelperAddParameter = mmdAnimationHelperAddParameter
 
-consParams.mmdAnimationHelperPoseParameter = [
+const mmdAnimationHelperPoseParameter = ([
     'resetPose',
     'ik',
     'grant',
-].distinct()
+] as const).distinct()
+consParams.mmdAnimationHelperPoseParameter = mmdAnimationHelperPoseParameter
 
-consParams.mmdAnimationHelperMixer = [
+const mmdAnimationHelperMixer = ([
     'looped',
     'mixer',
     'ikSolver',
     'grantSolver',
     'physics',
     'duration',
-].distinct()
+] as const).distinct()
+consParams.mmdAnimationHelperMixer = mmdAnimationHelperMixer
 
-consParams.mmdAnimationHelper = [
+const mmdAnimationHelper = ([
     'params',
-].distinct()
+] as const).distinct()
+consParams.mmdAnimationHelper = mmdAnimationHelper
 
-consParams.audioManagerParameter = [
+const audioManagerParameter = ([
     'delayTime',
-].distinct()
+] as const).distinct()
+consParams.audioManagerParameter = audioManagerParameter
 
-consParams.audioManager = [
+const audioManager = ([
     'audio',
     'params',
-].distinct()
+] as const).distinct()
+consParams.audioManager = audioManager
 
-consParams.grantSolver = [
+const grantSolver = ([
     'mesh',
     'grants',
-].distinct()
+] as const).distinct()
+consParams.grantSolver = grantSolver
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\animation\MMDAnimationHelper.d.ts
 
-objParams.mmdAnimationHelperParameter = [
+
+const _mmdAnimationHelperParameter = ([
     'sync',
     'afterglow',
     'resetPhysicsOnLoop',
     'pmxAnimation',
-].distinct()
+] as const).distinct()
+objProps.mmdAnimationHelperParameter = _mmdAnimationHelperParameter
 
 
-objParams.mmdAnimationHelperAddParameter = [
+const _mmdAnimationHelperAddParameter = ([
     'animation',
     'physics',
     'warmup',
@@ -119,27 +128,30 @@ objParams.mmdAnimationHelperAddParameter = [
     'maxStepNum',
     'gravity',
     'delayTime',
-].distinct()
+] as const).distinct()
+objProps.mmdAnimationHelperAddParameter = _mmdAnimationHelperAddParameter
 
 
-objParams.mmdAnimationHelperPoseParameter = [
+const _mmdAnimationHelperPoseParameter = ([
     'resetPose',
     'ik',
     'grant',
-].distinct()
+] as const).distinct()
+objProps.mmdAnimationHelperPoseParameter = _mmdAnimationHelperPoseParameter
 
 
-objParams.mmdAnimationHelperMixer = [
+const _mmdAnimationHelperMixer = ([
     'looped',
     'mixer',
     'ikSolver',
     'grantSolver',
     'physics',
     'duration',
-].distinct()
+] as const).distinct()
+objProps.mmdAnimationHelperMixer = _mmdAnimationHelperMixer
 
 
-objParams.mmdAnimationHelper = [
+const _mmdAnimationHelper = ([
     'meshes',
     'camera',
     'cameraTarget',
@@ -151,28 +163,32 @@ objParams.mmdAnimationHelper = [
     'onBeforePhysics',
     'sharedPhysics',
     'masterPhysics',
-].distinct()
+] as const).distinct()
+objProps.mmdAnimationHelper = _mmdAnimationHelper
 
 
-objParams.audioManagerParameter = [
+const _audioManagerParameter = ([
     'delayTime',
-].distinct()
+] as const).distinct()
+objProps.audioManagerParameter = _audioManagerParameter
 
 
-objParams.audioManager = [
+const _audioManager = ([
     'audio',
     'elapsedTime',
     'currentTime',
     'delayTime',
     'audioDuration',
     'duration',
-].distinct()
+] as const).distinct()
+objProps.audioManager = _audioManager
 
 
-objParams.grantSolver = [
+const _grantSolver = ([
     'mesh',
     'grants',
-].distinct()
+] as const).distinct()
+objProps.grantSolver = _grantSolver
 
 export type MMDAnimationHelperProps = Node<MMDAnimationHelper, typeof MMDAnimationHelper, MMDAnimationHelperParameter>
 

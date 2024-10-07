@@ -3,8 +3,9 @@ import { Scene } from 'three/src/scenes/Scene.js'
 export { Scene } from 'three/src/scenes/Scene.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../core/Object3D'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        scene: string[]
+        scene: typeof scene
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        scene: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        scene: typeof _scene
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\scenes\Scene.d.ts
+
 /**
  * Scenes allow you to set up what and where is to be rendered by three.js
  * @remarks
@@ -47,10 +48,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/Scene.js}
  */
 
-consParams.scene = [
-].distinct()
+const scene = ([
+] as const).distinct()
+consParams.scene = scene
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\scenes\Scene.d.ts
+
 /**
  * Scenes allow you to set up what and where is to be rendered by three.js
  * @remarks
@@ -61,7 +63,7 @@ consParams.scene = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/Scene.js | Source}
  */
 
-objParams.scene = [...objParams.object3d,
+const _scene = ([...objProps.object3d,
     /**
      * @defaultValue `Scene`
      */
@@ -117,7 +119,8 @@ objParams.scene = [...objParams.object3d,
      * {@link .environment} is used. Default is `(0,0,0)`.
      */
     'environmentRotation',
-].distinct()
+] as const).distinct()
+objProps.scene = _scene
 
 export type SceneProps = Node<Scene, typeof Scene, {}>
 

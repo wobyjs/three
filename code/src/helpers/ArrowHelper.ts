@@ -4,8 +4,9 @@ import { ArrowHelper } from 'three/src/helpers/ArrowHelper.js'
 export { ArrowHelper } from 'three/src/helpers/ArrowHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../../src/core/Object3D'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        arrowHelper: string[]
+        arrowHelper: typeof arrowHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        arrowHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        arrowHelper: typeof _arrowHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\ArrowHelper.d.ts
+
 /**
  * An 3d arrow object for visualizing directions.
  * @example
@@ -56,7 +57,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/ArrowHelper.js}
  */
 
-consParams.arrowHelper = [
+const arrowHelper = ([
     /**
      * Create a new instance of {@link ArrowHelper}
      * @param dir Direction from origin. Must be a unit vector. Default `new THREE.Vector3(0, 0, 1)`
@@ -73,9 +74,10 @@ consParams.arrowHelper = [
     'color',
     'headLength',
     'headWidth',
-].distinct()
+] as const).distinct()
+consParams.arrowHelper = arrowHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\ArrowHelper.d.ts
+
 /**
  * An 3d arrow object for visualizing directions.
  * @example
@@ -94,7 +96,7 @@ consParams.arrowHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/ArrowHelper.js | Source}
  */
 
-objParams.arrowHelper = [...objParams.object3d,
+const _arrowHelper = ([...objProps.object3d,
     /**
      * Contains the line part of the arrowHelper.
      */
@@ -103,7 +105,8 @@ objParams.arrowHelper = [...objParams.object3d,
      * Contains the cone part of the arrowHelper.
      */
     'cone',
-].distinct()
+] as const).distinct()
+objProps.arrowHelper = _arrowHelper
 
 export type ArrowHelperProps = Object3DNode<ArrowHelper, typeof ArrowHelper, { dir?: Vector3; origin?: Vector3; length?: number; color?: ColorRepresentation; headLength?: number; headWidth?: number; }>
 

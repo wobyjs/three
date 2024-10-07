@@ -3,8 +3,9 @@ import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Camera'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        perspectiveCamera: string[]
+        perspectiveCamera: typeof perspectiveCamera
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        perspectiveCamera: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        perspectiveCamera: typeof _perspectiveCamera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\PerspectiveCamera.d.ts
+
 /**
  * Camera that uses {@link https://en.wikipedia.org/wiki/Perspective_(graphical) projection}.
  * This projection mode is designed to mimic the way the human eye sees
@@ -56,7 +57,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/PerspectiveCamera.js}
  */
 
-consParams.perspectiveCamera = [
+const perspectiveCamera = ([
     /**
      * Creates a new {@link PerspectiveCamera}.
      * @remarks Together these define the camera's {@link https://en.wikipedia.org/wiki/Viewing_frustum frustum}.
@@ -69,9 +70,10 @@ consParams.perspectiveCamera = [
     'aspect',
     'near',
     'far',
-].distinct()
+] as const).distinct()
+consParams.perspectiveCamera = perspectiveCamera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\PerspectiveCamera.d.ts
+
 /**
  * Camera that uses {@link https://en.wikipedia.org/wiki/Perspective_(graphical) | perspective projection}.
  * This projection mode is designed to mimic the way the human eye sees
@@ -91,7 +93,7 @@ consParams.perspectiveCamera = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/PerspectiveCamera.js | Source}
  */
 
-objParams.perspectiveCamera = [...objParams.camera,
+const _perspectiveCamera = ([...objProps.camera,
     /**
   * Gets or sets the zoom factor of the camera.
   * @defaultValue `1`
@@ -150,7 +152,8 @@ objParams.perspectiveCamera = [...objParams.camera,
      * @defaultValue `0`
      */
     'filmOffset',
-].distinct()
+] as const).distinct()
+objProps.perspectiveCamera = _perspectiveCamera
 
 export type PerspectiveCameraProps = Object3DNode<PerspectiveCamera, typeof PerspectiveCamera, { fov?: number; aspect?: number; near?: number; far?: number; }>
 

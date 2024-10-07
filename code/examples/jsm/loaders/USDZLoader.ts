@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/USDZLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,36 +27,40 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        usdzLoader: string[]
-        usdaParser: string[]
+        usdzLoader: typeof usdzLoader
+        usdaParser: typeof usdaParser
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        usdzLoader: string[]
-        usdaParser: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        usdzLoader: typeof _usdzLoader
+        usdaParser: typeof _usdaParser
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\usdzLoader.d.ts
-
-consParams.usdaParser = [
-].distinct()
 
 
-consParams.usdzLoader = [
+const usdaParser = ([
+] as const).distinct()
+consParams.usdaParser = usdaParser
+
+
+const usdzLoader = ([
     'manager',
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\USDZLoader.d.ts
-
-objParams.usdaParser = [
-].distinct()
+] as const).distinct()
+consParams.usdzLoader = usdzLoader
 
 
-objParams.usdzLoader = [...objParams.loader,
-].distinct()
+
+const _usdaParser = ([
+] as const).distinct()
+objProps.usdaParser = _usdaParser
+
+
+const _usdzLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.usdzLoader = _usdzLoader
 
 export type USDZLoaderProps = Node<USDZLoader, typeof USDZLoader, { manager?: LoadingManager; }>
 

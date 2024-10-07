@@ -4,7 +4,7 @@ import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,50 +26,54 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        refractor: string[]
-        refractorOptions: string[]
+        refractor: typeof refractor
+        refractorOptions: typeof refractorOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        refractor: string[]
-        refractorOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        refractor: typeof _refractor
+        refractorOptions: typeof _refractorOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Refractor.d.ts
 
-consParams.refractorOptions = [
+
+const refractorOptions = ([
     'color',
     'textureWidth',
     'textureHeight',
     'clipBias',
     'shader',
     'multisample',
-].distinct()
+] as const).distinct()
+consParams.refractorOptions = refractorOptions
 
 
-consParams.refractor = [
+const refractor = ([
     'geometry',
     'options',
-].distinct()
+] as const).distinct()
+consParams.refractor = refractor
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Refractor.d.ts
 
-objParams.refractorOptions = [
+
+const _refractorOptions = ([
     'color',
     'textureWidth',
     'textureHeight',
     'clipBias',
     'shader',
     'multisample',
-].distinct()
+] as const).distinct()
+objProps.refractorOptions = _refractorOptions
 
 
-objParams.refractor = [...objParams.mesh,
+const _refractor = ([...objProps.mesh,
     'camera',
-].distinct()
+] as const).distinct()
+objProps.refractor = _refractor
 
 export type RefractorProps = Node<Refractor, typeof Refractor, { geometry?: BufferGeometry; options?: RefractorOptions; }>
 

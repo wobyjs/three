@@ -4,7 +4,7 @@ import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls
 export * from 'three/examples/jsm/controls/TrackballControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,40 +26,43 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        trackballControls: string[]
-        trackballControlsEventMap: string[]
+        trackballControls: typeof trackballControls
+        trackballControlsEventMap: typeof trackballControlsEventMap
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        trackballControls: string[]
-        trackballControlsEventMap: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        trackballControls: typeof _trackballControls
+        trackballControlsEventMap: typeof _trackballControlsEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\TrackballControls.d.ts
 
-consParams.trackballControlsEventMap = [
+
+const trackballControlsEventMap = ([
     'change',
     'start',
     'end',
-].distinct()
+] as const).distinct()
+consParams.trackballControlsEventMap = trackballControlsEventMap
 
-consParams.trackballControls = [
+const trackballControls = ([
     'object',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.trackballControls = trackballControls
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\TrackballControls.d.ts
 
-objParams.trackballControlsEventMap = [
+
+const _trackballControlsEventMap = ([
     'change',
     'start',
     'end',
-].distinct()
+] as const).distinct()
+objProps.trackballControlsEventMap = _trackballControlsEventMap
 
-objParams.trackballControls = [
+const _trackballControls = ([
     'object',
     'domElement',
     // API
@@ -84,7 +87,8 @@ objParams.trackballControls = [
     'position0',
     'target0',
     'up0',
-].distinct()
+] as const).distinct()
+objProps.trackballControls = _trackballControls
 
 export type TrackballControlsProps = Node<TrackballControls, typeof TrackballControls, { object: Camera; domElement: HTMLElement; }>
 

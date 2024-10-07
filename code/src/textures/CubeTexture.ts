@@ -7,8 +7,9 @@ import { CubeTexture } from 'three/src/textures/CubeTexture.js'
 export { CubeTexture } from 'three/src/textures/CubeTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -29,17 +30,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        cubeTexture: string[]
+        cubeTexture: typeof cubeTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        cubeTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        cubeTexture: typeof _cubeTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CubeTexture.d.ts
+
 /**
  * Creates a cube texture made up of six images.
  * @remarks
@@ -65,7 +66,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CubeTexture.js}
  */
 
-consParams.cubeTexture = [
+const cubeTexture = ([
     /**
      * This creates a new {@link THREE.CubeTexture} object.
      * @param images
@@ -90,9 +91,10 @@ consParams.cubeTexture = [
     'type',
     'anisotropy',
     'colorSpace',
-].distinct()
+] as const).distinct()
+consParams.cubeTexture = cubeTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\CubeTexture.d.ts
+
 /**
  * Creates a cube texture made up of six images.
  * @remarks
@@ -114,7 +116,7 @@ consParams.cubeTexture = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CubeTexture.js | Source}
  */
 
-objParams.cubeTexture = [...objParams.texture,
+const _cubeTexture = ([...objProps.texture,
     /**
      * An image object, typically created using the {@link THREE.CubeTextureLoader.load | CubeTextureLoader.load()} method.
      * @see {@link Texture.image}
@@ -135,7 +137,8 @@ objParams.cubeTexture = [...objParams.texture,
      * @defaultValue `false`
      */
     'flipY',
-].distinct()
+] as const).distinct()
+objProps.cubeTexture = _cubeTexture
 
 export type CubeTextureProps = Node<CubeTexture, typeof CubeTexture, { images?: any[]; mapping?: CubeTextureMapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; colorSpace?: ColorSpace; }>
 

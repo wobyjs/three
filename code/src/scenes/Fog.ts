@@ -4,8 +4,9 @@ import { Fog } from 'three/src/scenes/Fog.js'
 export { Fog } from 'three/src/scenes/Fog.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,21 +27,21 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        fog: string[]
-        fogBase: string[]
+        fog: typeof fog
+        fogBase: typeof fogBase
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        fog: string[]
-        fogBase: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        fog: typeof _fog
+        fogBase: typeof _fogBase
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\scenes\Fog.d.ts
 
-consParams.fogBase = [
+
+const fogBase = ([
     /**
      * Optional name of the `Fog` object
      * @remarks _(doesn't need to be unique)_.
@@ -52,7 +53,8 @@ consParams.fogBase = [
      * @remarks If set to black, far away objects will be rendered black.
      */
     'color',
-].distinct()
+] as const).distinct()
+consParams.fogBase = fogBase
 
 /**
  * This class contains the parameters that define linear fog, i.e., that grows linearly denser with the distance.
@@ -65,7 +67,7 @@ consParams.fogBase = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/Fog.js}
  */
 
-consParams.fog = [
+const fog = ([
     /**
      * The color parameter is passed to the {@link THREE.Color} constructor to set the color property
      * @remarks
@@ -77,11 +79,12 @@ consParams.fog = [
     'color',
     'near',
     'far',
-].distinct()
+] as const).distinct()
+consParams.fog = fog
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\scenes\Fog.d.ts
 
-objParams.fogBase = [
+
+const _fogBase = ([
     /**
      * Optional name of the `Fog` object
      * @remarks _(doesn't need to be unique)_.
@@ -93,7 +96,8 @@ objParams.fogBase = [
      * @remarks If set to black, far away objects will be rendered black.
      */
     'color',
-].distinct()
+] as const).distinct()
+objProps.fogBase = _fogBase
 
 /**
  * This class contains the parameters that define linear fog, i.e., that grows linearly denser with the distance.
@@ -106,7 +110,7 @@ objParams.fogBase = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/Fog.js | Source}
  */
 
-objParams.fog = [...objParams.fogBase,
+const _fog = ([...objProps.fogBase,
     /**
      * Optional name of the object
      * @remarks _(doesn't need to be unique)_.
@@ -132,7 +136,8 @@ objParams.fog = [...objParams.fogBase,
      * @remarks Expects a `Float`
      */
     'far',
-].distinct()
+] as const).distinct()
+objProps.fog = _fog
 
 
 export type FogProps = Node<Fog, typeof Fog, { color: ColorRepresentation; near?: number; far?: number; }>

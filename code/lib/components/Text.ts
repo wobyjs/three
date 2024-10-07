@@ -5,7 +5,7 @@ import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "woby"
 import { useFont } from "../hooks"
 import { Three } from '../3/three'
 import { consParams } from '../3/consParams'
-import { objParams } from '../3/objParams'
+import { objProps } from '../3/objProps'
 import { defaults } from '../3/defaults'
 import { Material } from 'three/src/materials/Material'
 import { Mesh } from 'three/src/objects/Mesh'
@@ -61,7 +61,7 @@ consParams.text = [
 ].distinct()
 
 //@ts-ignore
-objParams.text = [...objParams.textGeometry,
+objProps.text = [...objProps.textGeometry,
     'pathToFont',
     'text',
     'material',

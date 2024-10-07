@@ -4,7 +4,7 @@ import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonCont
 export * from 'three/examples/jsm/controls/FirstPersonControls.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        firstPersonControls: string[]
+        firstPersonControls: typeof firstPersonControls
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        firstPersonControls: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        firstPersonControls: typeof _firstPersonControls
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\FirstPersonControls.d.ts
 
-consParams.firstPersonControls = [
+
+const firstPersonControls = ([
     'object',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.firstPersonControls = firstPersonControls
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\controls\FirstPersonControls.d.ts
 
-objParams.firstPersonControls = [
+
+const _firstPersonControls = ([
     'object',
     'domElement',
     'enabled',
@@ -62,7 +63,8 @@ objParams.firstPersonControls = [
     'verticalMin',
     'verticalMax',
     'mouseDragOn',
-].distinct()
+] as const).distinct()
+objProps.firstPersonControls = _firstPersonControls
 
 export type FirstPersonControlsProps = Node<FirstPersonControls, typeof FirstPersonControls, { object: Camera; domElement?: HTMLElement; }>
 

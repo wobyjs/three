@@ -5,7 +5,7 @@ import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import './Pass'
@@ -29,19 +29,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        renderPixelatedPass: string[]
+        renderPixelatedPass: typeof renderPixelatedPass
         renderPixelatedPassParameters: WrapAsString<RenderPixelatedPassParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        renderPixelatedPass: string[]
-        renderPixelatedPassParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        renderPixelatedPass: typeof _renderPixelatedPass
+        renderPixelatedPassParameters: typeof _renderPixelatedPassParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\RenderPixelatedPass.d.ts
+
 
 consParams.renderPixelatedPassParameters = ([
     'normalEdgeStrength',
@@ -49,22 +49,24 @@ consParams.renderPixelatedPassParameters = ([
 ] as const).toObject()
 
 
-consParams.renderPixelatedPass = [
+const renderPixelatedPass = ([
     'pixelSize',
     'scene',
     'camera',
     'options',
-].distinct()
+] as const).distinct()
+consParams.renderPixelatedPass = renderPixelatedPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\RenderPixelatedPass.d.ts
 
-objParams.renderPixelatedPassParameters = [
+
+const _renderPixelatedPassParameters = ([
     'normalEdgeStrength',
     'depthEdgeStrength',
-].distinct()
+] as const).distinct()
+objProps.renderPixelatedPassParameters = _renderPixelatedPassParameters
 
 
-objParams.renderPixelatedPass = [...objParams.pass,
+const _renderPixelatedPass = ([...objProps.pass,
     'pixelSize',
     'resolution',
     'renderResolution',
@@ -77,7 +79,8 @@ objParams.renderPixelatedPass = [...objParams.pass,
     'depthEdgeStrength',
     'beautyRenderTarget',
     'normalRenderTarget',
-].distinct()
+] as const).distinct()
+objProps.renderPixelatedPass = _renderPixelatedPass
 
 export type RenderPixelatedPassProps = Node<RenderPixelatedPass, typeof RenderPixelatedPass, { pixelSize: number; scene: Scene; camera: Camera; options?: RenderPixelatedPassParameters; }>
 

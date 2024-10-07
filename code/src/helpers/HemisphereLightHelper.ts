@@ -5,8 +5,9 @@ import { HemisphereLightHelper } from 'three/src/helpers/HemisphereLightHelper.j
 export { HemisphereLightHelper } from 'three/src/helpers/HemisphereLightHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        hemisphereLightHelper: string[]
+        hemisphereLightHelper: typeof hemisphereLightHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        hemisphereLightHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        hemisphereLightHelper: typeof _hemisphereLightHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\HemisphereLightHelper.d.ts
+
 /**
  * Creates a visual aid consisting of a spherical {@link THREE.Mesh} for a {@link THREE.HemisphereLight}.
  * @example
@@ -50,7 +51,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/HemisphereLightHelper.js}
  */
 
-consParams.hemisphereLightHelper = [
+const hemisphereLightHelper = ([
     /**
      *  Create a new instance of {@link HemisphereLightHelper}
      * @param light The light being visualized.
@@ -60,9 +61,10 @@ consParams.hemisphereLightHelper = [
     'light',
     'size',
     'color',
-].distinct()
+] as const).distinct()
+consParams.hemisphereLightHelper = hemisphereLightHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\HemisphereLightHelper.d.ts
+
 /**
  * Creates a visual aid consisting of a spherical {@link THREE.Mesh | Mesh} for a {@link THREE.HemisphereLight | HemisphereLight}.
  * @example
@@ -75,7 +77,7 @@ consParams.hemisphereLightHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/HemisphereLightHelper.js | Source}
  */
 
-objParams.hemisphereLightHelper = [...objParams.object3d,
+const _hemisphereLightHelper = ([...objProps.object3d,
     /**
      * Reference to the HemisphereLight being visualized.
      */
@@ -97,7 +99,8 @@ objParams.hemisphereLightHelper = [...objParams.object3d,
      * @defaultValue `undefined`
      */
     'color',
-].distinct()
+] as const).distinct()
+objProps.hemisphereLightHelper = _hemisphereLightHelper
 
 export type HemisphereLightHelperProps = Object3DNode<HemisphereLightHelper, typeof HemisphereLightHelper, { light: HemisphereLight; size: number; color?: ColorRepresentation; }>
 

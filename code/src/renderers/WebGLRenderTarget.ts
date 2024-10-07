@@ -4,8 +4,9 @@ import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGLRenderTarget } from 'three/src/renderers/WebGLRenderTarget.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        webglRenderTarget: string[]
+        webglRenderTarget: typeof webglRenderTarget
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        webglRenderTarget: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        webglRenderTarget: typeof _webglRenderTarget
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlRenderTarget.d.ts
 
-consParams.webglRenderTarget = [
+
+const webglRenderTarget = ([
     'width',
     'height',
     'options',
-].distinct()
+] as const).distinct()
+consParams.webglRenderTarget = webglRenderTarget
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\WebGlRenderTarget.d.ts    
 
-objParams.webglRenderTarget = [
-].distinct()
+
+const _webglRenderTarget = ([
+] as const).distinct()
+objProps.webglRenderTarget = _webglRenderTarget
 
 export type WebGLRenderTargetProps = Node<WebGLRenderTarget, typeof WebGLRenderTarget, { width?: number; height?: number; options?: RenderTargetOptions; }>
 

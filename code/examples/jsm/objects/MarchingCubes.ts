@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/objects/MarchingCubes.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        marchingCubes: string[]
+        marchingCubes: typeof marchingCubes
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        marchingCubes: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        marchingCubes: typeof _marchingCubes
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\MarchingCubes.d.ts
 
-consParams.marchingCubes = [
+
+const marchingCubes = ([
 
     'resolution',
     'material',
     'enableUvs',
     'enableColors',
     'maxPolyCount',
-].distinct()
+] as const).distinct()
+consParams.marchingCubes = marchingCubes
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\MarchingCubes.d.ts    
 
-objParams.marchingCubes = [...objParams.mesh,
+
+const _marchingCubes = ([...objProps.mesh,
     'enableUvs',
     'enableColors',
     'resolution',
@@ -78,7 +79,8 @@ objParams.marchingCubes = [...objParams.mesh,
     'normalArray',
     'uvArray',
     'colorArray',
-].distinct()
+] as const).distinct()
+objProps.marchingCubes = _marchingCubes
 
 export type MarchingCubesProps = Node<MarchingCubes, typeof MarchingCubes, { resolution: number; material: Material; enableUvs?: boolean; enableColors?: boolean; maxPolyCount?: number; }>
 

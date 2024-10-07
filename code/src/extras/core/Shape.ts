@@ -1,9 +1,9 @@
-import { Object3DNode, Vector2 } from '../../../three-types'
+import { Node, Vector2 } from '../../../three-types'
 import { Shape } from 'three/src/extras/core/Shape.js'
-export { Shape } from 'three/src/extras/core/Shape.js'
+export * from 'three/src/extras/core/Shape.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Path'
 
@@ -26,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        shape: string[]
+        shape: typeof shape
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        shape: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        shape: typeof _shape
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Shape.d.ts
+
 /**
  * Defines an arbitrary 2d {@link Shape} plane using paths with optional holes
  * @remarks
@@ -72,7 +72,7 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Shape.js}
  */
 
-consParams.shape = [
+const shape = ([
     /**
      * Creates a {@link Shape} from the points
      * @remarks
@@ -81,9 +81,10 @@ consParams.shape = [
      * @param points Array of {@link Vector2}.
      */
     'points',
-].distinct()
+] as const).distinct()
+consParams.shape = shape
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Shape.d.ts
+
 /**
  * Defines an arbitrary 2d {@link Shape} plane using paths with optional holes
  * @remarks
@@ -116,7 +117,7 @@ consParams.shape = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Shape.js | Source}
  */
 
-objParams.shape = [...objParams.path,
+const _shape = ([...objProps.path,
     /**
      * {@link http://en.wikipedia.org/wiki/Universally_unique_identifier | UUID} of this object instance.
      * @remarks This gets automatically assigned and shouldn't be edited.
@@ -124,12 +125,13 @@ objParams.shape = [...objParams.path,
     'uuid',
     /**
      * An array of {@link Path | paths} that define the holes in the shape.
-     * @defaultValue `[].distinct()`
+     * @defaultValue []
      */
     'holes',
-].distinct()
+] as const).distinct()
+objProps.shape = _shape
 
-export type ShapeProps = Object3DNode<Shape, typeof Shape, { points?: Vector2[]; }>
+export type ShapeProps = Node<Shape, typeof Shape, { points?: Vector2[]; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

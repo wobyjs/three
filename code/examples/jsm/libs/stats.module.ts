@@ -2,7 +2,7 @@ import Stats from 'three/examples/jsm/libs/stats.module.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 export { Stats }
 
@@ -30,38 +30,42 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        panel: string[]
-        stats: string[]
+        panel: typeof panel
+        stats: typeof stats
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        panel: string[]
-        stats: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        panel: typeof _panel
+        stats: typeof _stats
     }
 }
 
 
-consParams.panel = [
+const panel = ([
     'name',
     'foregroundColor',
     'backgroundColor',
-].distinct()
+] as const).distinct()
+consParams.panel = panel
 
 
-objParams.stats = [
+const _stats = ([
     'dom',
-].distinct()
+] as const).distinct()
+objProps.stats = _stats
 
 
-consParams.stats = [
-].distinct()
+const stats = ([
+] as const).distinct()
+consParams.stats = stats
 
 
-objParams.panel = [
+const _panel = ([
     'dom',
-].distinct()
+] as const).distinct()
+objProps.panel = _panel
 
 export type StatsProps = Node<Stats, typeof Stats, {}>
 

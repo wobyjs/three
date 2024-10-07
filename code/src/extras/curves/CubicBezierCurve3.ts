@@ -1,9 +1,9 @@
-import { Object3DNode, Vector3 } from '../../../three-types'
+import { Node, Vector3 } from '../../../three-types'
 import { CubicBezierCurve3 } from 'three/src/extras/curves/CubicBezierCurve3.js'
 export { CubicBezierCurve3 } from 'three/src/extras/curves/CubicBezierCurve3.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/CurvePath'
 
@@ -26,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        cubicBezierCurve3: string[]
+        cubicBezierCurve3: typeof cubicBezierCurve3
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        cubicBezierCurve3: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        cubicBezierCurve3: typeof _cubicBezierCurve3
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\CubicBezierCurve3.d.ts
+
 /**
  * Create a smooth **3d** {@link http://en.wikipedia.org/wiki/B%C3%A9zier_curve#mediaviewer/File:Bezier_curve.svg bezier curve
  * defined by a start point, endpoint and two control points.
@@ -59,7 +59,7 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/CubicBezierCurve.js}
  */
 
-consParams.cubicBezierCurve3 = [
+const cubicBezierCurve3 = ([
     /**
      * The starting point.
      * @defaultValue `new THREE.Vector3()`.
@@ -80,9 +80,10 @@ consParams.cubicBezierCurve3 = [
      * @defaultValue `new THREE.Vector3()`.
      */
     'v3',
-].distinct()
+] as const).distinct()
+consParams.cubicBezierCurve3 = cubicBezierCurve3
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\CubicBezierCurve3.d.ts
+
 /**
  * Create a smooth **3d** {@link http://en.wikipedia.org/wiki/B%C3%A9zier_curve#mediaviewer/File:Bezier_curve.svg | cubic bezier curve
  * defined by a start point, endpoint and two control points.
@@ -105,7 +106,7 @@ consParams.cubicBezierCurve3 = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/CubicBezierCurve.js | Source}
  */
 
-objParams.cubicBezierCurve3 = [...objParams.curve,
+const _cubicBezierCurve3 = ([...objProps.curve,
     /**
    * The starting point.
    * @defaultValue `new THREE.Vector3()`.
@@ -126,9 +127,10 @@ objParams.cubicBezierCurve3 = [...objParams.curve,
      * @defaultValue `new THREE.Vector3()`.
      */
     'v3',
-].distinct()
+] as const).distinct()
+objProps.cubicBezierCurve3 = _cubicBezierCurve3
 
-export type CubicBezierCurve3Props = Object3DNode<CubicBezierCurve3, typeof CubicBezierCurve3, { v0?: Vector3; v1?: Vector3; v2?: Vector3; v3?: Vector3; }>
+export type CubicBezierCurve3Props = Node<CubicBezierCurve3, typeof CubicBezierCurve3, { v0?: Vector3; v1?: Vector3; v2?: Vector3; v3?: Vector3; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,30 +26,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        roundedBoxGeometry: string[]
+        roundedBoxGeometry: typeof roundedBoxGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        roundedBoxGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        roundedBoxGeometry: typeof _roundedBoxGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\RoundedBoxGeometry.d.ts
 
-consParams.roundedBoxGeometry = [
+
+const roundedBoxGeometry = ([
     'width',
     'height',
     'depth',
     'segments',
     'radius',
-].distinct()
+] as const).distinct()
+consParams.roundedBoxGeometry = roundedBoxGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\RoundedBoxGeometry.d.ts    
 
-objParams.roundedBoxGeometry = [...objParams.boxGeometry,
-].distinct()
+
+const _roundedBoxGeometry = ([...objProps.boxGeometry,
+] as const).distinct()
+objProps.roundedBoxGeometry = _roundedBoxGeometry
 
 export type RoundedBoxGeometryProps = BufferGeometryNode<RoundedBoxGeometry, typeof RoundedBoxGeometry, { width?: number; height?: number; depth?: number; segments?: number; radius?: number; }>
 

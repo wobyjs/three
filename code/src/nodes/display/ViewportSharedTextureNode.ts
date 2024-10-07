@@ -4,7 +4,7 @@ import ViewportSharedTextureNode from 'three/src/nodes/display/ViewportSharedTex
 export { ViewportSharedTextureNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        viewportSharedTextureNode: string[]
+        viewportSharedTextureNode: typeof viewportSharedTextureNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        viewportSharedTextureNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        viewportSharedTextureNode: typeof _viewportSharedTextureNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportSharedTextureNode.d.ts
 
-consParams.viewportSharedTextureNode = [
+
+const viewportSharedTextureNode = ([
     'uvNode',
     'levelNode',
-].distinct()
+] as const).distinct()
+consParams.viewportSharedTextureNode = viewportSharedTextureNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\ViewportSharedTextureNode.d.ts    
 
-objParams.viewportSharedTextureNode = [...objParams.viewportTextureNode,
-].distinct()
+
+const _viewportSharedTextureNode = ([...objProps.viewportTextureNode,
+] as const).distinct()
+objProps.viewportSharedTextureNode = _viewportSharedTextureNode
 
 export type ViewportSharedTextureNodeProps = Node<ViewportSharedTextureNode, typeof ViewportSharedTextureNode, { uvNode?: ENode; levelNode?: ENode | null; }>
 

@@ -1,11 +1,12 @@
-import { Object3DNode } from '../../three-types'
+import { Node } from '../../three-types'
 import { Audio } from './Audio'
 import { AudioAnalyser } from 'three/src/audio/AudioAnalyser.js'
 export { AudioAnalyser } from 'three/src/audio/AudioAnalyser.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        audioAnalyser: string[]
+        audioAnalyser: typeof audioAnalyser
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        audioAnalyser: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        audioAnalyser: typeof _audioAnalyser
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\AudioAnalyser.d.ts
+
 /**
  * Create a {@link AudioAnalyser} object, which uses an {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode} to analyse audio data.
  * This uses the {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API Audio API}.
@@ -66,7 +67,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/AudioAnalyser.js}
  */
 
-consParams.audioAnalyser = [
+const audioAnalyser = ([
     /**
      * Create a new {@link {@link AudioAnalyser}}.
      * @param audio
@@ -74,9 +75,10 @@ consParams.audioAnalyser = [
      */
     'audio',
     'fftSize',
-].distinct()
+] as const).distinct()
+consParams.audioAnalyser = audioAnalyser
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\AudioAnalyser.d.ts
+
 /**
  * Create a {@link AudioAnalyser} object, which uses an {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode | AnalyserNode} to analyse audio data.
  * This uses the {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API | Web Audio API}.
@@ -106,7 +108,7 @@ consParams.audioAnalyser = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/AudioAnalyser.js | Source}
  */
 
-objParams.audioAnalyser = [
+const _audioAnalyser = ([
     /**
      * An {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode | AnalyserNode} used to analyze audio.
      */
@@ -115,9 +117,10 @@ objParams.audioAnalyser = [
      * A Uint8Array with size determined by {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/frequencyBinCount | analyser.frequencyBinCount} used to hold analysis data.
      */
     'data',
-].distinct()
+] as const).distinct()
+objProps.audioAnalyser = _audioAnalyser
 
-export type AudioAnalyserProps = Object3DNode<AudioAnalyser, typeof AudioAnalyser, { audio: Audio<AudioNode>; fftSize?: number; }>
+export type AudioAnalyserProps = Node<AudioAnalyser, typeof AudioAnalyser, { audio: Audio<AudioNode>; fftSize?: number; }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

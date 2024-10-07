@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/curves/NURBSVolume.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,20 +26,20 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nurbsVolume: string[]
+        nurbsVolume: typeof nurbsVolume
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nurbsVolume: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nurbsVolume: typeof _nurbsVolume
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\NURBSUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\NURBSVolume.d.ts
 
-consParams.nurbsVolume = [
+
+
+const nurbsVolume = ([
     'degree1',
     'degree2',
     'degree3',
@@ -47,12 +47,13 @@ consParams.nurbsVolume = [
     'knots2',
     'knots3',
     'controlPoints',
-].distinct()
+] as const).distinct()
+consParams.nurbsVolume = nurbsVolume
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\NURBSUtils.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\curves\NURBSVolume.d.ts
 
-objParams.nurbsVolume = [
+
+
+const _nurbsVolume = ([
     'degree1',
     'degree2',
     'degree3',
@@ -60,7 +61,8 @@ objParams.nurbsVolume = [
     'knots2',
     'knots3',
     'controlPoints',
-].distinct()
+] as const).distinct()
+objProps.nurbsVolume = _nurbsVolume
 
 export type NURBSVolumeProps = Node<NURBSVolume, typeof NURBSVolume, { degree1: number; degree2: number; degree3: number; knots1: readonly number[]; knots2: readonly number[]; knots3: readonly number[]; controlPoints: Vector4[][][]; }>
 

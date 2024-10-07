@@ -4,7 +4,7 @@ import { ObservableMaybe } from 'woby'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 export * from 'three/examples/jsm/loaders/FontLoader.js'
 import '../../../src/loaders/Loader'
@@ -28,23 +28,23 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        fontLoader: string[]
-        font: string[]
-        fontData: string[]
+        fontLoader: typeof fontLoader
+        font: typeof font
+        fontData: typeof fontData
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        fontLoader: string[]
-        font: string[]
-        fontData: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        fontLoader: typeof _fontLoader
+        font: typeof _font
+        fontData: typeof _fontData
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\FontLoader.d.ts
 
-consParams.fontData = [
+
+const fontData = ([
     'glyphs',
     'familyName',
     'ascender',
@@ -54,19 +54,22 @@ consParams.fontData = [
     'boundingBox',
     'resolution',
     'original_font_information',
-].distinct()
+] as const).distinct()
+consParams.fontData = fontData
 
-consParams.fontLoader = [
+const fontLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.fontLoader = fontLoader
 
-consParams.font = [
+const font = ([
     'data',
-].distinct()
+] as const).distinct()
+consParams.font = font
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\FontLoader.d.ts
 
-objParams.fontData = [
+
+const _fontData = ([
     'glyphs',
     'familyName',
     'ascender',
@@ -76,18 +79,21 @@ objParams.fontData = [
     'boundingBox',
     'resolution',
     'original_font_information',
-].distinct()
+] as const).distinct()
+objProps.fontData = _fontData
 
-objParams.fontLoader = [...objParams.loader,
-].distinct()
+const _fontLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.fontLoader = _fontLoader
 
-objParams.font = [
+const _font = ([
     /**
      * @default 'Font'
      */
     'type',
     'data',
-].distinct()
+] as const).distinct()
+objProps.font = _font
 
 export type FontLoaderProps = Node<FontLoader, typeof FontLoader, { manager?: LoadingManager; }>
 

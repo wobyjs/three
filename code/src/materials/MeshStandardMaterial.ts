@@ -3,8 +3,9 @@ import { MeshStandardMaterial, MeshStandardMaterialParameters } from 'three/src/
 export { MeshStandardMaterial } from 'three/src/materials/MeshStandardMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import { WrapAsString } from '../../three-types'
 
@@ -32,14 +33,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshStandardMaterial: string[]
-        meshStandardMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshStandardMaterial: typeof _meshStandardMaterial
+        meshStandardMaterialParameters: typeof _meshStandardMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshStandardMaterial.d.ts
+
 
 consParams.meshStandardMaterialParameters = (['color',
     'roughness',
@@ -75,9 +76,9 @@ consParams.meshStandardMaterialParameters = (['color',
 
 consParams.meshStandardMaterial = { ...consParams.meshStandardMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshStandardMaterial.d.ts    
 
-objParams.meshStandardMaterialParameters = [...objParams.materialParameters,
+
+const _meshStandardMaterialParameters = ([...objProps.materialParameters,
     'color',
     'roughness',
     'metalness',
@@ -107,10 +108,11 @@ objParams.meshStandardMaterialParameters = [...objParams.materialParameters,
     'wireframeLinewidth',
     'fog',
     'flatShading',
-].distinct()
+] as const).distinct()
+objProps.meshStandardMaterialParameters = _meshStandardMaterialParameters
 
 
-objParams.meshStandardMaterial = [...objParams.material,
+const _meshStandardMaterial = ([...objProps.material,
     /**
      * @default 'MeshStandardMaterial'
      */
@@ -245,7 +247,8 @@ objParams.meshStandardMaterial = [...objParams.material,
      * @default fog
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshStandardMaterial = _meshStandardMaterial
 
 export type MeshStandardMaterialProps = MaterialNode<MeshStandardMaterial, MeshStandardMaterialParameters>
 

@@ -3,8 +3,9 @@ import { LineBasicMaterial, LineBasicMaterialParameters } from 'three/src/materi
 export * from 'three/src/materials/LineBasicMaterial'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import { WrapAsString } from '../../three-types'
 
@@ -32,10 +33,10 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lineBasicMaterial: string[]
-        lineBasicMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lineBasicMaterial: typeof _lineBasicMaterial
+        lineBasicMaterialParameters: typeof _lineBasicMaterialParameters
     }
 }
 
@@ -48,7 +49,7 @@ consParams.lineBasicMaterial = (['color',
 ] as const).toObject() //as LineBasicMaterialParameters
 
 
-objParams.lineBasicMaterial = [...objParams.material,
+const _lineBasicMaterial = ([...objProps.material,
     /**
      * @default 'LineBasicMaterial'
      */
@@ -78,9 +79,10 @@ objParams.lineBasicMaterial = [...objParams.material,
      * Sets the color of the lines using data from a {@link Texture}.
      */
     'map',
-].distinct()
+] as const).distinct()
+objProps.lineBasicMaterial = _lineBasicMaterial
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\LineBasicMaterial.d.ts
+
 
 consParams.lineBasicMaterialParameters = {
     ...consParams.materialParameters,
@@ -92,22 +94,25 @@ consParams.lineBasicMaterialParameters = {
     ] as const).toObject()
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\LineBasicMaterial.d.ts    
 
-objParams.lineBasicMaterialParameters = [...objParams.materialParameters,
+
+const _lineBasicMaterialParameters = ([...objProps.materialParameters,
     'color',
     'fog',
     'linewidth',
     'linecap',
     'linejoin',
-].distinct()
+] as const).distinct()
+objProps.lineBasicMaterialParameters = _lineBasicMaterialParameters
 
 export type LineBasicMaterialProps = MaterialNode<LineBasicMaterial, LineBasicMaterialParameters>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
         lineBasicMaterialParameters: Partial<LineBasicMaterialParameters>
+        lineBasicMaterial: Partial<LineBasicMaterialParameters>
     }
 }
 
 defaults.lineBasicMaterialParameters = {}
+defaults.lineBasicMaterial = {}

@@ -3,8 +3,9 @@ import { Box2 } from 'three/src/math/Box2.js'
 export { Box2 } from 'three/src/math/Box2.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,26 +26,27 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        box2: string[]
+        box2: typeof box2
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        box2: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        box2: typeof _box2
     }
 }
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Box2.d.ts
+
 // Math //////////////////////////////////////////////////////////////////////////////////
 
-consParams.box2 = [
+const box2 = ([
     'min',
     'max',
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Box2.d.ts
+] as const).distinct()
+consParams.box2 = box2
+
 // Math //////////////////////////////////////////////////////////////////////////////////
 
-objParams.box2 = [
+const _box2 = ([
     /**
      * @default new THREE.Vector2( + Infinity, + Infinity )
      */
@@ -53,7 +55,8 @@ objParams.box2 = [
      * @default new THREE.Vector2( - Infinity, - Infinity )
      */
     'max',
-].distinct()
+] as const).distinct()
+objProps.box2 = _box2
 
 
 export type Box2Props = Node<Box2, typeof Box2, { min?: Vector2; max?: Vector2; }>

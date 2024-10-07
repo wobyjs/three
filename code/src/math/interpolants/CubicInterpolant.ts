@@ -3,7 +3,7 @@ import { CubicInterpolant } from 'three/src/math/interpolants/CubicInterpolant.j
 export { CubicInterpolant } from 'three/src/math/interpolants/CubicInterpolant.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,29 +25,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        cubicInterpolant: string[]
+        cubicInterpolant: typeof cubicInterpolant
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        cubicInterpolant: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        cubicInterpolant: typeof _cubicInterpolant
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\CubicInterpolant.d.ts
 
-consParams.cubicInterpolant = [
+
+const cubicInterpolant = ([
     'parameterPositions',
     'samplesValues',
     'sampleSize',
     'resultBuffer',
-].distinct()
+] as const).distinct()
+consParams.cubicInterpolant = cubicInterpolant
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\CubicInterpolant.d.ts    
 
-objParams.cubicInterpolant = [...objParams.interpolant,
-].distinct()
+
+const _cubicInterpolant = ([...objProps.interpolant,
+] as const).distinct()
+objProps.cubicInterpolant = _cubicInterpolant
 
 
 export type CubicInterpolantProps = Node<CubicInterpolant, typeof CubicInterpolant, { parameterPositions: any; samplesValues: any; sampleSize: number; resultBuffer?: any; }>

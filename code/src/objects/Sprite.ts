@@ -4,8 +4,9 @@ import { Sprite } from 'three/src/objects/Sprite.js'
 export { Sprite } from 'three/src/objects/Sprite.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        sprite: string[]
+        sprite: typeof sprite
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        sprite: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        sprite: typeof _sprite
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Sprite.d.ts
+
 /**
  * A {@link Sprite} is a plane that always faces towards the camera, generally with a partially transparent texture applied.
  * @remarks Sprites do not cast shadows, setting `castShadow = true` will have no effect.
@@ -53,15 +54,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Sprite.js}
  */
 
-consParams.sprite = [
+const sprite = ([
     /**
      * Creates a new Sprite.
      * @param material An instance of {@link THREE.SpriteMaterial}. Default {@link THREE.SpriteMaterial | `new SpriteMaterial()` _with white color_.
      */
     'material',
-].distinct()
+] as const).distinct()
+consParams.sprite = sprite
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Sprite.d.ts
+
 /**
  * A {@link Sprite} is a plane that always faces towards the camera, generally with a partially transparent texture applied.
  * @remarks Sprites do not cast shadows, setting `castShadow = true` will have no effect.
@@ -78,7 +80,7 @@ consParams.sprite = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Sprite.js | Source}
  */
 
-objParams.sprite = [
+const _sprite = ([
     /**
      * Whether the object gets rendered into shadow map.
      * No effect in {@link Sprite}.
@@ -100,7 +102,8 @@ objParams.sprite = [
      * @defaultValue {@link THREE.Vector2 | `new Vector2(0.5, 0.5)`}.
      */
     'center',
-].distinct()
+] as const).distinct()
+objProps.sprite = _sprite
 
 export type SpriteProps = Object3DNode<Sprite, typeof Sprite, { material?: SpriteMaterial; }>
 

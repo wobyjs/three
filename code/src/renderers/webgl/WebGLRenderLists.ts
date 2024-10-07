@@ -4,7 +4,7 @@ import { WebGLRenderLists } from 'three/src/renderers/webgl/WebGLRenderLists.js'
 export { WebGLRenderLists } from 'three/src/renderers/webgl/WebGLRenderLists.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,23 +26,23 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglRenderLists: string[]
-        renderItem: string[]
-        webglRenderList: string[]
+        webglRenderLists: typeof webglRenderLists
+        renderItem: typeof renderItem
+        webglRenderList: typeof webglRenderList
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglRenderLists: string[]
-        renderItem: string[]
-        webglRenderList: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglRenderLists: typeof _webglRenderLists
+        renderItem: typeof _renderItem
+        webglRenderList: typeof _webglRenderList
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlRenderLists.d.ts
 
-consParams.renderItem = [
+
+const renderItem = ([
     'id',
     'object',
     'geometry',
@@ -52,11 +52,12 @@ consParams.renderItem = [
     'renderOrder',
     'z',
     'group',
-].distinct()
+] as const).distinct()
+consParams.renderItem = renderItem
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlRenderLists.d.ts
 
-objParams.renderItem = [
+
+const _renderItem = ([
     'id',
     'object',
     'geometry',
@@ -66,18 +67,19 @@ objParams.renderItem = [
     'renderOrder',
     'z',
     'group',
-].distinct()
+] as const).distinct()
+objProps.renderItem = _renderItem
 
 
-consParams.webglRenderList = [
+const webglRenderList = ([
     'properties',
-].distinct()
+] as const).distinct()
+consParams.webglRenderList = webglRenderList
 
 
-objParams.webglRenderList = [
+const _webglRenderList = ([
     /**
-     * @default [].distinct()
-
+     * @default []
      */
     'opaque',
     /**
@@ -90,16 +92,18 @@ objParams.webglRenderList = [
 
      */
     'transmissive',
-].distinct()
+] as const).distinct()
+objProps.webglRenderList = _webglRenderList
 
-
-consParams.webglRenderLists = [
+const webglRenderLists = ([
     'properties',
-].distinct()
+] as const).distinct()
+consParams.webglRenderLists = webglRenderLists
 
 
-objParams.webglRenderLists = [
-].distinct()
+const _webglRenderLists = ([
+] as const).distinct()
+objProps.webglRenderLists = _webglRenderLists
 
 export type WebGLRenderListsProps = Node<WebGLRenderLists, typeof WebGLRenderLists, { properties: WebGLProperties; }>
 

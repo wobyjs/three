@@ -4,7 +4,7 @@ import { Node, WrapAsString } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 
@@ -27,19 +27,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        outlineEffect: string[]
+        outlineEffect: typeof outlineEffect
         outlineEffectParameters: WrapAsString<OutlineEffectParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        outlineEffect: string[]
-        outlineEffectParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        outlineEffect: typeof _outlineEffect
+        outlineEffectParameters: typeof _outlineEffectParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\OutlineEffect.d.ts
+
 
 consParams.outlineEffectParameters = ([
     'defaultThickness',
@@ -49,27 +49,30 @@ consParams.outlineEffectParameters = ([
 ] as const).toObject()
 
 
-consParams.outlineEffect = [
+const outlineEffect = ([
     'renderer',
     'parameters', //outlineEffectParameters
-].distinct()
+] as const).distinct()
+consParams.outlineEffect = outlineEffect
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\OutlineEffect.d.ts
 
-objParams.outlineEffectParameters = [
+
+const _outlineEffectParameters = ([
     'defaultThickness',
     'defaultColor',
     'defaultAlpha',
     'defaultKeepAlive',
-].distinct()
+] as const).distinct()
+objProps.outlineEffectParameters = _outlineEffectParameters
 
 
-objParams.outlineEffect = [
+const _outlineEffect = ([
     'enabled',
     'autoClear',
     'domElement',
     'shadowMap',
-].distinct()
+] as const).distinct()
+objProps.outlineEffect = _outlineEffect
 
 export type OutlineEffectProps = Node<OutlineEffect, typeof OutlineEffect, { renderer: WebGLRenderer; parameters?: OutlineEffectParameters; }>
 

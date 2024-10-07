@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/PVRLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,48 +27,52 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        pvrLoader: string[]
-        pvr: string[]
+        pvrLoader: typeof pvrLoader
+        pvr: typeof pvr
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        pvrLoader: string[]
-        pvr: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        pvrLoader: typeof _pvrLoader
+        pvr: typeof _pvr
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PVRLoader.d.ts
 
-consParams.pvr = [
+
+const pvr = ([
     'mipmaps',
     'width',
     'height',
     'format',
     'mipmapCount',
     'isCubemap',
-].distinct()
+] as const).distinct()
+consParams.pvr = pvr
 
 
-consParams.pvrLoader = [
+const pvrLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.pvrLoader = pvrLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\PVRLoader.d.ts
 
-objParams.pvr = [
+
+const _pvr = ([
     'mipmaps',
     'width',
     'height',
     'format',
     'mipmapCount',
     'isCubemap',
-].distinct()
+] as const).distinct()
+objProps.pvr = _pvr
 
 
-objParams.pvrLoader = [...objParams.compressedTextureLoader,
-].distinct()
+const _pvrLoader = ([...objProps.compressedTextureLoader,
+] as const).distinct()
+objProps.pvrLoader = _pvrLoader
 
 
 export type PVRLoaderProps = Node<PVRLoader, typeof PVRLoader, { manager?: LoadingManager; }>

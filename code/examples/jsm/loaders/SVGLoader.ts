@@ -5,8 +5,10 @@ export * from 'three/examples/jsm/loaders/SVGLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+
+import '../../../src/extras/core/ShapePath'
 
 declare module '../../../lib/3/three'
 {
@@ -27,74 +29,82 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        svgLoader: string[]
-        svgResultPaths: string[]
-        svgResult: string[]
-        strokeStyle: string[]
+        svgLoader: typeof svgLoader
+        svgResultPaths: typeof svgResultPaths
+        svgResult: typeof svgResult
+        strokeStyle: typeof strokeStyle
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        svgLoader: string[]
-        svgResultPaths: string[]
-        svgResult: string[]
-        strokeStyle: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        svgLoader: typeof _svgLoader
+        svgResultPaths: typeof _svgResultPaths
+        svgResult: typeof _svgResult
+        strokeStyle: typeof _strokeStyle
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\svgLoader.d.ts
 
-consParams.svgResultPaths = [
+
+const svgResultPaths = ([
     'userData',
-].distinct()
+] as const).distinct()
+consParams.svgResultPaths = svgResultPaths
 
 
-consParams.svgResult = [
+const svgResult = ([
     'paths',
     'xml',
-].distinct()
+] as const).distinct()
+consParams.svgResult = svgResult
 
 
-consParams.strokeStyle = [
+const strokeStyle = ([
     'strokeColor',
     'strokeWidth',
     'strokeLineJoin',
     'strokeLineCap',
     'strokeMiterLimit',
-].distinct()
+] as const).distinct()
+consParams.strokeStyle = strokeStyle
 
 
-consParams.svgLoader = [
+const svgLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.svgLoader = svgLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\SVGloader.d.ts    
 
-objParams.svgResultPaths = [...objParams.shapePath,
+
+const _svgResultPaths = ([...objProps.shapePath,
     'userData',
-].distinct()
+] as const).distinct()
+objProps.svgResultPaths = _svgResultPaths
 
 
-objParams.svgResult = [
+const _svgResult = ([
     'paths',
     'xml',
-].distinct()
+] as const).distinct()
+objProps.svgResult = _svgResult
 
 
-objParams.strokeStyle = [
+const _strokeStyle = ([
     'strokeColor',
     'strokeWidth',
     'strokeLineJoin',
     'strokeLineCap',
     'strokeMiterLimit',
-].distinct()
+] as const).distinct()
+objProps.strokeStyle = _strokeStyle
 
 
-objParams.svgLoader = [...objParams.loader,
+const _svgLoader = ([...objProps.loader,
     'defaultDPI',
     'defaultUnit',
-].distinct()
+] as const).distinct()
+objProps.svgLoader = _svgLoader
 
 export type SVGLoaderProps = Node<SVGLoader, typeof SVGLoader, { manager?: LoadingManager; }>
 

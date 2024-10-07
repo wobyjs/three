@@ -3,8 +3,9 @@ import { FramebufferTexture } from 'three/src/textures/FramebufferTexture.js'
 export { FramebufferTexture } from 'three/src/textures/FramebufferTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        framebufferTexture: string[]
+        framebufferTexture: typeof framebufferTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        framebufferTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        framebufferTexture: typeof _framebufferTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\FramebufferTexture.d.ts
+
 /**
  * This class can only be used in combination with {@link THREE.WebGlRenderer.copyFramebufferToTexture.copyFramebufferToTexture()}.
  * @example
@@ -63,7 +64,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/FramebufferTexture.js}
  */
 
-consParams.framebufferTexture = [
+const framebufferTexture = ([
     /**
      * Create a new instance of {@link FramebufferTexture}
      * @param width The width of the texture.
@@ -71,9 +72,10 @@ consParams.framebufferTexture = [
      */
     'width',
     'height',
-].distinct()
+] as const).distinct()
+consParams.framebufferTexture = framebufferTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\FramebufferTexture.d.ts
+
 /**
  * This class can only be used in combination with {@link THREE.webglRenderer.copyFramebufferToTexture | WebGlRenderer.copyFramebufferToTexture()}.
  * @example
@@ -101,7 +103,7 @@ consParams.framebufferTexture = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/FramebufferTexture.js | Source}
  */
 
-objParams.framebufferTexture = [...objParams.texture,
+const _framebufferTexture = ([...objProps.texture,
     /**
      * @override
      * @defaultValue {@link THREE.NearestFilter}
@@ -117,7 +119,8 @@ objParams.framebufferTexture = [...objParams.texture,
      * @defaultValue `false`
      */
     'generateMipmaps',
-].distinct()
+] as const).distinct()
+objProps.framebufferTexture = _framebufferTexture
 
 export type FramebufferTextureProps = Node<FramebufferTexture, typeof FramebufferTexture, { width: number; height: number; }>
 

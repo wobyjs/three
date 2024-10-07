@@ -3,7 +3,7 @@ import UniformNode from 'three/src/nodes/core/UniformNode.js'
 import NodeUniform from 'three/src/nodes/core/NodeUniform.js'
 export { NodeUniform }
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -16,33 +16,35 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        nodeUniform: string[]
+        nodeUniform: typeof nodeUniform
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        nodeUniform: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        nodeUniform: typeof _nodeUniform
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeUniform.d.ts
 
-consParams.nodeUniform = [
+
+const nodeUniform = ([
     'name',
     'type',
     'node',
     'needsUpdate',
-].distinct()
+] as const).distinct()
+consParams.nodeUniform = nodeUniform
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\NodeUniform.d.ts
 
-objParams.nodeUniform = [
+
+const _nodeUniform = ([
     'name',
     'type',
     'node',
     'needsUpdate',
-].distinct()
+] as const).distinct()
+objProps.nodeUniform = _nodeUniform
 
 export type NodeUniformProps<T> = Node<NodeUniform<T>, typeof NodeUniform<T>, { name: string; type: string | null; node: UniformNode<T>; needsUpdate?: undefined; }>
 

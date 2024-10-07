@@ -7,8 +7,9 @@ import { DataTexture } from 'three/src/textures/DataTexture.js'
 export { DataTexture } from 'three/src/textures/DataTexture.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -29,17 +30,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        dataTexture: string[]
+        dataTexture: typeof dataTexture
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        dataTexture: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        dataTexture: typeof _dataTexture
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\DataTexture.d.ts
+
 /**
  * Creates a texture directly from raw data, width and height.
  * @example
@@ -73,7 +74,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DataTexture.js | Source}
  */
 
-objParams.dataTexture = [...objParams.texture,
+const _dataTexture = ([...objProps.texture,
     /**
      * Overridden with a record type holding data, width and height and depth.
      * @override
@@ -104,9 +105,10 @@ objParams.dataTexture = [...objParams.texture,
      * @defaultValue `1`
      */
     'unpackAlignment',
-].distinct()
+] as const).distinct()
+objProps.dataTexture = _dataTexture
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\DataTexture.d.ts
+
 /**
  * Creates a texture directly from raw data, width and height.
  * @example
@@ -135,7 +137,7 @@ objParams.dataTexture = [...objParams.texture,
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DataTexture.js}
  */
 
-consParams.dataTexture = [
+const dataTexture = ([
     /**
      * @param data {@link https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView} of the texture. Default `null`.
      * @param width Width of the texture. Default `1`.
@@ -163,7 +165,8 @@ consParams.dataTexture = [
     'minFilter',
     'anisotropy',
     'colorSpace',
-].distinct()
+] as const).distinct()
+consParams.dataTexture = dataTexture
 
 export type DataTextureProps = Node<DataTexture, typeof DataTexture, { data?: BufferSource | null; width?: number; height?: number; format?: PixelFormat; type?: TextureDataType; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; anisotropy?: number; colorSpace?: ColorSpace; }>
 

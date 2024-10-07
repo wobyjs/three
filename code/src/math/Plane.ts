@@ -3,8 +3,9 @@ import { Plane } from 'three/src/math/Plane.js'
 export { Plane } from 'three/src/math/Plane.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { Vector3 } from 'three/src/math/Vector3'
 
 declare module '../../lib/3/three'
@@ -26,26 +27,27 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        plane: string[]
+        plane: typeof plane
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        plane: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        plane: typeof _plane
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Plane.d.ts
 
-consParams.plane = [
+
+const plane = ([
     'normal',
     'constant',
-].distinct()
+] as const).distinct()
+consParams.plane = plane
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Plane.d.ts
 
-objParams.plane = [
+
+const _plane = ([
     /**
      * @default new THREE.Vector3( 1, 0, 0 )
      */
@@ -54,7 +56,8 @@ objParams.plane = [
      * @default 0
      */
     'constant',
-].distinct()
+] as const).distinct()
+objProps.plane = _plane
 
 export type PlaneProps = Node<Plane, typeof Plane, { normal?: Vector3; constant?: number; }>
 

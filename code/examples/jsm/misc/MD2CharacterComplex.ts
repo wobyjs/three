@@ -3,7 +3,7 @@ import { MD2CharacterComplex } from 'three/examples/jsm/misc/MD2CharacterComplex
 export { MD2CharacterComplex } from 'three/examples/jsm/misc/MD2CharacterComplex.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,24 +25,25 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        md2CharacterComplex: string[]
+        md2CharacterComplex: typeof md2CharacterComplex
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        md2CharacterComplex: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        md2CharacterComplex: typeof _md2CharacterComplex
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MD2CharacterComplex.d.ts
 
-consParams.md2CharacterComplex = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\misc\MD2CharacterComplex.d.ts
+const md2CharacterComplex = ([
+] as const).distinct()
+consParams.md2CharacterComplex = md2CharacterComplex
 
-objParams.md2CharacterComplex = [
+
+
+const _md2CharacterComplex = ([
     'scale',
     'animationFPS',
     'transitionFrames',
@@ -70,7 +71,8 @@ objParams.md2CharacterComplex = [
     'crouchSpeed',
     'activeAnimation',
     'oldAnimation',
-].distinct()
+] as const).distinct()
+objProps.md2CharacterComplex = _md2CharacterComplex
 
 export type MD2CharacterComplexProps = Node<MD2CharacterComplex, typeof MD2CharacterComplex, {}>
 

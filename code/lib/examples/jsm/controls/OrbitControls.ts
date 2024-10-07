@@ -1,41 +1,25 @@
-// import { Node } from '../../../three-types'
 import { useEffect, $$ } from "woby"
-import { useCamera, useFrame, useThree } from "../../../hooks"
+import { checkCamera, checkRenderer, useCameras, useFrame, useRenderers, useThree } from "../../../hooks"
 import { OrbitControls as orbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { OrbitControlsProps } from "../../../../examples/jsm/controls/OrbitControls"
-// import { consParams } from '../../../../lib/3/consParams'
-// import { objParams } from '../../../../lib/3/objParams'
-// import { defaults } from '../../../../lib/3/defaults'
-
-//import { consParams, objParams, defaults } from "../../../three"
-
-// export type orbitProps = {
-//     camera?: three.Camera
-//     domElement?: HTMLElement
-//     enableDamping?: boolean
-//     // onChange?: (e?: OrbitControlsChangeEvent) => void
-//     // onEnd?: (e?: Event) => void
-//     // onStart?: (e?: Event) => void
-// }
 
 
-export function OrbitControls({ camera, domElement, enableDamping }: OrbitControlsProps) {
-    // if (enableDamping) 
-    //     cameraControls.enableDamping = true
-
-    // if (cameraControls.enableDamping == true)
-    //     useFrame(() => { cameraControls.update() })
-    // else
-    //     cameraControls.update()
-
+export function OrbitControls({ camera, domElement, enableDamping, ...props }: OrbitControlsProps) {
     useEffect(() => {
-        const cam = camera ?? useCamera()
-        const dom = domElement ?? useThree("domElement")
+        const ctx = useThree()
+        $$(ctx.update)
 
-        if (!$$(cam)) return
-        if (!$$(dom)) return
+        const renderers = useRenderers()
+        const cams = $$(camera) ? [$$(camera)] : useCameras()
+        const dom = $$(domElement) ?? renderers[0]?.domElement
 
-        const cameraControls = new orbitControls($$(cam), $$(dom))
+        if (!$$(cams)[0]) return () => { }
+        if (!$$(dom)) return () => { }
+
+        checkRenderer('(domElement). Please use <orbitControl camera={cameraRef} domElement={domRef} />, default useRenderers()[0]')
+        checkCamera('Please use <orbitControl camera={cameraRef} domElement={domRef} />, default useCameras()[0]')
+
+        const cameraControls = new orbitControls($$(cams)[0], $$(dom))
 
         cameraControls.enableDamping = $$(enableDamping)
 
@@ -43,56 +27,7 @@ export function OrbitControls({ camera, domElement, enableDamping }: OrbitContro
             useFrame(() => { cameraControls.update() })
         else
             cameraControls.update()
+
+        return () => cameraControls.dispose()
     })
 }
-
-// declare module '../../../../lib/3/three' {
-//     interface Three {
-//         //@ts-ignore
-//         OrbitControls: typeof orbitControls
-//     }
-// }
-
-// //@ts-ignore
-// Three.OrbitControls = orbitControls
-
-// declare module 'woby' {
-//     namespace JSX {
-//         interface IntrinsicElements {
-//             OrbitControls: OrbitControlsProps,
-//         }
-//     }
-// }
-
-// declare module '../../../../lib/3/consParams' {
-//     interface consParams {
-//         orbitControls: string[]
-//     }
-// }
-
-// declare module '../../../../lib/3/objParams' {
-//     interface objParams {
-//         orbitControls: string[]
-//     }
-// }
-
-// consParams.orbitControls = [
-// ].distinct()
-
-
-// objParams.orbitControls = [
-// ]
-
-// defaults.orbitControls = {}
-
-// export type OrbitControlsProps = Node<typeof orbitControls, typeof orbitControls, { domElement: HTMLElement; enableDamping?: ObservableMaybe<boolean> }>
-
-// declare module '../../../../lib/3/defaults' {
-//     interface defaults {
-//         //@ts-ignore
-//         orbitControls: { domElement?: HTMLElement; enableDamping?: ObservableMaybe<boolean> }
-//     }
-// }
-
-// defaults.orbitControls = {}
-

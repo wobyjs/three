@@ -4,7 +4,7 @@ import { WebGLLights } from 'three/src/renderers/webgl/WebGLLights.js'
 export { WebGLLights } from 'three/src/renderers/webgl/WebGLLights.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,21 +26,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglLights: string[]
-        webglLightsState: string[]
+        webglLights: typeof webglLights
+        webglLightsState: typeof _webglLightsState
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglLights: string[]
-        webglLightsState: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglLights: typeof _webglLights
+        webglLightsState: typeof _webglLightsState
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlLights.d.ts
 
-consParams.webglLightsState = [
+
+const webglLightsState = ([
     'version',
     'hash',
     'ambient',
@@ -61,11 +61,12 @@ consParams.webglLightsState = [
     'hemi',
     'numSpotLightShadowsWithMaps',
     'numLightProbes',
-].distinct()
+] as const).distinct()
+consParams.webglLightsState = webglLightsState
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlLights.d.ts
 
-objParams.webglLightsState = [
+
+const _webglLightsState = ([
     'version',
     'hash',
     'ambient',
@@ -86,16 +87,19 @@ objParams.webglLightsState = [
     'hemi',
     'numSpotLightShadowsWithMaps',
     'numLightProbes',
-].distinct()
+] as const).distinct()
+objProps.webglLightsState = _webglLightsState
 
-consParams.webglLights = [
+const webglLights = ([
     'extensions',
     'state',
-].distinct()
+] as const).distinct()
+consParams.webglLights = webglLights
 
-objParams.webglLights = [
+const _webglLights = ([
     'state',
-].distinct()
+] as const).distinct()
+objProps.webglLights = _webglLights
 
 export type WebGLLightsProps = Node<WebGLLights, typeof WebGLLights, { extensions: WebGLExtensions; }>
 

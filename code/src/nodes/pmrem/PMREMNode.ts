@@ -6,7 +6,7 @@ export * from 'three/src/textures/Texture.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,31 +28,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        pmremNode: string[]
+        pmremNode: typeof pmremNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        pmremNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        pmremNode: typeof _pmremNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\pmrem\PMREMNode.d.ts
 
-consParams.pmremNode = [
+
+const pmremNode = ([
     'value',
     'uvNode',
     'levelNode',
-].distinct()
+] as const).distinct()
+consParams.pmremNode = pmremNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\pmrem\PMREMNode.d.ts    
 
-objParams.pmremNode = [...objParams.tempNode,
+
+const _pmremNode = ([...objProps.tempNode,
     'uvNode',
     'levelNode',
     'value',
-].distinct()
+] as const).distinct()
+objProps.pmremNode = _pmremNode
 
 export type PMREMNodeProps = Node<PMREMNode, typeof PMREMNode, { value: Texture; uvNode?: ENode | null; levelNode?: ENode | null; }>
 

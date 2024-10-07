@@ -3,8 +3,9 @@ import { AudioListener } from 'three/src/audio/AudioListener.js'
 export { AudioListener } from 'three/src/audio/AudioListener.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,18 +26,18 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        audioListener: string[]
+        audioListener: typeof audioListener
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        audioListener: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        audioListener: typeof _audioListener
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\AudioContext.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\AudioListener.d.ts
+
+
 /**
  * The {@link AudioListener} represents a virtual {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioListener} of the all positional and non-positional audio effects in the scene.
  * A three.js application usually creates a single instance of {@link AudioListener}  * @remarks
@@ -66,10 +67,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/AudioListener.js}
  */
 
-consParams.audioListener = [
-].distinct()
+const audioListener = ([
+] as const).distinct()
+consParams.audioListener = audioListener
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\AudioContext.d.ts
+
 /**
  * This contains methods for setting up an {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioContext | AudioContext}.
 /**
@@ -101,7 +103,7 @@ consParams.audioListener = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/AudioListener.js | Source}
  */
 
-objParams.audioListener = [...objParams.object3d,
+const _audioListener = ([...objProps.object3d,
     /**
      * The {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioContext | AudioContext} of the {@link {@link AudioListener} | listener} given in the constructor.
      */
@@ -120,7 +122,8 @@ objParams.audioListener = [...objParams.object3d,
      * @defaultValue `0`
      */
     'timeDelta',
-].distinct()
+] as const).distinct()
+objProps.audioListener = _audioListener
 
 export type AudioListenerProps = Object3DNode<AudioListener, typeof AudioListener, {}>
 

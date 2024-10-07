@@ -3,7 +3,7 @@ import { WebGLCapabilities, WebGLCapabilitiesParameters } from 'three/src/render
 export { WebGLCapabilities } from 'three/src/renderers/webgl/WebGLCapabilities.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglCapabilities: string[]
+        webglCapabilities: typeof webglCapabilities
         webglCapabilitiesParameters: WrapAsString<WebGLCapabilitiesParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglCapabilities: string[]
-        webglCapabilitiesParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglCapabilities: typeof _webglCapabilities
+        webglCapabilitiesParameters: typeof _webglCapabilitiesParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlCapabilities.d.ts
+
 
 consParams.webglCapabilitiesParameters = ([
     'precision',
@@ -46,20 +46,22 @@ consParams.webglCapabilitiesParameters = ([
 ] as const).toObject()
 
 
-consParams.webglCapabilities = [
+const webglCapabilities = ([
     'gl',
     'extensions',
     'parameters', //webglCapabilitiesParameters
-].distinct()
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlCapabilities.d.ts
+] as const).distinct()
+consParams.webglCapabilities = webglCapabilities
 
-objParams.webglCapabilitiesParameters = [
+
+const _webglCapabilitiesParameters = ([
     'precision',
     'logarithmicDepthBuffer',
-].distinct()
+] as const).distinct()
+objProps.webglCapabilitiesParameters = _webglCapabilitiesParameters
 
 
-objParams.webglCapabilities = [
+const _webglCapabilities = ([
     'getMaxAnisotropy',
     'getMaxPrecision',
     'textureFormatReadable',
@@ -76,7 +78,8 @@ objParams.webglCapabilities = [
     'maxFragmentUniforms',
     'vertexTextures',
     'maxSamples',
-].distinct()
+] as const).distinct()
+objProps.webglCapabilities = _webglCapabilities
 
 export type WebGLCapabilitiesProps = Node<WebGLCapabilities, typeof WebGLCapabilities, { gl: WebGLRenderingContext; extensions: any; parameters: WebGLCapabilitiesParameters; }>
 

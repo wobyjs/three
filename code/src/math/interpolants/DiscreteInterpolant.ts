@@ -3,7 +3,7 @@ import { DiscreteInterpolant } from 'three/src/math/interpolants/DiscreteInterpo
 export { DiscreteInterpolant } from 'three/src/math/interpolants/DiscreteInterpolant.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,29 +25,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        discreteInterpolant: string[]
+        discreteInterpolant: typeof discreteInterpolant
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        discreteInterpolant: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        discreteInterpolant: typeof _discreteInterpolant
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\DiscreteInterpolant.d.ts
 
-consParams.discreteInterpolant = [
+
+const discreteInterpolant = ([
     'parameterPositions',
     'samplesValues',
     'sampleSize',
     'resultBuffer',
-].distinct()
+] as const).distinct()
+consParams.discreteInterpolant = discreteInterpolant
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\DiscreteInterpolant.d.ts    
 
-objParams.discreteInterpolant = [...objParams.interpolant,
-].distinct()
+
+const _discreteInterpolant = ([...objProps.interpolant,
+] as const).distinct()
+objProps.discreteInterpolant = _discreteInterpolant
 
 export type DiscreteInterpolantProps = Node<DiscreteInterpolant, typeof DiscreteInterpolant, { parameterPositions: any; samplesValues: any; sampleSize: number; resultBuffer?: any; }>
 

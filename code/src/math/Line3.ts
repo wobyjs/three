@@ -3,8 +3,9 @@ import { Line3 } from 'three/src/math/Line3.js'
 export { Line3 } from 'three/src/math/Line3.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        line3: string[]
+        line3: typeof line3
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        line3: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        line3: typeof _line3
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Line3.d.ts
 
-consParams.line3 = [
+
+const line3 = ([
     'start',
     'end',
     /**
@@ -48,11 +49,12 @@ consParams.line3 = [
      * @default new THREE.Vector3()
      */
     'end',
-].distinct()
+] as const).distinct()
+consParams.line3 = line3
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Line3.d.ts
 
-objParams.line3 = [
+
+const _line3 = ([
     /**
      * @default new THREE.Vector3()
      */
@@ -61,7 +63,8 @@ objParams.line3 = [
      * @default new THREE.Vector3()
      */
     'end',
-].distinct()
+] as const).distinct()
+objProps.line3 = _line3
 
 export type Line3Props = Node<Line3, typeof Line3, { start?: Vector3; end?: Vector3; }>
 

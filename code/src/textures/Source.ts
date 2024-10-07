@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { Source } from 'three/src/textures/Source.js'
 export { Source } from 'three/src/textures/Source.js'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module 'woby' {
     namespace JSX {
@@ -15,39 +16,40 @@ declare module 'woby' {
 }
 declare module '../../lib/3/consParams' {
     interface consParams {
-        source: string[]
+        source: typeof source
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        source: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        source: typeof _source
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\Source.d.ts
+
 /**
  * Represents the data {@link Source} of a texture.
  * @see {@link https://threejs.org/docs/index.html#api/en/textures/Source Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/Source.js}
  */
 
-consParams.source = [
+const source = ([
     /**
      * Create a new instance of {@link Source}
      * @param data The data definition of a texture. Default `null`
      */
     'data',
-].distinct()
+] as const).distinct()
+consParams.source = source
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\textures\Source.d.ts
+
 /**
  * Represents the data {@link Source} of a texture.
  * @see {@link https://threejs.org/docs/index.html#api/en/textures/Source | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/Source.js | Source}
  */
 
-objParams.source = [
+const _source = ([
     /**
      * The actual data of a texture.
      * @remarks The type of this property depends on the texture that uses this instance.
@@ -72,7 +74,8 @@ objParams.source = [
      * @defaultValue `0`
      */
     'version',
-].distinct()
+] as const).distinct()
+objProps.source = _source
 
 export type SourceProps = Node<Source, typeof Source, { data: any; }>
 

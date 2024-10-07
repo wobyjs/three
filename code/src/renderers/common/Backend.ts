@@ -3,7 +3,7 @@ import Backend, { BackendParameters } from 'three/src/renderers/common/Backend.j
 export { Backend }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 
@@ -31,14 +31,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        backend: string[]
-        backendParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        backend: typeof _backend
+        backendParameters: typeof _backendParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\Backend.d.ts
+
 
 consParams.backendParameters = ([
     'canvas',
@@ -47,16 +47,18 @@ consParams.backendParameters = ([
 
 consParams.backend = { ...consParams.backendParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\Backend.d.ts
 
-objParams.backendParameters = [
+
+const _backendParameters = ([
     'canvas',
-].distinct()
+] as const).distinct()
+objProps.backendParameters = _backendParameters
 
-objParams.backend = [
+const _backend = ([
     'renderer',
     'domElement',
-].distinct()
+] as const).distinct()
+objProps.backend = _backend
 
 export type BackendProps = Node<Backend, typeof Backend, BackendParameters>
 

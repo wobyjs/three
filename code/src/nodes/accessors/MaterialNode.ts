@@ -1,5 +1,5 @@
 import MaterialNode_, { MaterialNodeScope } from 'three/src/nodes/accessors/MaterialNode.js'
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 
 // declare module 'woby' {
 //     namespace JSX {
@@ -10,7 +10,7 @@ import { Object3DNode } from '../../../three-types'
 // }
 
 
-export type MaterialNodeProps = Object3DNode<MaterialNode_, typeof MaterialNode_, { scope?: MaterialNodeScope; }>
+export type MaterialNodeProps = Node<MaterialNode_, typeof MaterialNode_, { scope?: MaterialNodeScope; }>
 
 // declare module '../../../lib/3/defaults' {
 //     interface defaults {

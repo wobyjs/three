@@ -1,8 +1,8 @@
-import { Object3DNode, Vector2 } from '../../../three-types'
+import { Node, Vector2 } from '../../../three-types'
 import { Path } from 'three/src/extras/core/Path.js'
 export { Path } from 'three/src/extras/core/Path.js'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './CurvePath'
 
@@ -17,18 +17,18 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        path: string[]
+        path: typeof path
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        path: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        path: typeof _path
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Interpolations.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Path.d.ts
+
+
 /**
  * A 2D {@link Path} representation.
  * @remarks
@@ -51,7 +51,7 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Path.js}
  */
 
-consParams.path = [
+const path = ([
     /**
      * Creates a {@link Path} from the points
      * @remarks
@@ -60,10 +60,11 @@ consParams.path = [
      * @param points Array of {@link Vector2}.
      */
     'points',
-].distinct()
+] as const).distinct()
+consParams.path = path
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Interpolations.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\Path.d.ts
+
+
 /**
  * A 2d {@link Path} representation.
  * @remarks
@@ -86,15 +87,16 @@ consParams.path = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Path.js | Source}
  */
 
-objParams.path = [...objParams.curvePath,
+const _path = ([...objProps.curvePath,
     /**
      * The current offset of the path. Any new {@link THREE.Curve | Curve} added will start here.
      * @defaultValue `new THREE.Vector2()`
      */
     'currentPoint',
-].distinct()
+] as const).distinct()
+objProps.path = _path
 
-export type PathProps = Object3DNode<Path, typeof Path, { points?: Vector2[]; }>
+export type PathProps = Node<Path, typeof Path, { points?: Vector2[]; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

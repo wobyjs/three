@@ -1,13 +1,13 @@
 import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
-import { SwizzleOption } from 'three/src/nodes/Nodes.js'
 import SplitNode from 'three/src/nodes/utils/SplitNode.js'
 export { SplitNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/NodeAttribute'
+import { SwizzleOption } from 'three/src/nodes/tsl/TSLCore'
 
 declare module '../../../lib/3/three'
 {
@@ -28,39 +28,39 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        splitNode: string[]
+        splitNode: typeof splitNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        splitNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        splitNode: typeof _splitNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\SplitNode.d.ts
 /** swizzle node */
 
-consParams.splitNode = [
+const splitNode = ([
     /**
      * @param node the input node
      * @param components swizzle like string, default = "x"
      */
     'node',
     'components',
-].distinct()
+] as const).distinct()
+consParams.splitNode = splitNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\utils\SplitNode.d.ts
 /** swizzle node */
 
-objParams.splitNode = [...objParams.node,
+const _splitNode = ([...objProps.node,
     'node',
     'components',
     /**
      * @param node the input node
      * @param components swizzle like string, default = "x"
      */
-].distinct()
+] as const).distinct()
+objProps.splitNode = _splitNode
 
 export type SplitNodeProps = Node<SplitNode, typeof SplitNode, { node: ENode; components?: SwizzleOption; }>
 

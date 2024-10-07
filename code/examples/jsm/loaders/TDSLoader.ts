@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/TDSLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,32 +27,34 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tdsLoader: string[]
+        tdsLoader: typeof tdsLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tdsLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tdsLoader: typeof _tdsLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TDSLoader.d.ts
 
-consParams.tdsLoader = [
+
+const tdsLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.tdsLoader = tdsLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TDSLoader.d.ts    
 
-objParams.tdsLoader = [...objParams.loader,
+
+const _tdsLoader = ([...objProps.loader,
     'debug',
     'group',
     'manager',
     'materials',
     'meshes',
     'position',
-].distinct()
+] as const).distinct()
+objProps.tdsLoader = _tdsLoader
 
 export type TDSLoaderProps = Node<TDSLoader, typeof TDSLoader, { manager?: LoadingManager; }>
 

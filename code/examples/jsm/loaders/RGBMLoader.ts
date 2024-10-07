@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/RGBMLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,21 +27,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        rgbmLoader: string[]
-        rgbm: string[]
+        rgbmLoader: typeof rgbmLoader
+        rgbm: typeof rgbm
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        rgbmLoader: string[]
-        rgbm: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        rgbmLoader: typeof _rgbmLoader
+        rgbm: typeof _rgbm
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\RGBMLoader.d.ts
 
-consParams.rgbm = [
+
+const rgbm = ([
     'width',
     'height',
     'data',
@@ -49,15 +49,17 @@ consParams.rgbm = [
     'format',
     'type',
     'flipY',
-].distinct()
+] as const).distinct()
+consParams.rgbm = rgbm
 
-consParams.rgbmLoader = [
+const rgbmLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.rgbmLoader = rgbmLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\RGBMLoader.d.ts
 
-objParams.rgbm = [
+
+const _rgbm = ([
     'width',
     'height',
     'data',
@@ -65,13 +67,15 @@ objParams.rgbm = [
     'format',
     'type',
     'flipY',
-].distinct()
+] as const).distinct()
+objProps.rgbm = _rgbm
 
 
-objParams.rgbmLoader = [...objParams.dataTextureLoader,
+const _rgbmLoader = ([...objProps.dataTextureLoader,
     'type',
     'maxrange',
-].distinct()
+] as const).distinct()
+objProps.rgbmLoader = _rgbmLoader
 
 
 export type RGBMLoaderProps = Node<RGBMLoader, typeof RGBMLoader, { manager?: LoadingManager; }>

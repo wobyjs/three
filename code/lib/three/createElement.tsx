@@ -1,144 +1,251 @@
 /* IMPORT */
-import { $$, getMeta, isObservable, useEffect, type JSX, SYMBOL_UNTRACKED_UNWRAPPED, untrack } from "woby"
-// import { paramTypes } from './params'
-import { getConstructorParams } from "./getConstructorParams"
-import { isFunction, isPromiseR, toUpper, awaitAll } from "../utils"
-import { camelcase } from "../camelcase"
+import { $, $$, untrack, useEffect, useMemo, createElement as ce, type JSX, } from "woby"
+import { isFunction, isPromiseR, toUpper, awaitAll, woby3Child, isObservableR, isNullR, isFunctionR } from "../utils"
 import { Three } from "../3/three"
-// import "../components/orbitControls"
-// import '../components/BufferGeometry'
-// import "../components/gltf"
-// import "../components/Text"
-import { setRef } from "woby"
-import { consParams } from "../3/consParams"
-import { objParams } from "../3/objParams"
+import { extractProps2constructor, resolveConstructorDefaults } from "./extractProps2constructor"
+import { getInstance } from "./getInstance"
+import { track } from "./track"
+// import { useThree } from "../hooks/useThree"
+import { type consParams } from "../3/consParams"
+import { type defaults } from "../3/defaults"
+import { type objProps } from "../3/objProps"
 
-export const fixReactiveProps = (props: any, component: JSX.Element) => {
-    for (const key in props) {
-        if (key.startsWith("on")) {
-            //event listeners
-            component[key] = props[key]
-            continue
-        }
-
-        if (key == "ref") {
-            if (isObservable(component))
-                useEffect(() => { setRef($$(component), props.ref) })
-            else
-                // used to assign ref
-                setRef(component, props.ref)
-            continue
-        }
-
-        const setVal = () => {
-            if (Array.isArray($$(props[key]) || typeof $$(props[key]) === "object")) {
-                if (typeof $$(component)?.[key]?.set === 'function')
-                    $$(component)[key].set(...$$(props[key]))
-                else if (typeof $$(component)?.[key] === 'function')
-                    $$(component)[key](...$$(props[key]))
-            }
-            else
-                if (typeof $$(component)?.[key]?.set === 'function')
-                    $$(component)[key]?.set($$(props[key]))
-                else if (typeof $$(component)?.[key] === 'function')
-                    $$(component)[key](...$$(props[key]))
-                else if ($$(component))
-                    $$(component)[key] = ($$(props[key]))
-        }
-        // if (isObservable(props[key]))
-        useEffect(() => {
-            if (!$$(component)) return
-            setVal()
-        })
-
-        setVal()
-    }
+const html = {
+    a: true,
+    abbr: true,
+    address: true,
+    area: true,
+    article: true,
+    aside: true,
+    audio: true,
+    b: true,
+    base: true,
+    bdi: true,
+    bdo: true,
+    big: true,
+    blockquote: true,
+    body: true,
+    br: true,
+    button: true,
+    canvas: true,
+    caption: true,
+    cite: true,
+    code: true,
+    col: true,
+    colgroup: true,
+    data: true,
+    datalist: true,
+    dd: true,
+    del: true,
+    details: true,
+    dfn: true,
+    dialog: true,
+    div: true,
+    dl: true,
+    dt: true,
+    em: true,
+    embed: true,
+    fieldset: true,
+    figcaption: true,
+    figure: true,
+    footer: true,
+    form: true,
+    h1: true,
+    h2: true,
+    h3: true,
+    h4: true,
+    h5: true,
+    h6: true,
+    head: true,
+    header: true,
+    hgroup: true,
+    hr: true,
+    html: true,
+    i: true,
+    iframe: true,
+    img: true,
+    input: true,
+    ins: true,
+    kbd: true,
+    keygen: true,
+    label: true,
+    legend: true,
+    li: true,
+    link: true,
+    main: true,
+    map: true,
+    mark: true,
+    menu: true,
+    menuitem: true,
+    meta: true,
+    meter: true,
+    nav: true,
+    noindex: true,
+    noscript: true,
+    object: true,
+    ol: true,
+    optgroup: true,
+    option: true,
+    output: true,
+    p: true,
+    param: true,
+    picture: true,
+    pre: true,
+    progress: true,
+    q: true,
+    rp: true,
+    rt: true,
+    ruby: true,
+    s: true,
+    samp: true,
+    slot: true,
+    script: true,
+    section: true,
+    select: true,
+    small: true,
+    source: true,
+    span: true,
+    strong: true,
+    style: true,
+    sub: true,
+    summary: true,
+    sup: true,
+    table: true,
+    template: true,
+    tbody: true,
+    td: true,
+    textarea: true,
+    tfoot: true,
+    th: true,
+    thead: true,
+    time: true,
+    title: true,
+    tr: true,
+    track: true,
+    u: true,
+    ul: true,
+    var: true,
+    video: true,
+    wbr: true,
+    webview: true,
+    svg: true,
+    animate: true,
+    circle: true,
+    animateTransform: true,
+    clipPath: true,
+    defs: true,
+    desc: true,
+    ellipse: true,
+    feBlend: true,
+    feColorMatrix: true,
+    feComponentTransfer: true,
+    feComposite: true,
+    feConvolveMatrix: true,
+    feDiffuseLighting: true,
+    feDisplacementMap: true,
+    feDropShadow: true,
+    feFlood: true,
+    feFuncA: true,
+    feFuncB: true,
+    feFuncG: true,
+    feFuncR: true,
+    feGaussianBlur: true,
+    feImage: true,
+    feMerge: true,
+    feMergeNode: true,
+    feMorphology: true,
+    feOffset: true,
+    feSpecularLighting: true,
+    feTile: true,
+    feTurbulence: true,
+    filter: true,
+    foreignObject: true,
+    g: true,
+    image: true,
+    line: true,
+    linearGradient: true,
+    marker: true,
+    mask: true,
+    path: true,
+    pattern: true,
+    polygon: true,
+    polyline: true,
+    radialGradient: true,
+    rect: true,
+    stop: true,
+    symbol: true,
+    text: true,
+    tspan: true,
+    use: true,
 }
+export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof consParams & keyof objProps & keyof defaults), P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]>, args?: [] | {} }>
+    (component: K, props: P, key?: string) => {
+    if ((component as any).name === 'Fragment')
+        return woby3Child(() => props.children)
+    else if (isFunction(component)) // && !(isFunctionReactive(component) && useScene() && !hasSymbol(component, IN_CONTEXT)))
+        return woby3Child(() => untrack(() => component.call(component, props as P)))
+    else {// String or THREE.Class based
+        const cname = toUpper(component as string)
+        if (!Three[cname] && !html[component as string])
+            console.error(`Three.${cname} not register`)
 
-export function setValue<T>(obj: any, keysString: string, value: T): void {
-    const keys = keysString.split('-')
+        if (!Three[cname])
+            return ce(component, props)
 
-    keys.forEach((key, index) => {
-        if (!obj) return
+        const cp = track(extractProps2constructor(component, props as any))
+        // const rcp = $$$$(cp)
+        if (isObservableR(cp) || isFunctionR(cp)) {
+            const r = $()
+            useEffect(() => {
+                const rcp = $$(cp)
+                // console.log(rcp)
 
-        if (index === keys.length - 1) {
-            obj[key] = value
-        } else {
-            // if (!obj[key]) {
-            //   obj[key] = {}
-            // }
-            obj = obj[key]
-        }
-    })
-}
+                resolveConstructorDefaults<K, P>(component, rcp)
 
+                if (isNullR(rcp)) return undefined
 
-export const createElement = <K extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]> }>
-    (component: K, props: P & { args: [] }, key?: string) => {
-    const wrapElement = <T extends Function>(element: T): T => {
-        element[SYMBOL_UNTRACKED_UNWRAPPED] = true
-        return element
-    }
-
-    if (isFunction(component))
-        return wrapElement(() => untrack(() => component.call(component, props as P)))
-
-    //get children from props
-    const meta = !isObservable(props.children) && !Array.isArray(props.children) ? (props.children ? [getMeta(props.children)] : []) : [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
-
-    const getInstance = () => {
-        const p = getConstructorParams(consParams[camelcase(component as any)], objParams[camelcase(component as any)], meta, props, component)
-
-        if (!Three[toUpper(component as any)])
-            console.error(`Three.${toUpper(component as any)} not register`)
-
-        const r = Array.isArray(p) ? new Three[toUpper(component as any)](...p) : new Three[toUpper(component as any)](p)
-
-        // console.log(p, r)
-        //set readonly variables to component
-        fixReactiveProps(props, r)
-
-        const { children, args, ...remainingProps } = props
-        if (Array.isArray(consParams[camelcase(component) as any]))
-            (consParams[camelcase(component) as any] as string[]).map(paramName => delete remainingProps[paramName])
-        else
-            Object.keys(consParams[camelcase(component) as any]).map(paramName => delete remainingProps[paramName])
-
-        Object.keys(remainingProps).forEach((k) => {
-            if (k.startsWith("on") || k == "dispose")
-                r[k] = remainingProps[k]
-
-            if (k.includes("-"))
-                setValue(r, k, remainingProps[k])
-        })
-
-        return r
-    }
-    if (Object.values(props).some(k => isPromiseR(k))) {
-        console.log("promise", component)
-        return new Promise((resolve, reject) => {
-            (async () => {
-                if (!Three[toUpper(component as any)]) {
-                    console.error(`Three['${toUpper(component)}'] not found, please register it`)
-                    return
-                }
-
-                await awaitAll(props)
-
-                const r = getInstance()
-                resolve(r)
-            })()
-
-        })
-    }
-
-    else {
-        return wrapElement(() => {
-            const r = getInstance()
-
-            untrack(r)
-
+                // const rcp = $$$$(cp)
+                // if (checkNull && isNullR(rcp)) return undefined
+                r(getInstance(component, props, rcp))
+                // return getContextualInstance(component, props, cp)
+            })
             return r
-        })
+        }
+        else if (isPromiseR(cp)) {
+            console.log("promise", component)
+            return useMemo(() => {
+                //wrapSymbol(() => untrack(() =>
+                const r = $();
+                (async () => {
+                    const rcp = await awaitAll(cp)
+
+                    const cname = toUpper(component as any)
+                    if (!Three[cname]) {
+                        console.error(`Three['${toUpper(component)}'] not found, please register it`)
+                        return
+                    }
+
+                    //   await awaitAll(props, objProps[component as string])
+
+                    extractProps2constructor(component, props as any)
+                    r(getInstance(component as any, props, rcp))
+                })()
+
+                return r
+            })
+            // })), SYMBOL_UNTRACKED_UNWRAPPED, HAS_PROMISE)
+        }
+
+        else {
+            return woby3Child(() => {
+                // resolve constructor params 1 time,
+                // reactive constructor params but also set-able in obj instance, done in fixReactiveProps
+                // console.log(component, props, cp)
+                // useThree()
+                resolveConstructorDefaults<K, P>(component, cp)
+                return untrack(getInstance(component, props, cp))
+            })
+        }
     }
 }
+

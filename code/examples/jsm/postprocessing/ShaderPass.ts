@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/ShaderPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,31 +27,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        shaderPass: string[]
+        shaderPass: typeof shaderPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        shaderPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        shaderPass: typeof _shaderPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\ShaderPass.d.ts
 
-consParams.shaderPass = [
+
+const shaderPass = ([
     'shader',
     'textureID',
-].distinct()
+] as const).distinct()
+consParams.shaderPass = shaderPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\ShaderPass.d.ts    
 
-objParams.shaderPass = [...objParams.pass,
+
+const _shaderPass = ([...objProps.pass,
     'textureID',
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.shaderPass = _shaderPass
 
 export type ShaderPassProps = Node<ShaderPass, typeof ShaderPass, { shader: object; textureID?: string; }>
 

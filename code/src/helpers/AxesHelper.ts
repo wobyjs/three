@@ -3,8 +3,9 @@ import { AxesHelper } from 'three/src/helpers/AxesHelper.js'
 export { AxesHelper } from 'three/src/helpers/AxesHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../../src/core/Object3D'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        axesHelper: string[]
+        axesHelper: typeof axesHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        axesHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        axesHelper: typeof _axesHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\AxesHelper.d.ts
+
 /**
  * An axis object to visualize the 3 axes in a simple way.
  * @remarks
@@ -55,15 +56,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/AxesHelper.js}
  */
 
-consParams.axesHelper = [
+const axesHelper = ([
     /**
      * Create a new instance of {@link AxesHelper}
      * @param size Size of the lines representing the axes. Default `1`
      */
     'size',
-].distinct()
+] as const).distinct()
+consParams.axesHelper = axesHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\AxesHelper.d.ts
+
 /**
  * An axis object to visualize the 3 axes in a simple way.
  * @remarks
@@ -82,8 +84,9 @@ consParams.axesHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/AxesHelper.js | Source}
  */
 
-objParams.axesHelper = [...objParams.lineSegments,
-].distinct()
+const _axesHelper = ([...objProps.lineSegments,
+] as const).distinct()
+objProps.axesHelper = _axesHelper
 
 export type AxesHelperProps = Object3DNode<AxesHelper, typeof AxesHelper, { size?: number; }>
 

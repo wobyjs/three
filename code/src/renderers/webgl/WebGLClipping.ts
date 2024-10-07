@@ -4,7 +4,7 @@ import { WebGLClipping } from 'three/src/renderers/webgl/WebGLClipping.js'
 export { WebGLClipping } from 'three/src/renderers/webgl/WebGLClipping.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,37 +26,40 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglClipping: string[]
+        webglClipping: typeof webglClipping
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglClipping: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglClipping: typeof _webglClipping
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlCubeMaps.d.ts
 
-consParams.webglCubeMaps = [
+
+const webglCubeMaps = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.webglCubeMaps = webglCubeMaps
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlCubeMaps.d.ts
 
-objParams.webglCubeMaps = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlClipping.d.ts
+const _webglCubeMaps = ([
+] as const).distinct()
+objProps.webglCubeMaps = _webglCubeMaps
 
-consParams.webglClipping = [
+
+
+const webglClipping = ([
     'properties',
     'uniform',
-].distinct()
+] as const).distinct()
+consParams.webglClipping = webglClipping
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlClipping.d.ts
 
-objParams.webglClipping = [
+
+const _webglClipping = ([
     'uniform',
     /**
      * @default 0
@@ -66,7 +69,8 @@ objParams.webglClipping = [
      * @default 0
      */
     'numIntersection',
-].distinct()
+] as const).distinct()
+objProps.webglClipping = _webglClipping
 
 export type WebGLClippingProps = Node<WebGLClipping, typeof WebGLClipping, { properties: WebGLProperties; }>
 

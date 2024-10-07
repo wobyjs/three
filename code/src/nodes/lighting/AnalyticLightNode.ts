@@ -1,10 +1,21 @@
 import { Light } from 'three/src/lights/Light.js'
 import { Node } from '../../../three-types'
+import { Three } from '../../../lib/3/three'
 import AnalyticLightNode from 'three/src/nodes/lighting/AnalyticLightNode.js'
 export { AnalyticLightNode }
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+
+
+declare module '../../../lib/3/three'
+{
+    interface Three {
+        AnalyticLightNode: typeof AnalyticLightNode
+    }
+}
+
+Three.AnalyticLightNode = AnalyticLightNode
 
 declare module 'woby' {
     namespace JSX {
@@ -16,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        analyticLightNode: string[]
+        analyticLightNode: typeof analyticLightNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        analyticLightNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        analyticLightNode: typeof _analyticLightNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\AnalyticLightNode.d.ts
 
-consParams.analyticLightNode = [
+
+const analyticLightNode = ([
     'light',
-].distinct()
+] as const).distinct()
+consParams.analyticLightNode = analyticLightNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\AnalyticLightNode.d.ts    
 
-objParams.analyticLightNode = [...objParams.lightingNode,
+
+const _analyticLightNode = ([...objProps.lightingNode,
     'light',
-].distinct()
+] as const).distinct()
+objProps.analyticLightNode = _analyticLightNode
 
 export type AnalyticLightNodeProps<T extends Light> = Node<AnalyticLightNode<T>, typeof AnalyticLightNode<T>, { light?: T | null; }>
 

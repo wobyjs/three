@@ -3,7 +3,7 @@ import PropertyNode from 'three/src/nodes/core/PropertyNode.js'
 export { PropertyNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,30 +25,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        propertyNode: string[]
+        propertyNode: typeof propertyNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        propertyNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        propertyNode: typeof _propertyNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\PropertyNode.d.ts
 
-consParams.propertyNode = [
+
+const propertyNode = ([
     'nodeType',
     'name',
     'varying',
-].distinct()
+] as const).distinct()
+consParams.propertyNode = propertyNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\PropertyNode.d.ts    
 
-objParams.propertyNode = [...objParams.node,
+
+const _propertyNode = ([...objProps.node,
     'name',
     'varying',
-].distinct()
+] as const).distinct()
+objProps.propertyNode = _propertyNode
 
 export type PropertyNodeProps = Node<PropertyNode, typeof PropertyNode, { nodeType?: string | null; name?: string | null; varying?: boolean; }>
 

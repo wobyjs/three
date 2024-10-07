@@ -3,7 +3,7 @@ import { WebGLObjects } from 'three/src/renderers/webgl/WebGLObjects.js'
 export { WebGLObjects } from 'three/src/renderers/webgl/WebGLObjects.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,29 +25,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglObjects: string[]
+        webglObjects: typeof webglObjects
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglObjects: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglObjects: typeof _webglObjects
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlObjects.d.ts
 
-consParams.webglObjects = [
+
+const webglObjects = ([
     'gl',
     'geometries',
     'attributes',
     'info',
-].distinct()
+] as const).distinct()
+consParams.webglObjects = webglObjects
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlObjects.d.ts
 
-objParams.webglObjects = [
-].distinct()
+
+const _webglObjects = ([
+] as const).distinct()
+objProps.webglObjects = _webglObjects
 
 export type WebGLObjectsProps = Node<WebGLObjects, typeof WebGLObjects, { gl: WebGLRenderingContext; geometries: any; attributes: any; info: any; }>
 

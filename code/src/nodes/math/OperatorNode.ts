@@ -4,7 +4,7 @@ import OperatorNode, { OperatorNodeOp } from 'three/src/nodes/math/OperatorNode.
 export { OperatorNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,34 +26,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        operatorNode: string[]
+        operatorNode: typeof operatorNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        operatorNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        operatorNode: typeof _operatorNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\math\MathUtils.d.ts
+
 // remapping functions
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\math\OperatorNode.d.ts
 
-consParams.operatorNode = [
+
+const operatorNode = ([
     'op',
     '...this.params',
-].distinct()
+] as const).distinct()
+consParams.operatorNode = operatorNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\math\MathUtils.d.ts
+
 // remapping functions
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\math\OperatorNode.d.ts    
 
-objParams.operatorNode = [...objParams.tempNode,
+
+const _operatorNode = ([...objProps.tempNode,
     'aNode',
     'bNode',
     'op',
-].distinct()
+] as const).distinct()
+objProps.operatorNode = _operatorNode
 
 export type OperatorNodeProps = Node<OperatorNode, typeof OperatorNode, { op: OperatorNodeOp; params: [ENode, ENode, ...ENode[]]; }>
 

@@ -4,8 +4,9 @@ import { PointLight } from 'three/src/lights/PointLight.js'
 export { PointLight } from 'three/src/lights/PointLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        pointLight: string[]
+        pointLight: typeof pointLight
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        pointLight: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        pointLight: typeof _pointLight
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\PointLight.d.ts
+
 /**
  * A light that gets emitted from a single point in all directions
  * @remarks
@@ -56,7 +57,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/PointLight.js}
  */
 
-consParams.pointLight = [
+const pointLight = ([
     /**
      * Creates a new PointLight.
      * @param color Hexadecimal color of the light. Default is 0xffffff (white). Expects a `Integer`
@@ -68,9 +69,10 @@ consParams.pointLight = [
     'intensity',
     'distance',
     'decay',
-].distinct()
+] as const).distinct()
+consParams.pointLight = pointLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\PointLight.d.ts
+
 /**
  * A light that gets emitted from a single point in all directions
  * @remarks
@@ -89,7 +91,7 @@ consParams.pointLight = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/PointLight.js | Source}
  */
 
-objParams.pointLight = [...objParams.light,
+const _pointLight = ([...objProps.light,
     /**
      * @default 'PointLight'
      */
@@ -147,7 +149,8 @@ objParams.pointLight = [...objParams.light,
      * @remarks Expects a `Float`
      */
     'power',
-].distinct()
+] as const).distinct()
+objProps.pointLight = _pointLight
 
 export type PointLightProps = LightNode<PointLight, typeof PointLight, { color?: ColorRepresentation; intensity?: number; distance?: number; decay?: number; }>
 

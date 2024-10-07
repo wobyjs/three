@@ -3,8 +3,9 @@ import { MeshDistanceMaterial, MeshDistanceMaterialParameters } from 'three/src/
 export { MeshDistanceMaterial } from 'three/src/materials/MeshDistanceMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshDistanceMaterial: string[]
-        meshDistanceMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshDistanceMaterial: typeof _meshDistanceMaterial
+        meshDistanceMaterialParameters: typeof _meshDistanceMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshDistanceMaterial.d.ts
+
 
 consParams.meshDistanceMaterialParameters = (['map',
     'alphaMap',
@@ -52,9 +53,9 @@ consParams.meshDistanceMaterialParameters = (['map',
     'referencePosition',
 ] as const).toObject()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshDistanceMaterial.d.ts    
 
-objParams.meshDistanceMaterialParameters = [...objParams.materialParameters,
+
+const _meshDistanceMaterialParameters = ([...objProps.materialParameters,
     'map',
     'alphaMap',
     'displacementMap',
@@ -63,10 +64,11 @@ objParams.meshDistanceMaterialParameters = [...objParams.materialParameters,
     'farDistance',
     'nearDistance',
     'referencePosition',
-].distinct()
+] as const).distinct()
+objProps.meshDistanceMaterialParameters = _meshDistanceMaterialParameters
 
 
-objParams.meshDistanceMaterial = [...objParams.material,
+const _meshDistanceMaterial = ([...objProps.material,
     /**
      * @default 'MeshDistanceMaterial'
      */
@@ -95,7 +97,8 @@ objParams.meshDistanceMaterial = [...objParams.material,
      * @default false
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshDistanceMaterial = _meshDistanceMaterial
 
 
 consParams.meshDistanceMaterial = { ...consParams.meshDistanceMaterialParameters }

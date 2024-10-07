@@ -5,7 +5,7 @@ import { WebGLBufferRenderer } from 'three/src/renderers/webgl/WebGLBufferRender
 export { WebGLBufferRenderer } from 'three/src/renderers/webgl/WebGLBufferRenderer.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglBufferRenderer: string[]
+        webglBufferRenderer: typeof webglBufferRenderer
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglBufferRenderer: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglBufferRenderer: typeof _webglBufferRenderer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlBufferRenderer.d.ts
 
-consParams.webglBufferRenderer = [
+
+const webglBufferRenderer = ([
     'gl',
     'extensions',
     'info',
     ,
-].distinct()
+] as const).distinct()
+consParams.webglBufferRenderer = webglBufferRenderer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlBufferRenderer.d.ts
 
-objParams.webglBufferRenderer = [
-].distinct()
+
+const _webglBufferRenderer = ([
+] as const).distinct()
+objProps.webglBufferRenderer = _webglBufferRenderer
 
 
 export type WebGLBufferRendererProps = Node<WebGLBufferRenderer, typeof WebGLBufferRenderer, { gl: WebGLRenderingContext; extensions: WebGLExtensions; info: WebGLInfo; }>

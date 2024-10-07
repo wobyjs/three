@@ -3,8 +3,9 @@ import { RingGeometry } from 'three/src/geometries/RingGeometry.js'
 export { RingGeometry } from 'three/src/geometries/RingGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        ringGeometry: string[]
+        ringGeometry: typeof ringGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        ringGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        ringGeometry: typeof _ringGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\RingGeometry.d.ts
+
 /**
  * A class for generating a two-dimensional ring geometry.
  * @example
@@ -52,7 +53,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/RingGeometry.js}
  */
 
-consParams.ringGeometry = [
+const ringGeometry = ([
     /**
      * Create a new instance of {@link RingGeometry}
      * @param innerRadius Expects a `Float`. Default `0.5`.
@@ -69,9 +70,10 @@ consParams.ringGeometry = [
     'phiSegments',
     'thetaStart',
     'thetaLength',
-].distinct()
+] as const).distinct()
+consParams.ringGeometry = ringGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\RingGeometry.d.ts
+
 /**
  * A class for generating a two-dimensional ring geometry.
  * @example
@@ -88,8 +90,9 @@ consParams.ringGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/RingGeometry.js | Source}
  */
 
-objParams.ringGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _ringGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.ringGeometry = _ringGeometry
 
 
 export type RingGeometryProps = BufferGeometryNode<RingGeometry, typeof RingGeometry, { innerRadius?: number; outerRadius?: number; thetaSegments?: number; phiSegments?: number; thetaStart?: number; thetaLength?: number; }>

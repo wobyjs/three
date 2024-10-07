@@ -5,8 +5,9 @@ import { Points } from 'three/src/objects/Points.js'
 export { Points } from 'three/src/objects/Points.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        points: string[]
+        points: typeof points
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        points: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        points: typeof _points
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Points.d.ts
+
 /**
  * A class for displaying {@link Points}
  * @remarks
@@ -46,7 +47,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Points.js}
  */
 
-consParams.points = [
+const points = ([
     /**
      * Create a new instance of {@link Points}
      * @param geometry An instance of {@link THREE.BufferGeometry}. Default {@link THREE.BufferGeometry | `new THREE.BufferGeometry()`}.
@@ -54,9 +55,10 @@ consParams.points = [
      */
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.points = points
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\objects\Points.d.ts
+
 /**
  * A class for displaying {@link Points}
  * @remarks
@@ -65,7 +67,7 @@ consParams.points = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Points.js | Source}
  */
 
-objParams.points = [...objParams.object3d,
+const _points = ([...objProps.object3d,
     /**
      * An array of weights typically from `0-1` that specify how much of the morph is applied.
      * @defaultValue `undefined`, _but reset to a blank array by {@link updateMorphTargets | .updateMorphTargets()}._
@@ -86,7 +88,8 @@ objParams.points = [...objParams.object3d,
      * @defaultValue {@link THREE.PointsMaterial | `new THREE.PointsMaterial()` _with randomised colour_.
      */
     'material',
-].distinct()
+] as const).distinct()
+objProps.points = _points
 
 export type PointsProps<
     TGeometry extends BufferGeometry<NormalOrGLBufferAttributes> = BufferGeometry,

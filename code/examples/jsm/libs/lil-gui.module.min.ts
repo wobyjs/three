@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/libs/lil-gui.module.min'
 import { Node, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 import '../../../lib/three/extensions'
@@ -36,30 +36,30 @@ declare module '../../../lib/3/consParams' {
             touchStyles?: number;
             parent?: GUI;
         }>
-        booleanController: string[]
-        colorController: string[]
-        controller: string[]
-        functionController: string[]
-        numberController: string[]
-        optionController: string[]
-        stringController: string[]
+        booleanController: typeof booleanController
+        colorController: typeof colorController
+        controller: typeof controller
+        functionController: typeof functionController
+        numberController: typeof numberController
+        optionController: typeof optionController
+        stringController: typeof stringController
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gui: string[]
-        booleanController: string[]
-        colorController: string[]
-        controller: string[]
-        functionController: string[]
-        numberController: string[]
-        optionController: string[]
-        stringController: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gui: typeof _gui
+        booleanController: typeof _booleanController
+        colorController: typeof _colorController
+        controller: typeof _controller
+        functionController: typeof _functionController
+        numberController: typeof _numberController
+        optionController: typeof _optionController
+        stringController: typeof _stringController
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\libs\lil-gui.module.min.d.ts
+
 
 consParams.gui = ([
     'autoPlace',
@@ -71,18 +71,22 @@ consParams.gui = ([
     'parent',
 ] as const).toObject()
 
-consParams.booleanController = [
+const booleanController = ([
     'parent',
     'object',
     'property',
-].distinct()
+] as const).distinct()
 
-consParams.colorController = [
+consParams.booleanController = booleanController
+
+const colorController = ([
     'parent',
     'object',
     'property',
     'rgbScale',
-].distinct()
+] as const).distinct()
+consParams.colorController = colorController
+
 /**
  * lil-gui
  * https://lil-gui.georgealways.com
@@ -94,46 +98,48 @@ consParams.colorController = [
  * Base class for all controllers.
  */
 
-consParams.controller = [
+const controller = ([
     'parent',
     'object',
     'property',
     'className',
     'widgetTag',
-].distinct()
+] as const).distinct()
+consParams.controller = controller
 
-consParams.functionController = [
+const functionController = ([
     'parent',
     'object',
     'property',
-].distinct()
+]).distinct()
+consParams.functionController = functionController
 
-consParams.numberController = [
-
+const numberController = ([
     'parent',
     'object',
     'property',
     'min',
     'max',
     'step',
-].distinct()
+] as const).distinct()
+consParams.numberController = numberController
 
-consParams.optionController = [
+const optionController = ([
     'parent',
     'object',
     'property',
     'options',
-].distinct()
+]).distinct()
+consParams.optionController = optionController
 
-consParams.stringController = [
+const stringController = ([
     'parent',
     'object',
     'property',
-].distinct()
+] as const).distinct()
+consParams.stringController = stringController
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\libs\lil-gui.module.min.d.ts
-
-objParams.gui = [
+const _gui = ([
     /**
      * The GUI containing this folder, or `undefined` if this is the root GUI.
      */
@@ -174,9 +180,10 @@ objParams.gui = [
      * The DOM element that contains children.
      */
     '$children',
-].distinct()
+] as const).distinct()
+objProps.gui = _gui
 
-objParams.colorController = [
+const _colorController = ([
     '$input',
     '$text',
     '$display',
@@ -184,7 +191,8 @@ objParams.colorController = [
     '_rgbScale',
     '_initialValueHexString',
     '_textFocused',
-].distinct()
+] as const).distinct()
+objProps.colorController = _colorController
 
 /**
  * lil-gui
@@ -197,7 +205,7 @@ objParams.colorController = [
  * Base class for all controllers.
  */
 
-objParams.controller = [
+const _controller = ([
     /**
      * The GUI that contains this controller.
      */
@@ -221,8 +229,7 @@ objParams.controller = [
      */
     '_hidden',
     /**
-     * The value of `object[ property ].distinct()
-` when the controller was created.
+     * The value of `object[ property ]` when the controller was created.
      */
     'initialValue',
     /**
@@ -253,14 +260,15 @@ objParams.controller = [
     '_listening',
     '_listenCallbackID',
     '_listenPrevValue',
-].distinct()
+] as const).distinct()
+objProps.controller = _controller
 
-objParams.functionController = [...objParams.controller,
+const _functionController = ([...objProps.controller,
     '$button',
-].distinct()
+] as const).distinct()
+objProps.functionController = _functionController
 
-
-objParams.numberController = [...objParams.controller,
+const _numberController = ([...objProps.controller,
     '_decimals',
     '_min',
     '_max',
@@ -271,22 +279,26 @@ objParams.numberController = [...objParams.controller,
     '_hasSlider',
     '$slider',
     '$fill',
-].distinct()
+] as const).distinct()
+objProps.numberController = _numberController
 
-objParams.booleanController = [...objParams.controller,
+const _booleanController = ([...objProps.controller,
     '$input',
-].distinct()
+] as const).distinct()
+objProps.booleanController = _booleanController
 
-objParams.optionController = [
+const _optionController = ([
     '$select',
     '$display',
     '_values',
     '_names',
-].distinct()
+] as const).distinct()
+objProps.optionController = _optionController
 
-objParams.stringController = [...objParams.controller,
+const _stringController = ([...objProps.controller,
     '$input',
-].distinct()
+] as const).distinct()
+objProps.stringController = _stringController
 
 export type GuiProps = Node<GUI, typeof GUI, { autoPlace?: boolean; container?: HTMLElement; width?: number; title?: string; injectStyles?: boolean; touchStyles?: number; parent?: GUI; }>
 

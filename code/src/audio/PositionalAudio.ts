@@ -2,8 +2,9 @@ import { PositionalAudio } from 'three/src/audio/PositionalAudio.js'
 import { Object3DNode } from '../../three-types'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Audio'
 
 declare module '../../lib/3/three'
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        positionalAudio: string[]
+        positionalAudio: typeof positionalAudio
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        positionalAudio: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        positionalAudio: typeof _positionalAudio
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\PositionalAudio.d.ts
+
 /**
  * Create a positional audio object.
  * This uses the {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API Audio API}.
@@ -70,15 +71,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/PositionalAudio.js}
  */
 
-consParams.positionalAudio = [
+const positionalAudio = ([
     /**
      * Create a new instance of {@link PositionalAudio}
      * @param listener (required) {@link AudioListener} instance.
      */
     'listener',
-].distinct()
+] as const).distinct()
+consParams.positionalAudio = positionalAudio
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\audio\PositionalAudio.d.ts
+
 /**
  * Create a positional audio object.
  * This uses the {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API | Web Audio API}.
@@ -113,12 +115,13 @@ consParams.positionalAudio = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/PositionalAudio.js | Source}
  */
 
-objParams.positionalAudio = [...objParams.audio,
+const _positionalAudio = ([...objProps.audio,
     /**
      * The PositionalAudio's {@link https://developer.mozilla.org/en-US/docs/Web/API/PannerNode | PannerNode}.
      */
     'panner',
-].distinct()
+] as const).distinct()
+objProps.positionalAudio = _positionalAudio
 
 export type PositionalAudioProps = Object3DNode<PositionalAudio, typeof PositionalAudio, { listener: AudioListener; }>
 

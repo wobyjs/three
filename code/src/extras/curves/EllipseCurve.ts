@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { EllipseCurve } from 'three/src/extras/curves/EllipseCurve.js'
 export { EllipseCurve } from 'three/src/extras/curves/EllipseCurve.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/CurvePath'
 
@@ -26,18 +26,18 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ellipseCurve: string[]
+        ellipseCurve: typeof ellipseCurve
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ellipseCurve: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ellipseCurve: typeof _ellipseCurve
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\Curves.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\EllipseCurve.d.ts
+
+
 /**
  * Creates a 2d curve in the shape of an ellipse
  * @remarks
@@ -67,7 +67,7 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/EllipseCurve.js}
  */
 
-consParams.ellipseCurve = [
+const ellipseCurve = ([
     /**
   * The X center of the ellipse.
   * @remarks Expects a `Float`
@@ -113,10 +113,11 @@ consParams.ellipseCurve = [
      * @defaultValue `0`
      */
     'aRotation',
-].distinct()
+] as const).distinct()
+consParams.ellipseCurve = ellipseCurve
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\Curves.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\curves\EllipseCurve.d.ts
+
+
 /**
  * Creates a 2d curve in the shape of an ellipse
  * @remarks
@@ -140,7 +141,7 @@ consParams.ellipseCurve = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/EllipseCurve.js | Source}
  */
 
-objParams.ellipseCurve = [...objParams.curve,
+const _ellipseCurve = ([...objProps.curve,
     /**
      * The X center of the ellipse.
      * @remarks Expects a `Float`
@@ -186,9 +187,10 @@ objParams.ellipseCurve = [...objParams.curve,
      * @defaultValue `0`
      */
     'aRotation',
-].distinct()
+] as const).distinct()
+objProps.ellipseCurve = _ellipseCurve
 
-export type EllipseCurveProps = Object3DNode<EllipseCurve, typeof EllipseCurve, { aX?: number; aY?: number; xRadius?: number; yRadius?: number; aStartAngle?: number; aEndAngle?: number; aClockwise?: boolean; aRotation?: number; }>
+export type EllipseCurveProps = Node<EllipseCurve, typeof EllipseCurve, { aX?: number; aY?: number; xRadius?: number; yRadius?: number; aStartAngle?: number; aEndAngle?: number; aClockwise?: boolean; aRotation?: number; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/geometries/TeapotGeometry.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        teapotGeometry: string[]
+        teapotGeometry: typeof teapotGeometry
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        teapotGeometry: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        teapotGeometry: typeof _teapotGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\TeapotGeometry.d.ts
 
-consParams.teapotGeometry = [
+
+const teapotGeometry = ([
 
     'size',
     'segments',
@@ -47,12 +47,14 @@ consParams.teapotGeometry = [
     'body',
     'fitLid',
     'blinn',
-].distinct()
+] as const).distinct()
+consParams.teapotGeometry = teapotGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\TeapotGeometry.d.ts    
 
-objParams.teapotGeometry = [...objParams.bufferGeometry,
-].distinct()
+
+const _teapotGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.teapotGeometry = _teapotGeometry
 
 export type TeapotGeometryProps = BufferGeometryNode<TeapotGeometry, typeof TeapotGeometry, { size?: number; segments?: number; bottom?: boolean; lid?: boolean; body?: boolean; fitLid?: boolean; blinn?: boolean; }>
 

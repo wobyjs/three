@@ -1,12 +1,13 @@
-import { Water2Options, Water as Water2 } from 'three/examples/jsm/objects/Water2.js'
-export { Water2, Water2Options }
+import { WaterOptions, Water as Water2 } from 'three/examples/jsm/objects/Water2.js'
+export { Water2, WaterOptions }
 
 import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../../../src/object/mesh'
 
 declare module '../../../lib/3/three'
 {
@@ -27,21 +28,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        water2: string[]
-        water2Options: string[]
+        water2: typeof water
+        water2Options: typeof water2Options
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        water2: string[]
-        water2Options: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        water2: typeof _water
+        water2Options: typeof _water2Options
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Water2.d.ts
+const water = ([...consParams.mesh,
+    'geometry',
+    'options',
+] as const).distinct()
+consParams.water2 = water
 
-consParams.water2Options = [
+const _water = ([...objProps.mesh,
+    'material',
+] as const).distinct()
+objProps.water2 = _water
+
+const water2Options = ([
     'color',
     'textureWidth',
     'textureHeight',
@@ -54,11 +64,11 @@ consParams.water2Options = [
     'flowMap',
     'normalMap0',
     'normalMap1',
-].distinct()
+] as const).distinct()
+consParams.water2Options = water2Options
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\objects\Water2.d.ts
 
-objParams.water2Options = [
+const _water2Options = ([
     'color',
     'textureWidth',
     'textureHeight',
@@ -71,13 +81,14 @@ objParams.water2Options = [
     'flowMap',
     'normalMap0',
     'normalMap1',
-].distinct()
+] as const).distinct()
+objProps.water2Options = _water2Options
 
-export type Water2Props = Node<Water2, typeof Water2, { geometry: BufferGeometry; options: Water2Options; }>
+export type Water2Props = Node<Water2, typeof Water2, { geometry: BufferGeometry; options: WaterOptions; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        water2: Partial<{ geometry: BufferGeometry; options: Water2Options; }>
+        water2: Partial<{ geometry: BufferGeometry; options: WaterOptions; }>
     }
 }
 

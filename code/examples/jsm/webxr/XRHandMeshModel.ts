@@ -6,7 +6,7 @@ import { XRHandMeshModel } from 'three/examples/jsm/webxr/XRHandMeshModel.js'
 export * from 'three/examples/jsm/webxr/XRHandMeshModel.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,19 +28,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrHandMeshModel: string[]
+        xrHandMeshModel: typeof xrHandMeshModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrHandMeshModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrHandMeshModel: typeof _xrHandMeshModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRHandMeshModel.d.ts
 
-consParams.xrHandMeshModel = [
+
+const xrHandMeshModel = ([
 
     'handModel',
     'controller',
@@ -48,15 +48,17 @@ consParams.xrHandMeshModel = [
     'handedness',
     'loader',
     'onLoad',
-].distinct()
+] as const).distinct()
+consParams.xrHandMeshModel = xrHandMeshModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRHandMeshModel.d.ts
 
-objParams.xrHandMeshModel = [
+
+const _xrHandMeshModel = ([
     'controller',
     'handModel',
     'bones',
-].distinct()
+] as const).distinct()
+objProps.xrHandMeshModel = _xrHandMeshModel
 
 export type XRHandMeshModelProps = Node<XRHandMeshModel, typeof XRHandMeshModel, { handModel: Object3D; controller: Object3D; path: string; handedness: string; loader?: Loader<GLTF> | null; onLoad?: ((object: Object3D) => void) | null; }>
 

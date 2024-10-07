@@ -5,7 +5,7 @@ import ContextNode from 'three/src/nodes/core/ContextNode.js'
 export { ContextNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        contextNode: string[]
+        contextNode: typeof contextNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        contextNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        contextNode: typeof _contextNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\ContextNode.d.ts
 
-consParams.contextNode = [
+
+const contextNode = ([
     'node',
     'context',
-].distinct()
+] as const).distinct()
+consParams.contextNode = contextNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\core\ContextNode.d.ts    
 
-objParams.contextNode = [...objParams.node,
+
+const _contextNode = ([...objProps.node,
     'isContextNode',
     'node',
     'context',
-].distinct()
+] as const).distinct()
+objProps.contextNode = _contextNode
 
 export type ContextNodeProps = Node<ContextNode, typeof ContextNode, { node: ENode; context: NodeBuilderContext; }>
 

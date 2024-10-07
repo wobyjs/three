@@ -6,8 +6,9 @@ export * from 'three/examples/jsm/lines/Line2.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import './LineSegments2'
 
 declare module '../../../lib/3/three'
 {
@@ -28,27 +29,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        line2: string[]
+        line2: typeof line2
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        line2: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        line2: typeof _line2
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\Line2.d.ts
-consParams.line2 = [
+const line2 = ([//...consParams.lineSegments2,
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.line2 = line2
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\Line2.d.ts
-objParams.line2 = [
-    'geometry',
-    'material',
-].distinct()
+const _line2 = ([...objProps.lineSegments2,
+    // 'geometry',
+    // 'material',
+] as const).distinct()
+objProps.line2 = _line2
 
 export type Line2Props = Object3DNode<Line2, typeof Line2, { geometry?: LineGeometry; material?: LineMaterial; }>
 

@@ -1,8 +1,8 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import ReferenceNode from 'three/src/nodes/accessors/ReferenceNode.js'
 export { ReferenceNode }
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module 'woby' {
@@ -15,28 +15,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        referenceNode: string[]
+        referenceNode: typeof referenceNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        referenceNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        referenceNode: typeof _referenceNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\ReferenceNode.d.ts
 
-consParams.referenceNode = [
+
+const referenceNode = ([
     'property',
     'uniformType',
     'object',
     'count',
-].distinct()
+] as const).distinct()
+consParams.referenceNode = referenceNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\ReferenceNode.d.ts    
 
-objParams.referenceNode = [...objParams.node,
+
+const _referenceNode = ([...objProps.node,
     'property',
     'uniformType',
     'object',
@@ -44,9 +45,10 @@ objParams.referenceNode = [...objParams.node,
     'properties',
     'reference',
     'node',
-].distinct()
+] as const).distinct()
+objProps.referenceNode = _referenceNode
 
-export type ReferenceNodeProps<T> = Object3DNode<ReferenceNode<T>, typeof ReferenceNode, { property: string; uniformType: string; object?: T | null; count?: number | null; }>
+export type ReferenceNodeProps<T> = Node<ReferenceNode<T>, typeof ReferenceNode, { property: string; uniformType: string; object?: T | null; count?: number | null; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

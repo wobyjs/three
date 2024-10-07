@@ -29,7 +29,7 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noPropertyAccessFromIndexSignature": false,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
         "noUnusedParameters": false,
         "outDir": "./",
         "pretty": true,
@@ -66,6 +66,6 @@
         "vite.config.*.*ts",
         "node_modules/",
         "src/demo",
-        "dist"
+        "./src/**/*",
     ]
 }

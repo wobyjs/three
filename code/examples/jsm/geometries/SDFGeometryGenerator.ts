@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/geometries/SDFGeometryGenerator.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        sdfGeometryGenerator: string[]
+        sdfGeometryGenerator: typeof sdfGeometryGenerator
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        sdfGeometryGenerator: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        sdfGeometryGenerator: typeof _sdfGeometryGenerator
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\SDFGeometryGenerator.d.ts
 
-consParams.sdfGeometryGenerator = [
+
+const sdfGeometryGenerator = ([
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.sdfGeometryGenerator = sdfGeometryGenerator
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\geometries\SDFGeometryGenerator.d.ts
 
-objParams.sdfGeometryGenerator = [
-].distinct()
+
+const _sdfGeometryGenerator = ([
+] as const).distinct()
+objProps.sdfGeometryGenerator = _sdfGeometryGenerator
 
 export type SDFGeometryGeneratorProps = Node<SDFGeometryGenerator, typeof SDFGeometryGenerator, { renderer: WebGLRenderer; }>
 

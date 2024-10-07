@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/helpers/ViewHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,29 +27,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        viewHelper: string[]
+        viewHelper: typeof viewHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        viewHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        viewHelper: typeof _viewHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\ViewHelper.d.ts
 
-consParams.viewHelper = [
+
+const viewHelper = ([
     'camera',
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.viewHelper = viewHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\ViewHelper.d.ts    
 
-objParams.viewHelper = [...objParams.object3d,
+
+const _viewHelper = ([...objProps.object3d,
     'animating',
     'center',
-].distinct()
+] as const).distinct()
+objProps.viewHelper = _viewHelper
 
 export type ViewHelperProps = Node<ViewHelper, typeof ViewHelper, { camera: Camera; domElement: HTMLElement; }>
 

@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/postprocessing/EffectComposer.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -29,26 +29,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        effectComposer: string[]
+        effectComposer: typeof effectComposer
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        effectComposer: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        effectComposer: typeof _effectComposer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\EffectComposer.d.ts
 
-consParams.effectComposer = [
+
+const effectComposer = ([
     'renderer',
     'renderTarget',
-].distinct()
+] as const).distinct()
+consParams.effectComposer = effectComposer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\EffectComposer.d.ts
 
-objParams.effectComposer = [
+
+const _effectComposer = ([
     'renderer',
     'renderTarget1',
     'renderTarget2',
@@ -58,7 +59,8 @@ objParams.effectComposer = [
     'copyPass',
     'clock',
     'renderToScreen',
-].distinct()
+] as const).distinct()
+objProps.effectComposer = _effectComposer
 
 export type EffectComposerProps = Node<EffectComposer, typeof EffectComposer, { renderer: WebGLRenderer; renderTarget?: WebGLRenderTarget; }>
 

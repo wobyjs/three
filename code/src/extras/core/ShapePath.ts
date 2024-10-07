@@ -1,9 +1,9 @@
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import { ShapePath } from 'three/src/extras/core/ShapePath.js'
 export { ShapePath } from 'three/src/extras/core/ShapePath.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,17 +25,17 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        shapePath: string[]
+        shapePath: typeof shapePath
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        shapePath: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        shapePath: typeof _shapePath
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\ShapePath.d.ts
+
 /**
  * This class is used to convert a series of shapes to an array of {@link THREE.Path's
  * for example an svg shape to a path.
@@ -43,10 +43,11 @@ declare module '../../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/ShapePath.js}
  */
 
-consParams.shapePath = [
-].distinct()
+const shapePath = ([
+] as const).distinct()
+consParams.shapePath = shapePath
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\extras\core\ShapePath.d.ts
+
 /**
  * This class is used to convert a series of shapes to an array of {@link THREE.Path | Path's
  * for example an SVG shape to a path.
@@ -54,10 +55,10 @@ consParams.shapePath = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/ShapePath.js | Source}
  */
 
-objParams.shapePath = [
+const _shapePath = ([
     /**
      * Array of {@link THREE.Path | Path's}s.
-     * @defaultValue `[].distinct()`
+     * @defaultValue []
      */
     'subPaths',
     /**
@@ -69,9 +70,10 @@ objParams.shapePath = [
      * @defaultValue `new THREE.Color()`
      */
     'color',
-].distinct()
+] as const).distinct()
+objProps.shapePath = _shapePath
 
-export type ShapePathProps = Object3DNode<ShapePath, typeof ShapePath, {}>
+export type ShapePathProps = Node<ShapePath, typeof ShapePath, {}>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

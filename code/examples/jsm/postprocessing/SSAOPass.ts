@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/postprocessing/SSAOPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -29,29 +29,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        ssaoPass: string[]
+        ssaoPass: typeof ssaoPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        ssaoPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        ssaoPass: typeof _ssaoPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SSAOPass.d.ts
 
-consParams.ssaoPass = [
+
+const ssaoPass = ([
     'scene',
     'camera',
     'width',
     'height',
     'kernelSize',
-].distinct()
+] as const).distinct()
+consParams.ssaoPass = ssaoPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SSAOPass.d.ts    
 
-objParams.ssaoPass = [...objParams.pass,
+
+const _ssaoPass = ([...objProps.pass,
     'scene',
     'camera',
     'width',
@@ -73,7 +74,8 @@ objParams.ssaoPass = [...objParams.pass,
     'copyMaterial',
     'fsQuad',
     'originalClearColor',
-].distinct()
+] as const).distinct()
+objProps.ssaoPass = _ssaoPass
 
 export type SSAOPassProps = Node<SSAOPass, typeof SSAOPass, { scene: Scene; camera: Camera; width?: number; height?: number; kernelSize?: number; }>
 

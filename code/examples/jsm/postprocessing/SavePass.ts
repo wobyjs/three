@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/postprocessing/SavePass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -28,31 +28,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        savePass: string[]
+        savePass: typeof savePass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        savePass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        savePass: typeof _savePass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SavePass.d.ts
 
-consParams.savePass = [
+
+const savePass = ([
     'renderTarget',
-].distinct()
+] as const).distinct()
+consParams.savePass = savePass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\SavePass.d.ts    
 
-objParams.savePass = [...objParams.pass,
+
+const _savePass = ([...objProps.pass,
     'textureID',
     'renderTarget',
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.savePass = _savePass
 
 export type SavePassProps = Node<SavePass, typeof SavePass, { renderTarget?: WebGLRenderTarget; }>
 

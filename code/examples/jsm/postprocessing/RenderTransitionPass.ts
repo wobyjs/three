@@ -6,7 +6,7 @@ export * from 'three/examples/jsm/postprocessing/RenderTransitionPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -29,28 +29,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        renderTransitionPass: string[]
+        renderTransitionPass: typeof renderTransitionPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        renderTransitionPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        renderTransitionPass: typeof _renderTransitionPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\RenderTransitionPass.d.ts
 
-consParams.renderTransitionPass = [
+
+const renderTransitionPass = ([
     'sceneA',
     'cameraA',
     'sceneB',
     'cameraB',
-].distinct()
+] as const).distinct()
+consParams.renderTransitionPass = renderTransitionPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\RenderTransitionPass.d.ts    
 
-objParams.renderTransitionPass = [...objParams.pass,
+
+const _renderTransitionPass = ([...objProps.pass,
     'material',
     'fsQuad',
     'sceneA',
@@ -59,7 +60,8 @@ objParams.renderTransitionPass = [...objParams.pass,
     'cameraB',
     'renderTargetA',
     'renderTargetB',
-].distinct()
+] as const).distinct()
+objProps.renderTransitionPass = _renderTransitionPass
 
 export type RenderTransitionPassProps = Node<RenderTransitionPass, typeof RenderTransitionPass, { sceneA: Object3D; cameraA: Camera; sceneB: Object3D; cameraB: Camera; }>
 

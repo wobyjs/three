@@ -3,7 +3,7 @@ import PhongLightingModel from 'three/src/nodes/functions/PhongLightingModel.js'
 export { PhongLightingModel }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,27 +25,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        phongLightingModel: string[]
+        phongLightingModel: typeof phongLightingModel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        phongLightingModel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        phongLightingModel: typeof _phongLightingModel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\functions\PhongLightingModel.d.ts
 
-consParams.phongLightingModel = [
+
+const phongLightingModel = ([
     'specular',
-].distinct()
+] as const).distinct()
+consParams.phongLightingModel = phongLightingModel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\functions\PhongLightingModel.d.ts    
 
-objParams.phongLightingModel = [...objParams.lightingModel,
+
+const _phongLightingModel = ([...objProps.lightingModel,
     'specular',
-].distinct()
+] as const).distinct()
+objProps.phongLightingModel = _phongLightingModel
 
 export type PhongLightingModelProps = Node<PhongLightingModel, typeof PhongLightingModel, { specular?: boolean; }>
 

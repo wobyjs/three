@@ -4,8 +4,9 @@ import { LatheGeometry } from 'three/src/geometries/LatheGeometry.js'
 export { LatheGeometry } from 'three/src/geometries/LatheGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        latheGeometry: string[]
+        latheGeometry: typeof latheGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        latheGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        latheGeometry: typeof _latheGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\LatheGeometry.d.ts
+
 /**
  * Creates meshes with axial symmetry like vases
  * @remarks
@@ -59,7 +60,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/LatheGeometry.js}
  */
 
-consParams.latheGeometry = [
+const latheGeometry = ([
     /**
      * This creates a {@link LatheGeometry} based on the parameters.
      * @param points Array of Vector2s. The x-coordinate of each point must be greater than zero.
@@ -73,9 +74,10 @@ consParams.latheGeometry = [
     'segments',
     'phiStart',
     'phiLength',
-].distinct()
+] as const).distinct()
+consParams.latheGeometry = latheGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\LatheGeometry.d.ts
+
 /**
  * Creates meshes with axial symmetry like vases
  * @remarks
@@ -97,8 +99,9 @@ consParams.latheGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/LatheGeometry.js | Source}
  */
 
-objParams.latheGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _latheGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.latheGeometry = _latheGeometry
 
 
 export type LatheGeometryProps = BufferGeometryNode<LatheGeometry, typeof LatheGeometry, { points?: Vector2[]; segments?: number; phiStart?: number; phiLength?: number; }>

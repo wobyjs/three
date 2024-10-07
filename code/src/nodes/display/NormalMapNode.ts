@@ -4,8 +4,9 @@ import NormalMapNode from 'three/src/nodes/display/NormalMapNode.js'
 export { NormalMapNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/TempNode'
 
 declare module '../../../lib/3/three'
 {
@@ -26,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        normalMapNode: string[]
+        normalMapNode: typeof normalMapNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        normalMapNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        normalMapNode: typeof _normalMapNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\NormalMapNode.d.ts
 
-consParams.normalMapNode = [
+
+const normalMapNode = ([
     'node',
     'scaleNode',
-].distinct()
+] as const).distinct()
+consParams.normalMapNode = normalMapNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\display\NormalMapNode.d.ts    
 
-objParams.normalMapNode = [...objParams.tempNode,
+
+const _normalMapNode = ([...objProps.tempNode,
     'node',
     'scaleNode',
     'normalMapType',
-].distinct()
+] as const).distinct()
+objProps.normalMapNode = _normalMapNode
 
 export type NormalMapNodeProps = Node<NormalMapNode, typeof NormalMapNode, { node: ENode; scaleNode?: ENode | null; }>
 

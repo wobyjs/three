@@ -3,8 +3,9 @@ import { DirectionalLightShadow } from 'three/src/lights/DirectionalLightShadow.
 export { DirectionalLightShadow } from 'three/src/lights/DirectionalLightShadow.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './LightShadow'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        directionalLightShadow: string[]
+        directionalLightShadow: typeof directionalLightShadow
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        directionalLightShadow: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        directionalLightShadow: typeof _directionalLightShadow
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\DirectionalLightShadow.d.ts
+
 /**
  * This is used internally by {@link DirectionalLight} for calculating shadows.
  * Unlike the other shadow classes, this.uses an {@link THREE.OrthographicCamera} to calculate the shadows,
@@ -84,10 +85,11 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLightShadow.js}
  */
 
-consParams.directionalLightShadow = [
-].distinct()
+const directionalLightShadow = ([
+] as const).distinct()
+consParams.directionalLightShadow = directionalLightShadow
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\DirectionalLightShadow.d.ts
+
 /**
  * This is used internally by {@link DirectionalLight | DirectionalLights} for calculating shadows.
  * Unlike the other shadow classes, this uses an {@link THREE.OrthographicCamera | OrthographicCamera} to calculate the shadows,
@@ -135,7 +137,7 @@ consParams.directionalLightShadow = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLightShadow.js | Source}
  */
 
-objParams.directionalLightShadow = [...objParams.lightShadow,
+const _directionalLightShadow = ([...objProps.lightShadow,
     /**
      * The light's view of the world.
      * @remarks This is used to generate a depth map of the scene; objects behind other objects from the light's perspective will be in shadow.
@@ -146,7 +148,8 @@ objParams.directionalLightShadow = [...objParams.lightShadow,
      * the {@link OrthographicCamera.far | far} clipping plane at 500.
      */
     'camera',
-].distinct()
+] as const).distinct()
+objProps.directionalLightShadow = _directionalLightShadow
 
 export type DirectionalLightShadowProps = Node<DirectionalLightShadow, typeof DirectionalLightShadow, {}>
 

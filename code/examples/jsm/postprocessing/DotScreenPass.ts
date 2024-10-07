@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/DotScreenPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,31 +27,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        dotScreenPass: string[]
+        dotScreenPass: typeof dotScreenPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        dotScreenPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        dotScreenPass: typeof _dotScreenPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\DotScreenPass.d.ts
 
-consParams.dotScreenPass = [
+
+const dotScreenPass = ([
     'center',
     'angle',
     'scale',
-].distinct()
+] as const).distinct()
+consParams.dotScreenPass = dotScreenPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\DotScreenPass.d.ts    
 
-objParams.dotScreenPass = [...objParams.pass,
+
+const _dotScreenPass = ([...objProps.pass,
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.dotScreenPass = _dotScreenPass
 
 export type DotScreenPassProps = Node<DotScreenPass, typeof DotScreenPass, { center?: Vector2; angle?: number; scale?: number; }>
 

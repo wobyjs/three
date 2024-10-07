@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/BloomPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,27 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        bloomPass: string[]
+        bloomPass: typeof bloomPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        bloomPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        bloomPass: typeof _bloomPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\BloomPass.d.ts
 
-consParams.bloomPass = [
+
+const bloomPass = ([
     'strength',
     'kernelSize',
     'sigma',
-].distinct()
+] as const).distinct()
+consParams.bloomPass = bloomPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\BloomPass.d.ts    
 
-objParams.bloomPass = [...objParams.pass,
+
+const _bloomPass = ([...objProps.pass,
     'renderTargetX',
     'renderTargetY',
     'copyUniforms',
@@ -54,7 +55,8 @@ objParams.bloomPass = [...objParams.pass,
     'convolutionUniforms',
     'materialConvolution',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.bloomPass = _bloomPass
 
 export type BloomPassProps = Node<BloomPass, typeof BloomPass, { strength?: number; kernelSize?: number; sigma?: number; }>
 

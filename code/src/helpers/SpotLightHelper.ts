@@ -5,8 +5,9 @@ import { SpotLightHelper } from 'three/src/helpers/SpotLightHelper.js'
 export { SpotLightHelper } from 'three/src/helpers/SpotLightHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        spotLightHelper: string[]
+        spotLightHelper: typeof spotLightHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        spotLightHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        spotLightHelper: typeof _spotLightHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\SpotLightHelper.d.ts
+
 /**
  * This displays a cone shaped helper object for a {@link THREE.SpotLight}.
  * @example
@@ -53,7 +54,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/SpotLightHelper.js}
  */
 
-consParams.spotLightHelper = [
+const spotLightHelper = ([
     /**
      * Create a new instance of {@link SpotLightHelper}
      * @param light The {@link THREE.SpotLight} to be visualized.
@@ -61,9 +62,10 @@ consParams.spotLightHelper = [
      */
     'light',
     'color',
-].distinct()
+] as const).distinct()
+consParams.spotLightHelper = spotLightHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\SpotLightHelper.d.ts
+
 /**
  * This displays a cone shaped helper object for a {@link THREE.SpotLight | SpotLight}.
  * @example
@@ -79,7 +81,7 @@ consParams.spotLightHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/SpotLightHelper.js | Source}
  */
 
-objParams.spotLightHelper = [...objParams.object3d,
+const _spotLightHelper = ([...objProps.object3d,
     /**
      * {@link THREE.LineSegments | LineSegments} used to visualize the light.
      */
@@ -104,7 +106,8 @@ objParams.spotLightHelper = [...objParams.object3d,
      * @defaultValue `false`.
      */
     'matrixAutoUpdate',
-].distinct()
+] as const).distinct()
+objProps.spotLightHelper = _spotLightHelper
 
 export type SpotLightHelperProps = Object3DNode<SpotLightHelper, typeof SpotLightHelper, { light: Light; color?: ColorRepresentation; }>
 

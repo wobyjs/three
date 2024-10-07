@@ -3,8 +3,9 @@ import { Clock } from 'three/src/core/Clock.js'
 export { Clock } from 'three/src/core/Clock.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        clock: string[]
+        clock: typeof clock
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        clock: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        clock: typeof _clock
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Clock.d.ts
+
 /**
  * Object for keeping track of time
  * @remarks
@@ -45,15 +46,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Clock.js}
  */
 
-consParams.clock = [
+const clock = ([
     /**
      * Create a new instance of {@link THREE.Clock}
      * @param autoStart - Whether to automatically start the clock when {@link getDelta | .getDelta()} is called for the first time. Default `true`
      */
     'autoStart',
-].distinct()
+] as const).distinct()
+consParams.clock = clock
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Clock.d.ts
+
 /**
  * Object for keeping track of time
  * @remarks
@@ -63,7 +65,7 @@ consParams.clock = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Clock.js | Source}
  */
 
-objParams.clock = [
+const _clock = ([
     /**
      * If set, starts the clock automatically when {@link getDelta | .getDelta()} is called for the first time.
      * @defaultValue `true`
@@ -89,7 +91,8 @@ objParams.clock = [
      * @defaultValue `false`
      */
     'running',
-].distinct()
+] as const).distinct()
+objProps.clock = _clock
 
 export type ClockProps = Node<Clock, typeof Clock, { autoStart?: boolean; }>
 

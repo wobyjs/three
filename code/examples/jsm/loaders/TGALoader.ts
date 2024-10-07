@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/TGALoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,26 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tgaLoader: string[]
+        tgaLoader: typeof tgaLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tgaLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tgaLoader: typeof _tgaLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TGALoader.d.ts
 
-consParams.tgaLoader = [
+
+const tgaLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.tgaLoader = tgaLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\TGALoader.d.ts    
 
-objParams.tgaLoader = [...objParams.dataTextureLoader,
-].distinct()
+
+const _tgaLoader = ([...objProps.dataTextureLoader,
+] as const).distinct()
+objProps.tgaLoader = _tgaLoader
 
 export type TGALoaderProps = Node<TGALoader, typeof TGALoader, { manager?: LoadingManager; }>
 

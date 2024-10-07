@@ -3,8 +3,9 @@ import { IcosahedronGeometry } from 'three/src/geometries/IcosahedronGeometry.js
 export { IcosahedronGeometry } from 'three/src/geometries/IcosahedronGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import './PolyhedronGeometry'
 
 declare module '../../lib/3/three'
 {
@@ -25,26 +26,26 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        icosahedronGeometry: string[]
+        icosahedronGeometry: typeof icosahedronGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        icosahedronGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        icosahedronGeometry: typeof _icosahedronGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\Geometries.d.ts
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\IcosahedronGeometry.d.ts
+
+
 /**
  * A class for generating an icosahedron geometry.
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/IcosahedronGeometry Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/IcosahedronGeometry.js}
  */
 
-consParams.icosahedronGeometry = [
+const icosahedronGeometry = ([
     /**
      * Create a new instance of {@link IcosahedronGeometry}
      * @param radius Expects a `Float`. Default `1`
@@ -53,18 +54,20 @@ consParams.icosahedronGeometry = [
      */
     'radius',
     'detail',
-].distinct()
+] as const).distinct()
+consParams.icosahedronGeometry = icosahedronGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\Geometries.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\IcosahedronGeometry.d.ts
+
+
 /**
  * A class for generating an icosahedron geometry.
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/IcosahedronGeometry | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/IcosahedronGeometry.js | Source}
  */
 
-objParams.icosahedronGeometry = [...objParams.polyhedronGeometry,
-].distinct()
+const _icosahedronGeometry = ([...objProps.polyhedronGeometry,
+] as const).distinct()
+objProps.icosahedronGeometry = _icosahedronGeometry
 
 
 export type IcosahedronGeometryProps = BufferGeometryNode<IcosahedronGeometry, typeof IcosahedronGeometry, { radius?: number; detail?: number; }>

@@ -4,8 +4,9 @@ import { WireframeGeometry } from 'three/src/geometries/WireframeGeometry.js'
 export { WireframeGeometry } from 'three/src/geometries/WireframeGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        wireframeGeometry: string[]
+        wireframeGeometry: typeof wireframeGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        wireframeGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        wireframeGeometry: typeof _wireframeGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\WireframeGeometry.d.ts
+
 /**
  * This can be used as a helper object to view a {@link BufferGeometry} as a wireframe.
  * @example
@@ -54,15 +55,16 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/WireframeGeometry.js}
  */
 
-consParams.wireframeGeometry = [
+const wireframeGeometry = ([
     /**
      * Create a new instance of {@link WireframeGeometry}
      * @param geometry Any geometry object. Default `null`.
      */
     'geometry',
-].distinct()
+] as const).distinct()
+consParams.wireframeGeometry = wireframeGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\WireframeGeometry.d.ts
+
 /**
  * This can be used as a helper object to view a {@link BufferGeometry | geometry} as a wireframe.
  * @example
@@ -80,8 +82,9 @@ consParams.wireframeGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/WireframeGeometry.js | Source}
  */
 
-objParams.wireframeGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _wireframeGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.wireframeGeometry = _wireframeGeometry
 
 export type WireframeGeometryProps<TBufferGeometry extends BufferGeometry = BufferGeometry> = BufferGeometryNode<WireframeGeometry<TBufferGeometry>, typeof WireframeGeometry, { geometry?: TBufferGeometry; }>
 

@@ -7,7 +7,7 @@ export * from 'three/examples/jsm/postprocessing/TAARenderPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './SSAARenderPass'
 
@@ -30,30 +30,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        taaRenderPass: string[]
+        taaRenderPass: typeof taaRenderPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        taaRenderPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        taaRenderPass: typeof _taaRenderPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\TAARenderPass.d.ts
 
-consParams.taaRenderPass = [
+
+const taaRenderPass = ([
     'scene',
     'camera',
     'clearColor',
     'clearAlpha',
-].distinct()
+] as const).distinct()
+consParams.taaRenderPass = taaRenderPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\TAARenderPass.d.ts    
 
-objParams.taaRenderPass = [...objParams.ssaaRenderPass,
+
+const _taaRenderPass = ([...objProps.ssaaRenderPass,
     'accumulate',
-].distinct()
+] as const).distinct()
+objProps.taaRenderPass = _taaRenderPass
 
 export type TAARenderPassProps = Node<TAARenderPass, typeof TAARenderPass, { scene: Scene; camera: Camera; clearColor?: ColorRepresentation; clearAlpha?: number; }>
 

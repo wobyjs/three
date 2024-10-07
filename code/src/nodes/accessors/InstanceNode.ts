@@ -1,10 +1,10 @@
 import { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
-import { Object3DNode } from '../../../three-types'
+import { Node } from '../../../three-types'
 import InstanceNode from 'three/src/nodes/accessors/InstanceNode.js'
 export { InstanceNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,31 +26,33 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        instanceNode: string[]
+        instanceNode: typeof instanceNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        instanceNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        instanceNode: typeof _instanceNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\InstanceNode.d.ts
 
-consParams.instanceNode = [
+
+const instanceNode = ([
     'instanceMesh',
-].distinct()
+] as const).distinct()
+consParams.instanceNode = instanceNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\accessors\InstanceNode.d.ts    
 
-objParams.instanceNode = [...objParams.node,
+
+const _instanceNode = ([...objProps.node,
     'instanceMesh',
     'instanceMatrixNode',
     'instanceColorNode',
-].distinct()
+] as const).distinct()
+objProps.instanceNode = _instanceNode
 
-export type InstanceNodeProps = Object3DNode<InstanceNode, typeof InstanceNode, { instanceMesh: InstancedMesh; }>
+export type InstanceNodeProps = Node<InstanceNode, typeof InstanceNode, { instanceMesh: InstancedMesh; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

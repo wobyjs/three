@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/postprocessing/TexturePass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -28,32 +28,34 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        texturePass: string[]
+        texturePass: typeof texturePass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        texturePass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        texturePass: typeof _texturePass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\TexturePass.d.ts
 
-consParams.texturePass = [
+
+const texturePass = ([
     'map',
     'opacity',
-].distinct()
+] as const).distinct()
+consParams.texturePass = texturePass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\TexturePass.d.ts    
 
-objParams.texturePass = [...objParams.pass,
+
+const _texturePass = ([...objProps.pass,
     'map',
     'opacity',
     'uniforms',
     'material',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.texturePass = _texturePass
 
 export type TexturePassProps = Node<TexturePass, typeof TexturePass, { map?: Texture; opacity?: number; }>
 

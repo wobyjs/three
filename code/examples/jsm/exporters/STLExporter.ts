@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/STLExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,61 +26,69 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        stlExporter: string[]
-        stlExporterOptionsBinary: string[]
-        stlExporterOptionsString: string[]
-        stlExporterOptions: string[]
+        stlExporter: typeof stlExporter
+        stlExporterOptionsBinary: typeof stlExporterOptionsBinary
+        stlExporterOptionsString: typeof stlExporterOptionsString
+        stlExporterOptions: typeof stlExporterOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        stlExporter: string[]
-        stlExporterOptionsBinary: string[]
-        stlExporterOptionsString: string[]
-        stlExporterOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        stlExporter: typeof _stlExporter
+        stlExporterOptionsBinary: typeof _stlExporterOptionsBinary
+        stlExporterOptionsString: typeof _stlExporterOptionsString
+        stlExporterOptions: typeof _stlExporterOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\stlExporter.d.ts
 
-consParams.stlExporterOptionsBinary = [
+
+const stlExporterOptionsBinary = ([
     'binary',
-].distinct()
+] as const).distinct()
+consParams.stlExporterOptionsBinary = stlExporterOptionsBinary
 
 
-consParams.stlExporterOptionsString = [
+const stlExporterOptionsString = ([
     'binary',
-].distinct()
+] as const).distinct()
+consParams.stlExporterOptionsString = stlExporterOptionsString
 
 
-consParams.stlExporterOptions = [
+const stlExporterOptions = ([
     'binary',
-].distinct()
+] as const).distinct()
+consParams.stlExporterOptions = stlExporterOptions
 
 
-consParams.stlExporter = [
-].distinct()
+const stlExporter = ([
+] as const).distinct()
+consParams.stlExporter = stlExporter
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\STLExporter.d.ts
 
-objParams.stlExporterOptionsBinary = [
+
+const _stlExporterOptionsBinary = ([
     'binary',
-].distinct()
+] as const).distinct()
+objProps.stlExporterOptionsBinary = _stlExporterOptionsBinary
 
 
-objParams.stlExporterOptionsString = [
+const _stlExporterOptionsString = ([
     'binary',
-].distinct()
+] as const).distinct()
+objProps.stlExporterOptionsString = _stlExporterOptionsString
 
 
-objParams.stlExporterOptions = [
+const _stlExporterOptions = ([
     'binary',
-].distinct()
+] as const).distinct()
+objProps.stlExporterOptions = _stlExporterOptions
 
 
-objParams.stlExporter = [
-].distinct()
+const _stlExporter = ([
+] as const).distinct()
+objProps.stlExporter = _stlExporter
 
 export type STLExporterProps = Node<STLExporter, typeof STLExporter, {}>
 

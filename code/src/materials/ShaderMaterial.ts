@@ -3,8 +3,9 @@ import { ShaderMaterial, ShaderMaterialParameters } from 'three/src/materials/Sh
 export { ShaderMaterial } from 'three/src/materials/ShaderMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { WrapAsString } from '../../three-types'
 import './Material'
 
@@ -32,14 +33,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        shaderMaterial: string[]
-        shaderMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        shaderMaterial: typeof _shaderMaterial
+        shaderMaterialParameters: typeof _shaderMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\ShaderMaterial.d.ts
+
 
 consParams.shaderMaterialParameters = {
     ...consParams.materialParameters,
@@ -61,9 +62,9 @@ consParams.shaderMaterialParameters = {
 
 consParams.shaderMaterial = { ...consParams.shaderMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\ShaderMaterial.d.ts    
 
-objParams.shaderMaterialParameters = [...objParams.materialParameters,
+
+const _shaderMaterialParameters = ([...objProps.materialParameters,
     'uniforms',
     'cloneUniformsGroups',
     'vertexShader',
@@ -76,10 +77,11 @@ objParams.shaderMaterialParameters = [...objParams.materialParameters,
     'fog',
     'extensions',
     'glslVersion',
-].distinct()
+] as const).distinct()
+objProps.shaderMaterialParameters = _shaderMaterialParameters
 
 
-objParams.shaderMaterial = [...objParams.material,
+const _shaderMaterial = ([...objProps.material,
     /**
      * @default 'ShaderMaterial'
      */
@@ -127,8 +129,7 @@ objParams.shaderMaterial = [...objParams.material,
      */
     'extensions',
     /**
-
-objParams.             * @default { 'color': [ 1, 1, 1 ].distinct() 'uv': [ 0, 0 ].distinct() 'uv1' = [ 0, 0 ].distinct() }
+* @default { 'color': [ 1, 1, 1 ]  'uv': [ 0, 0 ] 'uv1' = [ 0, 0 ] }
      */
     'defaultAttributeValues',
     /**
@@ -143,7 +144,8 @@ objParams.             * @default { 'color': [ 1, 1, 1 ].distinct() 'uv': [ 0, 0
      * @default null
      */
     'glslVersion',
-].distinct()
+] as const).distinct()
+objProps.shaderMaterial = _shaderMaterial
 
 export type ShaderMaterialProps = MaterialNode<ShaderMaterial, ShaderMaterialParameters>
 

@@ -3,8 +3,9 @@ import { TorusGeometry } from 'three/src/geometries/TorusGeometry.js'
 export { TorusGeometry } from 'three/src/geometries/TorusGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        torusGeometry: string[]
+        torusGeometry: typeof torusGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        torusGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        torusGeometry: typeof _torusGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\TorusGeometry.d.ts
+
 /**
  * A class for generating torus geometries.
  * @example
@@ -51,7 +52,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TorusGeometry.js}
  */
 
-consParams.torusGeometry = [
+const torusGeometry = ([
     /**
      * Create a new instance of {@link TorusGeometry}
      * @param radius Radius of the torus, from the center of the torus to the center of the tube. Expects a `Float`. Default `1`.
@@ -65,9 +66,10 @@ consParams.torusGeometry = [
     'radialSegments',
     'tubularSegments',
     'arc',
-].distinct()
+] as const).distinct()
+consParams.torusGeometry = torusGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\TorusGeometry.d.ts
+
 /**
  * A class for generating torus geometries.
  * @example
@@ -83,8 +85,9 @@ consParams.torusGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TorusGeometry.js | Source}
  */
 
-objParams.torusGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _torusGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.torusGeometry = _torusGeometry
 
 export type TorusGeometryProps = BufferGeometryNode<TorusGeometry, typeof TorusGeometry, { radius?: number; tube?: number; radialSegments?: number; tubularSegments?: number; arc?: number; }>
 

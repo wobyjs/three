@@ -3,8 +3,9 @@ import { Int8BufferAttribute } from 'three/src/core/BufferAttribute.js'
 export { Int8BufferAttribute } from 'three/src/core/BufferAttribute.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './BufferAttribute'
 
 declare module '../../lib/3/three'
@@ -26,13 +27,13 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        int8BufferAttribute: string[]
+        int8BufferAttribute: typeof int8BufferAttribute
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        int8BufferAttribute: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        int8BufferAttribute: typeof _int8BufferAttribute
     }
 }
 
@@ -44,7 +45,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js}
  */
 
-consParams.int8BufferAttribute = [
+const int8BufferAttribute = ([
     /**
      * This creates a new {@link THREE.Int8BufferAttribute} object.
      * @param array This can be a typed or untyped (normal) array or an integer length. An array value will be converted to `Int8Array`.
@@ -65,7 +66,8 @@ consParams.int8BufferAttribute = [
     'array',
     'itemSize',
     'normalized',
-].distinct()
+] as const).distinct()
+consParams.int8BufferAttribute = int8BufferAttribute
 
 
 /**
@@ -76,8 +78,9 @@ consParams.int8BufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-objParams.int8BufferAttribute = [...objParams.bufferAttribute,
-].distinct()
+const _int8BufferAttribute = ([...objProps.bufferAttribute,
+] as const).distinct()
+objProps.int8BufferAttribute = _int8BufferAttribute
 
 export type Int8BufferAttributeProps = Node<Int8BufferAttribute, typeof Int8BufferAttribute, { array: Iterable<number> | ArrayLike<number> | ArrayBuffer | number; itemSize: number; normalized?: boolean; }>
 

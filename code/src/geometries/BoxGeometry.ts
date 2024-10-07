@@ -3,8 +3,9 @@ import { BoxGeometry } from 'three/src/geometries/BoxGeometry.js'
 export { BoxGeometry } from 'three/src/geometries/BoxGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../core/BufferGeometry'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        boxGeometry: string[]
+        boxGeometry: typeof boxGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        boxGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        boxGeometry: typeof _boxGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\BoxGeometry.d.ts
+
 /**
  * {@link BoxGeometry} is a geometry class for a rectangular cuboid with a given 'width',
 'height', and 'depth'
@@ -54,7 +55,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/BoxGeometry.js}
  */
 
-consParams.boxGeometry = [
+const boxGeometry = ([
     /**
      * Create a new instance of {@link BoxGeometry}
      * @param width Width, that is, the length of the edges parallel to the X axis. Optional, Expects a `Float`. Default `1`
@@ -71,9 +72,10 @@ consParams.boxGeometry = [
     'widthSegments',
     'heightSegments',
     'depthSegments',
-].distinct()
+] as const).distinct()
+consParams.boxGeometry = boxGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\BoxGeometry.d.ts
+
 /**
  * {@link BoxGeometry} is a geometry class for a rectangular cuboid with a given 'width', 'height', and 'depth'
  * @remarks On creation, the cuboid is centred on the origin, with each edge parallel to one of the axes.
@@ -90,8 +92,9 @@ consParams.boxGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/BoxGeometry.js | Source}
  */
 
-objParams.boxGeometry = [...objParams.bufferGeometry,
-].distinct()
+const _boxGeometry = ([...objProps.bufferGeometry,
+] as const).distinct()
+objProps.boxGeometry = _boxGeometry
 
 export type BoxGeometryProps = BufferGeometryNode<BoxGeometry, typeof BoxGeometry, { width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number; }>
 

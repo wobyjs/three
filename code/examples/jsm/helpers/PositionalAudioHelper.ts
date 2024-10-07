@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/helpers/PositionalAudioHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,33 +27,35 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        positionalAudioHelper: string[]
+        positionalAudioHelper: typeof positionalAudioHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        positionalAudioHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        positionalAudioHelper: typeof _positionalAudioHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\PositionalAudioHelper.d.ts
 
-consParams.positionalAudioHelper = [
+
+const positionalAudioHelper = ([
     'audio',
     'range',
     'divisionsInnerAngle',
     'divisionsOuterAngle',
-].distinct()
+] as const).distinct()
+consParams.positionalAudioHelper = positionalAudioHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\PositionalAudioHelper.d.ts    
 
-objParams.positionalAudioHelper = [...objParams.line,
+
+const _positionalAudioHelper = ([...objProps.line,
     'audio',
     'range',
     'divisionsInnerAngle',
     'divisionsOuterAngle',
-].distinct()
+] as const).distinct()
+objProps.positionalAudioHelper = _positionalAudioHelper
 
 export type PositionalAudioHelperProps = Node<PositionalAudioHelper, typeof PositionalAudioHelper, { audio: PositionalAudio; range?: number; divisionsInnerAngle?: number; divisionsOuterAngle?: number; }>
 

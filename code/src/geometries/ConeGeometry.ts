@@ -3,8 +3,9 @@ import { ConeGeometry } from 'three/src/geometries/ConeGeometry.js'
 export { ConeGeometry } from 'three/src/geometries/ConeGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './CylinderGeometry'
 
 declare module '../../lib/3/three'
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        coneGeometry: string[]
+        coneGeometry: typeof coneGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        coneGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        coneGeometry: typeof _coneGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\ConeGeometry.d.ts
+
 /**
  * A class for generating cone geometries.
  * @example
@@ -52,7 +53,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ConeGeometry.js}
  */
 
-consParams.coneGeometry = [
+const coneGeometry = ([
     /**
      * Create a new instance of {@link ConeGeometry}
      * @param radius Radius of the cone base. Expects a `Float`. Default `1`
@@ -71,9 +72,10 @@ consParams.coneGeometry = [
     'openEnded',
     'thetaStart',
     'thetaLength',
-].distinct()
+] as const).distinct()
+consParams.coneGeometry = coneGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\ConeGeometry.d.ts
+
 /**
  * A class for generating cone geometries.
  * @example
@@ -89,8 +91,9 @@ consParams.coneGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ConeGeometry.js | Source}
  */
 
-objParams.coneGeometry = [...objParams.cylinderGeometry,
-].distinct()
+const _coneGeometry = ([...objProps.cylinderGeometry,
+] as const).distinct()
+objProps.coneGeometry = _coneGeometry
 
 export type ConeGeometryProps = BufferGeometryNode<ConeGeometry, typeof ConeGeometry, { radius?: number; height?: number; radialSegments?: number; heightSegments?: number; openEnded?: boolean; thetaStart?: number; thetaLength?: number; }>
 

@@ -1,10 +1,11 @@
 import { Object3DNode } from '../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
-export { Object3D } from 'three/src/core/Object3D.js'
+export * from 'three/src/core/Object3D.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,22 +26,22 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        object3d: string[]
-        object3dEventMap: string[]
+        object3d: typeof object3d
+        object3dEventMap: typeof object3dEventMap
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        object3d: string[]
-        object3dEventMap: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        object3d: typeof _object3d
+        object3dEventMap: typeof _object3dEventMap
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Object3d.d.ts
 
 
-consParams.object3dEventMap = [
+
+const object3dEventMap = ([
     /**
      * Fires when the object has been added to its parent object.
      */
@@ -57,7 +58,8 @@ consParams.object3dEventMap = [
      * Fires when a new child object has been removed.
      */
     'childremoved',
-].distinct()
+] as const).distinct()
+consParams.object3dEventMap = object3dEventMap
 
 /**
  * This is the base class for most objects in three.js and provides a set of properties and methods for manipulating objects in 3d space.
@@ -67,12 +69,13 @@ consParams.object3dEventMap = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Object3d.js}
  */
 
-consParams.object3d = [
-].distinct()
+const object3d = ([
+] as const).distinct()
+consParams.object3d = object3d
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Object3d.d.ts
 
-objParams.object3dEventMap = [
+
+const _object3dEventMap = ([
     /**
      * Fires when the object has been added to its parent object.
      */
@@ -89,7 +92,8 @@ objParams.object3dEventMap = [
      * Fires when a new child object has been removed.
      */
     'childremoved',
-].distinct()
+] as const).distinct()
+objProps.object3dEventMap = _object3dEventMap
 
 /**
  * This is the base class for most objects in three.js and provides a set of properties and methods for manipulating objects in 3d space.
@@ -99,7 +103,7 @@ objParams.object3dEventMap = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Object3d.js | Source}
  */
 
-objParams.object3d = [
+const _object3d = ([
     /**
      * {@link http://en.wikipedia.org/wiki/Universally_unique_identifier | UUID} of this object instance.
      * @remarks This gets automatically assigned and shouldn't be edited.
@@ -126,7 +130,7 @@ objParams.object3d = [
     /**
      * Array with object's children.
      * @see {@link THREE.Object3dGroup | Group} for info on manually grouping objects.
-     * @defaultValue `[].distinct()`
+     * @defaultValue []
      */
     'children',
     /**
@@ -134,6 +138,37 @@ objParams.object3d = [
      * @defaultValue {@link DEFAULT_UP | Object3d.DEFAULT_UP} - that is `(0, 1, 0)`.
      */
     'up',
+
+    /**
+     * Object's local position.
+     * @defaultValue `new THREE.Vector3()` - that is `(0, 0, 0)`.
+     */
+    'position', //readonly
+
+    /**
+     * Object's local rotation ({@link https://en.wikipedia.org/wiki/Euler_angles | Euler angles}), in radians.
+     * @defaultValue `new THREE.Euler()` - that is `(0, 0, 0, Euler.DEFAULT_ORDER)`.
+     */
+    'rotation', //readonly
+    /**
+     * Object's local rotation as a {@link THREE.Quaternion | Quaternion}.
+     * @defaultValue `new THREE.Quaternion()` - that is `(0,  0, 0, 1)`.
+     */
+    'quaternion', //readonly
+    /**
+     * The object's local scale.
+     * @defaultValue `new THREE.Vector3( 1, 1, 1 )`
+     */
+    'scale', //readonly
+    /**
+     * @defaultValue `new THREE.Matrix4()`
+     */
+    'modelViewMatrix', //readonly
+    /**
+     * @defaultValue `new THREE.Matrix3()`
+     */
+    'normalMatrix', //readonly
+
     /**
      * The local transform matrix.
      * @defaultValue `new THREE.Matrix4()`
@@ -222,16 +257,16 @@ objParams.object3d = [
      * @defaultValue `undefined`
      */
     'customDistanceMaterial',
-].distinct()
-
+] as const).distinct()
+objProps.object3d = _object3d
 
 export type Object3DProps = Object3DNode<Object3D, typeof Object3D, {}>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        object3D: Partial<{}>
+        object3d: Partial<{}>
     }
 }
 
-defaults.object3D = {}
+defaults.object3d = {}
 

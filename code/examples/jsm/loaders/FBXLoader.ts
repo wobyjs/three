@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/FBXLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        fbxLoader: string[]
+        fbxLoader: typeof fbxLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        fbxLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        fbxLoader: typeof _fbxLoader
     }
 }
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\FBXLoader.d.ts
 
-consParams.fbxLoader = [
+
+const fbxLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.fbxLoader = fbxLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\FBXLoader.d.ts    
 
-objParams.fbxLoader = [...objParams.loader,
-].distinct()
+
+const _fbxLoader = ([...objProps.loader,
+] as const).distinct()
+objProps.fbxLoader = _fbxLoader
 
 export type FBXLoaderProps = Node<FBXLoader, typeof FBXLoader, { manager?: LoadingManager; }>
 

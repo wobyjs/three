@@ -3,7 +3,7 @@ import { QuaternionLinearInterpolant } from 'three/src/math/interpolants/Quatern
 export { QuaternionLinearInterpolant } from 'three/src/math/interpolants/QuaternionLinearInterpolant.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../Interpolant'
 
@@ -26,29 +26,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        quaternionLinearInterpolant: string[]
+        quaternionLinearInterpolant: typeof quaternionLinearInterpolant
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        quaternionLinearInterpolant: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        quaternionLinearInterpolant: typeof _quaternionLinearInterpolant
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\QuaternionLinearInterpolant.d.ts
 
-consParams.quaternionLinearInterpolant = [
+
+const quaternionLinearInterpolant = ([
     'parameterPositions',
     'samplesValues',
     'sampleSize',
     'resultBuffer',
-].distinct()
+] as const).distinct()
+consParams.quaternionLinearInterpolant = quaternionLinearInterpolant
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\interpolants\QuaternionLinearInterpolant.d.ts    
 
-objParams.quaternionLinearInterpolant = [...objParams.interpolant,
-].distinct()
+
+const _quaternionLinearInterpolant = ([...objProps.interpolant,
+] as const).distinct()
+objProps.quaternionLinearInterpolant = _quaternionLinearInterpolant
 
 export type QuaternionLinearInterpolantProps = Node<QuaternionLinearInterpolant, typeof QuaternionLinearInterpolant, { parameterPositions: any; samplesValues: any; sampleSize: number; resultBuffer?: any; }>
 

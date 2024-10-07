@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/utils/GPUStatsPanel.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,33 +27,35 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        gpuStatsPanel: string[]
+        gpuStatsPanel: typeof gpuStatsPanel
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gpuStatsPanel: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gpuStatsPanel: typeof _gpuStatsPanel
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\AST.d.ts
 
-consParams.gpuStatsPanel = [
+
+const gpuStatsPanel = ([
     'context',
     'name',
-].distinct()
+] as const).distinct()
+consParams.gpuStatsPanel = gpuStatsPanel
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\AST.d.ts
 
-objParams.gpuStatsPanel = [
+
+const _gpuStatsPanel = ([
     'context',
     'extension',
     'maxTime',
     'activeQueries',
     'startQuery',
     'endQuery',
-].distinct()
+] as const).distinct()
+objProps.gpuStatsPanel = _gpuStatsPanel
 
 export type GPUStatsPanelProps = Node<GPUStatsPanel, typeof GPUStatsPanel, { context: WebGLRenderingContext | WebGL2RenderingContext, name?: string }>
 

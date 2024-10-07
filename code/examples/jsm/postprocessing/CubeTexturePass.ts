@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/postprocessing/CubeTexturePass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,27 +27,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        cubeTexturePass: string[]
+        cubeTexturePass: typeof cubeTexturePass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        cubeTexturePass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        cubeTexturePass: typeof _cubeTexturePass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\CubeTexturePass.d.ts
 
-consParams.cubeTexturePass = [
+
+const cubeTexturePass = ([
     'camera',
     'envMap',
     'opacity',
-].distinct()
+] as const).distinct()
+consParams.cubeTexturePass = cubeTexturePass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\CubeTexturePass.d.ts    
 
-objParams.cubeTexturePass = [...objParams.pass,
+
+const _cubeTexturePass = ([...objProps.pass,
     'camera',
     'cubeShader',
     'cubeMesh',
@@ -55,7 +56,8 @@ objParams.cubeTexturePass = [...objParams.pass,
     'opacity',
     'cubeScene',
     'cubeCamera',
-].distinct()
+] as const).distinct()
+objProps.cubeTexturePass = _cubeTexturePass
 
 export type CubeTexturePassProps = Node<CubeTexturePass, typeof CubeTexturePass, { clearColor?: ColorRepresentation; clearAlpha?: number; }>
 

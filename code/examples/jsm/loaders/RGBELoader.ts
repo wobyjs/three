@@ -5,8 +5,9 @@ export * from 'three/examples/jsm/loaders/RGBELoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../../../src/loaders/DataTextureLoader'
 
 declare module '../../../lib/3/three'
 {
@@ -27,21 +28,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        rgbeLoader: string[]
-        rgbe: string[]
+        rgbeLoader: typeof rgbeLoader
+        rgbe: typeof rgbe
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        rgbeLoader: string[]
-        rgbe: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        rgbeLoader: typeof _rgbeLoader
+        rgbe: typeof _rgbe
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\RGBELoader.d.ts
 
-consParams.rgbe = [
+
+const rgbe = ([
     'width',
     'height',
     'data',
@@ -49,16 +50,18 @@ consParams.rgbe = [
     'gamma',
     'exposure',
     'type',
-].distinct()
+] as const).distinct()
+consParams.rgbe = rgbe
 
 
-consParams.rgbeLoader = [
+const rgbeLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.rgbeLoader = rgbeLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\RGBELoader.d.ts
 
-objParams.rgbe = [
+
+const _rgbe = ([
     'width',
     'height',
     'data',
@@ -66,12 +69,14 @@ objParams.rgbe = [
     'gamma',
     'exposure',
     'type',
-].distinct()
+] as const).distinct()
+objProps.rgbe = _rgbe
 
 
-objParams.rgbeLoader = [...objParams.dataTextureLoader,
+const _rgbeLoader = ([...objProps.dataTextureLoader,
     'type',
-].distinct()
+] as const).distinct()
+objProps.rgbeLoader = _rgbeLoader
 
 
 export type RGBELoaderProps = Node<RGBELoader, typeof RGBELoader, { manager?: LoadingManager; }>

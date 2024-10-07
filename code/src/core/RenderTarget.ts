@@ -3,8 +3,9 @@ import { RenderTarget, RenderTargetOptions } from 'three/src/core/RenderTarget.j
 export { RenderTarget } from 'three/src/core/RenderTarget.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,21 +26,21 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        renderTarget: string[]
-        renderTargetOptions: string[]
+        renderTarget: typeof renderTarget
+        renderTargetOptions: typeof renderTargetOptions
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        renderTarget: string[]
-        renderTargetOptions: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        renderTarget: typeof _renderTarget
+        renderTargetOptions: typeof _renderTargetOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\RenderTarget.d.ts
 
-consParams.renderTargetOptions = [
+
+const renderTargetOptions = ([
     'wrapS',
     'wrapT',
     'magFilter',
@@ -71,14 +72,16 @@ consParams.renderTargetOptions = [
      */
     'samples',
     'count',
-].distinct()
+] as const).distinct()
+consParams.renderTargetOptions = renderTargetOptions
 
-consParams.renderTarget = [
-].distinct()
+const renderTarget = ([
+] as const).distinct()
+consParams.renderTarget = renderTarget
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\RenderTarget.d.ts
 
-objParams.renderTargetOptions = [
+
+const _renderTargetOptions = ([
     'wrapS',
     'wrapT',
     'magFilter',
@@ -100,10 +103,11 @@ objParams.renderTargetOptions = [
      */
     'samples',
     'count',
-].distinct()
+] as const).distinct()
+objProps.renderTargetOptions = _renderTargetOptions
 
 
-objParams.renderTarget = [
+const _renderTarget = ([
     'width',
     'height',
     'depth',
@@ -144,7 +148,8 @@ objParams.renderTarget = [
     'samples',
 
     'texture',
-].distinct()
+] as const).distinct()
+objProps.renderTarget = _renderTarget
 
 export type RenderTargetProps = Node<RenderTarget, typeof RenderTarget, { width?: number; height?: number; options?: RenderTargetOptions; }>
 

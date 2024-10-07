@@ -3,8 +3,9 @@ import { SphereGeometry } from 'three/src/geometries/SphereGeometry.js'
 export { SphereGeometry } from 'three/src/geometries/SphereGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import '../../examples/jsm/geometries/ParametricGeometry'
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        sphereGeometry: string[]
+        sphereGeometry: typeof sphereGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        sphereGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        sphereGeometry: typeof _sphereGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\SphereGeometry.d.ts
+
 /**
  * A class for generating sphere geometries.
  * @example
@@ -51,7 +52,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/SphereGeometry.js}
  */
 
-consParams.sphereGeometry = [
+const sphereGeometry = ([
     /**
      * Create a new instance of {@link SphereGeometry}
      * @remarks
@@ -78,9 +79,10 @@ consParams.sphereGeometry = [
     'phiLength',
     'thetaStart',
     'thetaLength',
-].distinct()
+] as const).distinct()
+consParams.sphereGeometry = sphereGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\SphereGeometry.d.ts
+
 /**
  * A class for generating sphere geometries.
  * @example
@@ -96,8 +98,9 @@ consParams.sphereGeometry = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/SphereGeometry.js | Source}
  */
 
-objParams.sphereGeometry = [...objParams.bufferGeometry, ...objParams.parametricGeometry,
-].distinct()
+const _sphereGeometry = ([...objProps.bufferGeometry, ...objProps.parametricGeometry,
+] as const).distinct()
+objProps.sphereGeometry = _sphereGeometry
 
 export type SphereGeometryProps = BufferGeometryNode<SphereGeometry, typeof SphereGeometry, { radius?: number; widthSegments?: number; heightSegments?: number; phiStart?: number; phiLength?: number; thetaStart?: number; thetaLength?: number; }>
 

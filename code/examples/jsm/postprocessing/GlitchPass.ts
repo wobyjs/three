@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/GlitchPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,32 +27,34 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        glitchPass: string[]
+        glitchPass: typeof glitchPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        glitchPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        glitchPass: typeof _glitchPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\GlitchPass.d.ts
 
-consParams.glitchPass = [
+
+const glitchPass = ([
     'dt_size',
-].distinct()
+] as const).distinct()
+consParams.glitchPass = glitchPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\GlitchPass.d.ts    
 
-objParams.glitchPass = [...objParams.pass,
+
+const _glitchPass = ([...objProps.pass,
     'uniforms',
     'material',
     'fsQuad',
     'goWild',
     'curF',
     'randX',
-].distinct()
+] as const).distinct()
+objProps.glitchPass = _glitchPass
 
 export type GlitchPassProps = Node<GlitchPass, typeof GlitchPass, { dt_size?: number; }>
 

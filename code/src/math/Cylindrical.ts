@@ -3,8 +3,9 @@ import { Cylindrical } from 'three/src/math/Cylindrical.js'
 export { Cylindrical } from 'three/src/math/Cylindrical.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        cylindrical: string[]
+        cylindrical: typeof cylindrical
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        cylindrical: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        cylindrical: typeof _cylindrical
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Cylindrical.d.ts
 
-consParams.cylindrical = [
+
+const cylindrical = ([
     /**
      * @default 1
      */
@@ -50,11 +51,12 @@ consParams.cylindrical = [
      * @default 0
      */
     'y',
-].distinct()
+] as const).distinct()
+consParams.cylindrical = cylindrical
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Cylindrical.d.ts
 
-objParams.cylindrical = [
+
+const _cylindrical = ([
     /**
      * @default 1
      */
@@ -67,7 +69,8 @@ objParams.cylindrical = [
      * @default 0
      */
     'y',
-].distinct()
+] as const).distinct()
+objProps.cylindrical = _cylindrical
 
 export type CylindricalProps = Node<Cylindrical, typeof Cylindrical, { radius?: number; theta?: number; y?: number; }>
 

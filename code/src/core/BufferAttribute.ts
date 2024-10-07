@@ -4,8 +4,9 @@ export * from 'three/src/core/BufferAttribute.js'
 
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,19 +27,19 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        bufferAttribute: string[]
-        uint8ClampedBufferAttribute: string[]
+        bufferAttribute: typeof bufferAttribute
+        uint8ClampedBufferAttribute: typeof uint8ClampedBufferAttribute
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        bufferAttribute: string[]
-        uint8ClampedBufferAttribute: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        bufferAttribute: typeof _bufferAttribute
+        uint8ClampedBufferAttribute: typeof _uint8ClampedBufferAttribute
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\BufferAttribute.d.ts
+
 /**
  * This class stores data for an attribute (such as vertex positions, face indices, normals, colors, UVs, and any custom attributes )
  * associated with a {@link THREE.BufferGeometry which allows for more efficient passing of data to the Gpu
@@ -54,7 +55,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js}
  */
 
-consParams.bufferAttribute = [
+const bufferAttribute = ([
     /**
      * This creates a new {@link THREE.GlBufferAttribute} object.
      * @param array Must be a `TypedArray`. Used to instantiate the buffer.
@@ -75,9 +76,10 @@ consParams.bufferAttribute = [
     'array',
     'itemSize',
     'normalized',
-].distinct()
+] as const).distinct()
+consParams.bufferAttribute = bufferAttribute
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\BufferAttribute.d.ts
+
 /**
  * This class stores data for an attribute (such as vertex positions, face indices, normals, colors, Uvs, and any custom attributes )
  * associated with a {@link THREE.BufferGeometry | BufferGeometry which allows for more efficient passing of data to the Gpu
@@ -93,7 +95,7 @@ consParams.bufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-objParams.bufferAttribute = [
+const _bufferAttribute = ([
     /**
      * Optional name for this attribute instance.
      * @defaultValue ''
@@ -150,7 +152,8 @@ objParams.bufferAttribute = [
      * @defaultValue `false`
      */
     'normalized',
-].distinct()
+] as const).distinct()
+objProps.bufferAttribute = _bufferAttribute
 
 /**
  * A {@link THREE.BufferAttribute} for {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray}
@@ -160,7 +163,7 @@ objParams.bufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js}
  */
 
-consParams.uint8ClampedBufferAttribute = [
+const uint8ClampedBufferAttribute = ([
     /**
      * This creates a new {@link THREE.Uint8ClampedBufferAttribute} object.
      * @param array This can be a typed or untyped (normal) array or an integer length. An array value will be converted to `Uint8ClampedArray`.
@@ -182,7 +185,8 @@ consParams.uint8ClampedBufferAttribute = [
     'array',
     'itemSize',
     'normalized',
-].distinct()
+] as const).distinct()
+consParams.uint8ClampedBufferAttribute = uint8ClampedBufferAttribute
 
 
 /**
@@ -193,8 +197,9 @@ consParams.uint8ClampedBufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-objParams.uint8ClampedBufferAttribute = [...objParams.bufferAttribute,
-].distinct()
+const _uint8ClampedBufferAttribute = ([...objProps.bufferAttribute,
+] as const).distinct()
+objProps.uint8ClampedBufferAttribute = _uint8ClampedBufferAttribute
 
 export type BufferAttributeProps = Node<BufferAttribute, typeof BufferAttribute, { array: TypedArray; itemSize: number; normalized?: boolean; }>
 

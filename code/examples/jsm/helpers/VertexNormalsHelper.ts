@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/helpers/VertexNormalsHelper.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        vertexNormalsHelper: string[]
+        vertexNormalsHelper: typeof vertexNormalsHelper
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        vertexNormalsHelper: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        vertexNormalsHelper: typeof _vertexNormalsHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\VertexNormalsHelper.d.ts
 
-consParams.vertexNormalsHelper = [
+
+const vertexNormalsHelper = ([
     'object',
     'size',
     'color',
-].distinct()
+] as const).distinct()
+consParams.vertexNormalsHelper = vertexNormalsHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\helpers\VertexNormalsHelper.d.ts    
 
-objParams.vertexNormalsHelper = [...objParams.lineSegments,
+
+const _vertexNormalsHelper = ([...objProps.lineSegments,
     'object',
     'size',
-].distinct()
+] as const).distinct()
+objProps.vertexNormalsHelper = _vertexNormalsHelper
 
 export type VertexNormalsHelperProps = Node<VertexNormalsHelper, typeof VertexNormalsHelper, { object: Object3D; size?: number; color?: number; }>
 

@@ -4,7 +4,7 @@ import ArrayElementNode from 'three/src/nodes/utils/ArrayElementNode.js'
 export { ArrayElementNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,28 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        arrayElementNode: string[]
+        arrayElementNode: typeof arrayElementNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        arrayElementNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        arrayElementNode: typeof _arrayElementNode
     }
 }
 
-consParams.arrayElementNode = [
+const arrayElementNode = ([
     'node',
     'indexNode',
-]
+] as const).distinct()
+consParams.arrayElementNode = arrayElementNode
 
-objParams.arrayElementNode = [
+const _arrayElementNode = ([
     'node',
     'indexNode',
-]
+] as const).distinct()
+objProps.arrayElementNode = _arrayElementNode
+
 
 export type ArrayElementNodeProps = Node<ArrayElementNode, typeof ArrayElementNode, { node: ENode; indexNode: ENode; }>
 

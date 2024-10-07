@@ -3,8 +3,9 @@ import { MeshPhysicalMaterial, MeshPhysicalMaterialParameters } from 'three/src/
 export { MeshPhysicalMaterial } from 'three/src/materials/MeshPhysicalMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './MeshStandardMaterial'
 import './Material'
 import './MeshStandardMaterial'
@@ -34,14 +35,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshPhysicalMaterial: string[]
-        meshPhysicalMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshPhysicalMaterial: typeof _meshPhysicalMaterial
+        meshPhysicalMaterialParameters: typeof _meshPhysicalMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshPhysicalMaterial.d.ts
+
 
 consParams.meshPhysicalMaterialParameters = {
     ...consParams.meshStandardMaterialParameters,
@@ -83,9 +84,9 @@ consParams.meshPhysicalMaterialParameters = {
 
 consParams.meshPhysicalMaterial = { ...consParams.meshPhysicalMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshPhysicalMaterial.d.ts    
 
-objParams.meshPhysicalMaterialParameters = [...objParams.meshStandardMaterialParameters,
+
+const _meshPhysicalMaterialParameters = ([...objProps.meshStandardMaterialParameters,
     'anisotropyRotation',
     'anisotropyMap',
     'clearcoatMap',
@@ -118,10 +119,11 @@ objParams.meshPhysicalMaterialParameters = [...objParams.meshStandardMaterialPar
     'dispersion',
     'sheen',
     'transmission',
-].distinct()
+] as const).distinct()
+objProps.meshPhysicalMaterialParameters = _meshPhysicalMaterialParameters
 
 
-objParams.meshPhysicalMaterial = [...objParams.meshStandardMaterial,
+const _meshPhysicalMaterial = ([...objProps.meshStandardMaterial,
     /**
      * @default { 'STANDARD': '', 'PHYSICAL': '' }
      */
@@ -175,7 +177,7 @@ objParams.meshPhysicalMaterial = [...objParams.meshStandardMaterial,
      */
     'iridescenceIOR',
     /**
-     * @default [100, 400].distinct()
+     * @default [100, 400]
      */
     'iridescenceThicknessRange',
     /**
@@ -258,7 +260,8 @@ objParams.meshPhysicalMaterial = [...objParams.meshStandardMaterial,
      * @default 0
      */
     'transmission',
-].distinct()
+] as const).distinct()
+objProps.meshPhysicalMaterial = _meshPhysicalMaterial
 
 export type MeshPhysicalMaterialProps = MaterialNode<MeshPhysicalMaterial, MeshPhysicalMaterialParameters>
 

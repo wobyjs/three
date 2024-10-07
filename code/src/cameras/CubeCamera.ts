@@ -4,8 +4,9 @@ import { CubeCamera } from 'three/src/cameras/CubeCamera.js'
 export { CubeCamera } from 'three/src/cameras/CubeCamera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        cubeCamera: string[]
+        cubeCamera: typeof cubeCamera
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        cubeCamera: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        cubeCamera: typeof _cubeCamera
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\CubeCamera.d.ts
+
 /**
  * Creates **6** {@link THREE.PerspectiveCamera} that render to a {@link THREE.WebGlCubeRenderTarget}.
  * @remarks The cameras are added to the {@link children} array.
@@ -69,7 +70,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/CubeCamera.js}
  */
 
-consParams.cubeCamera = [
+const cubeCamera = ([
     /**
      * Constructs a {@link CubeCamera} that contains 6 {@link PerspectiveCamera} that render to a {@link THREE.WebGlCubeRenderTarget}.
      * @param near The near clipping distance.
@@ -79,9 +80,10 @@ consParams.cubeCamera = [
     'near',
     'far',
     'renderTarget',
-].distinct()
+] as const).distinct()
+consParams.cubeCamera = cubeCamera
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\cameras\CubeCamera.d.ts
+
 /**
  * Creates **6** {@link THREE.PerspectiveCamera | cameras} that render to a {@link THREE.webglCubeRenderTarget | WebGlCubeRenderTarget}.
  * @remarks The cameras are added to the {@link children} array.
@@ -113,14 +115,15 @@ consParams.cubeCamera = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/CubeCamera.js | Source}
  */
 
-objParams.cubeCamera = [...objParams.object3d,
+const _cubeCamera = ([...objProps.object3d,
     /**
      * The destination cube render target.
      */
     'renderTarget',
     'coordinateSystem',
     'activeMipmapLevel',
-].distinct()
+] as const).distinct()
+objProps.cubeCamera = _cubeCamera
 
 export type CubeCameraProps = Object3DNode<CubeCamera, typeof CubeCamera, { near: number; far: number; renderTarget: WebGLCubeRenderTarget; }>
 

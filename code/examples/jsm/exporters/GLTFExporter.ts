@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/GLTFExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,25 +26,25 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        gltfExporter: string[]
-        gltfExporterOptions: string[]
-        gltfWriter: string[]
-        gltfExporterPlugin: string[]
+        gltfExporter: typeof gltfExporter
+        gltfExporterOptions: typeof gltfExporterOptions
+        gltfWriter: typeof gltfWriter
+        gltfExporterPlugin: typeof gltfExporterPlugin
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        gltfExporter: string[]
-        gltfExporterOptions: string[]
-        gltfWriter: string[]
-        gltfExporterPlugin: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        gltfExporter: typeof _gltfExporter
+        gltfExporterOptions: typeof _gltfExporterOptions
+        gltfWriter: typeof _gltfWriter
+        gltfExporterPlugin: typeof _gltfExporterPlugin
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\gltfExporter.d.ts
 
-consParams.gltfExporterOptions = [
+
+const gltfExporterOptions = ([
     /**
      * Export position, rotation and scale instead of matrix per node. Default is false
      */
@@ -81,26 +81,30 @@ consParams.gltfExporterOptions = [
      * Export custom gltf extensions defined on an object's userData.gltfExtensions property. Default is false.
      */
     'includeCustomExtensions',
-].distinct()
+] as const).distinct()
+consParams.gltfExporterOptions = gltfExporterOptions
 
-consParams.gltfExporter = [
-].distinct()
+const gltfExporter = ([
+] as const).distinct()
+consParams.gltfExporter = gltfExporter
 
-consParams.gltfWriter = [
-].distinct()
+const gltfWriter = ([
+] as const).distinct()
+consParams.gltfWriter = gltfWriter
 
-consParams.gltfExporterPlugin = [
+const gltfExporterPlugin = ([
     'writeTexture',
     'writeMaterial',
     'writeMesh',
     'writeNode',
     'beforeParse',
     'afterParse',
-].distinct()
+] as const).distinct()
+consParams.gltfExporterPlugin = gltfExporterPlugin
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\GlTFExporter.d.ts
 
-objParams.gltfExporterOptions = [
+
+const _gltfExporterOptions = ([
     /**
      * Export position, rotation and scale instead of matrix per node. Default is false
      */
@@ -137,22 +141,26 @@ objParams.gltfExporterOptions = [
      * Export custom glTF extensions defined on an object's userData.gltfExtensions property. Default is false.
      */
     'includeCustomExtensions',
-].distinct()
+] as const).distinct()
+objProps.gltfExporterOptions = _gltfExporterOptions
 
-objParams.gltfExporter = [
-].distinct()
+const _gltfExporter = ([
+] as const).distinct()
+objProps.gltfExporter = _gltfExporter
 
-objParams.gltfWriter = [
-].distinct()
+const _gltfWriter = ([
+] as const).distinct()
+objProps.gltfWriter = _gltfWriter
 
-objParams.gltfExporterPlugin = [
+const _gltfExporterPlugin = ([
     'writeTexture',
     'writeMaterial',
     'writeMesh',
     'writeNode',
     'beforeParse',
     'afterParse',
-].distinct()
+] as const).distinct()
+objProps.gltfExporterPlugin = _gltfExporterPlugin
 
 export type GLTFExporterProps = Node<GLTFExporter, typeof GLTFExporter, {}>
 

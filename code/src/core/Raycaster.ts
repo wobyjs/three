@@ -3,8 +3,9 @@ import { Raycaster, RaycasterParameters } from 'three/src/core/Raycaster.js'
 export { Raycaster } from 'three/src/core/Raycaster.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import '../../lib/three/extensions'
 
 declare module '../../lib/3/three'
@@ -26,35 +27,36 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        raycaster: string[]
-        face: string[]
-        intersection: string[]
+        raycaster: typeof raycaster
+        face: typeof face
+        intersection: typeof intersection
         raycasterParameters: WrapAsString<RaycasterParameters>
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        raycaster: string[]
-        face: string[]
-        intersection: string[]
-        raycasterParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        raycaster: typeof _raycaster
+        face: typeof _face
+        intersection: typeof _intersection
+        raycasterParameters: typeof _raycasterParameters
     }
 }
 
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Raycaster.d.ts
 
-consParams.face = [
+
+const face = ([
     'a',
     'b',
     'c',
     'normal',
     'materialIndex',
-].distinct()
+] as const).distinct()
+consParams.face = face
 
 
-consParams.intersection = [
+const intersection = ([
     /** Distance between the origin of the ray and the intersection */
     'distance',
     'distanceToRay',
@@ -74,7 +76,8 @@ consParams.intersection = [
     'instanceId',
     'pointOnLine',
     'batchId',
-].distinct()
+] as const).distinct()
+consParams.intersection = intersection
 
 
 consParams.raycasterParameters = ([
@@ -127,7 +130,7 @@ consParams.raycasterParameters = ([
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Raycaster.js}
  */
 
-consParams.raycaster = [
+const raycaster = ([
     /**
      * This creates a new {@link Raycaster} object.
      * @param origin The origin vector where the ray casts from. Default `new Vector3()`
@@ -140,11 +143,12 @@ consParams.raycaster = [
     'direction',
     'near',
     'far',
-].distinct()
+] as const).distinct()
+consParams.raycaster = raycaster
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\Raycaster.d.ts
 
-objParams.face = [
+
+const _face = ([
     'a',
     'b',
     'c',
@@ -157,10 +161,11 @@ objParams.face = [
     'outside',
     'mark',
     'edge',
-].distinct()
+] as const).distinct()
+objProps.face = _face
 
 
-objParams.intersection = [
+const _intersection = ([
     /** Distance between the origin of the ray and the intersection */
     'distance',
     'distanceToRay',
@@ -180,17 +185,19 @@ objParams.intersection = [
     'instanceId',
     'pointOnLine',
     'batchId',
-].distinct()
+] as const).distinct()
+objProps.intersection = _intersection
 
 
-objParams.raycasterParameters = [
+const _raycasterParameters = ([
     'Mesh',
     'Line',
     'Line2',
     'LOD',
     'Points',
     'Sprite',
-].distinct()
+] as const).distinct()
+objProps.raycasterParameters = _raycasterParameters
 /**
  * This class is designed to assist with {@link https://en.wikipedia.org/wiki/Ray_casting | raycasting}
  * @remarks
@@ -232,7 +239,7 @@ objParams.raycasterParameters = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/Raycaster.js | Source}
  */
 
-objParams.raycaster = [
+const _raycaster = ([
     /**
      * The {@link THREE.RaycasterRay | Ray} used for the raycasting.
      */
@@ -272,7 +279,8 @@ objParams.raycaster = [
      * @defaultValue `{ Mesh: { Line: { threshold: 1  LOD: { Points: { threshold: 1  Sprite: {} }`
      */
     'params',
-].distinct()
+] as const).distinct()
+objProps.raycaster = _raycaster
 
 export type RaycasterProps = Node<Raycaster, typeof Raycaster, { origin?: Vector3; direction?: Vector3; near?: number; far?: number; }>
 

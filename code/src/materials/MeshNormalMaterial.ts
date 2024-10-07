@@ -3,8 +3,9 @@ import { MeshNormalMaterial, MeshNormalMaterialParameters } from 'three/src/mate
 export { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshNormalMaterial: string[]
-        meshNormalMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshNormalMaterial: typeof _meshNormalMaterial
+        meshNormalMaterialParameters: typeof _meshNormalMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshNormalMaterial.d.ts
+
 
 consParams.meshNormalMaterialParameters = {
     ...consParams.materialParameters,
@@ -61,9 +62,9 @@ consParams.meshNormalMaterialParameters = {
 
 consParams.meshNormalMaterial = { ...consParams.meshNormalMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshNormalMaterial.d.ts    
 
-objParams.meshNormalMaterialParameters = [...objParams.materialParameters,
+
+const _meshNormalMaterialParameters = ([...objProps.materialParameters,
     'bumpMap',
     'bumpScale',
     'normalMap',
@@ -75,9 +76,10 @@ objParams.meshNormalMaterialParameters = [...objParams.materialParameters,
     'wireframe',
     'wireframeLinewidth',
     'flatShading',
-].distinct()
+] as const).distinct()
+objProps.meshNormalMaterialParameters = _meshNormalMaterialParameters
 
-objParams.meshNormalMaterial = [...objParams.material,
+const _meshNormalMaterial = ([...objProps.material,
     /**
      * @default 'MeshNormalMaterial'
      */
@@ -127,7 +129,8 @@ objParams.meshNormalMaterial = [...objParams.material,
      * @default false
      */
     'flatShading',
-].distinct()
+] as const).distinct()
+objProps.meshNormalMaterial = _meshNormalMaterial
 
 export type MeshNormalMaterialProps = MaterialNode<MeshNormalMaterial, MeshNormalMaterialParameters>
 

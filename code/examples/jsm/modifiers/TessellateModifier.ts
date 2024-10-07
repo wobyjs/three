@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/modifiers/TessellateModifier.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,29 +26,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        tessellateModifier: string[]
+        tessellateModifier: typeof tessellateModifier
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        tessellateModifier: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        tessellateModifier: typeof _tessellateModifier
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\modifiers\TessellateModifier.d.ts
 
-consParams.tessellateModifier = [
+
+const tessellateModifier = ([
     'maxEdgeLength',
     'maxIterations',
-].distinct()
+] as const).distinct()
+consParams.tessellateModifier = tessellateModifier
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\modifiers\TessellateModifier.d.ts
 
-objParams.tessellateModifier = [
+
+const _tessellateModifier = ([
     'maxEdgeLength',
     'maxIterations',
-].distinct()
+] as const).distinct()
+objProps.tessellateModifier = _tessellateModifier
 
 export type TessellateModifierProps = Node<TessellateModifier, typeof TessellateModifier, { maxEdgeLength?: number; maxIterations?: number; }>
 

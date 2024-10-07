@@ -2,8 +2,9 @@ import { Node } from '../../three-types'
 import { DataTextureLoader } from 'three/src/loaders/DataTextureLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import './Loader'
 
@@ -26,23 +27,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        dataTextureLoader: string[]
+        dataTextureLoader: typeof dataTextureLoader
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        dataTextureLoader: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        dataTextureLoader: typeof _dataTextureLoader
     }
 }
 
 
-consParams.dataTextureLoader = [
+const dataTextureLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.dataTextureLoader = dataTextureLoader
 
-
-objParams.dataTextureLoader = [...objParams.loader]
+const _dataTextureLoader = ([...objProps.loader] as const).distinct()
+objProps.dataTextureLoader = _dataTextureLoader
 
 export type DataTextureLoaderProps = Node<DataTextureLoader, typeof DataTextureLoader, { manager?: LoadingManager }>
 

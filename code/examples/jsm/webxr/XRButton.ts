@@ -3,7 +3,7 @@ import { XRButton } from 'three/examples/jsm/webxr/XRButton.js'
 export * from 'three/examples/jsm/webxr/XRButton.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        xrButton: string[]
+        xrButton: typeof xrButton
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        xrButton: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        xrButton: typeof _xrButton
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRButton.d.ts
 
-consParams.xrButton = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\webxr\XRButton.d.ts
+const xrButton = ([
+] as const).distinct()
+consParams.xrButton = xrButton
 
-objParams.xrButton = [
-].distinct()
+
+
+const _xrButton = ([
+] as const).distinct()
+objProps.xrButton = _xrButton
 
 export type XRButtonProps = Node<XRButton, typeof XRButton, {}>
 

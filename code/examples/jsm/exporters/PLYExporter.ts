@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/PLYExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,67 +26,77 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        plyExporter: string[]
-        plyExporterOptionsBase: string[]
-        plyExporterOptionsBinary: string[]
-        plyExporterOptionsString: string[]
-        plyExporterOptions: string[]
+        plyExporter: typeof plyExporter
+        plyExporterOptionsBase: typeof plyExporterOptionsBase
+        plyExporterOptionsBinary: typeof plyExporterOptionsBinary
+        plyExporterOptionsString: typeof plyExporterOptionsString
+        plyExporterOptions: typeof plyExporterOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        plyExporter: string[]
-        plyExporterOptionsBase: string[]
-        plyExporterOptionsBinary: string[]
-        plyExporterOptionsString: string[]
-        plyExporterOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        plyExporter: typeof _plyExporter
+        plyExporterOptionsBase: typeof _plyExporterOptionsBase
+        plyExporterOptionsBinary: typeof _plyExporterOptionsBinary
+        plyExporterOptionsString: typeof _plyExporterOptionsString
+        plyExporterOptions: typeof _plyExporterOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\plyExporter.d.ts
 
-consParams.plyExporterOptionsBase = [
+
+const plyExporterOptionsBase = ([
     'excludeAttributes',
     'littleEndian',
-].distinct()
+] as const).distinct()
+consParams.plyExporterOptionsBase = plyExporterOptionsBase
 
-consParams.plyExporterOptionsBinary = [
+const plyExporterOptionsBinary = ([
     'binary',
-].distinct()
+] as const).distinct()
+consParams.plyExporterOptionsBinary = plyExporterOptionsBinary
 
-consParams.plyExporterOptionsString = [
+const plyExporterOptionsString = ([
     'binary',
-].distinct()
+] as const).distinct()
+consParams.plyExporterOptionsString = plyExporterOptionsString
 
-consParams.plyExporterOptions = [
+const plyExporterOptions = ([
     'binary',
-].distinct()
+] as const).distinct()
+consParams.plyExporterOptions = plyExporterOptions
 
-consParams.plyExporter = [
-].distinct()
+const plyExporter = ([
+] as const).distinct()
+consParams.plyExporter = plyExporter
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\PLYExporter.d.ts
 
-objParams.plyExporterOptionsBase = [
+
+const _plyExporterOptionsBase = ([
     'excludeAttributes',
     'littleEndian',
-].distinct()
+] as const).distinct()
+objProps.plyExporterOptionsBase = _plyExporterOptionsBase
 
-objParams.plyExporterOptionsBinary = [...objParams.plyExporterOptionsBase,
+const _plyExporterOptionsBinary = ([...objProps.plyExporterOptionsBase,
     'binary',
-].distinct()
+] as const).distinct()
+objProps.plyExporterOptionsBinary = _plyExporterOptionsBinary
 
-objParams.plyExporterOptionsString = [...objParams.plyExporterOptionsBase,
+const _plyExporterOptionsString = ([...objProps.plyExporterOptionsBase,
     'binary',
-].distinct()
+] as const).distinct()
+objProps.plyExporterOptionsString = _plyExporterOptionsString
 
-objParams.plyExporterOptions = [...objParams.plyExporterOptionsBase,
+const _plyExporterOptions = ([...objProps.plyExporterOptionsBase,
     'binary',
-].distinct()
+] as const).distinct()
+objProps.plyExporterOptions = _plyExporterOptions
 
-objParams.plyExporter = [
-].distinct()
+const _plyExporter = ([
+] as const).distinct()
+objProps.plyExporter = _plyExporter
 
 export type PLYExporterProps = Node<PLYExporter, typeof PLYExporter, {}>
 

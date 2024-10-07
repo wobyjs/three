@@ -1,12 +1,12 @@
 import { Node, WrapAsString } from '../../../three-types'
 import Backend from 'three/src/renderers/common/Backend.js'
-import Renderer, { RendererParameters } from 'three/src/renderers/common/Renderer.js'
+import Renderer, { type RendererParameters } from 'three/src/renderers/common/Renderer.js'
 export { Renderer, RendererParameters }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
-import '../../../lib/three/extensions'
+import { rendererEx } from '../RendererEx'
 
 declare module '../../../lib/3/three'
 {
@@ -27,19 +27,17 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        renderer: string[]
+        renderer: typeof renderer
         rendererParameters: WrapAsString<RendererParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        renderer: string[]
-        rendererParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        renderer: typeof _renderer
+        rendererParameters: typeof _rendererParameters
     }
 }
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\Renderer.d.ts
 
 consParams.rendererParameters = ([
     'logarithmicDepthBuffer',
@@ -50,24 +48,26 @@ consParams.rendererParameters = ([
  * Generic Renderer interface containing either a WebGl or WebGpu backend.
  */
 
-consParams.renderer = [
+const renderer = ([
     'backend',
     'parameters', //rendererParameters
     'domElement',
-].distinct()
+] as const).distinct()
+consParams.renderer = renderer
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\renderers\common\Renderer.d.ts
 
-objParams.rendererParameters = [
+
+const _rendererParameters = ([...rendererEx,
     'logarithmicDepthBuffer',
     'alpha',
-].distinct()
+] as const).distinct()
+objProps.rendererParameters = _rendererParameters
 
 /**
  * Generic Renderer interface containing either a WebGl or WebGpu backend.
  */
 
-objParams.renderer = [
+const _renderer = ([...rendererEx,
     /**
      * @default true
      */
@@ -123,7 +123,8 @@ objParams.renderer = [
     'localClippingEnabled',
 
     'domElement',
-].distinct()
+] as const).distinct()
+objProps.renderer = _renderer
 
 export type RendererProps = Node<Renderer, typeof Renderer, { backend: Backend; parameters?: RendererParameters; }>
 

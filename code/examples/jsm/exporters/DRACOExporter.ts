@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/exporters/DRACOExporter.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,21 +26,21 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        dracoExporter: string[]
-        dracoExporterOptions: string[]
+        dracoExporter: typeof dracoExporter
+        dracoExporterOptions: typeof dracoExporterOptions
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        dracoExporter: string[]
-        dracoExporterOptions: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        dracoExporter: typeof _dracoExporter
+        dracoExporterOptions: typeof _dracoExporterOptions
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\DRACOExporter.d.ts
 
-consParams.dracoExporterOptions = [
+
+const dracoExporterOptions = ([
     'decodeSpeed',
     'encodeSpeed',
     'encoderMethod',
@@ -48,15 +48,17 @@ consParams.dracoExporterOptions = [
     'exportUvs',
     'exportNormals',
     'exportColor',
-].distinct()
+] as const).distinct()
+consParams.dracoExporterOptions = dracoExporterOptions
 
 
-consParams.dracoExporter = [
-].distinct()
+const dracoExporter = ([
+] as const).distinct()
+consParams.dracoExporter = dracoExporter
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\exporters\DRACOExporter.d.ts
 
-objParams.dracoExporterOptions = [
+
+const _dracoExporterOptions = ([
     'decodeSpeed',
     'encodeSpeed',
     'encoderMethod',
@@ -64,11 +66,13 @@ objParams.dracoExporterOptions = [
     'exportUvs',
     'exportNormals',
     'exportColor',
-].distinct()
+] as const).distinct()
+objProps.dracoExporterOptions = _dracoExporterOptions
 
 
-objParams.dracoExporter = [
-].distinct()
+const _dracoExporter = ([
+] as const).distinct()
+objProps.dracoExporter = _dracoExporter
 
 export type DRACOExporterProps = Node<DRACOExporter, typeof DRACOExporter, {}>
 

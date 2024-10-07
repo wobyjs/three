@@ -3,8 +3,9 @@ import { Interpolant } from 'three/src/math/Interpolant.js'
 export { Interpolant } from 'three/src/math/Interpolant.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,33 +26,35 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        interpolant: string[]
+        interpolant: typeof interpolant
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        interpolant: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        interpolant: typeof _interpolant
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Interpolant.d.ts
 
-consParams.interpolant = [
+
+const interpolant = ([
     'parameterPositions',
     'sampleValues',
     'sampleSize',
     'resultBuffer',
-].distinct()
+] as const).distinct()
+consParams.interpolant = interpolant
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\math\Interpolant.d.ts
 
-objParams.interpolant = [
+
+const _interpolant = ([
     'parameterPositions',
     'sampleValues',
     'valueSize',
     'resultBuffer',
-].distinct()
+] as const).distinct()
+objProps.interpolant = _interpolant
 
 export type InterpolantProps = Node<Interpolant, typeof Interpolant, { parameterPositions: any; sampleValues: any; sampleSize: number; resultBuffer?: any; }>
 

@@ -4,8 +4,9 @@ import { SpotLight } from 'three/src/lights/SpotLight.js'
 export { SpotLight } from 'three/src/lights/SpotLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        spotLight: string[]
+        spotLight: typeof spotLight
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        spotLight: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        spotLight: typeof _spotLight
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\SpotLight.d.ts
+
 /**
  * This light gets emitted from a single point in one direction, along a cone that increases in size the further from the light it gets.
  * @example
@@ -60,7 +61,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLight.js}
  */
 
-consParams.spotLight = [
+const spotLight = ([
     /**
      * Creates a new SpotLight.
      * @param color Hexadecimal color of the light. Default `0xffffff` _(white)_.
@@ -77,9 +78,10 @@ consParams.spotLight = [
     'angle',
     'penumbra',
     'decay',
-].distinct()
+] as const).distinct()
+consParams.spotLight = spotLight
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\SpotLight.d.ts
+
 /**
  * This light gets emitted from a single point in one direction, along a cone that increases in size the further from the light it gets.
  * @example
@@ -102,7 +104,7 @@ consParams.spotLight = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLight.js | Source}
  */
 
-objParams.spotLight = [...objParams.light,
+const _spotLight = ([...objProps.light,
     /**
      * This is set equal to {@link THREE.Object3d.DEFAULT_UP | Object3d.DEFAULT_UP} (0, 1, 0), so that the light shines from the top down.
      * @defaultValue `{@link Object3d.DEFAULT_UP}`
@@ -194,7 +196,8 @@ objParams.spotLight = [...objParams.light,
      * @remarks **Warning**: {@link SpotLight.map} is disabled if {@link SpotLight.castShadow} is `false`.
      */
     'map',
-].distinct()
+] as const).distinct()
+objProps.spotLight = _spotLight
 
 export type SpotLightProps = LightNode<SpotLight, typeof SpotLight, { color?: ColorRepresentation; intensity?: number; distance?: number; angle?: number; penumbra?: number; decay?: number; }>
 

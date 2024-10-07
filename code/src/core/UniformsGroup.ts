@@ -3,8 +3,9 @@ import { UniformsGroup } from 'three/src/core/UniformsGroup.js'
 export { UniformsGroup } from 'three/src/core/UniformsGroup.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,36 +26,38 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        uniformsGroup: string[]
+        uniformsGroup: typeof uniformsGroup
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        uniformsGroup: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        uniformsGroup: typeof _uniformsGroup
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\UniformsGroup.d.ts
+
 /**
  * @see Example: {@link https://threejs.org/examples/#webgl2_ubo / UBO}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/UniformsGroup.js}
  */
 
-consParams.uniformsGroup = [
-].distinct()
+const uniformsGroup = ([
+] as const).distinct()
+consParams.uniformsGroup = uniformsGroup
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\UniformsGroup.d.ts
+
 /**
  * @see Example: {@link https://threejs.org/examples/#webgl2_ubo | WebGl2 / UBO}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/UniformsGroup.js | Source}
  */
 
-objParams.uniformsGroup = [
+const _uniformsGroup = ([
     'id',
     'usage',
     'uniforms',
-].distinct()
+] as const).distinct()
+objProps.uniformsGroup = _uniformsGroup
 
 export type UniformsGroupProps = Node<UniformsGroup, typeof UniformsGroup, {}>
 

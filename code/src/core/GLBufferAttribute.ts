@@ -3,8 +3,9 @@ import { GLBufferAttribute } from 'three/src/core/GLBufferAttribute.js'
 export { GLBufferAttribute } from 'three/src/core/GLBufferAttribute.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -25,17 +26,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        glBufferAttribute: string[]
+        glBufferAttribute: typeof glBufferAttribute
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        glBufferAttribute: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        glBufferAttribute: typeof _glBufferAttribute
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\GlBufferAttribute.d.ts
+
 /**
  * This buffer attribute class does not construct a VBO.
  * Instead, it uses whatever VBO is passed in constructor and can later be altered via the {@link buffer | .buffer} property.
@@ -49,7 +50,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/GlBufferAttribute.js}
  */
 
-consParams.glBufferAttribute = [
+const glBufferAttribute = ([
     /**
      * This creates a new GlBufferAttribute object.
      * @param buffer Must be a {@link https://developer.mozilla.org/en-US/docs/Web/API/WebGlBuffer}. See {@link GlBufferAttribute.buffer | .buffer}
@@ -64,9 +65,10 @@ consParams.glBufferAttribute = [
     'itemSize',
     'elementSize',
     'count',
-].distinct()
+] as const).distinct()
+consParams.glBufferAttribute = glBufferAttribute
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\core\GlBufferAttribute.d.ts
+
 /**
  * This buffer attribute class does not construct a VBO.
  * Instead, it uses whatever VBO is passed in constructor and can later be altered via the {@link buffer | .buffer} property.
@@ -80,7 +82,7 @@ consParams.glBufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/GlBufferAttribute.js | Source}
  */
 
-objParams.glBufferAttribute = [
+const _glBufferAttribute = ([
     /**
      * Optional name for this attribute instance.
      * @defaultValue `""`
@@ -139,7 +141,8 @@ objParams.glBufferAttribute = [
      * @remarks Expects a `Integer`
      */
     'version',
-].distinct()
+] as const).distinct()
+objProps.glBufferAttribute = _glBufferAttribute
 
 export type GLBufferAttributeProps = Node<GLBufferAttribute, typeof GLBufferAttribute, { buffer: WebGLBuffer; type: GLenum; itemSize: number; elementSize: 1 | 2 | 4; count: number; }>
 

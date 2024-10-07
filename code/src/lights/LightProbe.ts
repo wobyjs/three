@@ -4,8 +4,9 @@ import { LightProbe } from 'three/src/lights/LightProbe.js'
 export { LightProbe } from 'three/src/lights/LightProbe.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        lightProbe: string[]
+        lightProbe: typeof lightProbe
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lightProbe: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lightProbe: typeof _lightProbe
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\LightProbe.d.ts
+
 /**
  * Light probes are an alternative way of adding light to a 3d scene.
  * @remarks
@@ -59,7 +60,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/LightProbe.js}
  */
 
-consParams.lightProbe = [
+const lightProbe = ([
     /**
      * Creates a new LightProbe.
      * @param sh An instance of {@link THREE.SphericalHarmonics3}. Default `new THREE.SphericalHarmonics3()``.
@@ -77,9 +78,10 @@ consParams.lightProbe = [
      * @defaultValue `new THREE.SphericalHarmonics3()`
      */
     'sh',
-].distinct()
+] as const).distinct()
+consParams.lightProbe = lightProbe
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\LightProbe.d.ts
+
 /**
  * Light probes are an alternative way of adding light to a 3d scene.
  * @remarks
@@ -101,13 +103,14 @@ consParams.lightProbe = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/LightProbe.js | Source}
  */
 
-objParams.lightProbe = [...objParams.light,
+const _lightProbe = ([...objProps.light,
     /**
      * A light probe uses spherical harmonics to encode lighting information.
      * @defaultValue `new THREE.SphericalHarmonics3()`
      */
     'sh',
-].distinct()
+] as const).distinct()
+objProps.lightProbe = _lightProbe
 
 export type LightProbeProps = LightNode<LightProbe, typeof LightProbe, { sh?: SphericalHarmonics3; intensity?: number; }>
 

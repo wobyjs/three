@@ -4,8 +4,9 @@ import { PolarGridHelper } from 'three/src/helpers/PolarGridHelper.js'
 export { PolarGridHelper } from 'three/src/helpers/PolarGridHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -26,17 +27,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        polarGridHelper: string[]
+        polarGridHelper: typeof polarGridHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        polarGridHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        polarGridHelper: typeof _polarGridHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\PolarGridHelper.d.ts
+
 /**
  * The {@link PolarGridHelper} is an object to define polar grids
  * @remarks
@@ -55,7 +56,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PolarGridHelper.js}
  */
 
-consParams.polarGridHelper = [
+const polarGridHelper = ([
     /**
      * Creates a new {@link PolarGridHelper} of radius 'radius' with 'sectors' number of sectors and 'rings' number of rings, where each circle is smoothed into 'divisions' number of line segments.
      * @remarks Colors are optional.
@@ -73,9 +74,10 @@ consParams.polarGridHelper = [
     'divisions',
     'color1',
     'color2',
-].distinct()
+] as const).distinct()
+consParams.polarGridHelper = polarGridHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\PolarGridHelper.d.ts
+
 /**
  * The {@link PolarGridHelper} is an object to define polar grids
  * @remarks
@@ -94,8 +96,9 @@ consParams.polarGridHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PolarGridHelper.js | Source}
  */
 
-objParams.polarGridHelper = [...objParams.lineSegments,
-].distinct()
+const _polarGridHelper = ([...objProps.lineSegments,
+] as const).distinct()
+objProps.polarGridHelper = _polarGridHelper
 
 export type PolarGridHelperProps = Object3DNode<PolarGridHelper, typeof PolarGridHelper, { radius?: number; radials?: number; circles?: number; divisions?: number; color1?: ColorRepresentation; color2?: ColorRepresentation; }>
 

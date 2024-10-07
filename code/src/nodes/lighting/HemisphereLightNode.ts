@@ -4,7 +4,7 @@ import HemisphereLightNode from 'three/src/nodes/lighting/HemisphereLightNode.js
 export { HemisphereLightNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -26,29 +26,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        hemisphereLightNode: string[]
+        hemisphereLightNode: typeof hemisphereLightNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        hemisphereLightNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        hemisphereLightNode: typeof _hemisphereLightNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\HemisphereLightNode.d.ts
 
-consParams.hemisphereLightNode = [
+
+const hemisphereLightNode = ([
     'light',
-].distinct()
+] as const).distinct()
+consParams.hemisphereLightNode = hemisphereLightNode
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\HemisphereLightNode.d.ts    
 
-objParams.hemisphereLightNode = [...objParams.analyticLightNode,
+
+const _hemisphereLightNode = ([...objProps.analyticLightNode,
     'lightPositionNode',
     'lightDirectionNode',
     'groundColorNode',
-].distinct()
+] as const).distinct()
+objProps.hemisphereLightNode = _hemisphereLightNode
 
 export type HemisphereLightNodeProps = Node<HemisphereLightNode, typeof HemisphereLightNode, { light?: HemisphereLight | null; }>
 

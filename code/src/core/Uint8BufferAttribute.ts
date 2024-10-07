@@ -3,8 +3,9 @@ import { Uint8BufferAttribute } from 'three/src/core/BufferAttribute.js'
 export { Uint8BufferAttribute } from 'three/src/core/BufferAttribute.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './BufferAttribute'
 
 declare module '../../lib/3/three'
@@ -26,13 +27,13 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        uint8BufferAttribute: string[]
+        uint8BufferAttribute: typeof uint8BufferAttribute
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        uint8BufferAttribute: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        uint8BufferAttribute: typeof _uint8BufferAttribute
     }
 }
 
@@ -44,7 +45,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js}
  */
 
-consParams.uint8BufferAttribute = [
+const uint8BufferAttribute = ([
     /**
      * This creates a new {@link THREE.Uint8BufferAttribute} object.
      * @param array This can be a typed or untyped (normal) array or an integer length. An array value will be converted to `Uint8Array`.
@@ -66,7 +67,8 @@ consParams.uint8BufferAttribute = [
     'array',
     'itemSize',
     'normalized',
-].distinct()
+] as const).distinct()
+consParams.uint8BufferAttribute = uint8BufferAttribute
 
 /**
  * A {@link THREE.BufferAttribute | BufferAttribute} for {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array: Uint8Array}
@@ -76,8 +78,9 @@ consParams.uint8BufferAttribute = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-objParams.uint8BufferAttribute = [...objParams.bufferAttribute,
-].distinct()
+const _uint8BufferAttribute = ([...objProps.bufferAttribute,
+] as const).distinct()
+objProps.uint8BufferAttribute = _uint8BufferAttribute
 
 export type Uint8BufferAttributeProps = Node<Uint8BufferAttribute, typeof Uint8BufferAttribute, { array: Iterable<number> | ArrayLike<number> | ArrayBuffer | number; itemSize: number; normalized?: boolean; }>
 

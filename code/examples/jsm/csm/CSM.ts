@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/csm/CSM.js'
 import { Node, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 
@@ -26,19 +26,19 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        csm: string[]
+        csm: typeof csm
         csmParameters: WrapAsString<CSMParameters>
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        csm: string[]
-        csmParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        csm: typeof _csm
+        csmParameters: typeof _csmParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\csm\CSM.d.ts
+
 
 consParams.csmParameters = ([
     'camera',
@@ -57,13 +57,14 @@ consParams.csmParameters = ([
 ] as const).toObject()
 
 
-consParams.csm = [
+const csm = ([
     'data',
-].distinct()
+] as const).distinct()
+consParams.csm = csm
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\csm\CSM.d.ts
 
-objParams.csmParameters = [
+
+const _csmParameters = ([
     'camera',
     'parent',
     'cascades',
@@ -76,9 +77,10 @@ objParams.csmParameters = [
     'lightNear',
     'lightFar',
     'lightMargin',
-].distinct()
+] as const).distinct()
+objProps.csmParameters = _csmParameters
 
-objParams.csm = [
+const _csm = ([
     'camera',
     'parent',
     'cascades',
@@ -98,7 +100,8 @@ objParams.csm = [
     'breaks',
     'lights',
     'shaders',
-].distinct()
+] as const).distinct()
+objProps.csm = _csm
 
 export type CSMProps = Node<CSM, typeof CSM, { data: CSMParameters; }>
 

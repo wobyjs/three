@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/loaders/HDRCubeTextureLoader.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,28 +27,30 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        hdrCubeTextureLoader: string[]
+        hdrCubeTextureLoader: typeof hdrCubeTextureLoader
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        hdrCubeTextureLoader: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        hdrCubeTextureLoader: typeof _hdrCubeTextureLoader
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\HDRCubeTextureLoader.d.ts
 
-consParams.hdrCubeTextureLoader = [
+
+const hdrCubeTextureLoader = ([
     'manager',
-].distinct()
+] as const).distinct()
+consParams.hdrCubeTextureLoader = hdrCubeTextureLoader
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\loaders\HDRCubeTextureLoader.d.ts    
 
-objParams.hdrCubeTextureLoader = [...objParams.loader,
+
+const _hdrCubeTextureLoader = ([...objProps.loader,
     'hdrLoader',
     'type',
-].distinct()
+] as const).distinct()
+objProps.hdrCubeTextureLoader = _hdrCubeTextureLoader
 
 export type HDRCubeTextureLoaderProps = Node<HDRCubeTextureLoader, typeof HDRCubeTextureLoader, { manager?: LoadingManager; }>
 

@@ -6,7 +6,7 @@ import { WebGLCapabilities } from 'three/src/renderers/webgl/WebGLCapabilities.j
 export { WebGLShadowMap } from 'three/src/renderers/webgl/WebGLShadowMap.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -28,35 +28,36 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglShadowMap: string[]
-        webglDepthBuffer: string[]
-        webglStencilBuffer: string[]
-        webglColorBuffer: string[]
+        webglShadowMap: typeof webglShadowMap
+        webglDepthBuffer: typeof webglDepthBuffer
+        webglStencilBuffer: typeof webglStencilBuffer
+        webglColorBuffer: typeof webglColorBuffer
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglShadowMap: string[]
-        webglDepthBuffer: string[]
-        webglStencilBuffer: string[]
-        webglColorBuffer: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglShadowMap: typeof _webglShadowMap
+        webglDepthBuffer: typeof _webglDepthBuffer
+        webglStencilBuffer: typeof _webglStencilBuffer
+        webglColorBuffer: typeof _webglColorBuffer
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlShader.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlShadowMap.d.ts
 
-consParams.webglShadowMap = [
+
+
+const webglShadowMap = ([
     '_renderer',
     '_objects',
     '_capabilities',
-].distinct()
+] as const).distinct()
+consParams.webglShadowMap = webglShadowMap
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlShader.d.ts
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlShadowMap.d.ts
 
-objParams.webglShadowMap = [
+
+
+const _webglShadowMap = ([
     /**
      * @default false
      */
@@ -77,33 +78,40 @@ objParams.webglShadowMap = [
      * @deprecated Use {@link Material#shadowSide} instead.
      */
     'cullFace',
-].distinct()
+] as const).distinct()
+objProps.webglShadowMap = _webglShadowMap
 
 
-consParams.webglDepthBuffer = [
-].distinct()
+const webglDepthBuffer = ([
+] as const).distinct()
+consParams.webglDepthBuffer = webglDepthBuffer
 
-consParams.webglStencilBuffer = [
-].distinct()
+const webglStencilBuffer = ([
+] as const).distinct()
+consParams.webglStencilBuffer = webglStencilBuffer
 //@ts-ignore
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlState.d.ts
-
-consParams.webglColorBuffer = [
-].distinct()
-
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlState.d.ts
-
-objParams.webglColorBuffer = [
-].distinct()
 
 
-objParams.webglDepthBuffer = [
-].distinct()
+const webglColorBuffer = ([
+] as const).distinct()
+consParams.webglColorBuffer = webglColorBuffer
 
 
-objParams.webglStencilBuffer = [
-].distinct()
+
+const _webglColorBuffer = ([
+] as const).distinct()
+objProps.webglColorBuffer = _webglColorBuffer
+
+
+const _webglDepthBuffer = ([
+] as const).distinct()
+objProps.webglDepthBuffer = _webglDepthBuffer
+
+
+const _webglStencilBuffer = ([
+] as const).distinct()
+objProps.webglStencilBuffer = _webglStencilBuffer
 
 export type WebGLShadowMapProps = Node<WebGLShadowMap, typeof WebGLShadowMap, { _renderer: WebGLRenderer; _objects: WebGLObjects; _capabilities: WebGLCapabilities; }>
 

@@ -3,7 +3,7 @@ import { WebGLProperties } from 'three/src/renderers/webgl/WebGLProperties.js'
 export { WebGLProperties } from 'three/src/renderers/webgl/WebGLProperties.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webglProperties: string[]
+        webglProperties: typeof webglProperties
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        webglProperties: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        webglProperties: typeof _webglProperties
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlProperties.d.ts
 
-consParams.webglProperties = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\renderers\webgl\WebGlProperties.d.ts
+const webglProperties = ([
+] as const).distinct()
+consParams.webglProperties = webglProperties
 
-objParams.webglProperties = [
-].distinct()
+
+
+const _webglProperties = ([
+] as const).distinct()
+objProps.webglProperties = _webglProperties
 
 export type WebGLPropertiesProps = Node<WebGLProperties, typeof WebGLProperties, {}>
 

@@ -6,9 +6,10 @@ export * from 'three/examples/jsm/lines/LineSegments2.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
-import '../../../src/materials'
+// import '../../../src/materials/Material'
+import '../../../src/objects/Mesh'
 
 declare module '../../../lib/3/three'
 {
@@ -29,29 +30,31 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lineSegments2: string[]
+        lineSegments2: typeof lineSegments2
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lineSegments2: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lineSegments2: typeof _lineSegments2
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineSegments2.d.ts
 
-consParams.lineSegments2 = [
+
+const lineSegments2 = ([//...consParams.mesh,
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+consParams.lineSegments2 = lineSegments2
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\lines\LineSegments2.d.ts    
 
-objParams.lineSegments2 = [
+
+const _lineSegments2 = ([...objProps.mesh,
     'geometry',
     'material',
-].distinct()
+] as const).distinct()
+objProps.lineSegments2 = _lineSegments2
 
 
 export type LineSegments2Props = Object3DNode<LineSegments2, typeof LineSegments2, { geometry?: LineSegmentsGeometry; material?: LineMaterial; }>

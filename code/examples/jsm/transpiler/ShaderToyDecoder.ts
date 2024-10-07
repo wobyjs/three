@@ -3,7 +3,7 @@ import ShaderToyDecoder from 'three/examples/jsm/transpiler/ShaderToyDecoder.js'
 export * from 'three/examples/jsm/transpiler/ShaderToyDecoder.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        shaderToyDecoder: string[]
+        shaderToyDecoder: typeof shaderToyDecoder
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        shaderToyDecoder: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        shaderToyDecoder: typeof _shaderToyDecoder
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\ShaderToyDecoder.d.ts
 
-consParams.shaderToyDecoder = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\ShaderToyDecoder.d.ts    
+const shaderToyDecoder = ([
+] as const).distinct()
+consParams.shaderToyDecoder = shaderToyDecoder
 
-objParams.shaderToyDecoder = [...objParams.glslDecoder,
-].distinct()
+
+
+const _shaderToyDecoder = ([...objProps.glslDecoder,
+] as const).distinct()
+objProps.shaderToyDecoder = _shaderToyDecoder
 
 export type ShaderToyDecoderProps = Node<ShaderToyDecoder, typeof ShaderToyDecoder, {}>
 

@@ -1,11 +1,11 @@
 import { Vector2 } from 'three/src/math/Vector2.js'
-import { Object3DNode } from '../../three-types'
+import { Node } from '../../three-types'
 import { Vector3 } from 'three/src/math/Vector3.js'
 import { PMREMGenerator } from 'three/src/extras/PMREMGenerator.js'
 export { PMREMGenerator } from 'three/src/extras/PMREMGenerator.js'
 // import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { WebGLRenderer } from '../renderers/WebGLRenderer'
 // import { defaults } from '../../lib/3/defaults'
 
@@ -19,13 +19,13 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        pmremGenerator: string[]
+        pmremGenerator: typeof pmremGenerator
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        pmremGenerator: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        pmremGenerator: typeof _pmremGenerator
     }
 }
 
@@ -54,13 +54,14 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/PMREMGenerator.js}
  */
 
-consParams.pmremGenerator = [
+const pmremGenerator = ([
     /**
      * This constructor creates a new PMREMGenerator.
      * @param renderer
      */
     'renderer',
-].distinct()
+] as const).distinct()
+consParams.pmremGenerator = pmremGenerator
 
 /**
  * This class generates a Prefiltered, Mipmapped Radiance Environment Map (PMREM) from a cubeMap environment texture.
@@ -87,6 +88,7 @@ consParams.pmremGenerator = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/PMREMGenerator.js | Source}
  */
 
-objParams.pmremGenerator = []
+const _pmremGenerator = ([] as const).distinct()
+objProps.pmremGenerator = _pmremGenerator
 
-export type PMREMGeneratorProps<T extends Vector2 | Vector3> = Object3DNode<PMREMGenerator, typeof PMREMGenerator, { renderer: WebGLRenderer }>
+export type PMREMGeneratorProps<T extends Vector2 | Vector3> = Node<PMREMGenerator, typeof PMREMGenerator, { renderer: WebGLRenderer }>

@@ -3,7 +3,7 @@ import LightingNode from 'three/src/nodes/lighting/LightingNode.js'
 export { LightingNode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        lightingNode: string[]
+        lightingNode: typeof lightingNode
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lightingNode: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lightingNode: typeof _lightingNode
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\LightingNode.d.ts
 
-consParams.lightingNode = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\nodes\lighting\LightingNode.d.ts    
+const lightingNode = ([
+] as const).distinct()
+consParams.lightingNode = lightingNode
 
-objParams.lightingNode = [...objParams.node,
-].distinct()
+
+
+const _lightingNode = ([...objProps.node,
+] as const).distinct()
+objProps.lightingNode = _lightingNode
 
 export type LightingNodeProps = Node<LightingNode, typeof LightingNode, {}>
 

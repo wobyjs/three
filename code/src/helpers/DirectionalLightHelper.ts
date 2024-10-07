@@ -5,8 +5,9 @@ import { DirectionalLightHelper } from 'three/src/helpers/DirectionalLightHelper
 export { DirectionalLightHelper } from 'three/src/helpers/DirectionalLightHelper.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 
 declare module '../../lib/3/three'
 {
@@ -27,17 +28,17 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        directionalLightHelper: string[]
+        directionalLightHelper: typeof directionalLightHelper
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        directionalLightHelper: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        directionalLightHelper: typeof _directionalLightHelper
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\DirectionalLightHelper.d.ts
+
 /**
  * Helper object to assist with visualizing a {@link THREE.DirectionalLight}'s effect on the scene
  * @remarks
@@ -54,7 +55,7 @@ declare module '../../lib/3/objParams' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/DirectionalLightHelper.js}
  */
 
-consParams.directionalLightHelper = [
+const directionalLightHelper = ([
     /**
      * Create a new instance of {@link DirectionalLightHelper}
      * @param light The light to be visualized.
@@ -64,9 +65,10 @@ consParams.directionalLightHelper = [
     'light',
     'size',
     'color',
-].distinct()
+] as const).distinct()
+consParams.directionalLightHelper = directionalLightHelper
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\helpers\DirectionalLightHelper.d.ts
+
 /**
  * Helper object to assist with visualizing a {@link THREE.DirectionalLight | DirectionalLight}'s effect on the scene
  * @remarks
@@ -83,7 +85,7 @@ consParams.directionalLightHelper = [
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/DirectionalLightHelper.js | Source}
  */
 
-objParams.directionalLightHelper = [...objParams.object3d,
+const _directionalLightHelper = ([...objProps.object3d,
     /**
      * Contains the line mesh showing the location of the directional light.
      */
@@ -109,7 +111,8 @@ objParams.directionalLightHelper = [...objParams.object3d,
      */
     'color',
     'targetLine', // TODO: Double check if this need to be exposed or not.
-].distinct()
+] as const).distinct()
+objProps.directionalLightHelper = _directionalLightHelper
 
 export type DirectionalLightHelperProps = Object3DNode<DirectionalLightHelper, typeof DirectionalLightHelper, { light: DirectionalLight; size?: number; color?: ColorRepresentation; }>
 

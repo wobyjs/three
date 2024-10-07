@@ -4,7 +4,7 @@ export * from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './Pass'
 
@@ -27,28 +27,29 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        unrealBloomPass: string[]
+        unrealBloomPass: typeof unrealBloomPass
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        unrealBloomPass: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        unrealBloomPass: typeof _unrealBloomPass
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\UnrealBloomPass.d.ts
 
-consParams.unrealBloomPass = [
+
+const unrealBloomPass = ([
     'resolution',
     'strength',
     'radius',
     'threshold',
-].distinct()
+] as const).distinct()
+consParams.unrealBloomPass = unrealBloomPass
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\UnrealBloomPass.d.ts    
 
-objParams.unrealBloomPass = [...objParams.pass,
+
+const _unrealBloomPass = ([...objProps.pass,
     'resolution',
     'strength',
     'radius',
@@ -69,7 +70,8 @@ objParams.unrealBloomPass = [...objParams.pass,
     'oldClearAlpha',
     'basic',
     'fsQuad',
-].distinct()
+] as const).distinct()
+objProps.unrealBloomPass = _unrealBloomPass
 
 export type UnrealBloomPassProps = Node<UnrealBloomPass, typeof UnrealBloomPass, { resolution: Vector2; strength: number; radius: number; threshold: number; }>
 

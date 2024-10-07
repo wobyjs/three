@@ -3,7 +3,7 @@ export * from 'three/examples/jsm/postprocessing/LUTPass.js'
 import { Node, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import './Pass'
@@ -32,14 +32,14 @@ declare module '../../../lib/3/consParams' {
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        lutPass: string[]
-        lutPassParameters: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lutPass: typeof _lutPass
+        lutPassParameters: typeof _lutPassParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\LUTPass.d.ts
+
 
 consParams.lutPassParameters = ([
     'lut',
@@ -48,17 +48,19 @@ consParams.lutPassParameters = ([
 
 consParams.lutPass = { ...consParams.lutPassParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\postprocessing\LUTPass.d.ts
 
-objParams.lutPassParameters = [
+
+const _lutPassParameters = ([
     'lut',
     'intensity',
-].distinct()
+] as const).distinct()
+objProps.lutPassParameters = _lutPassParameters
 
-objParams.lutPass = [...objParams.shaderPass,
+const _lutPass = ([...objProps.shaderPass,
     'lut',
     'intensity',
-].distinct()
+] as const).distinct()
+objProps.lutPass = _lutPass
 
 export type LUTPassProps = Node<LUTPass, typeof LUTPass, LUTPassParameters>
 

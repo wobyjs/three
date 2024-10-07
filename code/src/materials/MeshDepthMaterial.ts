@@ -3,8 +3,9 @@ import { MeshDepthMaterial, MeshDepthMaterialParameters } from 'three/src/materi
 export { MeshDepthMaterial } from 'three/src/materials/MeshDepthMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Material'
 import '../../lib/three/extensions'
 import { WrapAsString } from '../../three-types'
@@ -33,14 +34,14 @@ declare module '../../lib/3/consParams' {
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        meshDepthMaterial: string[]
-        meshDepthMaterialParameters: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        meshDepthMaterial: typeof _meshDepthMaterial
+        meshDepthMaterialParameters: typeof _meshDepthMaterialParameters
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshDepthMaterial.d.ts
+
 
 consParams.meshDepthMaterialParameters = {
     ...consParams.materialParameters,
@@ -58,9 +59,9 @@ consParams.meshDepthMaterialParameters = {
 
 consParams.meshDepthMaterial = { ...consParams.meshDepthMaterialParameters }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\materials\MeshDepthMaterial.d.ts    
 
-objParams.meshDepthMaterialParameters = [...objParams.materialParameters,
+
+const _meshDepthMaterialParameters = ([...objProps.materialParameters,
     'map',
     'alphaMap',
     'depthPacking',
@@ -69,10 +70,11 @@ objParams.meshDepthMaterialParameters = [...objParams.materialParameters,
     'displacementBias',
     'wireframe',
     'wireframeLinewidth',
-].distinct()
+] as const).distinct()
+objProps.meshDepthMaterialParameters = _meshDepthMaterialParameters
 
 
-objParams.meshDepthMaterial = [...objParams.material,
+const _meshDepthMaterial = ([...objProps.material,
     /**
      * @default 'MeshDepthMaterial'
      */
@@ -113,7 +115,8 @@ objParams.meshDepthMaterial = [...objParams.material,
      * @default false
      */
     'fog',
-].distinct()
+] as const).distinct()
+objProps.meshDepthMaterial = _meshDepthMaterial
 
 export type MeshDepthMaterialProps = MaterialNode<MeshDepthMaterial, MeshDepthMaterialParameters>
 

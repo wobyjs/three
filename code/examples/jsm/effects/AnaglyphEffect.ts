@@ -5,7 +5,7 @@ export * from 'three/examples/jsm/effects/AnaglyphEffect.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -27,30 +27,32 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        anaglyphEffect: string[]
+        anaglyphEffect: typeof anaglyphEffect
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        anaglyphEffect: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        anaglyphEffect: typeof _anaglyphEffect
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\AnaglyphEffect.d.ts
 
-consParams.anaglyphEffect = [
+
+const anaglyphEffect = ([
     'renderer',
     'width',
     'height',
-].distinct()
+] as const).distinct()
+consParams.anaglyphEffect = anaglyphEffect
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\effects\AnaglyphEffect.d.ts
 
-objParams.anaglyphEffect = [
+
+const _anaglyphEffect = ([
     'colorMatrixLeft',
     'colorMatrixright',
-].distinct()
+] as const).distinct()
+objProps.anaglyphEffect = _anaglyphEffect
 
 export type AnaglyphEffectProps = Node<AnaglyphEffect, typeof AnaglyphEffect, { renderer: WebGLRenderer; width?: number; height?: number; }>
 

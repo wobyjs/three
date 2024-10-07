@@ -4,8 +4,9 @@ import { LightShadow } from 'three/src/lights/LightShadow.js'
 export { LightShadow } from 'three/src/lights/LightShadow.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './Light'
 
 declare module '../../lib/3/three'
@@ -27,39 +28,40 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        lightShadow: string[]
+        lightShadow: typeof lightShadow
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        lightShadow: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        lightShadow: typeof _lightShadow
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\LightShadow.d.ts
+
 /**
  * Serves as a base class for the other shadow classes.
  * @see {@link https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/LightShadow.js}
  */
 
-consParams.lightShadow = [
+const lightShadow = ([
     /**
      * Create a new instance of {@link LightShadow}
      * @param camera The light's view of the world.
      */
     'camera',
-].distinct()
+] as const).distinct()
+consParams.lightShadow = lightShadow
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\lights\LightShadow.d.ts
+
 /**
  * Serves as a base class for the other shadow classes.
  * @see {@link https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/LightShadow.js | Source}
  */
 
-objParams.lightShadow = [
+const _lightShadow = ([
     /**
      * The light's view of the world.
      * @remark This is used to generate a depth map of the scene; objects behind other objects from the light's perspective will be in shadow.
@@ -134,7 +136,8 @@ objParams.lightShadow = [
      * @defaultValue `false`
      */
     'needsUpdate',
-].distinct()
+] as const).distinct()
+objProps.lightShadow = _lightShadow
 
 export type LightShadowProps<TCamera extends Camera = Camera> = Node<LightShadow<TCamera>, typeof LightShadow<TCamera>, { camera: TCamera; }>
 

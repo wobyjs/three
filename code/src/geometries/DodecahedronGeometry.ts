@@ -3,8 +3,9 @@ import { DodecahedronGeometry } from 'three/src/geometries/DodecahedronGeometry.
 export { DodecahedronGeometry } from 'three/src/geometries/DodecahedronGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
-import { objParams } from '../../lib/3/objParams'
+import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
 import './PolyhedronGeometry'
 
 declare module '../../lib/3/three'
@@ -26,24 +27,24 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        dodecahedronGeometry: string[]
+        dodecahedronGeometry: typeof dodecahedronGeometry
     }
 }
 
-declare module '../../lib/3/objParams' {
-    interface objParams {
-        dodecahedronGeometry: string[]
+declare module '../../lib/3/objProps' {
+    interface objProps {
+        dodecahedronGeometry: typeof _dodecahedronGeometry
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\DodecahedronGeometry.d.ts
+
 /**
  * A class for generating a dodecahedron geometries.
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/DodecahedronGeometry Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/DodecahedronGeometry.js}
  */
 
-consParams.dodecahedronGeometry = [
+const dodecahedronGeometry = ([
     /**
      * Create a new instance of {@link DodecahedronGeometry}
      * @param radius Radius of the dodecahedron. Expects a `Float`. Default `1`
@@ -51,17 +52,19 @@ consParams.dodecahedronGeometry = [
      */
     'radius',
     'detail',
-].distinct()
+] as const).distinct()
+consParams.dodecahedronGeometry = dodecahedronGeometry
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src\geometries\DodecahedronGeometry.d.ts
+
 /**
  * A class for generating a dodecahedron geometries.
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/DodecahedronGeometry | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/DodecahedronGeometry.js | Source}
  */
 
-objParams.dodecahedronGeometry = [...objParams.polyhedronGeometry,
-].distinct()
+const _dodecahedronGeometry = ([...objProps.polyhedronGeometry,
+] as const).distinct()
+objProps.dodecahedronGeometry = _dodecahedronGeometry
 
 export type DodecahedronGeometryProps = BufferGeometryNode<DodecahedronGeometry, typeof DodecahedronGeometry, { radius?: number; detail?: number; }>
 

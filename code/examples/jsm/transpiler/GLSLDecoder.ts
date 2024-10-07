@@ -3,7 +3,7 @@ import GLSLDecoder from 'three/examples/jsm/transpiler/GLSLDecoder.js'
 export * from 'three/examples/jsm/transpiler/GLSLDecoder.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
-import { objParams } from '../../../lib/3/objParams'
+import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 
 declare module '../../../lib/3/three'
@@ -25,25 +25,27 @@ declare module 'woby' {
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        glslDecoder: string[]
+        glslDecoder: typeof glslDecoder
     }
 }
 
-declare module '../../../lib/3/objParams' {
-    interface objParams {
-        glslDecoder: string[]
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        glslDecoder: typeof _glslDecoder
     }
 }
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\GlSLDecoder.d.ts
 
-consParams.glslDecoder = [
-].distinct()
 
-//D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\examples\jsm\transpiler\GlSLDecoder.d.ts
+const glslDecoder = ([
+] as const).distinct()
+consParams.glslDecoder = glslDecoder
 
-objParams.glslDecoder = [
-].distinct()
+
+
+const _glslDecoder = ([
+] as const).distinct()
+objProps.glslDecoder = _glslDecoder
 
 export type GLSLDecoderProps = Node<GLSLDecoder, typeof GLSLDecoder, {}>
 
