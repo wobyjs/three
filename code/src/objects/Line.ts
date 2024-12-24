@@ -10,6 +10,7 @@ import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
 
 import '../core/Object3D'
+import { SVGAttributes } from 'woby/dist/types/types'
 // import { DirectiveAttributes, HTMLAttributes, SVGAttributes } from 'woby/dist/types/types'
 
 declare module '../../lib/3/three'
@@ -102,7 +103,7 @@ consParams.line = line
  *     color: 0x0000ff
  * })
  * const points = [].distinct()
-
+ 
  * points.push(new THREE.Vector3(-10, 0, 0))
  * points.push(new THREE.Vector3(0, 10, 0))
  * points.push(new THREE.Vector3(10, 0, 0))
@@ -118,11 +119,11 @@ const _line = ([...objProps.object3d,
     /**
      * Vertices representing the {@link Line} segment(s).
      */
-    'geometry',
+    // 'geometry', //compulsory
     /**
      * Material for the line.
      */
-    'material',
+    // 'material', //compulsory
     /**
      * An array of weights typically from `0-1` that specify how much of the morph is applied.
      * @defaultValue `undefined`, but reset to a blank array by {@link updateMorphTargets | .updateMorphTargets()}.

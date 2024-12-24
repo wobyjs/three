@@ -19,8 +19,8 @@ Three.CCDIKSolver = CCDIKSolver
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
-            ccdikSolver: CCDIKSolverProps,
-        }
+        ccdikSolver: CCDIKSolverProps,
+ }
     }
 }
 

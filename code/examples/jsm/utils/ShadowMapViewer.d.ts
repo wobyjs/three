@@ -20,7 +20,7 @@ Three.ShadowMapViewer = ShadowMapViewer
 Three.Size = Size
 Three.Position = Position
 
-declare module 'woby' {
+declare global {
     namespace JSX {
         interface IntrinsicElements {
             shadowMapViewer: ShadowMapViewerProps,

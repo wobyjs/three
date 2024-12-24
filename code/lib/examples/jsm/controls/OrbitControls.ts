@@ -1,7 +1,9 @@
-import { useEffect, $$ } from "woby"
-import { checkCamera, checkRenderer, useCameras, useFrame, useRenderers, useThree } from "../../../hooks"
-import { OrbitControls as orbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { OrbitControlsProps } from "../../../../examples/jsm/controls/OrbitControls"
+import { useEffect, $$, Observable, ObservableMaybe } from 'woby'
+import { checkCamera, checkRenderer, useCameras, useFrame, useRenderers, useThree } from '../../../hooks'
+import { OrbitControls as orbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControlsProps } from '../../../../examples/jsm/controls/OrbitControls'
+import { fixReactiveProps } from '../../../three/fixReactiveProps'
+import '../../../../examples/jsm/controls/OrbitControls'
 
 
 export function OrbitControls({ camera, domElement, enableDamping, ...props }: OrbitControlsProps) {
@@ -11,7 +13,7 @@ export function OrbitControls({ camera, domElement, enableDamping, ...props }: O
 
         const renderers = useRenderers()
         const cams = $$(camera) ? [$$(camera)] : useCameras()
-        const dom = $$(domElement) ?? renderers[0]?.domElement
+        const dom = $$(domElement) as ObservableMaybe<HTMLCanvasElement> ?? renderers[0]?.domElement
 
         if (!$$(cams)[0]) return () => { }
         if (!$$(dom)) return () => { }
@@ -20,6 +22,8 @@ export function OrbitControls({ camera, domElement, enableDamping, ...props }: O
         checkCamera('Please use <orbitControl camera={cameraRef} domElement={domRef} />, default useCameras()[0]')
 
         const cameraControls = new orbitControls($$(cams)[0], $$(dom))
+
+        fixReactiveProps('orbitControls', props, cameraControls as any)
 
         cameraControls.enableDamping = $$(enableDamping)
 
@@ -30,4 +34,5 @@ export function OrbitControls({ camera, domElement, enableDamping, ...props }: O
 
         return () => cameraControls.dispose()
     })
+    return null
 }

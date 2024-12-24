@@ -9,6 +9,8 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './LineSegments2'
+import { type JSX } from 'woby'
+import { LineProps } from 'code/src'
 
 declare module '../../../lib/3/three'
 {

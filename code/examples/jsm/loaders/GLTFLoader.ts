@@ -31,6 +31,7 @@ declare module '../../../lib/3/consParams' {
         gltfReference: typeof gltfReference
         gltfParser: typeof gltfParser
         gltfLoaderPlugin: typeof gltfLoaderPlugin
+        gltf: typeof gltf
     }
 }
 
@@ -40,24 +41,24 @@ declare module '../../../lib/3/objProps' {
         gltfReference: typeof _gltfReference
         gltfParser: typeof _gltfParser
         gltfLoaderPlugin: typeof _gltfLoaderPlugin
+        gltf: typeof _gltf
     }
 }
 
 
 //@ts-ignore
-// const gltf = ([
-//     'path',
-//     'animations',
-//     'scene',
-//     'scenes',
-//     'cameras',
-//     'asset',
-//     'parser',
-//     'userData',
-// ] as const).distinct()
+const gltf = ([
+    'path',
+    'animations',
+    'scene',
+    'scenes',
+    'cameras',
+    'asset',
+    'parser',
+    'userData',
+] as const).distinct()
 consParams.gltf = gltf
 
-//     
 const gltfLoader = ([
     'manager',
 ] as const).distinct()
@@ -94,16 +95,15 @@ const gltfLoaderPlugin = ([
 consParams.gltfLoaderPlugin = gltfLoaderPlugin
 
 
-//@ts-ignore
-// const _gltf = ([
-//     'animations',
-//     'scene',
-//     'scenes',
-//     'cameras',
-//     'asset',
-//     'parser',
-//     'userData',
-// ] as const).distinct()
+const _gltf = ([
+    'animations',
+    'scene',
+    'scenes',
+    'cameras',
+    'asset',
+    'parser',
+    'userData',
+] as const).distinct()
 objProps.gltf = _gltf
 
 

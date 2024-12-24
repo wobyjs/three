@@ -1,5 +1,4 @@
 import { Node } from '../../../three-types'
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import StereoPassNode from 'three/src/nodes/display/StereoPassNode.js'
 export { StereoPassNode }
 import { Three } from '../../../lib/3/three'
@@ -7,7 +6,6 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './PassNode'
-import { ColorSpace, ToneMapping } from '../../constants'
 import { Scene } from 'code/src/scenes/Scene'
 import { Camera } from 'code/src/cameras/Camera'
 

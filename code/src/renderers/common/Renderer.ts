@@ -1,4 +1,4 @@
-import { Node, WrapAsString } from '../../../three-types'
+import { Functionant, Node, WrapAsString } from '../../../three-types'
 import Backend from 'three/src/renderers/common/Backend.js'
 import Renderer, { type RendererParameters } from 'three/src/renderers/common/Renderer.js'
 export { Renderer, RendererParameters }
@@ -126,11 +126,11 @@ const _renderer = ([...rendererEx,
 ] as const).distinct()
 objProps.renderer = _renderer
 
-export type RendererProps = Node<Renderer, typeof Renderer, { backend: Backend; parameters?: RendererParameters; }>
+export type RendererProps = Node<Renderer, typeof Renderer, { backend: Backend; parameters?: Functionant<RendererParameters> }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        renderer: Partial<{ backend: Backend; parameters?: RendererParameters; }>
+        renderer: Partial<{ backend: Backend; parameters?: Functionant<RendererParameters> }>
     }
 }
 

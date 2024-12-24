@@ -1,6 +1,6 @@
 import { OutlineEffectParameters, OutlineEffect } from 'three/examples/jsm/effects/OutlineEffect.js'
 export * from 'three/examples/jsm/effects/OutlineEffect.js'
-import { Node, WrapAsString } from '../../../three-types'
+import { Functionant, Node, WrapAsString } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
@@ -74,11 +74,11 @@ const _outlineEffect = ([
 ] as const).distinct()
 objProps.outlineEffect = _outlineEffect
 
-export type OutlineEffectProps = Node<OutlineEffect, typeof OutlineEffect, { renderer: WebGLRenderer; parameters?: OutlineEffectParameters; }>
+export type OutlineEffectProps = Node<OutlineEffect, typeof OutlineEffect, { renderer: WebGLRenderer; parameters?: Functionant<OutlineEffectParameters>; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        outlineEffect: Partial<{ renderer: WebGLRenderer; parameters?: OutlineEffectParameters; }>
+        outlineEffect: Partial<{ renderer: WebGLRenderer; parameters?: Functionant<OutlineEffectParameters>; }>
     }
 }
 

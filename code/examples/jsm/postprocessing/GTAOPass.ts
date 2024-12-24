@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+import { Functionant, Node } from '../../../three-types'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { DepthTexture } from 'three/src/textures/DepthTexture.js'
@@ -82,11 +82,11 @@ const _gtaoPass = ([...objProps.pass,
 ] as const).distinct()
 objProps.gtaoPass = _gtaoPass
 
-export type GTAOPassProps = Node<GTAOPass, typeof GTAOPass, { scene: Scene; camera: Camera; width?: number | undefined; height?: number | undefined; parameters?: { depthTexture?: DepthTexture | undefined; normalTexture?: Texture | undefined; } | undefined; }>
+export type GTAOPassProps = Node<GTAOPass, typeof GTAOPass, { scene: Scene; camera: Camera; width?: number | undefined; height?: number | undefined; parameters?: Functionant<{ depthTexture?: DepthTexture | undefined; normalTexture?: Texture | undefined; }> | undefined }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        gtaoPass: Partial<{ scene: Scene; camera: Camera; width?: number | undefined; height?: number | undefined; parameters?: { depthTexture?: DepthTexture | undefined; normalTexture?: Texture | undefined } }>
+        gtaoPass: Partial<{ scene: Scene; camera: Camera; width?: number | undefined; height?: number | undefined; parameters?: Functionant<{ depthTexture?: DepthTexture | undefined; normalTexture?: Texture | undefined }> }>
     }
 }
 

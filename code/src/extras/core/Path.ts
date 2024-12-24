@@ -9,21 +9,21 @@ import './CurvePath'
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
-            //@ts-ignore
-            path: PathProps,
+            /** Rename path to path3 to avoid svg path */
+            path3: PathProps,
         }
     }
 }
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        path: typeof path
+        path3: typeof path3
     }
 }
 
 declare module '../../../lib/3/objProps' {
     interface objProps {
-        path: typeof _path
+        path3: typeof _path3
     }
 }
 
@@ -51,7 +51,7 @@ declare module '../../../lib/3/objProps' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Path.js}
  */
 
-const path = ([
+const path3 = ([
     /**
      * Creates a {@link Path} from the points
      * @remarks
@@ -61,7 +61,7 @@ const path = ([
      */
     'points',
 ] as const).distinct()
-consParams.path = path
+consParams.path3 = path3
 
 
 
@@ -87,22 +87,22 @@ consParams.path = path
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Path.js | Source}
  */
 
-const _path = ([...objProps.curvePath,
+const _path3 = ([...objProps.curvePath,
     /**
      * The current offset of the path. Any new {@link THREE.Curve | Curve} added will start here.
      * @defaultValue `new THREE.Vector2()`
      */
     'currentPoint',
 ] as const).distinct()
-objProps.path = _path
+objProps.path3 = _path3
 
 export type PathProps = Node<Path, typeof Path, { points?: Vector2[]; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        path: { points?: Vector2[]; }
+        path3: { points?: Vector2[]; }
     }
 }
 
-defaults.path = {}
+defaults.path3 = {}
 

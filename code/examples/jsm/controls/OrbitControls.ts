@@ -91,7 +91,7 @@ const _orbitControls = ([
     /**
      * The camera being controlled.
      */
-    'camera',
+    // 'camera',
     /**
      * The HTMLElement used to listen for mouse / touch events.
      * This must be passed in the constructor
@@ -162,7 +162,7 @@ const _orbitControls = ([
      * How far you can orbit horizontally, lower limit.
      * If set, the interval [ min, max ] 
      * must be a sub-interval of [ - 2 PI, 2 PI ].distinct()
-
+ 
      * with ( max - min < 2 PI ).
      * @default Infinity
      */

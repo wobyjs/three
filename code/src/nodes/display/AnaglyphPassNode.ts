@@ -1,5 +1,4 @@
 import { Node } from '../../../three-types'
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import AnaglyphPassNode from 'three/src/nodes/display/AnaglyphPassNode.js'
 export { AnaglyphPassNode }
 import { Three } from '../../../lib/3/three'

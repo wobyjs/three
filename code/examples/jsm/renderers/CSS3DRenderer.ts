@@ -1,6 +1,7 @@
+import { type JSX } from 'woby'
 import { CSS3DObject, CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 export * from 'three/examples/jsm/renderers/CSS3DRenderer.js'
-import { Node, WrapAsString } from '../../../three-types'
+import { Node, Object3DNode, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
@@ -8,6 +9,7 @@ import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import { RendererEx, rendererEx } from '../../../src/renderers/RendererEx'
 import '../../../src/core/Object3D'
+import { Html2Jsx } from '../../../three-types'
 
 declare module '../../../lib/3/three'
 {
@@ -24,7 +26,7 @@ declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             css3dRenderer: CSS3DRendererProps,
-            css3dObject: CSS3DObject,
+            css3dObject: CSS3DObjectProps,
         }
     }
 }
@@ -71,7 +73,7 @@ consParams.css3dRenderer = { ...consParams.css3dParameters }
 
 
 const _css3dObject = ([...objProps.object3d,
-    'element',
+    // 'element', //compulsory propps
 ] as const).distinct()
 objProps.css3dObject = _css3dObject
 
@@ -89,15 +91,17 @@ objProps.css3dParameters = _css3dParameters
 
 const _css3dRenderer = ([...rendererEx,
     'domElement',
+    'setSize',
 ] as const).distinct()
 objProps.css3dRenderer = _css3dRenderer
 
 export type CSS3DRendererProps = Node<CSS3DRenderer, typeof CSS3DRenderer, CSS3DParameters & RendererEx>
+export type CSS3DObjectProps = Object3DNode<Html2Jsx<CSS3DObject>, typeof CSS3DObject, Html2Jsx<{ element: HTMLElement }>>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
         css3dRenderer: CSS3DParameters & RendererEx
-        css3dObject: { element?: HTMLElement }
+        css3dObject: { element?: JSX.Child }
     }
 }
 

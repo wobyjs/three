@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+import { EventHandlers, Node } from '../../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js'
 export * from 'three/examples/jsm/controls/TrackballControls.js'
@@ -38,8 +38,6 @@ declare module '../../../lib/3/objProps' {
     }
 }
 
-
-
 const trackballControlsEventMap = ([
     'change',
     'start',
@@ -63,7 +61,7 @@ const _trackballControlsEventMap = ([
 objProps.trackballControlsEventMap = _trackballControlsEventMap
 
 const _trackballControls = ([
-    'object',
+    // 'object',
     'domElement',
     // API
     'enabled',
@@ -90,7 +88,7 @@ const _trackballControls = ([
 ] as const).distinct()
 objProps.trackballControls = _trackballControls
 
-export type TrackballControlsProps = Node<TrackballControls, typeof TrackballControls, { object: Camera; domElement: HTMLElement; }>
+export type TrackballControlsProps = Node<TrackballControls, typeof TrackballControls, { object: Camera; domElement: HTMLElement; }> & Pick<EventHandlers<TrackballControls>, 'onFrame'>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

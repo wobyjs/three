@@ -17,7 +17,7 @@ declare module '../../../lib/3/three'
 
 Three.ThreeMfLoader = ThreeMFLoader
 
-declare module 'woby' {
+declare global { {
     namespace JSX {
         interface IntrinsicElements {
             threeMfLoader: ThreeMfLoaderProps,

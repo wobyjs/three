@@ -66,7 +66,7 @@ declare module '../../lib/3/objProps' {
  = 255
  * }
  * // used the buffer to create a [name].distinct()
-
+ 
  * const texture = new THREE.DataTexture(data, width, height)
  * texture.needsUpdate = true
  * ```

@@ -1,5 +1,4 @@
 import { Node } from '../../../three-types'
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import SSAAPassNode from 'three/src/nodes/display/SSAAPassNode.js'
 export { SSAAPassNode }
 import { Three } from '../../../lib/3/three'

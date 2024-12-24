@@ -1,7 +1,7 @@
 import MaterialNode_, { MaterialNodeScope } from 'three/src/nodes/accessors/MaterialNode.js'
 import { Node } from '../../../three-types'
 
-// declare module 'woby' {
+// declare global { {
 //     namespace JSX {
 //         interface IntrinsicElements {
 //             materialNode: MaterialNodeProps,

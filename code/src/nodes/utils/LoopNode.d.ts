@@ -17,7 +17,7 @@ declare module '../../../lib/3/three'
 
 Three.LoopNode = LoopNode
 
-declare module 'woby' {
+declare global {
     namespace JSX {
         interface IntrinsicElements {
             loopNode: LoopNodeProps,

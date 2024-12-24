@@ -1,5 +1,4 @@
 import { Node } from '../../../three-types'
-import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import PixelationPassNode from 'three/src/nodes/display/PixelationPassNode.js'
 export { PixelationPassNode }
 import { Three } from '../../../lib/3/three'

@@ -1,12 +1,11 @@
 // / <reference path="../jsx" />
 /** @jsxImportSource ../jsx */
 
-import { $$, $, getMeta, type JSX, ObservableMaybe, Observable, useEffect, isObservable, } from "woby"
+import { $$, $, type JSX, isObservable, } from "woby"
 import { setNestedValue, } from "../three/fixReactiveProps"
-import { Texture } from "../../src/textures/Texture"
-import { Color } from "../../src/math/Color"
-import { CubeTexture } from "../../src/textures/CubeTexture"
+
 import { ThreeContext } from "../hooks/useThree"
+import { HTMLAttributes } from "woby/dist/types/types"
 
 // type Observable2Maybe<T> = {
 //     [K in keyof T]: T[K] extends Observable<infer U>
@@ -23,18 +22,6 @@ export type Canvas3DProps = {
 } //& Partial<Observable2Maybe<ThreeContextType>>
 
 
-export const toColor = (color: ObservableMaybe<string | number | Color | Texture | CubeTexture>) => {
-    const c = $$(color)
-    if (c instanceof Color)
-        return c
-    else if (c instanceof Texture)
-        return c
-
-    return new Color(c)
-}
-
-
-
 // import { consParams } from '../../lib/3/consParams'
 // import { objProps } from '../../lib/3/objProps'
 // import { defaults } from '../../lib/3/defaults'
@@ -49,7 +36,7 @@ export const toColor = (color: ObservableMaybe<string | number | Color | Texture
 
 // // Three.canvas3d = canvas3d
 
-// // declare module 'woby' {
+// // declare global { {
 // //     namespace JSX {
 // //         interface IntrinsicElements {
 // //             canvas3d: canvas3dProps,
@@ -75,7 +62,7 @@ export const toColor = (color: ObservableMaybe<string | number | Color | Texture
 // consParams.canvas3d = canvas3d
 
 
-const param = (['scene', 'camera', 'renderer', 'width', 'height', 'children', /* 'noRender', 'background' */] as const).distinct()
+// const param = (['scene', 'camera', 'renderer', 'width', 'height', 'children', /* 'noRender', 'background' */] as const).distinct()
 // objProps.canvas3d = param
 
 // // export type canvas3dProps = Node<canvas3d, typeof canvas3d, { images?: any[]; mapping?: canvas3dMapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; colorSpace?: ColorSpace; }>
@@ -87,10 +74,10 @@ const param = (['scene', 'camera', 'renderer', 'width', 'height', 'children', /*
 // defaults.canvas3d = {}
 
 
-export const Canvas3D = (props: Canvas3DProps) => {
+export const Canvas3D = (props: HTMLAttributes<HTMLDivElement>) => {
     const children = isObservable(props.children) ? $$(props.children) as JSX.Child : props.children
     // const meta = !isObservable(props.children) && !Array.isArray(props.children) ? (props.children ? [getMeta(props.children)] : []) : [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
-    const meta = !Array.isArray(children) ? (children ? [getMeta(children)] : []) : [children].flat().filter(r => !!r).map(c => getMeta(c as any))
+    // const meta = !Array.isArray(children) ? (children ? [getMeta(children)] : []) : [children].flat().filter(r => !!r).map(c => getMeta(c as any))
 
     const r = {}
 
@@ -104,7 +91,7 @@ export const Canvas3D = (props: Canvas3DProps) => {
     const ctx = { frames: [], scenes: [], cameras: [], renderers: [], update: $(0) }
     const rr = ThreeContext.Provider({ value: ctx, children })
 
-    return rr
+    return <div {...remainingProps}>{rr}</div>
 }
 
 

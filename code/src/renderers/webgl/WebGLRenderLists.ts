@@ -84,12 +84,12 @@ const _webglRenderList = ([
     'opaque',
     /**
      * @default [].distinct()
-
+ 
      */
     'transparent',
     /**
      * @default [].distinct()
-
+ 
      */
     'transmissive',
 ] as const).distinct()

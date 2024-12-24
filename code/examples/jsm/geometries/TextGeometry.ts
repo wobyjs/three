@@ -9,7 +9,7 @@ import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
 import '../../../src/geometries/ExtrudeGeometry'
-import { WrapAsString } from '../../../three-types';
+import { Functionant, WrapAsString } from '../../../three-types';
 
 declare module '../../../lib/3/three'
 {
@@ -235,11 +235,11 @@ const _textGeometry = ([...objProps.extrudeGeometry,
 ] as const).distinct()
 objProps.textGeometry = _textGeometry
 
-export type TextGeometryProps = BufferGeometryNode<Omit<TextGeometry, 'parameters'>, Omit<typeof TextGeometry, 'parameters'>, { text: string; parameters?: WrapFont<TextGeometryParameters> }>
+export type TextGeometryProps = BufferGeometryNode<Omit<TextGeometry, 'parameters'>, Omit<typeof TextGeometry, 'parameters'>, { text: string; parameters?: Functionant<WrapFont<TextGeometryParameters>> }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        textGeometry: Partial<{ text?: string; parameters?: WrapFont<TextGeometryParameters> }>
+        textGeometry: Partial<{ text?: string; parameters?: Functionant<WrapFont<TextGeometryParameters>> }>
     }
 }
 

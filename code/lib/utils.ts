@@ -1,5 +1,8 @@
 import { $, $$, ObservableMaybe, isObservable, useEffect, type JSX, Observable, isObject, isPrimitive } from "woby"
 import { PromiseMaybe } from "../three-types"
+import { Texture } from "../src/textures/Texture"
+import { Color } from "../src/math/Color"
+import { CubeTexture } from "../src/textures/CubeTexture"
 
 export const toUpper = (s: string) => {
     s = s.replace('gl', 'GL')
@@ -12,6 +15,7 @@ export const toUpper = (s: string) => {
     s = s.replace('fxaa', 'FXAA')
     s = s.replace('mmd', 'MMD')
     s = s.replace('gpu', 'GPU')
+    s = s.replace('Gpu', 'GPU')
     s = s.replace('csm', 'CSM')
     s = s.replace('nurbs', 'NURBS')
 
@@ -125,10 +129,10 @@ export const isObjectLiteral = (obj: any) => obj !== null && typeof obj === 'obj
 export const isNullR = <T>(oo: ObservableMaybe<T>) => {
     if (typeof oo === 'undefined' || oo === null) return true
 
-    if (!(isConstructor(oo as any) || isProp(oo as any)))
+    if (!(isConstructor(oo as any) || isProp(oo as any) || Array.isArray(oo) || isObjectLiteral(oo)))
         return false
 
-    if (!(Array.isArray(oo) || isObjectLiteral(oo))) // do not detect class base 1st
+    if (!(Array.isArray(oo) || isObjectLiteral(oo))) // skip class base again !!
         return false
 
     const o = $$(oo)
@@ -229,3 +233,21 @@ export const awaitAll = async <T extends JSX.Child | any>(props: ObservableMaybe
     }
     return props
 };
+
+/** is undefine, this opposite from core */
+const isu = (v: any) => v === void 0
+const isNAN = (v: any) => typeof v === 'number' && isNaN(v)
+export const isNull = v => isu(v) || isNAN(v)
+
+
+export const toColor = (color: ObservableMaybe<string | number | Color | Texture | CubeTexture>) => {
+    const c = $$(color)
+    if (c instanceof Color)
+        return c
+    else if (c instanceof Texture)
+        return c
+
+    return new Color(c)
+}
+
+

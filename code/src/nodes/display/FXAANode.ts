@@ -1,5 +1,5 @@
 import { Node } from '../../../three-types'
-import { Node as ENode, TextureNode } from 'three/src/nodes/Nodes.js'
+import { TextureNode } from 'three/src/nodes/Nodes.js'
 import FXAANode from 'three/src/nodes/display/FXAANode.js'
 export { FXAANode }
 import { Three } from '../../../lib/3/three'

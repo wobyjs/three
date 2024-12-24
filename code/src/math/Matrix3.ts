@@ -105,7 +105,7 @@ const _matrix3 = ([...objProps.matrix,
     /**
      * Array with matrix values.
      * @default [1, 0, 0, 0, 1, 0, 0, 0, 1] 
-
+ 
      */
     'elements',
 ] as const).distinct()

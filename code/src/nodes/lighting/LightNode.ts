@@ -1,5 +1,4 @@
 import { Light } from 'three/src/lights/Light.js'
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import LightNode, { LightNodeScope } from 'three/src/nodes/lighting/LightNode.js'
 import { Three } from '../../../lib/3/three'

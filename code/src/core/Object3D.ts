@@ -269,4 +269,3 @@ declare module '../../lib/3/defaults' {
 }
 
 defaults.object3d = {}
-

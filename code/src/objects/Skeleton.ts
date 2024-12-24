@@ -81,7 +81,7 @@ consParams.skeleton = skeleton
  * ```typescript
  * // Create a simple "arm"
  * const bones = [].distinct()
-
+ 
  * const shoulder = new THREE.Bone()
  * const elbow = new THREE.Bone()
  * const hand = new THREE.Bone()

@@ -16,7 +16,7 @@ declare module '../../../../lib/3/three'
 
 Three.PackedPhongMaterial = PackedPhongMaterial
 
-declare module 'woby' {
+declare global {
     namespace JSX {
         interface IntrinsicElements {
             packedPhongMaterial: PackedPhongMaterialProps,

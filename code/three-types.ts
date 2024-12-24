@@ -2,6 +2,8 @@
 /** @jsxImportSource ../jsx-runtime */
 
 import woby, { type JSX, FunctionMaybe, Observable, ObservableMaybe } from 'woby'
+
+export * from 'woby'
 import type * as THREE from 'three'
 
 export type PromiseMaybe<T> = PromiseLike<T> | T
@@ -14,6 +16,7 @@ export type Overwrite<T, O> = Omit<T, NonFunctionKeys<O>> & O
 // type MethodKeysWithParams<T> = {
 //     [K in keyof T]: T[K] extends (arg: any, ...args: any[]) => any ? K : never
 // }[keyof T]
+
 
 type MethodKeysWithParams<T> = {
     [K in keyof T]:
@@ -47,14 +50,22 @@ type AddProperties<T> = {
  * E excluded type
  */
 // type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & Functionant<C> & E
+export type Html2Jsx<T> = T extends object
+    ? {
+        [K in keyof T]: T[K] extends HTMLElement
+        ? JSX.Child | T[K]
+        : T[K]
+    }
+    : T
+
 type Setter<T, C> = FunctionToProperty<T> & AddProperties<T> & Functionant<C>
 
 export type WrapAsString<T> = {
     [K in keyof T]: K;
 }
 
-export type AttachFnType = (parent: Instance, self: Instance) => () => void
-export type AttachType = string | AttachFnType
+// export type AttachFnType = (parent: Instance, self: Instance) => () => void
+// export type AttachType = string | AttachFnType
 
 export type EventHandlers<T> = {
     onClick?: (event: ThreeEvent<MouseEvent>) => void
@@ -105,20 +116,20 @@ export interface IntersectionEvent<TSourceEvent> extends Intersection {
 
 export type ThreeEvent<TEvent> = IntersectionEvent<TEvent> & Properties<TEvent>
 
-export type BaseInstance = Omit<THREE.Object3D, 'children' | 'attach' | 'add' | 'remove' | 'raycast'> & {
-    children?: Instance[]
-    remove: (...object: Instance[]) => Instance
-    add: (...object: Instance[]) => Instance
-    raycast?: (raycaster: THREE.Raycaster, intersects: THREE.Intersection[]) => void
-}
-export type Instance = BaseInstance & { [key: string]: any }
+// export type BaseInstance = Omit<THREE.Object3D, 'children' | 'attach' | 'add' | 'remove' | 'raycast'> & {
+//     children?: Instance[]
+//     remove: (...object: Instance[]) => Instance
+//     add: (...object: Instance[]) => Instance
+//     raycast?: (raycaster: THREE.Raycaster, intersects: THREE.Intersection[]) => void
+// }
+// export type Instance = BaseInstance & { [key: string]: any }
 /**
  * If **T** contains a constructor, @see ConstructorParameters must be used, otherwise **T**.
  */
 // type Args<T> = T extends new (...args: any) => any ? ConstructorParameters<T> : T
 type Args<T> = T extends new (...args: infer P) => any
-    ? { [K in keyof P]: Functionant<P[K]> }
-    : Functionant<T>
+    ? { [K in keyof P]: FunctionMaybe<P[K]> }
+    : FunctionMaybe<T>
 
 export type Euler = THREE.Euler | Parameters<THREE.Euler['set']>
 export type Matrix4 = THREE.Matrix4 | Parameters<THREE.Matrix4['set']> | Readonly<THREE.Matrix4['set']>
@@ -154,14 +165,17 @@ export type ObservantMaybe<T> = T extends object
     }
     : T
 
+type ArrayMaybe<T> = T | T[]
 export interface NodeProps<T, P> {
     // attach?: AttachType
     /** Constructor arguments */
-    args?: FunctionMaybe<Args<P>>
-    children?: JSX.Child
+    args?: Args<P>
+    children?: ArrayMaybe<ObservableMaybe<THREE.Group<THREE.Object3DEventMap>>> | JSX.Child /* | ObservableMaybe<unknown> */
     onUpdate?: (self: T) => void
-    ref?: JSX.Refs<T>
+    ref?: JSX.Ref<T>
 }
+
+
 // type NonNullable<T> = T & {}
 
 // export type Unobservant<T> = T extends object
@@ -188,38 +202,56 @@ export type Functionant<T> = T extends object
     }
     : T
 
-export type ExtendedColors<T> = { [K in keyof T]: T[K] extends THREE.Color | undefined ? THREE.ColorRepresentation : T[K] }
+/** Change type to HTMLElement or JSX.Child */
+export type ChangeType<T> = {
+    [K in keyof T]: T[K] extends THREE.Color | undefined
+    ? THREE.ColorRepresentation
+    : T[K] extends HTMLElement
+    ? HTMLElement | JSX.Child
+    : T[K]
+}
 // export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>
 // export type Node<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>> & NodeProps<T, P>
-export type Node<T, P, C> = Partial<Setter<ExtendedColors<T>, C>> & NodeProps<T, P>
+/**
+ * T: type
+ * P: properties
+ * C: constructor
+ */
+export type Node<T, P, C> = Partial<Setter<ChangeType<Omit<T, 'children'>>, ChangeType<C>>> & NodeProps<T, P>
 
 // export type Node<T, P, C> = Partial<Functionant<Setter<Overwrite<T, NodeProps<T, P>>, C>>>
 
-export type Object3DNode<T, P, C> = Partial<Setter<Overwrite<
-    Node<T, P, C>,
-    {
-        position?: FunctionMaybe<Vector3 | number[]>
-        center?: FunctionMaybe<Vector3 | number[]>
-        up?: FunctionMaybe<VectorLike<THREE.Vector3>>
-        scale?: FunctionMaybe<VectorLike<THREE.Vector3>>
-        rotation?: FunctionMaybe<Euler>
-        matrix?: FunctionMaybe<Matrix4>
-        quaternion?: FunctionMaybe<Quaternion>
-        layers?: FunctionMaybe<Layers>
+export type Object3DNode<T, P, C> = Partial<Overwrite<
+    Node<T, P, C> & EventHandlers<T>,
+    Functionant<{
+        position?: Vector3 | number[]
+        center?: Vector3 | number[]
+        up?: VectorLike<THREE.Vector3>
+        scale?: VectorLike<THREE.Vector3>
+        rotation?: Euler
+        matrix?: Matrix4
+        quaternion?: Quaternion
+        layers?: Layers
         // dispose?: (() => void) | null,
-        selfDispose?: FunctionMaybe<boolean>
-    }
->, C>> & EventHandlers<T>
+        selfDispose?: boolean
+    }>
+>>
 
 //in example
 //node_modules\@types\three\examples\jsm\animation
 // import { type AnimationClipCreator } from 'three/examples/jsm/animation/AnimationClipCreator.js'
 
 
-//Not in folder
-export type PrimitiveProps = { object: object } & { [properties: string]: any }
 
-// declare module 'woby' {
+//Not in folder
+declare global {
+    namespace JSX {
+        //@ts-ignore
+        interface IntrinsicElements extends woby.JSX.IntrinsicElements { }
+    }
+}
+
+// declare global {
 //     namespace JSX {
 //         interface IntrinsicElements {
 //             canvas3d: CanvasProps
@@ -1058,12 +1090,13 @@ export type PrimitiveProps = { object: object } & { [properties: string]: any }
 //     }
 // }
 
-declare global {
-    namespace JSX {
-        interface IntrinsicElements extends woby.JSX.IntrinsicElements {
-        }
-    }
-}
+// declare global {
+//     namespace JSX {
+//         interface IntrinsicElements extends woby.JSX.IntrinsicElements {
+//         }
+//     }
+// }
+
 
 // //export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>
 

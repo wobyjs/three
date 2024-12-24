@@ -1,5 +1,4 @@
-// import { createContext, Observable, useContext } from "woby"
-import { useThree, Unobservable, ThreeContextType } from "./useThree"
+import { useThree } from "./useThree"
 // import { Renderer } from "../../src/renderers/common"
 // import { RendererEx } from "../../src/renderers/RendererEx"
 // import Renderer from "three/src/renderers/common/Renderer"

@@ -89,7 +89,7 @@ const _spotLightHelper = ([...objProps.object3d,
     /**
      * Reference to the {@link THREE.SpotLight | SpotLight} being visualized.
      */
-    'light',
+    // 'light',
     /**
      * Reference to the spotLight's {@link Object3d.matrixWorld | matrixWorld}.
      */
@@ -99,7 +99,7 @@ const _spotLightHelper = ([...objProps.object3d,
      * If this is changed, the helper's color will update the next time {@link SpotLightHelper.update | update} is called.
      * @defaultValue `undefined`
      */
-    'color',
+    // 'color',
     /**
      * Is set to `false`, as the helper is using the {@link THREE.Light.matrixWorld | light.matrixWorld}.
      * @see {@link THREE.Object3d.matrixAutoUpdate | Object3d.matrixAutoUpdate}.

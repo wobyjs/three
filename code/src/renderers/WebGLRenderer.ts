@@ -5,6 +5,7 @@ import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import { Observable } from 'woby'
 
 import './common/Renderer'
 import { RendererEx, rendererEx } from './RendererEx'
@@ -17,6 +18,13 @@ declare module '../../lib/3/three'
 }
 
 Three.WebGLRenderer = WebGLRenderer
+
+declare module 'three/src/renderers/WebGLRenderer.js' {
+    interface WebGLRenderer {
+        animation: () => void,
+        pause: Observable<boolean>,
+    }
+}
 
 declare module 'woby' {
     namespace JSX {
@@ -452,4 +460,3 @@ declare module '../../lib/3/defaults' {
 }
 
 defaults.webglRenderer = {}
-

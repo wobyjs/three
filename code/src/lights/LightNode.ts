@@ -2,7 +2,7 @@ import { Object3DNode } from '../../three-types'
 import { Light } from 'three/src/lights/Light.js'
 export { Light } from 'three/src/lights/Light.js'
 
-// declare module 'woby' {
+// declare global { {
 //     namespace JSX {
 //         interface IntrinsicElements {
 //             lightNode: LightNode<any, any, any>,

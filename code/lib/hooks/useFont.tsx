@@ -1,9 +1,9 @@
 // / <reference path='./jsx-runtime' />
 /** @jsxImportSource ./jsx-runtime */
 
-import { Observable, $, } from 'woby'
+import { $, } from 'woby'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
-import { useThree, Unobservable, ThreeContextType } from "./useThree"
+import { useThree } from "./useThree"
 
 
 // export const useFonts = <T extends Unobservable<ThreeContextType['fonts']> = Unobservable<ThreeContextType['fonts']>>(v?: T) => useThree('fonts', v) as any as Observable<T>

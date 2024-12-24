@@ -1,10 +1,8 @@
 // / <reference path='./jsx-runtime' />
 /** @jsxImportSource ./jsx-runtime */
 
-import { createContext, useContext, $$, $, ObservableMaybe, isObservable, useMemo, Observable, useEffect, ObservableReadonly, Context } from 'woby'
+import { createContext, useContext, ObservableMaybe, Observable, Context } from 'woby'
 import { Font } from 'three/examples/jsm/loaders/FontLoader'
-
-import { type Canvas3DProps } from '../components/Canvas3D'
 // import { Renderer } from '../../src/renderers/common/Renderer';
 import { Scene } from '../../src/scenes/Scene';
 import { Camera } from '../../src/cameras/Camera';

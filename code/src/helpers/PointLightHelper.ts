@@ -89,7 +89,7 @@ const _pointLightHelper = ([...objProps.object3d,
     /**
      * The {@link THREE.PointLight | PointLight} that is being visualized.
      */
-    'light',
+    // 'light',
     /**
      * Reference to the {@link THREE.PointLight.matrixWorld | light.matrixWorld}.
      */

@@ -95,7 +95,7 @@ const _ringGeometry = ([...objProps.bufferGeometry,
 objProps.ringGeometry = _ringGeometry
 
 
-export type RingGeometryProps = BufferGeometryNode<RingGeometry, typeof RingGeometry, { innerRadius?: number; outerRadius?: number; thetaSegments?: number; phiSegments?: number; thetaStart?: number; thetaLength?: number; }>
+export type RingGeometryProps = BufferGeometryNode<RingGeometry, typeof RingGeometry, [innerRadius?: number, outerRadius?: number, thetaSegments?: number, phiSegments?: number, thetaStart?: number, thetaLength?: number]>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

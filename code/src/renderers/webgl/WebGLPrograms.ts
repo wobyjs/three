@@ -181,6 +181,7 @@ consParams.webglProgramParameters = ([
     'extensionMultiDraw',
     'rendererExtensionParallelShaderCompile',
     'customProgramCacheKey',
+    'reverseDepthBuffer',
 ] as const).toObject()
 
 

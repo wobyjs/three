@@ -7,6 +7,7 @@ import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import { RendererEx, rendererEx } from '../../../src/renderers/RendererEx'
 import '../../../src/core/Object3D'
+import { FunctionMaybe } from 'woby'
 
 declare module '../../../lib/3/three'
 {
@@ -81,12 +82,12 @@ const _css2dObject = ([...objProps.object3d,
 objProps.css2dObject = _css2dObject
 
 export type CSS2DRendererProps = Node<CSS2DRenderer, typeof CSS2DRenderer, CSS2DParameters & RendererEx>
-export type CSS2DObjectProps = Object3DNode<CSS2DObject, typeof CSS2DObject, { element?: HTMLElement }>
+export type CSS2DObjectProps = Object3DNode<CSS2DObject, typeof CSS2DObject, { /* element?:JSX.Child  */ }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
         css2dRenderer: CSS2DParameters & RendererEx
-        css2dObject: { element?: HTMLElement }
+        css2dObject: { element?: FunctionMaybe<HTMLElement | JSX.Child> }
     }
 }
 

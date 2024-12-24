@@ -1,6 +1,6 @@
 import { LWOLoaderParameters, LWOLoader } from 'three/examples/jsm/loaders/LWOLoader.js'
 export * from 'three/examples/jsm/loaders/LWOLoader.js'
-import { Node } from '../../../three-types'
+import { Functionant, Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
@@ -86,11 +86,11 @@ const _lwoLoader = ([...objProps.loader,
 ] as const).distinct()
 objProps.lwoLoader = _lwoLoader
 
-export type LWOLoaderProps = Node<LWOLoader, typeof LWOLoader, { manager?: LoadingManager; parameters?: LWOLoaderParameters; }>
+export type LWOLoaderProps = Node<LWOLoader, typeof LWOLoader, { manager?: LoadingManager; parameters?: Functionant<LWOLoaderParameters> }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        lwoLoader: { manager?: LoadingManager; parameters?: LWOLoaderParameters; }
+        lwoLoader: { manager?: LoadingManager; parameters?: Functionant<LWOLoaderParameters> }
     }
 }
 

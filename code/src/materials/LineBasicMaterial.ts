@@ -40,7 +40,6 @@ declare module '../../lib/3/objProps' {
     }
 }
 
-
 consParams.lineBasicMaterial = (['color',
     'fog',
     'linewidth',

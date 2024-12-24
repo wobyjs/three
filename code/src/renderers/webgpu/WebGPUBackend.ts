@@ -6,7 +6,7 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../../../lib/three/extensions'
-import '../../examples/jsm/renderers/common/Backend'
+import '../common/Backend'
 import { BackendParameters } from 'three/src/renderers/common/Backend'
 
 declare module '../../../lib/3/three'

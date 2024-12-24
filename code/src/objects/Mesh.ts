@@ -123,4 +123,4 @@ declare module '../../lib/3/defaults' {
     }
 }
 
-defaults.mesh = { geometry: new BufferGeometry(), material: new MeshBasicMaterial() }
+defaults.mesh = { /* geometry: new BufferGeometry(), material: new MeshBasicMaterial() */ }

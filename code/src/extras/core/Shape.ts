@@ -117,7 +117,7 @@ consParams.shape = shape
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Shape.js | Source}
  */
 
-const _shape = ([...objProps.path,
+const _shape = ([...objProps.path3,
     /**
      * {@link http://en.wikipedia.org/wiki/Universally_unique_identifier | UUID} of this object instance.
      * @remarks This gets automatically assigned and shouldn't be edited.

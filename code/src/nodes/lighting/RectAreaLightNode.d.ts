@@ -17,7 +17,7 @@ declare module '../../../lib/3/three'
 
 Three.RectAreaLightNode = RectAreaLightNode
 
-declare module 'woby' {
+declare global {
     namespace JSX {
         interface IntrinsicElements {
             rectAreaLightNode: RectAreaLightNodeProps<Light>,

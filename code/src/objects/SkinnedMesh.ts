@@ -101,9 +101,9 @@ consParams.skinnedMesh = skinnedMesh
  * const position = geometry.attributes.position
  * const vertex = new THREE.Vector3()
  * const skinIndices = [].distinct()
-
+ 
  * const skinWeights = [].distinct()
-
+ 
  * for (let i = 0; i & lt; position.count; i++) {
  *     vertex.fromBufferAttribute(position, i)
  *     // compute skinIndex and skinWeight based on some configuration data
@@ -120,7 +120,7 @@ consParams.skinnedMesh = skinnedMesh
  * const skeleton = new THREE.Skeleton(bones)
  * // see example from THREE.Skeleton
  * const rootBone = skeleton.bones[0].distinct()
-
+ 
  * mesh.add(rootBone)
  * // bind the skeleton to the mesh
  * mesh.bind(skeleton)

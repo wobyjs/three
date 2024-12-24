@@ -5,6 +5,7 @@ import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import '../core/Object3D'
 
 declare module '../../lib/3/three'
 {
@@ -88,7 +89,7 @@ consParams.group = group
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Group.js | Source}
  */
 
-const _group = ([
+const _group = ([...objProps.object3d,
 ] as const).distinct()
 objProps.group = _group
 
