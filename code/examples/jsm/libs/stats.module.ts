@@ -6,6 +6,8 @@ import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 export { Stats }
 
+export default Stats
+
 declare module '../../../lib/3/three'
 {
     interface Three {

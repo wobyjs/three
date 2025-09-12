@@ -1,17 +1,18 @@
 import { useRoot, setChild, type JSX } from "woby"
 import { jsx } from "../three/jsx"
+import { FragmentUtils } from "woby"
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
     if (!parent || !(parent instanceof HTMLElement)) throw new Error('Invalid parent node')
 
     parent.textContent = ''
-    return useRoot(dispose => {
+    return useRoot((stack, dispose) => {
 
-        setChild(parent, children)
+        setChild(parent, children, FragmentUtils.make(), stack)
 
         return (): void => {
 
-            dispose()
+            dispose(stack)
 
             parent.textContent = ''
 

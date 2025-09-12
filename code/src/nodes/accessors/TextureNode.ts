@@ -2,6 +2,7 @@ import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 // import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
+export { TextureNode }
 import { Texture } from 'three/src/textures/Texture.js'
 export * from 'three/src/textures/Texture.js'
 
@@ -63,11 +64,11 @@ const _textureNode = ([...objProps.uniformNode,
 ] as const).distinct()
 objProps.textureNode = _textureNode
 
-export type TextureNodeProps = Node<TextureNode, typeof TextureNode, { value: Texture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null; }>
+export type TextureNodeProps = Node<TextureNode, typeof TextureNode, { value: Texture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        textureNode: Partial<{ value: Texture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null; }>
+        textureNode: Partial<{ value: Texture; uvNode?: ShaderNodeObject<ENode> | null; levelNode?: ShaderNodeObject<ENode> | null }>
     }
 }
 

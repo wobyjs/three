@@ -1,89 +1,170 @@
-import { Node, WrapAsString } from '../../../three-types'
-import WebGPUBackend, { WebGPUBackendParameters } from 'three/src/renderers/webgpu/WebGPUBackend.js'
-export { WebGPUBackend }
+import { Node } from '../../../three-types'
+// This is the WebGPU backend implementation.
+import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js'
+export * from 'three/src/renderers/webgpu/WebGPUBackend.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
-import '../../../lib/three/extensions'
-import '../common/Backend'
-import { BackendParameters } from 'three/src/renderers/common/Backend'
 
 declare module '../../../lib/3/three'
 {
-    interface Three {
-        WebGPUBackend: typeof WebGPUBackend
-    }
+	interface Three {
+		WebGPUBackend: typeof WebGPUBackend
+	}
 }
 
 Three.WebGPUBackend = WebGPUBackend
 
 declare module 'woby' {
-    namespace JSX {
-        interface IntrinsicElements {
-            webGpuBackend: WebGPUBackendProps,
-        }
-    }
+	namespace JSX {
+		interface IntrinsicElements {
+			webGPUBackend: WebGPUBackendProps,
+		}
+	}
 }
 
 declare module '../../../lib/3/consParams' {
-    interface consParams {
-        webGpuBackend: WrapAsString<WebGPUBackendParameters>
-        backendParameters: WrapAsString<BackendParameters>
-        webGpuBackendParameters: WrapAsString<WebGPUBackendParameters>
-    }
+	interface consParams {
+		webGPUBackend: typeof webGPUBackend
+	}
 }
 
 declare module '../../../lib/3/objProps' {
-    interface objProps {
-        webGpuBackend: typeof _webGpuBackend
-        backendParameters: typeof _backendParameters
-        webGpuBackendParameters: typeof _webGpuBackendParameters
-    }
+	interface objProps {
+		webGPUBackend: typeof _webGPUBackend
+	}
 }
 
-consParams.backendParameters = (['canvas'] as const).toObject()
+// ---[ Constructor Parameters ]---
+
+// The constructor takes optional parameters.
+const webGPUBackend = ([
+	'parameters',
+] as const).distinct()
+consParams.webGPUBackend = webGPUBackend
+
+// ---[ Object Properties ]---
+
+// Lists the many properties and methods of the class.
+const _webGPUBackend = ([
+	'isWebGPUBackend',
+	'parameters',
+	'domElement',
+	'device',
+	'context',
+	'colorBuffer',
+	'defaultRenderPassdescriptor',
+	'utils',
+	'attributeUtils',
+	'bindingUtils',
+	'pipelineUtils',
+	'textureUtils',
+	'occludedResolveCache',
+	'init',
+	'coordinateSystem', // getter
+	'getArrayBufferAsync',
+	'getContext',
+	'getDrawingBufferSize',
+	'setScissorTest',
+	'getClearColor',
+	'setClearColor',
+	'getClearAlpha',
+	'setClearAlpha',
+	'setDepthTest',
+	'setDepthMask',
+	'setDepthFunc',
+	'setBlending',
+	'setColorMask',
+	'setPolygonOffset',
+	'useProgram',
+	'bindFramebuffer',
+	'drawBuffers',
+	'activeTexture',
+	'bindTexture',
+	'bindBufferBase',
+	'unbindTexture',
+	'hasFeature',
+	'getMaxAnisotropy',
+	'getDrawingBufferSize',
+	'setScissorTest',
+	'getClearColor',
+	'setClearColor',
+	'getClearAlpha',
+	'setClearAlpha',
+	'setDepthTest',
+	'setDepthMask',
+	'setDepthFunc',
+	'setBlending',
+	'setColorMask',
+	'setPolygonOffset',
+	'useProgram',
+	'bindFramebuffer',
+	'drawBuffers',
+	'activeTexture',
+	'bindTexture',
+	'bindBufferBase',
+	'unbindTexture',
+	'beginRender',
+	'finishRender',
+	'beginCompute',
+	'finishCompute',
+	'draw',
+	'compute',
+	'createProgram',
+	'destroyProgram',
+	'createBindings',
+	'updateBindings',
+	'updateBinding',
+	'createRenderPipeline',
+	'createComputePipeline',
+	'needsRenderUpdate',
+	'getRenderCacheKey',
+	'createNodeBuilder',
+	'createSampler',
+	'destroySampler',
+	'createDefaultTexture',
+	'createTexture',
+	'updateTexture',
+	'generateMipmaps',
+	'destroyTexture',
+	'copyTextureToBuffer',
+	'copyTextureToTexture',
+	'copyFramebufferToTexture',
+	'createAttribute',
+	'createIndexAttribute',
+	'createStorageAttribute',
+	'createIndirectStorageAttribute',
+	'updateAttribute',
+	'destroyAttribute',
+	'updateSize',
+	'updateViewport',
+	'isOccluded',
+	'resolveTimestampsAsync',
+	'waitForGPU',
+	'enable',
+	'disable',
+	'setFlipSided',
+	'setCullFace',
+	'setLineWidth',
+] as const).distinct()
+objProps.webGPUBackend = _webGPUBackend
 
 
-consParams.webGpuBackendParameters = {
-    ...consParams.backendParameters,
-    ...(['alpha',
-        'antialias',
-        'sampleCount',
-        'trackTimestamp',
-    ] as const).toObject()
+// ---[ Props & Defaults ]---
+
+// Defines the constructor arguments.
+type WebGPUBackendArgs = {
+	parameters?: object
 }
 
-
-consParams.webGpuBackend = { ...consParams.webGpuBackendParameters }
-
-
-
-const _webGpuBackendParameters = ([...objProps.backendParameters,
-    'alpha',
-    'antialias',
-    'sampleCount',
-    'trackTimestamp',
-] as const).distinct()
-objProps.webGpuBackendParameters = _webGpuBackendParameters
-
-
-const _webGpuBackend = ([...objProps.backend,
-] as const).distinct()
-objProps.webGpuBackend = _webGpuBackend
-
-const _backendParameters = ([
-    'canvas',
-] as const).distinct()
-objProps.backendParameters = _backendParameters
-
-export type WebGPUBackendProps = Node<WebGPUBackend, typeof WebGPUBackend, WebGPUBackendParameters>
+// The final Props type for the JSX component.
+export type WebGPUBackendProps = Node<WebGPUBackend, typeof WebGPUBackend, WebGPUBackendArgs>
 
 declare module '../../../lib/3/defaults' {
-    interface defaults {
-        webGpuBackend: WebGPUBackendParameters
-    }
+	interface defaults {
+		webGPUBackend: Partial<WebGPUBackendArgs>
+	}
 }
 
-defaults.webGpuBackend = {}
-
+defaults.webGPUBackend = {}

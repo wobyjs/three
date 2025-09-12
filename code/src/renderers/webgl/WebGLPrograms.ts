@@ -182,6 +182,7 @@ consParams.webglProgramParameters = ([
     'rendererExtensionParallelShaderCompile',
     'customProgramCacheKey',
     'reverseDepthBuffer',
+    'decodeVideoTextureEmissive'
 ] as const).toObject()
 
 

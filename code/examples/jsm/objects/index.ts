@@ -1,5 +1,5 @@
 export * from './GroundedSkybox'
-export * from './Lensflare'
+export * from './LensflareMesh'
 export * from './MarchingCubes'
 export * from './Reflector'
 export * from './ReflectorForSSRPass'

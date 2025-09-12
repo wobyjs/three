@@ -46,9 +46,6 @@ const parametricGeometry = ([
 ] as const).distinct()
 consParams.parametricGeometry = parametricGeometry
 
-
-
-
 const _parametricGeometry = ([...objProps.bufferGeometry,
     /**
      * @default 'ParametricGeometry'
@@ -58,11 +55,11 @@ const _parametricGeometry = ([...objProps.bufferGeometry,
 ] as const).distinct()
 objProps.parametricGeometry = _parametricGeometry
 
-export type ParametricGeometryProps = BufferGeometryNode<ParametricGeometry, typeof ParametricGeometry, { func?: (u: number, v: number, target: Vector3) => void; slices?: number; stacks?: number; }>
+export type ParametricGeometryProps = BufferGeometryNode<ParametricGeometry, typeof ParametricGeometry, { func?: (u: number, v: number, target: Vector3) => void; slices?: number; stacks?: number }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        parametricGeometry: Partial<{ func?: (u: number, v: number, target: Vector3) => void; slices?: number; stacks?: number; }>
+        parametricGeometry: Partial<{ func?: (u: number, v: number, target: Vector3) => void; slices?: number; stacks?: number }>
     }
 }
 

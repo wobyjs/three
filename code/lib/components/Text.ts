@@ -30,7 +30,7 @@ export const Text = ({ material: mat, text, pathToFont, ...props }: textProps): 
         const g = new TextGeometry($$(text), {
             font: font(),
             size: 1,
-            height: 0.1,
+            depth: 0.1,
             curveSegments: 12,
             ...props
         })

@@ -67,5 +67,13 @@
         "node_modules",
         "src/demo",
         "./src/**/*",
+        "src/jsx-runtime.tsx",
+        "src/jsx-dev-runtime.tsx",
+        "examples",
+        "fonts",
+        "jsx-runtime",
+        "lib",
+        "models",
+        "src"
     ]
 }

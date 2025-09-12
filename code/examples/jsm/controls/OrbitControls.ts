@@ -290,12 +290,12 @@ const _orbitControls = ([
 ] as const).distinct()
 objProps.orbitControls = _orbitControls
 
-export type OrbitControlsProps = Node<OrbitControls, typeof OrbitControls, { camera: Camera; domElement: HTMLElement; }>
+export type OrbitControlsProps = Node<OrbitControls, typeof OrbitControls, { camera: Camera; domElement: E }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
         //@ts-ignore
-        orbitControls: Partial<{ camera: Camera; domElement: HTMLElement; }>
+        orbitControls: Partial<{ camera: Camera; domElement: E }>
     }
 }
 

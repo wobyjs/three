@@ -28,13 +28,13 @@ declare module 'woby' {
 declare module '../../../lib/3/consParams' {
     interface consParams {
         gui: WrapAsString<{
-            autoPlace?: boolean;
-            container?: HTMLElement;
-            width?: number;
-            title?: string;
-            injectStyles?: boolean;
-            touchStyles?: number;
-            parent?: GUI;
+            autoPlace?: boolean
+            container?: E
+            width?: number
+            title?: string
+            injectStyles?: boolean
+            touchStyles?: number
+            parent?: GUI
         }>
         booleanController: typeof booleanController
         colorController: typeof colorController
@@ -300,11 +300,11 @@ const _stringController = ([...objProps.controller,
 ] as const).distinct()
 objProps.stringController = _stringController
 
-export type GuiProps = Node<GUI, typeof GUI, { autoPlace?: boolean; container?: HTMLElement; width?: number; title?: string; injectStyles?: boolean; touchStyles?: number; parent?: GUI; }>
+export type GuiProps = Node<GUI, typeof GUI, { autoPlace?: boolean; container?: E; width?: number; title?: string; injectStyles?: boolean; touchStyles?: number; parent?: GUI }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        gui: { autoPlace?: boolean; container?: HTMLElement; width?: number; title?: string; injectStyles?: boolean; touchStyles?: number; parent?: GUI; }
+        gui: { autoPlace?: boolean; container?: E; width?: number; title?: string; injectStyles?: boolean; touchStyles?: number; parent?: GUI }
     }
 }
 

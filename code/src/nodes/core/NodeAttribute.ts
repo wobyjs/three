@@ -28,35 +28,14 @@ declare module 'woby' {
 declare module '../../../lib/3/consParams' {
     interface consParams {
         nodeAttribute: typeof nodeAttribute
-        node: typeof node
     }
 }
 
 declare module '../../../lib/3/objProps' {
     interface objProps {
         nodeAttribute: typeof _nodeAttribute
-        node: typeof _node
     }
 }
-
-
-
-const node = ([
-    'nodeType',
-] as const).distinct()
-consParams.node = node
-
-
-
-const _node = ([
-    'nodeType',
-    'updateType',
-    'updateBeforeType',
-    'uuid',
-    'version',
-] as const).distinct()
-objProps.node = _node
-
 
 
 const nodeAttribute = ([
@@ -74,11 +53,11 @@ const _nodeAttribute = ([
 ] as const).distinct()
 objProps.nodeAttribute = _nodeAttribute
 
-export type NodeAttributeProps = Node<NodeAttribute, typeof NodeAttribute, { name: string; type: string | null; node?: ENode | null; }>
+export type NodeAttributeProps = Node<NodeAttribute, typeof NodeAttribute, { name: string; type: string | null; node?: ENode | null }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        nodeAttribute: Partial<{ name: string; type: string | null; node?: ENode | null; }>
+        nodeAttribute: Partial<{ name: string; type: string | null; node?: ENode | null }>
     }
 }
 

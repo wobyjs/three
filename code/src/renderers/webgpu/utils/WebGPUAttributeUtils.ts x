@@ -1,0 +1,81 @@
+import { Node } from '../../../../three-types'
+// This is an internal class for the renderer.
+import WebGPUAttributeUtils from 'three/src/renderers/webgpu/utils/WebGLAttributeUtils.js'
+export * from 'three/src/renderers/webgpu//utilsWebGLAttributeUtils.js'
+import { Three } from '../../../../lib/3/three'
+import { consParams } from '../../../../lib/3/consParams'
+import { objProps } from '../../../../lib/3/objProps'
+import { defaults } from '../../../../lib/3/defaults'
+
+declare module '../../../../lib/3/three'
+{
+	interface Three {
+		WebGPUAttributeUtils: typeof WebGPUAttributeUtils
+	}
+}
+
+Three.WebGPUAttributeUtils = WebGPUAttributeUtils
+
+declare module 'woby' {
+	namespace JSX {
+		interface IntrinsicElements {
+			webGPUAttributeUtils: WebGPUAttributeUtilsProps,
+		}
+	}
+}
+
+declare module '../../../../lib/3/consParams' {
+	interface consParams {
+		webGPUAttributeUtils: typeof webGPUAttributeUtils
+	}
+}
+
+declare module '../../../../lib/3/objProps' {
+	interface objProps {
+		webGPUAttributeUtils: typeof _webGPUAttributeUtils
+	}
+}
+
+// ---[ Constructor Parameters ]---
+
+// The constructor takes a WebGPUBackend instance.
+const webGPUAttributeUtils = ([
+	'backend',
+] as const).distinct()
+consParams.webGPUAttributeUtils = webGPUAttributeUtils
+
+// ---[ Object Properties ]---
+
+// Lists the instance properties and methods.
+const _webGPUAttributeUtils = ([
+	'backend',
+	'createAttribute',
+	'updateAttribute',
+	'createShaderVertexBuffers',
+	'destroyAttribute',
+	'getArrayBufferAsync',
+	'_getVertexFormat',
+	'_isTypedArray',
+	'_getBufferAttribute',
+] as const).distinct()
+objProps.webGPUAttributeUtils = _webGPUAttributeUtils
+
+
+// ---[ Props & Defaults ]---
+
+// Defines the constructor arguments for component creation.
+type WebGPUAttributeUtilsArgs = {
+	backend: any // needs to be a WebGPUBackend but avoids a circular dependency.
+}
+
+// The final Props type for the JSX component.
+export type WebGPUAttributeUtilsProps = Node<WebGLAttributeUtils, typeof WebGLAttributeUtils, WebGLAttributeUtilsArgs>
+
+declare module '../../../../lib/3/defaults' {
+	interface defaults {
+		webGPUAttributeUtils: Partial<WebGPUAttributeUtilsArgs>
+	}
+}
+
+// The 'backend' argument is required, so the defaults object is empty.
+defaults.webGPUAttributeUtils = {}

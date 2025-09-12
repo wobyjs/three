@@ -69,11 +69,11 @@ const _flyControls = ([
 ] as const).distinct()
 objProps.flyControls = _flyControls
 
-export type FlyControlsProps = Node<FlyControls, typeof FlyControls, { object: Camera; domElement?: HTMLElement; }>
+export type FlyControlsProps = Node<FlyControls, typeof FlyControls, { object: Camera; domElement?: E }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        flyControls: Partial<{ object: Camera; domElement?: HTMLElement; }>
+        flyControls: Partial<{ object: Camera; domElement?: E }>
     }
 }
 

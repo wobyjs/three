@@ -96,7 +96,7 @@ const _css3dRenderer = ([...rendererEx,
 objProps.css3dRenderer = _css3dRenderer
 
 export type CSS3DRendererProps = Node<CSS3DRenderer, typeof CSS3DRenderer, CSS3DParameters & RendererEx>
-export type CSS3DObjectProps = Object3DNode<Html2Jsx<CSS3DObject>, typeof CSS3DObject, Html2Jsx<{ element: HTMLElement }>>
+export type CSS3DObjectProps = Object3DNode<Html2Jsx<CSS3DObject>, typeof CSS3DObject, Html2Jsx<{ element: E }>>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

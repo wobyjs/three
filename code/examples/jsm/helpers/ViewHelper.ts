@@ -53,11 +53,11 @@ const _viewHelper = ([...objProps.object3d,
 ] as const).distinct()
 objProps.viewHelper = _viewHelper
 
-export type ViewHelperProps = Node<ViewHelper, typeof ViewHelper, { camera: Camera; domElement: HTMLElement; }>
+export type ViewHelperProps = Node<ViewHelper, typeof ViewHelper, { camera: Camera; domElement: E }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        viewHelper: Partial<{ camera: Camera; domElement: HTMLElement; }>
+        viewHelper: Partial<{ camera: Camera; domElement: E }>
     }
 }
 

@@ -1,11 +1,11 @@
-# woby-three
+# @woby/three
 
-[woby-three](https://github.com/wongchichong/woby-three) is a powerful library for creating 3D graphics using [Three.js](https://threejs.org/) in [Woby](https://github.com/wongchichong/woby) applications. It aims to provide a seamless integration of Three.js with Woby, enabling declarative 3D scenes in a reactive and component-based architecture.
+[@woby/three](https://github.com/wobyjs/three) is a powerful library for creating 3D graphics using [Three.js](https://threejs.org/) in [Woby](https://github.com/wobyjs/woby) applications. It aims to provide a seamless integration of Three.js with Woby, enabling declarative 3D scenes in a reactive and component-based architecture.
 
 ## Features
 
 - **Declarative 3D:** Write declarative code to create and manage complex 3D scenes using Woby's reactive components.
-- **Efficient Rendering:** Leveraging Woby's reactive system, woby-three ensures efficient updates and re-renders only when necessary.
+- **Efficient Rendering:** Leveraging Woby's reactive system, @woby/three ensures efficient updates and re-renders only when necessary.
 - **Component-Based:** Use Woby's component system to create reusable 3D elements and manage state easily.
 - **Three.js Integration:** Access the full power of Three.js within your Woby application, with all the features and capabilities of the Three.js library.
 
@@ -13,13 +13,13 @@
 
 ### Installation
 
-Install `woby-three` and its peer dependencies:
+Install `@woby/three` and its peer dependencies:
 
 ```sh
-npm install woby-three three
+npm install @woby/three three
 ```
 
-## Basic Usage (Three.js vs woby-three)
+## Basic Usage (Three.js vs @woby/three)
 
 ```ts
 const box = new THREE.BoxGeometry( 1, 1, 1 )
@@ -45,7 +45,12 @@ const renderer = <webGLRenderer antialias setPixelRatio={[window.devicePixelRati
 
 
 ## Examples
-Explore the [woby-three-demo](https://github.com/wongchichong/woby-three-demo) repository for practical examples and [demos](https://woby-three-demo.web.app/) of what you can build with woby-three. These examples showcase various use cases, from basic scenes with basic interactive.
+Explore the [@woby/three-demo](https://github.com/wobyjs/three-demo) repository for practical examples and [demos](https://three-demo.web.app/) of what you can build with @woby/three. These examples showcase various use cases, from basic scenes with basic interactive.
+
+```tsx
+/** @jsxImportSource @woby/three */
+
+import { useFrame, MeshProps } from "@woby/three"
 
 
 ## Sample Code
@@ -56,7 +61,7 @@ React-three-fiber example ported
 /** @jsxImportSource woby-three */
 
 import { $, $$ } from "woby"
-import { useFrame, MeshProps } from "woby-three"
+import { useFrame, MeshProps } from '@woby/three"
 import { AmbientLight, Mesh, SpotLight, TextureLoader } from "three"
 
 const Box = (props: MeshProps) => {
@@ -105,10 +110,10 @@ export const Box3 = () => {
 Ported from threejs.org [Fat Lines](https://threejs.org/examples/?q=line#webgl_lines_fat)
 
 ``` ts
-/** @jsxImportSource woby-three */
+/** @jsxImportSource @woby/three */
 
 import * as three from 'three'
-import { Three, consParams, objProps, defaults, LineProps, useThree, useFrame, useRenderer, useCamera } from "woby-three"
+import { Three, consParams, objProps, defaults, LineProps, useThree, useFrame, useRenderer, useCamera } from '@woby/three"
 import { $, $$, useEffect, } from "woby"
 import * as GeometryUtils from 'three/examples/jsm/utils/GeometryUtils'
 import { Line2 } from 'three/examples/jsm/lines/Line2' //'three/addons/lines/Line2.js';

@@ -1,6 +1,9 @@
 {
-  "name": "woby-three",
+  "name": "@woby/three",
   "version": "0.2.6",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Woby Wrapper for ThreeJS",
   "//main": "./dist/index.cjs.js",
   "module": "./index.js",
@@ -15,12 +18,12 @@
     "./jsx-runtime": {
       "require": "./lib/jsx-runtime.js",
       "import": "./lib/jsx-runtime.js",
-      "types": "./lib/jsx/jsx-runtime.d.ts"
+      "types": "./lib/jsx-runtime.d.ts"
     },
     "./jsx-dev-runtime": {
-      "require": "./lib/jsx-runtime.js",
-      "import": "./lib/jsx-runtime.js",
-      "types": "./lib/jsx/runtime.d.ts"
+      "require": "./lib/jsx-dev-runtime.js",
+      "import": "./lib/jsx-dev-runtime.js",
+      "types": "./lib/jsx-dev-runtime.d.ts"
     },
     "./examples/fonts/*": "./examples/fonts/*",
     "./examples/jsm/*": "./examples/jsm/*",
@@ -37,11 +40,11 @@
     "npmjs": "pnpm publish",
     "release": "run-s -c git bump npmjs",
     "css:watch": "tailwindcss -i ./code/lib/input.css -o ./dist/output.css --watch",
-    "css": "tailwindcss -i ./code/lib/input.css -o ./dist/output.css",
+    "css11": "tailwindcss -i ./code/lib/input.css -o ./dist/output.css",
     "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
     "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose --watch",
     "watch": "run-p build:watch css:watch",
-    "build": "run-s clean:all css build:tsc css",
+    "build": "run-s clean:all build:tsc",
     "dev:only": "vite --config=vite.config.web.ts --force --mode dev --host",
     "dev": "run-p css:watch dev:only",
     "build:tsc": "tsc --build --force --declaration --declarationMap  --verbose",
@@ -72,14 +75,15 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.1",
     "autoprefixer": "^10.4.20",
-    "tailwindcss": "^3.4.17",
-    "vite": "^6.0.5",
-    "vite-plugin-dts": "^4.4.0"
+    "tailwindcss": "^4.0.17",
+    "@tailwindcss/vite": "^4.0.6",
+    "vite": "^6.1.0",
+    "vite-plugin-dts": "^4.5.0"
   },
   "peerDependencies": {
-    "@types/three": "^0.169.0",
-    "three": "^0.169.0",
-    "use-woby": "workspace:../use-woby",
+    "@types/three": "^0.173.0",
+    "three": "^0.173.0",
+    "@woby/use": "workspace:../use",
     "woby": "workspace:../woby"
   },
   "dependencies": {

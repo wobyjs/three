@@ -1,6 +1,7 @@
 import { Node } from '../../../three-types'
-import RangeNode, { RangeModeBound } from 'three/src/nodes/geometry/RangeNode.js'
-export { RangeNode }
+// @ts-ignore: THREE.js examples not included in type definitions
+import { RangeNode, RangeMode } from 'three/examples/jsm/nodes/math/RangeNode.js'
+export { RangeNode, RangeMode }
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
@@ -49,13 +50,12 @@ const _rangeNode = ([...objProps.node,
 ] as const).distinct()
 objProps.rangeNode = _rangeNode
 
-export type RangeNodeProps = Node<RangeNode, typeof RangeNode, { min: RangeModeBound; max: RangeModeBound; }>
+export type RangeNodeProps = Node<RangeNode, typeof RangeNode, { min: RangeMode; max: RangeMode }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        rangeNode: Partial<{ min: RangeModeBound; max: RangeModeBound; }>
+        rangeNode: Partial<{ min: RangeMode; max: RangeMode }>
     }
 }
 
 defaults.rangeNode = {}
-

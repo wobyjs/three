@@ -53,7 +53,7 @@ const _bufferNode = ([...objProps.uniformNode,
 ] as const).distinct()
 objProps.bufferNode = _bufferNode
 
-export type BufferNodeProps = Node<BufferNode, typeof BufferNode, { value: unknown; bufferType: string; bufferCount?: number; }>
+export type BufferNodeProps = Node<BufferNode<unknown>, typeof BufferNode, { value: unknown; bufferType: string; bufferCount?: number; }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

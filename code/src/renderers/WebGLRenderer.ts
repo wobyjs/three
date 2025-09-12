@@ -272,7 +272,7 @@ const _webglRenderer = ([...objProps.renderer,
     'extensions',
     /**
      * Color space used for output to HTMLCanvasElement. Supported values are
-     * {@link SRGBColorSpace} and {@link LinearSRGBColorSpace}.
+     * {@link SRGBColorSpace} and {@link SRGBColorSpace}.
      * @default THREE.SRGBColorSpace.
      */
     'outputColorSpace',
@@ -460,3 +460,4 @@ declare module '../../lib/3/defaults' {
 }
 
 defaults.webglRenderer = {}
+

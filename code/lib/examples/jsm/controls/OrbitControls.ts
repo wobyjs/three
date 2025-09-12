@@ -7,7 +7,7 @@ import '../../../../examples/jsm/controls/OrbitControls'
 
 
 export function OrbitControls({ camera, domElement, enableDamping, ...props }: OrbitControlsProps) {
-    useEffect(() => {
+    useEffect((stack) => {
         const ctx = useThree()
         $$(ctx.update)
 
@@ -23,7 +23,7 @@ export function OrbitControls({ camera, domElement, enableDamping, ...props }: O
 
         const cameraControls = new orbitControls($$(cams)[0], $$(dom))
 
-        fixReactiveProps('orbitControls', props, cameraControls as any)
+        fixReactiveProps('orbitControls', props, cameraControls as any, stack)
 
         cameraControls.enableDamping = $$(enableDamping)
 

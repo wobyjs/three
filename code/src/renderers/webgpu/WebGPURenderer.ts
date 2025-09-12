@@ -1,80 +1,83 @@
-import { Node, Observable, WrapAsString } from '../../../three-types'
-import WebGPURenderer, { WebGPURendererParameters } from 'three/src/renderers/webgpu/WebGPURenderer.js'
-export { WebGPURenderer }
+import { Node } from '../../../three-types'
+import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js'
+export * from 'three/src/renderers/webgpu/WebGPUBackend.js'
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
-import '../../../lib/three/extensions'
-import '../common/Renderer'
-import './WebGPUBackend'
-import { RendererEx } from '../RendererEx'
+import { WebGPUBackendProps } from './WebGPUBackend'
 
-declare module 'three/src/renderers/WebGLRenderer.js' {
-    interface WebGLRenderer {
-        animation: () => void,
-        pause: Observable<boolean>,
-    }
-}
+// We need to define the interface type here.
 
 declare module '../../../lib/3/three'
 {
     interface Three {
-        WebGPURenderer: typeof WebGPURenderer
+        WebGPUBackend: typeof WebGPUBackend
     }
 }
 
-Three.WebGPURenderer = WebGPURenderer
+Three.WebGPUBackend = WebGPUBackend
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
-            webGpuRenderer: WebGPURendererProps,
+            fallbackWebGPUBackend: WebGPUBackendProps,
         }
     }
 }
 
 declare module '../../../lib/3/consParams' {
     interface consParams {
-        webGpuRenderer: WrapAsString<WebGPURendererParameters>
-        webGpuRendererParameters: WrapAsString<WebGPURendererParameters>
+        fallbackWebGPUBackend: typeof fallbackWebGPUBackend
     }
 }
 
 declare module '../../../lib/3/objProps' {
     interface objProps {
-        webGpuRenderer: typeof _webGpuRenderer
-        webGpuRendererParameters: typeof _webGpuRendererParameters
+        fallbackWebGPUBackend: typeof _webGPUBackend
     }
 }
 
+// ---[ Constructor Parameters ]---
+
+const fallbackWebGPUBackend = (['parameters'] as const).distinct()
+consParams.fallbackWebGPUBackend = fallbackWebGPUBackend
+
+// ---[ Object Properties ]---
+
+const _webGPUBackend = ([
+    ...(objProps.backend || []), // Inherit properties from Backend
+    'isWebGPUBackend',
+    'coordinateSystem', // Getter
+    'getMaxAnisotropy',
+] as const).distinct()
+objProps.fallbackWebGPUBackend = _webGPUBackend
 
 
-consParams.webGpuRendererParameters = {
-    ...consParams.rendererParameters, ...consParams.webGpuBackendParameters,
-    ...(['forceWebGl',] as const).toObject()
+// ---[ Props & Defaults ]---
+
+// The props type will need to define the interface.
+type WebGPUBackendParameters = {
+    alpha?: boolean | undefined
+    requiredLimits?: Record<string, GPUSize64> | undefined
+    trackTimestamp?: boolean | undefined
+    device?: GPUDevice | undefined
+    powerPreference?: GPUPowerPreference | undefined
+    context?: GPUCanvasContext | undefined
+    outputType?: any //  Replace 'any' with appropriate type from constants.
 }
 
-consParams.webGpuRenderer = { ...consParams.webGpuRendererParameters }
+// The final Props type for the JSX component, including the backend parameters.
+type WebGPUBackendArgs = {
+    parameters?: WebGPUBackendParameters
+}
 
-
-
-const _webGpuRendererParameters = ([...objProps.rendererParameters, ...objProps.webGpuBackendParameters,
-    'forceWebGl',
-] as const).distinct()
-objProps.webGpuRendererParameters = _webGpuRendererParameters
-
-const _webGpuRenderer = ([...objProps.renderer,
-] as const).distinct()
-objProps.webGpuRenderer = _webGpuRenderer
-
-export type WebGPURendererProps = Node<WebGPURenderer, typeof WebGPURenderer, WebGPURendererParameters & RendererEx>
+// export type WebGPUBackendProps = Node<WebGPUBackend, typeof WebGPUBackend, WebGPUBackendArgs>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        webGpuRenderer: WebGPURendererParameters & RendererEx
+        fallbackWebGPUBackend: Partial<WebGPUBackendArgs>
     }
 }
 
-defaults.webGpuRenderer = {}
-
+defaults.fallbackWebGPUBackend = {}

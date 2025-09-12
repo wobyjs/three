@@ -87,7 +87,7 @@ export type CSS2DObjectProps = Object3DNode<CSS2DObject, typeof CSS2DObject, { /
 declare module '../../../lib/3/defaults' {
     interface defaults {
         css2dRenderer: CSS2DParameters & RendererEx
-        css2dObject: { element?: FunctionMaybe<HTMLElement | JSX.Child> }
+        css2dObject: { element?: FunctionMaybe<E | JSX.Child> }
     }
 }
 

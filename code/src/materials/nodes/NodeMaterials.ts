@@ -1,0 +1,21 @@
+// @TODO: We can simplify "export { default as SomeNode, other, exports } from '...'" to just "export * from '...'" if we will use only named exports
+
+export * from './manager/NodeMaterialObserver.js'
+
+export * from './NodeMaterial.js'
+export * from './LineBasicNodeMaterial.js'
+export * from './LineDashedNodeMaterial.js'
+export * from './Line2NodeMaterial.js'
+export * from './MeshNormalNodeMaterial.js'
+export * from './MeshBasicNodeMaterial.js'
+export * from './MeshLambertNodeMaterial.js'
+export * from './MeshPhongNodeMaterial.js'
+export * from './MeshStandardNodeMaterial.js'
+export * from './MeshPhysicalNodeMaterial.js'
+export * from './MeshSSSNodeMaterial.js'
+export * from './MeshToonNodeMaterial.js'
+export * from './MeshMatcapNodeMaterial.js'
+export * from './PointsNodeMaterial.js'
+export * from './SpriteNodeMaterial.js'
+export * from './ShadowNodeMaterial.js'
+export * from './VolumeNodeMaterial.js'

@@ -1,6 +1,6 @@
 import { MaterialNode } from './MaterialNode'
 import { ShaderMaterial, ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
-export { ShaderMaterial } from 'three/src/materials/ShaderMaterial.js'
+export { ShaderMaterial, ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'

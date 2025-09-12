@@ -23,7 +23,7 @@ type MethodKeysWithParams<T> = {
     T[K] extends (arg: any, ...args: any[]) => any
     ? K
     : never
-}[keyof T];
+}[keyof T]
 
 
 type PropertyKeys<T> = {
@@ -36,7 +36,7 @@ type FunctionToProperty<T> = {
     K extends `on${string}` // Exclude keys that start with "on"
     ? T[K]
     :
-    T[K] extends (...args: infer P) => any ? FunctionMaybe<P | P[]> : never;
+    T[K] extends (...args: infer P) => any ? FunctionMaybe<P | P[]> : never
 }
 
 type AddProperties<T> = {
@@ -52,7 +52,7 @@ type AddProperties<T> = {
 // type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & Functionant<C> & E
 export type Html2Jsx<T> = T extends object
     ? {
-        [K in keyof T]: T[K] extends HTMLElement
+        [K in keyof T]: T[K] extends E
         ? JSX.Child | T[K]
         : T[K]
     }
@@ -61,7 +61,7 @@ export type Html2Jsx<T> = T extends object
 type Setter<T, C> = FunctionToProperty<T> & AddProperties<T> & Functionant<C>
 
 export type WrapAsString<T> = {
-    [K in keyof T]: K;
+    [K in keyof T]: K
 }
 
 // export type AttachFnType = (parent: Instance, self: Instance) => () => void
@@ -189,7 +189,7 @@ export interface NodeProps<T, P> {
 
 // export type UnobservantMaybe<T> = Unobservant<T> | T
 
-type Func<T = unknown> = () => T;
+type Func<T = unknown> = () => T
 /** Make every properties FunctionMayBe */
 export type Functionant<T> = T extends object
     ? { [K in keyof T]:
@@ -206,8 +206,8 @@ export type Functionant<T> = T extends object
 export type ChangeType<T> = {
     [K in keyof T]: T[K] extends THREE.Color | undefined
     ? THREE.ColorRepresentation
-    : T[K] extends HTMLElement
-    ? HTMLElement | JSX.Child
+    : T[K] extends E
+    ? E | JSX.Child
     : T[K]
 }
 // export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>

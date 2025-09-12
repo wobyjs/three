@@ -339,7 +339,7 @@ const _texture = ([
      * The {@link Textures | {@link Texture} constants} page for details of other color spaces.
      * @remarks
      * Textures containing color data should be annotated with {@link SRGBColorSpace THREE.SRGBColorSpace} or
-     * {@link LinearSRGBColorSpace THREE.LinearSRGBColorSpace}.
+     * {@link SRGBColorSpace THREE.SRGBColorSpace}.
      * @see {@link https://threejs.org/docs/index.html#api/en/constants/Textures | Texture Constants}
      * @see {@link THREE.TextureDataType}
      * @defaultValue {@link THREE.NoColorSpace}

@@ -1,7 +1,7 @@
 // / <reference path="../jsx" />
-/** @jsxImportSource ../jsx */
+/** @jsxImportSource @woby/three */
 
-import { $$, $, type JSX, isObservable, } from "woby"
+import { $$, $, type JSX, isObservable, callStack, } from "woby"
 import { setNestedValue, } from "../three/fixReactiveProps"
 
 import { ThreeContext } from "../hooks/useThree"
@@ -85,7 +85,7 @@ export const Canvas3D = (props: HTMLAttributes<HTMLDivElement>) => {
 
     Object.keys(remainingProps).forEach((k) => {
         if (k.includes("-"))
-            setNestedValue(r, k, remainingProps[k])
+            setNestedValue(r, k, remainingProps[k], callStack('Canvas3D'))
     })
 
     const ctx = { frames: [], scenes: [], cameras: [], renderers: [], update: $(0) }

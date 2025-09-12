@@ -1,0 +1,122 @@
+import { Node } from '../../../../three-types'
+// This is an internal class for the renderer.
+import WebGPUPipelineUtils from 'three/src/renderers/webgpu/utils/WebGLPipelineUtils.js'
+export * from 'three/src/renderers/webgpu/utils/WebGLPipelineUtils.js'
+import { Three } from '../../../../lib/3/three'
+import { consParams } from '../../../../lib/3/consParams'
+import { objProps } from '../../../../lib/3/objProps'
+import { defaults } from '../../../../lib/3/defaults'
+
+declare module '../../../../lib/3/three'
+{
+	interface Three {
+		WebGPUPipelineUtils: typeof WebGPUPipelineUtils
+	}
+}
+
+Three.WebGPUPipelineUtils = WebGPUPipelineUtils
+
+declare module 'woby' {
+	namespace JSX {
+		interface IntrinsicElements {
+			webGPUPipelineUtils: WebGPUPipelineUtilsProps,
+		}
+	}
+}
+
+declare module '../../../../lib/3/consParams' {
+	interface consParams {
+		webGPUPipelineUtils: typeof webGPUPipelineUtils
+	}
+}
+
+declare module '../../../../lib/3/objProps' {
+	interface objProps {
+		webGPUPipelineUtils: typeof _webGPUPipelineUtils
+	}
+}
+
+// ---[ Constructor Parameters ]---
+
+// The constructor takes a WebGPUBackend instance.
+const webGPUPipelineUtils = ([
+	'backend',
+] as const).distinct()
+consParams.webGPUPipelineUtils = webGPUPipelineUtils
+
+// ---[ Object Properties ]---
+
+// Lists the instance properties and methods.
+const _webGPUPipelineUtils = ([
+	'backend',
+	'createRenderPipeline',
+	'createBundleEncoder',
+	'createComputePipeline',
+	'_getBlending',
+	'_getBlendFactor',
+	'_getBlendOperation',
+	'_getPrimitiveState',
+	'_getColorWriteMask',
+	'_getDepthCompare',
+	'getVertexFormat',
+	'getInternalFormat',
+	'getGLTextureType',
+	'setTextureParameters',
+	'createDefaultTexture',
+	'createTexture',
+	'updateTexture',
+	'generateMipmaps',
+	'destroyTexture',
+	'copyTextureToBuffer',
+	'copyTextureToTexture',
+	'copyFramebufferToTexture',
+	'createAttribute',
+	'destroyAttribute',
+	'getArrayBufferAsync',
+	'hasFeature',
+	'getMaxAnisotropy',
+	'getDrawingBufferSize',
+	'setScissorTest',
+	'getClearColor',
+	'setClearColor',
+	'getClearAlpha',
+	'setClearAlpha',
+	'getClearDepth',
+	'setClearDepth',
+	'getClearStencil',
+	'setClearStencil',
+	'setStencilTest',
+	'setStencilMask',
+	'setStencilFunc',
+	'setStencilOp',
+	'setMaterial',
+	'setPolygonOffset',
+	'useProgram',
+	'bindFramebuffer',
+	'drawBuffers',
+	'activeTexture',
+	'bindTexture',
+	'bindBufferBase',
+	'unbindTexture',
+] as const).distinct()
+objProps.webGPUPipelineUtils = _webGPUPipelineUtils
+
+
+// ---[ Props & Defaults ]---
+
+// Defines the constructor arguments.
+type WebGPUPipelineUtilsArgs = {
+	backend: any // Needs to be WebGLBackend but avoids a circular dependency.
+}
+
+// The final Props type for the JSX component.
+export type WebGPUPipelineUtilsProps = Node<WebGPUPipelineUtils, typeof WebGPUPipelineUtils, WebGPUPipelineUtilsArgs>
+
+declare module '../../../../lib/3/defaults' {
+	interface defaults {
+		webGPUPipelineUtils: Partial<WebGPUPipelineUtilsArgs>
+	}
+}
+
+// The 'backend' argument is required, so the defaults object is empty.
+defaults.webGPUPipelineUtils = {}

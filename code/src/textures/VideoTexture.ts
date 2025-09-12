@@ -164,11 +164,11 @@ const _videoTexture = ([...objProps.texture,
 ] as const).distinct()
 objProps.videoTexture = _videoTexture
 
-export type VideoTextureProps = Node<VideoTexture, typeof VideoTexture, { video: HTMLVideoElement; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; }>
+export type VideoTextureProps = Node<VideoTexture, typeof VideoTexture, { video: HTMLVideoElement; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        videoTexture: Partial<{ video: HTMLVideoElement; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number; }>
+        videoTexture: Partial<{ video: HTMLVideoElement; mapping?: Mapping; wrapS?: Wrapping; wrapT?: Wrapping; magFilter?: MagnificationTextureFilter; minFilter?: MinificationTextureFilter; format?: PixelFormat; type?: TextureDataType; anisotropy?: number }>
     }
 }
 

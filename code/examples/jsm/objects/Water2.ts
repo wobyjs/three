@@ -84,11 +84,11 @@ const _water2Options = ([
 ] as const).distinct()
 objProps.water2Options = _water2Options
 
-export type Water2Props = Node<Water2, typeof Water2, { geometry: BufferGeometry; options: WaterOptions; }>
+export type Water2Props = Node<Water2, typeof Water2, { geometry: BufferGeometry; options: WaterOptions }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        water2: Partial<{ geometry: BufferGeometry; options: WaterOptions; }>
+        water2: Partial<{ geometry: BufferGeometry; options: WaterOptions }>
     }
 }
 

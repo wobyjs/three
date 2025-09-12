@@ -41,19 +41,22 @@ declare module '../../../lib/3/objProps' {
 }
 
 
+// export interface BackendParameters {
+//     canvas?: HTMLCanvasElement | undefined
+// }
 
 consParams.webglBackendParameters = {
-    ...consParams.backendParameters,
-    ...(['trackTimestamp',
+    // ...consParams.backendParameters,
+    ...(['canvas', 'trackTimestamp',
     ] as const).toObject()
 }
 
 
-consParams.webglBackend = { ...consParams.backendParameters }
+consParams.webglBackend = { ...consParams.webglBackendParameters }
 
 
 
-const _webglBackendParameters = ([...objProps.backendParameters,
+const _webglBackendParameters = ([ //...objProps.backendParameters,
     'trackTimestamp',
 ] as const).distinct()
 objProps.webglBackendParameters = _webglBackendParameters

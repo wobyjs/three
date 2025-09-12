@@ -1,5 +1,5 @@
 /* IMPORT */
-import { $, $$, untrack, useEffect, useMemo, createElement as ce, type JSX, } from "woby"
+import { $, $$, untrack, useEffect, useMemo, createElement as ce, type JSX, callStack, } from "woby"
 import { isFunction, isPromiseR, toUpper, awaitAll, woby3Child, isObservableR, isNullR, isFunctionR } from "../utils"
 import { Three } from "../3/three"
 import { extractProps2constructor, resolveConstructorDefaults } from "./extractProps2constructor"
@@ -179,6 +179,7 @@ const html = {
 }
 export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof consParams & keyof objProps & keyof defaults), P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]>, args?: [] | {} }>
     (component: K, props: P, key?: string) => {
+    const stack = callStack('createElement')
     if ((component as any).name === 'Fragment')
         return woby3Child(() => props.children)
     else if (isFunction(component)) // && !(isFunctionReactive(component) && useScene() && !hasSymbol(component, IN_CONTEXT)))
@@ -205,7 +206,7 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
 
                 // const rcp = $$$$(cp)
                 // if (checkNull && isNullR(rcp)) return undefined
-                r(getInstance(component, props, rcp))
+                r(getInstance(component, props, rcp, stack))
                 // return getContextualInstance(component, props, cp)
             })
             return r
@@ -227,7 +228,7 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
                     //   await awaitAll(props, objProps[component as string])
 
                     extractProps2constructor(component, props as any)
-                    r(getInstance(component as any, props, rcp))
+                    r(getInstance(component as any, props, rcp, stack))
                 })()
 
                 return r
@@ -242,7 +243,7 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
                 // console.log(component, props, cp)
                 // useThree()
                 resolveConstructorDefaults<K, P>(component, cp)
-                return untrack(getInstance(component, props, cp))
+                return untrack(getInstance(component, props, cp, stack))
             })
         }
     }

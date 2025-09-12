@@ -1,0 +1,71 @@
+import { Node } from '../../../three-types'
+import { LDrawConditionalLineMaterial } from 'three/src/materials/nodes/LDrawConditionalLineNodeMaterial.js'
+export * from 'three/src/materials/nodes/LDrawConditionalLineMaterial.js'
+import { Three } from '../../../lib/3/three'
+import { consParams } from '../../../lib/3/consParams'
+import { objProps } from '../../../lib/3/objProps'
+import { defaults } from '../../../lib/3/defaults'
+
+declare module '../../../lib/3/three'
+{
+    interface Three {
+        LDrawConditionalLineMaterial: typeof LDrawConditionalLineMaterial
+    }
+}
+
+Three.LDrawConditionalLineMaterial = LDrawConditionalLineMaterial
+
+declare module 'woby' {
+    namespace JSX {
+        interface IntrinsicElements {
+            lDrawConditionalLineMaterial: LDrawConditionalLineMaterialProps,
+        }
+    }
+}
+
+declare module '../../../lib/3/consParams' {
+    interface consParams {
+        lDrawConditionalLineMaterial: typeof lDrawConditionalLineMaterial
+    }
+}
+
+declare module '../../../lib/3/objProps' {
+    interface objProps {
+        lDrawConditionalLineMaterial: typeof _lDrawConditionalLineMaterial
+    }
+}
+
+// ---[ Constructor Parameters ]---
+
+const lDrawConditionalLineMaterial = ([
+    'parameters',
+] as const).distinct()
+consParams.lDrawConditionalLineMaterial = lDrawConditionalLineMaterial
+
+// ---[ Object Properties ]---
+
+const _lDrawConditionalLineMaterial = ([
+    ...(objProps.nodeMaterial || []),
+    'isLDrawConditionalLineMaterial',
+] as const).distinct()
+objProps.lDrawConditionalLineMaterial = _lDrawConditionalLineMaterial
+
+
+// ---[ Props & Defaults ]---
+
+type LDrawConditionalLineMaterialParameters = {
+    parameters?: any
+} & { [key: string]: any }
+
+
+type LDrawConditionalLineMaterialArgs = LDrawConditionalLineMaterialParameters
+
+export type LDrawConditionalLineMaterialProps = Node<LDrawConditionalLineMaterial, typeof LDrawConditionalLineMaterial, LDrawConditionalLineMaterialArgs>
+
+declare module '../../../lib/3/defaults' {
+    interface defaults {
+        lDrawConditionalLineMaterial: Partial<LDrawConditionalLineMaterialArgs>
+    }
+}
+
+defaults.lDrawConditionalLineMaterial = {}
