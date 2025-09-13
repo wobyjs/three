@@ -91,6 +91,8 @@ export const Canvas3D = (props: HTMLAttributes<HTMLDivElement>) => {
     const ctx = { frames: [], scenes: [], cameras: [], renderers: [], update: $(0) }
     const rr = ThreeContext.Provider({ value: ctx, children })
 
+    //ignore when build, because *.d.ts deleted & rebuild
+    // @ts-ignore
     return <div {...remainingProps}>{rr}</div>
 }
 

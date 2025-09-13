@@ -134,11 +134,11 @@ const _arcballControls = ([..._arcballControlsEventMap,
 ] as const).distinct()
 objProps.arcballControls = _arcballControls
 
-export type ArcballControlsProps = Node<ArcballControls, typeof ArcballControls, { camera: Camera; domElement: E; scene?: Scene | null }>
+export type ArcballControlsProps = Node<ArcballControls, typeof ArcballControls, { camera: Camera; domElement: HTMLElement; scene?: Scene | null }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        arcballControls: Partial<{ camera: Camera; domElement: E; scene?: Scene | null }>
+        arcballControls: Partial<{ camera: Camera; domElement: HTMLElement; scene?: Scene | null }>
     }
 }
 

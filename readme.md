@@ -58,7 +58,7 @@ import { useFrame, MeshProps } from "@woby/three"
 React-three-fiber example ported
 
 ```ts
-/** @jsxImportSource woby-three */
+/** @jsxImportSource @woby/three */
 
 import { $, $$ } from "woby"
 import { useFrame, MeshProps } from '@woby/three"
@@ -351,7 +351,7 @@ export const FatLines = () => {
 
 
 ## Documentation
-For detailed documentation, please refer to the woby-three GitHub repository.
+For detailed documentation, please refer to the @woby/three GitHub repository.
 
 
 ## Support This Project

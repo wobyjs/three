@@ -49,11 +49,11 @@ const _htmlMesh = ([...objProps.mesh,
 ] as const).distinct()
 objProps.htmlMesh = _htmlMesh
 
-export type HTMLMeshProps = Node<HTMLMesh, typeof HTMLMesh, { dom: E }>
+export type HTMLMeshProps = Node<HTMLMesh, typeof HTMLMesh, { dom: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        hTMLMesh: Partial<{ dom: E }>
+        hTMLMesh: Partial<{ dom: HTMLElement }>
     }
 }
 

@@ -166,11 +166,11 @@ const _transformControlsPlane = ([...objProps.mesh,
 ] as const).distinct()
 objProps.transformControlsPlane = _transformControlsPlane
 
-export type TransformControlsProps = Node<TransformControls, typeof TransformControls, { object: Camera; domElement: E }>
+export type TransformControlsProps = Node<TransformControls, typeof TransformControls, { object: Camera; domElement: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        transformControls: Partial<{ object: Camera; domElement: E }>
+        transformControls: Partial<{ object: Camera; domElement: HTMLElement }>
     }
 }
 

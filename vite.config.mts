@@ -8,7 +8,7 @@ const config = defineConfig({
         minify: false,
         lib: {
             entry: ['./code/lib/index.tsx', './code/lib/jsx/runtime.tsx'],
-            name: 'woby-three',
+            name: '@woby/three',
             formats: ['es'],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },

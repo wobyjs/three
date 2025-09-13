@@ -88,11 +88,11 @@ const _trackballControls = ([
 ] as const).distinct()
 objProps.trackballControls = _trackballControls
 
-export type TrackballControlsProps = Node<TrackballControls, typeof TrackballControls, { object: Camera; domElement: E }> & Pick<EventHandlers<TrackballControls>, 'onFrame'>
+export type TrackballControlsProps = Node<TrackballControls, typeof TrackballControls, { object: Camera; domElement: HTMLElement }> & Pick<EventHandlers<TrackballControls>, 'onFrame'>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        trackballControls: Partial<{ object: Camera; domElement: E }>
+        trackballControls: Partial<{ object: Camera; domElement: HTMLElement }>
     }
 }
 

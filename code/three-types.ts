@@ -52,7 +52,7 @@ type AddProperties<T> = {
 // type Setter<T, C, E extends EventHandlers = EventHandlers> = FunctionToProperty<Omit<T, keyof E>> & AddProperties<T> & Functionant<C> & E
 export type Html2Jsx<T> = T extends object
     ? {
-        [K in keyof T]: T[K] extends E
+        [K in keyof T]: T[K] extends HTMLElement
         ? JSX.Child | T[K]
         : T[K]
     }
@@ -206,8 +206,8 @@ export type Functionant<T> = T extends object
 export type ChangeType<T> = {
     [K in keyof T]: T[K] extends THREE.Color | undefined
     ? THREE.ColorRepresentation
-    : T[K] extends E
-    ? E | JSX.Child
+    : T[K] extends HTMLElement
+    ? HTMLElement | JSX.Child
     : T[K]
 }
 // export type Node<T, P, C> = Partial<Functionant<Setter<ExtendedColors<Overwrite<T, NodeProps<T, P>>>, C>>>

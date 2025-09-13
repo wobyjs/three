@@ -80,11 +80,11 @@ const _mapControls = ([...objProps.orbitControls,
 ] as const).distinct()
 objProps.mapControls = _mapControls
 
-export type MapControlsProps = Node<MapControls, typeof MapControls, { object: Camera; domElement?: E }>
+export type MapControlsProps = Node<MapControls, typeof MapControls, { object: Camera; domElement?: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        mapControls: Partial<{ object: Camera; domElement?: E }>
+        mapControls: Partial<{ object: Camera; domElement?: HTMLElement }>
     }
 }
 

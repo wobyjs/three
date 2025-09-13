@@ -58,11 +58,11 @@ const _pointerLockControls = ([
 objProps.pointerLockControls = _pointerLockControls
 
 
-export type PointerLockControlsProps = Node<PointerLockControls, typeof PointerLockControls, { object: Camera; domElement: E }>
+export type PointerLockControlsProps = Node<PointerLockControls, typeof PointerLockControls, { object: Camera; domElement: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        pointerLockControls: Partial<{ object: Camera; domElement: E }>
+        pointerLockControls: Partial<{ object: Camera; domElement: HTMLElement }>
     }
 }
 

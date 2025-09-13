@@ -290,7 +290,7 @@ const _orbitControls = ([
 ] as const).distinct()
 objProps.orbitControls = _orbitControls
 
-export type OrbitControlsProps = Node<OrbitControls, typeof OrbitControls, { camera: Camera; domElement: E }>
+export type OrbitControlsProps = Node<OrbitControls, typeof OrbitControls, { camera: Camera; domElement: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

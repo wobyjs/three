@@ -55,11 +55,15 @@
     "clean:dist": "if exist dist (rd dist /s /q)",
     "clean:examples": "if exist examples (rd examples /s /q)",
     "clean:jsx": "if exist jsx-runtime (rd jsx-runtime /s /q)",
+    "clean:jsx:dev": "if exist jsx-dev-runtime (rd jsx-dev-runtime /s /q)",
     "clean:lib": "if exist lib (rd lib /s /q)",
     "clean:src": "if exist src (rd src /s /q)",
     "clean:3ts": "if exist 3.* (del 3.*)",
     "clean:3dts": "if exist 3.*.* (del 3.*.*)",
-    "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:lib clean:src clean:3ts clean:3dts"
+    "clean:dts": "if exist *.d.ts* (del *.d.ts*)",
+    "clean:js": "if exist *.js (del *.js)",
+    "comment": "do enable clean:3ts,clean:js, have to compile 2 times, ignore can't delete errors",
+    "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:jsx:dev clean:lib clean:src clean:3ts clean:3dts clean:dts clean:js"
   },
   "repository": {
     "type": "git",

@@ -157,11 +157,11 @@ const _dragControls = ([
 ] as const).distinct()
 objProps.dragControls = _dragControls
 
-export type DragControlsProps = Node<DragControls, typeof DragControls, { objects: Object3D[]; camera: Camera; domElement?: E }>
+export type DragControlsProps = Node<DragControls, typeof DragControls, { objects: Object3D[]; camera: Camera; domElement?: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        dragControls: Partial<{ objects: Object3D[]; camera: Camera; domElement?: E }>
+        dragControls: Partial<{ objects: Object3D[]; camera: Camera; domElement?: HTMLElement }>
     }
 }
 

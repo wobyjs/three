@@ -71,7 +71,7 @@ objProps.controls = _controls
 // Define the constructor arguments as a separate type.
 type ControlsArgs = {
 	object: Camera // The controlled object is typically a Camera.
-	domElement?: E | null
+	domElement?: HTMLElement | null
 }
 
 // The final Props type for the JSX component. Since this is an abstract class,

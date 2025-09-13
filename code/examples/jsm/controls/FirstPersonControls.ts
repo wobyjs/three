@@ -66,11 +66,11 @@ const _firstPersonControls = ([
 ] as const).distinct()
 objProps.firstPersonControls = _firstPersonControls
 
-export type FirstPersonControlsProps = Node<FirstPersonControls, typeof FirstPersonControls, { object: Camera; domElement?: E }>
+export type FirstPersonControlsProps = Node<FirstPersonControls, typeof FirstPersonControls, { object: Camera; domElement?: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        firstPersonControls: Partial<{ object: Camera; domElement?: E }>
+        firstPersonControls: Partial<{ object: Camera; domElement?: HTMLElement }>
     }
 }
 

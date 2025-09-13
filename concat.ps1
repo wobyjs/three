@@ -1,5 +1,5 @@
-$outputFile = "D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src.txt"
-$rootFolder = "D:\Developments\FengShui\meta-suyen\packages\woby-three\node_modules\@types\three\src"
+$outputFile = "D:\Developments\FengShui\meta-suyen\packages\@woby/three\node_modules\@types\three\src.txt"
+$rootFolder = "D:\Developments\FengShui\meta-suyen\packages\@woby/three\node_modules\@types\three\src"
 
 # Clear the output file if it exists
 Clear-Content -Path $outputFile
