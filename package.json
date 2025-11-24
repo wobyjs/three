@@ -63,7 +63,11 @@
     "clean:dts": "if exist *.d.ts* (del *.d.ts*)",
     "clean:js": "if exist *.js (del *.js)",
     "comment": "do enable clean:3ts,clean:js, have to compile 2 times, ignore can't delete errors",
-    "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:jsx:dev clean:lib clean:src clean:3ts clean:3dts clean:dts clean:js"
+    "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:jsx:dev clean:lib clean:src clean:3ts clean:3dts clean:dts clean:js",
+    "commit": "cz",
+    "changelog": "git-cliff -o CHANGELOG.md",
+    "release:automatic": "semantic-release --extends ../semantic-release.config.js",
+    "commit:help": "echo 'Usage: pnpm run commit' && echo 'This will start the commitizen wizard to create a conventional commit.' && echo 'Follow the prompts to enter commit type, scope, and message.'"
   },
   "repository": {
     "type": "git",
@@ -92,5 +96,12 @@
   },
   "dependencies": {
     "madge": "^8.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "woby": "workspace:../woby",
+      "@woby/styled": "workspace:../styled",
+      "@woby/use": "workspace:../use"
+    }
   }
 }

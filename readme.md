@@ -50,7 +50,7 @@ Explore the [@woby/three-demo](https://github.com/wobyjs/three-demo) repository 
 ```tsx
 /** @jsxImportSource @woby/three */
 
-import { useFrame, MeshProps } from "@woby/three"
+import { useFrame, MeshProps } from '@woby/three'
 
 
 ## Sample Code
@@ -61,7 +61,7 @@ React-three-fiber example ported
 /** @jsxImportSource @woby/three */
 
 import { $, $$ } from "woby"
-import { useFrame, MeshProps } from '@woby/three"
+import { useFrame, MeshProps } from '@woby/three'
 import { AmbientLight, Mesh, SpotLight, TextureLoader } from "three"
 
 const Box = (props: MeshProps) => {
@@ -113,7 +113,7 @@ Ported from threejs.org [Fat Lines](https://threejs.org/examples/?q=line#webgl_l
 /** @jsxImportSource @woby/three */
 
 import * as three from 'three'
-import { Three, consParams, objProps, defaults, LineProps, useThree, useFrame, useRenderer, useCamera } from '@woby/three"
+import { Three, consParams, objProps, defaults, LineProps, useThree, useFrame, useRenderer, useCamera } from '@woby/three'
 import { $, $$, useEffect, } from "woby"
 import * as GeometryUtils from 'three/examples/jsm/utils/GeometryUtils'
 import { Line2 } from 'three/examples/jsm/lines/Line2' //'three/addons/lines/Line2.js';
