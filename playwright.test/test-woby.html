@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Woby Test</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "woby": "https://cdn.jsdelivr.net/npm/woby@latest/dist/index.es.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module">
+        import { $, $$, render, createElement } from 'woby'
+        
+        // Test basic woby functionality
+        // Create an observable
+        const testObservable = $('test value')
+        
+        // Access the observable value
+        const testValue = $$(testObservable)
+        
+        // Test the scene ref pattern
+        const scene = $()
+        
+        // Render a simple component to test render function
+        const root = document.getElementById('root')
+        // Using createElement instead of JSX since we're in browser context
+        render(() => createElement('div', null, 'Hello Woby'), root)
+        
+        // Log results
+        console.log('woby imported successfully')
+        console.log('observable created:', !!testObservable)
+        console.log('observable value:', testValue)
+        console.log('scene ref exists:', !!scene)
+        console.log('rendered content:', root?.innerHTML)
+    </script>
+</body>
+</html>

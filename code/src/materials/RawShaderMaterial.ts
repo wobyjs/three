@@ -1,5 +1,5 @@
 import { MaterialNode } from './MaterialNode'
-import { ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
+import { type ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
 import { RawShaderMaterial } from 'three/src/materials/RawShaderMaterial.js'
 export { RawShaderMaterial } from 'three/src/materials/RawShaderMaterial.js'
 import { Three } from '../../lib/3/three'

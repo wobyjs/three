@@ -1,12 +1,11 @@
 import { Node, WrapAsString } from '../../three-types'
-import { WebGLRenderer, WebGLRendererParameters } from 'three/src/renderers/WebGLRenderer.js'
-export * from 'three/src/renderers/WebGLRenderer.js'
+import { WebGLRenderer, type WebGLRendererParameters } from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
 import { Observable } from 'woby'
-
+export { WebGLRenderer, WebGLRendererParameters }
 import './common/Renderer'
 import { RendererEx, rendererEx } from './RendererEx'
 
@@ -18,13 +17,6 @@ declare module '../../lib/3/three'
 }
 
 Three.WebGLRenderer = WebGLRenderer
-
-declare module 'three/src/renderers/WebGLRenderer.js' {
-    interface WebGLRenderer {
-        animation: () => void,
-        pause: Observable<boolean>,
-    }
-}
 
 declare module 'woby' {
     namespace JSX {

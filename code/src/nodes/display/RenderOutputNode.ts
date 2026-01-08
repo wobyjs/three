@@ -7,7 +7,7 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import '../core/TempNode'
-import { ColorSpace, ToneMapping } from '../../constants'
+import { ToneMapping, type ColorSpace } from 'three/src/constants.js'
 import '../core/TempNode'
 
 declare module '../../../lib/3/three'

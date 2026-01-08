@@ -1,6 +1,6 @@
 import {
     LightProbe,
-} from 'three'
+} from 'three/src/lights/LightProbe.js'
 import { LightProbeHelper } from 'three/examples/jsm/helpers/LightProbeHelper.js'
 
 import { Three } from '../../../lib/3/three'

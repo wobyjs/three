@@ -81,3 +81,10 @@ declare module '../../../lib/3/defaults' {
 }
 
 defaults.fallbackWebGPUBackend = {}
+
+// Add WebGPU type definitions
+type GPUSize64 = number
+type GPUDevice = any
+type GPUPowerPreference = 'low-power' | 'high-performance'
+type GPUCanvasContext = any;
+

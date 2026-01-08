@@ -1,4 +1,5 @@
 import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import { Font as TFont, FontLoader as TFontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { Node, PromiseMaybe } from '../../../three-types'
 import { ObservableMaybe } from 'woby'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
@@ -7,16 +8,17 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 export * from 'three/examples/jsm/loaders/FontLoader.js'
+export { TFontLoader as FontLoader, TFont as Font }
 import '../../../src/loaders/Loader'
 
 declare module '../../../lib/3/three'
 {
     interface Three {
-        FontLoader: typeof FontLoader
+        FontLoader: typeof TFontLoader
     }
 }
 
-Three.FontLoader = FontLoader
+Three.FontLoader = TFontLoader
 
 declare module 'woby' {
     namespace JSX {
@@ -95,11 +97,11 @@ const _font = ([
 ] as const).distinct()
 objProps.font = _font
 
-export type FontLoaderProps = Node<FontLoader, typeof FontLoader, { manager?: LoadingManager; }>
+export type FontLoaderProps = Node<TFontLoader, typeof TFontLoader, { manager?: LoadingManager }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        fontLoader: { manager?: LoadingManager; }
+        fontLoader: { manager?: LoadingManager }
     }
 }
 

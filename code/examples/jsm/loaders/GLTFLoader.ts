@@ -1,7 +1,16 @@
 import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { GLTFLoader as TGLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 export * from 'three/examples/jsm/loaders/GLTFLoader.js'
+export { TGLTFLoader as GLTFLoader }
+
+// Add the missing methods to the type definitions
+declare module 'three/examples/jsm/loaders/GLTFLoader.js' {
+    interface GLTFLoader {
+        setPath(path: string): this
+        load(url: string, onLoad: (gltf: import('three/examples/jsm/loaders/GLTFLoader').GLTF) => void, onProgress?: (event: ProgressEvent) => void, onError?: (event: ErrorEvent) => void): void
+    }
+}
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
@@ -11,11 +20,11 @@ import { defaults } from '../../../lib/3/defaults'
 declare module '../../../lib/3/three'
 {
     interface Three {
-        GLTFLoader: typeof GLTFLoader
+        GLTFLoader: typeof TGLTFLoader
     }
 }
 
-Three.GLTFLoader = GLTFLoader
+Three.GLTFLoader = TGLTFLoader
 
 declare module 'woby' {
     namespace JSX {
@@ -171,11 +180,11 @@ const _gltfLoaderPlugin = ([
 ] as const).distinct()
 objProps.gltfLoaderPlugin = _gltfLoaderPlugin
 
-export type GLTFLoaderProps = Node<GLTFLoader, typeof GLTFLoader, { manager?: LoadingManager; }>
+export type GLTFLoaderProps = Node<TGLTFLoader, typeof TGLTFLoader, { manager?: LoadingManager }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        gltfLoader: { manager?: LoadingManager; }
+        gltfLoader: { manager?: LoadingManager }
     }
 }
 

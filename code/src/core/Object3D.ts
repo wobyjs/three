@@ -1,6 +1,7 @@
 import { Object3DNode } from '../../three-types'
-import { Object3D } from 'three/src/core/Object3D.js'
-export * from 'three/src/core/Object3D.js'
+import { Object3D as TObject3D, type Object3DEventMap as TObject3DEventMap } from 'three/src/core/Object3D'
+export * from 'three/src/core/Object3D'
+export { TObject3D as Object3D, type TObject3DEventMap as Object3DEventMap }
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
@@ -10,11 +11,11 @@ import { defaults } from '../../lib/3/defaults'
 declare module '../../lib/3/three'
 {
     interface Three {
-        Object3D: typeof Object3D
+        Object3D: typeof TObject3D
     }
 }
 
-Three.Object3D = Object3D
+Three.Object3D = TObject3D
 
 declare module 'woby' {
     namespace JSX {
@@ -260,7 +261,7 @@ const _object3d = ([
 ] as const).distinct()
 objProps.object3d = _object3d
 
-export type Object3DProps = Object3DNode<Object3D, typeof Object3D, {}>
+export type Object3DProps = Object3DNode<TObject3D, typeof TObject3D, {}>
 
 declare module '../../lib/3/defaults' {
     interface defaults {

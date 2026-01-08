@@ -1,7 +1,8 @@
 import { Object3DNode } from '../../three-types'
 import { AudioListener } from 'three/src/audio/AudioListener.js'
-import { Audio } from 'three/src/audio/Audio.js'
+import { Audio as TAudio } from 'three/src/audio/Audio.js'
 export * from 'three/src/audio/Audio.js'
+export { TAudio as Audio }
 
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
@@ -178,11 +179,11 @@ const _audio = ([...objProps.object3d,
 
 objProps.audio = _audio
 
-export type AudioProps = Object3DNode<Audio, typeof Audio, { listener: AudioListener; }>
+export type AudioProps = Object3DNode<TAudio, typeof TAudio, { listener: AudioListener }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        audio: Partial<{ listener: AudioListener; }>
+        audio: Partial<{ listener: AudioListener }>
     }
 }
 

@@ -6,9 +6,9 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import './TextureNode'
-import { Texture } from './TextureNode'
+import { Texture } from '../../textures/Texture'
 import { ShaderNodeObject } from 'three/src/nodes/tsl/TSLCore'
-import Node from "three/src/nodes/core/Node.js";
+import Node from "three/src/nodes/core/Node.js"
 
 declare module '../../../lib/3/three'
 {

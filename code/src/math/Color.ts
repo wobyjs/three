@@ -1,11 +1,10 @@
 import { Node, ColorArray } from '../../three-types'
-import { Color, ColorRepresentation } from 'three/src/math/Color.js'
-export * from 'three/src/math/Color.js'
+import { Color, type ColorRepresentation } from 'three/src/math/Color.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
-
+export { Color, type ColorRepresentation }
 
 declare module '../../lib/3/three'
 {
@@ -131,11 +130,11 @@ const _color = ([
 ] as const).distinct()
 objProps.color = _color
 
-export type ColorProps = Node<Color, ColorArray, { color?: ColorRepresentation; } | { r: number; g: number; b: number; }>
+export type ColorProps = Node<Color, ColorArray, { color?: ColorRepresentation } | { r: number; g: number; b: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        color: { color?: ColorRepresentation; } | { r: number; g: number; b: number; }
+        color: { color?: ColorRepresentation } | { r: number; g: number; b: number }
     }
 }
 

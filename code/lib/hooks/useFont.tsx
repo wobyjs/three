@@ -16,16 +16,12 @@ export const useFont = (path: string) => {
     }
     else {
         fonts[path] = $()
-            ; (async () => {
-                const loader = new FontLoader()
+        const loader = new FontLoader()
 
-                const loadFont = await loader.loadAsync(path)
-                fonts[path](loadFont)
-            })()
+        loader.load(path, (data) => {
+            fonts[path](data)
+        })
     }
 
     return fonts[path]
-
-
 }
-

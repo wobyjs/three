@@ -1,6 +1,7 @@
 import { Node } from '../../three-types'
-import { BufferAttribute, TypedArray } from 'three/src/core/BufferAttribute.js'
+import { BufferAttribute as TBufferAttribute, type TypedArray as TTypedArray } from 'three/src/core/BufferAttribute.js'
 export * from 'three/src/core/BufferAttribute.js'
+export { TBufferAttribute as BufferAttribute, TTypedArray as TypedArray }
 
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -11,11 +12,11 @@ import { defaults } from '../../lib/3/defaults'
 declare module '../../lib/3/three'
 {
     interface Three {
-        BufferAttribute: typeof BufferAttribute
+        BufferAttribute: typeof TBufferAttribute
     }
 }
 
-Three.BufferAttribute = BufferAttribute
+Three.BufferAttribute = TBufferAttribute
 
 declare module 'woby' {
     namespace JSX {
@@ -201,11 +202,11 @@ const _uint8ClampedBufferAttribute = ([...objProps.bufferAttribute,
 ] as const).distinct()
 objProps.uint8ClampedBufferAttribute = _uint8ClampedBufferAttribute
 
-export type BufferAttributeProps = Node<BufferAttribute, typeof BufferAttribute, { array: TypedArray; itemSize: number; normalized?: boolean; }>
+export type BufferAttributeProps = Node<TBufferAttribute, typeof TBufferAttribute, { array: TTypedArray; itemSize: number; normalized?: boolean }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        bufferAttribute: Partial<{ array: TypedArray; itemSize: number; normalized?: boolean; }>
+        bufferAttribute: Partial<{ array: TTypedArray; itemSize: number; normalized?: boolean }>
     }
 }
 

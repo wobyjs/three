@@ -363,6 +363,6 @@ Contact: [github user name]@gmail.com
 ## Acknowledgements / Inspired by
 [Three.js](https://threejs.org/)
 
-[Voby](https://github.com/vobyjs/voby)
+[Voby](https://github.com/wobyjs/voby)
 
 [react-three-fiber](https://github.com/pmndrs/react-three-fiber)

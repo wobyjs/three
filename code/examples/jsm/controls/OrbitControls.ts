@@ -1,7 +1,16 @@
 import { Node } from '../../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls as TOrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 export * from 'three/examples/jsm/controls/OrbitControls.js'
+export { TOrbitControls as OrbitControls }
+
+// Add the missing dispose method to the type definitions
+declare module 'three/examples/jsm/controls/OrbitControls.js' {
+    interface OrbitControls {
+        dispose(): void
+    }
+}
+
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
@@ -10,12 +19,12 @@ import { defaults } from '../../../lib/3/defaults'
 declare module '../../../lib/3/three'
 {
     interface Three {
-        OrbitControls: typeof OrbitControls
+        OrbitControls: typeof TOrbitControls
     }
 }
 
 //@ts-ignore
-Three.OrbitControls = OrbitControls
+Three.OrbitControls = TOrbitControls
 
 declare module 'woby' {
     namespace JSX {
@@ -290,7 +299,7 @@ const _orbitControls = ([
 ] as const).distinct()
 objProps.orbitControls = _orbitControls
 
-export type OrbitControlsProps = Node<OrbitControls, typeof OrbitControls, { camera: Camera; domElement: HTMLElement }>
+export type OrbitControlsProps = Node<TOrbitControls, typeof TOrbitControls, { camera: Camera; domElement: HTMLElement }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {

@@ -1,10 +1,27 @@
 // / <reference path="../jsx-runtime" />
 /** @jsxImportSource ../jsx-runtime */
 
-import woby, { type JSX, FunctionMaybe, Observable, ObservableMaybe } from 'woby'
+import woby, { type JSX, FunctionMaybe, Observable, ObservableMaybe, useMemo } from 'woby'
 
 export * from 'woby'
-import type * as THREE from 'three'
+export { useMemo } from 'woby'
+import * as THREE from 'three'
+import type { Vector2 as TVector2 } from 'three/src/math/Vector2'
+import type { Vector3 as TVector3 } from 'three/src/math/Vector3'
+import type { Vector4 as TVector4 } from 'three/src/math/Vector4'
+import type { Quaternion as TQuaternion } from 'three/src/math/Quaternion'
+import type { Euler as TEuler } from 'three/src/math/Euler'
+import type { Matrix4 as TMatrix4 } from 'three/src/math/Matrix4'
+
+import type { Intersection as TIntersection } from 'three/src/core/Raycaster'
+import type { Ray as TRay } from 'three/src/math/Ray'
+import type { Object3D as TObject3D } from 'three/src/core/Object3D'
+import type { Camera as TCamera } from 'three/src/cameras/Camera'
+import type { Color as TColor } from 'three/src/math/Color'
+import type { Layers as TLayers } from 'three/src/core/Layers'
+import type { ColorRepresentation as TColorRepresentation } from 'three/src/math/Color'
+import type { Group as TGroup } from 'three/src/objects/Group'
+import type { Object3DEventMap as TObject3DEventMap } from 'three/src/core/Object3D'
 
 export type PromiseMaybe<T> = PromiseLike<T> | T
 
@@ -85,27 +102,27 @@ export type EventHandlers<T> = {
 }
 
 
-export interface Intersection extends THREE.Intersection {
+export interface Intersection extends TIntersection {
     /** The event source (the object which registered the handler) */
-    eventObject: THREE.Object3D
+    eventObject: TObject3D
 }
 
 
 export interface IntersectionEvent<TSourceEvent> extends Intersection {
     /** The event source (the object which registered the handler) */
-    eventObject: THREE.Object3D
+    eventObject: TObject3D
     /** An array of intersections */
     intersections: Intersection[]
     /** vec3.set(pointer.x, pointer.y, 0).unproject(camera) */
-    unprojectedPoint: THREE.Vector3
+    unprojectedPoint: TVector3
     /** Normalized event coordinates */
-    pointer: THREE.Vector2
+    pointer: TVector2
     /** Delta between first click and this event */
     delta: number
     /** The ray that pierced it */
-    ray: THREE.Ray
+    ray: TRay
     /** The camera that was used by the raycaster */
-    camera: THREE.Camera
+    camera: TCamera
     /** stopPropagation will stop underlying handlers from firing */
     stopPropagation: () => void
     /** The original host event */
@@ -116,11 +133,11 @@ export interface IntersectionEvent<TSourceEvent> extends Intersection {
 
 export type ThreeEvent<TEvent> = IntersectionEvent<TEvent> & Properties<TEvent>
 
-// export type BaseInstance = Omit<THREE.Object3D, 'children' | 'attach' | 'add' | 'remove' | 'raycast'> & {
+// export type BaseInstance = Omit<TObject3D, 'children' | 'attach' | 'add' | 'remove' | 'raycast'> & {
 //     children?: Instance[]
 //     remove: (...object: Instance[]) => Instance
 //     add: (...object: Instance[]) => Instance
-//     raycast?: (raycaster: THREE.Raycaster, intersects: THREE.Intersection[]) => void
+//     raycast?: (raycaster: THREE.Raycaster, intersects: TIntersection[]) => void
 // }
 // export type Instance = BaseInstance & { [key: string]: any }
 /**
@@ -131,27 +148,27 @@ type Args<T> = T extends new (...args: infer P) => any
     ? { [K in keyof P]: FunctionMaybe<P[K]> }
     : FunctionMaybe<T>
 
-export type Euler = THREE.Euler | Parameters<THREE.Euler['set']>
-export type Matrix4 = THREE.Matrix4 | Parameters<THREE.Matrix4['set']> | Readonly<THREE.Matrix4['set']>
+export type Euler = TEuler | Parameters<TEuler['set']>
+export type Matrix4 = TMatrix4 | Parameters<TMatrix4['set']> | Readonly<TMatrix4['set']>
 
 /**
  * Turn an implementation of THREE.Vector in to the type that an r3f component would accept as a prop.
  */
-type VectorLike<VectorClass extends (THREE.Vector2 | THREE.Vector3 | THREE.Vector4)> =
+type VectorLike<VectorClass extends (TVector2 | TVector3 | TVector4)> =
     | VectorClass
     | Parameters<VectorClass['set']>
     | Readonly<Parameters<VectorClass['set']>>
     | Parameters<VectorClass['setScalar']>[0]
 
-export type Vector2 = VectorLike<THREE.Vector2>
-export type Vector3 = VectorLike<THREE.Vector3>
-export type Vector4 = VectorLike<THREE.Vector4>
-export type Color = ConstructorParameters<typeof THREE.Color> | THREE.Color | number | string // Parameters<T> will not work here because of multiple function signatures in three.js types
+export type Vector2 = VectorLike<TVector2>
+export type Vector3 = VectorLike<TVector3>
+export type Vector4 = VectorLike<TVector4>
+export type Color = ConstructorParameters<typeof TColor> | TColor | number | string // Parameters<T> will not work here because of multiple function signatures in three.js types
 // r153 compat, same issue as above
 // https://github.com/pmndrs/react-three-fiber/issues/2926
-export type ColorArray = typeof THREE.Color | [color: THREE.ColorRepresentation]
-export type Layers = THREE.Layers | Parameters<THREE.Layers['set']>[0]
-export type Quaternion = THREE.Quaternion | Parameters<THREE.Quaternion['set']>
+export type ColorArray = typeof TColor | [color: TColorRepresentation]
+export type Layers = TLayers | Parameters<TLayers['set']>[0]
+export type Quaternion = TQuaternion | Parameters<TQuaternion['set']>
 
 export type AttachCallback = string | ((child: any, parentInstance: any) => void)
 
@@ -170,7 +187,7 @@ export interface NodeProps<T, P> {
     // attach?: AttachType
     /** Constructor arguments */
     args?: Args<P>
-    children?: ArrayMaybe<ObservableMaybe<THREE.Group<THREE.Object3DEventMap>>> | JSX.Child /* | ObservableMaybe<unknown> */
+    children?: ArrayMaybe<ObservableMaybe<TGroup<TObject3DEventMap>>> | JSX.Child /* | ObservableMaybe<unknown> */
     onUpdate?: (self: T) => void
     ref?: JSX.Ref<T>
 }
@@ -204,8 +221,8 @@ export type Functionant<T> = T extends object
 
 /** Change type to HTMLElement or JSX.Child */
 export type ChangeType<T> = {
-    [K in keyof T]: T[K] extends THREE.Color | undefined
-    ? THREE.ColorRepresentation
+    [K in keyof T]: T[K] extends TColor | undefined
+    ? TColorRepresentation
     : T[K] extends HTMLElement
     ? HTMLElement | JSX.Child
     : T[K]
@@ -226,8 +243,8 @@ export type Object3DNode<T, P, C> = Partial<Overwrite<
     Functionant<{
         position?: Vector3 | number[]
         center?: Vector3 | number[]
-        up?: VectorLike<THREE.Vector3>
-        scale?: VectorLike<THREE.Vector3>
+        up?: VectorLike<TVector3>
+        scale?: VectorLike<TVector3>
         rotation?: Euler
         matrix?: Matrix4
         quaternion?: Quaternion
@@ -1102,8 +1119,8 @@ declare global {
 
 // type Node1<T, P, C> = Partial<Functionant<ExtendedColors<Setter<T, C>>>>
 // type WebGLRendererProps1 = Node1<THREE.WebGLRenderer, typeof THREE.WebGLRenderer, THREE.WebGLRendererParameters>
-// type BoxHelperProps1 = Node1<THREE.BoxHelper, typeof THREE.BoxHelper, { object: THREE.Object3D, color?: THREE.ColorRepresentation }>
-// type BoxHelperProps2 = Functionant<Setter<THREE.BoxHelper, { object: THREE.Object3D, color?: THREE.ColorRepresentation }>>
+// type BoxHelperProps1 = Node1<THREE.BoxHelper, typeof THREE.BoxHelper, { object: TObject3D, color?: TColorRepresentation }>
+// type BoxHelperProps2 = Functionant<Setter<THREE.BoxHelper, { object: TObject3D, color?: TColorRepresentation }>>
 
 
 // const a = {} as Functionant<Setter<THREE.WebGLRenderer, THREE.WebGLRendererParameters>> // WebGLRendererProps1
@@ -1114,11 +1131,11 @@ declare global {
 // a.setSize = [1, 2, true]
 // c1.color = () => 1
 // c1.color = 1
-// c1.setFromObject = [null as THREE.Object3D<THREE.Object3DEventMap>]
+// c1.setFromObject = [null as TObject3D<TObject3DEventMap>]
 
 // c2.color = () => 1
 // c2.color = 1
-// c2.setFromObject = [null as THREE.Object3D<THREE.Object3DEventMap>]
+// c2.setFromObject = [null as TObject3D<TObject3DEventMap>]
 
 // // w.setClearColor
 

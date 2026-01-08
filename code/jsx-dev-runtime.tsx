@@ -1,8 +1,9 @@
-import { useRoot, setChild, type JSX } from "woby"
+import { useRoot, getSetters, type JSX } from "woby"
 import { jsx } from "./lib/three/jsx"
 import { FragmentUtils } from "woby"
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
+    const { setChild, } = getSetters() //browser
     if (!parent || !(parent instanceof HTMLElement)) throw new Error('Invalid parent node')
 
     parent.textContent = ''

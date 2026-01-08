@@ -3,14 +3,21 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 // import dts from 'vite-plugin-dts'
 
-const config = defineConfig({
+export default defineConfig({
+    server: {
+        host: true,
+        port: 5173
+    },
     build: {
         minify: false,
         lib: {
-            entry: ['./code/lib/index.tsx', './code/lib/jsx/runtime.tsx'],
+            entry: {
+                index: './code/lib/index.tsx',
+                'jsx-runtime': './code/lib/jsx/jsx-runtime.tsx',
+                'jsx-dev-runtime': './code/lib/jsx/jsx-dev-runtime.tsx'
+            },
             name: '@woby/three',
             formats: ['es'],
-            fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,
         rollupOptions: {
@@ -20,7 +27,9 @@ const config = defineConfig({
                     'woby': 'woby',
                     'oby': 'oby',
                     'three': 'three',
-                }
+                },
+                entryFileNames: '[name].es.js',
+                chunkFileNames: '[name]-[hash].es.js'
             }
         },
     },
@@ -33,16 +42,8 @@ const config = defineConfig({
     ],
     resolve: {
         alias: {
-            // '~': path.resolve(__dirname, 'src'),
-            // 'woby/jsx-dev-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'woby',
-            // 'woby/jsx-runtime': process.argv.includes('dev') ? path.resolve('../woby/src/jsx/runtime') : 'woby',
-            // 'woby': process.argv.includes('dev') ? path.resolve('../woby/src') : 'woby'
-            // 'oby': process.argv.includes('dev') ? path.resolve('../oby/src') : 'oby',
-            // 'oby/methods': process.argv.includes('dev') ? path.resolve('../oby/src/methods') : 'oby/dist/methods'
+            '@woby/three/jsx-runtime': path.resolve(__dirname, 'code/lib/jsx/jsx-runtime.tsx'),
+            '@woby/three/jsx-dev-runtime': path.resolve(__dirname, 'code/lib/jsx/jsx-dev-runtime.tsx'),
         },
     },
 })
-
-
-
-export default config

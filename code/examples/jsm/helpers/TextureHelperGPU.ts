@@ -1,6 +1,6 @@
 import {
 	LightProbe,
-} from 'three'
+} from 'three/src/lights/LightProbe.js'
 import { TextureHelper } from 'three/examples/jsm/helpers/TextureHelper.js'
 
 import { Three } from '../../../lib/3/three'
@@ -53,8 +53,10 @@ const _textureHelper = ([...objProps.mesh,
 objProps.TextureHelper = _textureHelper
 
 export type TextureHelperProps = {
-	lightProbe: LightProbe
-	size?: number
+	texture: any // Fix this type
+	width?: number
+	height?: number
+	depth?: number
 }
 
 declare module '../../../lib/3/defaults' {
@@ -64,6 +66,8 @@ declare module '../../../lib/3/defaults' {
 }
 
 defaults.TextureHelper = {
-	size: 1
+	width: 1,
+	height: 1,
+	depth: 1
 }
 

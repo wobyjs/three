@@ -3,7 +3,7 @@ import { Node } from '../../../three-types'
 // import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 export { TextureNode }
-import { Texture } from 'three/src/textures/Texture.js'
+import { Texture } from 'three/src/textures/Texture'
 export * from 'three/src/textures/Texture.js'
 
 import { Three } from '../../../lib/3/three'

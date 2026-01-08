@@ -5,6 +5,7 @@ import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../core/Curve'
 import '../core/CurvePath'
 
 declare module '../../../lib/3/three'
@@ -127,11 +128,11 @@ const _catmullRomCurve3 = ([...objProps.curve,
 ] as const).distinct()
 objProps.catmullRomCurve3 = _catmullRomCurve3
 
-export type CatmullRomCurve3Props = Node<CatmullRomCurve3, typeof CatmullRomCurve3, { points?: Vector3[]; closed?: boolean; curveType?: CurveType; tension?: number; }>
+export type CatmullRomCurve3Props = Node<CatmullRomCurve3, typeof CatmullRomCurve3, { points?: Vector3[]; closed?: boolean; curveType?: CurveType; tension?: number }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        catmullRomCurve3: Partial<{ points?: Vector3[]; closed?: boolean; curveType?: CurveType; tension?: number; }>
+        catmullRomCurve3: Partial<{ points?: Vector3[]; closed?: boolean; curveType?: CurveType; tension?: number }>
     }
 }
 

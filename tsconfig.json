@@ -47,33 +47,37 @@
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
         "rootDir": "./code",
-        "composite": true,
-        // "paths": {
-        //     "woby/jsx-runtime": [
-        //         "../../../woby/dist/jsx"
-        //     ],
-        //     "woby/jsx-runtime/*": [
-        //         "../../../woby/dist/jsx/*"
-        //     ],
-        // }
+        "composite": true
     },
+    "include": [
+        "code/**/*"
+    ],
     "exclude": [
         "dist",
         "./dist/types",
         "./src/demo/",
         "*.test.ts*",
         "vite.config.*ts",
+        "vite.umd.config.*ts",
         "vite.config.*.*ts",
         "node_modules",
         "src/demo",
         "./src/**/*",
         "src/jsx-runtime.tsx",
         "src/jsx-dev-runtime.tsx",
-        "examples",
-        "fonts",
-        "jsx-runtime",
-        "lib",
-        "models",
-        "src"
+        "examples/",
+        "fonts/",
+        "jsx-runtime/",
+        "lib/**/*",
+        "models/",
+        "src/",
+        "test/",
+        "playwright.test/",
+        "/3.d.*",
+        "/3/",
+        "/jsx-dev-runtime",
+        "/jsx-runtime",
+        "/index",
+        "*.d.ts"
     ]
 }

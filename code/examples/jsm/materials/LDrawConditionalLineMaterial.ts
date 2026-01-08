@@ -7,7 +7,7 @@ import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
 import { WrapAsString } from '../../../three-types'
-import { ShaderMaterialParameters } from '../../../src/materials/ShaderMaterial'
+import { type ShaderMaterialParameters } from '../../../src/materials/ShaderMaterial'
 
 declare module '../../../lib/3/three'
 {

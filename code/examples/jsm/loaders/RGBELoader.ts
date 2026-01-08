@@ -1,7 +1,8 @@
 import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
+import { RGBELoader as TRGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 export * from 'three/examples/jsm/loaders/RGBELoader.js'
+export { TRGBELoader as RGBELoader }
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
@@ -12,11 +13,11 @@ import '../../../src/loaders/DataTextureLoader'
 declare module '../../../lib/3/three'
 {
     interface Three {
-        RGBELoader: typeof RGBELoader
+        RGBELoader: typeof TRGBELoader
     }
 }
 
-Three.RGBELoader = RGBELoader
+Three.RGBELoader = TRGBELoader
 
 declare module 'woby' {
     namespace JSX {
@@ -79,11 +80,11 @@ const _rgbeLoader = ([...objProps.dataTextureLoader,
 objProps.rgbeLoader = _rgbeLoader
 
 
-export type RGBELoaderProps = Node<RGBELoader, typeof RGBELoader, { manager?: LoadingManager; }>
+export type RGBELoaderProps = Node<TRGBELoader, typeof TRGBELoader, { manager?: LoadingManager }>
 
 declare module '../../../lib/3/defaults' {
     interface defaults {
-        rgbeLoader: { manager?: LoadingManager; }
+        rgbeLoader: { manager?: LoadingManager }
     }
 }
 
