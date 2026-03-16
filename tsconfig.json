@@ -47,10 +47,13 @@
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
         "rootDir": "./code",
-        "composite": true
+        "composite": false
     },
     "include": [
-        "code/**/*"
+        "code/**/*",
+        "code/3.ts",
+        "code/index.ts",
+        "code/three-types.ts"
     ],
     "exclude": [
         "dist",
@@ -73,11 +76,16 @@
         "src/",
         "test/",
         "playwright.test/",
-        "/3.d.*",
-        "/3/",
-        "/jsx-dev-runtime",
-        "/jsx-runtime",
-        "/index",
-        "*.d.ts"
+        "3.d.*",
+        "3/",
+        "jsx-dev-runtime",
+        "jsx-runtime",
+        "index",
+        "*.d.ts",
+        // "code/lib/**/*",
+        // "code/examples/**/*",
+        // "code/src/**/*",
+        // "code/jsx-dev-runtime.tsx",
+        // "code/jsx-runtime.tsx"
     ]
 }

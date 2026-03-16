@@ -1,7 +1,7 @@
 import { LightNode } from './LightNode'
-import { ColorRepresentation } from 'three/src/math/Color.js'
-import { AmbientLight } from 'three/src/lights/AmbientLight.js'
-export { AmbientLight } from 'three/src/lights/AmbientLight.js'
+import { AmbientLight, Color } from 'three'
+export { AmbientLight }
+import { ColorRepresentation } from 'three'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'

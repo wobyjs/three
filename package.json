@@ -44,10 +44,10 @@
     "npmjs": "pnpm publish --access public",
     "commit": "pnpm git && pnpm bump && pnpm push",
     "release": "run-s -c commit npmjs",
-    "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
+    "declaration": "tsc --project tsconfig.json --declaration --declarationMap --emitDeclarationOnly --outDir ./lib --rootDir ./code --skipLibCheck --noEmitOnError=false",
     "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose --watch",
     "watch": "run-p build:watch",
-    "build": "run-s clean:dist build:es build:umd declaration",
+    "build": "run-s clean:dist build:es build:umd",
     "build:es": "vite build",
     "build:umd": "vite build --config vite.config.umd.mts",
     "dev:only": "vite --config=vite.config.mts --force --mode dev --host",
@@ -66,7 +66,6 @@
     "clean:3ts": "if exist 3.* (del 3.*)",
     "clean:3dts": "if exist 3.*.* (del 3.*.*)",
     "clean:dts": "if exist *.d.ts* (del *.d.ts*)",
-    "clean:js": "if exist *.js (del *.js)",
     "comment": "do enable clean:3ts,clean:js, have to compile 2 times, ignore can't delete errors",
     "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:jsx:dev clean:lib clean:src clean:3ts clean:3dts clean:dts clean:js",
     "release:automatic": "semantic-release --extends ../semantic-release.config.js",
@@ -102,6 +101,8 @@
     "woby": "workspace:../woby"
   },
   "dependencies": {
-    "madge": "^8.0.0"
+    "@tailwindcss/postcss": "^4.1.18",
+    "madge": "^8.0.0",
+    "postcss": "^8.5.6"
   }
 }
