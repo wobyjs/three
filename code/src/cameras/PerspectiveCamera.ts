@@ -4,9 +4,25 @@ export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Camera'
+import { customElement, defaults as wobyDefaults, $ } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    fov: $(50, { type: 'number' } as const),
+    near: $(0.1, { type: 'number' } as const),
+    far: $(2000, { type: 'number' } as const),
+})
+
+// Create the Woby component with defaults
+const ThreePerspectiveCamera = wobyDefaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-perspective-camera', ThreePerspectiveCamera)
 
 declare module '../../lib/3/three'
 {
@@ -16,11 +32,14 @@ declare module '../../lib/3/three'
 }
 
 Three.PerspectiveCamera = PerspectiveCamera
+Three['perspective-camera'] = PerspectiveCamera
+Three.PerspectiveCamera = PerspectiveCamera
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             perspectiveCamera: PerspectiveCameraProps,
+            'three-perspective-camera': PerspectiveCameraProps,
         }
     }
 }
@@ -155,14 +174,14 @@ const _perspectiveCamera = ([...objProps.camera,
 ] as const).distinct()
 objProps.perspectiveCamera = _perspectiveCamera
 
-export type PerspectiveCameraProps = Object3DNode<PerspectiveCamera, typeof PerspectiveCamera, { fov?: number; aspect?: number; near?: number; far?: number; }>
+export type PerspectiveCameraProps = Object3DNode<PerspectiveCamera, typeof PerspectiveCamera, { fov?: number; aspect?: number; near?: number; far?: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        perspectiveCamera: { fov?: number; aspect?: number; near?: number; far?: number; }
+        perspectiveCamera: { fov?: number; aspect?: number; near?: number; far?: number }
     }
 }
 
-defaults.perspectiveCamera = { fov: 50, aspect: 1, near: 0.1, far: 2000 }
+threeDefaults.perspectiveCamera = { fov: 50, aspect: 1, near: 0.1, far: 2000 }
 
 

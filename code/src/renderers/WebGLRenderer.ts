@@ -8,6 +8,48 @@ import { Observable } from 'woby'
 export { WebGLRenderer, WebGLRendererParameters }
 import './common/Renderer'
 import { RendererEx, rendererEx } from './RendererEx'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
+import { customElement, defaults as wobyDefaults, $, $$ } from 'woby'
+import { useThree } from '../../lib/hooks/useThree'
+import { useFrames } from '../../lib/hooks/useFrame'
+import { fixReactiveProps } from '../../lib/three/fixReactiveProps'
+import { callStack } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    // Renderer props are handled by Three.js fiber
+})
+
+// Create the Woby component with defaults.
+// Mirrors what getInstance() does for 'webglRenderer' in JSX mode:
+//   1. new WebGLRenderer(params)   → Three.js auto-creates a <canvas> as domElement
+//   2. register renderer in ThreeContext  → useFrame wires up render loop
+//   3. return domElement           → Woby appends <canvas> into the DOM
+const ThreeWebGLRenderer = wobyDefaults(def, (props: any) => {
+    const renderer = new WebGLRenderer(props)
+    const ctx = useThree()
+    const fs = useFrames()
+
+    // Register renderer in ThreeContext (same as getInstance Renderer case)
+    ;(ctx.renderers as any[]).push(renderer)
+    ;(ctx.scenes as any[]).forEach((s: any) => (ctx.cameras as any[]).forEach((c: any) =>
+        (fs as any[]).push(() => (renderer as any).renderAsync ? (renderer as any).renderAsync(s, c) : renderer.render(s, c))
+    ))
+    ctx.update(Math.random())
+
+    // Start animation loop
+    const animation = () => (fs as any[]).forEach((f: Function) => f())
+    renderer.setAnimationLoop(animation)
+
+    // Apply reactive props (setSize, setPixelRatio, etc.)
+    fixReactiveProps('webglRenderer' as any, props, renderer as any, callStack('ThreeWebGLRenderer'))
+
+    // Return the canvas so Woby appends it into the parent div[data-three-context]
+    return renderer.domElement as any
+})
+
+// Register custom element with proper defaults
+customElement('three-webgl-renderer', ThreeWebGLRenderer)
 
 declare module '../../lib/3/three'
 {
@@ -17,11 +59,13 @@ declare module '../../lib/3/three'
 }
 
 Three.WebGLRenderer = WebGLRenderer
+Three['webgl-renderer'] = WebGLRenderer
+Three.WebGLRenderer = WebGLRenderer
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
-            webglRenderer: WebGLRendererProps,
+            'three-webgl-renderer': WebGLRendererProps,
         }
     }
 }
@@ -451,5 +495,5 @@ declare module '../../lib/3/defaults' {
     }
 }
 
-defaults.webglRenderer = {}
+threeDefaults.webglRenderer = {}
 

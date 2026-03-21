@@ -4,9 +4,48 @@ export { BoxGeometry } from 'three/src/geometries/BoxGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import '../core/BufferGeometry'
+import { customElement, defaults, $ } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    width: $(1, { type: 'number' } as const),
+    height: $(1, { type: 'number' } as const),
+    depth: $(1, { type: 'number' } as const),
+    widthSegments: $(1, { type: 'number' } as const),
+    heightSegments: $(1, { type: 'number' } as const),
+    depthSegments: $(1, { type: 'number' } as const),
+})
+
+// Create the Woby component with defaults
+const ThreeBoxGeometry = defaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-box-geometry', ThreeBoxGeometry)
+
+// Also register with browser's Custom Elements registry for proper web component support
+if (typeof globalThis !== 'undefined' && globalThis.customElements && !globalThis.customElements.get('three-box-geometry')) {
+    class BoxGeometryElement extends HTMLElement {
+        constructor() {
+            super()
+            // This element is handled by @woby/three's JSX runtime
+            // The actual Three.js geometry is created by createElement.tsx
+        }
+
+        connectedCallback() {
+            // Dispatch an event to notify that the custom element is ready
+            this.dispatchEvent(new CustomEvent('three-element-connected', {
+                bubbles: true,
+                detail: { element: this, type: 'box-geometry' }
+            }))
+        }
+    }
+    globalThis.customElements.define('three-box-geometry', BoxGeometryElement)
+}
 
 declare module '../../lib/3/three'
 {
@@ -16,11 +55,14 @@ declare module '../../lib/3/three'
 }
 
 Three.BoxGeometry = BoxGeometry
+Three['box-geometry'] = BoxGeometry
+Three.BoxGeometry = BoxGeometry
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             boxGeometry: BoxGeometryProps,
+            'three-box-geometry': BoxGeometryProps,
         }
     }
 }
@@ -96,12 +138,15 @@ const _boxGeometry = ([...objProps.bufferGeometry,
 ] as const).distinct()
 objProps.boxGeometry = _boxGeometry
 
-export type BoxGeometryProps = BufferGeometryNode<BoxGeometry, typeof BoxGeometry, { width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number; }>
+export type BoxGeometryProps = BufferGeometryNode<BoxGeometry, typeof BoxGeometry, { width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        boxGeometry: { width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number; }
+        boxGeometry: { width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number }
     }
 }
 
 defaults.boxGeometry = { width: 1, height: 1, depth: 1, widthSegments: 1, heightSegments: 1, depthSegments: 1 }
+
+threeDefaults.boxGeometry = { width: 1, height: 1, depth: 1, widthSegments: 1, heightSegments: 1, depthSegments: 1 }
+

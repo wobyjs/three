@@ -5,6 +5,18 @@ import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import { customElement, defaults as wobyDefaults } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({})
+
+// Create the Woby component with defaults
+const ThreeEventDispatcher = wobyDefaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-event', ThreeEventDispatcher)
 
 
 declare module '../../lib/3/three'
@@ -20,6 +32,7 @@ declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             eventDispatcher: EventDispatcherProps,
+            'three-event': EventDispatcherProps,
         }
     }
 }

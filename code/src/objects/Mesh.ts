@@ -6,10 +6,24 @@ export { Mesh } from 'three/src/objects/Mesh.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import '../../src/core/Object3D'
 import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial'
+import { customElement, defaults, $ } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    // geometry and material are handled by Three.js fiber
+})
+
+// Create the Woby component with defaults
+const ThreeMesh = defaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-mesh', ThreeMesh)
 
 declare module '../../lib/3/three'
 {
@@ -19,11 +33,14 @@ declare module '../../lib/3/three'
 }
 
 Three.Mesh = Mesh
+Three['mesh'] = Mesh
+Three.Mesh = Mesh
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             mesh: MeshProps,
+            'three-mesh': MeshProps,
         }
     }
 }
@@ -115,7 +132,7 @@ objProps.mesh = _mesh
 export type MeshProps<
     TGeometry extends BufferGeometry = BufferGeometry,
     TMaterial extends Material | Material[] = Material | Material[]
-> = Object3DNode<Mesh<TGeometry, TMaterial>, typeof Mesh<TGeometry, TMaterial>, { geometry?: TGeometry; material?: TMaterial; }>
+> = Object3DNode<Mesh<TGeometry, TMaterial>, typeof Mesh<TGeometry, TMaterial>, { geometry?: TGeometry; material?: TMaterial }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
@@ -124,3 +141,5 @@ declare module '../../lib/3/defaults' {
 }
 
 defaults.mesh = { /* geometry: new BufferGeometry(), material: new MeshBasicMaterial() */ }
+
+threeDefaults.mesh = { /* geometry: new BufferGeometry(), material: new MeshBasicMaterial() */ }

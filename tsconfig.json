@@ -82,8 +82,8 @@
         "jsx-runtime",
         "index",
         "*.d.ts",
-        // "code/lib/**/*",
-        // "code/examples/**/*",
+        "code/examples/**/*",
+        "code/lib/**/*",
         // "code/src/**/*",
         // "code/jsx-dev-runtime.tsx",
         // "code/jsx-runtime.tsx"

@@ -180,12 +180,29 @@ const html = {
 export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof consParams & keyof objProps & keyof defaults), P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]>, args?: [] | {} }>
     (component: K, props: P, key?: string) => {
     const stack = callStack('createElement')
+
+    // Debug logging for custom elements
+    if (typeof component === 'string' && component.startsWith('three-')) {
+        console.log('[createElement] Processing custom element:', component, 'props:', props)
+    }
+
     if ((component as any).name === 'Fragment')
         return woby3Child(() => props.children)
     else if (isFunction(component)) // && !(isFunctionReactive(component) && useScene() && !hasSymbol(component, IN_CONTEXT)))
         return woby3Child(() => untrack(() => component.call(component, props as P)))
     else {// String or THREE.Class based
-        const cname = toUpper(component as string)
+        // Strip 'three-' prefix from custom elements and convert to PascalCase
+        let componentName = component as string
+        if (typeof component === 'string' && component.startsWith('three-')) {
+            // Convert kebab-case to PascalCase: three-webgl-renderer -> WebGLRenderer
+            componentName = componentName.slice(6)
+                .split('-')
+                .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+                .join('')
+
+            console.log('[createElement] Converted custom element:', component, '->', componentName)
+        }
+        const cname = toUpper(componentName)
         if (!Three[cname] && !html[component as string])
             console.error(`Three.${cname} not register`)
 
@@ -193,6 +210,7 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
             return ce(component, props)
 
         const cp = track(extractProps2constructor(component, props as any))
+        console.log('[createElement] Constructor params for', component, ':', cp)
         // const rcp = $$$$(cp)
         if (isObservableR(cp) || isFunctionR(cp)) {
             const r = $()

@@ -5,9 +5,24 @@ export { SpotLight } from 'three/src/lights/SpotLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Light'
+import { customElement, defaults as wobyDefaults, $ } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    color: $(0xffffff, { type: 'number' } as const),
+    intensity: $(1, { type: 'number' } as const),
+})
+
+// Create the Woby component with defaults
+const ThreeSpotLight = wobyDefaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-spot-light', ThreeSpotLight)
 
 declare module '../../lib/3/three'
 {
@@ -17,11 +32,14 @@ declare module '../../lib/3/three'
 }
 
 Three.SpotLight = SpotLight
+Three['spot-light'] = SpotLight
+Three.SpotLight = SpotLight
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             spotLight: SpotLightProps,
+            'three-spot-light': SpotLightProps,
         }
     }
 }
@@ -199,12 +217,12 @@ const _spotLight = ([...objProps.light,
 ] as const).distinct()
 objProps.spotLight = _spotLight
 
-export type SpotLightProps = LightNode<SpotLight, typeof SpotLight, { color?: ColorRepresentation; intensity?: number; distance?: number; angle?: number; penumbra?: number; decay?: number; }>
+export type SpotLightProps = LightNode<SpotLight, typeof SpotLight, { color?: ColorRepresentation; intensity?: number; distance?: number; angle?: number; penumbra?: number; decay?: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        spotLight: { color?: ColorRepresentation; intensity?: number; distance?: number; angle?: number; penumbra?: number; decay?: number; }
+        spotLight: { color?: ColorRepresentation; intensity?: number; distance?: number; angle?: number; penumbra?: number; decay?: number }
     }
 }
 
-defaults.spotLight = { color: 16777215, intensity: 1, distance: 0, angle: Math.PI / 3, penumbra: 0, decay: 2, }
+threeDefaults.spotLight = { color: 16777215, intensity: 1, distance: 0, angle: Math.PI / 3, penumbra: 0, decay: 2, }

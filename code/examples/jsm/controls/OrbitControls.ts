@@ -30,6 +30,7 @@ declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             orbitControls: OrbitControlsProps,
+            'three-orbit-controls': OrbitControlsProps,
         }
     }
 }

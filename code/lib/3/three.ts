@@ -1,6 +1,8 @@
 // import * as three from "three"
 
-export interface Three { }
+export interface Three {
+    [key: string]: any
+}
 
 declare global {
     interface Window {

@@ -5,9 +5,28 @@ export { PointLight } from 'three/src/lights/PointLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Light'
+import { customElement, defaults, $ } from 'woby'
+import { HtmlNumber, HtmlBoolean } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    color: $(0xffffff, { type: 'number' } as const),
+    intensity: $(1, { type: 'number' } as const),
+    distance: $(0, { type: 'number' } as const),
+    decay: $(2, { type: 'number' } as const),
+})
+
+// Create the Woby component with defaults
+const ThreePointLight = defaults(def, (props: any) => {
+    // This is a placeholder - the actual Three.js object creation happens via JSX
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-point-light', ThreePointLight)
 
 declare module '../../lib/3/three'
 {
@@ -17,11 +36,14 @@ declare module '../../lib/3/three'
 }
 
 Three.PointLight = PointLight
+Three['point-light'] = PointLight
+Three.PointLight = PointLight
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             pointLight: PointLightProps,
+            'three-point-light': PointLightProps,
         }
     }
 }
@@ -152,12 +174,12 @@ const _pointLight = ([...objProps.light,
 ] as const).distinct()
 objProps.pointLight = _pointLight
 
-export type PointLightProps = LightNode<PointLight, typeof PointLight, { color?: ColorRepresentation; intensity?: number; distance?: number; decay?: number; }>
+export type PointLightProps = LightNode<PointLight, typeof PointLight, { color?: ColorRepresentation; intensity?: number; distance?: number; decay?: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        pointLight: { color?: ColorRepresentation; intensity?: number; distance?: number; decay?: number; }
+        pointLight: { color?: ColorRepresentation; intensity?: number; distance?: number; decay?: number }
     }
 }
 
-defaults.pointLight = { color: 16777215, intensity: 1, distance: 0, decay: 2 }
+threeDefaults.pointLight = { color: 16777215, intensity: 1, distance: 0, decay: 2 }

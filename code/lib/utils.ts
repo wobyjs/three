@@ -207,10 +207,10 @@ export const promise2$ = <T extends JSX.Child | any>(props: ObservableMaybe<Prom
                 (async () => o[key](await value))()
             })
         else if (typeof value === "object" && value !== null)
-            promise2$(value);
+            promise2$(value)
     }
-    return props;
-};
+    return props
+}
 
 export const awaitAll = async <T extends JSX.Child | any>(props: ObservableMaybe<PromiseMaybe<T>>): Promise<ObservableMaybe<PromiseMaybe<T>>> => {
     const o = isObservable(props) ? $$(props) : props
@@ -225,14 +225,14 @@ export const awaitAll = async <T extends JSX.Child | any>(props: ObservableMaybe
             //else
             //done in fixReactiveProps
         } else if (isPromise(v))
-            props[key] = await v;
+            props[key] = await v
         else if (typeof v === "object" && v !== null && isPromiseR(v))  //array
             props[key] = await awaitAll(v)
         else
             props[key] = v
     }
     return props
-};
+}
 
 /** is undefine, this opposite from core */
 const isu = (v: any) => v === void 0
@@ -251,3 +251,4 @@ export const toColor = (color: ObservableMaybe<string | number | Color | Texture
 }
 
 
+export const customElement2name = (component: string) => component.replace(/^three-/, '').replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())

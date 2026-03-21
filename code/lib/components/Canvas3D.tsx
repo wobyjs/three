@@ -1,11 +1,11 @@
 // / <reference path="../jsx" />
 /** @jsxImportSource @woby/three */
 
-import { $$, $, type JSX, isObservable, callStack, } from "woby"
+import { $$, $, type JSX, isObservable, callStack, defaults as wobyDefaults, SYMBOL_CONTEXT_WRAP, setPendingContextWrap } from "woby"
 import { setNestedValue, } from "../three/fixReactiveProps"
 
 import { ThreeContext } from "../hooks/useThree"
-import { HTMLAttributes } from "woby/dist/types/types"
+import { context, createElement, HTMLAttributes } from 'woby'
 
 // type Observable2Maybe<T> = {
 //     [K in keyof T]: T[K] extends Observable<infer U>
@@ -74,7 +74,13 @@ export type Canvas3DProps = {
 // defaults.canvas3d = {}
 
 
-export const Canvas3D = (props: HTMLAttributes<HTMLDivElement>) => {
+// Define default props for the custom element
+const def = () => ({
+    // Canvas3D accepts HTML div attributes
+})
+
+// Create the Woby component with defaults (keeping original Canvas3D name)
+export const Canvas3D = wobyDefaults(def, (props: HTMLAttributes<HTMLDivElement>) => {
     const children = isObservable(props.children) ? $$(props.children) as JSX.Child : props.children
     // const meta = !isObservable(props.children) && !Array.isArray(props.children) ? (props.children ? [getMeta(props.children)] : []) : [$$(props.children)].flat().filter(r => !!r).map(c => getMeta(c as any))
     // const meta = !Array.isArray(children) ? (children ? [getMeta(children)] : []) : [children].flat().filter(r => !!r).map(c => getMeta(c as any))
@@ -85,15 +91,31 @@ export const Canvas3D = (props: HTMLAttributes<HTMLDivElement>) => {
 
     Object.keys(remainingProps).forEach((k) => {
         if (k.includes("-"))
-            setNestedValue(r, k, remainingProps[k], callStack('Canvas3D'))
+            setNestedValue(r, k, remainingProps[k])
     })
 
     const ctx = { frames: [], scenes: [], cameras: [], renderers: [], update: $(0) }
-    const rr = ThreeContext.Provider({ value: ctx, children })
+
+    // Build the context-wrap function for this Canvas3D instance and register it
+    // via the module-level side-channel in woby so that createBrowserCustomElement
+    // can copy it onto `this` (three-canvas) synchronously after createElement
+    // returns - BEFORE any sibling/child custom elements are constructed.
+    const wrap = (fn: () => void) =>
+        context({ [(ThreeContext as any).symbol]: ctx }, fn)
+    setPendingContextWrap(wrap)
 
     //ignore when build, because *.d.ts deleted & rebuild
     // @ts-ignore
-    return <div {...remainingProps}>{rr}</div>
-}
+    return <div {...remainingProps} data-three-context="true" ref={(el) => {
+        if (el) {
+            // Also set on the inner div so JSX-mode descendants can find it.
+            ;(el as any)[SYMBOL_CONTEXT_WRAP] = wrap
+        }
+    }}>{ThreeContext.Provider({ value: ctx, children }) as any}</div>
+})
+
+// Register Canvas3D as a custom element so it gets SYMBOL_CONTEXT_WRAP
+import { customElement } from 'woby'
+customElement('three-canvas', Canvas3D)
 
 

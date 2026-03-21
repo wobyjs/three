@@ -3,7 +3,6 @@
 
 import woby, { type JSX, FunctionMaybe, Observable, ObservableMaybe, useMemo } from 'woby'
 
-export * from 'woby'
 export { useMemo } from 'woby'
 import * as THREE from 'three'
 import type { Vector2 as TVector2 } from 'three/src/math/Vector2'

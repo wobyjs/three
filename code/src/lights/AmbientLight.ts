@@ -5,10 +5,24 @@ import { ColorRepresentation } from 'three'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Light'
-import './Light'
+import { customElement, defaults as wobyDefaults, $ } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    color: $(0xffffff, { type: 'number' } as const),
+    intensity: $(1, { type: 'number' } as const),
+})
+
+// Create the Woby component with defaults
+const ThreeAmbientLight = wobyDefaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-ambient-light', ThreeAmbientLight)
 
 declare module '../../lib/3/three'
 {
@@ -18,11 +32,14 @@ declare module '../../lib/3/three'
 }
 
 Three.AmbientLight = AmbientLight
+Three['ambient-light'] = AmbientLight
+Three.AmbientLight = AmbientLight
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             ambientLight: AmbientLightProps,
+            'three-ambient-light': AmbientLightProps,
         }
     }
 }
@@ -80,12 +97,12 @@ const _ambientLight = ([...objProps.light,
 ] as const).distinct()
 objProps.ambientLight = _ambientLight
 
-export type AmbientLightProps = LightNode<AmbientLight, typeof AmbientLight, { color?: ColorRepresentation; intensity?: number; }>
+export type AmbientLightProps = LightNode<AmbientLight, typeof AmbientLight, { color?: ColorRepresentation; intensity?: number }>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        ambientLight: { color?: ColorRepresentation; intensity?: number; }
+        ambientLight: { color?: ColorRepresentation; intensity?: number }
     }
 }
 
-defaults.ambientLight = { color: 16777215, intensity: 1 }
+threeDefaults.ambientLight = { color: 16777215, intensity: 1 }

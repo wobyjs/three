@@ -4,9 +4,23 @@ export { Scene } from 'three/src/scenes/Scene.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults } from '../../lib/3/defaults'
+import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import '../core/Object3D'
+import { customElement, defaults as wobyDefaults, $ } from 'woby'
+
+// Define default props for the custom element
+const def = () => ({
+    // Scene has no constructor args
+})
+
+// Create the Woby component with defaults
+const ThreeScene = wobyDefaults(def, (props: any) => {
+    return null
+})
+
+// Register custom element with proper defaults
+customElement('three-scene', ThreeScene)
 
 declare module '../../lib/3/three'
 {
@@ -16,11 +30,14 @@ declare module '../../lib/3/three'
 }
 
 Three.Scene = Scene
+Three['scene'] = Scene
+Three.Scene = Scene
 
 declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             scene: SceneProps,
+            'three-scene': SceneProps,
         }
     }
 }
@@ -130,5 +147,5 @@ declare module '../../lib/3/defaults' {
     }
 }
 
-defaults.scene = {}
+threeDefaults.scene = {}
 
