@@ -11,16 +11,21 @@
 - [ ] Documentation of porting patterns
 
 ### Examples (10 pilot)
-1. webgl_animation_basic
-2. webgl_animation_keyframes
-3. webgl_camera
-4. webgl_geometries
-5. webgl_materials
-6. webgl_lights_pointlights
-7. webgl_lights_spotlight
-8. webgl_loader_gltf
-9. webgl_interactive_cubes
-10. webgl_simple_gi
+1. webgl_animation_keyframes - Keyframe animation from GLTF
+2. webgl_camera - Camera switching and helpers
+3. webgl_geometries - Geometry showcase
+4. webgl_lights_spotlight - SpotLight with shadows
+5. webgl_loader_gltf - GLTF model loading
+6. webgl_interactive_cubes - Raycasting interaction
+7. webgl_simple_gi - Global illumination
+8. webgl_animation_multiple - Multiple animation clips (replacement)
+9. webgl_materials_variations - Material property variations (replacement)
+10. webgl_lights_hemisphere - Hemisphere light (replacement)
+
+**Plans:** 1 plan in 1 wave
+
+Plans:
+- [ ] 01-01-PLAN.md - Port 10 pilot WebGL examples
 
 ---
 
