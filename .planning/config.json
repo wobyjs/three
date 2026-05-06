@@ -1,0 +1,38 @@
+{
+  "project": {
+    "name": "@woby/three-examples-port",
+    "description": "Port all Three.js examples to JSX syntax",
+    "created": "2026-05-06"
+  },
+  "workflow": {
+    "autoCommit": true,
+    "requireTests": true,
+    "requireVisualVerification": true
+  },
+  "phases": {
+    "total": 12,
+    "current": 0,
+    "completed": 0
+  },
+  "examples": {
+    "total": 629,
+    "ported": 0,
+    "tested": 0
+  },
+  "categories": {
+    "webgl": 260,
+    "webgl_postprocessing": 26,
+    "webgl_advanced": 46,
+    "webgl_tsl": 4,
+    "webgpu": 219,
+    "webaudio": 4,
+    "webxr": 24,
+    "games": 1,
+    "physics": 13,
+    "misc": 20,
+    "css2d": 1,
+    "css3d": 7,
+    "svg": 2,
+    "tests": 2
+  }
+}
