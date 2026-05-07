@@ -136,7 +136,7 @@ Plans:
 ## Phase 5: WebGL Postprocessing
 **Duration**: 3-4 weeks
 **Goal**: Port all postprocessing examples
-**Status**: IN PROGRESS (Wave 2 complete)
+**Status**: IN PROGRESS (Wave 3 complete)
 
 ### Examples (26)
 - [x] webgl_postprocessing (Basic)
@@ -146,18 +146,16 @@ Plans:
 - [x] webgl_postprocessing_glitch (Glitch)
 - [x] webgl_postprocessing_pixel (Pixel)
 - [x] webgl_postprocessing_outline (Outline)
-- [ ] webgl_postprocessing_advanced
+- [x] webgl_postprocessing_advanced (Advanced - multi-effect)
+- [x] webgl_postprocessing_ssr (SSR)
+- [x] webgl_postprocessing_sao (GodRays - SAO fallback)
+- [x] webgl_postprocessing_masking (Masking - layer-based)
 - [ ] webgl_postprocessing_dof2
 - [ ] webgl_postprocessing_fxaa
-- [ ] webgl_postprocessing_godrays
-- [ ] webgl_postprocessing_masking
 - [ ] webgl_postprocessing_procedural
 - [ ] webgl_postprocessing_rgb_halftone
-- [ ] webgl_postprocessing_sao
-- [ ] webgl_postprocessing_smaa
 - [ ] webgl_postprocessing_sobel
 - [ ] webgl_postprocessing_ssaa
-- [ ] webgl_postprocessing_ssr
 - [ ] webgl_postprocessing_taa
 - [ ] webgl_postprocessing_unreal_bloom_selective
 - ... (5 more)
@@ -165,6 +163,7 @@ Plans:
 **Plans:**
 - [x] 05-01-PLAN.md - Wave 1: Basic, Bloom, SSAO
 - [x] 05-02-PLAN.md - Wave 2: DOF, Glitch, Pixel, Outline
+- [x] 05-03-PLAN.md - Wave 3: SSR, GodRays (SAO), Advanced, Masking
 
 ---
 
