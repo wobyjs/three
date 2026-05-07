@@ -1,69 +1,50 @@
 # Project State
 
 ## Current Status
-**Phase**: 1 - COMPLETE
+**Phase**: 2 - In Progress
 **Last Updated**: 2026-05-07
 
 ## Completed Work
-- [x] Project initialization
-- [x] PROJECT.md created
-- [x] REQUIREMENTS.md created
-- [x] ROADMAP.md created
-- [x] Codebase map created (7 documents)
-- [x] Phase 1 research completed (01-RESEARCH.md)
-- [x] Phase 1 plans created (4 plans, 14 tasks total)
-- [x] Phase 1 verification passed
-- [x] Phase 1 execution complete
+- [x] Phase 1: Foundation & Infrastructure (10 examples)
+- [x] Phase 2 (partial): Basic scenes category (6 examples)
 
-## Phase 1 Deliverables
-- [x] Example port template/scaffold (`_template.tsx`)
-- [x] Test infrastructure for ported examples
-- [x] 10 pilot examples from webgl category
-- [x] Documentation of porting patterns (PATTERNS.md)
+## Phase Progress
 
-## Next Steps
-1. Run `/gsd-plan-phase 2` to plan Core WebGL Part 1
-2. Continue porting remaining webgl examples
-3. Expand test coverage
-
-## Active Workstreams
-- Main: Three.js examples port project
-- Phase 1: COMPLETE - Ready for Phase 2
-
-## Key Decisions
-- **Scope**: All 629 examples across 14 categories
-- **Approach**: Phased execution with test coverage
-- **Output**: Both library components and demo showcase
-- **Example Location**: `code/examples/webgl/<category>/<Example>.tsx`
-- **Assets**: Use threejs.org CDN URLs - no local hosting required
+| Phase | Status | Examples | Progress |
+|-------|--------|----------|----------|
+| 1 | ✅ COMPLETE | 10 | 100% |
+| 2 | 🔄 In Progress | ~65 | 9% (6/65) |
+| 3 | 📋 Planned | ~65 | 0% |
+| 4 | 📋 Planned | ~65 | 0% |
+| 5 | 📋 Planned | 26 | 0% |
+| 6 | 📋 Planned | 219 | 0% |
+| 7 | 📋 Planned | 24 | 0% |
+| 8 | 📋 Planned | 50 | 0% |
+| 9 | 📋 Planned | 13 | 0% |
+| 10 | 📋 Planned | 4 | 0% |
+| 11 | 📋 Planned | 21 | 0% |
+| 12 | 📋 Planned | 12 | 0% |
 
 ## Metrics
 - Total Examples: 629
-- Ported: 10 (Phase 1 pilot)
+- Ported: 16 (10 Phase 1 + 6 Phase 2)
 - Tested: 10
-- Coverage: 1.6%
+- Coverage: 2.5%
 
-## Phase 1 Files Created
+## Files Created This Session
+- `code/examples/webgl/basic/AnimationScene.tsx`
+- `code/examples/webgl/basic/Backgrounds.tsx`
+- `code/examples/webgl/basic/Clipping.tsx`
+- `code/examples/webgl/basic/Fog.tsx`
+- `code/examples/webgl/basic/LOD.tsx`
+- `code/examples/webgl/basic/MorphTargets.tsx`
 
-| File | Category | Lines |
-|------|----------|-------|
-| `_template.tsx` | Scaffold | 95 |
-| `Geometries.tsx` | geometries | 150 |
-| `Camera.tsx` | camera | 140 |
-| `Hemisphere.tsx` | lights | 65 |
-| `Variations.tsx` | materials | 110 |
-| `Keyframes.tsx` | animation | 130 |
-| `Multiple.tsx` | animation | 175 |
-| `Spotlight.tsx` | lights | 110 |
-| `GLTF.tsx` | loaders | 130 |
-| `Cubes.tsx` | interactive | 100 |
-| `SimpleGI.tsx` | advanced | 140 |
-| `PATTERNS.md` | docs | 250 |
-| `webgl-examples.test.ts` | test | 120 |
-
-**Total: ~1,600 lines of ported code**
+## Next Steps
+1. Continue Phase 2: cameras, geometries, materials categories
+2. Execute remaining phases sequentially
+3. Expand test coverage as examples are ported
 
 ## Notes
-- Pure TSX test runner approach (no vitest/jsdom)
-- Critical patterns enforced: $$() for context, no as any, viewport reset
-- All examples use @jsxImportSource @woby/three directive
+- All phases (2-12) have detailed PLAN.md files
+- Estimated total effort: 30-40 weeks
+- Patterns well-established from Phase 1
