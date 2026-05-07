@@ -3,12 +3,13 @@
 ## Phase 1: Foundation & Infrastructure
 **Duration**: 1-2 weeks
 **Goal**: Establish patterns, tooling, and first batch of examples
+**Status**: COMPLETE
 
 ### Deliverables
-- [ ] Example port template/scaffold
-- [ ] Test infrastructure for ported examples
-- [ ] 10 pilot examples from webgl category
-- [ ] Documentation of porting patterns
+- [x] Example port template/scaffold
+- [x] Test infrastructure for ported examples
+- [x] 10 pilot examples from webgl category
+- [x] Documentation of porting patterns
 
 ### Examples (10 pilot)
 1. webgl_animation_keyframes - Keyframe animation from GLTF
@@ -22,22 +23,34 @@
 9. webgl_materials_variations - Material property variations (replacement)
 10. webgl_lights_hemisphere - Hemisphere light (replacement)
 
-**Plans:** 1 plan in 1 wave
+**Plans:** 4 plans in 4 waves
 
 Plans:
-- [ ] 01-01-PLAN.md - Port 10 pilot WebGL examples
+- [x] 01-01-PLAN.md - Foundation: directory structure, template, patterns documentation
+- [x] 01-02-PLAN.md - Core examples: geometries, camera, hemisphere light, materials variations
+- [x] 01-03-PLAN.md - Advanced examples: keyframes, multiple animations, spotlight, GLTF loader
+- [x] 01-04-PLAN.md - Final examples + tests: interactive cubes, simple GI, test infrastructure
 
 ---
 
 ## Phase 2: Core WebGL - Part 1
 **Duration**: 4-6 weeks
-**Goal**: Port foundational webgl examples
+**Goal**: Port ~65 foundational webgl examples covering basic scenes, cameras, geometries, and basic materials.
 
 ### Categories
-- Basic scenes
-- Cameras
-- Geometries
-- Materials (basic)
+- Basic scenes (~15 examples)
+- Cameras (~10 examples)
+- Geometries (~20 examples)
+- Materials - basic (~20 examples)
+
+### Task Breakdown
+
+| Wave | Tasks | Duration |
+|------|-------|----------|
+| 1 | Basic scenes, clipping, decals | Week 1-2 |
+| 2 | Camera array, cinematic, panorama | Week 2-3 |
+| 3 | Parametric, dynamic, shape geometries | Week 3-4 |
+| 4 | Material blending, textures, physical | Week 4-6 |
 
 ### Examples (~65)
 - webgl_camera_array
@@ -47,74 +60,111 @@ Plans:
 - webgl_materials_texture_anisotropy
 - ... (60 more)
 
+**Plans:** 1 master plan with 4 waves
+
+Plans:
+- [ ] 02-01-PLAN.md - Master plan with all categories and tasks
+
 ---
 
 ## Phase 3: Core WebGL - Part 2
 **Duration**: 4-6 weeks
-**Goal**: Port intermediate webgl examples
+**Goal**: Port ~65 intermediate webgl examples covering lights & shadows, textures, basic shaders, and loaders.
 
 ### Categories
-- Lights & shadows
-- Textures
-- Shaders (basic)
-- Loaders
+- Lights & shadows (~15 examples)
+- Textures (~15 examples)
+- Shaders - basic (~15 examples)
+- Loaders (~20 examples)
+
+### Task Breakdown
+
+| Wave | Tasks | Duration |
+|------|-------|----------|
+| 1 | Physical lights, shadow mapping, light probes | Week 1-2 |
+| 2 | Basic textures, advanced textures, compressed | Week 2-3 |
+| 3 | Basic shaders, environment shaders, post-process | Week 3-4 |
+| 4 | Standard loaders, GLTF/Draco, specialized, CAD | Week 4-6 |
 
 ### Examples (~65)
-- webgl_lights_hemisphere
 - webgl_lights_physical
 - webgl_shadowmap
 - webgl_texture_hdri
 - webgl_loader_obj
 - ... (60 more)
 
+**Plans:** 1 master plan with 4 waves
+
+Plans:
+- [ ] 03-01-PLAN.md - Master plan with all categories and tasks
+
 ---
 
 ## Phase 4: Core WebGL - Part 3
 **Duration**: 4-6 weeks
-**Goal**: Port advanced webgl examples
+**Goal**: Port ~65 advanced webgl examples covering advanced materials, animation systems, particles, and physics integration.
 
 ### Categories
-- Advanced materials
-- Animation systems
-- Particles
-- Physics integration
+- Advanced materials (~20 examples)
+- Animation systems (~15 examples)
+- Particles (~15 examples)
+- Physics integration (~15 examples)
+
+### Task Breakdown
+
+| Wave | Tasks | Duration |
+|------|-------|----------|
+| 1 | Physical materials, env maps, special materials | Week 1-2 |
+| 2 | Skeletal animation, morph targets, advanced | Week 2-3 |
+| 3 | Basic particles, GPU particles, sprites | Week 3-4 |
+| 4 | Ammo.js, Rapier, Jolt, interactive physics | Week 4-6 |
 
 ### Examples (~65)
 - webgl_materials_physical
 - webgl_materials_envmaps
 - webgl_particles
-- webgl_physics_*
+- physics_*
 - ... (60 more)
+
+**Plans:** 1 master plan with 4 waves
+
+Plans:
+- [ ] 04-01-PLAN.md - Master plan with all categories and tasks
 
 ---
 
 ## Phase 5: WebGL Postprocessing
 **Duration**: 3-4 weeks
 **Goal**: Port all postprocessing examples
+**Status**: IN PROGRESS (Wave 2 complete)
 
 ### Examples (26)
-- webgl_postprocessing
-- webgl_postprocessing_advanced
-- webgl_postprocessing_dof
-- webgl_postprocessing_dof2
-- webgl_postprocessing_fxaa
-- webgl_postprocessing_glitch
-- webgl_postprocessing_godrays
-- webgl_postprocessing_masking
-- webgl_postprocessing_outline
-- webgl_postprocessing_pixel
-- webgl_postprocessing_procedural
-- webgl_postprocessing_rgb_halftone
-- webgl_postprocessing_sao
-- webgl_postprocessing_smaa
-- webgl_postprocessing_sobel
-- webgl_postprocessing_ssaa
-- webgl_postprocessing_ssao
-- webgl_postprocessing_ssr
-- webgl_postprocessing_taa
-- webgl_postprocessing_unreal_bloom
-- webgl_postprocessing_unreal_bloom_selective
+- [x] webgl_postprocessing (Basic)
+- [x] webgl_postprocessing_unreal_bloom (Bloom)
+- [x] webgl_postprocessing_ssao (SSAO)
+- [x] webgl_postprocessing_dof (DOF)
+- [x] webgl_postprocessing_glitch (Glitch)
+- [x] webgl_postprocessing_pixel (Pixel)
+- [x] webgl_postprocessing_outline (Outline)
+- [ ] webgl_postprocessing_advanced
+- [ ] webgl_postprocessing_dof2
+- [ ] webgl_postprocessing_fxaa
+- [ ] webgl_postprocessing_godrays
+- [ ] webgl_postprocessing_masking
+- [ ] webgl_postprocessing_procedural
+- [ ] webgl_postprocessing_rgb_halftone
+- [ ] webgl_postprocessing_sao
+- [ ] webgl_postprocessing_smaa
+- [ ] webgl_postprocessing_sobel
+- [ ] webgl_postprocessing_ssaa
+- [ ] webgl_postprocessing_ssr
+- [ ] webgl_postprocessing_taa
+- [ ] webgl_postprocessing_unreal_bloom_selective
 - ... (5 more)
+
+**Plans:**
+- [x] 05-01-PLAN.md - Wave 1: Basic, Bloom, SSAO
+- [x] 05-02-PLAN.md - Wave 2: DOF, Glitch, Pixel, Outline
 
 ---
 
@@ -265,7 +315,7 @@ Each phase requires:
 ## Dependencies Between Phases
 
 ```
-Phase 1 (Foundation)
+Phase 1 (Foundation) ✓
     ├── Phase 2 (Core WebGL 1)
     │       ├── Phase 3 (Core WebGL 2)
     │       │       ├── Phase 4 (Core WebGL 3)
@@ -284,3 +334,24 @@ Phase 1 (Foundation)
 - Checkmarks for completed ports
 - Test coverage percentage per phase
 - Visual demo availability status
+
+### Summary
+
+| Phase | Examples | Duration | Status |
+|-------|----------|----------|--------|
+| 1 | 10 | 1-2 weeks | COMPLETE |
+| 2 | ~65 | 4-6 weeks | Planned |
+| 3 | ~65 | 4-6 weeks | Planned |
+| 4 | ~65 | 4-6 weeks | Planned |
+| 5 | 26 | 3-4 weeks | Not started |
+| 6 | 219 | 4-5 weeks | Not started |
+| 7 | 24 | 3-4 weeks | Not started |
+| 8 | 50 | 3-4 weeks | Not started |
+| 9 | 13 | 2-3 weeks | Not started |
+| 10 | 4 | 1 week | Not started |
+| 11 | 21 | 2-3 weeks | Not started |
+| 12 | 12 | 1-2 weeks | Not started |
+
+**Total Examples**: ~574
+**Completed**: 10 (Phase 1)
+**Remaining**: ~564
