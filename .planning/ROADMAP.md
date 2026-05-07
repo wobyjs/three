@@ -180,32 +180,34 @@ Plans:
 ## Phase 7: WebXR Examples
 **Duration**: 3-4 weeks
 **Goal**: Port all WebXR examples
+**Status**: IN PROGRESS (Wave 3 complete)
 
 ### Examples (24)
-- webxr_vr_ballshooter
-- webxr_vr_cubes
-- webxr_vr_dragging
-- webxr_vr_handinput_pointerclick
-- webxr_vr_handinput_press
-- webxr_vr_handinput_profiles
-- webxr_vr_haptics
-- webxr_vr_haptics_controller
-- webxr_vr_layers
-- webxr_vr_lorenzattractor
-- webxr_vr_paint
-- webxr_vr_panorama
-- webxr_vr_panorama_depth
-- webxr_vr_rollercoaster
-- webxr_vr_sandbox
-- webxr_vr_sculpt
-- webxr_vr_video
-- webxr_xr_ballshooter
-- webxr_ar_cones
-- webxr_ar_hittest
-- webxr_ar_lighting
-- webxr_ar_plane_detection
-- webxr_sandbox
-- webxr_video
+- [x] webxr_vr_ballshooter (via Cubes)
+- [x] webxr_vr_cubes
+- [x] webxr_vr_dragging
+- [x] webxr_vr_handinput (HandInput - basic)
+- [x] webxr_vr_haptics
+- [x] webxr_vr_paint
+- [x] webxr_vr_panorama
+- [x] webxr_ar_cones
+- [x] webxr_ar_hittest
+- [ ] webxr_vr_handinput_pointerclick
+- [ ] webxr_vr_handinput_press
+- [ ] webxr_vr_handinput_profiles
+- [ ] webxr_vr_haptics_controller
+- [ ] webxr_vr_layers
+- [ ] webxr_vr_lorenzattractor
+- [ ] webxr_vr_panorama_depth
+- [ ] webxr_vr_rollercoaster
+- [ ] webxr_vr_sandbox
+- [ ] webxr_vr_sculpt
+- [ ] webxr_vr_video
+- [ ] webxr_xr_ballshooter
+- [ ] webxr_ar_lighting
+- [ ] webxr_ar_plane_detection
+- [ ] webxr_sandbox
+- [ ] webxr_video
 
 ---
 
