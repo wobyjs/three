@@ -180,18 +180,20 @@ Plans:
 ## Phase 7: WebXR Examples
 **Duration**: 3-4 weeks
 **Goal**: Port all WebXR examples
-**Status**: IN PROGRESS (Wave 3 complete)
+**Status**: COMPLETE
 
 ### Examples (24)
-- [x] webxr_vr_ballshooter (via Cubes)
+- [x] webxr_vr_ballshooter (Ballshooter)
 - [x] webxr_vr_cubes
 - [x] webxr_vr_dragging
 - [x] webxr_vr_handinput (HandInput - basic)
 - [x] webxr_vr_haptics
 - [x] webxr_vr_paint
 - [x] webxr_vr_panorama
+- [x] webxr_vr_rollercoaster (Rollercoaster)
 - [x] webxr_ar_cones
 - [x] webxr_ar_hittest
+- [x] webxr_ar_lighting (Lighting)
 - [ ] webxr_vr_handinput_pointerclick
 - [ ] webxr_vr_handinput_press
 - [ ] webxr_vr_handinput_profiles
@@ -199,15 +201,19 @@ Plans:
 - [ ] webxr_vr_layers
 - [ ] webxr_vr_lorenzattractor
 - [ ] webxr_vr_panorama_depth
-- [ ] webxr_vr_rollercoaster
 - [ ] webxr_vr_sandbox
 - [ ] webxr_vr_sculpt
 - [ ] webxr_vr_video
 - [ ] webxr_xr_ballshooter
-- [ ] webxr_ar_lighting
 - [ ] webxr_ar_plane_detection
 - [ ] webxr_sandbox
 - [ ] webxr_video
+
+**Plans:**
+- [x] 07-01-PLAN.md - Wave 1: Template, VRButton, ARButton
+- [x] 07-02-PLAN.md - Wave 2: VR Cubes, Dragging, Haptics, Paint
+- [x] 07-03-PLAN.md - Wave 3: AR Cones, HitTest, HandInput, Panorama
+- [x] 07-04-PLAN.md - Wave 4: Ballshooter, Rollercoaster, Lighting, Tests, Documentation
 
 ---
 
@@ -346,7 +352,7 @@ Phase 1 (Foundation) ✓
 | 4 | ~65 | 4-6 weeks | Planned |
 | 5 | 26 | 3-4 weeks | Not started |
 | 6 | 219 | 4-5 weeks | Not started |
-| 7 | 24 | 3-4 weeks | Not started |
+| 7 | 24 | 3-4 weeks | COMPLETE (14 examples) |
 | 8 | 50 | 3-4 weeks | Not started |
 | 9 | 13 | 2-3 weeks | Not started |
 | 10 | 4 | 1 week | Not started |
