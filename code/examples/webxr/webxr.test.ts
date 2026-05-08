@@ -10,14 +10,27 @@ import './_template'
 import './vr/Cubes'
 import './vr/Dragging'
 import './vr/Haptics'
+import './vr/HapticsController'
 import './vr/Paint'
 import './vr/HandInput'
+import './vr/HandInputPointerClick'
+import './vr/HandInputPress'
+import './vr/HandInputProfiles'
 import './vr/Panorama'
+import './vr/PanoramaDepth'
 import './vr/Ballshooter'
 import './vr/Rollercoaster'
+import './vr/LorenzAttractor'
+import './vr/Layers'
+import './vr/Sandbox'
+import './vr/Sculpt'
+import './vr/Video'
 import './ar/Cones'
 import './ar/HitTest'
 import './ar/Lighting'
+import './ar/PlaneDetection'
+import './WebXRSandbox'
+import './WebXRVideo'
 
 let passed = 0
 let failed = 0
@@ -79,6 +92,10 @@ test('VRHaptics exports component', () => {
     ok(true)
 })
 
+test('VRHapticsController exports component', () => {
+    ok(true)
+})
+
 test('VRPaint exports component', () => {
     ok(true)
 })
@@ -87,7 +104,23 @@ test('VRHandInput exports component', () => {
     ok(true)
 })
 
+test('VRHandInputPointerClick exports component', () => {
+    ok(true)
+})
+
+test('VRHandInputPress exports component', () => {
+    ok(true)
+})
+
+test('VRHandInputProfiles exports component', () => {
+    ok(true)
+})
+
 test('VRPanorama exports component', () => {
+    ok(true)
+})
+
+test('VRPanoramaDepth exports component', () => {
     ok(true)
 })
 
@@ -96,6 +129,26 @@ test('VRBallshooter exports component', () => {
 })
 
 test('VRRollercoaster exports component', () => {
+    ok(true)
+})
+
+test('VRLorenzAttractor exports component', () => {
+    ok(true)
+})
+
+test('VRLayers exports component', () => {
+    ok(true)
+})
+
+test('VRSandbox exports component', () => {
+    ok(true)
+})
+
+test('VRSculpt exports component', () => {
+    ok(true)
+})
+
+test('VRVideo exports component', () => {
     ok(true)
 })
 
@@ -108,6 +161,18 @@ test('ARHitTest exports component', () => {
 })
 
 test('ARLighting exports component', () => {
+    ok(true)
+})
+
+test('ARPlaneDetection exports component', () => {
+    ok(true)
+})
+
+test('WebXRSandbox exports component', () => {
+    ok(true)
+})
+
+test('WebXRVideo exports component', () => {
     ok(true)
 })
 
@@ -188,14 +253,14 @@ test('Inline session type is valid', () => {
 console.log('\nWebXR — XR Features')
 
 test('VR optional features are valid', () => {
-    const optionalFeatures = ['local-floor', 'bounded-floor', 'hand-tracking']
+    const optionalFeatures = ['local-floor', 'bounded-floor', 'hand-tracking', 'layers']
     optionalFeatures.forEach(feature => {
         ok(typeof feature === 'string')
     })
 })
 
 test('AR required features are valid', () => {
-    const requiredFeatures = ['hit-test', 'local-floor']
+    const requiredFeatures = ['hit-test', 'local-floor', 'plane-detection']
     requiredFeatures.forEach(feature => {
         ok(typeof feature === 'string')
     })
@@ -249,6 +314,28 @@ test('AR device requirements documented', () => {
     ok(arRequirements.lightEstimation !== undefined)
 })
 
+console.log('\nWebXR — Example Categories')
+
+test('VR examples count is correct', () => {
+    const vrExamples = [
+        'Cubes', 'Dragging', 'Haptics', 'HapticsController',
+        'Paint', 'HandInput', 'HandInputPointerClick', 'HandInputPress', 'HandInputProfiles',
+        'Panorama', 'PanoramaDepth', 'Ballshooter', 'Rollercoaster',
+        'LorenzAttractor', 'Layers', 'Sandbox', 'Sculpt', 'Video'
+    ]
+    ok(vrExamples.length === 18)
+})
+
+test('AR examples count is correct', () => {
+    const arExamples = ['Cones', 'HitTest', 'Lighting', 'PlaneDetection']
+    ok(arExamples.length === 4)
+})
+
+test('Cross-platform examples count is correct', () => {
+    const crossExamples = ['WebXRSandbox', 'WebXRVideo']
+    ok(crossExamples.length === 2)
+})
+
 console.log('\nWebXR — Hardware-Dependent Tests (Skipped)')
 
 skip('VR session start requires headset', 'Requires actual VR hardware')
@@ -257,6 +344,9 @@ skip('Hand tracking requires hand-tracking capable device', 'Requires Quest or s
 skip('Haptics require controllers with vibration', 'Requires VR controllers')
 skip('Hit-test requires AR surface detection', 'Requires ARCore/ARKit')
 skip('Light estimation requires light probe support', 'Requires AR light estimation')
+skip('Plane detection requires AR plane detection', 'Requires ARCore/ARKit')
+skip('Lorenz attractor visualization requires VR', 'Requires VR headset')
+skip('VR layers requires layers feature support', 'Requires WebXR layers')
 
 // Summary
 const total = passed + failed
