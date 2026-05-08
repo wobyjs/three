@@ -1,7 +1,7 @@
 # Project State
 
 ## Current Status
-**Phase**: 8 - COMPLETE
+**Phase**: 11 - COMPLETE
 **Last Updated**: 2026-05-08
 
 ## Completed Work
@@ -14,50 +14,45 @@
 - [x] Phase 7: WebXR (14 examples + tests + PATTERNS.md)
 - [x] Phase 8: WebGL Advanced & TSL (50 examples + tests + PATTERNS.md)
 - [x] Phase 9: Physics (13 examples + tests + PATTERNS.md)
+- [x] Phase 11: Misc & Games (21 examples + tests + PATTERNS.md)
 
 ## Phase Progress
 
 | Phase | Status | Target | Ported | Progress |
 |-------|--------|--------|--------|----------|
-| 1 | ✅ COMPLETE | 10 | 10 | 100% |
-| 2 | ✅ COMPLETE | ~65 | ~40 | 100% |
-| 3 | ✅ COMPLETE | ~65 | 22 | 34% |
-| 4 | ✅ COMPLETE | ~65 | 12 | 18% |
-| 5 | ✅ COMPLETE | 26 | 15 | 58% |
-| 6 | ✅ COMPLETE | 219 | 11 | 5% |
-| 7 | ✅ COMPLETE | 24 | 14 | 58% |
-| 8 | ✅ COMPLETE | 50 | 50 | 100% |
-| 9 | ✅ COMPLETE | 13 | 13 | 100% |
-| 10 | 📋 Planned | 4 | 0 | 0% |
-| 11 | 📋 Planned | 21 | 0 | 0% |
-| 12 | 📋 Planned | 12 | 0 | 0% |
+| 1 | COMPLETE | 10 | 10 | 100% |
+| 2 | COMPLETE | ~65 | ~40 | 100% |
+| 3 | COMPLETE | ~65 | 22 | 34% |
+| 4 | COMPLETE | ~65 | 12 | 18% |
+| 5 | COMPLETE | 26 | 15 | 58% |
+| 6 | COMPLETE | 219 | 11 | 5% |
+| 7 | COMPLETE | 24 | 14 | 58% |
+| 8 | COMPLETE | 50 | 50 | 100% |
+| 9 | COMPLETE | 13 | 13 | 100% |
+| 10 | Planned | 4 | 0 | 0% |
+| 11 | COMPLETE | 21 | 21 | 100% |
+| 12 | Planned | 12 | 0 | 0% |
 
 ## Metrics
 - Total Examples: 629
-- Ported: 187+ (266+ total .tsx files in examples/)
-- Tested: 5 test suites (postprocessing, webgpu, webxr, physics, advanced)
-- Coverage: ~30%
+- Ported: 208+ (287+ total .tsx files in examples/)
+- Tested: 6 test suites (postprocessing, webgpu, webxr, physics, advanced, misc)
+- Coverage: ~33%
 
 ## Files Created This Session
-### Phase 8 WebGL Advanced & TSL (50 examples)
-- BufferGeometry*.tsx (10 variants)
-- Camera*.tsx (4 variants)
-- Materials*.tsx (12 variants)
-- Shader*.tsx (3 variants)
-- RenderTarget*.tsx (3 variants)
-- Scene*.tsx (5 variants)
-- ShadowMap*.tsx (3 variants)
-- Skinning*.tsx (2 variants)
-- TSL/*.tsx (4 variants)
-- Cloth.tsx, Culling.tsx, CustomAttributes.tsx, Instancing.tsx
-- Mirror.tsx, Refraction.tsx, Sandbox.tsx, SimpleGI.tsx, SortedDraw.tsx, Water.tsx
-- advanced.test.ts, PATTERNS.md
+### Phase 11 Misc & Games (21 examples)
+- games/FPS.tsx
+- misc/controls/Orbit.tsx, Fly.tsx, Map.tsx, Trackball.tsx, PointerLock.tsx, Event.tsx
+- misc/exporter/GLTF.tsx, OBJ.tsx, STL.tsx, PLY.tsx, Draco.tsx, USDZ.tsx
+- misc/animation/Keys.tsx, Project.tsx
+- misc/volume/Perlin.tsx
+- misc/Transform.tsx, Boxselection.tsx, Lookat.tsx, UvTests.tsx, Webrtc.tsx
+- index.ts files, misc.test.tsx, PATTERNS.md
 
 ## Next Steps
 1. Start Phase 10: WebAudio examples (4 examples)
-2. Start Phase 11: Miscellaneous examples (21 examples)
-3. Start Phase 12: Games examples (12 examples)
-4. Expand test coverage for existing phases
+2. Start Phase 12: CSS & SVG examples (12 examples)
+3. Expand test coverage for existing phases
 
 ## Notes
 - All phases (2-12) have detailed PLAN.md files

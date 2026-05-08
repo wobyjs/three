@@ -1,12 +1,22 @@
 import { Object3DNode } from '../../three-types'
 import { AudioListener } from 'three/src/audio/AudioListener.js'
 import { Audio as TAudio } from 'three/src/audio/Audio.js'
-export * from 'three/src/audio/Audio.js'
 export { TAudio as Audio }
+export { Audio as ThreeAudio } from 'three/src/audio/Audio.js'
 
+import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+
+declare module '../../lib/3/three'
+{
+    interface Three {
+        Audio: typeof TAudio
+    }
+}
+
+Three.Audio = TAudio
 
 
 declare module 'woby' {
