@@ -220,10 +220,68 @@ Plans:
 ## Phase 8: WebGL Advanced & TSL
 **Duration**: 3-4 weeks
 **Goal**: Port advanced webgl and TSL examples
+**Status**: COMPLETE
 
 ### Examples (50)
-- webgl_advanced_examples (46)
-- webgl_tsl_examples (4)
+- [x] webgl_advanced_buffergeometry (BufferGeometry)
+- [x] webgl_advanced_buffergeometry_indexed (BufferGeometryIndexed)
+- [x] webgl_advanced_buffergeometry_instanced (BufferGeometryInstanced)
+- [x] webgl_advanced_buffergeometry_instanced_interleaved (BufferGeometryInstancedInterleaved)
+- [x] webgl_advanced_buffergeometry_points (BufferGeometryPoints)
+- [x] webgl_advanced_buffergeometry_points_interleaved (BufferGeometryPointsInterleaved)
+- [x] webgl_advanced_buffergeometry_raw (BufferGeometryRaw)
+- [x] webgl_advanced_buffergeometry_selective_draw (BufferGeometrySelectiveDraw)
+- [x] webgl_advanced_buffergeometry_triangles (BufferGeometryTriangles)
+- [x] webgl_advanced_buffergeometry_uint (BufferGeometryUint)
+- [x] webgl_advanced_camera (Camera)
+- [x] webgl_advanced_camera_orthographic (CameraOrthographic)
+- [x] webgl_advanced_camera_perspective (CameraPerspective)
+- [x] webgl_advanced_camera_viewpoints (CameraViewpoints)
+- [x] webgl_advanced_cloth (Cloth)
+- [x] webgl_advanced_culling (Culling)
+- [x] webgl_advanced_custom_attributes (CustomAttributes)
+- [x] webgl_advanced_instancing (Instancing)
+- [x] webgl_advanced_materials (Materials)
+- [x] webgl_advanced_materials_envmaps (MaterialsEnvMaps)
+- [x] webgl_advanced_materials_envmaps_hdr (MaterialsEnvMapsHDR)
+- [x] webgl_advanced_materials_physical (MaterialsPhysical)
+- [x] webgl_advanced_materials_physical_clearcoat (MaterialsPhysicalClearcoat)
+- [x] webgl_advanced_materials_physical_transparency (MaterialsPhysicalTransparency)
+- [x] webgl_advanced_materials_variations_basic (MaterialsVariationsBasic)
+- [x] webgl_advanced_materials_variations_lambert (MaterialsVariationsLambert)
+- [x] webgl_advanced_materials_variations_phong (MaterialsVariationsPhong)
+- [x] webgl_advanced_materials_variations_standard (MaterialsVariationsStandard)
+- [x] webgl_advanced_materials_variations_physical (MaterialsVariationsPhysical)
+- [x] webgl_advanced_materials_variations_toon (MaterialsVariationsToon)
+- [x] webgl_advanced_mirror (Mirror)
+- [x] webgl_advanced_refraction (Refraction)
+- [x] webgl_advanced_rendertarget (RenderTarget)
+- [x] webgl_advanced_rendertarget_cube (RenderTargetCube)
+- [x] webgl_advanced_render_sharedarraybuffer (RenderSharedArrayBuffer)
+- [x] webgl_advanced_sandbox (Sandbox)
+- [x] webgl_advanced_scene (Scene)
+- [x] webgl_advanced_scene_background (SceneBackground)
+- [x] webgl_advanced_scene_crossfade (SceneCrossfade)
+- [x] webgl_advanced_scene_layers (SceneLayers)
+- [x] webgl_advanced_scene_zigzag (SceneZigzag)
+- [x] webgl_advanced_shader (Shader)
+- [x] webgl_advanced_shader2 (Shader2)
+- [x] webgl_advanced_shader3 (Shader3)
+- [x] webgl_advanced_shadowmap (ShadowMap)
+- [x] webgl_advanced_shadowmap_performance (ShadowMapPerformance)
+- [x] webgl_advanced_shadowmap_viewer (ShadowMapViewer)
+- [x] webgl_advanced_skinning (Skinning)
+- [x] webgl_advanced_skinning_simple (SkinningSimple)
+- [x] webgl_advanced_sorted_draw (SortedDraw)
+- [x] webgl_simple_gi (SimpleGI)
+- [x] webgl_water (Water)
+- [x] webgl_tsl_basic (TSLBasic)
+- [x] webgl_tsl_compute (TSLCompute)
+- [x] webgl_tsl_particles (TSLParticles)
+- [x] webgl_tsl_shader_node (TSLShaderNode)
+
+**Plans:**
+- [x] 08-01-PLAN.md - All 50 advanced and TSL examples
 
 ---
 
@@ -263,29 +321,33 @@ Plans:
 ## Phase 11: Misc & Games
 **Duration**: 2-3 weeks
 **Goal**: Port miscellaneous examples
+**Status**: COMPLETE
 
 ### Examples (21)
-- games_fps (1)
-- misc_animation_keys
-- misc_animation_project
-- misc_boxselection
-- misc_controls_event
-- misc_controls_fly
-- misc_controls_map
-- misc_controls_orbit
-- misc_controls_pointerlock
-- misc_controls_trackball
-- misc_controls_transform
-- misc_exporter_draco
-- misc_exporter_gltf
-- misc_exporter_obj
-- misc_exporter_ply
-- misc_exporter_stl
-- misc_exporter_usdz
-- misc_lookat
-- misc_uv_tests
-- misc_webrtc
-- misc_volume_perlin
+- [x] games_fps (1)
+- [x] misc_animation_keys
+- [x] misc_animation_project
+- [x] misc_boxselection
+- [x] misc_controls_event
+- [x] misc_controls_fly
+- [x] misc_controls_map
+- [x] misc_controls_orbit
+- [x] misc_controls_pointerlock
+- [x] misc_controls_trackball
+- [x] misc_controls_transform
+- [x] misc_exporter_draco
+- [x] misc_exporter_gltf
+- [x] misc_exporter_obj
+- [x] misc_exporter_ply
+- [x] misc_exporter_stl
+- [x] misc_exporter_usdz
+- [x] misc_lookat
+- [x] misc_uv_tests
+- [x] misc_webrtc
+- [x] misc_volume_perlin
+
+**Plans:**
+- [x] 11-01-PLAN.md - All 21 misc and games examples
 
 ---
 
@@ -356,9 +418,9 @@ Phase 1 (Foundation) ✓
 | 8 | 50 | 3-4 weeks | Not started |
 | 9 | 13 | 2-3 weeks | Not started |
 | 10 | 4 | 1 week | Not started |
-| 11 | 21 | 2-3 weeks | Not started |
+| 11 | 21 | 2-3 weeks | COMPLETE (21 examples) |
 | 12 | 12 | 1-2 weeks | Not started |
 
 **Total Examples**: ~574
-**Completed**: 10 (Phase 1)
-**Remaining**: ~564
+**Completed**: 45+ (Phase 1: 10, Phase 7: 14, Phase 11: 21)
+**Remaining**: ~529

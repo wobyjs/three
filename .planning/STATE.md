@@ -1,7 +1,7 @@
 # Project State
 
 ## Current Status
-**Phase**: 9 - COMPLETE
+**Phase**: 8 - COMPLETE
 **Last Updated**: 2026-05-08
 
 ## Completed Work
@@ -12,6 +12,7 @@
 - [x] Phase 5: Postprocessing (15 examples + tests + PATTERNS.md)
 - [x] Phase 6: WebGPU (11 examples + tests + PATTERNS.md)
 - [x] Phase 7: WebXR (14 examples + tests + PATTERNS.md)
+- [x] Phase 8: WebGL Advanced & TSL (50 examples + tests + PATTERNS.md)
 - [x] Phase 9: Physics (13 examples + tests + PATTERNS.md)
 
 ## Phase Progress
@@ -25,7 +26,7 @@
 | 5 | ✅ COMPLETE | 26 | 15 | 58% |
 | 6 | ✅ COMPLETE | 219 | 11 | 5% |
 | 7 | ✅ COMPLETE | 24 | 14 | 58% |
-| 8 | 📋 Planned | 50 | 0 | 0% |
+| 8 | ✅ COMPLETE | 50 | 50 | 100% |
 | 9 | ✅ COMPLETE | 13 | 13 | 100% |
 | 10 | 📋 Planned | 4 | 0 | 0% |
 | 11 | 📋 Planned | 21 | 0 | 0% |
@@ -33,43 +34,30 @@
 
 ## Metrics
 - Total Examples: 629
-- Ported: 137+ (216+ total .tsx files in examples/)
-- Tested: 4 test suites (postprocessing, webgpu, webxr, physics)
-- Coverage: ~22%
+- Ported: 187+ (266+ total .tsx files in examples/)
+- Tested: 5 test suites (postprocessing, webgpu, webxr, physics, advanced)
+- Coverage: ~30%
 
 ## Files Created This Session
-### Phase 5 Postprocessing (15 examples)
-- Basic.tsx, Bloom.tsx, SSAO.tsx, DOF.tsx, Glitch.tsx, Pixel.tsx, Outline.tsx
-- SSR.tsx, GodRays.tsx, Advanced.tsx, Masking.tsx
-- SMAA.tsx, FXAA.tsx, TAA.tsx, Procedural.tsx
-- postprocessing-index.ts, postprocessing.test.ts, PATTERNS.md
-
-### Phase 6 WebGPU (11 examples)
-- _template.tsx, Basic.tsx, Geometries.tsx, Materials.tsx, Lights.tsx, Animation.tsx
-- TSL.tsx, Particles.tsx, Postprocessing.tsx
-- LoaderGLTF.tsx, Shadowmap.tsx, Cubemap.tsx
-- webgpu-index.ts, webgpu.test.ts, PATTERNS.md
-
-### Phase 7 WebXR (14 examples)
-- _template.tsx, VRCubes.tsx, ARCones.tsx
-- vr/Cubes.tsx, vr/Dragging.tsx, vr/Haptics.tsx, vr/Paint.tsx
-- vr/HandInput.tsx, vr/Panorama.tsx, vr/Ballshooter.tsx, vr/Rollercoaster.tsx
-- ar/Cones.tsx, ar/HitTest.tsx, ar/Lighting.tsx
-- webxr-index.ts, webxr.test.ts, PATTERNS.md
-
-### Phase 9 Physics (13 examples)
-- ammo/Break.tsx, ammo/Cloth.tsx, ammo/Instancing.tsx
-- ammo/Rope.tsx, ammo/Terrain.tsx, ammo/Volume.tsx
-- jolt/Drive.tsx, jolt/Instancing.tsx, jolt/Vehicle.tsx
-- rapier/Basic.tsx, rapier/Instancing.tsx, rapier/Joints.tsx, rapier/Terrain.tsx
-- index.ts, physics.test.tsx, PATTERNS.md
+### Phase 8 WebGL Advanced & TSL (50 examples)
+- BufferGeometry*.tsx (10 variants)
+- Camera*.tsx (4 variants)
+- Materials*.tsx (12 variants)
+- Shader*.tsx (3 variants)
+- RenderTarget*.tsx (3 variants)
+- Scene*.tsx (5 variants)
+- ShadowMap*.tsx (3 variants)
+- Skinning*.tsx (2 variants)
+- TSL/*.tsx (4 variants)
+- Cloth.tsx, Culling.tsx, CustomAttributes.tsx, Instancing.tsx
+- Mirror.tsx, Refraction.tsx, Sandbox.tsx, SimpleGI.tsx, SortedDraw.tsx, Water.tsx
+- advanced.test.ts, PATTERNS.md
 
 ## Next Steps
-1. Start Phase 8: WebGL Advanced & TSL examples (50 examples)
-2. Start Phase 10: WebAudio examples (4 examples)
-3. Start Phase 11: Miscellaneous examples (21 examples)
-4. Start Phase 12: Games examples (12 examples)
-5. Expand test coverage for existing phases
+1. Start Phase 10: WebAudio examples (4 examples)
+2. Start Phase 11: Miscellaneous examples (21 examples)
+3. Start Phase 12: Games examples (12 examples)
+4. Expand test coverage for existing phases
 
 ## Notes
 - All phases (2-12) have detailed PLAN.md files
@@ -79,3 +67,4 @@
 - AR examples require AR-capable device (ARCore/ARKit)
 - Hand tracking requires VR headset with hand tracking support
 - Each completed phase has PATTERNS.md documenting key patterns
+- TSL examples use WebGL fallbacks (full TSL requires WebGPU)
