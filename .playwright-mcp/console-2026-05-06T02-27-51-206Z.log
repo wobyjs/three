@@ -1,0 +1,12 @@
+[  138888ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-IXVVFHSD.js?v=13bbac6b:16599
+[  138899ms] [ERROR] Failed to load demo "webgl_group": ReferenceError: OrbitControls is not defined
+    at Grp (http://localhost:5174/src/group.tsx?t=1778034609247:94:28)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:82
+    at untrack (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/methods/untrack.js:17:20)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:14
+    at Observable.update (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/objects/observable.js:160:23)
+    at Observable.writableFunction (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/objects/callable.js:26:25)
+    at http://localhost:5174/src/layout/DemoViewer.tsx?t=1778034609247:18:7 @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1778034609247:23
+[  138900ms] [LOG] undefined @ http://localhost:5174/src/group.tsx?t=1778034609247:19
+[  150960ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-IXVVFHSD.js?v=13bbac6b:16599
+[  150969ms] [LOG] undefined @ http://localhost:5174/src/group.tsx?t=1778034621382:19

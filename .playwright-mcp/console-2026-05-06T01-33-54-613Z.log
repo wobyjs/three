@@ -1,0 +1,22 @@
+[    1361ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5174/favicon.ico:0
+[    1630ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-IXVVFHSD.js?v=13bbac6b:16599
+[   42404ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/examples/jsm/geometries/ParametricGeometry.ts?t=1777963031102:0
+[   42405ms] [ERROR] Failed to load demo "webgl_group": TypeError: Failed to fetch dynamically imported module: http://localhost:5174/src/group.tsx @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1777975588744:23
+[   77247ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-IXVVFHSD.js?v=13bbac6b:16599
+[   77249ms] [ERROR] Three.WebGLRenderer not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199
+[   77250ms] [ERROR] Three.MeshBasicMaterial not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199
+[   77254ms] [ERROR] Three.MeshBasicMaterial not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199
+[   77256ms] [ERROR] Three.Scene not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199
+[   77256ms] [ERROR] Three.PerspectiveCamera not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199
+[   77256ms] [ERROR] Failed to load demo "webgl_group": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/3/useParams.tsx?t=1777968033790:7:51)
+    at useParams (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/3/useParams.tsx?t=1777968033790:20:14)
+    at extractProps2constructor (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/extractProps2constructor.tsx?t=1777968033790:18:42)
+    at createElement (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:203:22)
+    at jsx (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/jsx.tsx?t=1777968033790:4:64)
+    at Grp (http://localhost:5174/src/group.tsx?t=1778031311161:90:21)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:82
+    at untrack (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/methods/untrack.js:17:20)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:14 @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1778031311161:23
+[   77257ms] [LOG] undefined @ http://localhost:5174/src/group.tsx?t=1778031311161:15

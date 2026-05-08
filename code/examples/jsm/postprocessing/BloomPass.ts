@@ -47,7 +47,7 @@ consParams.bloomPass = bloomPass
 
 
 
-const _bloomPass = ([...objProps.pass,
+const _bloomPass = ([...(objProps.pass || []),
     'renderTargetX',
     'renderTargetY',
     'copyUniforms',

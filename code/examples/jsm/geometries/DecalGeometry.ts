@@ -7,6 +7,7 @@ export * from 'three/examples/jsm/geometries/DecalGeometry.js'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../../src/core/BufferGeometry'
 
 declare module 'woby' {
     namespace JSX {

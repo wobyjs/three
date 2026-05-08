@@ -1,6 +1,6 @@
 import { type JSX } from "woby";
 import { jsx } from "./lib/three/jsx";
-declare const render: (children: JSX.Child, parent: JSX.Child) => () => void;
+declare const render: (children: JSX.Child, parent: JSX.Child) => unknown;
 export declare const Fragment: ({ children }: {
     children: [];
 }) => never[];

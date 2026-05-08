@@ -1,6 +1,7 @@
 import { Node } from '../../../three-types'
 import '../../../src/lights/Light'
 import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator.js'
+export { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator.js'
 
 import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'

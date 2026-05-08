@@ -47,7 +47,7 @@ consParams.shaderPass = shaderPass
 
 
 
-const _shaderPass = ([...objProps.pass,
+const _shaderPass = ([...(objProps.pass || []),
     'textureID',
     'uniforms',
     'material',

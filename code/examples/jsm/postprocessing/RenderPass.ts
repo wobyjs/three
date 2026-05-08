@@ -53,7 +53,7 @@ consParams.renderPass = renderPass
 
 
 
-const _renderPass = ([...objProps.pass,
+const _renderPass = ([...(objProps.pass || []),
     'scene',
     'camera',
     'overrideMaterial',

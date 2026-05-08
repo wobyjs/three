@@ -1,0 +1,7 @@
+{
+  "dmPolicy": "pairing",
+  "allowFrom": ["255433743"],
+  "groups": {},
+  "pending": {},
+  "mentionPatterns": ["@chichong3bot"]
+}

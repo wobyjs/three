@@ -48,7 +48,7 @@ consParams.vectorKeyframeTrack = vectorKeyframeTrack
 
 
 
-const _vectorKeyframeTrack = ([...objProps.keyframeTrack,
+const _vectorKeyframeTrack = ([...(objProps.keyframeTrack || []),
     /**
      * @default 'vector'
      */

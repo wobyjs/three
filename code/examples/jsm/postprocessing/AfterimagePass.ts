@@ -45,7 +45,7 @@ consParams.afterimagePass = afterimagePass
 
 
 
-const _afterimagePass = ([...objProps.pass,
+const _afterimagePass = ([...(objProps.pass || []),
     'shader',
     'uniforms',
     'textureComp',

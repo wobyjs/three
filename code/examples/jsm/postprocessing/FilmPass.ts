@@ -47,7 +47,7 @@ consParams.filmPass = filmPass
 
 
 
-const _filmPass = ([...objProps.pass,
+const _filmPass = ([...(objProps.pass || []),
     'uniforms',
     'material',
     'fsQuad',

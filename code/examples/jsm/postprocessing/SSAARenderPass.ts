@@ -52,7 +52,7 @@ consParams.ssaaRenderPass = ssaaRenderPass
 
 
 
-const _ssaaRenderPass = ([...objProps.pass,
+const _ssaaRenderPass = ([...(objProps.pass || []),
     'scene',
     'camera',
     'sampleLevel',

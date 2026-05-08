@@ -49,7 +49,7 @@ consParams.unrealBloomPass = unrealBloomPass
 
 
 
-const _unrealBloomPass = ([...objProps.pass,
+const _unrealBloomPass = ([...(objProps.pass || []),
     'resolution',
     'strength',
     'radius',

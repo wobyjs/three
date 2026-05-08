@@ -1,6 +1,6 @@
 import { MaterialNode } from './MaterialNode'
-import { PointsMaterial, PointsMaterialParameters } from 'three/src/materials/PointsMaterial.js'
-export { PointsMaterial, PointsMaterialParameters } from 'three/src/materials/PointsMaterial.js'
+import { PointsMaterial } from 'three/src/materials/PointsMaterial.js'
+export { PointsMaterial } from 'three/src/materials/PointsMaterial.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
@@ -28,8 +28,8 @@ declare module 'woby' {
 
 declare module '../../lib/3/consParams' {
     interface consParams {
-        pointsMaterial: WrapAsString<PointsMaterialParameters>
-        pointsMaterialParameters: WrapAsString<PointsMaterialParameters>
+        pointsMaterial: WrapAsString<any>
+        pointsMaterialParameters: WrapAsString<any>
     }
 }
 
@@ -65,7 +65,7 @@ const _pointsMaterialParameters = ([...objProps.materialParameters,
     'size',
     'sizeAttenuation',
     'fog',
-] as const).distinct()
+] as const)
 objProps.pointsMaterialParameters = _pointsMaterialParameters
 
 
@@ -99,14 +99,14 @@ const _pointsMaterial = ([...objProps.material,
      * @default fog
      */
     'fog',
-] as const).distinct()
+] as const)
 objProps.pointsMaterial = _pointsMaterial
 
-export type PointsMaterialProps = MaterialNode<PointsMaterial, PointsMaterialParameters>
+export type PointsMaterialProps = MaterialNode<PointsMaterial, any>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        pointsMaterial: Partial<PointsMaterialParameters>
+        pointsMaterial: Partial<any>
     }
 }
 

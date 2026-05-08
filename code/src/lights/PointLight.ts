@@ -5,28 +5,28 @@ export { PointLight } from 'three/src/lights/PointLight.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults as threeDefaults } from '../../lib/3/defaults'
+import { defaults } from '../../lib/3/defaults'
 
 import './Light'
-import { customElement, defaults, $ } from 'woby'
-import { HtmlNumber, HtmlBoolean } from 'woby'
+// import { customElement, defaults, $ } from 'woby'
+// import { HtmlNumber, HtmlBoolean } from 'woby'
 
-// Define default props for the custom element
-const def = () => ({
-    color: $(0xffffff, { type: 'number' } as const),
-    intensity: $(1, { type: 'number' } as const),
-    distance: $(0, { type: 'number' } as const),
-    decay: $(2, { type: 'number' } as const),
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     color: $(0xffffff, { type: 'number' } as const),
+//     intensity: $(1, { type: 'number' } as const),
+//     distance: $(0, { type: 'number' } as const),
+//     decay: $(2, { type: 'number' } as const),
+// })
 
-// Create the Woby component with defaults
-const ThreePointLight = defaults(def, (props: any) => {
-    // This is a placeholder - the actual Three.js object creation happens via JSX
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreePointLight = defaults(def, (props: any) => {
+//     // This is a placeholder - the actual Three.js object creation happens via JSX
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-point-light', ThreePointLight)
+// // Register custom element with proper defaults
+// customElement('three-point-light', ThreePointLight)
 
 declare module '../../lib/3/three'
 {
@@ -182,4 +182,4 @@ declare module '../../lib/3/defaults' {
     }
 }
 
-threeDefaults.pointLight = { color: 16777215, intensity: 1, distance: 0, decay: 2 }
+defaults.pointLight = { color: 16777215, intensity: 1, distance: 0, decay: 2 }

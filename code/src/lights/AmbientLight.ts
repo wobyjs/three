@@ -8,28 +8,28 @@ import { objProps } from '../../lib/3/objProps'
 import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Light'
-import { customElement, defaults as wobyDefaults, $ } from 'woby'
+import { /* customElement, defaults as wobyDefaults, */ $ } from 'woby'
 
-// Define default props for the custom element
-const def = () => ({
-    color: $(0xffffff, { type: 'number' } as const),
-    intensity: $(1, { type: 'number' } as const),
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     color: $(0xffffff, { type: 'number' } as const),
+//     intensity: $(1, { type: 'number' } as const),
+// })
 
-// Create the Woby component with defaults
-const ThreeAmbientLight = wobyDefaults(def, (props: any) => {
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreeAmbientLight = wobyDefaults(def, (props: any) => {
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-ambient-light', ThreeAmbientLight)
+// // Register custom element with proper defaults
+// customElement('three-ambient-light', ThreeAmbientLight)
 
-declare module '../../lib/3/three'
-{
-    interface Three {
-        AmbientLight: typeof AmbientLight
-    }
-}
+// declare module '../../lib/3/three'
+// {
+//     interface Three {
+//         AmbientLight: typeof AmbientLight
+//     }
+// }
 
 Three.AmbientLight = AmbientLight
 Three['ambient-light'] = AmbientLight

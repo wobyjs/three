@@ -46,7 +46,7 @@ consParams.glitchPass = glitchPass
 
 
 
-const _glitchPass = ([...objProps.pass,
+const _glitchPass = ([...(objProps.pass || []),
     'uniforms',
     'material',
     'fsQuad',

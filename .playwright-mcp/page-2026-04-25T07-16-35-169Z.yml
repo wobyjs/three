@@ -1,0 +1,49 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - button "Plane" [ref=e3]
+    - button "3 Boxes + Click" [ref=e4]
+    - button "Box + static text" [ref=e5]
+    - button "GLTF" [ref=e6]
+    - button "Gltf Anisotropy" [ref=e7]
+    - button "Boxes + Click" [ref=e8]
+    - button "Box html text" [ref=e9]
+    - button "Fat Line" [active] [ref=e10]
+    - button "Simple Line" [ref=e11]
+    - button "DLines" [ref=e12]
+    - button "Object3D Add" [ref=e13]
+    - button "Group" [ref=e14]
+    - button "Css3d Periodictable" [ref=e15]
+    - button "WebGL Css3d" [ref=e16]
+  - generic [ref=e17]:
+    - button "▾ Controls" [expanded] [ref=e18] [cursor=pointer]
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: line type
+        - generic [ref=e22] [cursor=pointer]:
+          - combobox "line type" [ref=e23]:
+            - option "LineGeometry" [selected]
+            - option "gl.LINE"
+          - generic: LineGeometry ↕
+      - generic [ref=e24]:
+        - generic [ref=e25]: world units
+        - checkbox "world units" [ref=e27] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e29]: width
+        - spinbutton "width" [ref=e33]: "5"
+      - generic [ref=e34]:
+        - generic [ref=e35]: alphaToCoverage
+        - checkbox "alphaToCoverage" [ref=e37] [cursor=pointer]
+      - generic [ref=e38]:
+        - generic [ref=e39]: dashed
+        - checkbox "dashed" [ref=e41] [cursor=pointer]
+      - generic [ref=e42]:
+        - generic [ref=e43]: dash scale
+        - spinbutton "dash scale" [ref=e47]: "1"
+      - generic [ref=e48]:
+        - generic [ref=e49]: dash / gap
+        - generic [ref=e50] [cursor=pointer]:
+          - combobox "dash / gap" [ref=e51]:
+            - 'option "2 : 1"'
+            - 'option "1 : 1" [selected]'
+            - 'option "1 : 2"'
+          - generic: "1 : 1 ↕"

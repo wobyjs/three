@@ -52,7 +52,7 @@ consParams.outlinePass = outlinePass
 
 
 
-const _outlinePass = ([...objProps.pass,
+const _outlinePass = ([...(objProps.pass || []),
     'renderScene',
     'renderCamera',
     'selectedObjects',

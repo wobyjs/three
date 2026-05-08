@@ -1,9 +1,9 @@
 // / <reference path="../jsx-runtime" />
 /** @jsxImportSource ../jsx-runtime */
 
-import woby, { type JSX, FunctionMaybe, Observable, ObservableMaybe, useMemo } from 'woby'
+import woby, { type JSX, FunctionMaybe, Observable, ObservableMaybe, useMemo, type PromiseMaybe } from 'woby'
 
-export { useMemo } from 'woby'
+export { useMemo, type PromiseMaybe } from 'woby'
 import * as THREE from 'three'
 import type { Vector2 as TVector2 } from 'three/src/math/Vector2'
 import type { Vector3 as TVector3 } from 'three/src/math/Vector3'
@@ -21,8 +21,6 @@ import type { Layers as TLayers } from 'three/src/core/Layers'
 import type { ColorRepresentation as TColorRepresentation } from 'three/src/math/Color'
 import type { Group as TGroup } from 'three/src/objects/Group'
 import type { Object3DEventMap as TObject3DEventMap } from 'three/src/core/Object3D'
-
-export type PromiseMaybe<T> = PromiseLike<T> | T
 
 export type Properties<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
 export type NonFunctionKeys<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T]

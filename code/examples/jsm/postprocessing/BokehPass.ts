@@ -68,7 +68,7 @@ const _bokehPassParamters = ([
 objProps.bokehPassParamters = _bokehPassParamters
 
 
-const _bokehPass = ([...objProps.pass,
+const _bokehPass = ([...(objProps.pass || []),
     'scene',
     'camera',
     'renderTargetColor',

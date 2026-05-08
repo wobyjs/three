@@ -67,7 +67,7 @@
 // export * from './src/objects/Bone'
 // export * from './src/objects/Mesh'
 // export * from './src/objects/InstancedMesh'
-// export * from './src/objects/BatchedMesh'
+export * from './src/objects/BatchedMesh'
 // export * from './src/objects/LineSegments'
 // export * from './src/objects/LineLoop'
 // export * from './src/objects/Line'
@@ -211,4 +211,8 @@
 
 // export * from './lib'
 
+// Re-export everything from woby (including Observable, createContext, useContext, etc.)
+export * from 'woby'
+
+// Three.js types and components
 export * from './three-types'

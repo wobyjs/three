@@ -51,7 +51,7 @@ consParams.renderTransitionPass = renderTransitionPass
 
 
 
-const _renderTransitionPass = ([...objProps.pass,
+const _renderTransitionPass = ([...(objProps.pass || []),
     'material',
     'fsQuad',
     'sceneA',

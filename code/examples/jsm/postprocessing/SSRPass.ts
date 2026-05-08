@@ -71,7 +71,7 @@ const _ssrPassParams = ([
 objProps.ssrPassParams = _ssrPassParams
 
 
-const _ssrPass = ([...objProps.pass,
+const _ssrPass = ([...(objProps.pass || []),
     'width',
     'height',
     'clear',

@@ -1,8 +1,8 @@
 // / <reference path='./jsx-runtime' />
 /** @jsxImportSource ./jsx-runtime */
 
-import { createContext, useContext, ObservableMaybe, Observable, Context } from 'woby'
-import { Font } from 'three/examples/jsm/loaders/FontLoader'
+import { $$, createContext, useContext, ObservableMaybe, Observable, Context } from 'woby'
+import type { Font } from 'three/examples/jsm/loaders/FontLoader'
 // import { Renderer } from '../../src/renderers/common/Renderer';
 import { Scene } from '../../src/scenes/Scene';
 import { Camera } from '../../src/cameras/Camera';
@@ -52,7 +52,7 @@ export const ThreeContext = window.threeContext
 export function useThree(): ThreeContextType
 export function useThree<K extends keyof ThreeContextType = keyof ThreeContextType, T extends ThreeContextType[K] = ThreeContextType[K]>(key?: K, v?: ToObservableMaybe<T>): T
 export function useThree<K extends keyof ThreeContextType = keyof ThreeContextType, T extends ThreeContextType[K] = ThreeContextType[K]>(key?: K, v?: ToObservableMaybe<T>): T | ThreeContextType {
-    const t = useContext(ThreeContext) as ThreeContextType
+    const t = $$(useContext(ThreeContext) as any) as ThreeContextType
 
     if (!t) return undefined
     if (!key)

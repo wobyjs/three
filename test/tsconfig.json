@@ -1,0 +1,16 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "@woby/three",
+        "rootDir": "..",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "baseUrl": "..",
+        "paths": {
+            "@woby/three/jsx-runtime": ["code/lib/jsx/runtime.tsx"]
+        }
+    },
+    "include": ["**/*"],
+    "exclude": []
+}

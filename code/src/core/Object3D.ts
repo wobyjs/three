@@ -1,6 +1,6 @@
 import { Object3DNode } from '../../three-types'
-import { Object3D as TObject3D, type Object3DEventMap as TObject3DEventMap } from 'three/src/core/Object3D'
-export * from 'three/src/core/Object3D'
+import { Object3D as TObject3D, type Object3DEventMap as TObject3DEventMap } from 'three/src/core/Object3D.js'
+export * from 'three/src/core/Object3D.js'
 export { TObject3D as Object3D, type TObject3DEventMap as Object3DEventMap }
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'

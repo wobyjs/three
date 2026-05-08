@@ -4,28 +4,28 @@ export { BoxGeometry } from 'three/src/geometries/BoxGeometry.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults as threeDefaults } from '../../lib/3/defaults'
+import { defaults } from '../../lib/3/defaults'
 
 import '../core/BufferGeometry'
-import { customElement, defaults, $ } from 'woby'
+import { /* customElement, defaults, */ $ } from 'woby'
 
-// Define default props for the custom element
-const def = () => ({
-    width: $(1, { type: 'number' } as const),
-    height: $(1, { type: 'number' } as const),
-    depth: $(1, { type: 'number' } as const),
-    widthSegments: $(1, { type: 'number' } as const),
-    heightSegments: $(1, { type: 'number' } as const),
-    depthSegments: $(1, { type: 'number' } as const),
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     width: $(1, { type: 'number' } as const),
+//     height: $(1, { type: 'number' } as const),
+//     depth: $(1, { type: 'number' } as const),
+//     widthSegments: $(1, { type: 'number' } as const),
+//     heightSegments: $(1, { type: 'number' } as const),
+//     depthSegments: $(1, { type: 'number' } as const),
+// })
 
-// Create the Woby component with defaults
-const ThreeBoxGeometry = defaults(def, (props: any) => {
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreeBoxGeometry = defaults(def, (props: any) => {
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-box-geometry', ThreeBoxGeometry)
+// // Register custom element with proper defaults
+// customElement('three-box-geometry', ThreeBoxGeometry)
 
 // Also register with browser's Custom Elements registry for proper web component support
 if (typeof globalThis !== 'undefined' && globalThis.customElements && !globalThis.customElements.get('three-box-geometry')) {
@@ -148,5 +148,4 @@ declare module '../../lib/3/defaults' {
 
 defaults.boxGeometry = { width: 1, height: 1, depth: 1, widthSegments: 1, heightSegments: 1, depthSegments: 1 }
 
-threeDefaults.boxGeometry = { width: 1, height: 1, depth: 1, widthSegments: 1, heightSegments: 1, depthSegments: 1 }
 

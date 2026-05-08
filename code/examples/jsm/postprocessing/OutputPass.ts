@@ -45,7 +45,7 @@ consParams.outputPass = outputPass
 
 
 
-const _outputPass = ([...objProps.pass,
+const _outputPass = ([...(objProps.pass || []),
     'uniforms',
     'material',
     'fsQuad',

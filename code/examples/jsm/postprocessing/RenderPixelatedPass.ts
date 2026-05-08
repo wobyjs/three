@@ -66,7 +66,7 @@ const _renderPixelatedPassParameters = ([
 objProps.renderPixelatedPassParameters = _renderPixelatedPassParameters
 
 
-const _renderPixelatedPass = ([...objProps.pass,
+const _renderPixelatedPass = ([...(objProps.pass || []),
     'pixelSize',
     'resolution',
     'renderResolution',

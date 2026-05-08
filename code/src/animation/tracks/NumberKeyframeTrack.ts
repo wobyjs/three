@@ -48,7 +48,7 @@ consParams.numberKeyframeTrack = numberKeyframeTrack
 
 
 
-const _numberKeyframeTrack = ([...objProps.keyframeTrack,
+const _numberKeyframeTrack = ([...(objProps.keyframeTrack || []),
     /**
      * @default 'number'
      */

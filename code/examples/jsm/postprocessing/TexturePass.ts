@@ -48,7 +48,7 @@ consParams.texturePass = texturePass
 
 
 
-const _texturePass = ([...objProps.pass,
+const _texturePass = ([...(objProps.pass || []),
     'map',
     'opacity',
     'uniforms',

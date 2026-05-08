@@ -1,0 +1,4 @@
+[   34367ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5173/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=6ea7641a:21312
+[   34374ms] [LOG] page2 @ http://localhost:5173/src/BoxStaticText.tsx?t=1777968063394:19
+[   34381ms] [LOG] undefined @ http://localhost:5173/src/BoxStaticText.tsx?t=1777968063394:73
+[   34549ms] [LOG] Font @ http://localhost:5173/src/BoxStaticText.tsx?t=1777968063394:73

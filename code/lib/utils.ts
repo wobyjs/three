@@ -251,4 +251,9 @@ export const toColor = (color: ObservableMaybe<string | number | Color | Texture
 }
 
 
-export const customElement2name = (component: string) => component.replace(/^three-/, '').replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+export const customElement2name = (component: string | Function) => {
+    if (typeof component === 'function') {
+        return component.name || ''
+    }
+    return component.replace(/^three-/, '').replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+}

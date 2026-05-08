@@ -1,6 +1,6 @@
 {
   "name": "@woby/three",
-  "version": "0.2.17",
+  "version": "0.2.42",
   "publishConfig": {
     "access": "public"
   },
@@ -69,7 +69,8 @@
     "clean:all": "run-p clean:index clean:3types clean:3 clean:dist clean:examples clean:jsx clean:jsx:dev clean:lib clean:src clean:3ts clean:3dts clean:dts clean:js",
     "release:automatic": "semantic-release --extends ../semantic-release.config.js",
     "commit:help": "echo 'Usage: pnpm run commit' && echo 'This will start the commitizen wizard to create a conventional commit.' && echo 'Follow the prompts to enter commit type, scope, and message.'",
-    "test": "playwright test",
+    "test": "tsx test/three.test.ts && tsx test/controls.test.ts && tsx test/geometries.test.ts && tsx test/lines.test.ts && tsx test/math.test.ts && tsx test/misc.test.ts && tsx test/effects.test.ts && tsx test/postprocessing.test.ts && tsx test/renderers.test.ts && tsx test/objects.test.ts && tsx test/helpers.test.ts && tsx test/modifiers.test.ts && tsx test/loaders.test.ts && tsx test/jsx.test.tsx",
+    "test:e2e": "playwright test",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report"
   },
@@ -101,7 +102,10 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "@three.ez/batched-mesh-extensions": "^0.0.11",
+    "@three.ez/simplify-geometry": "^0.0.1",
     "madge": "^8.0.0",
-    "postcss": "^8.5.6"
+    "postcss": "^8.5.6",
+    "three-mesh-bvh": "^0.9.9"
   }
 }

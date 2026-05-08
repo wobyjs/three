@@ -1,0 +1,23 @@
+[   42104ms] [ERROR] Failed to load demo "webgl_fat_lines": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/3/useParams.tsx?t=1777968033790:7:51)
+    at useParams (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/3/useParams.tsx?t=1777968033790:20:14)
+    at extractProps2constructor (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/extractProps2constructor.tsx?t=1777968033790:18:42)
+    at createElement (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:203:22)
+    at jsx (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/jsx.tsx?t=1777968033790:4:64)
+    at FatLines (http://localhost:5174/src/FatLines.tsx:182:27)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:82
+    at untrack (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/methods/untrack.js:17:20)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:14 @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1778035252402:23
+[  144252ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-IXVVFHSD.js?v=13bbac6b:16599
+[  144271ms] [ERROR] Three.AmbientLight not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199
+[  144272ms] [ERROR] Failed to load demo "webgl_fat_lines": ReferenceError: OrbitControls is not defined
+    at FatLines (http://localhost:5174/src/FatLines.tsx?t=1778035409558:183:34)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:82
+    at untrack (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/methods/untrack.js:17:20)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:14
+    at Observable.update (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/objects/observable.js:160:23)
+    at Observable.writableFunction (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/objects/callable.js:26:25)
+    at http://localhost:5174/src/layout/DemoViewer.tsx?t=1778035409558:18:7 @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1778035409558:23
+[  166967ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-IXVVFHSD.js?v=13bbac6b:16599
+[  166988ms] [ERROR] Three.AmbientLight not register @ http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:199

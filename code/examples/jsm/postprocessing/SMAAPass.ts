@@ -47,7 +47,7 @@ consParams.smaaPass = smaaPass
 
 
 
-const _smaaPass = ([...objProps.pass,
+const _smaaPass = ([...(objProps.pass || []),
     'edgesRT',
     'weightsRT',
     'areaTexture',

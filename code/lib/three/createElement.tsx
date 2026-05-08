@@ -1,5 +1,5 @@
 /* IMPORT */
-import { $, $$, untrack, useEffect, useMemo, createElement as ce, type JSX, callStack, } from "woby"
+import { $, $$, untrack, useEffect, useMemo, createElement as ce, type JSX, callStack, SYMBOL_CLONE, } from "woby"
 import { isFunction, isPromiseR, toUpper, awaitAll, woby3Child, isObservableR, isNullR, isFunctionR } from "../utils"
 import { Three } from "../3/three"
 import { extractProps2constructor, resolveConstructorDefaults } from "./extractProps2constructor"
@@ -177,20 +177,29 @@ const html = {
     tspan: true,
     use: true,
 }
+
+// Helper to check if a function is a Three.js class constructor
+const isThreeClass = (fn: any): boolean => {
+    if (typeof fn !== 'function') return false
+    // Check if it's registered in Three object
+    for (const key in Three) {
+        if ((Three as any)[key] === fn) return true
+    }
+    // Check if function name matches a Three.js class name
+    const name = fn.name
+    if (name && (Three as any)[name]) return true
+    return false
+}
+
 export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof consParams & keyof objProps & keyof defaults), P extends JSX.IntrinsicElements & { children?: JSX.Child[], ref: JSX.Refs<JSX.IntrinsicElements[K]>, args?: [] | {} }>
     (component: K, props: P, key?: string) => {
     const stack = callStack('createElement')
 
-    // Debug logging for custom elements
-    if (typeof component === 'string' && component.startsWith('three-')) {
-        console.log('[createElement] Processing custom element:', component, 'props:', props)
-    }
-
     if ((component as any).name === 'Fragment')
         return woby3Child(() => props.children)
-    else if (isFunction(component)) // && !(isFunctionReactive(component) && useScene() && !hasSymbol(component, IN_CONTEXT)))
+    else if (isFunction(component) && !isThreeClass(component)) // Regular function component (not a Three.js class)
         return woby3Child(() => untrack(() => component.call(component, props as P)))
-    else {// String or THREE.Class based
+    else {// String or THREE.Class based (including Three.js classes passed as functions)
         // Strip 'three-' prefix from custom elements and convert to PascalCase
         let componentName = component as string
         if (typeof component === 'string' && component.startsWith('three-')) {
@@ -199,8 +208,9 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
                 .split('-')
                 .map(part => part.charAt(0).toUpperCase() + part.slice(1))
                 .join('')
-
-            console.log('[createElement] Converted custom element:', component, '->', componentName)
+        } else if (isFunction(component)) {
+            // If component is a Three.js class function, use its name
+            componentName = (component as any).name || ''
         }
         const cname = toUpper(componentName)
         if (!Three[cname] && !html[component as string])
@@ -209,44 +219,43 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
         if (!Three[cname])
             return ce(component, props)
 
-        const cp = track(extractProps2constructor(component, props as any))
-        console.log('[createElement] Constructor params for', component, ':', cp)
+        const cp = track(extractProps2constructor(componentName, props as any))
         // const rcp = $$$$(cp)
         if (isObservableR(cp) || isFunctionR(cp)) {
             const r = $()
+            r[SYMBOL_CLONE] = { Component: component, props }
             useEffect(() => {
                 const rcp = $$(cp)
                 // console.log(rcp)
 
-                resolveConstructorDefaults<K, P>(component, rcp)
+                resolveConstructorDefaults<K, P>(componentName, rcp)
 
                 if (isNullR(rcp)) return undefined
 
                 // const rcp = $$$$(cp)
                 // if (checkNull && isNullR(rcp)) return undefined
-                r(getInstance(component, props, rcp, stack))
+                r(getInstance(componentName, props, rcp, stack))
                 // return getContextualInstance(component, props, cp)
             })
             return r
         }
         else if (isPromiseR(cp)) {
-            console.log("promise", component)
             return useMemo(() => {
                 //wrapSymbol(() => untrack(() =>
                 const r = $();
-                (async () => {
+                r[SYMBOL_CLONE] = { Component: component, props }
+                ;(async () => {
                     const rcp = await awaitAll(cp)
 
-                    const cname = toUpper(component as any)
                     if (!Three[cname]) {
-                        console.error(`Three['${toUpper(component)}'] not found, please register it`)
+                        console.error(`Three['${cname}'] not found, please register it`)
                         return
                     }
 
                     //   await awaitAll(props, objProps[component as string])
 
-                    extractProps2constructor(component, props as any)
-                    r(getInstance(component as any, props, rcp, stack))
+                    extractProps2constructor(componentName, props as any)
+                    r(getInstance(componentName as any, props, rcp, stack))
                 })()
 
                 return r
@@ -255,14 +264,14 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
         }
 
         else {
-            return woby3Child(() => {
+            const fn = woby3Child(() => {
                 // resolve constructor params 1 time,
                 // reactive constructor params but also set-able in obj instance, done in fixReactiveProps
-                // console.log(component, props, cp)
-                // useThree()
-                resolveConstructorDefaults<K, P>(component, cp)
-                return untrack(getInstance(component, props, cp, stack))
+                resolveConstructorDefaults<K, P>(componentName, cp)
+                return untrack(getInstance(componentName, props, cp, stack))
             })
+            fn[SYMBOL_CLONE] = { Component: component, props }
+            return fn
         }
     }
 }

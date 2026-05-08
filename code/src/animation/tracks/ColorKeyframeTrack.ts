@@ -48,7 +48,7 @@ consParams.colorKeyframeTrack = colorKeyframeTrack
 
 
 
-const _colorKeyframeTrack = ([...objProps.keyframeTrack,
+const _colorKeyframeTrack = ([...(objProps.keyframeTrack || []),
     /**
      * @default 'color'
      */

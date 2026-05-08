@@ -1,0 +1,25 @@
+[  400933ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5173/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=5b502944:21312
+[  404610ms] [LOG] [Box3] scene Scene @ http://localhost:5173/src/Box3.tsx:68
+[  404610ms] [LOG] [Box3] ✓ Scene is valid @ http://localhost:5173/src/Box3.tsx:70
+[  404610ms] [LOG] [Box3] ✓ Background is set: Color @ http://localhost:5173/src/Box3.tsx:72
+[  404611ms] [LOG] [Box3] ✓ Lights verified: {total: 3, ambient: 1, spot: 1, point: 1} @ http://localhost:5173/src/Box3.tsx:81
+[  404611ms] [LOG] [Box3] ✓ AmbientLight intensity is correct @ http://localhost:5173/src/Box3.tsx:89
+[  404611ms] [LOG] [Box3] ✓ SpotLight properties are correct @ http://localhost:5173/src/Box3.tsx:94
+[  404611ms] [LOG] [Box3] ✓ PointLight position is correct @ http://localhost:5173/src/Box3.tsx:97
+[  404611ms] [LOG] [Box3] ✓ Meshes found: 3 @ http://localhost:5173/src/Box3.tsx:100
+[  404611ms] [LOG] [Box3] ✓ Box positions are correct @ http://localhost:5173/src/Box3.tsx:110
+[  404611ms] [LOG] [Box3] ✓ Found 1 camera(s) in ThreeContext @ http://localhost:5173/src/Box3.tsx:116
+[  404611ms] [LOG] [Box3] ✓ PerspectiveCamera position is correct @ http://localhost:5173/src/Box3.tsx:119
+[  404611ms] [LOG] [Box3] ✓ Camera accessible via useThree().cameras @ http://localhost:5173/src/Box3.tsx:120
+[  404611ms] [LOG] [Box3] ✓ Found 1 renderer(s) in ThreeContext @ http://localhost:5173/src/Box3.tsx:130
+[  404611ms] [LOG] [Box3] ✓ OrbitControls would be attached to renderer.domElement @ http://localhost:5173/src/Box3.tsx:131
+[  404611ms] [LOG] [Box3] ✓ ThreeContext structure verified: {cameras: 1, scenes: 1, renderers: 1, frames: 4} @ http://localhost:5173/src/Box3.tsx:133
+[  404612ms] [LOG] ✓ Scene: Direct child of Canvas3D, accessible via ref @ http://localhost:5173/src/Box3.tsx:140
+[  404612ms] [LOG] ✓ Lights: Added to scene.children @ http://localhost:5173/src/Box3.tsx:141
+[  404612ms] [LOG] ✓ Geometries: Added to scene.children as Mesh objects @ http://localhost:5173/src/Box3.tsx:142
+[  404612ms] [LOG] ✓ Camera: 1 camera(s) in ThreeContext.cameras @ http://localhost:5173/src/Box3.tsx:143
+[  404612ms] [LOG] ✓ Renderer: 1 renderer(s) in ThreeContext.renderers @ http://localhost:5173/src/Box3.tsx:144
+[  404612ms] [LOG] ℹ OrbitControls: Would attach to camera + renderer.domElement @ http://localhost:5173/src/Box3.tsx:145
+[  411611ms] [LOG] page2 @ http://localhost:5173/src/BoxStaticText.tsx:19
+[  411617ms] [LOG] undefined @ http://localhost:5173/src/BoxStaticText.tsx:73
+[  411702ms] [LOG] Font @ http://localhost:5173/src/BoxStaticText.tsx:73

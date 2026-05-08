@@ -56,14 +56,14 @@ consParams.clearMaskPass = clearMaskPass
 
 
 
-const _maskPass = ([...objProps.pass,
+const _maskPass = ([...(objProps.pass || []),
     'scene',
     'camera',
     'inverse',
 ] as const).distinct()
 objProps.maskPass = _maskPass
 
-const _clearMaskPass = ([...objProps.pass,
+const _clearMaskPass = ([...(objProps.pass || []),
 ] as const).distinct()
 objProps.clearMaskPass = _clearMaskPass
 

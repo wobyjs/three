@@ -1,0 +1,21 @@
+[   46112ms] [ERROR] Failed to load demo "webgl_line3": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/3/useParams.tsx?t=1777968033790:7:51)
+    at useParams (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/3/useParams.tsx?t=1777968033790:20:14)
+    at extractProps2constructor (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/extractProps2constructor.tsx?t=1777968033790:18:42)
+    at createElement (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/createElement.tsx?t=1777968033790:203:22)
+    at jsx (http://localhost:5174/@fs/D:/Developments/tslib/@woby/three/code/lib/three/jsx.tsx?t=1777968033790:4:64)
+    at Line3 (http://localhost:5174/src/Line3.tsx:72:21)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:82
+    at untrack (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/methods/untrack.js:17:20)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:14 @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1778035524608:23
+[  174694ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=13bbac6b:21312
+[  174709ms] [ERROR] Failed to load demo "webgl_line3": ReferenceError: OrbitControls is not defined
+    at Line3 (http://localhost:5174/src/Line3.tsx?t=1778035710635:75:28)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:82
+    at untrack (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/methods/untrack.js:17:20)
+    at http://localhost:5174/@fs/D:/Developments/tslib/@woby/woby/src/methods/create_element.ts:24:14
+    at Observable.update (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/objects/observable.js:160:23)
+    at Observable.writableFunction (http://localhost:5174/@fs/D:/Developments/tslib/@woby/soby/dist/objects/callable.js:26:25)
+    at http://localhost:5174/src/layout/DemoViewer.tsx?t=1778035710635:18:7 @ http://localhost:5174/src/layout/DemoViewer.tsx?t=1778035710635:23
+[  193956ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5174/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=13bbac6b:21312

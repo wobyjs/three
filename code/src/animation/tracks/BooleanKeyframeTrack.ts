@@ -46,7 +46,7 @@ consParams.booleanKeyframeTrack = booleanKeyframeTrack
 
 
 
-const _booleanKeyframeTrack = ([...objProps.keyframeTrack,
+const _booleanKeyframeTrack = ([...(objProps.keyframeTrack || []),
     /**
      * @default 'bool'
      */

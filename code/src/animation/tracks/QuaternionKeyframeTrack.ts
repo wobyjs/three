@@ -48,7 +48,7 @@ consParams.quaternionKeyframeTrack = quaternionKeyframeTrack
 
 
 
-const _quaternionKeyframeTrack = ([...objProps.keyframeTrack,
+const _quaternionKeyframeTrack = ([...(objProps.keyframeTrack || []),
     /**
      * @default 'quaternion'
      */

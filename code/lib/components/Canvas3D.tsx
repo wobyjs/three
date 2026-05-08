@@ -109,13 +109,9 @@ export const Canvas3D = wobyDefaults(def, (props: HTMLAttributes<HTMLDivElement>
     return <div {...remainingProps} data-three-context="true" ref={(el) => {
         if (el) {
             // Also set on the inner div so JSX-mode descendants can find it.
-            ;(el as any)[SYMBOL_CONTEXT_WRAP] = wrap
+            ; (el as any)[SYMBOL_CONTEXT_WRAP] = wrap
         }
     }}>{ThreeContext.Provider({ value: ctx, children }) as any}</div>
 })
-
-// Register Canvas3D as a custom element so it gets SYMBOL_CONTEXT_WRAP
-import { customElement } from 'woby'
-customElement('three-canvas', Canvas3D)
 
 

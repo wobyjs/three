@@ -48,7 +48,7 @@ consParams.cubeTexturePass = cubeTexturePass
 
 
 
-const _cubeTexturePass = ([...objProps.pass,
+const _cubeTexturePass = ([...(objProps.pass || []),
     'camera',
     'cubeShader',
     'cubeMesh',

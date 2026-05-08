@@ -4,24 +4,33 @@ import { OrbitControls as orbitControls } from 'three/examples/jsm/controls/Orbi
 import { OrbitControlsProps } from '../../../../examples/jsm/controls/OrbitControls'
 import { fixReactiveProps } from '../../../three/fixReactiveProps'
 import '../../../../examples/jsm/controls/OrbitControls'
-import { customElement, defaults as wobyDefaults, $ } from 'woby'
+// import { /* customElement, defaults as wobyDefaults, */ $ } from 'woby'
 import { Three } from '../../../3/three'
 
 // Register in Three object
 Three['orbit-controls'] = orbitControls
 
-// Define default props for the custom element
-const def = () => ({
-    enableDamping: $(false, { type: 'boolean' } as const),
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     enableDamping: $(false, { type: 'boolean' } as const),
+// })
 
-// Create the Woby component with defaults
-const ThreeOrbitControls = wobyDefaults(def, (props: any) => {
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreeOrbitControls = wobyDefaults(def, (props: any) => {
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-orbit-controls', ThreeOrbitControls)
+// // Register custom element with proper defaults
+// customElement('three-orbit-controls', ThreeOrbitControls)
+
+// declare module 'woby' {
+//     namespace JSX {
+//         interface IntrinsicElements {
+//             'three-webgl-renderer': OrbitControlsProps,
+//             'webglRenderer': OrbitControlsProps,
+//         }
+//     }
+// }
 
 
 export function OrbitControls({ camera, domElement, enableDamping, ...props }: OrbitControlsProps) {

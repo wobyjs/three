@@ -56,7 +56,7 @@ const _lutPassParameters = ([
 ] as const).distinct()
 objProps.lutPassParameters = _lutPassParameters
 
-const _lutPass = ([...objProps.shaderPass,
+const _lutPass = ([...(objProps.shaderPass || []),
     'lut',
     'intensity',
 ] as const).distinct()

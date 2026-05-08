@@ -1,0 +1,24 @@
+[    1480ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5176/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=1299d160:21312
+[    1498ms] [LOG] page2 @ http://localhost:5176/src/BoxStaticText.tsx?t=1777101172735:12
+[   12749ms] TypeError: Cannot read properties of undefined (reading 'push')
+    at getInstance (http://localhost:5176/@fs/D:/Developments/tslib/@woby/three/dist/jsx-DgVYjIcZ.es.js?t=1777101172735:1128:19)
+    at http://localhost:5176/@fs/D:/Developments/tslib/@woby/three/dist/jsx-DgVYjIcZ.es.js?t=1777101172735:1435:24
+    at http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/methods/resolve.js?t=1777101172735:18:39
+    at Memo.wrap (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/objects/owner.js?t=1777101172735:60:20)
+    at Memo.refresh (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/objects/observer.js?t=1777101172735:31:25)
+    at Memo.run (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/objects/memo.js?t=1777101172735:21:30)
+    at Memo.update (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/objects/observer.js?t=1777101172735:51:18)
+    at Observable.get (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/objects/observable.js?t=1777101171834:24:26)
+    at Observable.readableFunction (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/objects/callable.js?t=1777101171806:22:21)
+    at get (http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/methods/get.js?t=1777101172731:7:16)
+[  136831ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5176/@fs/D:/Developments/tslib/@woby/soby/dist/index.js?t=1777101517331:0
+[  139502ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5176/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=1299d160:21312
+[  139517ms] [LOG] page2 @ http://localhost:5176/src/BoxStaticText.tsx?t=1777101519034:12
+[ 1065211ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5176/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=1299d160:21312
+[ 1065231ms] [LOG] page2 @ http://localhost:5176/src/BoxStaticText.tsx?t=1777102445223:12
+[ 1075741ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5176/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=1299d160:21312
+[ 1075753ms] [LOG] page2 @ http://localhost:5176/src/BoxStaticText.tsx?t=1777102456068:12
+[ 1324583ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5176/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=1299d160:21312
+[ 1324600ms] [LOG] page2 @ http://localhost:5176/src/BoxStaticText.tsx?t=1777102704187:12
+[ 1329936ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5176/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=1299d160:21312
+[ 1329952ms] [LOG] page2 @ http://localhost:5176/src/BoxStaticText.tsx?t=1777102710218:12

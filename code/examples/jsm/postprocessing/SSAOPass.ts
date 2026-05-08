@@ -52,7 +52,7 @@ consParams.ssaoPass = ssaoPass
 
 
 
-const _ssaoPass = ([...objProps.pass,
+const _ssaoPass = ([...(objProps.pass || []),
     'scene',
     'camera',
     'width',

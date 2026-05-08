@@ -80,7 +80,7 @@ const _halftonePassParameters = ([
 objProps.halftonePassParameters = _halftonePassParameters
 
 
-const _halftonePass = ([...objProps.pass,
+const _halftonePass = ([...(objProps.pass || []),
     'uniforms',
     'material',
     'fsQuad',

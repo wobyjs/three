@@ -47,7 +47,7 @@ consParams.savePass = savePass
 
 
 
-const _savePass = ([...objProps.pass,
+const _savePass = ([...(objProps.pass || []),
     'textureID',
     'renderTarget',
     'uniforms',

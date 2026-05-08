@@ -48,7 +48,7 @@ consParams.dotScreenPass = dotScreenPass
 
 
 
-const _dotScreenPass = ([...objProps.pass,
+const _dotScreenPass = ([...(objProps.pass || []),
     'uniforms',
     'material',
     'fsQuad',

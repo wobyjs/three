@@ -47,7 +47,7 @@ consParams.stringKeyframeTrack = stringKeyframeTrack
 
 
 
-const _stringKeyframeTrack = ([...objProps.keyframeTrack,
+const _stringKeyframeTrack = ([...(objProps.keyframeTrack || []),
     /**
      * @default 'string'
      */

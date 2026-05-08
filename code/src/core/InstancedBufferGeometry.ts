@@ -4,6 +4,7 @@ export { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import '../core/BufferGeometry'
 
 import './BufferGeometry'
 

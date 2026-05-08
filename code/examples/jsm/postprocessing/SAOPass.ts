@@ -82,7 +82,7 @@ const _saoPassParams = ([
 objProps.saoPassParams = _saoPassParams
 
 
-const _saoPass = ([...objProps.pass,
+const _saoPass = ([...(objProps.pass || []),
     'scene',
     'camera',
     'originalClearColor',

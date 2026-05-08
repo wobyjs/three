@@ -8,29 +8,29 @@ import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Material'
 import { WrapAsString } from '../../three-types'
-import { customElement, defaults as wobyDefaults, $ } from 'woby'
+// import { customElement, defaults as wobyDefaults, $ } from 'woby'
 
-// Define default props for the custom element
-const def = () => ({
-    color: $(0xffffff, { type: 'number' } as const),
-    roughness: $(0.5, { type: 'number' } as const),
-    metalness: $(0.5, { type: 'number' } as const),
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     color: $(0xffffff, { type: 'number' } as const),
+//     roughness: $(0.5, { type: 'number' } as const),
+//     metalness: $(0.5, { type: 'number' } as const),
+// })
 
-// Create the Woby component with defaults
-const ThreeMeshStandardMaterial = wobyDefaults(def, (props: any) => {
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreeMeshStandardMaterial = wobyDefaults(def, (props: any) => {
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-mesh-standard-material', ThreeMeshStandardMaterial)
+// // Register custom element with proper defaults
+// customElement('three-mesh-standard-material', ThreeMeshStandardMaterial)
 
-declare module '../../lib/3/three'
-{
-    interface Three {
-        MeshStandardMaterial: typeof MeshStandardMaterial
-    }
-}
+// declare module '../../lib/3/three'
+// {
+//     interface Three {
+//         MeshStandardMaterial: typeof MeshStandardMaterial
+//     }
+// }
 
 Three.MeshStandardMaterial = MeshStandardMaterial
 Three['mesh-standard-material'] = MeshStandardMaterial
@@ -40,6 +40,7 @@ declare module 'woby' {
     namespace JSX {
         interface IntrinsicElements {
             'three-mesh-standard-material': MeshStandardMaterialProps,
+            meshStandardMaterial: MeshStandardMaterialProps,
         }
     }
 }

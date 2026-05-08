@@ -7,7 +7,6 @@ import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
 
 import '../core/BufferGeometry'
-import '../../examples/jsm/geometries/ParametricGeometry'
 
 declare module '../../lib/3/three'
 {
@@ -87,7 +86,7 @@ consParams.planeGeometry = planeGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/PlaneGeometry.js | Source}
  */
 
-const _planeGeometry = ([...objProps.bufferGeometry, ...objProps.parametricGeometry,
+const _planeGeometry = ([...objProps.bufferGeometry,
 ] as const).distinct()
 objProps.planeGeometry = _planeGeometry
 

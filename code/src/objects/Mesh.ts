@@ -6,31 +6,31 @@ export { Mesh } from 'three/src/objects/Mesh.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
-import { defaults as threeDefaults } from '../../lib/3/defaults'
+import { defaults } from '../../lib/3/defaults'
 
 import '../../src/core/Object3D'
-import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial'
-import { customElement, defaults, $ } from 'woby'
+import type { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js'
+// import { customElement, defaults, $ } from 'woby'
 
-// Define default props for the custom element
-const def = () => ({
-    // geometry and material are handled by Three.js fiber
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     // geometry and material are handled by Three.js fiber
+// })
 
-// Create the Woby component with defaults
-const ThreeMesh = defaults(def, (props: any) => {
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreeMesh = defaults(def, (props: any) => {
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-mesh', ThreeMesh)
+// // Register custom element with proper defaults
+// customElement('three-mesh', ThreeMesh)
 
-declare module '../../lib/3/three'
-{
-    interface Three {
-        Mesh: typeof Mesh
-    }
-}
+// declare module '../../lib/3/three'
+// {
+//     interface Three {
+//         Mesh: typeof Mesh
+//     }
+// }
 
 Three.Mesh = Mesh
 Three['mesh'] = Mesh
@@ -142,4 +142,3 @@ declare module '../../lib/3/defaults' {
 
 defaults.mesh = { /* geometry: new BufferGeometry(), material: new MeshBasicMaterial() */ }
 
-threeDefaults.mesh = { /* geometry: new BufferGeometry(), material: new MeshBasicMaterial() */ }

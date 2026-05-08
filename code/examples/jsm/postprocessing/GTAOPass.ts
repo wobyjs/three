@@ -54,7 +54,7 @@ consParams.gtaoPass = gtaoPass
 
 
 
-const _gtaoPass = ([...objProps.pass,
+const _gtaoPass = ([...(objProps.pass || []),
     'width',
     'height',
     'clear',

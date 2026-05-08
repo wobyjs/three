@@ -8,6 +8,7 @@ import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
 
 import '../../lib/three/extensions'
+import '../core/BufferGeometry'
 import { WrapAsString } from '../../three-types'
 
 declare module '../../lib/3/three'

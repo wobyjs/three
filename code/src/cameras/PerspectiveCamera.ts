@@ -7,29 +7,29 @@ import { objProps } from '../../lib/3/objProps'
 import { defaults as threeDefaults } from '../../lib/3/defaults'
 
 import './Camera'
-import { customElement, defaults as wobyDefaults, $ } from 'woby'
+// import { /* customElement, defaults as wobyDefaults, */ $ } from 'woby'
 
-// Define default props for the custom element
-const def = () => ({
-    fov: $(50, { type: 'number' } as const),
-    near: $(0.1, { type: 'number' } as const),
-    far: $(2000, { type: 'number' } as const),
-})
+// // Define default props for the custom element
+// const def = () => ({
+//     fov: $(50, { type: 'number' } as const),
+//     near: $(0.1, { type: 'number' } as const),
+//     far: $(2000, { type: 'number' } as const),
+// })
 
-// Create the Woby component with defaults
-const ThreePerspectiveCamera = wobyDefaults(def, (props: any) => {
-    return null
-})
+// // Create the Woby component with defaults
+// const ThreePerspectiveCamera = wobyDefaults(def, (props: any) => {
+//     return null
+// })
 
-// Register custom element with proper defaults
-customElement('three-perspective-camera', ThreePerspectiveCamera)
+// // Register custom element with proper defaults
+// customElement('three-perspective-camera', ThreePerspectiveCamera)
 
-declare module '../../lib/3/three'
-{
-    interface Three {
-        PerspectiveCamera: typeof PerspectiveCamera
-    }
-}
+// declare module '../../lib/3/three'
+// {
+//     interface Three {
+//         PerspectiveCamera: typeof PerspectiveCamera
+//     }
+// }
 
 Three.PerspectiveCamera = PerspectiveCamera
 Three['perspective-camera'] = PerspectiveCamera

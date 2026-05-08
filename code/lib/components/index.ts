@@ -1,4 +1,6 @@
 export * from './Canvas3D'
+export * from './Event'
+export * from './Frame'
 export * from './extensions'
 export * from '../examples/jsm/loaders/Gltf'
 export * from '../examples/jsm/controls/OrbitControls'

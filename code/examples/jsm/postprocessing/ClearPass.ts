@@ -48,7 +48,7 @@ consParams.clearPass = clearPass
 
 
 
-const _clearPass = ([...objProps.pass,
+const _clearPass = ([...(objProps.pass || []),
     'clearColor',
     'clearAlpha',
 ] as const).distinct()
