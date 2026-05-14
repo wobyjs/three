@@ -150,15 +150,19 @@ Plans:
 - [x] webgl_postprocessing_ssr (SSR)
 - [x] webgl_postprocessing_sao (GodRays - SAO fallback)
 - [x] webgl_postprocessing_masking (Masking - layer-based)
-- [ ] webgl_postprocessing_dof2
-- [ ] webgl_postprocessing_fxaa
-- [ ] webgl_postprocessing_procedural
-- [ ] webgl_postprocessing_rgb_halftone
-- [ ] webgl_postprocessing_sobel
-- [ ] webgl_postprocessing_ssaa
-- [ ] webgl_postprocessing_taa
-- [ ] webgl_postprocessing_unreal_bloom_selective
-- ... (5 more)
+- [x] webgl_postprocessing_afterimage (Afterimage)
+- [x] webgl_postprocessing_dotscreen (DotScreen)
+- [x] webgl_postprocessing_film (Film)
+- [x] webgl_postprocessing_gtao (GTAO)
+- [x] webgl_postprocessing_halftone (Halftone)
+- [x] webgl_postprocessing_lut (LUT)
+- [x] webgl_postprocessing_fxaa (FXAA)
+- [x] webgl_postprocessing_procedural (Procedural)
+- [x] webgl_postprocessing_sobel (Sobel)
+- [x] webgl_postprocessing_ssaa (SSAA)
+- [x] webgl_postprocessing_smaa (SMAA)
+- [x] webgl_postprocessing_taa (TAA)
+- [x] webgl_postprocessing_unreal_bloom_selective (SelectiveBloom)
 
 **Plans:**
 - [x] 05-01-PLAN.md - Wave 1: Basic, Bloom, SSAO
@@ -194,20 +198,19 @@ Plans:
 - [x] webxr_ar_cones
 - [x] webxr_ar_hittest
 - [x] webxr_ar_lighting (Lighting)
-- [ ] webxr_vr_handinput_pointerclick
-- [ ] webxr_vr_handinput_press
-- [ ] webxr_vr_handinput_profiles
-- [ ] webxr_vr_haptics_controller
-- [ ] webxr_vr_layers
-- [ ] webxr_vr_lorenzattractor
-- [ ] webxr_vr_panorama_depth
-- [ ] webxr_vr_sandbox
-- [ ] webxr_vr_sculpt
-- [ ] webxr_vr_video
-- [ ] webxr_xr_ballshooter
-- [ ] webxr_ar_plane_detection
-- [ ] webxr_sandbox
-- [ ] webxr_video
+- [x] webxr_vr_handinput_pointerclick (HandInputPointerClick)
+- [x] webxr_vr_handinput_press (HandInputPress)
+- [x] webxr_vr_handinput_profiles (HandInputProfiles)
+- [x] webxr_vr_haptics_controller (HapticsController)
+- [x] webxr_vr_layers (Layers)
+- [x] webxr_vr_lorenzattractor (LorenzAttractor)
+- [x] webxr_vr_panorama_depth (PanoramaDepth)
+- [x] webxr_vr_sandbox (Sandbox)
+- [x] webxr_vr_sculpt (Sculpt)
+- [x] webxr_vr_video (Video)
+- [x] webxr_ar_plane_detection (PlaneDetection)
+- [x] webxr_sandbox (WebXRSandbox)
+- [x] webxr_video (WebXRVideo)
 
 **Plans:**
 - [x] 07-01-PLAN.md - Wave 1: Template, VRButton, ARButton
