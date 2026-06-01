@@ -1,11 +1,29 @@
 # Visual Comparison Pipeline - Runbook
 
 Phase 13 visual regression testing compares ported demo canvas output against
-threejs.org reference screenshots using a multimodal LLM (claude-sonnet-4-6).
-Five separate OS processes (true parallel agents) run concurrently via
-child_process.spawn, each handling ~40 demos.
+threejs.org reference screenshots using multimodal AI vision.
 
-## Prerequisites
+## Two Comparison Paths
+
+### Path A — Claude Code (no API key required)
+
+When running inside Claude Code, the AI agent compares images directly using
+its built-in multimodal vision. No `ANTHROPIC_API_KEY` needed.
+
+  Ask Claude Code: "Compare the ported and reference screenshots for demo X"
+  Or:              "Run visual comparison for all demos"
+
+Claude Code reads both PNG files and returns a Verdict with similarity_score,
+reasoning, and key_differences. Results can be written to
+test-results/visual-comparison-report.json on request.
+
+### Path B — CI / Automated (ANTHROPIC_API_KEY required)
+
+Five separate OS processes (true parallel agents) run concurrently via
+child_process.spawn, each handling ~40 demos, submitting to the Anthropic
+Message Batches API.
+
+## Prerequisites (Path B only)
 
 1. Vite dev server running at http://localhost:5194:
    cd ../three-demo && pnpm run dev
@@ -142,8 +160,10 @@ reference-manifest.json not found:
   Run reference-screenshots.test.ts first (Step 2 above).
 
 ANTHROPIC_API_KEY not set:
-  The visual-comparison.test.ts test will SKIP (not fail) if the key is absent.
-  Set the key before running or use the dry-run mode (npm run test:visual:dry).
+  For Path B: visual-comparison.test.ts will SKIP (not fail). Set the key or
+  use dry-run mode (npm run test:visual:dry).
+  For Path A (Claude Code): no API key needed — ask Claude Code to compare
+  screenshots directly using its built-in multimodal vision.
 
 Batch processing takes longer than expected:
   Anthropic batch processing time is variable (15-90 minutes for 40 items per agent).

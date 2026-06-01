@@ -356,9 +356,14 @@ test('Run all demo verifications', async ({ page }, testInfo) => {
       result.hasCanvas = canvasCheck.hasCanvas
       result.canvasHasContent = canvasCheck.hasContent
 
-      // Take screenshot
+      // Take screenshot of just the canvas element (not full page with sidebar)
       const screenshotFile = path.join(SCREENSHOT_DIR, `${demo.id}.png`)
-      await page.screenshot({ path: screenshotFile, fullPage: false })
+      const canvas = await page.$('canvas')
+      if (canvas) {
+        await canvas.screenshot({ path: screenshotFile })
+      } else {
+        await page.screenshot({ path: screenshotFile, fullPage: false })
+      }
       result.screenshotPath = screenshotFile
 
       result.loadTimeMs = Date.now() - startTime
