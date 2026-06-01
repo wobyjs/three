@@ -8,7 +8,9 @@
         "test:ui": "playwright test --ui",
         "test:report": "playwright show-report",
         "test:debug": "playwright test --debug",
-        "test:list": "playwright test --reporter=list"
+        "test:list": "playwright test --reporter=list",
+        "test:visual": "playwright test tests/visual-comparison.test.ts",
+        "test:visual:dry": "cross-env VISUAL_COMPARISON_DRY_RUN=true playwright test tests/visual-comparison.test.ts"
     },
     "keywords": [
         "playwright",
@@ -26,6 +28,7 @@
     },
     "devDependencies": {
         "@playwright/test": "^1.56.1",
-        "@types/node": "^24.10.1"
+        "@types/node": "^24.10.1",
+        "cross-env": "^10.1.0"
     }
 }
