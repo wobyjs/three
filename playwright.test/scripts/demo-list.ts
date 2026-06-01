@@ -26,9 +26,9 @@ export interface ReferenceEntry extends DemoEntry {
 // ============================================================
 
 export const THREEJS_BASE = 'https://threejs.org/examples'
-export const PORTED_SCREENSHOT_DIR = 'test-results/screenshots'
-export const REFERENCE_SCREENSHOT_DIR = 'test-results/reference-screenshots'
-export const REFERENCE_MANIFEST_PATH = 'test-results/reference-manifest.json'
+export const PORTED_SCREENSHOT_DIR = 'screenshots/ported'
+export const REFERENCE_SCREENSHOT_DIR = 'screenshots/reference'
+export const REFERENCE_MANIFEST_PATH = 'screenshots/reference-manifest.json'
 
 // ============================================================
 // ALL_DEMOS — copied from playwright.test/tests/demo-verification.test.ts

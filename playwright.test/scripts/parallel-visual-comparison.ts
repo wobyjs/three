@@ -62,6 +62,7 @@ function spawnAgent(batchIndex: number, isDryRun: boolean): Promise<void> {
     // Each call to spawnAgent creates a NEW OS process — its own Node.js VM and memory.
     // This is true OS-level parallelism, not in-process function calls.
     const proc = spawn('npx', args, {
+      shell: true,  // required on Windows to resolve npx through PATH
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env },
       cwd: ROOT
@@ -139,7 +140,13 @@ function mergePartialResults(): VisualComparisonReport {
 
   allResults.sort((a, b) => a.id.localeCompare(b.id))
 
-  const comparable = allResults.filter(r => r.status !== 'no-reference' && r.status !== 'no-ported-screenshot')
+  // comparable = demos where both ported and reference screenshots exist (excludable: no-reference,
+  // no-ported-screenshot, reference-load-failed). Only these count toward the pass rate.
+  const comparable = allResults.filter(r =>
+    r.status !== 'no-reference' &&
+    r.status !== 'no-ported-screenshot' &&
+    r.status !== 'reference-load-failed'
+  )
   const passed = allResults.filter(r => r.status === 'pass').length
   const warned = allResults.filter(r => r.status === 'warn').length
   const failed = allResults.filter(r => r.status === 'fail').length
@@ -260,6 +267,8 @@ function filterRows(status) {
 // ─── Main orchestrator entry point ────────────────────────────────────────────
 
 export async function runParallelComparison(isDryRun = false): Promise<VisualComparisonReport> {
+  const effectiveDryRun = isDryRun || process.env.VISUAL_COMPARISON_DRY_RUN === 'true'
+  isDryRun = effectiveDryRun
   const apiKey = process.env.ANTHROPIC_API_KEY
   if (!isDryRun && !apiKey) {
     throw new Error('ANTHROPIC_API_KEY environment variable is not set.')
@@ -300,10 +309,14 @@ export async function runParallelComparison(isDryRun = false): Promise<VisualCom
 }
 
 async function main() {
-  const isDryRun = process.argv.includes('--dry-run')
+  const isDryRun = process.argv.includes('--dry-run') || process.env.VISUAL_COMPARISON_DRY_RUN === 'true'
   if (isDryRun) console.log('[Orchestrator] DRY RUN: agents will use mock verdicts.')
   const report = await runParallelComparison(isDryRun)
   process.exit(report.ci_gate_failed ? 1 : 0)
 }
 
-main().catch(err => { console.error(err); process.exit(1) })
+// Only run as CLI when executed directly, not when imported as a module by Playwright
+import { pathToFileURL } from 'url'
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch(err => { console.error(err); process.exit(1) })
+}

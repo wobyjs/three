@@ -144,6 +144,10 @@ test.describe('Reference capture phase', () => {
       // Re-read manifest on each test invocation: another worker may have already
       // updated the status if Phase A ran recently.
       const manifestPath = path.join(ROOT, REFERENCE_MANIFEST_PATH)
+      if (!fs.existsSync(manifestPath)) {
+        test.skip(true, 'reference-manifest.json not yet written — run probe phase first')
+        return
+      }
       const allEntries: ReferenceEntry[] = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
       const entry = allEntries.find(e => e.id === demo.id)
 

@@ -2,12 +2,13 @@ import { test, expect, Page } from '@playwright/test'
 import * as fs from 'fs'
 import * as path from 'path'
 import { fileURLToPath } from 'url'
+import { PORTED_SCREENSHOT_DIR } from '../scripts/demo-list.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const BASE_URL = 'http://localhost:5194'
-const SCREENSHOT_DIR = path.join(__dirname, '..', 'test-results', 'screenshots')
+const BASE_URL = 'http://localhost:5175'
+const SCREENSHOT_DIR = path.join(__dirname, '..', PORTED_SCREENSHOT_DIR)
 const REPORT_PATH = path.join(__dirname, '..', 'test-results', 'demo-report.json')
 
 // All demos from registry
