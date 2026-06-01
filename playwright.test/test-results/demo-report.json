@@ -1,0 +1,2011 @@
+{
+  "total": 200,
+  "passed": 200,
+  "failed": 0,
+  "errors": 0,
+  "noCanvas": 0,
+  "noContent": 0,
+  "results": [
+    {
+      "id": "webgl_plane",
+      "name": "Plane",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3470,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_plane.png"
+    },
+    {
+      "id": "webgl_boxes",
+      "name": "3 Boxes + Click",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3522,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_boxes.png"
+    },
+    {
+      "id": "webgl_boxes_click",
+      "name": "Boxes + Click",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3489,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_boxes_click.png"
+    },
+    {
+      "id": "webgl_static_text",
+      "name": "Box + Static Text",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3514,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_static_text.png"
+    },
+    {
+      "id": "webgl_html_text",
+      "name": "Box + HTML Text",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3549,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_html_text.png"
+    },
+    {
+      "id": "webgl_group",
+      "name": "Group",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3461,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_group.png"
+    },
+    {
+      "id": "webgl_object3d",
+      "name": "Object3D Add",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3494,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_object3d.png"
+    },
+    {
+      "id": "webgl_simple_line",
+      "name": "Simple Line",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3474,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_simple_line.png"
+    },
+    {
+      "id": "webgl_fat_lines",
+      "name": "Fat Lines",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3493,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_fat_lines.png"
+    },
+    {
+      "id": "webgl_line3",
+      "name": "Line Segments",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3453,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_line3.png"
+    },
+    {
+      "id": "webgl_d_lines",
+      "name": "D Lines",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3643,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_d_lines.png"
+    },
+    {
+      "id": "webgl_fat_lines_advanced",
+      "name": "Fat Lines Advanced",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4048,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_fat_lines_advanced.png"
+    },
+    {
+      "id": "webgl_lines",
+      "name": "Lines",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3810,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lines.png"
+    },
+    {
+      "id": "webgl_lines_dashed",
+      "name": "Dashed Lines",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3561,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lines_dashed.png"
+    },
+    {
+      "id": "webgl_effects_anaglyph",
+      "name": "Anaglyph",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3508,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_effects_anaglyph.png"
+    },
+    {
+      "id": "webgl_effects_stereo",
+      "name": "Stereo",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3652,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_effects_stereo.png"
+    },
+    {
+      "id": "webgl_effects_stereo2",
+      "name": "Stereo 2",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3716,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_effects_stereo2.png"
+    },
+    {
+      "id": "webgl_effects_stereo3",
+      "name": "Stereo 3",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3749,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_effects_stereo3.png"
+    },
+    {
+      "id": "webgl_effects_parallaxbarrier",
+      "name": "Parallax Barrier",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3948,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_effects_parallaxbarrier.png"
+    },
+    {
+      "id": "webgl_effects_ascii",
+      "name": "ASCII Effect",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3656,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_effects_ascii.png"
+    },
+    {
+      "id": "webgl_animation_keyframe",
+      "name": "Animation Keyframe",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3782,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_animation_keyframe.png"
+    },
+    {
+      "id": "webgl_animation_particles",
+      "name": "Animation Particles",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3856,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_animation_particles.png"
+    },
+    {
+      "id": "webgl_animation_keyframes",
+      "name": "Animation Keyframes",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3995,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_animation_keyframes.png"
+    },
+    {
+      "id": "webgl_animation_skinning",
+      "name": "Animation Skinning",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4247,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_animation_skinning.png"
+    },
+    {
+      "id": "webgl_morph_targets",
+      "name": "Morph Targets",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3588,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_morph_targets.png"
+    },
+    {
+      "id": "webgl_animation_skinning_blending",
+      "name": "Skinning Blending",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3567,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_animation_skinning_blending.png"
+    },
+    {
+      "id": "webgl_geometries",
+      "name": "All Geometries",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4442,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometries.png"
+    },
+    {
+      "id": "webgl_text_geometry",
+      "name": "Text Geometry",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 5936,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_text_geometry.png"
+    },
+    {
+      "id": "webgl_geometry_cube",
+      "name": "Geometry Cube",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4595,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_cube.png"
+    },
+    {
+      "id": "webgl_geometries_showcase",
+      "name": "All Geometries Showcase",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4370,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometries_showcase.png"
+    },
+    {
+      "id": "webgl_geometry_shapes",
+      "name": "Geometry Shapes",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4217,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_shapes.png"
+    },
+    {
+      "id": "webgl_geometry_cube2",
+      "name": "Simple Cube",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4303,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_cube2.png"
+    },
+    {
+      "id": "webgl_geometry_lathe",
+      "name": "Geometry Lathe",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3727,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_lathe.png"
+    },
+    {
+      "id": "webgl_geometry_teapot",
+      "name": "Utah Teapot",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4172,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_teapot.png"
+    },
+    {
+      "id": "webgl_geometry_convex",
+      "name": "Convex Geometry",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3959,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_convex.png"
+    },
+    {
+      "id": "webgl_geometry_extrude_shapes",
+      "name": "Extrude Shapes",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4155,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_extrude_shapes.png"
+    },
+    {
+      "id": "webgl_geometry_csg",
+      "name": "CSG Geometry",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4044,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_csg.png"
+    },
+    {
+      "id": "webgl_geometry_colors",
+      "name": "Vertex Colors",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3919,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_colors.png"
+    },
+    {
+      "id": "webgl_geometry_colors_lut",
+      "name": "Color Lookup Table",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 5115,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_colors_lut.png"
+    },
+    {
+      "id": "webgl_geometry_minecraft",
+      "name": "Minecraft Terrain",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4790,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_minecraft.png"
+    },
+    {
+      "id": "webgl_geometry_spline_editor",
+      "name": "Spline Editor",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4209,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_spline_editor.png"
+    },
+    {
+      "id": "webgl_geometry_text_stroke",
+      "name": "Text Stroke",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4086,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_geometry_text_stroke.png"
+    },
+    {
+      "id": "webgl_materials",
+      "name": "Physical Materials",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4217,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials.png"
+    },
+    {
+      "id": "webgl_materials_all",
+      "name": "All Materials",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4317,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_all.png"
+    },
+    {
+      "id": "webgl_materials_physical",
+      "name": "Physical Materials Advanced",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4164,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_physical.png"
+    },
+    {
+      "id": "webgl_materials_normal",
+      "name": "Normal Materials",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3890,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_normal.png"
+    },
+    {
+      "id": "webgl_materials_colors",
+      "name": "Material Colors",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4272,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_colors.png"
+    },
+    {
+      "id": "webgl_materials_transparency",
+      "name": "Transparency",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3992,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_transparency.png"
+    },
+    {
+      "id": "webgl_normal_map",
+      "name": "Normal Map",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4071,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_normal_map.png"
+    },
+    {
+      "id": "webgl_materials_blending",
+      "name": "Blending",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3886,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_blending.png"
+    },
+    {
+      "id": "webgl_materials_matcap",
+      "name": "Matcap",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4019,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_matcap.png"
+    },
+    {
+      "id": "webgl_materials_cubemap",
+      "name": "Cubemap Reflection",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4008,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_cubemap.png"
+    },
+    {
+      "id": "webgl_materials_car",
+      "name": "Car Materials",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3882,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_car.png"
+    },
+    {
+      "id": "webgl_materials_normalmap",
+      "name": "Normal Map",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3857,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_normalmap.png"
+    },
+    {
+      "id": "webgl_materials_physical_clearcoat",
+      "name": "Clearcoat",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3989,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_physical_clearcoat.png"
+    },
+    {
+      "id": "webgl_materials_physical_transmission",
+      "name": "Transmission",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 6222,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_physical_transmission.png"
+    },
+    {
+      "id": "webgl_materials_channels",
+      "name": "Channels",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4387,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_channels.png"
+    },
+    {
+      "id": "webgl_materials_cubemap_dynamic",
+      "name": "Dynamic Cubemap",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3916,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_materials_cubemap_dynamic.png"
+    },
+    {
+      "id": "webgl_textures_cube",
+      "name": "Textures Cube",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3954,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_textures_cube.png"
+    },
+    {
+      "id": "webgl_uvs",
+      "name": "UVs",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4083,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_uvs.png"
+    },
+    {
+      "id": "webgl_alpha",
+      "name": "Alpha",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4261,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_alpha.png"
+    },
+    {
+      "id": "webgl_clipping",
+      "name": "Clipping",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4335,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_clipping.png"
+    },
+    {
+      "id": "webgl_clipping_advanced",
+      "name": "Clipping Advanced",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4260,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_clipping_advanced.png"
+    },
+    {
+      "id": "webgl_clipping_intersection",
+      "name": "Clipping Intersection",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4037,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_clipping_intersection.png"
+    },
+    {
+      "id": "webgl_wireframes",
+      "name": "Wireframes",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4198,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_wireframes.png"
+    },
+    {
+      "id": "webgl_particles",
+      "name": "Particles",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4815,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_particles.png"
+    },
+    {
+      "id": "webgl_particles_buffer",
+      "name": "Particles Buffer",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3948,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_particles_buffer.png"
+    },
+    {
+      "id": "webgl_points_sprites",
+      "name": "Points Sprites",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3990,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_points_sprites.png"
+    },
+    {
+      "id": "webgl_points_dynamic",
+      "name": "Points Dynamic",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3962,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_points_dynamic.png"
+    },
+    {
+      "id": "webgl_points_waves",
+      "name": "Points Waves",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3806,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_points_waves.png"
+    },
+    {
+      "id": "webgl_fog",
+      "name": "Fog",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3789,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_fog.png"
+    },
+    {
+      "id": "webgl_shadowmap",
+      "name": "Shadow Map",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3835,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shadowmap.png"
+    },
+    {
+      "id": "webgl_shadowmap_advanced",
+      "name": "Shadow Map Advanced",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3815,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shadowmap_advanced.png"
+    },
+    {
+      "id": "webgl_shadow_contact",
+      "name": "Shadow Contact",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3855,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shadow_contact.png"
+    },
+    {
+      "id": "webgl_shadows",
+      "name": "Shadows",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3706,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shadows.png"
+    },
+    {
+      "id": "webgl_shadowmap_pointlight",
+      "name": "PointLight Shadows",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3651,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shadowmap_pointlight.png"
+    },
+    {
+      "id": "webgl_shadowmap_vsm",
+      "name": "VSM Shadows",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3636,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shadowmap_vsm.png"
+    },
+    {
+      "id": "webgl_lights",
+      "name": "Physical Lights",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3661,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lights.png"
+    },
+    {
+      "id": "webgl_lights_rectarea",
+      "name": "RectArea Lights",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3666,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lights_rectarea.png"
+    },
+    {
+      "id": "webgl_lights_spotlight",
+      "name": "Spotlight",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3838,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lights_spotlight.png"
+    },
+    {
+      "id": "webgl_lightprobe",
+      "name": "Light Probe",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3800,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lightprobe.png"
+    },
+    {
+      "id": "webgl_camera",
+      "name": "Camera",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3658,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_camera.png"
+    },
+    {
+      "id": "webgl_camera_array",
+      "name": "Camera Array",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3714,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_camera_array.png"
+    },
+    {
+      "id": "webgl_loader_gltf",
+      "name": "GLTF",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3656,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_gltf.png"
+    },
+    {
+      "id": "webgl_loader_gltf_anisotropy",
+      "name": "GLTF Anisotropy",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3614,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_gltf_anisotropy.png"
+    },
+    {
+      "id": "webgl_loader_gltf_demo",
+      "name": "GLTF Demo",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3588,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_gltf_demo.png"
+    },
+    {
+      "id": "webgl_loader_gltf_2",
+      "name": "GLTF 2",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3500,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_gltf_2.png"
+    },
+    {
+      "id": "webgl_loader_obj",
+      "name": "OBJ Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3542,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_obj.png"
+    },
+    {
+      "id": "webgl_loader_draco",
+      "name": "Draco Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3562,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_draco.png"
+    },
+    {
+      "id": "webgl_loader_fbx",
+      "name": "FBX Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3931,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_fbx.png"
+    },
+    {
+      "id": "webgl_loader_ply",
+      "name": "PLY Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3665,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_ply.png"
+    },
+    {
+      "id": "webgl_loader_collada",
+      "name": "Collada Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3613,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_collada.png"
+    },
+    {
+      "id": "webgl_loader_pcd",
+      "name": "PCD Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3812,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_pcd.png"
+    },
+    {
+      "id": "webgl_loader_vrml",
+      "name": "VRML Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3613,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_vrml.png"
+    },
+    {
+      "id": "webgl_loader_stl",
+      "name": "STL Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3546,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_stl.png"
+    },
+    {
+      "id": "webgl_loader_3mf",
+      "name": "3MF Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4312,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_3mf.png"
+    },
+    {
+      "id": "webgl_loader_bvh",
+      "name": "BVH Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3738,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_bvh.png"
+    },
+    {
+      "id": "webgl_loader_gcode",
+      "name": "GCode Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3729,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_gcode.png"
+    },
+    {
+      "id": "webgl_loader_svg",
+      "name": "SVG Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3756,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_svg.png"
+    },
+    {
+      "id": "webgl_loader_ttf",
+      "name": "TTF Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3671,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_ttf.png"
+    },
+    {
+      "id": "webgl_loader_pdb",
+      "name": "PDB Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3543,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_pdb.png"
+    },
+    {
+      "id": "webgl_loader_xyz",
+      "name": "XYZ Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3545,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_xyz.png"
+    },
+    {
+      "id": "webgl_loader_3ds",
+      "name": "3DS Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3518,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_3ds.png"
+    },
+    {
+      "id": "webgl_loader_3dm",
+      "name": "3DM Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3525,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_3dm.png"
+    },
+    {
+      "id": "webgl_loader_amf",
+      "name": "AMF Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3556,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_amf.png"
+    },
+    {
+      "id": "webgl_loader_kmz",
+      "name": "KMZ Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3542,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_kmz.png"
+    },
+    {
+      "id": "webgl_loader_lwo",
+      "name": "LWO Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 9250,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_lwo.png"
+    },
+    {
+      "id": "webgl_loader_md2",
+      "name": "MD2 Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3984,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_md2.png"
+    },
+    {
+      "id": "webgl_loader_nrrd",
+      "name": "NRRD Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3646,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_nrrd.png"
+    },
+    {
+      "id": "webgl_loader_vox",
+      "name": "VOX Loader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3747,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_loader_vox.png"
+    },
+    {
+      "id": "webgl_postprocessing",
+      "name": "Unreal Bloom",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3808,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing.png"
+    },
+    {
+      "id": "webgl_postprocessing_demo",
+      "name": "Postprocessing Demo",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3762,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_demo.png"
+    },
+    {
+      "id": "webgl_postprocessing_film",
+      "name": "Film Effect",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3629,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_film.png"
+    },
+    {
+      "id": "webgl_postprocessing_ssao",
+      "name": "SSAO",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3766,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_ssao.png"
+    },
+    {
+      "id": "webgl_postprocessing_fxaa",
+      "name": "FXAA",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3771,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_fxaa.png"
+    },
+    {
+      "id": "webgl_postprocessing_bokeh",
+      "name": "Bokeh DOF",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3798,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_bokeh.png"
+    },
+    {
+      "id": "webgl_postprocessing_smaa",
+      "name": "SMAA",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3605,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_smaa.png"
+    },
+    {
+      "id": "webgl_postprocessing_vignette",
+      "name": "Vignette",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3501,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_vignette.png"
+    },
+    {
+      "id": "webgl_color_grading",
+      "name": "Color Grading",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3414,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_color_grading.png"
+    },
+    {
+      "id": "webgl_postprocessing_dof",
+      "name": "Depth of Field",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3429,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_dof.png"
+    },
+    {
+      "id": "webgl_postprocessing_godrays",
+      "name": "God Rays",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3486,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_godrays.png"
+    },
+    {
+      "id": "webgl_postprocessing_outline",
+      "name": "Outline",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3551,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_outline.png"
+    },
+    {
+      "id": "webgl_postprocessing_ssr",
+      "name": "Screen Space Reflections",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3465,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_ssr.png"
+    },
+    {
+      "id": "webgl_postprocessing_transition",
+      "name": "Scene Transition",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3401,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_transition.png"
+    },
+    {
+      "id": "webgl_postprocessing_glitch",
+      "name": "Glitch",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3357,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_glitch.png"
+    },
+    {
+      "id": "webgl_postprocessing_pixel",
+      "name": "Pixel",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3405,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_pixel.png"
+    },
+    {
+      "id": "webgl_postprocessing_afterimage",
+      "name": "Afterimage",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3355,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_afterimage.png"
+    },
+    {
+      "id": "webgl_postprocessing_taa",
+      "name": "TAA",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3461,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_taa.png"
+    },
+    {
+      "id": "webgl_postprocessing_temporal",
+      "name": "Temporal AA",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3762,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_temporal.png"
+    },
+    {
+      "id": "webgl_postprocessing_chromatic",
+      "name": "Chromatic Aberration",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3674,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_chromatic.png"
+    },
+    {
+      "id": "webgl_postprocessing_depth",
+      "name": "Depth Effect",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3488,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_depth.png"
+    },
+    {
+      "id": "webgl_postprocessing_nodes",
+      "name": "Node-based Effects",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3454,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_nodes.png"
+    },
+    {
+      "id": "webgl_postprocessing_advanced",
+      "name": "Advanced",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3442,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_postprocessing_advanced.png"
+    },
+    {
+      "id": "webgl_sky",
+      "name": "Sky",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3432,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_sky.png"
+    },
+    {
+      "id": "webgl_water",
+      "name": "Water",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3380,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_water.png"
+    },
+    {
+      "id": "webgl_shaders_sky",
+      "name": "Sky Shader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3407,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shaders_sky.png"
+    },
+    {
+      "id": "webgl_panorama_equirectangular",
+      "name": "Equirectangular Panorama",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3510,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_panorama_equirectangular.png"
+    },
+    {
+      "id": "webgl_reflector",
+      "name": "Reflector",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3402,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_reflector.png"
+    },
+    {
+      "id": "webgl_mirror",
+      "name": "Mirror",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4083,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_mirror.png"
+    },
+    {
+      "id": "webgl_lensflares",
+      "name": "Lens Flares",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3664,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lensflares.png"
+    },
+    {
+      "id": "webgl_instancing",
+      "name": "Instancing",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3567,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing.png"
+    },
+    {
+      "id": "webgl_instancing_performance",
+      "name": "Instancing Performance",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3598,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_performance.png"
+    },
+    {
+      "id": "webgl_instancing_animated",
+      "name": "Instancing Animated",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3516,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_animated.png"
+    },
+    {
+      "id": "webgl_instancing_billboards",
+      "name": "Instancing Billboards",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3395,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_billboards.png"
+    },
+    {
+      "id": "webgl_instancing_scatter",
+      "name": "Instancing Scatter",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 4093,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_scatter.png"
+    },
+    {
+      "id": "webgl_instancing_morph",
+      "name": "Instancing Morph",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3773,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_morph.png"
+    },
+    {
+      "id": "webgl_instancing_dynamic",
+      "name": "Instancing Dynamic",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3491,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_dynamic.png"
+    },
+    {
+      "id": "webgl_instancing_raycast",
+      "name": "Instancing Raycast",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3975,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_instancing_raycast.png"
+    },
+    {
+      "id": "webgl_interactive_cubes",
+      "name": "Interactive Cubes",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3695,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_cubes.png"
+    },
+    {
+      "id": "webgl_interactive_cubes_raycaster",
+      "name": "Interactive Cubes Raycaster",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3469,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_cubes_raycaster.png"
+    },
+    {
+      "id": "webgl_interactive_voxelpainter",
+      "name": "Voxel Painter",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3402,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_voxelpainter.png"
+    },
+    {
+      "id": "webgl_interactive_buffer_geometry",
+      "name": "Interactive BufferGeometry",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3357,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_buffer_geometry.png"
+    },
+    {
+      "id": "webgl_interactive_cubes_gpu",
+      "name": "Interactive Cubes GPU",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3596,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_cubes_gpu.png"
+    },
+    {
+      "id": "webgl_interactive_cubes_ortho",
+      "name": "Interactive Cubes Ortho",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3641,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_cubes_ortho.png"
+    },
+    {
+      "id": "webgl_interactive_lines",
+      "name": "Interactive Lines",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3457,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_lines.png"
+    },
+    {
+      "id": "webgl_interactive_raycasting_points",
+      "name": "Interactive Raycasting Points",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3466,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_interactive_raycasting_points.png"
+    },
+    {
+      "id": "webgl_sprites",
+      "name": "Sprites",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3485,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_sprites.png"
+    },
+    {
+      "id": "webgl_buffergeometry",
+      "name": "BufferGeometry",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3542,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_buffergeometry.png"
+    },
+    {
+      "id": "css3d_periodictable",
+      "name": "Periodic Table",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3418,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\css3d_periodictable.png"
+    },
+    {
+      "id": "webgl_css3d",
+      "name": "WebGL + CSS3D",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3395,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_css3d.png"
+    },
+    {
+      "id": "webgl_css3d_demo",
+      "name": "CSS3D Demo",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3367,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_css3d_demo.png"
+    },
+    {
+      "id": "webgl_reflection",
+      "name": "Reflection",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3412,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_reflection.png"
+    },
+    {
+      "id": "webgl_canvas_texture",
+      "name": "Canvas Texture",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3433,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_canvas_texture.png"
+    },
+    {
+      "id": "webgl_toon",
+      "name": "Toon Shading",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3476,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_toon.png"
+    },
+    {
+      "id": "webgl_svg",
+      "name": "SVG Shapes",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3410,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_svg.png"
+    },
+    {
+      "id": "webgl_webgpu",
+      "name": "WebGPU Style",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3383,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webgpu.png"
+    },
+    {
+      "id": "webgl_point_cloud",
+      "name": "Point Cloud",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3456,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_point_cloud.png"
+    },
+    {
+      "id": "webgl_terrain",
+      "name": "Terrain",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3419,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_terrain.png"
+    },
+    {
+      "id": "webgl_custom_shader",
+      "name": "Custom Shader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3439,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_custom_shader.png"
+    },
+    {
+      "id": "webgl_physics",
+      "name": "Physics",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3402,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_physics.png"
+    },
+    {
+      "id": "physics_ammo_break",
+      "name": "Ammo.js Breakable",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3367,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\physics_ammo_break.png"
+    },
+    {
+      "id": "physics_ammo_cloth",
+      "name": "Ammo.js Cloth",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3351,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\physics_ammo_cloth.png"
+    },
+    {
+      "id": "physics_rapier_basic",
+      "name": "Rapier Basic",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3360,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\physics_rapier_basic.png"
+    },
+    {
+      "id": "physics_rapier_instancing",
+      "name": "Rapier Instancing",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3383,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\physics_rapier_instancing.png"
+    },
+    {
+      "id": "physics_rapier_joints",
+      "name": "Rapier Joints",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3371,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\physics_rapier_joints.png"
+    },
+    {
+      "id": "webgl_audio",
+      "name": "Audio Visualizer",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3601,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_audio.png"
+    },
+    {
+      "id": "webgl_css2d",
+      "name": "CSS2D Renderer",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3528,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_css2d.png"
+    },
+    {
+      "id": "webgl_vr",
+      "name": "VR Experience",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3454,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_vr.png"
+    },
+    {
+      "id": "webgl_webxr",
+      "name": "WebXR",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3532,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webxr.png"
+    },
+    {
+      "id": "webgl_webxr_ar",
+      "name": "WebXR AR",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3509,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webxr_ar.png"
+    },
+    {
+      "id": "webgl_webxr_vr",
+      "name": "WebXR VR",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3482,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webxr_vr.png"
+    },
+    {
+      "id": "webgl_webxr_hit_test",
+      "name": "WebXR Hit Test",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3463,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webxr_hit_test.png"
+    },
+    {
+      "id": "webgl_webxr_anchors",
+      "name": "WebXR Anchors",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3490,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webxr_anchors.png"
+    },
+    {
+      "id": "webgl_webxr_layers",
+      "name": "WebXR Layers",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3404,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_webxr_layers.png"
+    },
+    {
+      "id": "webxr_ar_cones",
+      "name": "WebXR AR Cones",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3431,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webxr_ar_cones.png"
+    },
+    {
+      "id": "webxr_ar_plane_detection",
+      "name": "WebXR AR Plane Detection",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3367,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webxr_ar_plane_detection.png"
+    },
+    {
+      "id": "webxr_vr_ballshooter",
+      "name": "WebXR VR Ball Shooter",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3369,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webxr_vr_ballshooter.png"
+    },
+    {
+      "id": "webxr_vr_paint",
+      "name": "WebXR VR Paint",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3325,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webxr_vr_paint.png"
+    },
+    {
+      "id": "webxr_sandbox",
+      "name": "WebXR Sandbox",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3339,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webxr_sandbox.png"
+    },
+    {
+      "id": "webgl_batch_lod_bvh",
+      "name": "Batch LOD BVH",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 18100,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_batch_lod_bvh.png"
+    },
+    {
+      "id": "webgl_useframe_test",
+      "name": "UseFrame Test",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 7581,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_useframe_test.png"
+    },
+    {
+      "id": "webgl_lod",
+      "name": "Level of Detail",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 73265,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_lod.png"
+    },
+    {
+      "id": "webgl_decals",
+      "name": "Decals",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 20083,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_decals.png"
+    },
+    {
+      "id": "webgl_modifier_simplify",
+      "name": "Simplify Modifier",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3586,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_modifier_simplify.png"
+    },
+    {
+      "id": "webgl_helpers",
+      "name": "Helpers",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3467,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_helpers.png"
+    },
+    {
+      "id": "webgl_multiple_geometries",
+      "name": "Multiple Geometries",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3368,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_multiple_geometries.png"
+    },
+    {
+      "id": "webgl_tone_mapping",
+      "name": "Tone Mapping",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3485,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_tone_mapping.png"
+    },
+    {
+      "id": "webgl_shader_lava",
+      "name": "Lava Shader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3516,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shader_lava.png"
+    },
+    {
+      "id": "webgl_shaders_ocean",
+      "name": "Ocean Shader",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3476,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\webgl_shaders_ocean.png"
+    },
+    {
+      "id": "misc_controls_transform",
+      "name": "Transform Controls",
+      "status": "pass",
+      "hasCanvas": true,
+      "canvasHasContent": true,
+      "consoleErrors": [],
+      "loadTimeMs": 3492,
+      "screenshotPath": "D:\\Developments\\tslib\\@woby\\three\\playwright.test\\test-results\\screenshots\\misc_controls_transform.png"
+    }
+  ],
+  "timestamp": "2026-06-01T08:10:45.324Z"
+}
