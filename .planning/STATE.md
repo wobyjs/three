@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-05-14T04:17:56.432Z"
+status: in-progress
+last_updated: "2026-06-02T03:00:00.000Z"
 progress:
-  total_phases: 12
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 17
+  total_phases: 14
+  completed_phases: 13
+  total_plans: 2
+  completed_plans: 19
 ---
 
 # Project State
@@ -54,9 +54,9 @@ progress:
 ## Metrics
 
 - Total Examples: 629
-- Ported: 322 (51% coverage)
+- Ported: 469 (74% coverage)
 - Tested: 8 test suites (postprocessing, webgpu, webxr, physics, advanced, misc, css-svg, audio)
-- Coverage: 51%
+- Coverage: 74%
 
 ## Files Created This Session
 
@@ -72,13 +72,28 @@ progress:
 - Phase 12 CSS & SVG: 12 examples
 - Additional: 7 animation, 11 basic examples
 
+## Phase 14 Progress (Kimi Agent Demo Fix)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 14-01 | kimi-utils.ts + demo-list.ts infrastructure | COMPLETE |
+| 14-02 | kimi-comparison-worker.ts + kimi-orchestrator.ts | COMPLETE |
+
+**Decisions (Phase 14):**
+- Worker always writes partial file in finally block (even for 0-demo batches)
+- Orchestrator cleans stale partial-*.json files before each run
+- Promise.allSettled for worker spawning (partial failures do not abort merge)
+- KIMI_API_KEY propagated via env object only — never logged
+
+**Last session:** 2026-06-02 — Completed 14-02: kimi comparison worker and orchestrator pipeline
+
 ## Next Steps
 
 1. ✅ Milestone complete - all 12 phases finished
 2. ✅ Milestone audit performed (see MILESTONE-AUDIT.md)
-3. Optional: Expand coverage in phases 2-6 (additional 326 examples available)
-4. Optional: Add visual regression tests
-5. Optional: Create interactive documentation site
+3. ✅ Phase 14 Plan 02 complete: kimi-orchestrator.ts --dry-run --limit=3 exits 0
+4. Optional: Run full comparison with live KIMI_API_KEY
+5. Optional: Expand coverage in phases 2-6 (additional 326 examples available)
 
 ## Notes
 
