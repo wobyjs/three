@@ -379,6 +379,75 @@ Plans:
 
 ---
 
+## Phase 13: Multimodal Visual Regression Testing
+**Duration**: 1-2 days
+**Goal**: Compare each ported demo's 3D canvas output against the reference threejs.org example using a multimodal LLM to verify visual fidelity.
+**Status**: PLANNING
+
+### Deliverables
+- Playwright test harness that screenshots both ported demo canvas and threejs.org reference
+- Multimodal LLM comparison pipeline (Claude vision API) per demo pair
+- Parallel agent architecture to process 200 demos within 12 hours
+- JSON report with per-demo similarity scores and failure images
+- CI-ready pass/fail gate based on similarity threshold
+
+### Categories
+- Screenshot capture infrastructure (ported + reference)
+- LLM vision comparison pipeline
+- Parallel agent fanout (split 200 demos across N workers)
+- Reporting and CI gate
+
+### Task Breakdown
+
+| Wave | Tasks | Duration |
+|------|-------|----------|
+| 1 | Screenshot capture harness for ported demos | Hour 1-2 |
+| 2 | Reference screenshot capture from threejs.org | Hour 2-4 |
+| 3 | Multimodal LLM comparison pipeline | Hour 4-6 |
+| 4 | Parallel agent fanout + reporting | Hour 6-10 |
+| 5 | CI gate + integration with demo-verification.test.ts | Hour 10-12 |
+
+---
+
+## Phase 14: Kimi Vision + Agent-Browser Demo Fix Sprint
+**Duration**: 2-4 days
+**Goal**: Replace Playwright+Anthropic vision stack with Kimi multimodal + agent-browser. Compare every ported demo against threejs.org one-by-one using Kimi vision, then fan-out agents to debug and fix all non-matching demos.
+**Status**: PLANNING
+
+### Deliverables
+- `kimi-compare` CLI: takes 2 image paths + prompt, calls Kimi API (`https://api.sfkey.cn/v1`, model `kimi-k2.5`), returns similarity verdict
+- agent-browser orchestrator replacing Playwright for headed, sessioned screenshot capture
+- Demo comparison pipeline: screenshot all 200 ported demos + threejs.org references via agent-browser sessions
+- Parallel agent fanout: fan out debug/fix agents across all failing demos
+- Woby-aware fix agents: use `/woby-dev` `/woby` `/dom` `/dom-customelement` patterns to repair broken demos
+
+### Key Constraints
+- API key from `process.env.KIMI_API_KEY` only — never logged or written to output
+- NO ANTHROPIC_API_KEY usage anywhere in this phase
+- Use `agent-browser open session {name}` / `agent-browser close session {name}` for session lifecycle
+- Never `taskkill /IM chrome.exe` — kill only MCP Chrome PID
+
+### Categories
+- Kimi multimodal CLI tool
+- agent-browser session management
+- Demo screenshot capture (ported + reference)
+- Visual comparison pipeline (Kimi vision)
+- Fan-out fix agents
+- Reporting and CI gate
+
+**Requirements**: NFR-3.2
+
+**Plans:** 5 plans
+
+Plans:
+- [x] 14-01-PLAN.md - kimi-utils.ts: Kimi API client, agent-browser wrapper, ID validator, CLI self-test
+- [x] 14-02-PLAN.md - kimi-comparison-worker.ts + kimi-orchestrator.ts: per-batch worker and 5-worker orchestrator
+- [x] 14-03-PLAN.md - Reference screenshot capture for 95 demos via agent-browser + human verification
+- [x] 14-04-PLAN.md - Live Kimi comparison run (134 demos) + HTML report + human verification
+- [x] 14-05-PLAN.md - fix-orchestrator.ts: fan-out fix agents for failing demos, collect re-scored results (Task 1 complete)
+
+---
+
 ## Verification Gates
 
 Each phase requires:
