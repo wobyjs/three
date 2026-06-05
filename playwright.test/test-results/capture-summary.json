@@ -1,0 +1,814 @@
+{
+  "generated_at": "2026-06-05T04:45:04.659Z",
+  "total_demos": 134,
+  "captured": 0,
+  "skipped": 116,
+  "failed": 18,
+  "sessions_closed": true,
+  "results": [
+    {
+      "id": "webgl_lines",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lines.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_lines_dashed",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lines_dashed.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_effects_anaglyph",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_effects_anaglyph.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_effects_stereo",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_effects_stereo.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_effects_parallaxbarrier",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_effects_parallaxbarrier.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_effects_ascii",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_animation_particles",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_animation_particles.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_animation_keyframes",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_animation_keyframes.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_animation_skinning",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_animation_skinning.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_animation_skinning_blending",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_animation_skinning_blending.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometries",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometries.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_shapes",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_shapes.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_lathe",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_lathe.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_teapot",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_teapot.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_convex",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_convex.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_extrude_shapes",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_extrude_shapes.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_colors",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_colors.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_minecraft",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_minecraft.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_geometry_spline_editor",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_geometry_spline_editor.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_physical",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_physical.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_transparency",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_transparency.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_blending",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_blending.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_matcap",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_matcap.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_cubemap",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_cubemap.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_car",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_car.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_normalmap",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_normalmap.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_physical_clearcoat",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_physical_clearcoat.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_physical_transmission",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_physical_transmission.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_channels",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_channels.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_materials_cubemap_dynamic",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_materials_cubemap_dynamic.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_textures_cube",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_uvs",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_alpha",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_alpha.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_clipping",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_clipping.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_clipping_advanced",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_clipping_advanced.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_clipping_intersection",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_clipping_intersection.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_wireframes",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_particles",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_particles_buffer",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_particles_buffer.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_points_sprites",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_points_sprites.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_points_dynamic",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_points_dynamic.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_points_waves",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_points_waves.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_fog",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_fog.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_shadowmap",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_shadowmap.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_shadowmap_advanced",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_shadowmap_advanced.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_shadow_contact",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_shadow_contact.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_shadows",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_shadows.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_shadowmap_pointlight",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_shadowmap_pointlight.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_shadowmap_vsm",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_shadowmap_vsm.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_lights",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lights.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_lights_rectarea",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lights_rectarea.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_lights_spotlight",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lights_spotlight.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_lightprobe",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lightprobe.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_camera",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_camera.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_camera_array",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_camera_array.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_gltf",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_gltf.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_obj",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_obj.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_draco",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_draco.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_fbx",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_fbx.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_ply",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_ply.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_collada",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_collada.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_pcd",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_pcd.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_vrml",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_vrml.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_stl",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_stl.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_3mf",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_3mf.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_bvh",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_bvh.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_gcode",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_gcode.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_svg",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_svg.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_ttf",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_ttf.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_pdb",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_pdb.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_xyz",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_xyz.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_3ds",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_3ds.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_3dm",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_3dm.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_amf",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_amf.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_kmz",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_kmz.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_lwo",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_lwo.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_md2",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_md2.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_nrrd",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_nrrd.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_loader_vox",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_loader_vox.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_film",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_film.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_ssao",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_ssao.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_fxaa",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_fxaa.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_smaa",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_smaa.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_dof",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_dof.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_outline",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_outline.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_ssr",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_ssr.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_transition",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_transition.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_glitch",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_postprocessing_pixel",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_pixel.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_afterimage",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_afterimage.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_taa",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_taa.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_postprocessing_advanced",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_postprocessing_advanced.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_sky",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_sky.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_water",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_water.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_panorama_equirectangular",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_panorama_equirectangular.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_reflector",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_mirror",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_mirror.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_lensflares",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lensflares.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_instancing",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_instancing_performance",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_instancing_performance.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_instancing_animated",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_instancing_morph",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_instancing_morph.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_instancing_dynamic",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_instancing_dynamic.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_instancing_raycast",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_instancing_raycast.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_interactive_cubes",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_interactive_cubes.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_interactive_cubes_raycaster",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_interactive_voxelpainter",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_interactive_voxelpainter.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_interactive_buffer_geometry",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_interactive_cubes_gpu",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_interactive_cubes_gpu.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_interactive_cubes_ortho",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_interactive_cubes_ortho.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_interactive_lines",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_interactive_lines.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_interactive_raycasting_points",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_interactive_raycasting_points.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_sprites",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_sprites.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_buffergeometry",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_buffergeometry.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "css3d_periodictable",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_canvas_texture",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "physics_ammo_break",
+      "status": "skipped",
+      "path": "screenshots/reference/physics_ammo_break.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "physics_ammo_cloth",
+      "status": "skipped",
+      "path": "screenshots/reference/physics_ammo_cloth.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "physics_rapier_basic",
+      "status": "skipped",
+      "path": "screenshots/reference/physics_rapier_basic.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "physics_rapier_instancing",
+      "status": "skipped",
+      "path": "screenshots/reference/physics_rapier_instancing.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "physics_rapier_joints",
+      "status": "skipped",
+      "path": "screenshots/reference/physics_rapier_joints.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webxr_ar_cones",
+      "status": "skipped",
+      "path": "screenshots/reference/webxr_ar_cones.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webxr_ar_plane_detection",
+      "status": "skipped",
+      "path": "screenshots/reference/webxr_ar_plane_detection.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webxr_vr_ballshooter",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webxr_vr_paint",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webxr_sandbox",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_lod",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_lod.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_decals",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_decals.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_modifier_simplify",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "webgl_helpers",
+      "status": "skipped",
+      "path": "screenshots/reference/webgl_helpers.png",
+      "reason": "Already exists"
+    },
+    {
+      "id": "webgl_tone_mapping",
+      "status": "failed",
+      "path": null,
+      "reason": "Reference capture returned: failed"
+    },
+    {
+      "id": "misc_controls_transform",
+      "status": "skipped",
+      "path": "screenshots/reference/misc_controls_transform.png",
+      "reason": "Already exists"
+    }
+  ]
+}
