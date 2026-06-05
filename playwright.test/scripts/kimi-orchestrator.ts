@@ -28,13 +28,17 @@ import { KIMI_PASS_THRESHOLD } from './kimi-utils.js'
 // ─── Path anchors ─────────────────────────────────────────────────────────────
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const ROOT = path.join(__dirname, '..')
+// tsconfig.json lives in playwright.test/ (not dist/) — use it as the root marker
+const ROOT = fs.existsSync(path.join(__dirname, '..', 'tsconfig.json'))
+  ? path.join(__dirname, '..')        // running from scripts/ (tsx)
+  : path.join(__dirname, '..', '..') // running from dist/scripts/ (compiled)
 
 // ─── Output paths ─────────────────────────────────────────────────────────────
 
 const PARTIAL_RESULTS_DIR = path.join(ROOT, 'test-results', 'partial-results')
 const FINAL_REPORT_JSON = path.join(ROOT, 'test-results', 'kimi-comparison-report.json')
 const FINAL_REPORT_HTML = path.join(ROOT, 'test-results', 'kimi-comparison-report.html')
+const CAPTURE_SUMMARY_JSON = path.join(ROOT, 'test-results', 'capture-summary.json')
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -75,6 +79,7 @@ function parseArgs() {
 
   const isDryRun = argv.includes('--dry-run')
   const isRefail = argv.includes('--refail')
+  const isCaptureOnly = argv.includes('--capture-only')
 
   const limitArg = argv.find(a => a.startsWith('--limit='))
   const limit = limitArg ? parseInt(limitArg.split('=')[1], 10) : null
@@ -82,7 +87,7 @@ function parseArgs() {
   const workersArg = argv.find(a => a.startsWith('--workers='))
   const numWorkers = workersArg ? parseInt(workersArg.split('=')[1], 10) : 5
 
-  return { isDryRun, isRefail, limit, limitArg, numWorkers }
+  return { isDryRun, isRefail, isCaptureOnly, limit, limitArg, numWorkers }
 }
 
 // ─── Pre-flight: dev server check ────────────────────────────────────────────
@@ -104,17 +109,20 @@ function spawnWorker(
   passedFlags: string[]
 ): Promise<void> {
   return new Promise<void>((resolve, reject) => {
+    // Use tsx to run the TypeScript worker directly — no compile step needed
+    const workerScript = path.join(__dirname, 'kimi-comparison-worker.ts')
     const args = [
       'tsx',
-      'scripts/kimi-comparison-worker.ts',
+      workerScript,
       `--batch-index=${batchIndex}`,
       `--batch-size=${batchSize}`,
       ...passedFlags
     ]
 
+    // shell:true required on Windows to resolve npx.cmd via PATHEXT
     const child = spawn('npx', args, {
       cwd: ROOT,
-      shell: true,  // required on Windows to resolve npx through PATH
+      shell: true,
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env }  // KIMI_API_KEY propagated via env object only (T-14-06)
     })
@@ -208,6 +216,65 @@ function mergePartialResults(numWorkers: number): KimiComparisonReport {
     pass_threshold: KIMI_PASS_THRESHOLD,
     ci_gate_failed: ciGateFailed,
     results: allResults
+  }
+}
+
+// ─── Generate capture summary (capture-only mode) ──────────────────────────────
+
+interface CaptureSummary {
+  generated_at: string
+  total_demos: number
+  captured: number
+  skipped: number
+  failed: number
+  sessions_closed: boolean
+  results: Array<{
+    id: string
+    status: 'captured' | 'skipped' | 'failed'
+    path: string | null
+    reason?: string
+  }>
+}
+
+function generateCaptureSummary(numWorkers: number): CaptureSummary {
+  const seen = new Map<string, { id: string; status: 'captured' | 'skipped' | 'failed'; path: string | null; reason?: string }>()
+
+  for (let i = 0; i < numWorkers; i++) {
+    const partialPath = path.join(PARTIAL_RESULTS_DIR, `partial-${i}.json`)
+    if (!fs.existsSync(partialPath)) continue
+
+    let partial: { batch_index: number; results: DemoComparisonResult[] }
+    try {
+      partial = JSON.parse(fs.readFileSync(partialPath, 'utf-8'))
+    } catch {
+      continue
+    }
+
+    for (const r of partial.results) {
+      const status = r.verdict === 'skipped' ? 'skipped' :
+                     r.verdict === 'captured' ? 'captured' : 'failed'
+      seen.set(r.id, {
+        id: r.id,
+        status,
+        path: r.reference_screenshot,
+        reason: r.reasoning ?? undefined
+      })
+    }
+  }
+
+  const results = Array.from(seen.values())
+  const captured = results.filter(r => r.status === 'captured').length
+  const skipped = results.filter(r => r.status === 'skipped').length
+  const failed = results.filter(r => r.status === 'failed').length
+
+  return {
+    generated_at: new Date().toISOString(),
+    total_demos: results.length,
+    captured,
+    skipped,
+    failed,
+    sessions_closed: true,
+    results
   }
 }
 
@@ -331,11 +398,14 @@ function escapeHtml(text: string | null | undefined): string {
 // ─── Main orchestrator entry point ────────────────────────────────────────────
 
 async function main(): Promise<void> {
-  const { isDryRun, isRefail, limit, limitArg, numWorkers } = parseArgs()
+  const { isDryRun, isRefail, isCaptureOnly, limit, limitArg, numWorkers } = parseArgs()
+
+  if (isCaptureOnly) console.log('[orchestrator] CAPTURE-ONLY mode: reference screenshots only, no Kimi comparison')
 
   // ── Pre-flight Check 1: KIMI_API_KEY ──────────────────────────────────────
   // Key value is NEVER logged — only its presence is checked (T-14-06)
-  if (!isDryRun && !process.env.KIMI_API_KEY) {
+  // Skipped in capture-only mode (no Kimi calls)
+  if (!isDryRun && !isCaptureOnly && !process.env.KIMI_API_KEY) {
     console.error('[pre-flight] FATAL: KIMI_API_KEY env var is not set. Cannot run live comparison.')
     console.error('[pre-flight] Set it with: export KIMI_API_KEY=your-key')
     process.exit(1)
@@ -383,17 +453,23 @@ async function main(): Promise<void> {
   }
 
   // ── Pre-flight Check 2: Dev server reachability ────────────────────────────
-  const portedScreenshotsMissing = comparableDemos.some(d => {
-    const p = path.join(ROOT, 'screenshots', 'ported', `${d.id}.png`)
-    return !fs.existsSync(p)
-  })
+  if (isCaptureOnly) {
+    // In capture-only mode, we only capture reference screenshots from threejs.org
+    // No dev server needed
+    console.log('[pre-flight] Capture-only mode: skipping dev server check (no ported screenshots needed)')
+  } else {
+    const portedScreenshotsMissing = comparableDemos.some(d => {
+      const p = path.join(ROOT, 'screenshots', 'ported', `${d.id}.png`)
+      return !fs.existsSync(p)
+    })
 
-  if (portedScreenshotsMissing) {
-    const serverUp = await checkDevServer()
-    if (!serverUp) {
-      console.warn('[pre-flight] WARNING: localhost:5175 is unreachable and some ported screenshots are missing.')
-      console.warn('[pre-flight] Start the dev server with: pnpm run dev (from the demo/ directory)')
-      console.warn('[pre-flight] Workers will mark missing ported screenshots as no-ported-screenshot. Continuing...')
+    if (portedScreenshotsMissing) {
+      const serverUp = await checkDevServer()
+      if (!serverUp) {
+        console.warn('[pre-flight] WARNING: localhost:5175 is unreachable and some ported screenshots are missing.')
+        console.warn('[pre-flight] Start the dev server with: pnpm run dev (from the demo/ directory)')
+        console.warn('[pre-flight] Workers will mark missing ported screenshots as no-ported-screenshot. Continuing...')
+      }
     }
   }
 
@@ -414,6 +490,7 @@ async function main(): Promise<void> {
   const passedFlags: string[] = []
   if (isDryRun) passedFlags.push('--dry-run')
   if (limitArg) passedFlags.push(limitArg)
+  if (isCaptureOnly) passedFlags.push('--capture-only')
 
   // ── Spawn workers ──────────────────────────────────────────────────────────
   const batchSize = Math.ceil(comparableDemos.length / numWorkers)
@@ -435,6 +512,23 @@ async function main(): Promise<void> {
   }
 
   console.log(`[orchestrator] All workers completed. Merging results...`)
+
+  // ── Capture-only mode: write capture-summary.json ─────────────────────────────
+  if (isCaptureOnly) {
+    const captureSummary = generateCaptureSummary(numWorkers)
+    fs.writeFileSync(CAPTURE_SUMMARY_JSON, JSON.stringify(captureSummary, null, 2))
+    console.log(`[orchestrator] Capture summary: ${CAPTURE_SUMMARY_JSON}`)
+
+    console.log(`\n=== REFERENCE CAPTURE SUMMARY ===`)
+    console.log(`Total demos:    ${captureSummary.total_demos}`)
+    console.log(`Captured:       ${captureSummary.captured}`)
+    console.log(`Skipped:        ${captureSummary.skipped}`)
+    console.log(`Failed:         ${captureSummary.failed}`)
+    console.log(`Sessions closed: ${captureSummary.sessions_closed ? 'Yes' : 'No'}`)
+
+    // Exit 0 regardless of per-demo failures (capture failures are expected)
+    process.exit(0)
+  }
 
   // ── Merge partial results ──────────────────────────────────────────────────
   const report = mergePartialResults(numWorkers)
