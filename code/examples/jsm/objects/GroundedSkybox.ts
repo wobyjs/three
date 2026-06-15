@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Texture } from 'three/src/textures/Texture.js'
 import { GroundedSkybox } from 'three/examples/jsm/objects/GroundedSkybox.js'
 export * from 'three/examples/jsm/objects/GroundedSkybox.js'
@@ -49,7 +49,7 @@ consParams.groundedSkybox = groundedSkybox
 
 
 
-const _groundedSkybox = ([...objProps.mesh,
+const _groundedSkybox = ([...(objProps.mesh ?? []),
 ] as const).distinct()
 objProps.groundedSkybox = _groundedSkybox
 

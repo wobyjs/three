@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { WebXRController } from 'three/src/renderers/webxr/WebXRController.js'
 export { WebXRController } from 'three/src/renderers/webxr/WebXRController.js'
 import { Three } from '../../../lib/3/three'
@@ -99,7 +99,7 @@ consParams.webXrController = webXrController
 
 
 
-const _xrJointSpace = ([...objProps.group,
+const _xrJointSpace = ([...(objProps.group ?? []),
 ] as const).distinct()
 objProps.xrJointSpace = _xrJointSpace
 
@@ -126,17 +126,17 @@ const _webXrSpaceEventMap = ([...objProps.object3dEventMap,
 ] as const).distinct()
 objProps.webXrSpaceEventMap = _webXrSpaceEventMap
 
-const _xrHandSpace = ([...objProps.group,
+const _xrHandSpace = ([...(objProps.group ?? []),
 ] as const).distinct()
 objProps.xrHandSpace = _xrHandSpace
 
-const _xrTargetRaySpace = ([...objProps.group,
+const _xrTargetRaySpace = ([...(objProps.group ?? []),
     'hasLinearVelocity',
     'hasAngularVelocity',
 ] as const).distinct()
 objProps.xrTargetRaySpace = _xrTargetRaySpace
 
-const _xrGripSpace = ([...objProps.group,
+const _xrGripSpace = ([...(objProps.group ?? []),
     'hasLinearVelocity',
     'hasAngularVelocity',
 ] as const).distinct()

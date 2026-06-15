@@ -1,0 +1,29 @@
+{
+  "demo_id": "webgl_shadowmap_pointlight",
+  "score_before": 0.1,
+  "score_after": null,
+  "fix_applied": true,
+  "issues_found": [
+    "Insufficient shadow-mapSize (128 too small)",
+    "Missing shadow-camera-near and shadow-camera-far for point lights",
+    "shadow-radius not applicable for point lights"
+  ],
+  "fixes_applied": [
+    "Increased shadow-mapSize from 128 to 512 for both point lights",
+    "Added shadow-camera-near={0.1} and shadow-camera-far={25}",
+    "Removed shadow-radius property (not valid for PointLight shadows)"
+  ],
+  "timestamp": "2026-06-06T12:00:00Z",
+  "after_score": 0,
+  "status": "fail",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) displays a web application sidebar/menu interface for '@woby/three' with example cards ('Plane', '3 Boxes + Click') and a search bar, but the main viewport on the right is completely black/empty with no 3D scene rendered. Image 2 (REFERENCE) shows the actual 'PointLight ShadowMap' Three.js example with a fully rendered 3D environment featuring a glowing cyan spiral object, curved walls with warm orange and blue lighting, shadows, and an FPS counter. The ported version fails to display any 3D content whatsoever, showing only the UI chrome with a blank canvas.",
+  "kimi_key_differences": [
+    "Image 1 shows a UI sidebar with '@woby/three' branding and example selection menu; Image 2 shows a fullscreen 3D rendering",
+    "Image 1 main viewport is entirely black/empty with no visible 3D objects; Image 2 displays rendered 3D spiral objects, curved walls, and lighting",
+    "Image 1 contains interactive UI elements like search box and demo cards; Image 2 contains only a title bar and FPS counter",
+    "Image 1 lacks the distinctive cyan spiral and orange curved surfaces present in Image 2",
+    "Image 1 has no lighting or shadow rendering visible; Image 2 shows complex PointLight shadow mapping effects"
+  ],
+  "verification_timestamp": "2026-06-07T02:08:03.349Z"
+}

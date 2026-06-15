@@ -23,7 +23,7 @@
     "dependencies": {
         "@anthropic-ai/sdk": "^0.56.0",
         "@woby/three": "workspace:..",
-        "sharp": "^0.33.0",
+        "sharp": "^0.33.5",
         "woby": "workspace:../../woby"
     },
     "devDependencies": {

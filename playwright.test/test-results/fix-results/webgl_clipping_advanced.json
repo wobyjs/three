@@ -1,0 +1,20 @@
+{
+  "demo_id": "webgl_clipping_advanced",
+  "fix_timestamp": "2026-06-06T12:00:00Z",
+  "issue": "No issue found - demo already working correctly",
+  "root_cause": "Demo uses imperative Three.js code for advanced clipping with multiple planes and InstancedMesh",
+  "fix": "No fix needed - demo renders correctly with tetrahedron clipping planes on instanced boxes",
+  "files_modified": [],
+  "fix_details": {
+    "clipping_planes": 4 planes forming tetrahedron shape",
+    "geometry": "InstancedMesh with 125 box instances (5x5x5 grid)",
+    "plane_calculation": "planesFromMesh helper function creates planes from mesh vertices",
+    "renderer_config": "localClippingEnabled and shadowMap enabled with PCFSoftShadowMap"
+  },
+  "verification": {
+    "demo_loads": true,
+    "screenshot_path": "test-results/screenshots/fixed/webgl_clipping_advanced_test.png",
+    "visual_check": "Demo shows rotating cube of red boxes being clipped by tetrahedron planes with shadows"
+  },
+  "additional_notes": "Advanced clipping requires InstancedMesh and custom plane calculations which are handled correctly in imperative approach. Shadows and OrbitControls are properly configured."
+}

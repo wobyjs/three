@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { CameraHelper } from 'three/src/helpers/CameraHelper.js'
 export { CameraHelper } from 'three/src/helpers/CameraHelper.js'
@@ -81,7 +81,7 @@ consParams.cameraHelper = cameraHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/CameraHelper.js | Source}
  */
 
-const _cameraHelper = ([...objProps.lineSegments,
+const _cameraHelper = ([...(objProps.lineSegments ?? []),
     /**
      * The camera being visualized.
      */

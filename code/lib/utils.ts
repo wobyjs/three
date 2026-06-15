@@ -156,7 +156,7 @@ export const isFunctionR = <T>(obj, optional = true) => {
     return false
 }
 
-/** Recursive check isObservable 
+/** Recursive check isObservable
  *  skip ref
 */
 export const isObservableR = <T>(obj: T): obj is T & Observable => {
@@ -165,7 +165,7 @@ export const isObservableR = <T>(obj: T): obj is T & Observable => {
     if (isFunction(obj)) return false
     if (!obj) return false
 
-    if (typeof obj === 'object')
+    if (typeof obj === 'object' && (isObjectLiteral(obj) || Array.isArray(obj)))
         return Object.keys(obj).some(key => key !== 'ref' && isObservableR(obj[key]))
 
     return false

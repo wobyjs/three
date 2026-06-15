@@ -1,0 +1,30 @@
+{
+  "demo_id": "webgl_water",
+  "score_before": 0.05,
+  "score_after": null,
+  "fix_applied": true,
+  "issues_found": [
+    "Missing shadowMap-enabled on renderer",
+    "Missing castShadow on directionalLight",
+    "Missing castShadow on mesh objects"
+  ],
+  "fixes_applied": [
+    "Added shadowMap-enabled to webglRenderer",
+    "Added castShadow to directionalLight",
+    "Added castShadow attribute to all three mesh objects"
+  ],
+  "timestamp": "2026-06-06T12:00:00Z",
+  "after_score": 0,
+  "status": "fail",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) displays a completely black viewport with no 3D content rendered, showing only the UI sidebar with example listings. Image 2 (REFERENCE) shows the correctly rendered 'Simple procedurally-generated shapes' demo with multiple colorful 3D shapes (smiley faces, hearts, circles, rectangles, capsules, organic shapes) arranged in a radial pattern on a light gray background, each with dotted trail outlines. The ported version has failed to render the 3D scene entirely, resulting in a black canvas where the shapes should be. The background color, lighting, objects, and scene composition are completely different between the two images.",
+  "kimi_key_differences": [
+    "Main viewport content: PORTED shows solid black empty canvas, REFERENCE shows colorful 3D procedural shapes",
+    "Background color: PORTED has black background, REFERENCE has light gray/white background",
+    "Scene objects: PORTED has zero 3D objects visible, REFERENCE has 8+ distinct shapes (magenta smileys, green circles, black twisted shape, blue rectangles, orange California shape, red heart, brown circle, teal capsule, gray rounded shape)",
+    "Visual effects: PORTED has no dotted trail outlines, REFERENCE has dotted line trails behind each shape",
+    "Text/UI: PORTED shows sidebar navigation with '@woby/three' header, REFERENCE shows title 'Simple procedurally-generated shapes' and FPS counter",
+    "Lighting: PORTED has no visible lighting (black screen), REFERENCE has fully lit scene with shadows and ambient light"
+  ],
+  "verification_timestamp": "2026-06-07T02:09:10.638Z"
+}

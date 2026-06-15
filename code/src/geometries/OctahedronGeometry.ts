@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { OctahedronGeometry } from 'three/src/geometries/OctahedronGeometry.js'
 export { OctahedronGeometry } from 'three/src/geometries/OctahedronGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -61,7 +61,7 @@ consParams.octahedronGeometry = octahedronGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/OctahedronGeometry.js | Source}
  */
 
-const _octahedronGeometry = ([...objProps.polyhedronGeometry,
+const _octahedronGeometry = ([...(objProps.polyhedronGeometry ?? []),
 ] as const).distinct()
 objProps.octahedronGeometry = _octahedronGeometry
 

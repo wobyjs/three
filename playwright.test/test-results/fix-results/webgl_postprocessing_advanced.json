@@ -1,0 +1,102 @@
+{
+  "id": "webgl_postprocessing_advanced",
+  "before_score": 0,
+  "after_score": 0,
+  "delta": "Pending",
+  "status": "fail",
+  "change_description": "Added missing AdvancedPostprocessingSetup component with complete postprocessing pipeline. The demo imported postprocessing classes (EffectComposer, RenderPass, ShaderPass, BloomPass, FilmPass, DotScreenPass) but never instantiated or used them. Added full pipeline: RenderPass → BloomPass → FilmPass → DotScreenPass → BleachBypass shader → Sepia shader → Vignette shader → GammaCorrection shader.",
+  "changes": [
+    {
+      "file": "demo/src/WebGLPostprocessingAdvanced.tsx",
+      "change": "Added imports for EC, RP, SP, BP, FP, DSP from @woby/three/examples/jsm/postprocessing and TWebGLRenderer, useThree hook",
+      "lines_changed": [
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessingAdvanced.tsx",
+      "change": "Created AdvancedPostprocessingSetup component with useEffect to set up EffectComposer",
+      "lines_changed": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessingAdvanced.tsx",
+      "change": "Added AdvancedPostprocessingSetup component to Canvas3D JSX",
+      "lines_changed": [
+        87
+      ]
+    }
+  ],
+  "root_cause": "Demo imported all necessary postprocessing classes but never used them. The scene had a rotating GLTF model but no postprocessing pipeline was created, resulting in a score of 0 for postprocessing effects. Missing: EffectComposer setup, RenderPass as first pass, and effect passes chain.",
+  "fix_pattern": "Advanced postprocessing demos require a chain of passes: 1) RenderPass (always first, renders scene to texture), 2) Multiple effect passes (BloomPass, FilmPass, DotScreenPass, ShaderPass instances), 3) ShaderPass instances for color effects (bleach bypass, sepia, vignette, gamma correction). Each pass processes the texture from the previous pass. The composer.render() call replaces the default renderer.render() call via setAnimationLoop.",
+  "timestamp": "2026-06-06T16:30:00Z",
+  "notes": "Fixed demo now has 7-pass postprocessing chain: RenderPass → BloomPass → FilmPass → DotScreenPass → BleachBypass → Sepia → Vignette → GammaCorrection. This matches the pattern of threejs.org/examples/webgl_postprocessing_advanced with multiple layered effects on the Lee Perry Smith head model. Screenshot capture needed with Chrome DevTools MCP to verify visual output.",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) shows only a UI sidebar with a list of Three.js examples, with a completely black main content area where the 3D scene should render. No actual 3D content, objects, lighting, or scene is visible - just the example browser interface. Image 2 (REFERENCE) shows a fully rendered 3D postprocessing example featuring the Lee Perry-Smith head model with four different visual effects applied in a 2x2 grid layout: top-left shows a grainy/noise effect with warm sepia tones, top-right shows a similar grainy effect with pinkish/cooler tones, bottom-left shows a grayscale/blur effect, and bottom-right shows a halftone/dot pattern effect. The reference has clear lighting, detailed 3D geometry, background environment, and postprocessing effects. The ported version fails to render any 3D content whatsoever - it appears to be stuck at the example selection menu or failed to load the actual demo. These images share no visual similarity in terms of actual rendered content.",
+  "kimi_key_differences": [
+    "Image 1 shows only UI sidebar with black viewport, no 3D scene rendered",
+    "Image 2 shows fully rendered 3D head model with four postprocessing variations",
+    "Image 1 has zero visible objects, lighting, or materials",
+    "Image 2 has complex postprocessing effects including noise, blur, grayscale, and halftone",
+    "Image 1 displays 'Three.js Demo' placeholder text in sidebar thumbnails",
+    "Image 2 shows actual rendered 3D content with title 'three.js - webgl postprocessing example'"
+  ],
+  "verification_timestamp": "2026-06-07T02:01:33.267Z"
+}

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { MapControls } from 'three/examples/jsm/controls/MapControls.js'
 export * from 'three/examples/jsm/controls/MapControls.js'
@@ -76,7 +76,7 @@ consParams.mapControls = mapControls
  * event listeners.
  */
 
-const _mapControls = ([...objProps.orbitControls,
+const _mapControls = ([...(objProps.orbitControls ?? []),
 ] as const).distinct()
 objProps.mapControls = _mapControls
 

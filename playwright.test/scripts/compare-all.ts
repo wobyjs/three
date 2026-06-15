@@ -12,7 +12,7 @@ import { Verdict, parseVerdict, buildBatchRequests, resizeScreenshot, submitAndP
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const ROOT = path.join(__dirname, '..')
+const ROOT = fs.existsSync(path.join(__dirname, '..', 'tsconfig.json')) ? path.join(__dirname, '..') : path.join(__dirname, '..', '..')
 
 const LLM_BATCH_RESULTS_PATH = path.join(ROOT, 'test-results', 'llm-batch-results.json')
 const RESIZED_DIR = path.join(ROOT, 'test-results', 'resized-screenshots')

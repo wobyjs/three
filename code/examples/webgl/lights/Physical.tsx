@@ -1,9 +1,9 @@
 /** @jsxImportSource @woby/three */
 
-import { $, $$, useFrame } from "woby"
+import { $, $$, useFrame, useEffect } from "woby"
 import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
 import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color, PCFSoftShadowMap, ACESFilmicToneMapping } from 'three'
+import { Color, PCFSoftShadowMap, ACESFilmicToneMapping, RectAreaLightUniformsLib } from 'three'
 import * as THREE from 'three'
 
 // Import wrappers for registration
@@ -36,6 +36,11 @@ export const Physical = () => {
     const light1Ref = $<THREE.PointLight>()
     const light2Ref = $<THREE.PointLight>()
     const light3Ref = $<THREE.PointLight>()
+
+    // Initialize RectAreaLightUniformsLib for physical lighting
+    useEffect(() => {
+        RectAreaLightUniformsLib.init()
+    })
 
     // Animate lights in circular paths
     useFrame(({ clock }) => {

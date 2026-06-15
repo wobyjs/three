@@ -1,0 +1,90 @@
+{
+  "id": "webgl_postprocessing_dof",
+  "before_score": 0.05,
+  "after_score": 0.15,
+  "delta": "Pending",
+  "status": "fail",
+  "change_description": "Added missing DOFSetup component with BokehPass for depth of field effect. The demo had a scene with objects at various depths but no DOF postprocessing implementation. Added complete pipeline: RenderPass → BokehPass → OutputPass.",
+  "changes": [
+    {
+      "file": "demo/src/WebGLPostprocessingDOF.tsx",
+      "change": "Added imports for EffectComposer, RenderPass, BokehPass, OutputPass and necessary hooks",
+      "lines_changed": [
+        3,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessingDOF.tsx",
+      "change": "Created DOFSetup component with useEffect to set up EffectComposer with BokehPass",
+      "lines_changed": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessingDOF.tsx",
+      "change": "Added DOFSetup component to Canvas3D JSX",
+      "lines_changed": [
+        74
+      ]
+    }
+  ],
+  "root_cause": "Demo had a scene with objects at multiple depths (torus knot at z=0, spheres at z=-2/-4, box at z=-7, sphere at z=-9) but no depth of field postprocessing. Score of 0.05 indicates minimal visual matching to reference, likely because DOF effect was completely missing. The BokehPass simulates camera focus with objects blurring based on distance from focal plane.",
+  "fix_pattern": "Depth of field demos require: 1) Scene with objects at varying depths, 2) EffectComposer with RenderPass first, 3) BokehPass with focus/aperture/maxblur parameters, 4) OutputPass for color management. BokehPass.focus controls focal distance (1.0 = focus at depth 1), aperture controls blur intensity, maxblur controls maximum blur radius. This matches pattern in threejs.org/examples/webgl_postprocessing_dof.",
+  "timestamp": "2026-06-06T16:35:00Z",
+  "notes": "Fixed demo now has BokehPass with focus=1.0, aperture=0.025, maxblur=0.01. Objects closer to camera (z=0 to -2) will be sharper, objects further away (z=-7 to -9) will blur. Screenshot capture needed with Chrome DevTools MCP to verify DOF effect on distant objects.",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) shows a nearly black scene with two large, amorphous yellow-to-orange gradient curved shapes occupying the top-left and top-right corners, resembling glow or light scattering effects. No distinct 3D primitives are visible, and the central area is entirely black. In contrast, Image 2 (REFERENCE) clearly displays a gray ground plane with three distinct geometric objects: a yellow cone (left), a green cube (center), and a cyan sphere (right), all casting crisp reflections on the shiny surface. The ported version completely fails to render the actual scene geometry, objects, ground plane, and reflections. The color scheme is also radically different (yellow gradients on black vs. multi-colored objects on gray). The only minimal similarity is the presence of the color yellow in both images.",
+  "kimi_key_differences": [
+    "Missing geometric primitives: No cone, cube, or sphere visible in Image 1 - only indistinct yellow gradient blobs",
+    "Background color mismatch: Image 1 has pure black background; Image 2 has light gray ground and background",
+    "Missing reflections: Image 2 shows clear screen-space reflections on the ground; Image 1 has no visible ground plane or reflection effects",
+    "Object colors wrong: Image 1 shows only yellow/orange gradients; Image 2 has distinct yellow, green, and cyan objects",
+    "UI layout different: Image 1 has left sidebar with example list; Image 2 has right-side control panel with SSR parameters",
+    "Scene composition: Image 1 shows two curved gradient areas; Image 2 shows three sharp geometric primitives with proper lighting"
+  ],
+  "verification_timestamp": "2026-06-07T02:02:36.555Z"
+}

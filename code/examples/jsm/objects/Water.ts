@@ -1,4 +1,4 @@
-import { WaterOptions, Water } from 'three/examples/jsm/objects/Water.js'
+﻿import { WaterOptions, Water } from 'three/examples/jsm/objects/Water.js'
 export * from 'three/examples/jsm/objects/Water.js'
 import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
@@ -82,7 +82,7 @@ const _waterOptions = ([
 objProps.waterOptions = _waterOptions
 
 
-const _water = ([...objProps.mesh,
+const _water = ([...(objProps.mesh ?? []),
     'material',
 ] as const).distinct()
 objProps.water = _water

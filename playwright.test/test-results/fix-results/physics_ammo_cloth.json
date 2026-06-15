@@ -1,0 +1,17 @@
+{
+  "demoId": "physics_ammo_cloth",
+  "similarity_score": 0,
+  "verdict": "fail",
+  "reasoning": "Image 1 (PORTED) displays a web application interface with a left sidebar containing a list of Three.js examples (Plane, 3 Boxes + Click, Boxes + Click, etc.) and a main content area on the right that is completely black/empty with no visible 3D rendering. While the text indicates it should be showing a 'Cloth Simulation' with 'Verlet integration physics' and includes a 'Perturb Cloth' button, the actual 3D canvas fails to render any content. Image 2 (REFERENCE) shows a fully functional 3D cloth simulation with a white grid-patterned cloth hanging from a dark gray metal frame, resting against a structure of multicolored cubes, with shadows cast on a white grid floor against a light blue background. The reference includes an FPS counter and instructions for interaction. The ported version is completely non-functional from a rendering perspective, showing none of the 3D objects, lighting, materials, or physics simulation present in the reference.",
+  "key_differences": [
+    "Main content area in Image 1 is entirely black with zero visible 3D objects, while Image 2 displays a complete 3D scene with cloth, frame, and blocks",
+    "Image 1 shows a sidebar UI taking up ~20% of screen space with example thumbnails, Image 2 is fullscreen 3D view",
+    "Missing central object: White cloth mesh with grid texture hanging from frame in Image 2 is absent in Image 1",
+    "Missing structure: Dark gray L-shaped frame holding the cloth in Image 2 is not present in Image 1",
+    "Missing environment: Grid floor plane and light blue background in Image 2 vs black void in Image 1",
+    "Missing details: Colorful block structure behind cloth, shadows, and lighting are all absent in Image 1",
+    "Image 1 uses 'Verlet integration' text while Image 2 uses 'Ammo.js physics' - different physics implementations",
+    "Different UI paradigms: Image 1 has web app navigation with search box, Image 2 has minimal demo overlay text"
+  ],
+  "timestamp": "2026-06-07T22:36:52.872Z"
+}

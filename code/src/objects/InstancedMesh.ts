@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
@@ -94,7 +94,7 @@ objProps.instancedMeshEventMap = _instancedMeshEventMap
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/InstancedMesh.js | Source}
  */
 
-const _instancedMesh = ([...objProps.mesh,
+const _instancedMesh = ([...(objProps.mesh ?? []),
     /**
      * Create a new instance of {@link InstancedMesh}
      * @param geometry An instance of {@link THREE.BufferGeometry | BufferGeometry}.
@@ -146,6 +146,7 @@ objProps.instancedMesh = _instancedMesh
      */
     'morphTexture',
 ] as const).distinct()
+objProps.instancedMesh = _instancedMesh
 
 export type InstancedMeshProps<
     TGeometry extends BufferGeometry = BufferGeometry,

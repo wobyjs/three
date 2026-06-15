@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Texture } from 'three/src/textures/Texture.js'
 import { TextureHelper } from 'three/examples/jsm/helpers/TextureHelper.js'
 export * from 'three/examples/jsm/helpers/TextureHelper.js'
@@ -49,7 +49,7 @@ consParams.textureHelper = textureHelper
 
 
 
-const _textureHelper = ([...objProps.mesh,
+const _textureHelper = ([...(objProps.mesh ?? []),
     'texture',
 ] as const).distinct()
 objProps.textureHelper = _textureHelper

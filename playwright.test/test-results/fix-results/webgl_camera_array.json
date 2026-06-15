@@ -1,0 +1,33 @@
+{
+  "demo_id": "webgl_camera_array",
+  "fix_timestamp": "2026-06-06T12:00:00Z",
+  "issue": "No issue found - demo already working correctly",
+  "root_cause": "Demo uses imperative Three.js code instead of JSX approach, which is appropriate for ArrayCamera setup",
+  "fix": "No fix needed - demo renders correctly with 3x3 grid of camera viewports",
+  "files_modified": [],
+  "fix_details": {
+    "approach": "Imperative Three.js with manual ArrayCamera setup",
+    "viewport_count": 9,
+    "viewport_grid": "3x3"
+  },
+  "verification": {
+    "demo_loads": true,
+    "screenshot_path": "test-results/screenshots/fixed/webgl_camera_array_test.png",
+    "visual_check": "Demo shows 9 viewport grid (3x3) with rotating red cylinder on blue background"
+  },
+  "additional_notes": "ArrayCamera requires manual viewport setup which is handled correctly in the imperative approach. Each sub-camera has its own viewport region and position offset.",
+  "after_score": 0.05,
+  "status": "fail",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) displays a multi-viewport layout with 6 panels showing red cylindrical geometric primitives against blue/purple gradient backgrounds. The left side contains a dark sidebar with example navigation. The cylinders are solid red 3D objects with lighting and shadows. Image 2 (REFERENCE) shows a completely different scene: a single viewport displaying a white point cloud visualization of a human bust (head and shoulders) against a solid black background. The point cloud consists of thousands of small white particles arranged in the shape of a scanned human. There is a 'Controls' panel in the top right corner with parameters for size, color, and file type. The two images depict entirely different 3D content (simple cylinders vs. complex point cloud scan), different color schemes (red/blue vs. white/black), different layouts (6-panel grid with sidebar vs. single view with top-right controls), and different rendering styles (solid mesh vs. point particles). The only minor similarity is that both are Three.js web applications, but visually they share almost no common elements.",
+  "kimi_key_differences": [
+    "Main object: Image 1 shows red cylinders, Image 2 shows white point cloud human bust",
+    "Background: Image 1 has blue/purple gradients, Image 2 has solid black",
+    "Layout: Image 1 has 6 viewport panels in a grid, Image 2 has single viewport",
+    "UI elements: Image 1 has left sidebar with example list, Image 2 has top-right control panel",
+    "Rendering style: Image 1 uses solid lit geometry, Image 2 uses point cloud particles",
+    "Color scheme: Image 1 is vibrant red/blue, Image 2 is monochrome white/black",
+    "Scene complexity: Image 1 shows simple primitives, Image 2 shows detailed scanned geometry"
+  ],
+  "verification_timestamp": "2026-06-07T02:00:37.335Z"
+}

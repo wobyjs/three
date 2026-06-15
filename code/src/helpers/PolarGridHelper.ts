@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { PolarGridHelper } from 'three/src/helpers/PolarGridHelper.js'
 export { PolarGridHelper } from 'three/src/helpers/PolarGridHelper.js'
@@ -96,7 +96,7 @@ consParams.polarGridHelper = polarGridHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PolarGridHelper.js | Source}
  */
 
-const _polarGridHelper = ([...objProps.lineSegments,
+const _polarGridHelper = ([...(objProps.lineSegments ?? []),
 ] as const).distinct()
 objProps.polarGridHelper = _polarGridHelper
 

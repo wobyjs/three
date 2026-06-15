@@ -1,95 +1,67 @@
-/** @jsxImportSource @woby/three */
+﻿/** @jsxImportSource @woby/three */
+// https://threejs.org/examples/#webgl_materials_envmaps
 
-import { $, $$, useFrame } from "woby"
-import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
-import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color } from 'three'
+import { $, $$, useEffect } from "woby"
+import { useFrame, useThree } from '@woby/three'
 import * as THREE from 'three'
 
-// Import wrappers for registration
-import '@woby/three/src/geometries/SphereGeometry'
-import '@woby/three/src/geometries/TorusGeometry'
-import '@woby/three/src/materials/MeshStandardMaterial'
-import '@woby/three/src/objects/Mesh'
-import '@woby/three/src/renderers/WebGLRenderer'
-import '@woby/three/src/cameras/PerspectiveCamera'
-import '@woby/three/src/lights/AmbientLight'
-import '@woby/three/src/lights/DirectionalLight'
-import '@woby/three/src/scenes/Scene'
+export const MaterialsEnvMaps = () => {
+    const { scene } = useThree()
 
-/**
- * Port of webgl_materials_envmaps from Three.js examples.
- * Demonstrates environment map reflections on materials.
- *
- * Source: https://threejs.org/examples/webgl_materials_envmaps.html
- *
- * Features:
- * - Environment mapping
- * - HDR-like reflections
- * - Multiple reflective objects
- */
+    useEffect(() => {
+        // Environment mapped materials (reflections)
+        const geometry = new THREE.SphereGeometry(1, 32, 32)
 
-export const MaterialsEnvmaps = () => {
-    const sphereRef = $<THREE.Mesh>()
+        // Create a simple environment cube
+        const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256)
+        const cubeCamera = new THREE.CubeCamera(0.1, 100, cubeRenderTarget)
 
-    useFrame((state) => {
-        const time = state.clock?.getElapsedTime() ?? 0
-        const sphere = $$(sphereRef)
-        if (sphere) {
-            sphere.rotation.y = time * 0.3
+        // Create reflective sphere
+        const material = new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            metalness: 1,
+            roughness: 0,
+            envMap: cubeRenderTarget.texture,
+        })
+
+        const mesh = new THREE.Mesh(geometry, material)
+        scene.add(mesh)
+
+        // Add some colorful objects for reflection
+        const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00]
+        colors.forEach((color, i) => {
+            const geom = new THREE.BoxGeometry(0.5, 0.5, 0.5)
+            const mat = new THREE.MeshBasicMaterial({ color })
+            const obj = new THREE.Mesh(geom, mat)
+            const angle = (i / colors.length) * Math.PI * 2
+            obj.position.set(Math.cos(angle) * 3, 0, Math.sin(angle) * 3)
+            scene.add(obj)
+        })
+
+        const clock = new THREE.Clock()
+        const animate = () => {
+            requestAnimationFrame(animate)
+            const t = clock.getElapsedTime()
+            mesh.rotation.y = t * 0.3
+        }
+        animate()
+
+        return () => {
+            scene.remove(mesh)
+            geometry.dispose()
+            material.dispose()
+            cubeRenderTarget.dispose()
         }
     })
 
     return (
         <canvas3D>
-            <webGLRenderer antialias setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} />
-            <scene background={new Color(0x1a1a2e)}>
-                <ambientLight intensity={0.3} />
-                <directionalLight position={[5, 10, 7]} intensity={1} />
-
-                {/* Central reflective sphere */}
-                <mesh ref={sphereRef}>
-                    <sphereGeometry args={[2, 64, 64]} />
-                    <meshStandardMaterial
-                        color={0xffffff}
-                        roughness={0}
-                        metalness={1}
-                    />
-                </mesh>
-
-                {/* Surrounding torus */}
-                <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
-                    <torusGeometry args={[4, 0.3, 16, 100]} />
-                    <meshStandardMaterial
-                        color={0xff6b6b}
-                        roughness={0.2}
-                        metalness={0.8}
-                    />
-                </mesh>
-
-                {/* Small reflective spheres */}
-                {Array.from({ length: 8 }).map((_, i) => {
-                    const angle = (i / 8) * Math.PI * 2
-                    const x = Math.cos(angle) * 5
-                    const z = Math.sin(angle) * 5
-                    return (
-                        <mesh key={i} position={[x, 0, z]}>
-                            <sphereGeometry args={[0.5, 32, 32]} />
-                            <meshStandardMaterial
-                                color={new Color().setHSL(i / 8, 0.7, 0.5)}
-                                roughness={0.1}
-                                metalness={0.9}
-                            />
-                        </mesh>
-                    )
-                })}
+            <perspectiveCamera position={[0, 0, 8]} />
+            <scene>
+                <ambientLight intensity={0.4} />
+                <directionalLight position={[5, 5, 5]} intensity={1} />
             </scene>
-
-            <perspectiveCamera fov={60} aspect={window.innerWidth / window.innerHeight} near={0.1} far={100} position={[0, 3, 10]} />
-
-            <orbitControls enableDamping />
+            <orbitControls />
         </canvas3D>
     )
 }
-
-export default MaterialsEnvmaps

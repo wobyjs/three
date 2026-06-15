@@ -1,4 +1,4 @@
-import { LineSegments2 as WebGPUWireframe2 } from 'three/examples/jsm/lines/webgpu/LineSegments2'
+﻿import { LineSegments2 as WebGPUWireframe2 } from 'three/examples/jsm/lines/webgpu/LineSegments2'
 import { LineSegmentsGeometry } from "../LineSegmentsGeometry"
 import { Line2NodeMaterial } from '../../../../src/materials/nodes/Line2NodeMaterial'
 import { Object3DNode } from '../../../../three-types'
@@ -44,7 +44,7 @@ const webGPUWireframe2 = ([//...consParams.lineSegments2,
 ] as const).distinct()
 consParams.webGPUWireframe2 = webGPUWireframe2
 
-const _webGPUWireframe2 = ([...objProps.mesh,
+const _webGPUWireframe2 = ([...(objProps.mesh ?? []),
 	'isWireframe',
 	'type',
 ] as const).distinct()

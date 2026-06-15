@@ -1,0 +1,46 @@
+{
+  "id": "webgl_instancing_dynamic",
+  "before_score": 0.35,
+  "after_score": 0.15,
+  "delta": "Pending",
+  "status": "fail",
+  "change_description": "Fixed grid size (100 instead of 10), color scheme (purple/magenta monochrome instead of rainbow), and camera position (ground-level y=1 looking at horizon instead of elevated y=6 looking at center)",
+  "changes": [
+    {
+      "file": "demo/src/WebGLInstancingDynamic.tsx",
+      "change": "Changed grid size from 10 to 100 to match reference",
+      "lines_changed": [
+        16
+      ]
+    },
+    {
+      "file": "demo/src/WebGLInstancingDynamic.tsx",
+      "change": "Changed color scheme to purple/magenta monochrome (hue 0.75-0.85)",
+      "lines_changed": [
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "file": "demo/src/WebGLInstancingDynamic.tsx",
+      "change": "Changed camera to ground-level (y=1) looking at horizon",
+      "lines_changed": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    }
+  ],
+  "root_cause": "Grid size, color scheme, and camera position didn't match the threejs.org reference. The reference shows a large field of 100x100 purple/magenta cubes from ground level, not a small 10x10 rainbow grid from above.",
+  "fix_pattern": "Match reference rendering parameters: grid size, color palette, and camera perspective are critical visual features that must match exactly.",
+  "timestamp": "2026-06-06T15:30:00Z",
+  "notes": "Screenshot captured after manual fix. Kimi comparison needs to be run with KIMI_API_KEY to verify improvement score."
+}

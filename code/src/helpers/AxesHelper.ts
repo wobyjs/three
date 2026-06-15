@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { AxesHelper } from 'three/src/helpers/AxesHelper.js'
 export { AxesHelper } from 'three/src/helpers/AxesHelper.js'
 import { Three } from '../../lib/3/three'
@@ -84,7 +84,7 @@ consParams.axesHelper = axesHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/AxesHelper.js | Source}
  */
 
-const _axesHelper = ([...objProps.lineSegments,
+const _axesHelper = ([...(objProps.lineSegments ?? []),
 ] as const).distinct()
 objProps.axesHelper = _axesHelper
 

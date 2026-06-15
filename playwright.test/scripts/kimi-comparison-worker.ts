@@ -37,7 +37,10 @@ import {
 // ─── Path anchors ─────────────────────────────────────────────────────────────
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const ROOT = path.join(__dirname, '..')
+// tsconfig.json lives in playwright.test/ (not dist/) — use it as the root marker
+const ROOT = fs.existsSync(path.join(__dirname, '..', 'tsconfig.json'))
+  ? path.join(__dirname, '..')        // running from scripts/ (tsx)
+  : path.join(__dirname, '..', '..') // running from dist/scripts/ (compiled)
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -80,13 +83,14 @@ function parseArgs() {
   const batchIndex = parseInt(batchIndexArg.split('=')[1], 10)
   const batchSize = parseInt(batchSizeArg.split('=')[1], 10)
   const limit = limitArg ? parseInt(limitArg.split('=')[1], 10) : null
+  const isCaptureOnly = argv.includes('--capture-only')
 
   if (isNaN(batchIndex) || isNaN(batchSize)) {
     console.error('[worker] FATAL: --batch-index and --batch-size must be integers')
     process.exit(1)
   }
 
-  return { batchIndex, batchSize, limit, isDryRun }
+  return { batchIndex, batchSize, limit, isDryRun, isCaptureOnly }
 }
 
 // ─── Wait time logic ──────────────────────────────────────────────────────────
@@ -108,9 +112,9 @@ const DRY_RUN_VERDICT = {
 // ─── Main worker logic ────────────────────────────────────────────────────────
 
 async function runWorker(): Promise<void> {
-  const { batchIndex, batchSize, limit, isDryRun } = parseArgs()
+  const { batchIndex, batchSize, limit, isDryRun, isCaptureOnly } = parseArgs()
 
-  console.log(`[worker-${batchIndex}] Starting batch-index=${batchIndex} batch-size=${batchSize} dry-run=${isDryRun} limit=${limit ?? 'none'}`)
+  console.log(`[worker-${batchIndex}] Starting batch-index=${batchIndex} batch-size=${batchSize} dry-run=${isDryRun} capture-only=${isCaptureOnly} limit=${limit ?? 'none'}`)
 
   // Build the full comparable demo list (excluding custom demos)
   let comparableDemos = ALL_DEMOS.filter(d => !CUSTOM_DEMO_IDS.has(d.id))
@@ -137,6 +141,51 @@ async function runWorker(): Promise<void> {
   const refSession = `ref-${batchIndex}`
 
   const results: DemoComparisonResult[] = []
+
+  // ── Capture-only mode: only capture reference screenshots, no Kimi calls ──
+  if (isCaptureOnly) {
+    try {
+      for (const demo of workerDemos) {
+        const { id, name } = demo
+        if (!validateDemoId(id)) continue
+
+        const refRelPath = `${REFERENCE_SCREENSHOT_DIR}/${id}.png`
+        const refPath = path.join(ROOT, refRelPath)
+
+        if (fs.existsSync(refPath)) {
+          console.log(`[worker-${batchIndex}] skip (exists): ${id}`)
+          results.push({ id, name, status: 'reference-load-failed' as const,
+            similarity_score: null, verdict: 'skipped', reasoning: 'Already exists',
+            key_differences: [], ported_screenshot: null, reference_screenshot: refRelPath, agent_batch: batchIndex })
+          continue
+        }
+
+        const referenceUrl = `${THREEJS_BASE}/${id}.html`
+        const waitMs = /^webgl_loader_/.test(id) ? 12000 : 8000
+        console.log(`[worker-${batchIndex}] capturing ref: ${id} (wait ${waitMs}ms)`)
+        const captureResult = await captureDemo(referenceUrl, refPath, refSession, waitMs)
+
+        if (captureResult === 'ok') {
+          console.log(`[worker-${batchIndex}] ✓ ref: ${id}`)
+          results.push({ id, name, status: 'no-reference' as const,
+            similarity_score: null, verdict: 'captured', reasoning: 'Reference captured',
+            key_differences: [], ported_screenshot: null, reference_screenshot: refRelPath, agent_batch: batchIndex })
+        } else {
+          console.warn(`[worker-${batchIndex}] ✗ ref: ${id}: ${captureResult}`)
+          results.push({ id, name, status: 'reference-load-failed' as const,
+            similarity_score: null, verdict: captureResult, reasoning: `Reference capture returned: ${captureResult}`,
+            key_differences: [], ported_screenshot: null, reference_screenshot: null, agent_batch: batchIndex })
+        }
+        writePartial(partialOutputPath, batchIndex, results)
+      }
+    } finally {
+      try { agentBrowser(refSession, ['close']) } catch { /* already closed */ }
+      // Always write partial so orchestrator merge doesn't warn about missing file
+      writePartial(partialOutputPath, batchIndex, results)
+      console.log(`[worker-${batchIndex}] Done. ${results.length} results written to ${partialOutputPath}`)
+    }
+    return
+  }
 
   try {
     for (const demo of workerDemos) {
@@ -181,7 +230,7 @@ async function runWorker(): Promise<void> {
 
       if (!fs.existsSync(refPath)) {
         // Capture reference from threejs.org
-        const referenceUrl = `${THREEJS_BASE}/#${id}`
+        const referenceUrl = `${THREEJS_BASE}/${id}.html`
         const waitMs = getWaitMs(id)
         console.log(`[worker-${batchIndex}] capturing reference: ${id} (wait ${waitMs}ms)`)
 

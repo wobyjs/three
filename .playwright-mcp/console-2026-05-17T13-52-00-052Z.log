@@ -1,0 +1,3 @@
+[  612292ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  613005ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  613760ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/textures/usedSteel.png:0

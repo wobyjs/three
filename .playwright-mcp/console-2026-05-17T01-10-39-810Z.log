@@ -1,0 +1,55 @@
+[     110ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[     474ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts:0
+[     544ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[     764ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[     865ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778980240397:0
+[  833692ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  833776ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778980240397:0
+[ 1181144ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1181285ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778981420856:0
+[ 1292616ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1292814ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778981532337:0
+[ 1508614ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1509360ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778981748251:0
+[ 1721019ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1721135ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778981960640:0
+[ 1737488ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1737679ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778981977212:0
+[ 1784422ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1784524ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982024061:0
+[ 1799965ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1800167ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982039676:0
+[ 1810423ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1810541ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982050004:0
+[ 1832512ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1832595ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982072189:0
+[ 1850463ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1850526ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982090141:0
+[ 1868144ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1868229ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982107793:0
+[ 1927257ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1927424ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982166978:0
+[ 1936749ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1936910ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982176439:0
+[ 1959395ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1959633ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982199119:0
+[ 1984574ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1984744ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982224298:0
+[ 1997213ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 1997462ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982236919:0
+[ 2013847ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2013997ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982253568:0
+[ 2023699ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2023775ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982263349:0
+[ 2033684ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2033843ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982273415:0
+[ 2043932ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2044134ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982283663:0
+[ 2062955ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2063032ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982302621:0
+[ 2072544ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2072711ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982312248:0
+[ 2095475ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2095599ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982335056:0
+[ 2106025ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2106105ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/registry.ts?t=1778982345694:0

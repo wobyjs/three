@@ -1,70 +1,66 @@
-/** @jsxImportSource @woby/three */
+﻿/** @jsxImportSource @woby/three */
+// https://threejs.org/examples/#webgl_materials_physical_clearcoat
 
-import { $, $$, useFrame } from "woby"
-import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
-import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color } from 'three'
+import { $, $$, useEffect } from "woby"
+import { useFrame, useThree } from '@woby/three'
 import * as THREE from 'three'
 
-// Import wrappers for registration
-import '@woby/three/src/geometries/SphereGeometry'
-import '@woby/three/src/materials/MeshPhysicalMaterial'
-import '@woby/three/src/objects/Mesh'
-import '@woby/three/src/renderers/WebGLRenderer'
-import '@woby/three/src/cameras/PerspectiveCamera'
-import '@woby/three/src/lights/AmbientLight'
-import '@woby/three/src/lights/DirectionalLight'
-import '@woby/three/src/scenes/Scene'
-
-/**
- * Port of webgl_materials_physical_clearcoat from Three.js examples.
- * Demonstrates clearcoat layer on physical materials.
- *
- * Source: https://threejs.org/examples/webgl_materials_physical_clearcoat.html
- *
- * Features:
- * - Clearcoat intensity
- * - Clearcoat roughness
- * - Car paint effect
- */
-
 export const MaterialsPhysicalClearcoat = () => {
-    const sphereRef = $<THREE.Mesh>()
+    const { scene } = useThree()
 
-    useFrame((state) => {
-        const time = state.clock?.getElapsedTime() ?? 0
-        const sphere = $$(sphereRef)
-        if (sphere) {
-            sphere.rotation.y = time * 0.2
+    useEffect(() => {
+        // Physical material with clearcoat (car paint)
+        const geometry = new THREE.SphereGeometry(1.5, 64, 64)
+
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0xff0000,
+            metalness: 0.9,
+            roughness: 0.2,
+            clearcoat: 1,
+            clearcoatRoughness: 0.1,
+        })
+
+        const mesh = new THREE.Mesh(geometry, material)
+        scene.add(mesh)
+
+        // Floor for reflections
+        const floorGeom = new THREE.PlaneGeometry(20, 20)
+        const floorMat = new THREE.MeshStandardMaterial({
+            color: 0x333333,
+            metalness: 0.8,
+            roughness: 0.3,
+        })
+        const floor = new THREE.Mesh(floorGeom, floorMat)
+        floor.rotation.x = -Math.PI / 2
+        floor.position.y = -2
+        scene.add(floor)
+
+        const clock = new THREE.Clock()
+        const animate = () => {
+            requestAnimationFrame(animate)
+            const t = clock.getElapsedTime()
+            mesh.rotation.y = t * 0.3
+        }
+        animate()
+
+        return () => {
+            scene.remove(mesh)
+            scene.remove(floor)
+            geometry.dispose()
+            material.dispose()
+            floorGeom.dispose()
+            floorMat.dispose()
         }
     })
 
     return (
         <canvas3D>
-            <webGLRenderer antialias setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} />
-            <scene background={new Color(0x0a0a0a)}>
-                <ambientLight intensity={0.3} />
-                <directionalLight position={[5, 10, 7]} intensity={1} />
-                <directionalLight position={[-5, 5, -5]} intensity={0.5} />
-
-                {/* Clearcoat sphere - car paint effect */}
-                <mesh ref={sphereRef}>
-                    <sphereGeometry args={[2, 64, 64]} />
-                    <meshPhysicalMaterial
-                        color={0x440000}
-                        roughness={0.5}
-                        metalness={0.5}
-                        clearcoat={1}
-                        clearcoatRoughness={0.1}
-                    />
-                </mesh>
+            <perspectiveCamera position={[0, 0, 8]} />
+            <scene>
+                <ambientLight intensity={0.4} />
+                <directionalLight position={[5, 5, 5]} intensity={1} />
             </scene>
-
-            <perspectiveCamera fov={60} aspect={window.innerWidth / window.innerHeight} near={0.1} far={100} position={[0, 0, 6]} />
-
-            <orbitControls enableDamping />
+            <orbitControls />
         </canvas3D>
     )
 }
-
-export default MaterialsPhysicalClearcoat

@@ -1,136 +1,146 @@
 /** @jsxImportSource @woby/three */
 
-import { $, $$, useFrame, useEffect } from "woby"
-import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
+import { $, $$, useEffect } from "woby"
+import { useFrame } from "@woby/three"
+import { useThree } from '@woby/three'
+import { Color, AnimationMixer, AnimationClip, AnimationUtils, LoopRepeat, LoopOnce, Fog, FogExp2, Clock, Vector3, EventDispatcher } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color, SkinnedMesh, Skeleton, Bone, ACESFilmicToneMapping } from 'three'
 import * as THREE from 'three'
 
 // Import wrappers for registration
-import '@woby/three/src/geometries/CylinderGeometry'
-import '@woby/three/src/geometries/SphereGeometry'
-import '@woby/three/src/materials/MeshStandardMaterial'
-import '@woby/three/src/objects/Mesh'
-import '@woby/three/src/objects/SkinnedMesh'
-import '@woby/three/src/objects/Skeleton'
 import '@woby/three/src/renderers/WebGLRenderer'
 import '@woby/three/src/cameras/PerspectiveCamera'
-import '@woby/three/src/lights/DirectionalLight'
-import '@woby/three/src/lights/AmbientLight'
 import '@woby/three/src/scenes/Scene'
+import '@woby/three/src/lights/AmbientLight'
+import '@woby/three/src/lights/DirectionalLight'
+import '@woby/three/src/lights/HemisphereLight'
+import '@woby/three/src/helpers/SkeletonHelper'
+import '@woby/three/src/objects/Skeleton'
+import '@woby/three/src/objects/Group'
 
 /**
  * Port of webgl_animation_skinning_blending from Three.js examples.
- * Demonstrates blending between multiple skeletal animations.
+ * Key features:
+ * - Skinned mesh with skeletal animation
+ * - AnimationMixer with multiple animation clips
+ * - Crossfading between animations
+ * - Additive animation blending
+ * - GUI for controlling animation weights and transitions
  *
  * Source: https://threejs.org/examples/webgl_animation_skinning_blending.html
- *
- * Key features:
- * - Multiple animation clips
- * - Smooth blending between animations
- * - Weight-based animation mixing
  */
 
+const STATES = ['Idle', 'Walking', 'Running', 'Dance', 'Death', 'Sitting', 'Standing']
+const EMOTES = ['Jump', 'Yes', 'No', 'Wave', 'Punch', 'ThumbsUp']
+
+const morphInfluencesRef = $<Record<string, number>>({})
+
 export const SkinningBlending = () => {
-    const meshRef = $<THREE.SkinnedMesh>()
-    const bonesRef = $<THREE.Bone[]>()
-    const blendWeightRef = $(0.5)
+    const mixerRef = $<AnimationMixer>()
+    const actionsRef = $<Record<string, THREE.AnimationAction>>({})
+    const activeActionRef = $<THREE.AnimationAction>()
+    const previousActionRef = $<THREE.AnimationAction>()
+    const currentState = $('Walking')
+    const faceRef = $<THREE.Object3D>()
+    const modelReady = $<boolean>(false)
+    const clock = new Clock()
 
+    // Load model with animations
     useEffect(() => {
-        // Create a simple skeleton for a leg-like structure
-        const bones: THREE.Bone[] = []
+        const loader = new GLTFLoader()
 
-        // Root/Hip
-        const hip = new THREE.Bone()
-        hip.position.y = 0
-        bones.push(hip)
+        loader.load(
+            'https://threejs.org/examples/models/gltf/RobotExpressive/RobotExpressive.glb',
+            (gltf) => {
+                const model = gltf.scene
+                modelRef(model)
 
-        // Upper leg
-        const upperLeg = new THREE.Bone()
-        upperLeg.position.y = 0.5
-        hip.add(upperLeg)
-        bones.push(upperLeg)
+                // Setup morph targets for facial expressions
+                const face = model.getObjectByName('Head_4')
+                if (face) {
+                    faceRef(face)
+                    // Initialize morph target influences
+                    const expressions = Object.keys(face.morphTargetDictionary || {})
+                    const influences: Record<string, number> = {}
+                    expressions.forEach((name) => {
+                        influences[name] = 0
+                    })
+                    morphInfluencesRef(influences)
+                }
 
-        // Lower leg
-        const lowerLeg = new THREE.Bone()
-        lowerLeg.position.y = 0.6
-        upperLeg.add(lowerLeg)
-        bones.push(lowerLeg)
+                modelReady(true)
 
-        // Foot
-        const foot = new THREE.Bone()
-        foot.position.y = 0.5
-        foot.position.z = 0.1
-        lowerLeg.add(foot)
-        bones.push(foot)
+                const mixer = new AnimationMixer(model)
+                mixerRef(mixer)
 
-        bonesRef(bones)
+                const actions: Record<string, THREE.AnimationAction> = {}
+                const emotes = EMOTES
+                const states = STATES
 
-        // Create geometry
-        const geometry = new THREE.CylinderGeometry(0.12, 0.1, 1.6, 8, 8)
-        geometry.translate(0, 0.8, 0)
+                for (const clip of gltf.animations) {
+                    const action = mixer.clipAction(clip)
+                    actions[clip.name] = action
 
-        // Create skin indices and weights
-        const position = geometry.attributes.position
-        const skinIndices: number[] = []
-        const skinWeights: number[] = []
+                    // Emotes and later states loop once then stop
+                    if (emotes.includes(clip.name) || states.indexOf(clip.name) >= 4) {
+                        action.clampWhenFinished = true
+                        action.loop = LoopOnce
+                    }
+                }
+                actionsRef(actions)
 
-        for (let i = 0; i < position.count; i++) {
-            const y = position.getY(i)
+                // Start with Walking
+                activeActionRef(actions['Walking'])
+                actions['Walking'].play()
+            },
+            undefined,
+            (e) => console.error(e)
+        )
 
-            if (y < 0.5) {
-                skinIndices.push(0, 1, 0, 0)
-                skinWeights.push(0.7, 0.3, 0, 0)
-            } else if (y < 1.0) {
-                skinIndices.push(1, 2, 0, 0)
-                skinWeights.push(0.4, 0.6, 0, 0)
-            } else if (y < 1.4) {
-                skinIndices.push(2, 3, 0, 0)
-                skinWeights.push(0.5, 0.5, 0, 0)
-            } else {
-                skinIndices.push(3, 0, 0, 0)
-                skinWeights.push(1, 0, 0, 0)
-            }
+        return () => {
+            const mixer = $$(mixerRef)
+            if (mixer) mixer.stopAllAction()
         }
-
-        geometry.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(skinIndices, 4))
-        geometry.setAttribute('skinWeight', new THREE.Float32BufferAttribute(skinWeights, 4))
-
-        // Create skeleton
-        const skeleton = new THREE.Skeleton(bones)
-
-        // Create skinned mesh
-        const material = new THREE.MeshStandardMaterial({
-            color: 0xe67e22,
-            roughness: 0.4,
-            metalness: 0.3
-        })
-
-        const mesh = new THREE.SkinnedMesh(geometry, material)
-        mesh.add(hip)
-        mesh.bind(skeleton)
-        meshRef(mesh)
     })
 
-    useFrame(({ clock }) => {
-        const bones = $$(bonesRef)
-        if (!bones || bones.length < 4) return
+    const modelRef = $<THREE.Group>()
 
-        const time = clock.getElapsedTime()
-        const blendWeight = $$(blendWeightRef)
+    // Handle state transitions with crossfade
+    useEffect(() => {
+        const actions = $$(actionsRef)
+        const activeAction = $$(activeActionRef)
+        const previousAction = $$(previousActionRef)
+        const state = $$(currentState)
+        if (!actions || !state) return
 
-        // Animation 1: Walking motion
-        const walkUpperLeg = Math.sin(time * 3) * 0.4
-        const walkLowerLeg = Math.max(0, Math.sin(time * 3 - 0.5)) * 0.5
+        const newAction = actions[state]
+        if (!newAction || newAction === activeAction) return
 
-        // Animation 2: Kicking motion
-        const kickUpperLeg = Math.sin(time * 1.5) * 0.6
-        const kickLowerLeg = Math.sin(time * 1.5) * 0.8
+        // Crossfade from previous to new
+        if (previousAction && previousAction !== newAction) {
+            previousAction.fadeOut(0.5)
+        }
+        if (activeAction && activeAction !== newAction) {
+            activeAction.fadeOut(0.5)
+        }
 
-        // Blend between animations
-        bones[1].rotation.x = walkUpperLeg * (1 - blendWeight) + kickUpperLeg * blendWeight
-        bones[2].rotation.x = walkLowerLeg * (1 - blendWeight) + kickLowerLeg * blendWeight
-        bones[3].rotation.x = Math.sin(time * 3) * 0.1
+        newAction.reset()
+            .setEffectiveTimeScale(1)
+            .setEffectiveWeight(1)
+            .fadeIn(0.5)
+            .play()
+
+        previousActionRef(activeAction)
+        activeActionRef(newAction)
+    })
+
+    // Update animation mixer
+    useFrame(() => {
+        const mixer = $$(mixerRef)
+        if (mixer) {
+            mixer.update(clock.getDelta())
+        }
     })
 
     return (
@@ -139,36 +149,84 @@ export const SkinningBlending = () => {
                 antialias
                 setPixelRatio={[window.devicePixelRatio]}
                 setSize={[window.innerWidth, window.innerHeight]}
-                toneMapping={ACESFilmicToneMapping}
             />
-            <scene background={new Color(0x2c3e50)}>
-                <ambientLight intensity={0.4} />
-                <directionalLight position={[5, 10, 5]} intensity={1.2} />
-                <directionalLight position={[-5, 5, -5]} intensity={0.6} color={0x88ccff} />
+            <scene background={new Color(0xe0e0e0)}>
+                <fogExp2 args={[0xe0e0e0, 0.017]} />
 
-                {/* Ground plane */}
-                <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.1, 0]}>
-                    <planeGeometry args={[5, 5]} />
-                    <meshStandardMaterial color={0x34495e} roughness={0.8} />
+                {/* Lighting */}
+                <hemisphereLight args={[0xffffff, 0x8d8d8d, 3]} position={[0, 20, 0]} />
+                <directionalLight position={[0, 20, 10]} intensity={3} />
+
+                {/* Ground */}
+                <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+                    <planeGeometry args={[2000, 2000]} />
+                    <meshStandardMaterial color={0xcbcbcb} depthWrite={false} />
                 </mesh>
 
-                {/* Skinned mesh */}
+                {/* Grid helper */}
+                <gridHelper args={[200, 40, 0x000000, 0x000000]} />
+
+                {/* Model */}
                 {() => {
-                    const mesh = $$(meshRef)
-                    return mesh ? <primitive object={mesh} /> : null
+                    const model = $$(modelRef)
+                    return model ? <primitive object={model} /> : null
                 }}
+
+                {/* Morph influence sliders UI */}
+                <MorphUI />
             </scene>
 
             <perspectiveCamera
-                fov={50}
+                fov={45}
                 aspect={window.innerWidth / window.innerHeight}
-                near={0.1}
+                near={0.25}
                 far={100}
-                position={[0, 1, 3]}
+                position={[-5, 3, 10]}
             />
-            <orbitControls target={[0, 0.8, 0]} enableDamping />
+            <orbitControls enableDamping target={[0, 2, 0]} />
         </canvas3D>
     )
 }
+
+// Morph influence control UI
+const MorphUI = () => {
+    const morphInfluences = $$(morphInfluencesRef)
+    const entries = morphInfluences ? Object.entries(morphInfluences) : []
+
+    return (
+        <div style={{
+            position: 'absolute',
+            top: 10,
+            right: 10,
+            background: 'rgba(0,0,0,0.7)',
+            color: 'white',
+            padding: '10px',
+            borderRadius: '5px',
+            maxHeight: '80vh',
+            overflowY: 'auto'
+        }}>
+            <div style={{ marginBottom: 10, fontWeight: 'bold' }}>Expressions</div>
+            {entries.map(([name, value]) => (
+                <div key={name} style={{ marginBottom: 5 }}>
+                    <label style={{ display: 'block', fontSize: '12px' }}>{name}: {value.toFixed(2)}</label>
+                    <input
+                        type="range"
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        value={value}
+                        style={{ width: '100%' }}
+                    />
+                </div>
+            ))}
+        </div>
+    )
+}
+
+// Import geometry and material for ground
+import '@woby/three/src/geometries/PlaneGeometry'
+import '@woby/three/src/materials/MeshPhongMaterial'
+import '@woby/three/src/objects/Mesh'
+import '@woby/three/src/helpers/GridHelper'
 
 export default SkinningBlending

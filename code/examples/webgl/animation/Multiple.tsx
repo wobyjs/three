@@ -1,214 +1,259 @@
 /** @jsxImportSource @woby/three */
 
 import { $, $$, useEffect, useFrame } from "woby"
-import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
+import { useThree } from '@woby/three'
+import { Color, AnimationMixer, AnimationClip, LoopRepeat, Clock, Fog, Skeleton, Matrix4, DetachedBindMode } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { SkeletonUtils } from 'three/examples/jsm/utils/SkeletonUtils.js'
 import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color, AnimationMixer, AnimationClip, VectorKeyframeTrack, QuaternionKeyframeTrack, Vector3, Quaternion, Clock } from 'three'
 import * as THREE from 'three'
 
 // Import wrappers for registration
-import '@woby/three/src/geometries/BoxGeometry'
-import '@woby/three/src/geometries/SphereGeometry'
-import '@woby/three/src/geometries/CylinderGeometry'
-import '@woby/three/src/materials/MeshStandardMaterial'
-import '@woby/three/src/objects/Mesh'
-import '@woby/three/src/objects/Group'
 import '@woby/three/src/renderers/WebGLRenderer'
 import '@woby/three/src/cameras/PerspectiveCamera'
-import '@woby/three/src/lights/AmbientLight'
-import '@woby/three/src/lights/DirectionalLight'
 import '@woby/three/src/scenes/Scene'
+import '@woby/three/src/lights/HemisphereLight'
+import '@woby/three/src/lights/DirectionalLight'
 
 /**
  * Port of webgl_animation_multiple from Three.js examples.
- * Demonstrates multiple animation clips on a single model with blending.
+ * Key features:
+ * - SkeletonUtils.clone() for efficient model cloning
+ * - Multiple animated skinned meshes
+ * - Toggle between independent and shared skeletons
+ * - Grid layout for multiple character instances
+ * - GUI for controlling skeleton sharing mode
  *
  * Source: https://threejs.org/examples/webgl_animation_multiple.html
  */
 
-// Animated robot with multiple animation clips
-const AnimatedRobot = () => {
-    const groupRef = $<THREE.Group>()
-    const mixerRef = $<AnimationMixer>()
-    const clock = new Clock()
-
-    // Animation state
-    const activeClip = $('idle')
-    const actionsRef = $<Record<string, THREE.AnimationAction>>({})
-
-    useEffect(() => {
-        const group = $$(groupRef)
-        if (!group) return
-
-        const mixer = new AnimationMixer(group)
-        mixerRef(mixer)
-
-        // Create multiple animation clips
-
-        // 1. Idle animation (subtle breathing)
-        const idleTimes = [0, 2, 4]
-        const idleValues = [0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0]
-        const idleTrack = new VectorKeyframeTrack('.position', idleTimes, idleValues)
-        const idleClip = new AnimationClip('idle', 4, [idleTrack])
-
-        // 2. Walk animation (forward movement)
-        const walkTimes = [0, 1, 2, 3]
-        const walkValues = [0, 0, 0, 0, 0, 2, 0, 0, 4, 0, 0, 0]
-        const walkTrack = new VectorKeyframeTrack('.position', walkTimes, walkValues)
-        const walkClip = new AnimationClip('walk', 3, [walkTrack])
-
-        // 3. Jump animation
-        const jumpTimes = [0, 0.5, 1, 1.5]
-        const jumpValues = [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
-        const jumpTrack = new VectorKeyframeTrack('.position', jumpTimes, jumpValues)
-        const jumpClip = new AnimationClip('jump', 1.5, [jumpTrack])
-
-        // 4. Spin animation
-        const spinTimes = [0, 1, 2]
-        const quat = new Quaternion()
-        const spinValues: number[] = []
-        for (let i = 0; i <= 2; i++) {
-            quat.setFromAxisAngle(new Vector3(0, 1, 0), i * Math.PI)
-            spinValues.push(quat.x, quat.y, quat.z, quat.w)
-        }
-        const spinTrack = new QuaternionKeyframeTrack('.quaternion', spinTimes, spinValues)
-        const spinClip = new AnimationClip('spin', 2, [spinTrack])
-
-        // Create actions for each clip
-        const actions: Record<string, THREE.AnimationAction> = {
-            idle: mixer.clipAction(idleClip),
-            walk: mixer.clipAction(walkClip),
-            jump: mixer.clipAction(jumpClip),
-            spin: mixer.clipAction(spinClip),
-        }
-
-        // Set all actions to loop
-        Object.values(actions).forEach(action => {
-            action.setLoop(THREE.LoopRepeat, Infinity)
-        })
-
-        actionsRef(actions)
-
-        // Start with idle
-        actions.idle.play()
-
-        return () => mixer.stopAllAction()
-    })
-
-    // Switch animation based on activeClip
-    useEffect(() => {
-        const actions = $$(actionsRef)
-        const mixer = $$(mixerRef)
-        const newClip = $$(activeClip)
-        if (!actions || !mixer || !newClip) return
-
-        // Crossfade to new animation
-        const newAction = actions[newClip]
-        if (!newAction) return
-
-        // Stop all actions and play the new one
-        Object.entries(actions).forEach(([name, action]) => {
-            if (name === newClip) {
-                action.reset().play()
-            } else {
-                action.fadeOut(0.5)
-            }
-        })
-        newAction.fadeIn(0.5)
-    })
-
-    // Update mixer
-    useFrame(() => {
-        const mixer = $$(mixerRef)
-        if (mixer) {
-            mixer.update(clock.getDelta())
-        }
-    })
-
-    return (
-        <group ref={groupRef} position={[0, 0, 0]}>
-            {/* Robot body */}
-            <mesh position={[0, 0.5, 0]}>
-                <boxGeometry args={[1, 1, 0.5]} />
-                <meshStandardMaterial color={0x4a90d9} roughness={0.3} metalness={0.7} />
-            </mesh>
-
-            {/* Robot head */}
-            <mesh position={[0, 1.25, 0]}>
-                <sphereGeometry args={[0.3, 16, 16]} />
-                <meshStandardMaterial color={0x4a90d9} roughness={0.3} metalness={0.7} />
-            </mesh>
-
-            {/* Robot legs */}
-            <mesh position={[-0.3, -0.5, 0]}>
-                <cylinderGeometry args={[0.15, 0.15, 1, 8]} />
-                <meshStandardMaterial color={0x3a7bc8} roughness={0.4} metalness={0.6} />
-            </mesh>
-            <mesh position={[0.3, -0.5, 0]}>
-                <cylinderGeometry args={[0.15, 0.15, 1, 8]} />
-                <meshStandardMaterial color={0x3a7bc8} roughness={0.4} metalness={0.6} />
-            </mesh>
-        </group>
-    )
-}
-
-// Animation control buttons
-const AnimationControls = ({ setActiveClip }: { setActiveClip: (clip: string) => void }) => {
-    return (
-        <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '10px' }}>
-            <button onClick={() => setActiveClip('idle')} style={{ padding: '10px 20px', background: '#4a90d9', color: 'white', border: 'none', borderRadius: '5px' }}>Idle</button>
-            <button onClick={() => setActiveClip('walk')} style={{ padding: '10px 20px', background: '#4a90d9', color: 'white', border: 'none', borderRadius: '5px' }}>Walk</button>
-            <button onClick={() => setActiveClip('jump')} style={{ padding: '10px 20px', background: '#4a90d9', color: 'white', border: 'none', borderRadius: '5px' }}>Jump</button>
-            <button onClick={() => setActiveClip('spin')} style={{ padding: '10px 20px', background: '#4a90d9', color: 'white', border: 'none', borderRadius: '5px' }}>Spin</button>
-        </div>
-    )
-}
-
 export const Multiple = () => {
-    const activeClip = $('idle')
+    const mixersRef = $<THREE.AnimationMixer[]>([])
+    const modelsRef = $<THREE.Object3D[]>([])
+    const sharedSkeleton = $(false)
+    const clock = new Clock()
+    const modelReady = $<boolean>(false)
 
-    // Keyboard controls
+    // Load base model
     useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            switch (event.key.toLowerCase()) {
-                case 'i':
-                    activeClip('idle')
-                    break
-                case 'w':
-                    activeClip('walk')
-                    break
-                case 'j':
-                    activeClip('jump')
-                    break
-                case 's':
-                    activeClip('spin')
-                    break
+        const loader = new GLTFLoader()
+
+        loader.load(
+            'https://threejs.org/examples/models/gltf/Soldier.glb',
+            (gltf) => {
+                baseModelRef(gltf.scene)
+                animationsRef(gltf.animations)
+                modelReady(true)
+
+                // Initial setup with independent skeletons
+                setupDefaultScene(gltf.scene, gltf.animations)
+            },
+            undefined,
+            (e) => console.error(e)
+        )
+
+        return () => {
+            const mixers = $$(mixersRef)
+            mixers?.forEach((m) => m.stopAllAction())
+        }
+    })
+
+    const baseModelRef = $<THREE.Group>()
+    const animationsRef = $<THREE.AnimationClip[]>([])
+    const { scene } = useThree()
+
+    // Setup with independent skeletons (default scene)
+    const setupDefaultScene = (model: THREE.Group, animations: THREE.AnimationClip[]) => {
+        const mixers: THREE.AnimationMixer[] = []
+        const models: THREE.Object3D[] = []
+
+        // Three cloned models with independent skeletons
+        const model1 = SkeletonUtils.clone(model)
+        const model2 = SkeletonUtils.clone(model)
+        const model3 = SkeletonUtils.clone(model)
+
+        model1.position.x = -2
+        model2.position.x = 0
+        model3.position.x = 2
+
+        const mixer1 = new AnimationMixer(model1)
+        const mixer2 = new AnimationMixer(model2)
+        const mixer3 = new AnimationMixer(model3)
+
+        mixer1.clipAction(animations[0]).play() // idle
+        mixer2.clipAction(animations[1]).play() // run
+        mixer3.clipAction(animations[3]).play() // walk
+
+        scene.add(model1, model2, model3)
+
+        models.push(model1, model2, model3)
+        mixers.push(mixer1, mixer2, mixer3)
+
+        modelsRef(models)
+        mixersRef(mixers)
+    }
+
+    // Setup with shared skeleton
+    const setupSharedSkeletonScene = (model: THREE.Group, animations: THREE.AnimationClip[]) => {
+        // Stop all existing mixers
+        const existingMixers = $$(mixersRef)
+        existingMixers?.forEach((m) => m.stopAllAction())
+
+        // Remove existing models
+        const existingModels = $$(modelsRef)
+        existingModels?.forEach((m) => scene.remove(m))
+
+        const sharedModel = SkeletonUtils.clone(model)
+        const shareSkinnedMesh = sharedModel.getObjectByName('vanguard_Mesh') as THREE.SkinnedMesh
+        if (!shareSkinnedMesh) return
+
+        const sharedSkeleton = shareSkinnedMesh.skeleton
+        const sharedParentBone = sharedModel.getObjectByName('mixamorigHips')
+        scene.add(sharedParentBone!)
+
+        const model1 = shareSkinnedMesh.clone()
+        const model2 = shareSkinnedMesh.clone()
+        const model3 = shareSkinnedMesh.clone()
+
+        model1.bindMode = DetachedBindMode
+        model2.bindMode = DetachedBindMode
+        model3.bindMode = DetachedBindMode
+
+        const identity = new Matrix4()
+        model1.bind(sharedSkeleton, identity)
+        model2.bind(sharedSkeleton, identity)
+        model3.bind(sharedSkeleton, identity)
+
+        model1.position.x = -2
+        model2.position.x = 0
+        model3.position.x = 2
+
+        model1.scale.setScalar(0.01)
+        model1.rotation.x = -Math.PI * 0.5
+        model2.scale.setScalar(0.01)
+        model2.rotation.x = -Math.PI * 0.5
+        model3.scale.setScalar(0.01)
+        model3.rotation.x = -Math.PI * 0.5
+
+        const mixer = new THREE.AnimationMixer(sharedParentBone!)
+        mixer.clipAction(animations[1]).play()
+
+        scene.add(sharedParentBone!, model1, model2, model3)
+
+        modelsRef([sharedParentBone!, model1, model2, model3])
+        mixersRef([mixer])
+    }
+
+    // Handle skeleton sharing toggle
+    useEffect(() => {
+        const model = $$(baseModelRef)
+        const anims = $$(animationsRef)
+        const shared = $$(sharedSkeleton)
+
+        if (!model || !anims) return
+
+        if (shared) {
+            setupSharedSkeletonScene(model, anims)
+        } else {
+            // Clear and rebuild
+            const existingModels = $$(modelsRef)
+            existingModels?.forEach((m) => scene.remove(m))
+            setupDefaultScene(model, anims)
+        }
+    })
+
+    // Update all mixers
+    useFrame(() => {
+        const mixers = $$(mixersRef)
+        if (mixers) {
+            for (const mixer of mixers) {
+                mixer.update(clock.getDelta())
             }
         }
-
-        window.addEventListener('keydown', handleKeyDown)
-        return () => window.removeEventListener('keydown', handleKeyDown)
     })
 
     return (
         <canvas3D>
-            <webGLRenderer antialias setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} />
-            <scene background={new Color(0x1a1a2e)}>
-                <ambientLight intensity={0.3} />
-                <directionalLight position={[5, 10, 5]} intensity={1} />
+            <webGLRenderer
+                antialias
+                setPixelRatio={[window.devicePixelRatio]}
+                setSize={[window.innerWidth, window.innerHeight]}
+                shadowMapEnabled
+            />
+            <scene background={new Color(0xa0a0a0)}>
+                <fog args={[0xa0a0a0, 10, 50]} />
 
-                <AnimatedRobot />
+                {/* Lighting */}
+                <hemisphereLight args={[0xffffff, 0x8d8d8d, 3]} position={[0, 20, 0]} />
+                <directionalLight
+                    position={[-3, 10, -10]}
+                    intensity={3}
+                    castShadow
+                    shadowCameraTop={4}
+                    shadowCameraBottom={-4}
+                    shadowCameraLeft={-4}
+                    shadowCameraRight={4}
+                    shadowCameraNear={0.1}
+                    shadowCameraFar={40}
+                />
 
-                {/* Ground plane */}
-                <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                    <boxGeometry args={[20, 0.1, 20]} />
-                    <meshStandardMaterial color={0x2a2a4e} />
+                {/* Ground */}
+                <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+                    <planeGeometry args={[200, 200]} />
+                    <meshPhongMaterial color={0xcbcbcb} depthWrite={false} />
                 </mesh>
+
+                {/* Loading indicator */}
+                {() => {
+                    if (!$$(modelReady)) {
+                        return (
+                            <mesh position={[0, 1, 0]}>
+                                <boxGeometry args={[1, 1, 1]} />
+                                <meshStandardMaterial color={0x888888} />
+                            </mesh>
+                        )
+                    }
+                    return null
+                }}
             </scene>
-            <perspectiveCamera fov={60} aspect={window.innerWidth / window.innerHeight} near={0.1} far={100} position={[5, 3, 5]} />
-            <orbitControls enableDamping target={[0, 0.5, 0]} />
+
+            <perspectiveCamera
+                fov={45}
+                aspect={window.innerWidth / window.innerHeight}
+                near={1}
+                far={1000}
+                position={[2, 3, -6]}
+            />
+            <orbitControls enableDamping target={[0, 1, 0]} />
+
+            {/* Controls UI */}
+            <div style={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                background: 'rgba(0,0,0,0.7)',
+                color: 'white',
+                padding: '10px',
+                borderRadius: '5px'
+            }}>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={$$(sharedSkeleton)}
+                        onChange={(e) => sharedSkeleton((e.target as HTMLInputElement).checked)}
+                    />
+                    Shared Skeleton
+                </label>
+            </div>
         </canvas3D>
     )
 }
+
+// Import geometry and material
+import '@woby/three/src/geometries/PlaneGeometry'
+import '@woby/three/src/materials/MeshPhongMaterial'
+import '@woby/three/src/objects/Mesh'
+import '@woby/three/src/objects/BoxGeometry'
+import '@woby/three/src/materials/MeshStandardMaterial'
 
 export default Multiple

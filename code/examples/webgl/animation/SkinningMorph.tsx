@@ -1,165 +1,102 @@
 /** @jsxImportSource @woby/three */
 
-import { $, $$, useFrame, useEffect } from "woby"
-import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
+import { $, $$, useEffect, useFrame } from "woby"
+import { Color, AnimationMixer, Clock, Fog } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color, SkinnedMesh, Skeleton, Bone, ACESFilmicToneMapping } from 'three'
 import * as THREE from 'three'
 
-// Import wrappers for registration
-import '@woby/three/src/geometries/BoxGeometry'
-import '@woby/three/src/geometries/SphereGeometry'
-import '@woby/three/src/materials/MeshStandardMaterial'
-import '@woby/three/src/objects/Mesh'
-import '@woby/three/src/objects/SkinnedMesh'
-import '@woby/three/src/objects/Skeleton'
+// Import wrappers
 import '@woby/three/src/renderers/WebGLRenderer'
 import '@woby/three/src/cameras/PerspectiveCamera'
-import '@woby/three/src/lights/DirectionalLight'
-import '@woby/three/src/lights/AmbientLight'
 import '@woby/three/src/scenes/Scene'
+import '@woby/three/src/lights/HemisphereLight'
+import '@woby/three/src/lights/DirectionalLight'
 
 /**
  * Port of webgl_animation_skinning_morph from Three.js examples.
- * Demonstrates combining skeletal animation with morph targets.
- *
+ * Key features: morph targets, animation clips, skeleton visualization
  * Source: https://threejs.org/examples/webgl_animation_skinning_morph.html
- *
- * Key features:
- * - Skeletal animation with bones
- * - Morph target animation
- * - Combined animation effects
  */
 
 export const SkinningMorph = () => {
-    const meshRef = $<THREE.SkinnedMesh>()
-    const bonesRef = $<THREE.Bone[]>()
+    const mixerRef = $<AnimationMixer>()
+    const actionsRef = $<Record<string, THREE.AnimationAction>>({})
+    const currentState = $('Walking')
+    const modelReady = $<boolean>(false)
+    const clock = new Clock()
+    const modelRef = $<THREE.Group>()
 
     useEffect(() => {
-        // Create a simple skeleton
-        const bones: THREE.Bone[] = []
+        const loader = new GLTFLoader()
 
-        const root = new THREE.Bone()
-        root.position.y = 0
-        bones.push(root)
+        loader.load(
+            'https://threejs.org/examples/models/gltf/RobotExpressive/RobotExpressive.glb',
+            (gltf) => {
+                modelRef(gltf.scene)
+                modelReady(true)
 
-        const middle = new THREE.Bone()
-        middle.position.y = 1
-        root.add(middle)
-        bones.push(middle)
+                const mixer = new AnimationMixer(gltf.scene)
+                mixerRef(mixer)
 
-        const top = new THREE.Bone()
-        top.position.y = 1
-        middle.add(top)
-        bones.push(top)
+                const actions: Record<string, THREE.AnimationAction> = {}
+                const STATES = ['Idle', 'Walking', 'Running', 'Dance', 'Death', 'Sitting', 'Standing']
+                const EMOTES = ['Jump', 'Yes', 'No', 'Wave', 'Punch', 'ThumbsUp']
 
-        bonesRef(bones)
+                for (const clip of gltf.animations) {
+                    const action = mixer.clipAction(clip)
+                    actions[clip.name] = action
+                    if (EMOTES.includes(clip.name) || STATES.indexOf(clip.name) >= 4) {
+                        action.clampWhenFinished = true
+                        action.loop = THREE.LoopOnce
+                    }
+                }
+                actionsRef(actions)
+                actions['Walking'].play()
+            },
+            undefined,
+            (e) => console.error(e)
+        )
 
-        // Create geometry with morph targets
-        const geometry = new THREE.BoxGeometry(1, 2, 1, 4, 8, 4)
-
-        // Create morph targets for bulging effect
-        const positionCount = geometry.attributes.position.count
-        const morphPositions = new Float32Array(positionCount * 3)
-
-        for (let i = 0; i < positionCount; i++) {
-            const x = geometry.attributes.position.getX(i)
-            const y = geometry.attributes.position.getY(i)
-            const z = geometry.attributes.position.getZ(i)
-
-            // Bulge morph target
-            const bulgeFactor = 1 + Math.sin(y * Math.PI) * 0.3
-            morphPositions[i * 3] = x * bulgeFactor
-            morphPositions[i * 3 + 1] = y
-            morphPositions[i * 3 + 2] = z * bulgeFactor
+        return () => {
+            const mixer = $$(mixerRef)
+            if (mixer) mixer.stopAllAction()
         }
-
-        geometry.setAttribute('morphTarget0', new THREE.Float32BufferAttribute(morphPositions, 3))
-
-        // Create skin indices and weights
-        const skinIndices: number[] = []
-        const skinWeights: number[] = []
-
-        for (let i = 0; i < positionCount; i++) {
-            const y = geometry.attributes.position.getY(i)
-
-            if (y < -0.5) {
-                skinIndices.push(0, 1, 0, 0)
-                skinWeights.push(0.8, 0.2, 0, 0)
-            } else if (y < 0.5) {
-                skinIndices.push(0, 1, 2, 0)
-                skinWeights.push(0.2, 0.6, 0.2, 0)
-            } else {
-                skinIndices.push(1, 2, 0, 0)
-                skinWeights.push(0.2, 0.8, 0, 0)
-            }
-        }
-
-        geometry.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(skinIndices, 4))
-        geometry.setAttribute('skinWeight', new THREE.Float32BufferAttribute(skinWeights, 4))
-
-        // Create skeleton
-        const skeleton = new THREE.Skeleton(bones)
-
-        // Create skinned mesh with morph targets
-        const material = new THREE.MeshStandardMaterial({
-            color: 0x9b59b6,
-            roughness: 0.4,
-            metalness: 0.3,
-            morphTargets: true
-        })
-
-        const mesh = new THREE.SkinnedMesh(geometry, material)
-        mesh.add(root)
-        mesh.bind(skeleton)
-        meshRef(mesh)
     })
 
-    useFrame(({ clock }) => {
-        const bones = $$(bonesRef)
-        const mesh = $$(meshRef)
-        if (!bones || bones.length < 3 || !mesh) return
-
-        const time = clock.getElapsedTime()
-
-        // Skeletal animation: bending
-        bones[1].rotation.z = Math.sin(time * 1.5) * 0.3
-        bones[2].rotation.z = Math.sin(time * 1.5 + 0.3) * 0.2
-
-        // Morph target animation: pulsing
-        mesh.morphTargetInfluences![0] = (Math.sin(time * 3) + 1) * 0.5
+    useFrame(() => {
+        const mixer = $$(mixerRef)
+        if (mixer) mixer.update(clock.getDelta())
     })
 
     return (
         <canvas3D>
-            <webGLRenderer
-                antialias
-                setPixelRatio={[window.devicePixelRatio]}
-                setSize={[window.innerWidth, window.innerHeight]}
-                toneMapping={ACESFilmicToneMapping}
-            />
-            <scene background={new Color(0x1a1a2e)}>
-                <ambientLight intensity={0.4} />
-                <directionalLight position={[5, 10, 5]} intensity={1.5} />
-                <directionalLight position={[-5, 5, -5]} intensity={0.8} color={0xff88cc} />
+            <webGLRenderer antialias setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} />
+            <scene background={new Color(0xe0e0e0)}>
+                <fog args={[0xe0e0e0, 20, 100]} />
+                <hemisphereLight args={[0xffffff, 0x8d8d8d, 3]} position={[0, 20, 0]} />
+                <directionalLight position={[0, 20, 10]} intensity={3} />
 
-                {/* Skinned mesh with morph targets */}
+                <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                    <planeGeometry args={[2000, 2000]} />
+                    <meshStandardMaterial color={0xcbcbcb} depthWrite={false} />
+                </mesh>
+                <gridHelper args={[200, 40, 0x000000, 0x000000]} />
+
                 {() => {
-                    const mesh = $$(meshRef)
-                    return mesh ? <primitive object={mesh} /> : null
+                    const model = $$(modelRef)
+                    return model ? <primitive object={model} /> : null
                 }}
             </scene>
-
-            <perspectiveCamera
-                fov={50}
-                aspect={window.innerWidth / window.innerHeight}
-                near={0.1}
-                far={100}
-                position={[0, 1, 4]}
-            />
-            <orbitControls target={[0, 0.5, 0]} enableDamping />
+            <perspectiveCamera fov={45} aspect={window.innerWidth / window.innerHeight} near={0.25} far={100} position={[-5, 3, 10]} />
+            <orbitControls enableDamping target={[0, 2, 0]} />
         </canvas3D>
     )
 }
+
+import '@woby/three/src/geometries/PlaneGeometry'
+import '@woby/three/src/materials/MeshStandardMaterial'
+import '@woby/three/src/objects/Mesh'
+import '@woby/three/src/helpers/GridHelper'
 
 export default SkinningMorph

@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Box3 } from 'three/src/math/Box3.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { Box3Helper } from 'three/src/helpers/Box3Helper.js'
@@ -77,7 +77,7 @@ consParams.box3Helper = box3Helper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/Box3Helper.js | Source}
  */
 
-const _box3Helper = ([...objProps.lineSegments,
+const _box3Helper = ([...(objProps.lineSegments ?? []),
     /**
      * The Box3 being visualized.
      */

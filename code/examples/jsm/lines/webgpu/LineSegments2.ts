@@ -1,4 +1,4 @@
-import { LineSegments2 as WebGPULineSegments2 } from 'three/examples/jsm/lines/webgpu/LineSegments2'
+﻿import { LineSegments2 as WebGPULineSegments2 } from 'three/examples/jsm/lines/webgpu/LineSegments2'
 import { LineSegmentsGeometry } from "../LineSegmentsGeometry"
 import { Line2NodeMaterial } from '../../../../src/materials/nodes/Line2NodeMaterial'
 import { Object3DNode } from '../../../../three-types'
@@ -44,7 +44,7 @@ const webGPULineSegments2 = ([//...consParams.lineSegments2,
 ] as const).distinct()
 consParams.webGPULineSegments2 = webGPULineSegments2
 
-const _webGPULineSegments2 = ([...objProps.mesh,
+const _webGPULineSegments2 = ([...(objProps.mesh ?? []),
 	'isLineSegments2',
 	'type',
 	'resolution',

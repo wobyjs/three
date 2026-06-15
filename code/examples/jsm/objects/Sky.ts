@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Sky } from 'three/examples/jsm/objects/Sky.js'
 export * from 'three/examples/jsm/objects/Sky.js'
 
@@ -44,7 +44,7 @@ consParams.sky = sky
 
 
 
-const _sky = ([...objProps.mesh,
+const _sky = ([...(objProps.mesh ?? []),
     'geometry',
     'material',
 ] as const).distinct()

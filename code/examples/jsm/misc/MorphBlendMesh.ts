@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../../three-types'
+﻿import { Object3DNode } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { MorphBlendMesh } from 'three/examples/jsm/misc/MorphBlendMesh.js'
@@ -48,7 +48,7 @@ consParams.morphBlendMesh = morphBlendMesh
 
 
 
-const _morphBlendMesh = ([...objProps.mesh,
+const _morphBlendMesh = ([...(objProps.mesh ?? []),
     'animationsMap',
     'animationsList',
 ] as const).distinct()

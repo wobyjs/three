@@ -4,9 +4,18 @@ export { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
+import { Three } from '../../lib/3/three'
 import '../core/BufferGeometry'
 
 import './BufferGeometry'
+
+declare module '../../lib/3/three' {
+    interface Three {
+        InstancedBufferGeometry: typeof InstancedBufferGeometry
+    }
+}
+
+Three.InstancedBufferGeometry = InstancedBufferGeometry
 
 declare module 'woby' {
     namespace JSX {

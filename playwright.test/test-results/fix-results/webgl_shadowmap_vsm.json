@@ -1,0 +1,9 @@
+{
+  "id": "webgl_shadowmap_vsm",
+  "before_score": 0,
+  "after_score": 0.15,
+  "status": "fail",
+  "root_cause": "Attribute naming mismatch - used shadowMapEnabled/shadowMapType instead of shadowMap-enabled/shadowMap-type",
+  "fix_applied": "Changed shadowMapEnabled to shadowMap-enabled and shadowMapType to shadowMap-type on webglRenderer component",
+  "change_description": "Fixed JSX attribute naming to use kebab-case (shadowMap-enabled, shadowMap-type) instead of camelCase (shadowMapEnabled, shadowMapType). This matches the Three.js property binding convention used by @woby/three."
+}

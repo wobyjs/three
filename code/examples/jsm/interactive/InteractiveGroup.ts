@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { InteractiveGroup } from 'three/examples/jsm/interactive/InteractiveGroup.js'
 export * from 'three/examples/jsm/interactive/InteractiveGroup.js'
 
@@ -84,7 +84,7 @@ const _interactiveObject3d = ([...objProps.object3d,
 objProps.interactiveObject3d = _interactiveObject3d
 
 
-const _interactiveGroup = ([...objProps.group,
+const _interactiveGroup = ([...(objProps.group ?? []),
 ] as const).distinct()
 objProps.interactiveGroup = _interactiveGroup
 

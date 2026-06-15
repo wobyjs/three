@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-06-02T03:00:00.000Z"
+last_updated: "2026-06-04T00:00:00.000Z"
 progress:
   total_phases: 14
-  completed_phases: 13
-  total_plans: 2
-  completed_plans: 19
+  completed_phases: 14
+  total_plans: 5
+  completed_plans: 22
 ---
 
 # Project State
@@ -78,22 +78,35 @@ progress:
 |------|------|--------|
 | 14-01 | kimi-utils.ts + demo-list.ts infrastructure | COMPLETE |
 | 14-02 | kimi-comparison-worker.ts + kimi-orchestrator.ts | COMPLETE |
+| 14-03 | Reference screenshot capture | COMPLETE |
+| 14-04 | Live Kimi comparison (134 demos, 7 passed, 109 failed) | COMPLETE |
+| 14-05 | Fix orchestrator infrastructure | COMPLETE |
 
 **Decisions (Phase 14):**
 - Worker always writes partial file in finally block (even for 0-demo batches)
 - Orchestrator cleans stale partial-*.json files before each run
 - Promise.allSettled for worker spawning (partial failures do not abort merge)
 - KIMI_API_KEY propagated via env object only — never logged
+- Chrome DevTools MCP used instead of agent-browser CLI
+- Worker profiles: profile-qmdj-4 (port 9225), profile-qmdj-5 (port 9226), profile-qmdj-6 (port 9227)
 
-**Last session:** 2026-06-02 — Completed 14-02: kimi comparison worker and orchestrator pipeline
+**Comparison Results (Plan 04):**
+- Total demos compared: 134
+- Passed (similarity >= 0.7): 7 demos (5.2% pass rate)
+- Failed (similarity < 0.7): 109 demos
+- No reference: 18 demos
+- Real Kimi scores (not mock dry-run values)
+
+**Last session:** 2026-06-06 — Completed 14-04: live Kimi comparison run
 
 ## Next Steps
 
 1. ✅ Milestone complete - all 12 phases finished
 2. ✅ Milestone audit performed (see MILESTONE-AUDIT.md)
-3. ✅ Phase 14 Plan 02 complete: kimi-orchestrator.ts --dry-run --limit=3 exits 0
-4. Optional: Run full comparison with live KIMI_API_KEY
-5. Optional: Expand coverage in phases 2-6 (additional 326 examples available)
+3. ✅ Phase 14 Plans 01-04 complete: Kimi comparison infrastructure and live run
+4. ✅ Phase 14 Plan 05 complete: Fix orchestrator infrastructure created
+5. Optional: Run fix agents for 109 failed demos (autonomous fix phase)
+6. Optional: Expand coverage in phases 2-6 (additional 326 examples available)
 
 ## Notes
 

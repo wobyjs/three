@@ -1,0 +1,37 @@
+[  124672ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  125212ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  125263ms] [ERROR] Failed to load demo "webgl_shader_lava": Error: Invalid component
+    at createElement (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:375:11)
+    at jsxDEV (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:424:27)
+    at http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989514307:18:37 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989514307:23
+[  125621ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  126217ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  126247ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/demo/src/WebGLShaderLava.tsx?t=1778989515344:0
+[  126257ms] [ERROR] Failed to load demo "webgl_shader_lava": TypeError: Failed to fetch dynamically imported module: http://localhost:5173/demo/src/WebGLShaderLava.tsx?t=1778989515344 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989515344:23
+[  152744ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  153112ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  153142ms] [ERROR] Failed to load demo "webgl_shader_lava": Error: Invalid component
+    at createElement (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:375:11)
+    at jsxDEV (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:424:27)
+    at http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989542434:18:37 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989542434:23
+[  153335ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  153694ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  153894ms] [ERROR] Failed to load demo "webgl_shader_lava": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778985477012:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778985477012:4:64)
+    at WebGLShaderLava (http://localhost:5173/demo/src/WebGLShaderLava.tsx?t=1778989542960:184:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989542960:23
+[  194313ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  208898ms] [WARNING] WARNING: Multiple instances of Three.js being imported. @ http://localhost:5173/node_modules/.vite/deps/chunk-LE7WE2CG.js?v=4ae42f86:21312
+[  208935ms] [ERROR] Failed to load demo "webgl_static_text": TypeError: objProps.bufferGeometry is not iterable
+    at http://localhost:5173/src/geometries/ExtrudeGeometry.js:204:39 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989542960:23
+[  209052ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  210284ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  211446ms] [ERROR] Failed to load demo "webgl_static_text": TypeError: objProps.bufferGeometry is not iterable
+    at http://localhost:5173/src/geometries/ExtrudeGeometry.js:204:39 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989542960:23

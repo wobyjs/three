@@ -1,4 +1,4 @@
-import {
+﻿import {
     LightProbe,
 } from 'three/src/lights/LightProbe.js'
 import { LightProbeHelper } from 'three/examples/jsm/helpers/LightProbeHelper.js'
@@ -36,7 +36,7 @@ declare module '../../../lib/3/objProps' {
     }
 }
 
-const _LightProbeHelper = ([...objProps.mesh,
+const _LightProbeHelper = ([...(objProps.mesh ?? []),
     'lightProbe',
     'size'
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { WaterOptions, Water as Water2 } from 'three/examples/jsm/objects/Water2.js'
+﻿import { WaterOptions, Water as Water2 } from 'three/examples/jsm/objects/Water2.js'
 export { Water2, WaterOptions }
 
 import { Node } from '../../../three-types'
@@ -46,7 +46,7 @@ const water = ([...consParams.mesh,
 ] as const).distinct()
 consParams.water2 = water
 
-const _water = ([...objProps.mesh,
+const _water = ([...(objProps.mesh ?? []),
     'material',
 ] as const).distinct()
 objProps.water2 = _water

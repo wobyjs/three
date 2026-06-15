@@ -1,0 +1,29 @@
+{
+  "demo_id": "webgl_shadow_contact",
+  "score_before": 0,
+  "score_after": null,
+  "fix_applied": true,
+  "issues_found": [
+    "Missing shadow-mapSize on directionalLight",
+    "Missing shadow-camera properties (near/far/left/right/top/bottom)",
+    "Incorrect shadowMap attribute syntax on renderer"
+  ],
+  "fixes_applied": [
+    "Added shadow-mapSize-width={1024} and shadow-mapSize-height={1024}",
+    "Added shadow-camera-near={0.1}, shadow-camera-far={50}",
+    "Added shadow-camera-left={-10}, shadow-camera-right={10}, shadow-camera-top={10}, shadow-camera-bottom={-10}",
+    "Fixed renderer attribute: changed shadowMap to shadowMap-enabled"
+  ],
+  "timestamp": "2026-06-06T12:00:00Z",
+  "after_score": 0,
+  "status": "fail",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) displays the @woby/three web interface with a navigation sidebar showing example categories like 'BASICS' with items 'Plane' and '3 Boxes + Click', but the main viewport area is completely black/empty with no visible 3D geometry, lighting, or rendered content. The scene appears to be failing to render or load. Image 2 (REFERENCE) shows a blue statistics panel overlay displaying '60 FPS (42-60)' in white text, which is the standard stats.js performance counter indicating an active, properly running Three.js rendering loop. The ported version lacks both the statistics overlay and any visible 3D scene content present in the reference. The complete absence of rendering in Image 1's main canvas, contrasted with the active FPS counter in Image 2, indicates the ported example is not functioning correctly.",
+  "kimi_key_differences": [
+    "Image 1 main viewport is entirely black with no rendered content, while Image 2 shows an active blue FPS statistics panel indicating a working render loop",
+    "Image 1 displays the Woby demo browser interface chrome surrounding the empty viewport, while Image 2 shows only the stats overlay without surrounding navigation UI",
+    "Image 1 lacks the stats.js performance counter that is clearly visible in Image 2",
+    "No 3D objects, materials, or lighting are discernible in Image 1, suggesting complete rendering failure versus the active application state in Image 2"
+  ],
+  "verification_timestamp": "2026-06-07T02:06:11.867Z"
+}

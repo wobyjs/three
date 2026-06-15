@@ -1,0 +1,137 @@
+[      42ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[     255ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[     266ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[ 8332165ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332354ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332381ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332570ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332594ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332789ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332812ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8332830ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333070ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333108ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333132ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333253ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333276ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333553ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8333576ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8338788ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8339084ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://localhost:5173/node_modules/.vite/deps/three_src_geometries_PlaneGeometry__js.js?v=4ae42f86:0
+[ 8339085ms] [ERROR] Failed to load demo "webgl_camera_array": TypeError: Failed to fetch dynamically imported module: http://localhost:5173/demo/src/WebGLCameraArray.tsx @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 8340268ms] [ERROR] Failed to load demo "webgl_loader_ply": TypeError: Failed to fetch dynamically imported module: http://localhost:5173/demo/src/WebGLLoaderPLY.tsx @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 8340299ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8341547ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8344761ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 8346155ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8346620ms] [ERROR] Failed to load demo "webgl_loader_pcd": TypeError: objProps.loader is not iterable
+    at http://localhost:5173/examples/jsm/loaders/PCDLoader.js:12:33 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 8354990ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8355344ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8356188ms] [ERROR] Failed to load demo "webgl_webxr_hit_test": TypeError: objProps.bufferGeometry is not iterable
+    at http://localhost:5173/examples/jsm/geometries/ParametricGeometry.js:14:42 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 8356269ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 8356878ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8357331ms] [ERROR] Failed to load demo "webgl_webxr_hit_test": TypeError: objProps.bufferGeometry is not iterable
+    at http://localhost:5173/examples/jsm/geometries/ParametricGeometry.js:14:42 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 8358576ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8358857ms] [ERROR] Failed to load demo "webgl_plane": TypeError: objProps.bufferGeometry is not iterable
+    at http://localhost:5173/examples/jsm/geometries/ParametricGeometry.js:14:42 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 8359971ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8362788ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363020ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363088ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363123ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363150ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363271ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363295ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363521ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363545ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363565ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363757ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363787ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8363813ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364025ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364054ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364272ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364298ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364317ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364522ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364548ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364595ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364771ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364796ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8364847ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365009ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365038ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365304ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365332ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365488ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365515ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365737ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365766ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365970ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8365994ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8366125ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8366237ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8366267ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8366285ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8579951ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 8614795ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 8614839ms] [ERROR] Failed to load demo "webgl_canvas_texture": TypeError: objProps.bufferGeometry is not iterable
+    at http://localhost:5173/examples/jsm/geometries/ParametricGeometry.js:14:42 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779016216139:23
+[ 9322001ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 9327164ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 9328329ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 9329547ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 9330260ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 9330730ms] [ERROR] Failed to load demo "webgl_canvas_texture": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778991943032:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778991943032:4:64)
+    at WebGLCanvasTexture (http://localhost:5173/demo/src/WebGLCanvasTexture.tsx?t=1779025779023:71:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779025779023:23
+[ 9392238ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 9392752ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 9393059ms] [ERROR] Failed to load demo "webgl_canvas_texture": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778991943032:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778991943032:4:64)
+    at WebGLCanvasTexture (http://localhost:5173/demo/src/WebGLCanvasTexture.tsx?t=1779025779023:71:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779025842946:23
+[ 9425266ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 9425829ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 9426151ms] [ERROR] Failed to load demo "webgl_canvas_texture": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778991943032:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778991943032:4:64)
+    at WebGLCanvasTexture (http://localhost:5173/demo/src/WebGLCanvasTexture.tsx?t=1779025779023:71:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779025876010:23
+[ 9456872ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 9457298ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[ 9457590ms] [ERROR] Failed to load demo "webgl_canvas_texture": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778991943032:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778991943032:4:64)
+    at WebGLCanvasTexture (http://localhost:5173/demo/src/WebGLCanvasTexture.tsx?t=1779025779023:71:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779025907625:23

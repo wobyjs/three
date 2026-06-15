@@ -6,7 +6,7 @@ import { ALL_DEMOS } from './demo-list.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const ROOT = path.join(__dirname, '..')
+const ROOT = fs.existsSync(path.join(__dirname, '..', 'tsconfig.json')) ? path.join(__dirname, '..') : path.join(__dirname, '..', '..')
 
 const PARTIAL_RESULTS_DIR = path.join(ROOT, 'test-results', 'partial-results')
 const FINAL_REPORT_JSON = path.join(ROOT, 'test-results', 'visual-comparison-report.json')

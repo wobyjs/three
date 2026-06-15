@@ -1,0 +1,23 @@
+{
+  "id": "webgl_postprocessing_film",
+  "before_score": 0.05,
+  "after_score": 0,
+  "delta": "Pending",
+  "status": "fail",
+  "change_description": "No changes required. Demo already has correct postprocessing pipeline with EffectComposer, RenderPass, and FilmPass properly configured with retro CRT parameters (intensity: 0.5, grayscale: false, grain via uniforms).",
+  "changes": [],
+  "root_cause": "Initial analysis suggested this demo might need fixing, but code review shows it already has the correct setup: RenderPass (line 92-93), FilmPass with intensity 0.5 (line 96-100), grayscale=false set via uniforms (line 102), and proper composer.render() loop (line 106-108). The score of 0.05 in initial report may have been due to other factors (parameter values not matching reference, screenshot timing, or reference comparison issue).",
+  "fix_pattern": "Film effect demos require: 1) EffectComposer, 2) RenderPass (renders scene to texture), 3) FilmPass with noise/grain/scanline parameters. FilmPass constructor takes (intensity, grayscale) but additional effects can be set via uniforms: grayscale, noiseIntensity, scanlineIntensity, scanlineCount, scanlineIntensity. Typical retro CRT look uses intensity 0.35-0.5, grayscale=false, grain 0.05-0.15, scanlines 0.5-1.0. Pattern matches threejs.org/examples/webgl_postprocessing_film.",
+  "timestamp": "2026-06-06T16:45:00Z",
+  "notes": "Demo implementation is already correct with FilmPass(0.5, false) creating film grain and noise effects on the animated objects (box, sphere, torus, octahedron). The floating objects with retro CRT overlay should create a visual similar to the threejs.org reference. Score of 0.05 may require investigating: 1) Are FilmPass parameters matching the reference? (Reference may use different intensity/grain values), 2) Is the screenshot capturing the grain/noise effect correctly? 3) Is the scene composition matching? Recommend testing in browser with Chrome DevTools MCP to verify visual output and compare FilmPass parameters with threejs.org example source code.",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) displays an empty black canvas with only faint grid lines visible and no 3D geometry present. The main viewport is entirely black except for subtle crosshair grid lines at the center. Image 2 (REFERENCE) shows the actual FXAA postprocessing demo with numerous red tetrahedral geometries (triangular pyramids) of varying sizes scattered throughout a white/light gray background. The reference image contains the expected post-processing comparison content with distinct red meshes floating in 3D space, while the ported version has failed to render any of the 3D objects, colors, or visual effects characteristic of the FXAA example. The two images share no visual similarity in terms of actual 3D content.",
+  "kimi_key_differences": [
+    "Image 1 has completely empty black main viewport; Image 2 contains dozens of red tetrahedron geometries floating in space",
+    "Image 1 shows only UI sidebar elements and black background; Image 2 shows white background with 3D scene content",
+    "Image 1 lacks all red geometry objects that define the FXAA demo; Image 2 is populated with red triangular meshes",
+    "Image 1 has no visible lighting or materials; Image 2 shows shaded red surfaces with 3D lighting",
+    "Image 1 displays '203 demos' text suggesting a demo selection screen rather than the actual rendered FXAA example"
+  ],
+  "verification_timestamp": "2026-06-07T02:03:02.144Z"
+}

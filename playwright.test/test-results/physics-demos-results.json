@@ -1,0 +1,23 @@
+[
+  {
+    "id": "physics_rapier_basic",
+    "similarity_score": 0,
+    "status": "error",
+    "verdict": "error",
+    "error": "401 terminated"
+  },
+  {
+    "id": "physics_rapier_instancing",
+    "similarity_score": 0,
+    "status": "error",
+    "verdict": "error",
+    "error": "401 terminated"
+  },
+  {
+    "id": "physics_rapier_joints",
+    "similarity_score": 0,
+    "status": "error",
+    "verdict": "error",
+    "error": "401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011Cbvsrkr7L9iaibPwNaKXd\"}"
+  }
+]

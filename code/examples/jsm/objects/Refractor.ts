@@ -1,4 +1,4 @@
-import { RefractorOptions, Refractor } from 'three/examples/jsm/objects/Refractor.js'
+﻿import { RefractorOptions, Refractor } from 'three/examples/jsm/objects/Refractor.js'
 export * from 'three/examples/jsm/objects/Refractor.js'
 import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
@@ -70,7 +70,7 @@ const _refractorOptions = ([
 objProps.refractorOptions = _refractorOptions
 
 
-const _refractor = ([...objProps.mesh,
+const _refractor = ([...(objProps.mesh ?? []),
     'camera',
 ] as const).distinct()
 objProps.refractor = _refractor

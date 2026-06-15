@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Lensflare } from 'three/examples/jsm/objects/Lensflare.js'
 export * from 'three/examples/jsm/objects/Lensflare.js'
 
@@ -63,7 +63,7 @@ const _lensflareElement = ([
 objProps.lensflareElement = _lensflareElement
 
 
-const _lensflare = ([...objProps.mesh,
+const _lensflare = ([...(objProps.mesh ?? []),
     'isLensflare',
     'type',
     'frustumCulled',

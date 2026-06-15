@@ -156,12 +156,12 @@ ${keyDiffsList || '- No key differences listed'}
    Focus on the key_differences listed above.
    Common issues: $vs$$ misuse, auto-render conflict, missing dispose, wrong material props.
    NEVER use "as any". Use proper Woby reactive types.
-7. After editing, re-capture the ported screenshot:
-   agent-browser session name: fix-${demo.id}
+7. After editing, re-capture the ported screenshot using Chrome DevTools MCP:
+   Profile: profile-qmdj-6 (port 9227)
    URL: http://localhost:5175/#${demo.id}
    Wait: ${waitMs}ms
    Screenshot path: playwright.test/screenshots/ported/${demo.id}.png (overwrite)
-   Close session: agentBrowser('fix-${demo.id}', ['close'])
+   MCP close_page after capture
 8. Re-run Kimi comparison: kimiCompare('screenshots/ported/${demo.id}.png', 'screenshots/reference/${demo.id}.png')
 9. Report: final score, improvement delta, what was changed.
    Write result to: test-results/fix-results/${demo.id}.json

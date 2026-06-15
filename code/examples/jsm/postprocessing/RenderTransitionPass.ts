@@ -54,10 +54,6 @@ consParams.renderTransitionPass = renderTransitionPass
 const _renderTransitionPass = ([...(objProps.pass || []),
     'material',
     'fsQuad',
-    'sceneA',
-    'cameraA',
-    'sceneB',
-    'cameraB',
     'renderTargetA',
     'renderTargetB',
 ] as const).distinct()

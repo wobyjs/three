@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Visual Comparison Report - Phase 13</title>
+<style>
+  body { font-family: sans-serif; margin: 20px; background: #f8fafc; }
+  h1 { color: #1e293b; }
+  .summary { background: #fff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+  .metric { text-align: center; }
+  .metric .value { font-size: 2em; font-weight: bold; }
+  .metric .label { font-size: 0.8em; color: #64748b; }
+  .filters { margin-bottom: 12px; }
+  .filters button { margin-right: 6px; padding: 4px 10px; cursor: pointer; border: 1px solid #cbd5e1; border-radius: 4px; background: #fff; }
+  .filters button.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+  table { border-collapse: collapse; width: 100%; background: #fff; }
+  th, td { border: 1px solid #e2e8f0; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; }
+  tr[data-status="pass"] { background: #f0fdf4; }
+  tr[data-status="fail"] { background: #fef2f2; }
+  tr[data-status="warn"] { background: #fffbeb; }
+  tr.hidden { display: none; }
+</style>
+</head>
+<body>
+<h1>Visual Comparison Report</h1>
+<p>Generated: 2026-06-01T12:40:41.950Z</p>
+<div class="summary">
+  <div class="metric"><div class="value">200</div><div class="label">Total Demos</div></div>
+  <div class="metric"><div class="value">7</div><div class="label">Comparable</div></div>
+  <div class="metric"><div class="value" style="color:#22c55e">7</div><div class="label">Passed</div></div>
+  <div class="metric"><div class="value" style="color:#f59e0b">0</div><div class="label">Warned</div></div>
+  <div class="metric"><div class="value" style="color:#ef4444">0</div><div class="label">Failed</div></div>
+  <div class="metric"><div class="value">100.0%</div><div class="label">Pass Rate</div></div>
+  <div class="metric"><div class="value"><span style="color:#22c55e;font-weight:bold">PASSED</span></div><div class="label">CI Gate</div></div>
+</div>
+<div class="filters">
+  <button onclick="filterRows('all')" class="active">All</button>
+  <button onclick="filterRows('pass')">Pass</button>
+  <button onclick="filterRows('warn')">Warn</button>
+  <button onclick="filterRows('fail')">Fail</button>
+  <button onclick="filterRows('no-reference')">No Reference</button>
+</div>
+<table>
+<thead><tr><th>Demo ID</th><th>Status</th><th>Score</th><th>Reasoning</th><th>Ported</th><th>Reference</th></tr></thead>
+<tbody id="tbody">
+<tr data-status="reference-load-failed">
+      <td><code>css3d_periodictable</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/css3d_periodictable.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>misc_controls_transform</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/misc_controls_transform.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>physics_ammo_break</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/physics_ammo_break.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>physics_ammo_cloth</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/physics_ammo_cloth.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>physics_rapier_basic</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/physics_rapier_basic.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>physics_rapier_instancing</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/physics_rapier_instancing.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>physics_rapier_joints</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/physics_rapier_joints.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_alpha</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_alpha.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_animation_keyframe</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_animation_keyframe.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_animation_keyframes</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 0.</td>
+      <td><img src="../screenshots/ported/webgl_animation_keyframes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_animation_keyframes.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_animation_particles</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_animation_particles.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_animation_skinning</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_animation_skinning.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_animation_skinning_blending</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_animation_skinning_blending.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_audio</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_audio.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_batch_lod_bvh</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_batch_lod_bvh.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_boxes</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_boxes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_boxes_click</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_boxes_click.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_buffergeometry</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_buffergeometry.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_camera</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_camera.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_camera_array</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_camera_array.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_canvas_texture</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_canvas_texture.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_clipping</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_clipping.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_clipping_advanced</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_clipping_advanced.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_clipping_intersection</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_clipping_intersection.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_color_grading</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_color_grading.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_css2d</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_css2d.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_css3d</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_css3d.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_css3d_demo</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_css3d_demo.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_custom_shader</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_custom_shader.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_d_lines</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_d_lines.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_decals</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_decals.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_effects_anaglyph</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_effects_anaglyph.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_effects_ascii</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_effects_ascii.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_effects_parallaxbarrier</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_effects_parallaxbarrier.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_effects_stereo</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_effects_stereo.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_effects_stereo2</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_effects_stereo2.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_effects_stereo3</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_effects_stereo3.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_fat_lines</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_fat_lines.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_fat_lines_advanced</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_fat_lines_advanced.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_fog</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_fog.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometries</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometries.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometries_showcase</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometries_showcase.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_colors</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_colors.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometry_colors_lut</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_colors_lut.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_convex</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_convex.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometry_csg</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_csg.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometry_cube</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_cube.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometry_cube2</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_cube2.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_extrude_shapes</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_extrude_shapes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometry_lathe</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_lathe.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_minecraft</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_minecraft.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_shapes</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_shapes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_spline_editor</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_spline_editor.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_geometry_teapot</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_teapot.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_geometry_text_stroke</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_geometry_text_stroke.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_group</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_group.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_helpers</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_helpers.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_html_text</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_html_text.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_instancing</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_instancing_animated</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_animated.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_instancing_billboards</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_billboards.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_instancing_dynamic</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_dynamic.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_instancing_morph</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_morph.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_instancing_performance</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_performance.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_instancing_raycast</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_raycast.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_instancing_scatter</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_instancing_scatter.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_interactive_buffer_geometry</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_buffer_geometry.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_interactive_cubes</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_cubes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_interactive_cubes_gpu</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_cubes_gpu.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_interactive_cubes_ortho</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_cubes_ortho.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_interactive_cubes_raycaster</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_cubes_raycaster.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_interactive_lines</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_lines.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_interactive_raycasting_points</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_raycasting_points.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_interactive_voxelpainter</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_interactive_voxelpainter.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_lensflares</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lensflares.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_lightprobe</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lightprobe.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_lights</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lights.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_lights_rectarea</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lights_rectarea.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_lights_spotlight</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lights_spotlight.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_line3</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_line3.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_lines</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lines.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_lines_dashed</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lines_dashed.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_3dm</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_3dm.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_3ds</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_3ds.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_3mf</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_3mf.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_amf</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_amf.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_bvh</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_bvh.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_collada</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_collada.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_draco</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_draco.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_fbx</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_fbx.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_gcode</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_gcode.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_gltf</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_gltf.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_loader_gltf_2</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_gltf_2.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_loader_gltf_anisotropy</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_gltf_anisotropy.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_loader_gltf_demo</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_gltf_demo.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_kmz</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_kmz.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_lwo</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_lwo.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_md2</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_md2.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_nrrd</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_nrrd.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_obj</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_obj.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_pcd</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_pcd.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_pdb</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_pdb.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_ply</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_ply.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_stl</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_stl.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_svg</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_svg.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_ttf</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_ttf.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_vox</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_vox.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_vrml</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_vrml.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_loader_xyz</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_loader_xyz.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_lod</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_lod.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_materials</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_materials_all</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_all.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_blending</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_blending.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_car</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_car.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_channels</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_channels.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_materials_colors</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_colors.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_cubemap</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_cubemap.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_cubemap_dynamic</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_cubemap_dynamic.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_matcap</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_matcap.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_materials_normal</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_normal.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_normalmap</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_normalmap.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_materials_physical</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_physical.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_physical_clearcoat</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_physical_clearcoat.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_materials_physical_transmission</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_physical_transmission.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_materials_transparency</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_materials_transparency.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_mirror</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_mirror.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_modifier_simplify</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_modifier_simplify.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_morph_targets</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_morph_targets.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_multiple_geometries</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_multiple_geometries.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_normal_map</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_normal_map.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_object3d</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_object3d.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_panorama_equirectangular</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_panorama_equirectangular.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_particles</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_particles.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_particles_buffer</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_particles_buffer.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_physics</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_physics.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_plane</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_plane.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_point_cloud</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_point_cloud.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_points_dynamic</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_points_dynamic.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_points_sprites</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_points_sprites.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_points_waves</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_points_waves.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_advanced</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_advanced.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_afterimage</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_afterimage.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_bokeh</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_bokeh.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_chromatic</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_chromatic.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_demo</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_demo.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_depth</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_depth.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_dof</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_dof.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_film</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_film.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_fxaa</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_fxaa.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_glitch</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_glitch.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_godrays</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_godrays.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_nodes</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_nodes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_postprocessing_outline</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 3.</td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_outline.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_postprocessing_outline.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_pixel</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_pixel.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_postprocessing_smaa</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 2.</td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_smaa.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_postprocessing_smaa.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_postprocessing_ssao</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 2.</td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_ssao.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_postprocessing_ssao.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_ssr</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_ssr.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_postprocessing_taa</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 3.</td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_taa.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_postprocessing_taa.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_temporal</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_temporal.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_postprocessing_transition</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_transition.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_postprocessing_vignette</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_postprocessing_vignette.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_reflection</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_reflection.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_reflector</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_reflector.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_shader_lava</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shader_lava.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_shaders_ocean</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shaders_ocean.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_shaders_sky</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shaders_sky.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_shadow_contact</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 1.</td>
+      <td><img src="../screenshots/ported/webgl_shadow_contact.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_shadow_contact.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_shadowmap</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shadowmap.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_shadowmap_advanced</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shadowmap_advanced.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_shadowmap_pointlight</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shadowmap_pointlight.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="pass">
+      <td><code>webgl_shadowmap_vsm</code></td>
+      <td><span style="background:#22c55e;color:#fff;padding:2px 6px;border-radius:3px">pass</span></td>
+      <td>0.85</td>
+      <td style="max-width:300px;font-size:0.85em">Dry run agent 1.</td>
+      <td><img src="../screenshots/ported/webgl_shadowmap_vsm.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><img src="../screenshots/reference/webgl_shadowmap_vsm.png" width="200" style="border:1px solid #ccc" /></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_shadows</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_shadows.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_simple_line</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_simple_line.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_sky</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_sky.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webgl_sprites</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_sprites.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_static_text</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_static_text.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_svg</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_svg.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_terrain</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_terrain.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_text_geometry</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_text_geometry.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_textures_cube</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_textures_cube.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_tone_mapping</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_tone_mapping.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_toon</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_toon.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_useframe_test</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_useframe_test.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_uvs</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_uvs.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_vr</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_vr.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_water</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_water.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webgpu</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webgpu.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webxr</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webxr.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webxr_anchors</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webxr_anchors.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webxr_ar</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webxr_ar.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webxr_hit_test</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webxr_hit_test.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webxr_layers</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webxr_layers.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_webxr_vr</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_webxr_vr.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webgl_wireframes</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webgl_wireframes.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webxr_ar_cones</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webxr_ar_cones.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="reference-load-failed">
+      <td><code>webxr_ar_plane_detection</code></td>
+      <td><span style="background:#f97316;color:#fff;padding:2px 6px;border-radius:3px">reference-load-failed</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webxr_ar_plane_detection.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webxr_sandbox</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webxr_sandbox.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webxr_vr_ballshooter</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webxr_vr_ballshooter.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+<tr data-status="no-reference">
+      <td><code>webxr_vr_paint</code></td>
+      <td><span style="background:#94a3b8;color:#fff;padding:2px 6px;border-radius:3px">no-reference</span></td>
+      <td>N/A</td>
+      <td style="max-width:300px;font-size:0.85em"></td>
+      <td><img src="../screenshots/ported/webxr_vr_paint.png" width="200" style="border:1px solid #ccc" /></td>
+      <td><span style="color:#999">no screenshot</span></td>
+    </tr>
+</tbody>
+</table>
+<script>
+function filterRows(status) {
+  document.querySelectorAll('#tbody tr').forEach(function(tr) {
+    tr.classList.toggle('hidden', status !== 'all' && tr.dataset.status !== status);
+  });
+  document.querySelectorAll('.filters button').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === status || (status === 'all' && btn.textContent === 'All'));
+  });
+}
+</script>
+</body>
+</html>

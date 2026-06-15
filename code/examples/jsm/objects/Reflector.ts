@@ -1,4 +1,4 @@
-import { ReflectorOptions, Reflector } from 'three/examples/jsm/objects/Reflector.js'
+﻿import { ReflectorOptions, Reflector } from 'three/examples/jsm/objects/Reflector.js'
 export * from 'three/examples/jsm/objects/Reflector.js'
 import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
@@ -69,7 +69,7 @@ const _reflectorOptions = ([
 objProps.reflectorOptions = _reflectorOptions
 
 
-const _reflector = ([...objProps.mesh,
+const _reflector = ([...(objProps.mesh ?? []),
     'camera',
 ] as const).distinct()
 objProps.reflector = _reflector

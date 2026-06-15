@@ -1,0 +1,1 @@
+[   17638ms] [ERROR] THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Canvas has an existing context of a different type @ http://localhost:5173/node_modules/.vite/deps/three_src_renderers_WebGLRenderer__js.js?v=81137306:16204

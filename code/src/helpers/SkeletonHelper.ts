@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { SkeletonHelper } from 'three/src/helpers/SkeletonHelper.js'
@@ -82,7 +82,7 @@ consParams.skeletonHelper = skeletonHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/SkeletonHelper.js | Source}
  */
 
-const _skeletonHelper = ([...objProps.lineSegments,
+const _skeletonHelper = ([...(objProps.lineSegments ?? []),
     /**
      * The list of bones that the helper renders as {@link Line | Lines}.
      */

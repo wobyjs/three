@@ -1,0 +1,199 @@
+[orchestrator] CAPTURE-ONLY mode: reference screenshots only, no Kimi comparison
+[orchestrator] Comparable demos (excluding custom): 134
+[pre-flight] Capture-only mode: skipping dev server check (no ported screenshots needed)
+[orchestrator] Cleared 5 stale partial result files
+[orchestrator] Spawning 5 workers (batch-size=27)...
+[w1] [worker-1] Starting batch-index=1 batch-size=27 dry-run=false capture-only=true limit=none
+[w1] [worker-1] Processing 27 demos (indices 27-53)
+[worker-1] skip (exists): webgl_materials_physical_clearcoat
+[worker-1] skip (exists): webgl_materials_physical_transmission
+[worker-1] skip (exists): webgl_materials_channels
+[worker-1] skip (exists): webgl_materials_cubemap_dynamic
+[worker-1] capturing ref: webgl_textures_cube (wait 8000ms)
+[w1] [capture] ref-1 https://threejs.org/examples/webgl_textures_cube.html: spawnSync agent-browser ENOENT
+[w1] [worker-1] ✗ ref: webgl_textures_cube: failed
+[w1] [worker-1] capturing ref: webgl_uvs (wait 8000ms)
+[w1] [capture] ref-1 https://threejs.org/examples/webgl_uvs.html: spawnSync agent-browser ENOENT
+[w1] [worker-1] ✗ ref: webgl_uvs: failed
+[w1] [worker-1] skip (exists): webgl_alpha
+[w1] [worker-1] skip (exists): webgl_clipping
+[worker-1] skip (exists): webgl_clipping_advanced
+[w1] [worker-1] skip (exists): webgl_clipping_intersection
+[worker-1] capturing ref: webgl_wireframes (wait 8000ms)
+[w1] [capture] ref-1 https://threejs.org/examples/webgl_wireframes.html: spawnSync agent-browser ENOENT
+[worker-1] ✗ ref: webgl_wireframes: failed
+[w1] [worker-1] capturing ref: webgl_particles (wait 8000ms)
+[w1] [capture] ref-1 https://threejs.org/examples/webgl_particles.html: spawnSync agent-browser ENOENT
+[w1] [worker-1] ✗ ref: webgl_particles: failed
+[w1] [worker-1] skip (exists): webgl_particles_buffer
+[w1] [worker-1] skip (exists): webgl_points_sprites
+[w1] [worker-1] skip (exists): webgl_points_dynamic
+[w1] [worker-1] skip (exists): webgl_points_waves
+[w1] [worker-1] skip (exists): webgl_fog
+[w1] [worker-1] skip (exists): webgl_shadowmap
+[w1] [worker-1] skip (exists): webgl_shadowmap_advanced
+[w1] [worker-1] skip (exists): webgl_shadow_contact
+[w1] [worker-1] skip (exists): webgl_shadows
+[w1] [worker-1] skip (exists): webgl_shadowmap_pointlight
+[w1] [worker-1] skip (exists): webgl_shadowmap_vsm
+[w1] [worker-1] skip (exists): webgl_lights
+[w1] [worker-1] skip (exists): webgl_lights_rectarea
+[w1] [worker-1] skip (exists): webgl_lights_spotlight
+[w1] [worker-1] skip (exists): webgl_lightprobe
+[w1] [worker-1] Done. 27 results written to D:\Developments\tslib\@woby\three\playwright.test\test-results\partial-results\partial-1.json
+[w0] [worker-0] Starting batch-index=0 batch-size=27 dry-run=false capture-only=true limit=none
+[w0] [worker-0] Processing 27 demos (indices 0-26)
+[w0] [worker-0] skip (exists): webgl_lines
+[w0] [worker-0] skip (exists): webgl_lines_dashed
+[w0] [worker-0] skip (exists): webgl_effects_anaglyph
+[worker-0] skip (exists): webgl_effects_stereo
+[w0] [worker-0] skip (exists): webgl_effects_parallaxbarrier
+[w0] [worker-0] capturing ref: webgl_effects_ascii (wait 8000ms)
+[w0] [capture] ref-0 https://threejs.org/examples/webgl_effects_ascii.html: spawnSync agent-browser ENOENT
+[w0] [worker-0] ✗ ref: webgl_effects_ascii: failed
+[w0] [worker-0] skip (exists): webgl_animation_particles
+[w0] [worker-0] skip (exists): webgl_animation_keyframes
+[worker-0] skip (exists): webgl_animation_skinning
+[worker-0] skip (exists): webgl_animation_skinning_blending
+[w0] [worker-0] skip (exists): webgl_geometries
+[worker-0] skip (exists): webgl_geometry_shapes
+[w0] [worker-0] skip (exists): webgl_geometry_lathe
+[w0] [worker-0] skip (exists): webgl_geometry_teapot
+[worker-0] skip (exists): webgl_geometry_convex
+[w0] [worker-0] skip (exists): webgl_geometry_extrude_shapes
+[w0] [worker-0] skip (exists): webgl_geometry_colors
+[w0] [worker-0] skip (exists): webgl_geometry_minecraft
+[w0] [worker-0] skip (exists): webgl_geometry_spline_editor
+[w0] [worker-0] skip (exists): webgl_materials
+[w0] [worker-0] skip (exists): webgl_materials_physical
+[w0] [worker-0] skip (exists): webgl_materials_transparency
+[w0] [worker-0] skip (exists): webgl_materials_blending
+[w0] [worker-0] skip (exists): webgl_materials_matcap
+[w0] [worker-0] skip (exists): webgl_materials_cubemap
+[w0] [worker-0] skip (exists): webgl_materials_car
+[w0] [worker-0] skip (exists): webgl_materials_normalmap
+[w0] [worker-0] Done. 27 results written to D:\Developments\tslib\@woby\three\playwright.test\test-results\partial-results\partial-0.json
+[w4] [worker-4] Starting batch-index=4 batch-size=27 dry-run=false capture-only=true limit=none
+[w4] [worker-4] Processing 26 demos (indices 108-133)
+[w4] [worker-4] skip (exists): webgl_interactive_voxelpainter
+[w4] [worker-4] capturing ref: webgl_interactive_buffer_geometry (wait 8000ms)
+[w4] [capture] ref-4 https://threejs.org/examples/webgl_interactive_buffer_geometry.html: spawnSync agent-browser ENOENT
+[w4] [worker-4] ✗ ref: webgl_interactive_buffer_geometry: failed
+[w4] [worker-4] skip (exists): webgl_interactive_cubes_gpu
+[w4] [worker-4] skip (exists): webgl_interactive_cubes_ortho
+[w4] [worker-4] skip (exists): webgl_interactive_lines
+[w4] [worker-4] skip (exists): webgl_interactive_raycasting_points
+[w4] [worker-4] skip (exists): webgl_sprites
+[w4] [worker-4] skip (exists): webgl_buffergeometry
+[w4] [worker-4] capturing ref: css3d_periodictable (wait 8000ms)
+[w4] [capture] ref-4 https://threejs.org/examples/css3d_periodictable.html: spawnSync agent-browser ENOENT
+[worker-4] ✗ ref: css3d_periodictable: failed
+[w2] [worker-2] Starting batch-index=2 batch-size=27 dry-run=false capture-only=true limit=none
+[worker-2] Processing 27 demos (indices 54-80)
+[w2] [worker-2] skip (exists): webgl_camera
+[w4] [worker-4] capturing ref: webgl_canvas_texture (wait 8000ms)
+[w2] [worker-2] skip (exists): webgl_camera_array
+[worker-2] skip (exists): webgl_loader_gltf
+[worker-2] skip (exists): webgl_loader_obj
+[worker-2] skip (exists): webgl_loader_draco
+[w2] [worker-2] skip (exists): webgl_loader_fbx
+[w2] [worker-2] skip (exists): webgl_loader_ply
+[worker-2] skip (exists): webgl_loader_collada
+[w2] [worker-2] skip (exists): webgl_loader_pcd
+[worker-2] skip (exists): webgl_loader_vrml
+[w2] [worker-2] skip (exists): webgl_loader_stl
+[w2] [worker-2] skip (exists): webgl_loader_3mf
+[w2] [worker-2] skip (exists): webgl_loader_bvh
+[w2] [worker-2] skip (exists): webgl_loader_gcode
+[worker-2] skip (exists): webgl_loader_svg
+[worker-2] skip (exists): webgl_loader_ttf
+[worker-2] skip (exists): webgl_loader_pdb
+[worker-2] skip (exists): webgl_loader_xyz
+[worker-2] skip (exists): webgl_loader_3ds
+[w2] [worker-2] skip (exists): webgl_loader_3dm
+[worker-2] skip (exists): webgl_loader_amf
+[w2] [worker-2] skip (exists): webgl_loader_kmz
+[worker-2] skip (exists): webgl_loader_lwo
+[w2] [worker-2] skip (exists): webgl_loader_md2
+[w2] [worker-2] skip (exists): webgl_loader_nrrd
+[w2] [worker-2] skip (exists): webgl_loader_vox
+[worker-2] skip (exists): webgl_postprocessing
+[w3] [worker-3] Starting batch-index=3 batch-size=27 dry-run=false capture-only=true limit=none
+[worker-3] Processing 27 demos (indices 81-107)
+[w3] [worker-3] skip (exists): webgl_postprocessing_film
+[w3] [worker-3] skip (exists): webgl_postprocessing_ssao
+[worker-3] skip (exists): webgl_postprocessing_fxaa
+[w3] [worker-3] skip (exists): webgl_postprocessing_smaa
+[w3] [worker-3] skip (exists): webgl_postprocessing_dof
+[w3] [worker-3] skip (exists): webgl_postprocessing_outline
+[w3] [worker-3] skip (exists): webgl_postprocessing_ssr
+[w3] [worker-3] skip (exists): webgl_postprocessing_transition
+[w3] [worker-3] capturing ref: webgl_postprocessing_glitch (wait 8000ms)
+[w2] [worker-2] Done. 27 results written to D:\Developments\tslib\@woby\three\playwright.test\test-results\partial-results\partial-2.json
+[w4] [capture] ref-4 https://threejs.org/examples/webgl_canvas_texture.html: spawnSync agent-browser ENOENT
+[worker-4] ✗ ref: webgl_canvas_texture: failed
+[w4] [worker-4] skip (exists): physics_ammo_break
+[w4] [worker-4] skip (exists): physics_ammo_cloth
+[worker-4] skip (exists): physics_rapier_basic
+[worker-4] skip (exists): physics_rapier_instancing
+[worker-4] skip (exists): physics_rapier_joints
+[worker-4] skip (exists): webxr_ar_cones
+[w4] [worker-4] skip (exists): webxr_ar_plane_detection
+[w4] [worker-4] capturing ref: webxr_vr_ballshooter (wait 8000ms)
+[w3] [capture] ref-3 https://threejs.org/examples/webgl_postprocessing_glitch.html: spawnSync agent-browser ENOENT
+[w3] [worker-3] ✗ ref: webgl_postprocessing_glitch: failed
+[w3] [worker-3] skip (exists): webgl_postprocessing_pixel
+[w3] [worker-3] skip (exists): webgl_postprocessing_afterimage
+[worker-3] skip (exists): webgl_postprocessing_taa
+[worker-3] skip (exists): webgl_postprocessing_advanced
+[w3] [worker-3] skip (exists): webgl_sky
+[w3] [worker-3] skip (exists): webgl_water
+[w3] [worker-3] skip (exists): webgl_panorama_equirectangular
+[w3] [worker-3] capturing ref: webgl_reflector (wait 8000ms)
+[w3] [capture] ref-3 https://threejs.org/examples/webgl_reflector.html: spawnSync agent-browser ENOENT
+[worker-3] ✗ ref: webgl_reflector: failed
+[w4] [capture] ref-4 https://threejs.org/examples/webxr_vr_ballshooter.html: spawnSync agent-browser ENOENT
+[worker-4] ✗ ref: webxr_vr_ballshooter: failed
+[w3] [worker-3] skip (exists): webgl_mirror
+[w3] [worker-3] skip (exists): webgl_lensflares
+[w3] [worker-3] capturing ref: webgl_instancing (wait 8000ms)
+[w4] [worker-4] capturing ref: webxr_vr_paint (wait 8000ms)
+[w3] [capture] ref-3 https://threejs.org/examples/webgl_instancing.html: spawnSync agent-browser ENOENT
+[w3] [worker-3] ✗ ref: webgl_instancing: failed
+[w3] [worker-3] skip (exists): webgl_instancing_performance
+[w3] [worker-3] capturing ref: webgl_instancing_animated (wait 8000ms)
+[w4] [capture] ref-4 https://threejs.org/examples/webxr_vr_paint.html: spawnSync agent-browser ENOENT
+[w4] [worker-4] ✗ ref: webxr_vr_paint: failed
+[w4] [worker-4] capturing ref: webxr_sandbox (wait 8000ms)
+[w3] [capture] ref-3 https://threejs.org/examples/webgl_instancing_animated.html: spawnSync agent-browser ENOENT
+[w3] [worker-3] ✗ ref: webgl_instancing_animated: failed
+[w3] [worker-3] skip (exists): webgl_instancing_morph
+[w3] [worker-3] skip (exists): webgl_instancing_dynamic
+[w3] [worker-3] skip (exists): webgl_instancing_raycast
+[w3] [worker-3] skip (exists): webgl_interactive_cubes
+[w3] [worker-3] capturing ref: webgl_interactive_cubes_raycaster (wait 8000ms)
+[w4] [capture] ref-4 https://threejs.org/examples/webxr_sandbox.html: spawnSync agent-browser ENOENT
+[w4] [worker-4] ✗ ref: webxr_sandbox: failed
+[w4] [worker-4] skip (exists): webgl_lod
+[w4] [worker-4] skip (exists): webgl_decals
+[w4] [worker-4] capturing ref: webgl_modifier_simplify (wait 8000ms)
+[w3] [capture] ref-3 https://threejs.org/examples/webgl_interactive_cubes_raycaster.html: spawnSync agent-browser ENOENT
+[w3] [worker-3] ✗ ref: webgl_interactive_cubes_raycaster: failed
+[w4] [capture] ref-4 https://threejs.org/examples/webgl_modifier_simplify.html: spawnSync agent-browser ENOENT
+[w4] [worker-4] ✗ ref: webgl_modifier_simplify: failed
+[w4] [worker-4] skip (exists): webgl_helpers
+[w4] [worker-4] capturing ref: webgl_tone_mapping (wait 8000ms)
+[w3] [worker-3] Done. 27 results written to D:\Developments\tslib\@woby\three\playwright.test\test-results\partial-results\partial-3.json
+[w4] [capture] ref-4 https://threejs.org/examples/webgl_tone_mapping.html: spawnSync agent-browser ENOENT
+[w4] [worker-4] ✗ ref: webgl_tone_mapping: failed
+[w4] [worker-4] skip (exists): misc_controls_transform
+[w4] [worker-4] Done. 26 results written to D:\Developments\tslib\@woby\three\playwright.test\test-results\partial-results\partial-4.json
+[orchestrator] All workers completed. Merging results...
+[orchestrator] Capture summary: D:\Developments\tslib\@woby\three\playwright.test\test-results\capture-summary.json
+
+=== REFERENCE CAPTURE SUMMARY ===
+Total demos:    134
+Captured:       0
+Skipped:        116
+Failed:         18
+Sessions closed: Yes

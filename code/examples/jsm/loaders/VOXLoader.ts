@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { VOXLoader } from 'three/examples/jsm/loaders/VOXLoader.js'
 export * from 'three/examples/jsm/loaders/VOXLoader.js'
@@ -7,6 +7,8 @@ import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../../../src/loaders/Loader'
+import '../../../src/textures/Data3DTexture'
 
 declare module '../../../lib/3/three'
 {
@@ -86,7 +88,7 @@ objProps.voxLoader = _voxLoader
 
 
 
-const _voxMesh = ([...objProps.mesh,
+const _voxMesh = ([...(objProps.mesh ?? []),
 ] as const).distinct()
 objProps.voxMesh = _voxMesh
 

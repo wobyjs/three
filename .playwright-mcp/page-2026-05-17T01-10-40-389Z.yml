@@ -1,0 +1,14 @@
+- generic [ref=e3]:
+  - generic [ref=e4]: "[plugin:vite:import-analysis] Failed to resolve import \"./AnimationMorph\" from \"demo/src/registry.ts\". Does the file exist?"
+  - generic [ref=e5]: D:/Developments/tslib/@woby/three/demo/src/registry.ts:61:115
+  - generic [ref=e6]: "44 | demos: [ 45 | { id: \"webgl_animation_keyframe\", name: \"Animation Keyframe\", category: \"animation\", component: () => import(\"./AnimationKeyframe\") }, 46 | { id: \"webgl_animation_morph\", name: \"Animation Morph\", category: \"animation\", component: () => import(\"./AnimationMorph\") }, | ^ 47 | { id: \"webgl_animation_particles\", name: \"Animation Particles\", category: \"animation\", component: () => import(\"./AnimationParticles\") }, 48 | { id: \"webgl_animation_ik\", name: \"Animation IK\", category: \"animation\", component: () => import(\"./AnimationIK\") },"
+  - generic [ref=e7]: at TransformPluginContext._formatLog (file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:42499:41) at TransformPluginContext.error (file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:42496:16) at normalizeUrl (file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:40475:23) at process.processTicksAndRejections (node:internal/process/task_queues:105:5) at async file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:40594:37 at async Promise.all (index 21) at async TransformPluginContext.transform (file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:40521:7) at async EnvironmentPluginContainer.transform (file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:42294:18) at async loadAndTransform (file:///D:/Developments/tslib/@woby/three/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:35735:27
+  - generic [ref=e8]:
+    - text: Click outside, press Esc key, or fix the code to dismiss.
+    - text: You can also disable this overlay by setting
+    - code [ref=e9]: server.hmr.overlay
+    - text: to
+    - code [ref=e10]: "false"
+    - text: in
+    - code [ref=e11]: vite.config.mts
+    - text: .

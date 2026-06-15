@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Plane } from 'three/src/math/Plane.js'
 import { PlaneHelper } from 'three/src/helpers/PlaneHelper.js'
 export { PlaneHelper } from 'three/src/helpers/PlaneHelper.js'
@@ -76,7 +76,7 @@ consParams.planeHelper = planeHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PlaneHelper.js | Source}
  */
 
-const _planeHelper = ([...objProps.lineSegments,
+const _planeHelper = ([...(objProps.lineSegments ?? []),
     /**
      * The {@link Plane | plane} being visualized.
      */

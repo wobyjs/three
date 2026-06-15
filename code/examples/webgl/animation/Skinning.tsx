@@ -1,6 +1,7 @@
 /** @jsxImportSource @woby/three */
 
-import { $, $$, useFrame, useEffect } from "woby"
+import { $, $$, useEffect } from "woby"
+import { useFrame } from "@woby/three"
 import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
 import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
 import { Color, SkinnedMesh, Skeleton, Bone, AnimationMixer, ACESFilmicToneMapping } from 'three'

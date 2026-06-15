@@ -1,0 +1,15 @@
+{
+  "demoId": "webgl_shadows",
+  "similarity_score": 0,
+  "verdict": "fail",
+  "reasoning": "Image 1 (PORTED) displays a UI menu interface for @woby/three examples with a dark-themed sidebar showing a list of demo categories (Shadow Map, Shadow Contact, Shadows, etc.) and a completely black/empty main content area where the 3D rendering should be. Image 2 (REFERENCE) shows an actual active 3D WebGL scene featuring a blue humanoid character performing a 'Samba Dancing' animation on a white grid floor with gray gradient background, along with Three.js branding and controls. The two images depict entirely different content types: one is a navigation menu with no visible 3D rendering, the other is a fully rendered 3D scene with an animated character. There is no visual overlap or similarity in scene content, objects, lighting, or layout between the two images.",
+  "key_differences": [
+    "Image 1 shows a UI menu list with text items; Image 2 shows a 3D rendered scene with a dancing character",
+    "Image 1 has a black empty viewport; Image 2 has a rendered 3D environment with grid floor and gray background",
+    "Image 1 features navigation elements and search bar; Image 2 features a blue humanoid mesh with animation",
+    "Image 1 displays '@woby/three' branding; Image 2 displays 'three.js - FBXLoader' branding",
+    "Image 1 is a static menu layout; Image 2 is an active rendering with FPS counter and animation controls",
+    "No matching 3D objects, lighting, or scene elements exist between the two images"
+  ],
+  "timestamp": "2026-06-07T22:35:21.285Z"
+}

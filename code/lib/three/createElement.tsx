@@ -200,6 +200,11 @@ export const createElement = <K extends (keyof JSX.IntrinsicElements & keyof con
     else if (isFunction(component) && !isThreeClass(component)) // Regular function component (not a Three.js class)
         return woby3Child(() => untrack(() => component.call(component, props as P)))
     else {// String or THREE.Class based (including Three.js classes passed as functions)
+        // <primitive object={threeJsInstance}> attaches a pre-created Three.js object to the scene graph
+        if (component === 'primitive') {
+            return (props as any).object ?? null
+        }
+
         // Strip 'three-' prefix from custom elements and convert to PascalCase
         let componentName = component as string
         if (typeof component === 'string' && component.startsWith('three-')) {

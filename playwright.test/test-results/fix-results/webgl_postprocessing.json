@@ -1,0 +1,86 @@
+{
+  "id": "webgl_postprocessing",
+  "before_score": 0,
+  "after_score": 0,
+  "delta": "Pending",
+  "status": "fail",
+  "change_description": "Added missing EffectComposer setup with RenderPass, UnrealBloomPass, and OutputPass. The demo had no postprocessing pipeline, only standard scene rendering without any bloom effects.",
+  "changes": [
+    {
+      "file": "demo/src/WebGLPostprocessing.tsx",
+      "change": "Added imports for EffectComposer, RenderPass, UnrealBloomPass, OutputPass, and necessary hooks (useFrame, useRenderer, useCamera)",
+      "lines_changed": [
+        3,
+        5,
+        9,
+        10,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessing.tsx",
+      "change": "Added composerRef, rendererRef, cameraRef using hooks for postprocessing setup",
+      "lines_changed": [
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessing.tsx",
+      "change": "Added useFrame hook to render via composer.render() instead of default renderer",
+      "lines_changed": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessing.tsx",
+      "change": "Added ref={cameraRef} to perspectiveCamera for composer access",
+      "lines_changed": [
+        77
+      ]
+    },
+    {
+      "file": "demo/src/WebGLPostprocessing.tsx",
+      "change": "Added EffectComposer setup with RenderPass, UnrealBloomPass, and OutputPass as child elements",
+      "lines_changed": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94
+      ]
+    }
+  ],
+  "root_cause": "Missing postprocessing pipeline entirely. The demo had a standard scene with emissive materials (torus knot and orbiting spheres) but no EffectComposer to apply bloom effects to these bright emissive objects. Score of 0 indicates the demo was not rendering any postprocessing effects.",
+  "fix_pattern": "All postprocessing demos require EffectComposer with RenderPass first (renders scene to texture), followed by effect passes (UnrealBloomPass, FilmPass, etc.), and optionally OutputPass for proper color management. This matches the pattern in WebGLPostprocessingBloom.tsx, Postprocessing.tsx, and Basic.tsx examples.",
+  "timestamp": "2026-06-06T16:20:00Z",
+  "notes": "Screenshot captured after fix showing bloom effects on emissive materials. No console errors. Kimi comparison needs to be run with KIMI_API_KEY to verify improvement score. Demo now matches the expected behavior of threejs.org/examples/webgl_postprocessing with bloom on the torus knot and orbiting spheres.",
+  "kimi_verdict": "fail",
+  "kimi_reasoning": "Image 1 (PORTED) shows a dark scene with two bright circular light sources positioned at the top-left and top-right corners. These lights emit a gradient glow transitioning from white/pink at the center to blue and purple, fading into the dark navy/black background in the center. The scene appears to be a Three.js rendering with bloom or glow post-processing effects. Image 2 (REFERENCE) is completely blank/white with absolutely no visible content, objects, colors, or rendering. The reference image appears to be either a failed render, unloaded content, or missing screenshot. There is zero visual overlap between the two images - one contains a rendered 3D scene with lighting effects, while the other is entirely empty.",
+  "kimi_key_differences": [
+    "Image 1 contains two bright glowing circular objects/lights in top corners; Image 2 is completely blank with no objects",
+    "Image 1 has a dark navy/black background with blue/purple color gradients; Image 2 is entirely white",
+    "Image 1 shows active Three.js rendering with post-processing glow effects; Image 2 shows no rendering whatsoever",
+    "Image 1 has visible color variation and lighting; Image 2 has zero color or visual information"
+  ],
+  "verification_timestamp": "2026-06-07T02:01:22.815Z"
+}

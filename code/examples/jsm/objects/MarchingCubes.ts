@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Material } from 'three/src/materials/Material.js'
 import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js'
 export * from 'three/examples/jsm/objects/MarchingCubes.js'
@@ -51,7 +51,7 @@ consParams.marchingCubes = marchingCubes
 
 
 
-const _marchingCubes = ([...objProps.mesh,
+const _marchingCubes = ([...(objProps.mesh ?? []),
     'enableUvs',
     'enableColors',
     'resolution',

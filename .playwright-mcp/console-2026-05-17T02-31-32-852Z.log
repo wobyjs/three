@@ -1,0 +1,57 @@
+[      69ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[     359ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[   33319ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[   38715ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[   40184ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[   40871ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[   41843ms] [LOG] [Box3] scene Scene @ http://localhost:5173/demo/src/Box3.tsx:68
+[   41848ms] [LOG] [Box3] ✓ Scene is valid @ http://localhost:5173/demo/src/Box3.tsx:70
+[   41848ms] [LOG] [Box3] ✓ Background is set: Color @ http://localhost:5173/demo/src/Box3.tsx:72
+[   41848ms] [LOG] [Box3] ✓ Lights verified: {total: 3, ambient: 1, spot: 1, point: 1} @ http://localhost:5173/demo/src/Box3.tsx:81
+[   41849ms] [LOG] [Box3] ✓ AmbientLight intensity is correct @ http://localhost:5173/demo/src/Box3.tsx:89
+[   41849ms] [LOG] [Box3] ✓ SpotLight properties are correct @ http://localhost:5173/demo/src/Box3.tsx:94
+[   41849ms] [LOG] [Box3] ✓ PointLight position is correct @ http://localhost:5173/demo/src/Box3.tsx:97
+[   41849ms] [LOG] [Box3] ✓ Meshes found: 3 @ http://localhost:5173/demo/src/Box3.tsx:100
+[   41849ms] [LOG] [Box3] ✓ Box positions are correct @ http://localhost:5173/demo/src/Box3.tsx:110
+[   41849ms] [LOG] [Box3] ✓ Found 1 camera(s) in ThreeContext @ http://localhost:5173/demo/src/Box3.tsx:116
+[   41849ms] [LOG] [Box3] ✓ PerspectiveCamera position is correct @ http://localhost:5173/demo/src/Box3.tsx:119
+[   41849ms] [LOG] [Box3] ✓ Camera accessible via useThree().cameras @ http://localhost:5173/demo/src/Box3.tsx:120
+[   41849ms] [LOG] [Box3] ✓ Found 1 renderer(s) in ThreeContext @ http://localhost:5173/demo/src/Box3.tsx:130
+[   41850ms] [LOG] [Box3] ✓ OrbitControls would be attached to renderer.domElement @ http://localhost:5173/demo/src/Box3.tsx:131
+[   41850ms] [LOG] [Box3] ✓ ThreeContext structure verified: {cameras: 1, scenes: 1, renderers: 1, frames: 4} @ http://localhost:5173/demo/src/Box3.tsx:133
+[   41850ms] [LOG] ✓ Scene: Direct child of Canvas3D, accessible via ref @ http://localhost:5173/demo/src/Box3.tsx:140
+[   41850ms] [LOG] ✓ Lights: Added to scene.children @ http://localhost:5173/demo/src/Box3.tsx:141
+[   41850ms] [LOG] ✓ Geometries: Added to scene.children as Mesh objects @ http://localhost:5173/demo/src/Box3.tsx:142
+[   41850ms] [LOG] ✓ Camera: 1 camera(s) in ThreeContext.cameras @ http://localhost:5173/demo/src/Box3.tsx:143
+[   41850ms] [LOG] ✓ Renderer: 1 renderer(s) in ThreeContext.renderers @ http://localhost:5173/demo/src/Box3.tsx:144
+[   41850ms] [LOG] ℹ OrbitControls: Would attach to camera + renderer.domElement @ http://localhost:5173/demo/src/Box3.tsx:145
+[   42005ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/textures/usedSteel.png:0
+[  338892ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  339375ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  339749ms] [LOG] [Box3] scene Scene @ http://localhost:5173/demo/src/Box3.tsx:68
+[  339750ms] [LOG] [Box3] ✓ Scene is valid @ http://localhost:5173/demo/src/Box3.tsx:70
+[  339750ms] [LOG] [Box3] ✓ Background is set: Color @ http://localhost:5173/demo/src/Box3.tsx:72
+[  339750ms] [LOG] [Box3] ✓ Lights verified: {total: 3, ambient: 1, spot: 1, point: 1} @ http://localhost:5173/demo/src/Box3.tsx:81
+[  339751ms] [LOG] [Box3] ✓ AmbientLight intensity is correct @ http://localhost:5173/demo/src/Box3.tsx:89
+[  339751ms] [LOG] [Box3] ✓ SpotLight properties are correct @ http://localhost:5173/demo/src/Box3.tsx:94
+[  339751ms] [LOG] [Box3] ✓ PointLight position is correct @ http://localhost:5173/demo/src/Box3.tsx:97
+[  339751ms] [LOG] [Box3] ✓ Meshes found: 3 @ http://localhost:5173/demo/src/Box3.tsx:100
+[  339751ms] [LOG] [Box3] ✓ Box positions are correct @ http://localhost:5173/demo/src/Box3.tsx:110
+[  339751ms] [LOG] [Box3] ✓ Found 1 camera(s) in ThreeContext @ http://localhost:5173/demo/src/Box3.tsx:116
+[  339752ms] [LOG] [Box3] ✓ PerspectiveCamera position is correct @ http://localhost:5173/demo/src/Box3.tsx:119
+[  339752ms] [LOG] [Box3] ✓ Camera accessible via useThree().cameras @ http://localhost:5173/demo/src/Box3.tsx:120
+[  339752ms] [LOG] [Box3] ✓ Found 1 renderer(s) in ThreeContext @ http://localhost:5173/demo/src/Box3.tsx:130
+[  339752ms] [LOG] [Box3] ✓ OrbitControls would be attached to renderer.domElement @ http://localhost:5173/demo/src/Box3.tsx:131
+[  339752ms] [LOG] [Box3] ✓ ThreeContext structure verified: {cameras: 1, scenes: 1, renderers: 1, frames: 4} @ http://localhost:5173/demo/src/Box3.tsx:133
+[  339752ms] [LOG] ✓ Scene: Direct child of Canvas3D, accessible via ref @ http://localhost:5173/demo/src/Box3.tsx:140
+[  339752ms] [LOG] ✓ Lights: Added to scene.children @ http://localhost:5173/demo/src/Box3.tsx:141
+[  339752ms] [LOG] ✓ Geometries: Added to scene.children as Mesh objects @ http://localhost:5173/demo/src/Box3.tsx:142
+[  339752ms] [LOG] ✓ Camera: 1 camera(s) in ThreeContext.cameras @ http://localhost:5173/demo/src/Box3.tsx:143
+[  339753ms] [LOG] ✓ Renderer: 1 renderer(s) in ThreeContext.renderers @ http://localhost:5173/demo/src/Box3.tsx:144
+[  339753ms] [LOG] ℹ OrbitControls: Would attach to camera + renderer.domElement @ http://localhost:5173/demo/src/Box3.tsx:145
+[  339795ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/textures/usedSteel.png:0
+[  384302ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  384310ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime.es.js?t=1778985477012:0
+[  384311ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/index.es.js?t=1778985477012:0
+[  478800ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ chrome-error://chromewebdata/:0
+[  481639ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ chrome-error://chromewebdata/:0

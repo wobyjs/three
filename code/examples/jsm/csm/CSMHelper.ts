@@ -1,4 +1,4 @@
-import { CSM } from 'three/examples/jsm/csm/CSM.js'
+﻿import { CSM } from 'three/examples/jsm/csm/CSM.js'
 import { Node } from '../../../three-types'
 import { CSMHelper } from 'three/examples/jsm/csm/CSMHelper.js'
 export * from 'three/examples/jsm/csm/CSMHelper.js'
@@ -46,7 +46,7 @@ consParams.csmHelper = csmHelper
 
 
 
-const _csmHelper = ([...objProps.group,
+const _csmHelper = ([...(objProps.group ?? []),
     'csm',
     'displayFrustum',
     'displayPlanes',

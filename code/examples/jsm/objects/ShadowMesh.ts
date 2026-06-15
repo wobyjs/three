@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Mesh } from 'three/src/objects/Mesh.js'
 import { ShadowMesh } from 'three/examples/jsm/objects/ShadowMesh.js'
 export * from 'three/examples/jsm/objects/ShadowMesh.js'
@@ -46,7 +46,7 @@ consParams.shadowMesh = shadowMesh
 
 
 
-const _shadowMesh = ([...objProps.mesh,
+const _shadowMesh = ([...(objProps.mesh ?? []),
     'meshMatrix',
 ] as const).distinct()
 objProps.shadowMesh = _shadowMesh

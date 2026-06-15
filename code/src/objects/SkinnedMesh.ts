@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
@@ -134,7 +134,7 @@ consParams.skinnedMesh = skinnedMesh
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/SkinnedMesh.js | Source}
  */
 
-const _skinnedMesh = ([...objProps.mesh,
+const _skinnedMesh = ([...(objProps.mesh ?? []),
     /**
      * Either {@link AttachedBindMode} or {@link DetachedBindMode}. {@link AttachedBindMode} means the skinned mesh
      * shares the same world space as the skeleton. This is not true when using {@link DetachedBindMode} which is useful

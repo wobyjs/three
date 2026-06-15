@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { DodecahedronGeometry } from 'three/src/geometries/DodecahedronGeometry.js'
 export { DodecahedronGeometry } from 'three/src/geometries/DodecahedronGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -62,7 +62,7 @@ consParams.dodecahedronGeometry = dodecahedronGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/DodecahedronGeometry.js | Source}
  */
 
-const _dodecahedronGeometry = ([...objProps.polyhedronGeometry,
+const _dodecahedronGeometry = ([...(objProps.polyhedronGeometry ?? []),
 ] as const).distinct()
 objProps.dodecahedronGeometry = _dodecahedronGeometry
 

@@ -1,7 +1,7 @@
 // / <reference path="../jsx" />
 /** @jsxImportSource @woby/three */
 
-import { $$, $, type JSX, isObservable, callStack, defaults as wobyDefaults, SYMBOL_CONTEXT_WRAP, setPendingContextWrap } from "woby"
+import { $$, $, useEffect, type JSX, isObservable, callStack, defaults as wobyDefaults, SYMBOL_CONTEXT_WRAP, setPendingContextWrap } from "woby"
 import { setNestedValue, } from "../three/fixReactiveProps"
 
 import { ThreeContext } from "../hooks/useThree"
@@ -95,6 +95,7 @@ export const Canvas3D = wobyDefaults(def, (props: HTMLAttributes<HTMLDivElement>
     })
 
     const ctx = { frames: [], scenes: [], cameras: [], renderers: [], update: $(0) }
+    const containerEl = $<HTMLDivElement | null>(null)
 
     // Build the context-wrap function for this Canvas3D instance and register it
     // via the module-level side-channel in woby so that createBrowserCustomElement
@@ -104,12 +105,39 @@ export const Canvas3D = wobyDefaults(def, (props: HTMLAttributes<HTMLDivElement>
         context({ [(ThreeContext as any).symbol]: ctx }, fn)
     setPendingContextWrap(wrap)
 
+    const resizeRenderers = () => {
+        const el = $$(containerEl)
+        if (!el || ctx.renderers.length === 0) return
+        const rect = el.getBoundingClientRect()
+        if (rect.width > 0 && rect.height > 0) {
+            ctx.renderers.forEach((r: any) => {
+                if (typeof r.setSize === 'function') r.setSize(rect.width, rect.height)
+            })
+        }
+    }
+
+    // Re-size when a new renderer is registered (ctx.update fires from getInstance)
+    useEffect(() => {
+        $$(ctx.update)
+        resizeRenderers()
+    })
+
+    // Re-size when the container element itself resizes
+    useEffect(() => {
+        const el = $$(containerEl)
+        if (!el) return
+        const observer = new ResizeObserver(() => resizeRenderers())
+        observer.observe(el)
+        return () => observer.disconnect()
+    })
+
     //ignore when build, because *.d.ts deleted & rebuild
     // @ts-ignore
-    return <div {...remainingProps} data-three-context="true" ref={(el) => {
+    return <div {...remainingProps} data-three-context="true" style="width:100%;height:100%" ref={(el) => {
         if (el) {
             // Also set on the inner div so JSX-mode descendants can find it.
             ; (el as any)[SYMBOL_CONTEXT_WRAP] = wrap
+            containerEl(el as HTMLDivElement)
         }
     }}>{ThreeContext.Provider({ value: ctx, children }) as any}</div>
 })

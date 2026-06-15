@@ -1,87 +1,58 @@
-/** @jsxImportSource @woby/three */
+﻿/** @jsxImportSource @woby/three */
+// https://threejs.org/examples/#webgl_materials_cubemap
 
-import { $, $$, useFrame } from "woby"
-import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
-import { OrbitControls } from '@woby/three/examples/jsm/controls/OrbitControls'
-import { Color, CubeTextureLoader } from 'three'
+import { $, $$, useEffect } from "woby"
+import { useFrame, useThree } from '@woby/three'
 import * as THREE from 'three'
 
-// Import wrappers for registration
-import '@woby/three/src/geometries/SphereGeometry'
-import '@woby/three/src/geometries/BoxGeometry'
-import '@woby/three/src/materials/MeshStandardMaterial'
-import '@woby/three/src/objects/Mesh'
-import '@woby/three/src/renderers/WebGLRenderer'
-import '@woby/three/src/cameras/PerspectiveCamera'
-import '@woby/three/src/lights/AmbientLight'
-import '@woby/three/src/scenes/Scene'
-
-/**
- * Port of webgl_materials_cubemap from Three.js examples.
- * Demonstrates cube map environment reflection.
- *
- * Source: https://threejs.org/examples/webgl_materials_cubemap.html
- *
- * Features:
- * - Cube map environment
- * - Reflective materials
- * - Skybox rendering
- */
-
 export const MaterialsCubemap = () => {
-    const sphereRef = $<THREE.Mesh>()
+    const { scene } = useThree()
 
-    useFrame((state) => {
-        const time = state.clock?.getElapsedTime() ?? 0
-        const sphere = $$(sphereRef)
-        if (sphere) {
-            sphere.rotation.y = time * 0.3
+    useEffect(() => {
+        // Cubemap demo
+        const geometry = new THREE.SphereGeometry(1.5, 64, 64)
+
+        const material = new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            metalness: 1,
+            roughness: 0,
+        })
+
+        const mesh = new THREE.Mesh(geometry, material)
+        scene.add(mesh)
+
+        // Background cube
+        const bgGeom = new THREE.BoxGeometry(20, 20, 20)
+        const bgMat = new THREE.MeshBasicMaterial({
+            color: 0x111111,
+            side: THREE.BackSide,
+        })
+        const bg = new THREE.Mesh(bgGeom, bgMat)
+        scene.add(bg)
+
+        const clock = new THREE.Clock()
+        const animate = () => {
+            requestAnimationFrame(animate)
+            const t = clock.getElapsedTime()
+            mesh.rotation.y = t * 0.2
+        }
+        animate()
+
+        return () => {
+            scene.remove(mesh)
+            scene.remove(bg)
+            geometry.dispose()
+            material.dispose()
         }
     })
 
     return (
         <canvas3D>
-            <webGLRenderer antialias setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} />
-            <scene background={new Color(0x87ceeb)}>
-                <ambientLight intensity={0.5} />
-
-                {/* Reflective sphere */}
-                <mesh ref={sphereRef}>
-                    <sphereGeometry args={[2, 64, 64]} />
-                    <meshStandardMaterial
-                        color={0xffffff}
-                        roughness={0}
-                        metalness={1}
-                        envMapIntensity={1}
-                    />
-                </mesh>
-
-                {/* Surrounding objects for reflection */}
-                {Array.from({ length: 20 }).map((_, i) => {
-                    const theta = (i / 20) * Math.PI * 2
-                    const phi = Math.random() * Math.PI
-                    const r = 8 + Math.random() * 4
-                    const x = r * Math.sin(phi) * Math.cos(theta)
-                    const y = r * Math.cos(phi)
-                    const z = r * Math.sin(phi) * Math.sin(theta)
-                    return (
-                        <mesh key={i} position={[x, y, z]}>
-                            <boxGeometry args={[0.5, 0.5, 0.5]} />
-                            <meshStandardMaterial
-                                color={new Color().setHSL(i / 20, 0.8, 0.5)}
-                                roughness={0.3}
-                                metalness={0.5}
-                            />
-                        </mesh>
-                    )
-                })}
+            <perspectiveCamera position={[0, 0, 5]} />
+            <scene>
+                <ambientLight intensity={0.3} />
             </scene>
-
-            <perspectiveCamera fov={60} aspect={window.innerWidth / window.innerHeight} near={0.1} far={100} position={[0, 0, 8]} />
-
-            <orbitControls enableDamping autoRotate autoRotateSpeed={0.5} />
+            <orbitControls />
         </canvas3D>
     )
 }
-
-export default MaterialsCubemap

@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { TetrahedronGeometry } from 'three/src/geometries/TetrahedronGeometry.js'
 export { TetrahedronGeometry } from 'three/src/geometries/TetrahedronGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -59,7 +59,7 @@ consParams.tetrahedronGeometry = tetrahedronGeometry
  * @see {@link https://threejs.org/docs/index.html#api/en/geometries/TetrahedronGeometry | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TetrahedronGeometry.js | Source}
  */
-const _tetrahedronGeometry = ([...objProps.polyhedronGeometry,
+const _tetrahedronGeometry = ([...(objProps.polyhedronGeometry ?? []),
 ] as const).distinct()
 objProps.tetrahedronGeometry = _tetrahedronGeometry
 

@@ -1,0 +1,55 @@
+[      39ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[     348ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[   71662ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[   72272ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/textures/usedSteel.png:0
+[  183200ms] [LOG] [Box3] scene Scene @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:68
+[  183204ms] [LOG] [Box3] ✓ Scene is valid @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:70
+[  183204ms] [LOG] [Box3] ✓ Background is set: Color @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:72
+[  183205ms] [LOG] [Box3] ✓ Lights verified: {total: 3, ambient: 1, spot: 1, point: 1} @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:81
+[  183205ms] [LOG] [Box3] ✓ AmbientLight intensity is correct @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:89
+[  183205ms] [LOG] [Box3] ✓ SpotLight properties are correct @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:94
+[  183205ms] [LOG] [Box3] ✓ PointLight position is correct @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:97
+[  183205ms] [LOG] [Box3] ✓ Meshes found: 3 @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:100
+[  183205ms] [LOG] [Box3] ✓ Box positions are correct @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:110
+[  183206ms] [LOG] [Box3] ✓ Found 1 camera(s) in ThreeContext @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:116
+[  183206ms] [LOG] [Box3] ✓ PerspectiveCamera position is correct @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:119
+[  183206ms] [LOG] [Box3] ✓ Camera accessible via useThree().cameras @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:120
+[  183206ms] [LOG] [Box3] ✓ Found 1 renderer(s) in ThreeContext @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:130
+[  183206ms] [LOG] [Box3] ✓ OrbitControls would be attached to renderer.domElement @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:131
+[  183206ms] [LOG] [Box3] ✓ ThreeContext structure verified: {cameras: 1, scenes: 1, renderers: 1, frames: 4} @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:133
+[  183206ms] [LOG] ✓ Scene: Direct child of Canvas3D, accessible via ref @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:140
+[  183206ms] [LOG] ✓ Lights: Added to scene.children @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:141
+[  183207ms] [LOG] ✓ Geometries: Added to scene.children as Mesh objects @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:142
+[  183207ms] [LOG] ✓ Camera: 1 camera(s) in ThreeContext.cameras @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:143
+[  183207ms] [LOG] ✓ Renderer: 1 renderer(s) in ThreeContext.renderers @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:144
+[  183207ms] [LOG] ℹ OrbitControls: Would attach to camera + renderer.domElement @ http://localhost:5173/demo/src/Box3.tsx?t=1778985477012:145
+[  183207ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  183210ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/textures/usedSteel.png:0
+[  230294ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  230361ms] [ERROR] Three.ShaderMaterial not register @ http://localhost:5173/code/lib/three/createElement.tsx?t=1778985477012:199
+[  230364ms] [ERROR] Failed to load demo "webgl_shader_lava": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778985477012:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778985477012:4:64)
+    at WebGLShaderLava (http://localhost:5173/demo/src/WebGLShaderLava.tsx:193:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778985477012:23
+[  662536ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[  662885ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[  663064ms] [ERROR] Three.Mesh not register @ http://localhost:5173/code/lib/three/createElement.tsx?t=1778985477012:199
+[  663065ms] [ERROR] Three.Scene not register @ http://localhost:5173/code/lib/three/createElement.tsx?t=1778985477012:199
+[  663065ms] [ERROR] Failed to load demo "webgl_shader_lava": TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at toKeys (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:7:51)
+    at useParams (http://localhost:5173/code/lib/3/useParams.tsx?t=1778985477012:20:14)
+    at extractProps2constructor (http://localhost:5173/code/lib/three/extractProps2constructor.tsx?t=1778985477012:18:42)
+    at createElement (http://localhost:5173/code/lib/three/createElement.tsx?t=1778985477012:203:22)
+    at jsx (http://localhost:5173/code/lib/three/jsx.tsx?t=1778985477012:4:64)
+    at WebGLShaderLava (http://localhost:5173/demo/src/WebGLShaderLava.tsx?t=1778989282160:182:21)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:82
+    at untrack (http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/setters-hdNmyKfA.js?t=1778985477012:1210:14)
+    at http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime-BYNbC5AB.js?t=1778985477012:342:14 @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1778989282160:23

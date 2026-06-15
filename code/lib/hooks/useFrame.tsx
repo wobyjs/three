@@ -8,7 +8,7 @@ import { useThree, } from "./useThree"
 // export const useFrames = <T extends Unobservable<ThreeContext['frame']> = Unobservable<ThreeContext['frame']>>(v?: T) => useThree('frame', v) as any as Observable<T>
 export const useFrames = () => useThree('frames') //as any as <T>
 
-export const useFrame = (fn: () => void) => {
+export const useFrame = (fn: (state?: { gl?: any }) => void) => {
     const fs = $$(useFrames())
 
     if (!fs) {
@@ -16,10 +16,13 @@ export const useFrame = (fn: () => void) => {
         return () => { }
     }
 
-    fs.push(fn)
+    const ctx = useThree()
+    const wrappedFn = () => fn({ gl: ctx?.renderers?.[0] })
+
+    fs.push(wrappedFn)
 
     return () => {
-        const index = fs.indexOf(fn)
+        const index = fs.indexOf(wrappedFn)
         if (index > -1)
             fs.splice(index, 1)
     }

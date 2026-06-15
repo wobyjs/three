@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { SkyMesh } from 'three/examples/jsm/objects/SkyMesh.js'
 export * from 'three/examples/jsm/objects/SkyMesh.js'
 
@@ -42,7 +42,7 @@ const skyMesh = ([
 consParams.skyMesh = skyMesh
 
 
-const _skyMesh = ([...objProps.mesh,
+const _skyMesh = ([...(objProps.mesh ?? []),
 	'turbidity',
 	'rayleigh',
 	'mieCoefficient',

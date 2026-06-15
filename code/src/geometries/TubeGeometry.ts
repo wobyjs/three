@@ -118,7 +118,7 @@ consParams.tubeGeometry = tubeGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TubeGeometry.js | Source}
  */
 
-const _tubeGeometry = ([...objProps.bufferGeometry, ...objProps.parametricGeometry,
+const _tubeGeometry = ([...objProps.bufferGeometry, ...(objProps.parametricGeometry ?? []),
     /**
      * An array of {@link THREE.Vector3 | Vector3} tangents
      */

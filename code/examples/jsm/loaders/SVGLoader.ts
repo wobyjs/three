@@ -7,6 +7,7 @@ import { Three } from '../../../lib/3/three'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
 import { defaults } from '../../../lib/3/defaults'
+import '../../../src/loaders/Loader'
 
 import '../../../src/extras/core/ShapePath'
 

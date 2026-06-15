@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { BoxHelper } from 'three/src/helpers/BoxHelper.js'
@@ -94,7 +94,7 @@ consParams.boxHelper = boxHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/BoxHelper.js | Source}
  */
 
-const _boxHelper = ([...objProps.lineSegments,
+const _boxHelper = ([...(objProps.lineSegments ?? []),
 ] as const).distinct()
 objProps.boxHelper = _boxHelper
 

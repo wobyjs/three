@@ -1,0 +1,13 @@
+[      49ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[     232ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/screenshots/_placeholder.svg:0
+[     243ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[   32054ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[   32057ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/@vite/client:1034
+[ 2313030ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/demo/output.css:0
+[ 2313070ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/runtime.es.js?t=1778985477012:0
+[ 2313070ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/@fs/D:/Developments/tslib/@woby/woby/dist/index.es.js?t=1778985477012:0
+[ 2313070ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/demo/src/input.css:0
+[ 2313070ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/demo/src/layout/Sidebar.tsx?t=1779029258329:0
+[ 2313071ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/demo/src/layout/DemoViewer.tsx?t=1779029258329:0
+[ 2313071ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/demo/src/registry.ts?t=1779029258329:0
+[ 2313079ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/node_modules/.pnpm/vite@6.3.5_jiti@2.6.1_lightningcss@1.30.2/node_modules/vite/dist/client/env.mjs:0

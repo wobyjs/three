@@ -1,4 +1,4 @@
-import { Octree } from 'three/examples/jsm/math/Octree.js'
+﻿import { Octree } from 'three/examples/jsm/math/Octree.js'
 import { Node } from '../../../three-types'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { OctreeHelper } from 'three/examples/jsm/helpers/OctreeHelper.js'
@@ -48,7 +48,7 @@ consParams.octreeHelper = octreeHelper
 
 
 
-const _octreeHelper = ([...objProps.lineSegments,
+const _octreeHelper = ([...(objProps.lineSegments ?? []),
     'octree',
     'color',
     /**

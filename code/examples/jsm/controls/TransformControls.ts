@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js'
 export * from 'three/examples/jsm/controls/TransformControls.js'
@@ -155,7 +155,7 @@ const _transformControlsGizmo = ([...objProps.object3d,
 ] as const).distinct()
 objProps.transformControlsGizmo = _transformControlsGizmo
 
-const _transformControlsPlane = ([...objProps.mesh,
+const _transformControlsPlane = ([...(objProps.mesh ?? []),
     'isTransformControlsPlane',
     'mode',
     'axis',

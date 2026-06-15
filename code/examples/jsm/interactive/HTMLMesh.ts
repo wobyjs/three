@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { HTMLMesh } from 'three/examples/jsm/interactive/HTMLMesh.js'
 export * from 'three/examples/jsm/interactive/HTMLMesh.js'
 
@@ -45,7 +45,7 @@ consParams.htmlMesh = htmlMesh
 
 
 
-const _htmlMesh = ([...objProps.mesh,
+const _htmlMesh = ([...(objProps.mesh ?? []),
 ] as const).distinct()
 objProps.htmlMesh = _htmlMesh
 

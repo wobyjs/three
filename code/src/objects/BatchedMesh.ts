@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BatchedMesh } from 'three/src/objects/BatchedMesh.js'
 export { BatchedMesh } from 'three/src/objects/BatchedMesh.js'
 import { Three } from '../../lib/3/three'
@@ -7,6 +7,7 @@ import { objProps } from '../../lib/3/objProps'
 import { defaults } from '../../lib/3/defaults'
 
 import { Material } from 'three/src/materials/Material'
+import './Mesh' // Ensure objProps.mesh is defined
 
 declare module '../../lib/3/three'
 {
@@ -109,7 +110,7 @@ consParams.batchedMesh = batchedMesh
  * @also Example: {@link https://threejs.org/examples/#webgl_mesh_batch WebGl / mesh / batch}
  */
 
-const _batchedMesh = ([...objProps.mesh,
+const _batchedMesh = ([...(objProps.mesh ?? []),
     /**
      * This bounding box encloses all instances of the {@link BatchedMesh}. Can be calculated with
      * {@link .computeBoundingBox()}.

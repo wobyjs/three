@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { IcosahedronGeometry } from 'three/src/geometries/IcosahedronGeometry.js'
 export { IcosahedronGeometry } from 'three/src/geometries/IcosahedronGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -65,7 +65,7 @@ consParams.icosahedronGeometry = icosahedronGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/IcosahedronGeometry.js | Source}
  */
 
-const _icosahedronGeometry = ([...objProps.polyhedronGeometry,
+const _icosahedronGeometry = ([...(objProps.polyhedronGeometry ?? []),
 ] as const).distinct()
 objProps.icosahedronGeometry = _icosahedronGeometry
 

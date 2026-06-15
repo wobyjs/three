@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../../three-types'
+﻿import { Object3DNode } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { MorphAnimMesh } from 'three/examples/jsm/misc/MorphAnimMesh.js'
@@ -48,7 +48,7 @@ consParams.morphAnimMesh = morphAnimMesh
 
 
 
-const _morphAnimMesh = ([...objProps.mesh,
+const _morphAnimMesh = ([...(objProps.mesh ?? []),
     'mixer',
     'activeAction',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { XREstimatedLight } from 'three/examples/jsm/webxr/XREstimatedLight.js'
 export * from 'three/examples/jsm/webxr/XREstimatedLight.js'
@@ -131,7 +131,7 @@ objProps.xrEstimatedLightEventMap = _xrEstimatedLightEventMap
  * To use this, as with all files in the /examples directory, you will have to include the file separately in your HTML.
  */
 
-const _xrEstimatedLight = ([...objProps.group,
+const _xrEstimatedLight = ([...(objProps.group ?? []),
     'lightProbe',
     'directionalLight',
     /**

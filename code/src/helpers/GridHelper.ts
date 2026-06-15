@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { GridHelper } from 'three/src/helpers/GridHelper.js'
 export { GridHelper } from 'three/src/helpers/GridHelper.js'
@@ -88,7 +88,7 @@ consParams.gridHelper = gridHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/GridHelper.js | Source}
  */
 
-const _gridHelper = ([...objProps.lineSegments,
+const _gridHelper = ([...(objProps.lineSegments ?? []),
 ] as const).distinct()
 objProps.gridHelper = _gridHelper
 

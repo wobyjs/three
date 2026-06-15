@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { VertexTangentsHelper } from 'three/examples/jsm/helpers/VertexTangentsHelper.js'
 export * from 'three/examples/jsm/helpers/VertexTangentsHelper.js'
@@ -48,7 +48,7 @@ consParams.vertexTangentsHelper = vertexTangentsHelper
 
 
 
-const _vertexTangentsHelper = ([...objProps.lineSegments,
+const _vertexTangentsHelper = ([...(objProps.lineSegments ?? []),
     'object',
     'size',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LightProbe } from 'three/src/lights/LightProbe.js'
 import { LightProbeHelper } from 'three/examples/jsm/helpers/LightProbeHelper.js'
 export * from 'three/examples/jsm/helpers/LightProbeHelper.js'
@@ -47,7 +47,7 @@ consParams.lightProbeHelper = lightProbeHelper
 
 
 
-const _lightProbeHelper = ([...objProps.mesh,
+const _lightProbeHelper = ([...(objProps.mesh ?? []),
     'lightProbe',
     'size',
 ] as const).distinct()

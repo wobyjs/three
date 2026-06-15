@@ -1,4 +1,4 @@
-import {
+﻿import {
 	LightProbe,
 } from 'three/src/lights/LightProbe.js'
 import { TextureHelper } from 'three/examples/jsm/helpers/TextureHelper.js'
@@ -45,7 +45,7 @@ const textureHelper = ([
 
 consParams.TextureHelper = textureHelper
 
-const _textureHelper = ([...objProps.mesh,
+const _textureHelper = ([...(objProps.mesh ?? []),
 	'texture',
 	'type'
 ] as const).distinct()

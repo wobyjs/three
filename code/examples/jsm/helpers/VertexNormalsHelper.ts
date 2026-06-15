@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper.js'
 export * from 'three/examples/jsm/helpers/VertexNormalsHelper.js'
@@ -48,7 +48,7 @@ consParams.vertexNormalsHelper = vertexNormalsHelper
 
 
 
-const _vertexNormalsHelper = ([...objProps.lineSegments,
+const _vertexNormalsHelper = ([...(objProps.lineSegments ?? []),
     'object',
     'size',
 ] as const).distinct()

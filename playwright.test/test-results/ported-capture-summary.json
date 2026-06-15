@@ -1,0 +1,21 @@
+{
+  "captured_at": "2026-06-07T08:08:02.602Z",
+  "port": 5177,
+  "total": 3,
+  "captured": 0,
+  "failed": 3,
+  "results": [
+    {
+      "id": "webgl_lines",
+      "status": "failed"
+    },
+    {
+      "id": "webgl_lines_dashed",
+      "status": "failed"
+    },
+    {
+      "id": "webgl_effects_anaglyph",
+      "status": "failed"
+    }
+  ]
+}
