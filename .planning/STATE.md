@@ -3,12 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-06-04T00:00:00.000Z"
+last_updated: "2026-06-17T00:00:00.000Z"
 progress:
-  total_phases: 14
+  total_phases: 15
   completed_phases: 14
-  total_plans: 5
+  total_plans: 8
   completed_plans: 22
+  planned_phases: 15
 ---
 
 # Project State
@@ -98,6 +99,15 @@ progress:
 - Real Kimi scores (not mock dry-run values)
 
 **Last session:** 2026-06-06 — Completed 14-04: live Kimi comparison run
+
+## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 15 added: Sync actual coverage — implemented / tested / visually checked vs planned (2026-06-16)
+  - Motivation: STATE.md claims 74% (469/629 AI self-reported); real file count shows ~18% (104/581 actual)
+  - Claude screenshot-comparison pipeline (Phase 14) exists but results not yet recorded in planning docs
+  - REMAINING_WORK.md has 477 unported examples — not reflected in STATE.md
 
 ## Next Steps
 

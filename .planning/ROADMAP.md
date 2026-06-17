@@ -446,6 +446,19 @@ Plans:
 - [x] 14-04-PLAN.md - Live Kimi comparison run (134 demos) + HTML report + human verification
 - [x] 14-05-PLAN.md - fix-orchestrator.ts: fan-out fix agents for failing demos, collect re-scored results (Task 1 complete)
 
+### Phase 15: Sync actual coverage — implemented / tested / visually checked vs planned
+
+**Goal:** (1) Fix STATE.md/ROADMAP.md with real file-system counts — STATE.md falsely claims 469/74%; actual is ~250 TSX files / 200 registered demos. (2) Continue porting Three.js examples 1:1 to Woby JSX with mandatory Claude visual approval before registering each new example.
+**Requirements**: Accurate counts from `demo/src/` file system, `demo/src/registry.ts` dedup, visual approval via dv CLI screenshots sent to Claude
+**Depends on:** Phase 14
+**Status:** PLANNED (2026-06-17) — 3 plans in 2 waves, plan-checker: PASS
+**Plans:** 3 plans in 2 waves
+
+Plans:
+- [ ] 15-01-PLAN.md - Wave 1: Audit actual counts, fix registry.ts duplicates, update STATE.md/ROADMAP.md with real numbers
+- [ ] 15-02-PLAN.md - Wave 2: Port webgl_animation_walk, locomotive, clipping_stencil, geometry_spline_editor, lights_hemisphere with visual verification
+- [ ] 15-03-PLAN.md - Wave 2 (parallel): Port webgl_camera_logarithmicdepthbuffer, interactive_buffergeometry, interactive_cubes_ortho, geometry_text_stroke, modifier_curve with visual verification
+
 ---
 
 ## Verification Gates
