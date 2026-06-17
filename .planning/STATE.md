@@ -7,7 +7,7 @@ last_updated: "2026-06-17T00:00:00.000Z"
 progress:
   total_phases: 15
   completed_phases: 14
-  total_plans: 8
+  total_plans: 11
   completed_plans: 22
   planned_phases: 15
 ---
@@ -54,10 +54,31 @@ progress:
 
 ## Metrics
 
-- Total Examples: 629
-- Ported: 469 (74% coverage)
-- Tested: 8 test suites (postprocessing, webgpu, webxr, physics, advanced, misc, css-svg, audio)
-- Coverage: 74%
+Source: file-system scan + registry.ts grep + kimi-comparison-report-fixed.json (verified 2026-06-17 — see .planning/phases/15-update-actual-implemented-tested-visually-checked-with-plann/15-01-AUDIT.md).
+
+- Total Three.js Examples (upstream): 629
+- Ported (registered in registry.ts, unique IDs): 200
+- Ported but NOT registered (TSX files in demo/src/ awaiting verification): 51
+- Total TSX demo files: 251
+- Coverage (registered / upstream): 32%
+- Visually verified via Kimi (similarity >= 0.7): 8
+- Visually failed via Kimi (similarity < 0.7): 108
+- Kimi comparison errors (could not compare): 18
+- Test suites: 8 (postprocessing, webgpu, webxr, physics, advanced, misc, css-svg, audio)
+
+## Visually Verified Demos (Phase 14 Kimi Verdicts)
+
+Source: playwright.test/test-results/kimi-comparison-report-fixed.json
+
+Passed (similarity >= 0.7):
+- webgl_shadowmap_vsm
+- webgl_clipping_intersection
+- webgl_geometry_colors
+- webgl_interactive_cubes_gpu
+- webgl_lights_spotlight
+- webgl_lines_dashed
+- webgl_points_waves
+- webgl_postprocessing_smaa
 
 ## Files Created This Session
 
@@ -117,6 +138,16 @@ progress:
 4. ✅ Phase 14 Plan 05 complete: Fix orchestrator infrastructure created
 5. Optional: Run fix agents for 109 failed demos (autonomous fix phase)
 6. Optional: Expand coverage in phases 2-6 (additional 326 examples available)
+
+## Phase 15 Progress
+
+Goal: Sync actual coverage — implemented / tested / visually checked vs planned
+
+| Plan | Name | Status |
+|------|------|--------|
+| 15-01 | Documentation audit + registry duplicate fix | IN PROGRESS |
+| 15-02 | Port webgl examples — batch 1 (animation/clipping priority, 5 examples) | PLANNED |
+| 15-03 | Port webgl examples — batch 2 (camera/interactive priority, 5 examples) | PLANNED |
 
 ## Notes
 

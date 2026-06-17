@@ -448,16 +448,16 @@ Plans:
 
 ### Phase 15: Sync actual coverage — implemented / tested / visually checked vs planned
 
-**Goal:** (1) Fix STATE.md/ROADMAP.md with real file-system counts — STATE.md falsely claims 469/74%; actual is ~250 TSX files / 200 registered demos. (2) Continue porting Three.js examples 1:1 to Woby JSX with mandatory Claude visual approval before registering each new example.
+**Goal:** (1) Fix STATE.md/ROADMAP.md with real file-system counts — STATE.md falsely claims 469/74%; actual is ~251 TSX files / 200 registered demos. (2) Continue porting Three.js examples 1:1 to Woby JSX with mandatory Claude visual approval before registering each new example.
 **Requirements**: Accurate counts from `demo/src/` file system, `demo/src/registry.ts` dedup, visual approval via dv CLI screenshots sent to Claude
 **Depends on:** Phase 14
-**Status:** PLANNED (2026-06-17) — 3 plans in 2 waves, plan-checker: PASS
-**Plans:** 3 plans in 2 waves
+**Status:** IN PROGRESS (2026-06-17) — 3 plans in 2 waves
+**Plans:** 3 plans
 
 Plans:
-- [ ] 15-01-PLAN.md - Wave 1: Audit actual counts, fix registry.ts duplicates, update STATE.md/ROADMAP.md with real numbers
-- [ ] 15-02-PLAN.md - Wave 2: Port webgl_animation_walk, locomotive, clipping_stencil, geometry_spline_editor, lights_hemisphere with visual verification
-- [ ] 15-03-PLAN.md - Wave 2 (parallel): Port webgl_camera_logarithmicdepthbuffer, interactive_buffergeometry, interactive_cubes_ortho, geometry_text_stroke, modifier_curve with visual verification
+- [ ] 15-01-PLAN.md — Documentation audit + registry duplicate fix
+- [ ] 15-02-PLAN.md — Port webgl examples — batch 1 (animation/clipping priority, 5 examples)
+- [ ] 15-03-PLAN.md — Port webgl examples — batch 2 (camera/interactive priority, 5 examples)
 
 ---
 
@@ -509,7 +509,8 @@ Phase 1 (Foundation) ✓
 | 10 | 4 | 1 week | COMPLETE (4 examples) |
 | 11 | 21 | 2-3 weeks | COMPLETE (21 examples) |
 | 12 | 12 | 1-2 weeks | COMPLETE (12 examples) |
+| 15 | sync | 1-2 days | IN PROGRESS |
 
-**Total Examples**: ~574
-**Completed**: 224+ (All phases complete)
-**Remaining**: 0
+**Total Examples**: ~629
+**Completed**: 200 (registered) / 251 (TSX files)
+**Remaining**: ~429 upstream examples unported
