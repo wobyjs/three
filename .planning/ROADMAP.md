@@ -451,13 +451,13 @@ Plans:
 **Goal:** (1) Fix STATE.md/ROADMAP.md with real file-system counts — STATE.md falsely claims 469/74%; actual is ~251 TSX files / 200 registered demos. (2) Continue porting Three.js examples 1:1 to Woby JSX with mandatory Claude visual approval before registering each new example.
 **Requirements**: Accurate counts from `demo/src/` file system, `demo/src/registry.ts` dedup, visual approval via dv CLI screenshots sent to Claude
 **Depends on:** Phase 14
-**Status:** IN PROGRESS (2026-06-17) — 3 plans in 2 waves
+**Status:** COMPLETE (2026-06-24) — 3 plans in 2 waves — 10 demos ported/fixed, all visually verified
 **Plans:** 3 plans
 
 Plans:
-- [ ] 15-01-PLAN.md — Documentation audit + registry duplicate fix
-- [ ] 15-02-PLAN.md — Port webgl examples — batch 1 (animation/clipping priority, 5 examples)
-- [ ] 15-03-PLAN.md — Port webgl examples — batch 2 (camera/interactive priority, 5 examples)
+- [x] 15-01-PLAN.md — Documentation audit + registry duplicate fix
+- [x] 15-02-PLAN.md — Port webgl examples — batch 1 (animation/clipping priority, 5 examples)
+- [x] 15-03-PLAN.md — Port webgl examples — batch 2 (camera/interactive priority, 5 examples)
 
 ---
 

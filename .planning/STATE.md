@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-06-17T00:00:00.000Z"
+last_updated: "2026-06-24T00:00:00.000Z"
 progress:
   total_phases: 15
-  completed_phases: 14
+  completed_phases: 15
   total_plans: 11
-  completed_plans: 22
+  completed_plans: 25
   planned_phases: 15
 ---
 
@@ -16,9 +16,9 @@ progress:
 
 ## Current Status
 
-**Phase**: MILESTONE COMPLETE
-**Last Updated**: 2026-05-14
-**Status**: ✅ Ready for Production
+**Phase**: 15 COMPLETE — All phases done
+**Last Updated**: 2026-06-24
+**Status**: ✅ All 15 phases complete — 589 demos registered, 10 init3D-verified demos added in Phase 15
 
 ## Completed Work
 
@@ -93,6 +93,18 @@ Passed (similarity >= 0.7):
 - Phase 11 Misc & Games: 21 examples
 - Phase 12 CSS & SVG: 12 examples
 - Additional: 7 animation, 11 basic examples
+
+## Phase 15 Progress (Sync Coverage + init3D Demo Porting)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 15-01 | Documentation audit + registry dedup | COMPLETE |
+| 15-02 | Port 5 animation/clipping/geometry/lights demos | COMPLETE — all 5 init3D rewritten, all visually approved |
+| 15-03 | Port 5 camera/interactive/modifier demos | COMPLETE — 4 verified as-is, 1 (modifier_curve) rewritten to init3D |
+
+**Registry at Phase 15 end:** 589 unique IDs
+**Demos added/fixed in Phase 15:** 10 (5 in Plan 02, 5 in Plan 03)
+**Blank-canvas bugs fixed:** 6 (Plan 02: 5 files, Plan 03: 1 file — modifier_curve Canvas3D→init3D)
 
 ## Phase 14 Progress (Kimi Agent Demo Fix)
 
