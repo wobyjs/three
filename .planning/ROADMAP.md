@@ -476,6 +476,16 @@ Plans:
 
 ---
 
+### Phase 17: Continue porting — instancing, loaders, postprocessing batch
+
+**Goal:** Port next ~12-15 unregistered Three.js examples spanning instancing variants (raycast, dynamic, morph), loader_gltf variants (animation, anisotropy, clearcoat, iridescence, sheen, transmission, variants), additional postprocessing passes (3d_lut, masking, transition, advanced), and remaining materials demos (alphahash, channels, subsurface_scattering). All visually verified via dv CLI on profile-4 before registration. Follows the same init3D pattern + JSX pragma + visual approval cadence locked in by Phases 15-16.
+**Requirements**: REQ-15-04 (continue init3D porting + visual verification)
+**Depends on:** Phase 16
+**Status:** PLANNED
+**Plans:** TBD (planner to decompose into ~3 plans of 4-6 demos each)
+
+---
+
 ## Verification Gates
 
 Each phase requires:
