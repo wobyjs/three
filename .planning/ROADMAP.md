@@ -461,6 +461,21 @@ Plans:
 
 ---
 
+### Phase 16: Continue porting — textures, multiple-views, rendertargets, shaders batch
+
+**Goal:** Port next batch of unregistered Three.js examples: textures (envmap, rotate, checker, displacement, gradients), multiple (rendertargets, views, elements_text), shadowmap (pcss, progressive), shaders (screenspace), raycast_sprite, and marching-cubes rewrite from broken Canvas3D to init3D. All to be visually verified via dv CLI before registration.
+**Requirements**: init3D pattern, `/** @jsxImportSource woby */`, visual approval via dv screenshots, registered in registry.ts
+**Depends on:** Phase 15
+**Status:** COMPLETE
+**Plans:** 3 plans
+
+Plans:
+- [x] 16-01-PLAN.md — Rewrite WebGLMarchingCubes + port textures batch 1 (envmap, rotate, checker, displacement, gradients) — 6 demos
+- [x] 16-02-PLAN.md — Port multiple-views/rendertargets/elements_text + shadowmap_pcss/progressive + raycast_sprite — 6 demos
+- [x] 16-03-PLAN.md — Port screenspace shader pass + loader textures (tga, ktx2, webp) — 4 demos
+
+---
+
 ## Verification Gates
 
 Each phase requires:

@@ -3,22 +3,22 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-06-24T00:00:00.000Z"
+last_updated: "2026-06-25T00:00:00.000Z"
 progress:
-  total_phases: 15
-  completed_phases: 15
-  total_plans: 11
-  completed_plans: 25
-  planned_phases: 15
+  total_phases: 16
+  completed_phases: 16
+  total_plans: 14
+  completed_plans: 28
+  planned_phases: 16
 ---
 
 # Project State
 
 ## Current Status
 
-**Phase**: 15 COMPLETE — All phases done
-**Last Updated**: 2026-06-24
-**Status**: ✅ All 15 phases complete — 589 demos registered, 10 init3D-verified demos added in Phase 15
+**Phase**: 16 COMPLETE — textures + multiple + shaders batch landed
+**Last Updated**: 2026-06-25
+**Status**: ✅ Phase 16 done — 16 demos delivered across 3 plans (6 + 6 + 4); all init3D, all visually verified on profile-4; verifier PASS
 
 ## Completed Work
 
@@ -160,6 +160,22 @@ Goal: Sync actual coverage — implemented / tested / visually checked vs planne
 | 15-01 | Documentation audit + registry duplicate fix | IN PROGRESS |
 | 15-02 | Port webgl examples — batch 1 (animation/clipping priority, 5 examples) | PLANNED |
 | 15-03 | Port webgl examples — batch 2 (camera/interactive priority, 5 examples) | PLANNED |
+
+## Phase 16 Progress
+
+Goal: Continue porting — textures, multiple-views, rendertargets, shaders batch (16 demos across 3 plans)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 16-01 | WebGLMarchingCubes rewrite + textures batch 1 (envmap, rotate, checker, displacement, gradients) — 6 demos | COMPLETE (retro-closed, files + registry verified) |
+| 16-02 | multiple-views/rendertargets/elements_text + shadowmap_pcss/progressive + raycast_sprite — 6 demos | COMPLETE — all 6 visually verified on profile-4 |
+| 16-03 | screenspace shader pass + loader textures (tga, ktx2, webp) — 4 demos | COMPLETE — all 4 visually verified on profile-4 |
+
+**Plan 03 note:** Reduced from 5 to 4 demos — `webgl_shaders_tonemapping` substitution rejected as duplicate of registered `webgl_tonemapping` (registry.ts:600). `webgl_shaders_sky`/`webgl_shaders_ocean` also already registered.
+
+**Phase 16 verifier verdict:** PASS — 16/16 registry coverage, 16/16 file presence, 3/3 init3D pattern spot-checks pass, all 3 SUMMARY files present with `status: COMPLETE`, all categories match plan spec. See `phases/16-.../16-VERIFICATION.md`.
+
+**Optional follow-up:** dv-sweep of 16-01's 6 demos to backfill reference screenshots (16-01 work landed before orchestrated execution; visual verification was not run at that time).
 
 ## Notes
 
