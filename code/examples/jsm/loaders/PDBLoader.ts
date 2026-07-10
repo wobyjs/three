@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { PDBLoader } from 'three/examples/jsm/loaders/PDBLoader.js'
 export * from 'three/examples/jsm/loaders/PDBLoader.js'
@@ -65,7 +65,7 @@ const _pdb = ([
 objProps.pdb = _pdb
 
 
-const _pdbLoader = ([...objProps.loader,
+const _pdbLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.pdbLoader = _pdbLoader
 

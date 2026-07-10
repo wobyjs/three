@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { Matrix4 } from 'three/src/math/Matrix4.js'
 // export { Matrix4 } from 'three/src/math/Matrix4.js'
 import { Three } from '../../lib/3/three'
@@ -104,7 +104,7 @@ consParams.matrix4 = matrix4
  * m.multiply( m3 )
  */
 
-const _matrix4 = ([...objProps.matrix,
+const _matrix4 = ([...(objProps.matrix ?? []),
     /**
      * Array with matrix values.
      * @default [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]

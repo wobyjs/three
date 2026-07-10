@@ -1,4 +1,4 @@
-import { Light } from 'three/src/lights/Light.js'
+﻿import { Light } from 'three/src/lights/Light.js'
 import { Node } from '../../../three-types'
 import IESSpotLightNode from 'three/src/nodes/lighting/IESSpotLightNode.js'
 import { Three } from '../../../lib/3/three'
@@ -42,7 +42,7 @@ const iesSpotLightNode = ([
 ] as const).distinct()
 consParams.iesSpotLightNode = iesSpotLightNode
 
-const _iesSpotLightNode = ([...objProps.pointLightNode,
+const _iesSpotLightNode = ([...(objProps.pointLightNode ?? []),
 ] as const).distinct()
 objProps.iesSpotLightNode = _iesSpotLightNode
 

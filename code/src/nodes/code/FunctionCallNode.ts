@@ -1,4 +1,4 @@
-import { Functionant, Node } from '../../../three-types'
+﻿import { Functionant, Node } from '../../../three-types'
 import Node_ from 'three/src/nodes/core/Node.js'
 import FunctionNode from 'three/src/nodes/code/FunctionNode.js'
 import FunctionCallNode from 'three/src/nodes/code/FunctionCallNode.js'
@@ -36,7 +36,7 @@ consParams.functionCallNode = functionCallNode
 
 
 
-const _functionCallNode = ([...objProps.tempNode,
+const _functionCallNode = ([...(objProps.tempNode ?? []),
     'functionNode',
     'parameters',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget.js'
 import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget.js'
@@ -47,7 +47,7 @@ consParams.webglCubeRenderTarget = webglCubeRenderTarget
 
 
 
-const _webglCubeRenderTarget = ([...objProps.webglRenderTarget,
+const _webglCubeRenderTarget = ([...(objProps.webglRenderTarget ?? []),
     'textures',
     'texture',
 ] as const).distinct()

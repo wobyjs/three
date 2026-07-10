@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { Mesh } from 'three/src/objects/Mesh.js'
@@ -76,7 +76,7 @@ declare module '../../lib/3/objProps' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Mesh.js}
  */
 
-const mesh = ([ //...consParams.object3d,
+const mesh = ([ //...(consParams.object3d ?? []),
     /**
      * Create a new instance of {@link Mesh}
      * @param geometry An instance of {@link THREE.BufferGeometry}. Default {@link THREE.BufferGeometry | `new THREE.BufferGeometry()`}.
@@ -105,7 +105,7 @@ consParams.mesh = mesh
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Mesh.js | Source}
  */
 
-const _mesh = ([...objProps.object3d,
+const _mesh = ([...(objProps.object3d ?? []),
     // /**
     //  * An instance of {@link THREE.BufferGeometry | BufferGeometry} (or derived classes), defining the object's structure.
     //  * @defaultValue {@link THREE.BufferGeometry | `new THREE.BufferGeometry()`}.

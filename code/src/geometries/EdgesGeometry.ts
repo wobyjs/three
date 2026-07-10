@@ -1,4 +1,4 @@
-import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
+﻿import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { EdgesGeometry } from 'three/src/geometries/EdgesGeometry.js'
 export * from 'three/src/geometries/EdgesGeometry.js'
@@ -83,7 +83,7 @@ consParams.edgesGeometry = edgesGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/EdgesGeometry.js | Source}
  */
 
-const _edgesGeometry = ([...objProps.bufferGeometry,
+const _edgesGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.edgesGeometry = _edgesGeometry
 

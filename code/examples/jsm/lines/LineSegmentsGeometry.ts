@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LineSegmentsGeometry } from 'three/examples/jsm/lines/LineSegmentsGeometry.js'
 export * from 'three/examples/jsm/lines/LineSegmentsGeometry.js'
 
@@ -45,7 +45,7 @@ consParams.lineSegmentsGeometry = lineSegmentsGeometry
 
 
 
-const _lineSegmentsGeometry = ([...objProps.instancedBufferGeometry,
+const _lineSegmentsGeometry = ([...(objProps.instancedBufferGeometry ?? []),
     'applyMatrix4',
     'computeBoundingBox',
     'computeBoundingSphere',

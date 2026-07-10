@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import IndexNode, { IndexNodeScope } from 'three/src/nodes/core/IndexNode.js'
 export { IndexNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.indexNode = indexNode
 
 
 
-const _indexNode = ([...objProps.node,
+const _indexNode = ([...(objProps.node ?? []),
     'scope',
 ] as const).distinct()
 objProps.indexNode = _indexNode

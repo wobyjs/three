@@ -1,4 +1,4 @@
-import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
+﻿import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { WireframeGeometry } from 'three/src/geometries/WireframeGeometry.js'
 export { WireframeGeometry } from 'three/src/geometries/WireframeGeometry.js'
@@ -83,7 +83,7 @@ consParams.wireframeGeometry = wireframeGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/WireframeGeometry.js | Source}
  */
 
-const _wireframeGeometry = ([...objProps.bufferGeometry,
+const _wireframeGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.wireframeGeometry = _wireframeGeometry
 

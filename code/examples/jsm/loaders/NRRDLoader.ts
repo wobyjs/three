@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { NRRDLoader } from 'three/examples/jsm/loaders/NRRDLoader.js'
 export * from 'three/examples/jsm/loaders/NRRDLoader.js'
@@ -47,7 +47,7 @@ consParams.nrrdLoader = nrrdLoader
 
 
 
-const _nrrdLoader = ([...objProps.loader,
+const _nrrdLoader = ([...(objProps.loader ?? []),
     'manager',
     'path',
     'fieldFunctions',

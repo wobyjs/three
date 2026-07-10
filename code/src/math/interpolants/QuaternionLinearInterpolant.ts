@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { QuaternionLinearInterpolant } from 'three/src/math/interpolants/QuaternionLinearInterpolant.js'
 export { QuaternionLinearInterpolant } from 'three/src/math/interpolants/QuaternionLinearInterpolant.js'
 import { Three } from '../../../lib/3/three'
@@ -40,7 +40,7 @@ declare module '../../../lib/3/objProps' {
 
 const quaternionLinearInterpolant = ([
     'parameterPositions',
-    'samplesValues',
+    'sampleValues',
     'sampleSize',
     'resultBuffer',
 ] as const).distinct()
@@ -48,7 +48,7 @@ consParams.quaternionLinearInterpolant = quaternionLinearInterpolant
 
 
 
-const _quaternionLinearInterpolant = ([...objProps.interpolant,
+const _quaternionLinearInterpolant = ([...(objProps.interpolant ?? []),
 ] as const).distinct()
 objProps.quaternionLinearInterpolant = _quaternionLinearInterpolant
 

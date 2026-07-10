@@ -1,4 +1,4 @@
-import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
+﻿import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
 import { Node } from '../../../three-types'
 import SkinningNode from 'three/src/nodes/accessors/SkinningNode.js'
 export { SkinningNode }
@@ -46,7 +46,7 @@ consParams.skinningNode = skinningNode
 
 
 
-const _skinningNode = ([...objProps.node,
+const _skinningNode = ([...(objProps.node ?? []),
     'skinnedMesh',
     'useReference',
     'skinIndexNode',

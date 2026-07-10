@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { LineLoop } from 'three/src/objects/LineLoop.js'
@@ -73,7 +73,7 @@ consParams.lineLoop = lineLoop
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LineLoop.js | Source}
  */
 
-const _lineLoop = ([...objProps.line,
+const _lineLoop = ([...(objProps.line ?? []),
 ] as const).distinct()
 objProps.lineLoop = _lineLoop
 

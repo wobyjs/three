@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { MDDLoader } from 'three/examples/jsm/loaders/MDDLoader.js'
 export * from 'three/examples/jsm/loaders/MDDLoader.js'
@@ -63,7 +63,7 @@ const _mdd = ([
 objProps.mdd = _mdd
 
 
-const _mddLoader = ([...objProps.loader,
+const _mddLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.mddLoader = _mddLoader
 

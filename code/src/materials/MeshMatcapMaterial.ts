@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshMatcapMaterial, MeshMatcapMaterialParameters } from 'three/src/materials/MeshMatcapMaterial.js'
 export { MeshMatcapMaterial } from 'three/src/materials/MeshMatcapMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -44,7 +44,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshMatcapMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['color',
         'matcap',
         'map',
@@ -67,7 +67,7 @@ consParams.meshMatcapMaterial = { ...consParams.meshMatcapMaterialParameters }
 
 
 
-const _meshMatcapMaterialParameters = ([...objProps.materialParameters,
+const _meshMatcapMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'matcap',
     'map',
@@ -86,7 +86,7 @@ const _meshMatcapMaterialParameters = ([...objProps.materialParameters,
 objProps.meshMatcapMaterialParameters = _meshMatcapMaterialParameters
 
 
-const _meshMatcapMaterial = ([...objProps.material,
+const _meshMatcapMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshMatcapMaterial'
      */

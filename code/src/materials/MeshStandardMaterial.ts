@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshStandardMaterial, MeshStandardMaterialParameters } from 'three/src/materials/MeshStandardMaterial.js'
 export { MeshStandardMaterial } from 'three/src/materials/MeshStandardMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -97,7 +97,7 @@ consParams.meshStandardMaterial = { ...consParams.meshStandardMaterialParameters
 
 
 
-const _meshStandardMaterialParameters = ([...objProps.materialParameters,
+const _meshStandardMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'roughness',
     'metalness',
@@ -131,7 +131,7 @@ const _meshStandardMaterialParameters = ([...objProps.materialParameters,
 objProps.meshStandardMaterialParameters = _meshStandardMaterialParameters
 
 
-const _meshStandardMaterial = ([...objProps.material,
+const _meshStandardMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshStandardMaterial'
      */

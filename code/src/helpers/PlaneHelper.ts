@@ -60,6 +60,7 @@ const planeHelper = ([
     'plane',
     'size',
     'color',
+    'hex',
 ] as const).distinct()
 consParams.planeHelper = planeHelper
 

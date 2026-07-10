@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { USDZLoader } from 'three/examples/jsm/loaders/USDZLoader.js'
 export * from 'three/examples/jsm/loaders/USDZLoader.js'
@@ -59,7 +59,7 @@ const _usdaParser = ([
 objProps.usdaParser = _usdaParser
 
 
-const _usdzLoader = ([...objProps.loader,
+const _usdzLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.usdzLoader = _usdzLoader
 

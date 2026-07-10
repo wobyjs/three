@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import CubeRenderTarget from 'three/src/renderers/common/CubeRenderTarget.js'
 export * from 'three/src/renderers/common/CubeRenderTarget.js'
 import { Three } from '../../../lib/3/three'
@@ -47,7 +47,7 @@ consParams.cubeRenderTarget = cubeRenderTarget
 // ---[ Object Properties ]---
 
 // Inherits from WebGLCubeRenderTarget and adds its own methods.
-const _cubeRenderTarget = ([...objProps.webglCubeRenderTarget,
+const _cubeRenderTarget = ([...(objProps.webglCubeRenderTarget ?? []),
 	'isCubeRenderTarget',
 	'fromEquirectangularTexture',
 ] as const).distinct()

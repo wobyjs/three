@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { SphericalHarmonics3 } from 'three/src/math/SphericalHarmonics3.js'
 import { LightProbe } from 'three/src/lights/LightProbe.js'
 export { LightProbe } from 'three/src/lights/LightProbe.js'
@@ -103,7 +103,7 @@ consParams.lightProbe = lightProbe
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/LightProbe.js | Source}
  */
 
-const _lightProbe = ([...objProps.light,
+const _lightProbe = ([...(objProps.light ?? []),
     /**
      * A light probe uses spherical harmonics to encode lighting information.
      * @defaultValue `new THREE.SphericalHarmonics3()`

@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import OperatorNode, { OperatorNodeOp } from 'three/src/nodes/math/OperatorNode.js'
 export { OperatorNode }
@@ -50,7 +50,7 @@ consParams.operatorNode = operatorNode
 // remapping functions
 
 
-const _operatorNode = ([...objProps.tempNode,
+const _operatorNode = ([...(objProps.tempNode ?? []),
     'aNode',
     'bNode',
     'op',

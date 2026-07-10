@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import ViewportDepthTextureNode from 'three/src/nodes/display/ViewportDepthTextureNode.js'
 export { ViewportDepthTextureNode }
@@ -46,7 +46,7 @@ consParams.viewportDepthTextureNode = viewportDepthTextureNode
 
 
 
-const _viewportDepthTextureNode = ([...objProps.viewportTextureNode,
+const _viewportDepthTextureNode = ([...(objProps.viewportTextureNode ?? []),
 ] as const).distinct()
 objProps.viewportDepthTextureNode = _viewportDepthTextureNode
 

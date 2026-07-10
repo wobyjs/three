@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 // import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
@@ -52,7 +52,7 @@ consParams.textureNode = textureNode
 
 
 
-const _textureNode = ([...objProps.uniformNode,
+const _textureNode = ([...(objProps.uniformNode ?? []),
     'uvNode',
     'levelNode',
     'compareNode',

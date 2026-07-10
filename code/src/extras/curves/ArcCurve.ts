@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { ArcCurve } from 'three/src/extras/curves/ArcCurve.js'
 export { ArcCurve } from 'three/src/extras/curves/ArcCurve.js'
 import { Three } from '../../../lib/3/three'
@@ -71,7 +71,7 @@ consParams.arcCurve = arcCurve
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/ArcCurve.js | Source}
  */
 
-const _arcCurve = ([...objProps.ellipseCurve,
+const _arcCurve = ([...(objProps.ellipseCurve ?? []),
 ] as const).distinct()
 objProps.arcCurve = _arcCurve
 

@@ -11,11 +11,11 @@ import './Pass'
 declare module '../../../lib/3/three'
 {
     interface Three {
-        GLitchPass: typeof GlitchPass
+        GlitchPass: typeof GlitchPass
     }
 }
 
-Three.GLitchPass = GlitchPass
+Three.GlitchPass = GlitchPass
 
 declare module 'woby' {
     namespace JSX {

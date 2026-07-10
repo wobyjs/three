@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { DataTextureLoader } from 'three/src/loaders/DataTextureLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const dataTextureLoader = ([
 ] as const).distinct()
 consParams.dataTextureLoader = dataTextureLoader
 
-const _dataTextureLoader = ([...objProps.loader] as const).distinct()
+const _dataTextureLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.dataTextureLoader = _dataTextureLoader
 
 export type DataTextureLoaderProps = Node<DataTextureLoader, typeof DataTextureLoader, { manager?: LoadingManager }>

@@ -1,4 +1,4 @@
-import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min'
+﻿import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min'
 export * from 'three/examples/jsm/libs/lil-gui.module.min'
 import { Node, WrapAsString } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
@@ -263,12 +263,12 @@ const _controller = ([
 ] as const).distinct()
 objProps.controller = _controller
 
-const _functionController = ([...objProps.controller,
+const _functionController = ([...(objProps.controller ?? []),
     '$button',
 ] as const).distinct()
 objProps.functionController = _functionController
 
-const _numberController = ([...objProps.controller,
+const _numberController = ([...(objProps.controller ?? []),
     '_decimals',
     '_min',
     '_max',
@@ -282,7 +282,7 @@ const _numberController = ([...objProps.controller,
 ] as const).distinct()
 objProps.numberController = _numberController
 
-const _booleanController = ([...objProps.controller,
+const _booleanController = ([...(objProps.controller ?? []),
     '$input',
 ] as const).distinct()
 objProps.booleanController = _booleanController
@@ -295,7 +295,7 @@ const _optionController = ([
 ] as const).distinct()
 objProps.optionController = _optionController
 
-const _stringController = ([...objProps.controller,
+const _stringController = ([...(objProps.controller ?? []),
     '$input',
 ] as const).distinct()
 objProps.stringController = _stringController

@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import FXAANode from 'three/examples/jsm/tsl/display/FXAANode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import { Node } from '../../../../three-types'
@@ -36,7 +36,7 @@ consParams.fxaaNode = fxaaNode
 
 // Inherits from TempNode and adds its own specific properties
 const _fxaaNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'textureNode',
 	'updateBeforeType',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { WebGLArrayRenderTarget } from 'three/src/renderers/WebGLArrayRenderTarget.js'
 import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGLArrayRenderTarget } from 'three/src/renderers/WebGLArrayRenderTarget.js'
@@ -65,7 +65,7 @@ consParams.webglArrayRenderTarget = webglArrayRenderTarget
  * This type of render target represents an array of textures.
  */
 
-const _webglArrayRenderTarget = ([...objProps.webglRenderTarget,
+const _webglArrayRenderTarget = ([...(objProps.webglRenderTarget ?? []),
     /**
      * Creates a new WebGlArrayRenderTarget.
      *

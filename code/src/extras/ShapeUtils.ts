@@ -3,6 +3,7 @@ export * from 'three/src/extras/ShapeUtils.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
+import { defaults } from '../../lib/3/defaults'
 
 declare module '../../lib/3/three'
 {
@@ -42,3 +43,13 @@ consParams.shapeUtils = shapeUtils
 // The methods (area, isClockWise, triangulateShape) are all static.
 const _shapeUtils = ([] as const).distinct()
 objProps.shapeUtils = _shapeUtils
+
+// ---[ Defaults ]---
+
+declare module '../../lib/3/defaults' {
+    interface defaults {
+        shapeUtils: {}
+    }
+}
+
+defaults.shapeUtils = {}

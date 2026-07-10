@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import StereoPassNode from 'three/examples/jsm/tsl/display/StereoPassNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -38,7 +38,7 @@ consParams.stereoPassNode = stereoPassNode
 
 // Inherits from PassNode and adds its own specific properties
 const _stereoPassNode = ([
-	...objProps.passNode, // <-- Inherits parent properties
+	...(objProps.passNode ?? []), // <-- Inherits parent properties
 	'isStereoPassNode',
 	'stereo',
 ] as const).distinct()

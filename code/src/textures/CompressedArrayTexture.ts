@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { CompressedPixelFormat, TextureDataType, UnsignedByteType } from 'three/src/constants.js'
 import { CompressedArrayTexture } from 'three/src/textures/CompressedArrayTexture.js'
 export { CompressedArrayTexture } from 'three/src/textures/CompressedArrayTexture.js'
@@ -76,7 +76,7 @@ consParams.compressedArrayTexture = compressedArrayTexture
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedArrayTexture.js | Source}
  */
 
-const _compressedArrayTexture = ([...objProps.compressedTexture,
+const _compressedArrayTexture = ([...(objProps.compressedTexture ?? []),
     /**
      * Overridden with a object containing width and height.
      * @override

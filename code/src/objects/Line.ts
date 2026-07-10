@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { Line } from 'three/src/objects/Line.js'
@@ -115,7 +115,7 @@ consParams.line = line
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Line.js | Source}
  */
 
-const _line = ([...objProps.object3d,
+const _line = ([...(objProps.object3d ?? []),
     /**
      * Vertices representing the {@link Line} segment(s).
      */

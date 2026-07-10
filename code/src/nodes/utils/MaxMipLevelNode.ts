@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import MaxMipLevelNode from 'three/src/nodes/utils/MaxMipLevelNode.js'
 export { MaxMipLevelNode }
@@ -46,7 +46,7 @@ consParams.maxMipLevelNode = maxMipLevelNode
 
 
 
-const _maxMipLevelNode = ([...objProps.uniformNode,
+const _maxMipLevelNode = ([...(objProps.uniformNode ?? []),
     'textureNode',
 ] as const).distinct()
 objProps.maxMipLevelNode = _maxMipLevelNode

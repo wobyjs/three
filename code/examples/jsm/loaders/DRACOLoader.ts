@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 export * from 'three/examples/jsm/loaders/DRACOLoader.js'
@@ -47,7 +47,7 @@ consParams.dracoLoader = dracoLoader
 
 
 
-const _dracoLoader = ([...objProps.loader,
+const _dracoLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.dracoLoader = _dracoLoader
 

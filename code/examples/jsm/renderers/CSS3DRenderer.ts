@@ -1,4 +1,4 @@
-import { type JSX } from 'woby'
+﻿import { type JSX } from 'woby'
 import { CSS3DObject, CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 export * from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 import { Node, Object3DNode, WrapAsString } from '../../../three-types'
@@ -51,7 +51,7 @@ declare module '../../../lib/3/objProps' {
 
 
 
-const css3dObject = ([ //...consParams.object3d,
+const css3dObject = ([ //...(consParams.object3d ?? []),
     'element',
 ] as const).distinct()
 consParams.css3dObject = css3dObject
@@ -72,13 +72,13 @@ consParams.css3dRenderer = { ...consParams.css3dParameters }
 
 
 
-const _css3dObject = ([...objProps.object3d,
+const _css3dObject = ([...(objProps.object3d ?? []),
     // 'element', //compulsory propps
 ] as const).distinct()
 objProps.css3dObject = _css3dObject
 
 
-const _css3dSprite = ([...objProps.css3dObject,
+const _css3dSprite = ([...(objProps.css3dObject ?? []),
 ] as const).distinct()
 objProps.css3dSprite = _css3dSprite
 

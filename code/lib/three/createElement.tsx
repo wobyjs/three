@@ -181,13 +181,11 @@ const html = {
 // Helper to check if a function is a Three.js class constructor
 const isThreeClass = (fn: any): boolean => {
     if (typeof fn !== 'function') return false
-    // Check if it's registered in Three object
+    // Only match by reference — name-based matching causes false positives
+    // when user components share a name with a registered Three.js class (e.g. "Plane")
     for (const key in Three) {
         if ((Three as any)[key] === fn) return true
     }
-    // Check if function name matches a Three.js class name
-    const name = fn.name
-    if (name && (Three as any)[name]) return true
     return false
 }
 

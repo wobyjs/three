@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import UniformArrayNode from 'three/src/nodes/accessors/UniformArrayNode.js'
 export { UniformArrayNode }
 import { Three } from '../../../lib/3/three'
@@ -57,12 +57,12 @@ consParams.uniformArrayNode = uniformArrayNode
 
 
 
-const _uniformArrayElementNode = ([...objProps.arrayElementNode,
+const _uniformArrayElementNode = ([...(objProps.arrayElementNode ?? []),
 ] as const).distinct()
 objProps.uniformArrayElementNode = _uniformArrayElementNode
 
 
-const _uniformArrayNode = ([...objProps.bufferNode,
+const _uniformArrayNode = ([...(objProps.bufferNode ?? []),
     'array',
     'elementType',
     'isArrayBufferNode',

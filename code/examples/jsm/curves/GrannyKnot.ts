@@ -1,4 +1,4 @@
-import type { GrannyKnot, HeartCurve, VivianiCurve, KnotCurve, HelixCurve, TrefoilKnot, TorusKnot, CinquefoilKnot, TrefoilPolynomialKnot, FigureEightPolynomialKnot, DecoratedTorusKnot4a, DecoratedTorusKnot4b, DecoratedTorusKnot5a, DecoratedTorusKnot5c } from 'three/examples/jsm/curves/CurveExtras.js'
+﻿import type { GrannyKnot, HeartCurve, VivianiCurve, KnotCurve, HelixCurve, TrefoilKnot, TorusKnot, CinquefoilKnot, TrefoilPolynomialKnot, FigureEightPolynomialKnot, DecoratedTorusKnot4a, DecoratedTorusKnot4b, DecoratedTorusKnot5a, DecoratedTorusKnot5c } from 'three/examples/jsm/curves/CurveExtras.js'
 import { Node } from '../../../three-types'
 import { consParams } from '../../../lib/3/consParams'
 import { objProps } from '../../../lib/3/objProps'
@@ -134,69 +134,69 @@ consParams.decoratedTorusKnot5c = decoratedTorusKnot5c
 
 
 
-const _grannyKnot = ([...objProps.curve,
+const _grannyKnot = ([...(objProps.curve ?? []),
 ] as const).distinct()
 objProps.grannyKnot = _grannyKnot
 
-const _heartCurve = ([...objProps.curve,
+const _heartCurve = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.heartCurve = _heartCurve
 
-const _vivianiCurve = ([...objProps.curve,
+const _vivianiCurve = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.vivianiCurve = _vivianiCurve
 
-const _knotCurve = ([...objProps.curve,
+const _knotCurve = ([...(objProps.curve ?? []),
 ] as const).distinct()
 objProps.knotCurve = _knotCurve
 
-const _helixCurve = ([...objProps.curve,
+const _helixCurve = ([...(objProps.curve ?? []),
 ] as const).distinct()
 objProps.helixCurve = _helixCurve
 
-const _trefoilKnot = ([...objProps.curve,
+const _trefoilKnot = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.trefoilKnot = _trefoilKnot
 
-const _torusKnot = ([...objProps.curve,
+const _torusKnot = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.torusKnot = _torusKnot
 
-const _cinquefoilKnot = ([...objProps.curve,
+const _cinquefoilKnot = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.cinquefoilKnot = _cinquefoilKnot
 
-const _trefoilPolynomialKnot = ([...objProps.curve,
+const _trefoilPolynomialKnot = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.trefoilPolynomialKnot = _trefoilPolynomialKnot
 
-const _figureEightPolynomialKnot = ([...objProps.curve,
+const _figureEightPolynomialKnot = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.figureEightPolynomialKnot = _figureEightPolynomialKnot
 
-const _decoratedTorusKnot4a = ([...objProps.curve,
+const _decoratedTorusKnot4a = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.decoratedTorusKnot4a = _decoratedTorusKnot4a
 
-const _decoratedTorusKnot4b = ([...objProps.curve,
+const _decoratedTorusKnot4b = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.decoratedTorusKnot4b = _decoratedTorusKnot4b
 
-const _decoratedTorusKnot5a = ([...objProps.curve,
+const _decoratedTorusKnot5a = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.decoratedTorusKnot5a = _decoratedTorusKnot5a
 
-const _decoratedTorusKnot5c = ([...objProps.curve,
+const _decoratedTorusKnot5c = ([...(objProps.curve ?? []),
     'scale',
 ] as const).distinct()
 objProps.decoratedTorusKnot5c = _decoratedTorusKnot5c

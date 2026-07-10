@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
 export { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
@@ -87,7 +87,7 @@ consParams.hemisphereLight = hemisphereLight
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/HemisphereLight.js | Source}
  */
 
-const _hemisphereLight = ([...objProps.light,
+const _hemisphereLight = ([...(objProps.light ?? []),
     /**
      * The light's sky color, as passed in the constructor.
      * @defaultValue `new THREE.Color()` set to white _(0xffffff)_.

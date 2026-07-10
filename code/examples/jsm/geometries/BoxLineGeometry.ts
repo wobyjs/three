@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js'
 export * from 'three/examples/jsm/geometries/BoxLineGeometry.js'
 
@@ -52,7 +52,7 @@ consParams.boxLineGeometry = boxLineGeometry
 
 
 
-const _boxLineGeometry = ([...objProps.bufferGeometry,
+const _boxLineGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.boxLineGeometry = _boxLineGeometry
 

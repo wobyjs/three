@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { DiscreteInterpolant } from 'three/src/math/interpolants/DiscreteInterpolant.js'
 export { DiscreteInterpolant } from 'three/src/math/interpolants/DiscreteInterpolant.js'
 import { Three } from '../../../lib/3/three'
@@ -39,7 +39,7 @@ declare module '../../../lib/3/objProps' {
 
 const discreteInterpolant = ([
     'parameterPositions',
-    'samplesValues',
+    'sampleValues',
     'sampleSize',
     'resultBuffer',
 ] as const).distinct()
@@ -47,7 +47,7 @@ consParams.discreteInterpolant = discreteInterpolant
 
 
 
-const _discreteInterpolant = ([...objProps.interpolant,
+const _discreteInterpolant = ([...(objProps.interpolant ?? []),
 ] as const).distinct()
 objProps.discreteInterpolant = _discreteInterpolant
 

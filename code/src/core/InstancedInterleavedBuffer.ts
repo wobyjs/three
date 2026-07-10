@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { TypedArray } from 'three/src/core/BufferAttribute.js'
 import { InstancedInterleavedBuffer } from 'three/src/core/InstancedInterleavedBuffer.js'
 export { InstancedInterleavedBuffer } from 'three/src/core/InstancedInterleavedBuffer.js'
@@ -66,7 +66,7 @@ consParams.instancedInterleavedBuffer = instancedInterleavedBuffer
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedInterleavedBuffer.js | Source}
  */
 
-const _instancedInterleavedBuffer = ([...objProps.interleavedBuffer,
+const _instancedInterleavedBuffer = ([...(objProps.interleavedBuffer ?? []),
     /**
      * @defaultValue `1`
      */

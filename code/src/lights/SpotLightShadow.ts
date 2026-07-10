@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 import { SpotLightShadow } from 'three/src/lights/SpotLightShadow.js'
 export { SpotLightShadow } from 'three/src/lights/SpotLightShadow.js'
@@ -130,7 +130,7 @@ consParams.spotLightShadow = spotLightShadow
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLightShadow.js | Source}
  */
 
-const _spotLightShadow = ([...objProps.lightShadow,
+const _spotLightShadow = ([...(objProps.lightShadow ?? []),
     /**
      * Read-only flag to check if a given object is of type {@link SpotLightShadow}.
      * @remarks This is a _constant_ value

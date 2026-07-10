@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { AudioLoader } from 'three/src/loaders/AudioLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const audioLoader = ([
 ] as const).distinct()
 consParams.audioLoader = audioLoader
 
-const _audioLoader = ([...objProps.loader] as const).distinct()
+const _audioLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.audioLoader = _audioLoader
 
 export type AudioLoaderProps = Node<AudioLoader, typeof AudioLoader, { manager?: LoadingManager }>

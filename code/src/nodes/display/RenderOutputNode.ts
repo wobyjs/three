@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import RenderOutputNode from 'three/src/nodes/display/RenderOutputNode.js'
 export { RenderOutputNode }
@@ -47,7 +47,7 @@ const renderOutputNode = ([
 ] as const).distinct()
 consParams.renderOutputNode = renderOutputNode
 
-const _renderOutputNode = ([...objProps.tempNode,
+const _renderOutputNode = ([...(objProps.tempNode ?? []),
     'colorNode',
     'toneMapping',
     'outputColorSpace',

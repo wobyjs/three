@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { TorusGeometry } from 'three/src/geometries/TorusGeometry.js'
 export { TorusGeometry } from 'three/src/geometries/TorusGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -86,7 +86,7 @@ consParams.torusGeometry = torusGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TorusGeometry.js | Source}
  */
 
-const _torusGeometry = ([...objProps.bufferGeometry,
+const _torusGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.torusGeometry = _torusGeometry
 

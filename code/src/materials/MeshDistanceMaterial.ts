@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshDistanceMaterial, MeshDistanceMaterialParameters } from 'three/src/materials/MeshDistanceMaterial.js'
 export { MeshDistanceMaterial } from 'three/src/materials/MeshDistanceMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -55,7 +55,7 @@ consParams.meshDistanceMaterialParameters = (['map',
 
 
 
-const _meshDistanceMaterialParameters = ([...objProps.materialParameters,
+const _meshDistanceMaterialParameters = ([...(objProps.materialParameters ?? []),
     'map',
     'alphaMap',
     'displacementMap',
@@ -68,7 +68,7 @@ const _meshDistanceMaterialParameters = ([...objProps.materialParameters,
 objProps.meshDistanceMaterialParameters = _meshDistanceMaterialParameters
 
 
-const _meshDistanceMaterial = ([...objProps.material,
+const _meshDistanceMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshDistanceMaterial'
      */

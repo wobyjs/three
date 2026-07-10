@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import {
     ClampToEdgeWrapping, ColorSpace, CompressedPixelFormat, LinearFilter, LinearMipmapLinearFilter, MagnificationTextureFilter,
     Mapping, MinificationTextureFilter, NoColorSpace, TextureDataType, UnsignedByteType, Wrapping
@@ -89,7 +89,7 @@ consParams.compressedTexture = compressedTexture
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedTexture.js | Source}
  */
 
-const _compressedTexture = ([...objProps.texture,
+const _compressedTexture = ([...(objProps.texture ?? []),
     /**
      * Overridden with a object containing width and height.
      * @override

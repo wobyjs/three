@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { Scene } from 'three/src/scenes/Scene.js'
 export { Scene } from 'three/src/scenes/Scene.js'
 import { Three } from '../../lib/3/three'
@@ -80,7 +80,7 @@ consParams.scene = scene
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/Scene.js | Source}
  */
 
-const _scene = ([...objProps.object3d,
+const _scene = ([...(objProps.object3d ?? []),
     /**
      * @defaultValue `Scene`
      */

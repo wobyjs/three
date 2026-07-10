@@ -1,4 +1,4 @@
-import { Node } from '../../../../three-types'
+﻿import { Node } from '../../../../three-types'
 import WGSLNodeParser from 'three/src/renderers/webgpu/nodes/WGSLNodeParser.js'
 export { WGSLNodeParser }
 import { Three } from '../../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.wgslNodeParser = wgslNodeParser
 
 
 
-const _wgslNodeParser = ([...objProps.nodeBuilder,
+const _wgslNodeParser = ([...(objProps.nodeBuilder ?? []),
 ] as const).distinct()
 objProps.wgslNodeParser = _wgslNodeParser
 

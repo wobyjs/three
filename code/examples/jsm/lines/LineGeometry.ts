@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LineGeometry } from 'three/examples/jsm/lines/LineGeometry.js'
 export * from 'three/examples/jsm/lines/LineGeometry.js'
 
@@ -45,7 +45,7 @@ consParams.lineGeometry = lineGeometry
 
 
 
-const _lineGeometry = ([...objProps.lineSegmentsGeometry,
+const _lineGeometry = ([...(objProps.lineSegmentsGeometry ?? []),
 ] as const).distinct()
 objProps.lineGeometry = _lineGeometry
 

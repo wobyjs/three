@@ -1,4 +1,4 @@
-import { Object3DNode, Vector3 } from '../../three-types'
+﻿import { Object3DNode, Vector3 } from '../../three-types'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { ArrowHelper } from 'three/src/helpers/ArrowHelper.js'
 export { ArrowHelper } from 'three/src/helpers/ArrowHelper.js'
@@ -96,7 +96,7 @@ consParams.arrowHelper = arrowHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/ArrowHelper.js | Source}
  */
 
-const _arrowHelper = ([...objProps.object3d,
+const _arrowHelper = ([...(objProps.object3d ?? []),
     /**
      * Contains the line part of the arrowHelper.
      */

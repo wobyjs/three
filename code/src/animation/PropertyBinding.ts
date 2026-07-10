@@ -84,8 +84,10 @@ export type PropertyBindingProps = Node<PropertyBinding, typeof PropertyBinding,
 
 declare module '../../lib/3/defaults' {
     interface defaults {
+        propertyBinding: Partial<{ targetGroup: any; path: any; parsedPath?: any; }>
         parseTrackNameResults: Partial<{ targetGroup: any; path: any; parsedPath?: any; }>
     }
 }
 
+defaults.propertyBinding = {}
 defaults.parseTrackNameResults = {}

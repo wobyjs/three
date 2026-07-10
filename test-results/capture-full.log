@@ -1,0 +1,306 @@
+[capture-via-dv] 180 demos, profile=profile-4, port=5300, wait=45000ms (single tab reuse)
+[profile-4] warmup ... 
+  warmup ok in 4.5s
+[profile-4] webgl_alpha ... ok
+[profile-4] webgl_animation_keyframe ... ok
+[profile-4] webgl_animation_keyframes ... ok
+[profile-4] webgl_animation_multiple ... ok
+[profile-4] webgl_animation_particles ... NO-CANVAS
+[profile-4] webgl_animation_skinning ... NO-CANVAS
+[profile-4] webgl_animation_skinning_blending ... ok
+[profile-4] webgl_animation_skinning_blending_check ... ok
+[profile-4] webgl_animation_walk ... ok
+[profile-4] webgl_boxes ... ok
+[profile-4] webgl_boxes_click ... ok
+[profile-4] webgl_buffergeometry ... ok
+[profile-4] webgl_camera ... ok
+[profile-4] webgl_camera_array ... ok
+[profile-4] webgl_canvas_texture ... ok
+[profile-4] webgl_clipping ... ok
+[profile-4] webgl_clipping_advanced ... error:navigate: dv navigate -u http://localhost:5300/demo/#webgl_clipping_advanced exi
+[profile-4] webgl_clipping_intersection ... ok
+[profile-4] webgl_clipping_intersection_check2 ... ok
+[profile-4] webgl_clipping_stencil ... ok
+[profile-4] webgl_color_grading ... ok
+[profile-4] webgl_custom_shader ... ok
+[profile-4] webgl_decals ... ok
+[profile-4] webgl_d_lines ... error:navigate: dv navigate -u http://localhost:5300/demo/#webgl_d_lines exit 1: Error
+[profile-4] webgl_effects_ascii ... ok
+[profile-4] webgl_fat_lines ... ok
+[profile-4] webgl_fat_lines_advanced ... ok
+[profile-4] webgl_fog ... ok
+[profile-4] webgl_fog_check ... ok
+[profile-4] webgl_geometries ... ok
+[profile-4] webgl_geometries_showcase ... error:navigate: dv navigate -u http://localhost:5300/demo/#webgl_geometries_showcase e
+[profile-4] webgl_geometry_colors ... ok
+[profile-4] webgl_geometry_colors_lut ... ok
+[profile-4] webgl_geometry_convex ... error:screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\s
+[profile-4] webgl_geometry_csg ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_cube ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_cube2 ... error:navigate: dv navigate -u http://localhost:5300/demo/#webgl_geometry_cube2 exit 1
+[profile-4] webgl_geometry_extrude_shapes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_lathe ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_minecraft ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_shapes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_spline_editor ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_geometry_teapot ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_geometry_text_stroke ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_group ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_helpers ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_html_text ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing_animated ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing_billboards ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing_dynamic ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing_morph ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing_performance ... error:screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\s
+[profile-4] webgl_instancing_raycast ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_instancing_scatter ... error:screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\s
+[profile-4] webgl_interactive_buffer_geometry ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_interactive_cubes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_interactive_cubes_gpu ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_interactive_cubes_ortho ... error:screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\s
+[profile-4] webgl_interactive_cubes_raycaster ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [p
+[profile-4] webgl_interactive_lines ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_interactive_raycasting_points ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_interactive_voxelpainter ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lensflares ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lightprobe ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lights ... error:screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\s
+[profile-4] webgl_lights_hemisphere ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lights_rectarea ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lights_spotlight ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_line3 ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lines ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lines_dashed ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_lines_test ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_loader_3dm ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_loader_3ds ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugi
+[profile-4] webgl_loader_3mf ... ok
+[profile-4] webgl_loader_amf ... NO-CANVAS
+[profile-4] webgl_loader_bvh ... NO-CANVAS
+[profile-4] webgl_loader_collada ... NO-CANVAS
+[profile-4] webgl_loader_draco ... ok
+[profile-4] webgl_loader_fbx ... NO-CANVAS
+[profile-4] webgl_loader_gcode ... ok
+[profile-4] webgl_loader_gltf ... ok
+[profile-4] webgl_loader_gltf_2 ... ok
+[profile-4] webgl_loader_gltf_anisotropy ... ok
+[profile-4] webgl_loader_gltf_demo ... ok
+[profile-4] webgl_loader_kmz ... NO-CANVAS
+[profile-4] webgl_loader_lwo ... NO-CANVAS
+[profile-4] webgl_loader_md2 ... ok
+[profile-4] webgl_loader_nrrd ... ok
+[profile-4] webgl_loader_obj ... ok
+[profile-4] webgl_loader_pcd ... ok
+[profile-4] webgl_loader_pdb ... ok
+[profile-4] webgl_loader_ply ... ok
+[profile-4] webgl_loader_stl ... ok
+[profile-4] webgl_loader_svg ... NO-CANVAS
+[profile-4] webgl_loader_ttf ... ok
+[profile-4] webgl_loader_vox ... ok
+[profile-4] webgl_loader_vrml ... ok
+[profile-4] webgl_loader_xyz ... ok
+[profile-4] webgl_lod ... ok
+[profile-4] webgl_materials ... ok
+[profile-4] webgl_materials_all ... ok
+[profile-4] webgl_materials_blending ... ok
+[profile-4] webgl_materials_car ... NO-CANVAS
+[profile-4] webgl_materials_channels ... ok
+[profile-4] webgl_materials_colors ... ok
+[profile-4] webgl_materials_cubemap ... ok
+[profile-4] webgl_materials_cubemap_dynamic ... ok
+[profile-4] webgl_materials_matcap ... ok
+[profile-4] webgl_materials_normal ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_materials_normalmap ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_materials_physical ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_materials_physical_clearcoat ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_materials_physical_transmission ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_materials_transparency ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_mirror ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_modifier_curve ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_modifier_simplify ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_morph_targets ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_multiple_geometries ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugi
+[profile-4] webgl_normal_map ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_object3d ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_panorama_equirectangular ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_particles ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_particles_buffer ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_physics ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_plane ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_points_dynamic ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_points_sprites ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_points_waves ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_point_cloud ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite
+[profile-4] webgl_postprocessing ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:
+[profile-4] webgl_postprocessing_advanced ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:
+[profile-4] webgl_postprocessing_afterimage ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:
+[profile-4] webgl_postprocessing_bokeh ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:
+[profile-4] webgl_postprocessing_chromatic ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:
+[profile-4] webgl_postprocessing_demo ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:
+[profile-4] webgl_postprocessing_depth ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:
+[profile-4] webgl_postprocessing_dof ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:
+[profile-4] webgl_postprocessing_film ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:
+[profile-4] webgl_postprocessing_fxaa ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingFXAA.tsx:8:25 [plu
+[profile-4] webgl_postprocessing_glitch ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingGlitch.tsx:23:7 [p
+[profile-4] webgl_postprocessing_godrays ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingGlitch.tsx:23:7 [p
+[profile-4] webgl_postprocessing_nodes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingGlitch.tsx:23:7 [p
+[profile-4] webgl_postprocessing_outline ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_pixel ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_smaa ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_ssao ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_ssr ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_taa ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_temporal ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_transition ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_postprocessing_vignette ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_reflection ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_reflector ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shaders_ocean ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shaders_sky ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shader_lava ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shadowmap ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shadowmap_advanced ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shadowmap_pointlight ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shadowmap_vsm ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shadows ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_shadow_contact ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_simple_line ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_sky ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_sprites ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_static_text ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_svg ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_terrain ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_textures_cube ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_text_geometry ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_tone_mapping ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_toon ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_useframe_test ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_uvs ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_vr ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_water ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+[profile-4] webgl_wireframes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [
+
+[capture-via-dv] done: ok=55 syntax=106 console_err=0 no_canvas=10 failed=9
+
+SYNTAX ERRORS (sticky overlay):
+  webgl_geometry_csg: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_cube: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_extrude_shapes: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_lathe: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_minecraft: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_shapes: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_spline_editor: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_geometry_teapot: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_geometry_text_stroke: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_group: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_helpers: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_html_text: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_instancing: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_instancing_animated: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_instancing_billboards: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_instancing_dynamic: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_instancing_morph: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_instancing_raycast: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_interactive_buffer_geometry: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_interactive_cubes: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_interactive_cubes_gpu: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_interactive_cubes_raycaster: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometrySplineEditor.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLGeometrySplineEditor.tsx". Does the file exist?
+  webgl_interactive_lines: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_interactive_raycasting_points: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_interactive_voxelpainter: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lensflares: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lightprobe: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lights_hemisphere: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lights_rectarea: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lights_spotlight: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_line3: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lines: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lines_dashed: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_lines_test: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_loader_3dm: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_loader_3ds: D:/Developments/tslib/@woby/three/demo/src/WebGLInteractiveLines.tsx:16:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLInteractiveLines.tsx". Does the file exist?
+  webgl_materials_normal: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_materials_normalmap: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_materials_physical: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_materials_physical_clearcoat: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_materials_physical_transmission: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_materials_transparency: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_mirror: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_modifier_curve: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_modifier_simplify: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_morph_targets: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_multiple_geometries: D:/Developments/tslib/@woby/three/demo/src/WebGLMaterialsNormal.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLMaterialsNormal.tsx". Does the file exist?
+  webgl_normal_map: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_object3d: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_panorama_equirectangular: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_particles: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_particles_buffer: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_physics: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_plane: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_points_dynamic: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_points_sprites: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_points_waves: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_point_cloud: D:/Developments/tslib/@woby/three/demo/src/WebGLNormalMap.tsx:14:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLNormalMap.tsx". Does the file exist?
+  webgl_postprocessing: D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/Postprocessing.tsx". Does the file exist?
+  webgl_postprocessing_advanced: D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/Postprocessing.tsx". Does the file exist?
+  webgl_postprocessing_afterimage: D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/Postprocessing.tsx". Does the file exist?
+  webgl_postprocessing_bokeh: D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/Postprocessing.tsx". Does the file exist?
+  webgl_postprocessing_chromatic: D:/Developments/tslib/@woby/three/demo/src/Postprocessing.tsx:22:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/Postprocessing.tsx". Does the file exist?
+  webgl_postprocessing_demo: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessing.tsx". Does the file exist?
+  webgl_postprocessing_depth: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessing.tsx". Does the file exist?
+  webgl_postprocessing_dof: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessing.tsx". Does the file exist?
+  webgl_postprocessing_film: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessing.tsx:25:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessing.tsx". Does the file exist?
+  webgl_postprocessing_fxaa: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingFXAA.tsx:8:25 [plugin:vite:import-analysis] Failed to resolve import "three/examples/jsm/postprocessing/FXAAPass.js" from "demo/src/WebGLPostprocessingFXAA.tsx". Does the file exist?
+  webgl_postprocessing_glitch: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingGlitch.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingGlitch.tsx". Does the file exist?
+  webgl_postprocessing_godrays: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingGlitch.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingGlitch.tsx". Does the file exist?
+  webgl_postprocessing_nodes: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingGlitch.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingGlitch.tsx". Does the file exist?
+  webgl_postprocessing_outline: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_pixel: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_smaa: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_ssao: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_ssr: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_taa: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_temporal: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_transition: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_postprocessing_vignette: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_reflection: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_reflector: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shaders_ocean: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shaders_sky: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shader_lava: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shadowmap: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shadowmap_advanced: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shadowmap_pointlight: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shadowmap_vsm: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shadows: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_shadow_contact: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_simple_line: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_sky: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_sprites: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_static_text: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_svg: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_terrain: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_textures_cube: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_text_geometry: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_tone_mapping: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_toon: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_useframe_test: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_uvs: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_vr: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_water: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+  webgl_wireframes: D:/Developments/tslib/@woby/three/demo/src/WebGLPostprocessingOutline.tsx:23:7 [plugin:vite:import-analysis] Failed to resolve import "@woby/three/src/objects/Object3D" from "demo/src/WebGLPostprocessingOutline.tsx". Does the file exist?
+
+FAILED:
+  webgl_clipping_advanced: navigate: dv navigate -u http://localhost:5300/demo/#webgl_clipping_advanced exit 1: Error: No page found. Make sure Chrome is running and navigate to a page fi
+  webgl_d_lines: navigate: dv navigate -u http://localhost:5300/demo/#webgl_d_lines exit 1: Error: No page found. Make sure Chrome is running and navigate to a page first.
+
+  webgl_geometries_showcase: navigate: dv navigate -u http://localhost:5300/demo/#webgl_geometries_showcase exit null: 
+  webgl_geometry_convex: screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\ported\webgl_geometry_convex.png exit 1: Error: No page found. Make sur
+  webgl_geometry_cube2: navigate: dv navigate -u http://localhost:5300/demo/#webgl_geometry_cube2 exit 1: Error: No page found. Make sure Chrome is running and navigate to a page first
+  webgl_instancing_performance: screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\ported\webgl_instancing_performance.png exit 1: Error: No page found. M
+  webgl_instancing_scatter: screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\ported\webgl_instancing_scatter.png exit 1: Error: No page found. Make 
+  webgl_interactive_cubes_ortho: screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\ported\webgl_interactive_cubes_ortho.png exit 1: Error: No page found. 
+  webgl_lights: screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\ported\webgl_lights.png exit 1: Error: No page found. Make sure Chrome 
+summary → D:\Developments\tslib\@woby\three\test-results\capture-via-dv-summary.json

@@ -1,4 +1,4 @@
-import { Node, Vector2, Vector3, Vector4 } from '../../../three-types'
+﻿import { Node, Vector2, Vector3, Vector4 } from '../../../three-types'
 import { NURBSCurve } from 'three/examples/jsm/curves/NURBSCurve.js'
 export * from 'three/examples/jsm/curves/NURBSCurve.js'
 
@@ -50,7 +50,7 @@ consParams.nurbsCurve = nurbsCurve
 
 
 
-const _nurbsCurve = ([...objProps.curve,
+const _nurbsCurve = ([...(objProps.curve ?? []),
     'degree',
     'knots',
     'controlPoints',

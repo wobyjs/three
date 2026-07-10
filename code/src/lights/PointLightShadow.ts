@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 import { PointLightShadow } from 'three/src/lights/PointLightShadow.js'
 export { PointLightShadow } from 'three/src/lights/PointLightShadow.js'
@@ -54,7 +54,7 @@ consParams.pointLightShadow = pointLightShadow
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/PointLightShadow.js | Source}
  */
 
-const _pointLightShadow = ([...objProps.lightShadow,
+const _pointLightShadow = ([...(objProps.lightShadow ?? []),
 ] as const).distinct()
 objProps.pointLightShadow = _pointLightShadow
 

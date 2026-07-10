@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { KTXLoader } from 'three/examples/jsm/loaders/KTXLoader.js'
 export * from 'three/examples/jsm/loaders/KTXLoader.js'
@@ -70,7 +70,7 @@ const _ktx = ([
 objProps.ktx = _ktx
 
 
-const _ktxLoader = ([...objProps.compressedTextureLoader,
+const _ktxLoader = ([...(objProps.compressedTextureLoader ?? []),
 ] as const).distinct()
 objProps.ktxLoader = _ktxLoader
 

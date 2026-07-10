@@ -75,6 +75,7 @@ const batchedMesh = ([
      * @param material an instance of [page:Material]. Default is a new {@link MeshBasicMaterial}.
      */
     'maxGeometryCount',
+    'maxInstanceCount',
     'maxVertexCount',
     'maxIndexCount',
     'material',

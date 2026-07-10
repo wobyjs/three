@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import AfterImageNode from 'three/examples/jsm/tsl/display/AfterImageNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import { Node } from '../../../../three-types' // Assuming this path is correct for your project
@@ -37,7 +37,7 @@ consParams.afterImageNode = afterImageNode
 
 // Assuming 'tempNode' is the correct base type in your objProps hierarchy
 const _afterImageNode = ([
-	...objProps.tempNode,
+	...(objProps.tempNode ?? []),
 	'textureNode',
 	'textureNodeOld',
 	'damp',

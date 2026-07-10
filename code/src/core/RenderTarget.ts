@@ -76,6 +76,9 @@ const renderTargetOptions = ([
 consParams.renderTargetOptions = renderTargetOptions
 
 const renderTarget = ([
+    'width',
+    'height',
+    'options',
 ] as const).distinct()
 consParams.renderTarget = renderTarget
 

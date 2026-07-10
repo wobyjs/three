@@ -68,6 +68,8 @@ const gridHelper = ([
     'divisions',
     'colorCenterLine',
     'colorGrid',
+    'color1',
+    'color2',
 ] as const).distinct()
 consParams.gridHelper = gridHelper
 

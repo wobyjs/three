@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import ViewportSharedTextureNode from 'three/src/nodes/display/ViewportSharedTextureNode.js'
 export { ViewportSharedTextureNode }
@@ -46,7 +46,7 @@ consParams.viewportSharedTextureNode = viewportSharedTextureNode
 
 
 
-const _viewportSharedTextureNode = ([...objProps.viewportTextureNode,
+const _viewportSharedTextureNode = ([...(objProps.viewportTextureNode ?? []),
 ] as const).distinct()
 objProps.viewportSharedTextureNode = _viewportSharedTextureNode
 

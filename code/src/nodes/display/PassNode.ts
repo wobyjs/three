@@ -1,4 +1,4 @@
-import { Scene } from 'three/src/scenes/Scene.js'
+﻿import { Scene } from 'three/src/scenes/Scene.js'
 import { Node } from '../../../three-types'
 import PassNode, { PassNodeScope } from 'three/src/nodes/display/PassNode.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -59,13 +59,13 @@ consParams.passNode = passNode
 
 
 
-const _passTextureNode = ([...objProps.textureNode,
+const _passTextureNode = ([...(objProps.textureNode ?? []),
     'passNode',
 ] as const).distinct()
 objProps.passTextureNode = _passTextureNode
 
 
-const _passNode = ([...objProps.tempNode,
+const _passNode = ([...(objProps.tempNode ?? []),
     'scope',
     'scene',
     'camera',

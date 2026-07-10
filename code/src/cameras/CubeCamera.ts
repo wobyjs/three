@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget.js'
 import { CubeCamera } from 'three/src/cameras/CubeCamera.js'
 export { CubeCamera } from 'three/src/cameras/CubeCamera.js'
@@ -115,7 +115,7 @@ consParams.cubeCamera = cubeCamera
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/CubeCamera.js | Source}
  */
 
-const _cubeCamera = ([...objProps.object3d,
+const _cubeCamera = ([...(objProps.object3d ?? []),
     /**
      * The destination cube render target.
      */

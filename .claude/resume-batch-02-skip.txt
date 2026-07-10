@@ -1,0 +1,48 @@
+demo/src/WebGLMultipleRenderers.tsx :uses 4 separate WebGLRenderer instances in same container with absolute positioning — not Canvas3D-compatible
+demo/src/WebGLMultipleScenes.tsx :uses scissor/viewport tricks with single canvas overlaying multiple divs — not Canvas3D-compatible
+demo/src/WebGLNormalMap.tsx :imports FXAAPass per skip criteria
+demo/src/WebGLPhysicsCloth.tsx :imports lil-gui (non-min path) per skip criteria
+demo/src/WebGLPointsDynamic.tsx :EffectComposer + renderer.autoClear=false + OBJLoader — postprocessing replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessing3DLUT.tsx :EffectComposer with LUTPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingAdvanced.tsx :multiple EffectComposers replace render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingAfterimage.tsx :EffectComposer replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingAscii.tsx :ASCII overlay canvas DOM manipulation in container — not Canvas3D-compatible
+demo/src/WebGLPostprocessingBloom.tsx :EffectComposer with UnrealBloomPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingBloomAdvanced.tsx :EffectComposer with selective bloom replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingBloomEmissive.tsx :EffectComposer with UnrealBloomPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingBloomHDR.tsx :EffectComposer with UnrealBloomPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingBokeh.tsx :EffectComposer with BokehPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingDOF.tsx :EffectComposer with BokehPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingDepth.tsx :EffectComposer with depth pass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingGodRays.tsx :uses 'postprocessing' library EffectComposer — replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingMask.tsx :EffectComposer with MaskPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingNodes.tsx :imports three/webgpu + three/tsl, WebGPU per skip criteria
+demo/src/WebGLPostprocessingOutline.tsx :EffectComposer with OutlinePass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingPixel.tsx :EffectComposer with RenderPixelatedPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingPixelArt.tsx :uses dual WebGLRenderTarget + setRenderTarget — replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingSSR.tsx :EffectComposer with SSRPass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLPostprocessingTransition.tsx :EffectComposer with transition shader replaces render loop, not Canvas3D-compatible
+demo/src/WebGLShaderHueSaturation.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShaderKaleido.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShaderRGBShift.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShaderSepia.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShaderSobel.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShaderTiltShift.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShaderVignette.tsx :EffectComposer-based postprocessing shader, not Canvas3D-compatible
+demo/src/WebGLShadowContact.tsx :MeshDepthMaterial overrideMaterial + setRenderTarget for shadow plane render — multi-pass replaces render loop, not Canvas3D-compatible
+demo/src/WebGLShadowMap.tsx :renderer.autoClear=false + ShadowMapViewer HUD with custom render path — not Canvas3D-compatible
+demo/src/WebGLShadowmapViewer.tsx :ShadowMapViewer multi-pass HUD overlay render after main scene render, not Canvas3D-compatible
+demo/src/WebGLSpritesNodes.tsx :imports three/webgpu + three/tsl, WebGPU per skip criteria
+demo/src/WebGLWebGPU.tsx :imports three/webgpu per skip criteria
+demo/src/WebGLWebXR.tsx :uses webxr per skip criteria
+demo/src/WebGLWebXRAR.tsx :uses webxr per skip criteria
+demo/src/WebGLWebXRHitTest.tsx :uses webxr per skip criteria
+demo/src/WebGLWebXRLayers.tsx :uses webxr per skip criteria
+demo/src/WebGLWebXRVR.tsx :uses webxr per skip criteria
+demo/src/WebGLWebgpuCompute.tsx :webgpu compute per skip criteria
+demo/src/WebXRARCones.tsx :uses webxr per skip criteria
+demo/src/WebXRARPlaneDetection.tsx :uses webxr per skip criteria
+demo/src/WebXRSandbox.tsx :uses webxr per skip criteria
+demo/src/WebXRVRBallshooter.tsx :uses webxr per skip criteria
+demo/src/WebXRVRPaint.tsx :uses webxr per skip criteria
+demo/src/WebGLStencilBuffer.tsx :renderer.autoClear=false + manual renderer.clear stencil-mask multi-pass, not Canvas3D-compatible

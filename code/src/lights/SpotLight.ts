@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { SpotLight } from 'three/src/lights/SpotLight.js'
 export { SpotLight } from 'three/src/lights/SpotLight.js'
@@ -122,7 +122,7 @@ consParams.spotLight = spotLight
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLight.js | Source}
  */
 
-const _spotLight = ([...objProps.light,
+const _spotLight = ([...(objProps.light ?? []),
     /**
      * This is set equal to {@link THREE.Object3d.DEFAULT_UP | Object3d.DEFAULT_UP} (0, 1, 0), so that the light shines from the top down.
      * @defaultValue `{@link Object3d.DEFAULT_UP}`

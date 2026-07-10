@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Group } from 'three/src/objects/Group.js'
 export { Group } from 'three/src/objects/Group.js'
 import { Three } from '../../lib/3/three'
@@ -89,7 +89,7 @@ consParams.group = group
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Group.js | Source}
  */
 
-const _group = ([...objProps.object3d,
+const _group = ([...(objProps.object3d ?? []),
 ] as const).distinct()
 objProps.group = _group
 

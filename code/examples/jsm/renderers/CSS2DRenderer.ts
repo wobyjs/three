@@ -1,4 +1,4 @@
-import { CSS2DObject, CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+﻿import { CSS2DObject, CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 export * from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import { Node, Object3DNode } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
@@ -54,12 +54,12 @@ const css2dParameters = ([
 ] as const).distinct()
 consParams.css2dParameters = css2dParameters
 
-const css2dObject = ([//...consParams.object3d,
+const css2dObject = ([//...(consParams.object3d ?? []),
     'element'] as const).distinct()
 consParams.css2dObject = css2dObject
 
 
-const _css2dParameters = ([...objProps.object3d, ...rendererEx,
+const _css2dParameters = ([...(objProps.object3d ?? []), ...rendererEx,
     'element',
     'center',
 ] as const).distinct()
@@ -73,7 +73,7 @@ const _css2dRenderer = ([...rendererEx,
 ] as const).distinct()
 objProps.css2dRenderer = _css2dRenderer
 
-const _css2dObject = ([...objProps.object3d,
+const _css2dObject = ([...(objProps.object3d ?? []),
     'element',
     'center',
     'onBeforeRender',

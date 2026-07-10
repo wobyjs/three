@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import SSAAPassNode from 'three/examples/jsm/tsl/display/SSAAPassNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -38,7 +38,7 @@ consParams.ssaapassNode = ssaapassNode
 
 // Inherits from PassNode and adds its own specific properties
 const _ssaapassNode = ([
-	...objProps.passNode, // <-- Inherits parent properties
+	...(objProps.passNode ?? []), // <-- Inherits parent properties
 	'isSSAAPassNode',
 	'sampleLevel',
 	'unbiased',

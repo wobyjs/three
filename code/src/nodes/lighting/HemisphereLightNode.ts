@@ -1,4 +1,4 @@
-import { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
+﻿import { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
 import { Node } from '../../../three-types'
 import HemisphereLightNode from 'three/src/nodes/lighting/HemisphereLightNode.js'
 export { HemisphereLightNode }
@@ -45,7 +45,7 @@ consParams.hemisphereLightNode = hemisphereLightNode
 
 
 
-const _hemisphereLightNode = ([...objProps.analyticLightNode,
+const _hemisphereLightNode = ([...(objProps.analyticLightNode ?? []),
     'lightPositionNode',
     'lightDirectionNode',
     'groundColorNode',

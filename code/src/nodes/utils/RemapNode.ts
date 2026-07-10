@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import RemapNode from 'three/src/nodes/utils/RemapNode.js'
 export { RemapNode }
@@ -50,7 +50,7 @@ consParams.remapNode = remapNode
 
 
 
-const _remapNode = ([...objProps.node,
+const _remapNode = ([...(objProps.node ?? []),
     'node',
     'inLowNode',
     'inHighNode',

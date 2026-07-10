@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { DataArrayTexture } from 'three/src/textures/DataArrayTexture.js'
 export { DataArrayTexture } from 'three/src/textures/DataArrayTexture.js'
 import { Three } from '../../lib/3/three'
@@ -77,7 +77,7 @@ declare module '../../lib/3/objProps' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DataArrayTexture.js | Source}
  */
 
-const _dataArrayTexture = ([...objProps.texture,
+const _dataArrayTexture = ([...(objProps.texture ?? []),
     /**
      * Overridden with a record type holding data, width and height and depth.
      * @override

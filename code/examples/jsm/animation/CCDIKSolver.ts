@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js'
 import { IK, CCDIKSolver, CCDIKHelper } from 'three/examples/jsm/animation/CCDIKSolver.js'
 export * from 'three/examples/jsm/animation/CCDIKSolver.js'
@@ -85,7 +85,7 @@ const _ccdikSolver = ([
 ] as const).distinct()
 objProps.ccdikSolver = _ccdikSolver
 
-const _ccdikHelper = ([...objProps.object3d,
+const _ccdikHelper = ([...(objProps.object3d ?? []),
     'root',
     'iks',
     'sphereGeometry',

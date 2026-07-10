@@ -1,4 +1,4 @@
-import { Node, Vector2 } from '../../../three-types'
+﻿import { Node, Vector2 } from '../../../three-types'
 import { LineCurve } from 'three/src/extras/curves/LineCurve.js'
 export { LineCurve } from 'three/src/extras/curves/LineCurve.js'
 import { Three } from '../../../lib/3/three'
@@ -64,7 +64,7 @@ consParams.lineCurve = lineCurve
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/LineCurve.js | Source}
  */
 
-const _lineCurve = ([...objProps.curve,
+const _lineCurve = ([...(objProps.curve ?? []),
     /**
      * The start point.
      * @defaultValue `new THREE.Vector2()`

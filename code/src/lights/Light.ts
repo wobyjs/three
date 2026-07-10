@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { Light } from 'three/src/lights/Light.js'
 export { Light } from 'three/src/lights/Light.js'
@@ -63,7 +63,7 @@ consParams.light = light
  * @remarks All other light types inherit the properties and methods described here.
  */
 
-const _light = ([...objProps.object3d,
+const _light = ([...(objProps.object3d ?? []),
     /**
      * Color of the light. \
      * @defaultValue `new THREE.Color(0xffffff)` _(white)_.

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { MaterialLoader } from 'three/src/loaders/MaterialLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -44,7 +44,7 @@ const materialLoader = ([
 consParams.materialLoader = materialLoader
 
 
-const _materialLoader = ([...objProps.loader,
+const _materialLoader = ([...(objProps.loader ?? []),
     /**
      * @default {}
      */

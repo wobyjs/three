@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { FogExp2 } from 'three/src/scenes/FogExp2.js'
 export { FogExp2 } from 'three/src/scenes/FogExp2.js'
@@ -76,7 +76,7 @@ consParams.fogExp2 = fogExp2
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/FogExp2.js | Source}
  */
 
-const _fogExp2 = ([...objProps.fogBase,
+const _fogExp2 = ([...(objProps.fogBase ?? []),
     /**
      * Optional name of the object
      * @remarks _(doesn't need to be unique)_.

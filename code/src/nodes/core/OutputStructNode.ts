@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import OutputStructNode from 'three/src/nodes/core/OutputStructNode.js'
 export { OutputStructNode }
@@ -45,7 +45,7 @@ consParams.outputStructNode = outputStructNode
 
 
 
-const _outputStructNode = ([...objProps.node,
+const _outputStructNode = ([...(objProps.node ?? []),
     'members',
 ] as const).distinct()
 objProps.outputStructNode = _outputStructNode

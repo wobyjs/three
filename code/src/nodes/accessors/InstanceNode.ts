@@ -1,4 +1,4 @@
-import { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
+﻿import { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
 import { Node } from '../../../three-types'
 import InstanceNode from 'three/src/nodes/accessors/InstanceNode.js'
 export { InstanceNode }
@@ -45,7 +45,7 @@ consParams.instanceNode = instanceNode
 
 
 
-const _instanceNode = ([...objProps.node,
+const _instanceNode = ([...(objProps.node ?? []),
     'instanceMesh',
     'instanceMatrixNode',
     'instanceColorNode',

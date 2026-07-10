@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import {
     ColorSpace, CubeReflectionMapping, CubeTextureMapping, MagnificationTextureFilter,
     MinificationTextureFilter, PixelFormat, TextureDataType, Wrapping
@@ -116,7 +116,7 @@ consParams.cubeTexture = cubeTexture
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CubeTexture.js | Source}
  */
 
-const _cubeTexture = ([...objProps.texture,
+const _cubeTexture = ([...(objProps.texture ?? []),
     /**
      * An image object, typically created using the {@link THREE.CubeTextureLoader.load | CubeTextureLoader.load()} method.
      * @see {@link Texture.image}

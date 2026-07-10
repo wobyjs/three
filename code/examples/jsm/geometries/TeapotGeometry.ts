@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode';
+﻿import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode';
 import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js'
 export * from 'three/examples/jsm/geometries/TeapotGeometry.js'
 
@@ -53,7 +53,7 @@ consParams.teapotGeometry = teapotGeometry
 
 
 
-const _teapotGeometry = ([...objProps.bufferGeometry,
+const _teapotGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.teapotGeometry = _teapotGeometry
 

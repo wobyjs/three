@@ -38,7 +38,7 @@ declare module '../../../../lib/3/objProps' {
 	}
 }
 
-const webGPULineSegments2 = ([//...consParams.lineSegments2,
+const webGPULineSegments2 = ([//...(consParams.lineSegments2 ?? []),
 	'geometry',
 	'material',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import DepthOfFieldNode from 'three/examples/jsm/tsl/display/DepthOfFieldNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
@@ -41,7 +41,7 @@ consParams.depthOfFieldNode = depthOfFieldNode
 
 // Inherits from TempNode and adds its own specific properties
 const _depthOfFieldNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'textureNode',
 	'viewZNode',
 	'focusNode',

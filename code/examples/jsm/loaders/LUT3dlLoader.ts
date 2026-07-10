@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { LUT3dlLoader } from 'three/examples/jsm/loaders/LUT3dlLoader.js'
 export * from 'three/examples/jsm/loaders/LUT3dlLoader.js'
@@ -82,7 +82,7 @@ objProps.lut3dlResult = _lut3dlResult
  * https://community.foundry.com/discuss/topic/103636/format-spec-for-3dl?mode=Post&postID=895258
  */
 
-const _lut3dlLoader = ([...objProps.loader,
+const _lut3dlLoader = ([...(objProps.loader ?? []),
     'type',
 ] as const).distinct()
 objProps.lut3dlLoader = _lut3dlLoader

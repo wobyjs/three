@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { MaterialXLoader } from 'three/examples/jsm/loaders/MaterialXLoader.js'
 export * from 'three/examples/jsm/loaders/MaterialXLoader.js'
@@ -47,7 +47,7 @@ consParams.materialXLoader = materialXLoader
 
 
 
-const _materialXLoader = ([...objProps.loader,
+const _materialXLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.materialXLoader = _materialXLoader
 

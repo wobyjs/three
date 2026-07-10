@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { FramebufferTexture } from 'three/src/textures/FramebufferTexture.js'
 export { FramebufferTexture } from 'three/src/textures/FramebufferTexture.js'
 import { Three } from '../../lib/3/three'
@@ -103,7 +103,7 @@ consParams.framebufferTexture = framebufferTexture
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/FramebufferTexture.js | Source}
  */
 
-const _framebufferTexture = ([...objProps.texture,
+const _framebufferTexture = ([...(objProps.texture ?? []),
     /**
      * @override
      * @defaultValue {@link THREE.NearestFilter}

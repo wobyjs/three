@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import MathNode, { MathNodeMethod3 } from 'three/src/nodes/math/MathNode.js'
 export { MathNode }
@@ -218,7 +218,7 @@ consParams.nodeElements = nodeElements
 
 
 
-const _mathNode = ([...objProps.tempNode,
+const _mathNode = ([...(objProps.tempNode ?? []),
     // 1 input
     // 2 inputs
     // 3 inputs

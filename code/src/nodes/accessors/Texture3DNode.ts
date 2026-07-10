@@ -1,4 +1,4 @@
-import { Node as Object3DNode } from '../../../three-types'
+﻿import { Node as Object3DNode } from '../../../three-types'
 import Texture3DNode from 'three/src/nodes/accessors/Texture3DNode.js'
 export { Texture3DNode }
 import { Three } from '../../../lib/3/three'
@@ -48,7 +48,7 @@ const texture3dNode = ([
 consParams.texture3dNode = texture3dNode
 
 
-const _texture3dNode = ([...objProps.textureNode,
+const _texture3dNode = ([...(objProps.textureNode ?? []),
     'isTexture3DNode',
 ] as const).distinct()
 objProps.texture3dNode = _texture3dNode

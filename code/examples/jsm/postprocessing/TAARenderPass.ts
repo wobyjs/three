@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
@@ -52,7 +52,7 @@ consParams.taaRenderPass = taaRenderPass
 
 
 
-const _taaRenderPass = ([...objProps.ssaaRenderPass,
+const _taaRenderPass = ([...(objProps.ssaaRenderPass ?? []),
     'accumulate',
 ] as const).distinct()
 objProps.taaRenderPass = _taaRenderPass

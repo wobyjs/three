@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 // import { ShaderNodeObject } from 'three/src/nodes/Nodes.js'
 import EquirectUVNode from 'three/src/nodes/utils/EquirectUVNode.js'
@@ -47,7 +47,7 @@ consParams.equirectUvNode = equirectUvNode
 
 
 
-const _equirectUvNode = ([...objProps.tempNode,
+const _equirectUvNode = ([...(objProps.tempNode ?? []),
 ] as const).distinct()
 objProps.equirectUvNode = _equirectUvNode
 

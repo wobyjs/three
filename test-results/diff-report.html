@@ -1,0 +1,995 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ported vs threejs.org diff report</title>
+<style>
+:root { color-scheme: dark; }
+body { font: 13px/1.4 ui-sans-serif, system-ui; background:#0b0d10; color:#e5e7eb; margin:0; padding:16px; }
+h1 { font-size:18px; margin:0 0 8px; }
+.summary { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 16px; }
+.pill { padding:4px 10px; border-radius:999px; background:#1f2937; }
+.pill b { color:#fff; }
+.grid { display:grid; grid-template-columns: 220px repeat(3, 180px); gap:6px; align-items:center; }
+.grid > div { padding:4px; border-bottom:1px solid #1f2937; }
+.head { position:sticky; top:0; background:#0b0d10; font-weight:600; color:#9ca3af; padding:6px 4px !important; border-bottom:1px solid #374151 !important; }
+.id { font-family: ui-monospace, Menlo, monospace; font-size:12px; color:#d1d5db; word-break: break-all; }
+.verdict { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; color:#111; margin-top:2px; }
+.ratio { color:#9ca3af; font-size:11px; margin-top:2px; }
+img { width:180px; height:auto; display:block; background:#1f2937; border-radius:3px; }
+img:hover { outline:2px solid #60a5fa; cursor:zoom-in; }
+.filter { margin:0 0 10px; display:flex; gap:6px; }
+.filter button { background:#1f2937; color:#e5e7eb; border:1px solid #374151; padding:4px 10px; border-radius:4px; cursor:pointer; font:inherit; }
+.filter button.on { background:#374151; border-color:#60a5fa; }
+.section { font-size:14px; margin:24px 0 8px; color:#9ca3af; }
+.no-ref-list, .err-list { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#9ca3af; columns:3; }
+</style></head><body>
+
+<h1>Ported vs threejs.org/examples — pixel diff report</h1>
+<div class="summary">
+  <span class="pill">total <b>227</b></span>
+  <span class="pill" style="color:#10b981">match <b>8</b></span>
+  <span class="pill" style="color:#f59e0b">minor <b>33</b></span>
+  <span class="pill" style="color:#f97316">major <b>21</b></span>
+  <span class="pill" style="color:#ef4444">diverged <b>54</b></span>
+  <span class="pill">no_reference <b>111</b></span>
+  <span class="pill">error <b>0</b></span>
+  <span class="pill" style="margin-left:auto;color:#6b7280">generated 6/22/2026, 1:40:10 PM</span>
+</div>
+
+<div class="filter">
+  <button data-f="all" class="on">all (116)</button>
+  <button data-f="diverged">diverged</button>
+  <button data-f="major">major</button>
+  <button data-f="minor">minor</button>
+  <button data-f="match">match</button>
+</div>
+
+<div class="grid">
+  <div class="head">id / verdict</div>
+  <div class="head">ported (ours)</div>
+  <div class="head">reference (threejs.org)</div>
+  <div class="head">diff overlay</div>
+  <div data-v="diverged" class="id">
+    <div>webgl_instancing_dynamic</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.89% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_dynamic.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_dynamic.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_dynamic.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_amf</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.85% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_amf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_amf.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_amf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_amf.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_amf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_amf.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_kmz</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.84% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_kmz.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_kmz.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_kmz.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_kmz.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_kmz.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_kmz.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_3dm</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.54% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_3dm.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_3dm.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_3dm.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_3dm.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_3dm.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_3dm.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>physics_rapier_basic</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.13% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_rapier_basic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_rapier_basic.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_rapier_basic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_rapier_basic.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_rapier_basic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_rapier_basic.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_postprocessing</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.02% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_draco</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">99.00% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_draco.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_draco.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_draco.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_draco.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_draco.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_draco.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_lights_spotlight</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.97% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lights_spotlight.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lights_spotlight.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lights_spotlight.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lights_spotlight.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lights_spotlight.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lights_spotlight.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_fbx</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.97% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_fbx.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_fbx.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_fbx.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_fbx.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_fbx.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_fbx.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_interactive_voxelpainter</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.94% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_voxelpainter.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_voxelpainter.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_voxelpainter.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_voxelpainter.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_voxelpainter.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_voxelpainter.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_postprocessing_film</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.90% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_film.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_film.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_film.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_film.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_film.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_film.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_3mf</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.89% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_3mf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_3mf.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_3mf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_3mf.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_3mf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_3mf.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_vrml</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.71% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_vrml.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_vrml.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_vrml.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_vrml.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_vrml.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_vrml.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_lights</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.66% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lights.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lights.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lights.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lights.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lights.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lights.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>physics_ammo_cloth</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.47% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_ammo_cloth.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_ammo_cloth.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_ammo_cloth.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_ammo_cloth.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_ammo_cloth.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_ammo_cloth.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_water</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.36% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_water.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_water.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_water.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_water.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_water.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_water.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_geometries</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.33% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometries.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometries.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometries.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometries.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometries.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometries.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>physics_ammo_break</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">98.10% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_ammo_break.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_ammo_break.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_ammo_break.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_ammo_break.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_ammo_break.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_ammo_break.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>physics_rapier_instancing</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">97.64% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_rapier_instancing.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_rapier_instancing.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_rapier_instancing.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_rapier_instancing.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_rapier_instancing.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_rapier_instancing.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_obj</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">97.40% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_obj.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_obj.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_obj.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_obj.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_obj.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_obj.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_matcap</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">97.31% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_matcap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_matcap.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_matcap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_matcap.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_matcap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_matcap.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_shadows</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">97.15% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadows.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadows.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadows.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadows.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadows.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadows.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_geometry_colors</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">96.99% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_colors.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_colors.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_colors.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_colors.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_colors.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_colors.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_cubemap_dynamic</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">96.17% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_cubemap_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_cubemap_dynamic.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_cubemap_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_cubemap_dynamic.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_cubemap_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_cubemap_dynamic.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_channels</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">96.16% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_channels.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_channels.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_channels.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_channels.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_channels.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_channels.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_geometry_spline_editor</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">94.61% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_spline_editor.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_spline_editor.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_spline_editor.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_spline_editor.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_spline_editor.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_spline_editor.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_shadowmap_advanced</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">92.69% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap_advanced.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap_advanced.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap_advanced.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_gcode</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">91.45% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_gcode.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_gcode.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_gcode.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_gcode.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_gcode.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_gcode.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_interactive_cubes</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">90.46% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_cubes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_cubes.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_cubes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_cubes.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_cubes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_cubes.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_geometry_lathe</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">90.43% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_lathe.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_lathe.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_lathe.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_lathe.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_lathe.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_lathe.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_fog</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">88.70% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_fog.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_fog.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_fog.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_fog.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_fog.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_fog.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_shadowmap</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">88.09% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_interactive_cubes_gpu</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">87.60% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_cubes_gpu.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_cubes_gpu.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_cubes_gpu.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_cubes_gpu.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_cubes_gpu.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_cubes_gpu.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_animation_skinning</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">85.24% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_skinning.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_skinning.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_skinning.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_skinning.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_skinning.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_skinning.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_lightprobe</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">84.84% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lightprobe.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lightprobe.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lightprobe.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lightprobe.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lightprobe.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lightprobe.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_postprocessing_dof</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">84.53% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_dof.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_dof.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_dof.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_dof.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_dof.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_dof.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_lines</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">84.26% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lines.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lines.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lines.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lines.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lines.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lines.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_gltf</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">82.29% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_gltf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_gltf.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_gltf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_gltf.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_gltf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_gltf.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_animation_skinning_blending</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">81.16% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_skinning_blending.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_skinning_blending.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_skinning_blending.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_skinning_blending.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_skinning_blending.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_skinning_blending.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_instancing_performance</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">80.63% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_performance.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_performance.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_performance.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_performance.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_performance.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_performance.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_stl</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">79.45% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_stl.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_stl.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_stl.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_stl.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_stl.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_stl.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_geometry_minecraft</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">78.92% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_minecraft.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_minecraft.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_minecraft.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_minecraft.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_minecraft.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_minecraft.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_transparency</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">77.80% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_transparency.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_transparency.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_transparency.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_transparency.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_transparency.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_transparency.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_interactive_cubes_ortho</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">74.75% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_cubes_ortho.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_cubes_ortho.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_cubes_ortho.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_cubes_ortho.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_cubes_ortho.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_cubes_ortho.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_blending</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">74.01% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_blending.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_blending.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_blending.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_blending.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_blending.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_blending.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_normalmap</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">73.45% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_normalmap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_normalmap.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_normalmap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_normalmap.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_normalmap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_normalmap.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_effects_stereo</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">73.19% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_effects_stereo.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_effects_stereo.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_effects_stereo.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_effects_stereo.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_effects_stereo.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_effects_stereo.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_effects_parallaxbarrier</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">72.43% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_effects_parallaxbarrier.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_effects_parallaxbarrier.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_effects_parallaxbarrier.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_effects_parallaxbarrier.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_effects_parallaxbarrier.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_effects_parallaxbarrier.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>physics_rapier_joints</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">72.16% · 300×150</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_rapier_joints.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/physics_rapier_joints.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_rapier_joints.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/physics_rapier_joints.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_rapier_joints.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/physics_rapier_joints.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_materials_physical_clearcoat</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">71.07% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_physical_clearcoat.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_physical_clearcoat.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_physical_clearcoat.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_physical_clearcoat.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_physical_clearcoat.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_physical_clearcoat.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_postprocessing_ssr</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">66.20% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_ssr.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_ssr.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_ssr.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_ssr.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_ssr.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_ssr.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_instancing_raycast</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">64.89% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_raycast.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_raycast.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_raycast.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_raycast.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_raycast.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_raycast.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_loader_ply</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">63.36% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_ply.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_ply.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_ply.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_ply.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_ply.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_ply.png"></a></div>
+  <div data-v="diverged" class="id">
+    <div>webgl_alpha</div>
+    <div class="verdict" style="background:#ef4444">diverged</div>
+    <div class="ratio">60.89% · 1264×569</div>
+  </div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_alpha.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_alpha.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_alpha.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_alpha.png"></a></div>
+  <div data-v="diverged"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_alpha.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_alpha.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_geometry_teapot</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">59.46% · 1409×1399</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_teapot.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_teapot.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_teapot.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_teapot.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_teapot.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_teapot.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_loader_svg</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">55.16% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_svg.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_svg.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_svg.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_svg.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_svg.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_svg.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_shadow_contact</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">54.97% · 80×48</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadow_contact.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadow_contact.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadow_contact.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadow_contact.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadow_contact.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadow_contact.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_effects_anaglyph</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">54.81% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_effects_anaglyph.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_effects_anaglyph.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_effects_anaglyph.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_effects_anaglyph.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_effects_anaglyph.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_effects_anaglyph.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_geometry_shapes</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">50.65% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_shapes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_shapes.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_shapes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_shapes.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_shapes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_shapes.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_mirror</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">49.47% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_mirror.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_mirror.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_mirror.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_mirror.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_mirror.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_mirror.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_clipping</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">47.02% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_clipping.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_clipping.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_clipping.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_clipping.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_clipping.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_clipping.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_panorama_equirectangular</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">46.22% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_panorama_equirectangular.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_panorama_equirectangular.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_panorama_equirectangular.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_panorama_equirectangular.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_panorama_equirectangular.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_panorama_equirectangular.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_loader_lwo</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">45.97% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_lwo.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_lwo.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_lwo.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_lwo.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_lwo.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_lwo.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_loader_ttf</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">41.87% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_ttf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_ttf.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_ttf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_ttf.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_ttf.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_ttf.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_instancing_morph</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">41.48% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_morph.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_instancing_morph.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_morph.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_instancing_morph.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_morph.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_instancing_morph.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_materials_cubemap</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">36.27% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_cubemap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_cubemap.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_cubemap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_cubemap.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_cubemap.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_cubemap.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_materials_physical</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">36.17% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_physical.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_physical.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_physical.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_physical.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_physical.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_physical.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_postprocessing_advanced</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">34.66% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_advanced.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_advanced.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_advanced.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_camera_array</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">33.26% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_camera_array.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_camera_array.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_camera_array.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_camera_array.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_camera_array.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_camera_array.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_points_sprites</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">29.79% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_points_sprites.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_points_sprites.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_points_sprites.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_points_sprites.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_points_sprites.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_points_sprites.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_lensflares</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">28.83% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lensflares.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lensflares.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lensflares.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lensflares.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lensflares.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lensflares.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_materials_car</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">27.82% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_car.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_car.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_car.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_car.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_car.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_car.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_postprocessing_pixel</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">27.52% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_pixel.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_pixel.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_pixel.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_pixel.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_pixel.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_pixel.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_geometry_extrude_shapes</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">27.16% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_extrude_shapes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_extrude_shapes.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_extrude_shapes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_extrude_shapes.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_extrude_shapes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_extrude_shapes.png"></a></div>
+  <div data-v="major" class="id">
+    <div>webgl_lod</div>
+    <div class="verdict" style="background:#f97316">major</div>
+    <div class="ratio">26.79% · 1264×569</div>
+  </div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lod.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lod.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lod.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lod.png"></a></div>
+  <div data-v="major"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lod.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lod.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_helpers</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">23.91% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_helpers.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_helpers.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_helpers.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_helpers.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_helpers.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_helpers.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_interactive_lines</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">23.19% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_lines.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_lines.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_lines.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_lines.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_lines.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_lines.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_materials</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">21.88% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_geometry_convex</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">19.43% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_convex.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_geometry_convex.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_convex.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_geometry_convex.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_convex.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_geometry_convex.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_buffergeometry</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">18.76% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_buffergeometry.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_buffergeometry.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_buffergeometry.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_buffergeometry.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_buffergeometry.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_buffergeometry.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_clipping_intersection</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">17.75% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_clipping_intersection.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_clipping_intersection.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_clipping_intersection.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_clipping_intersection.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_clipping_intersection.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_clipping_intersection.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_clipping_advanced</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">17.07% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_clipping_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_clipping_advanced.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_clipping_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_clipping_advanced.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_clipping_advanced.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_clipping_advanced.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_decals</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">16.88% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_decals.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_decals.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_decals.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_decals.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_decals.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_decals.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_sprites</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">16.61% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_sprites.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_sprites.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_sprites.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_sprites.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_sprites.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_sprites.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_loader_collada</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">15.29% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_collada.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_collada.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_collada.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_collada.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_collada.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_collada.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_loader_bvh</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">13.66% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_bvh.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_bvh.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_bvh.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_bvh.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_bvh.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_bvh.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_postprocessing_taa</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">13.62% · 80×48</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_taa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_taa.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_taa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_taa.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_taa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_taa.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_postprocessing_outline</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">13.52% · 80×48</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_outline.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_outline.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_outline.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_outline.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_outline.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_outline.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_loader_vox</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">13.49% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_vox.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_vox.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_vox.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_vox.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_vox.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_vox.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_postprocessing_smaa</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">13.49% · 80×48</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_smaa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_smaa.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_smaa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_smaa.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_smaa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_smaa.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_sky</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">13.15% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_sky.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_sky.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_sky.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_sky.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_sky.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_sky.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_points_waves</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">12.46% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_points_waves.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_points_waves.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_points_waves.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_points_waves.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_points_waves.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_points_waves.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_shadowmap_vsm</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">12.37% · 80×48</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap_vsm.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap_vsm.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap_vsm.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap_vsm.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap_vsm.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap_vsm.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_postprocessing_ssao</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">12.03% · 80×48</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_ssao.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_ssao.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_ssao.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_ssao.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_ssao.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_ssao.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_animation_particles</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">11.07% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_particles.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_particles.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_particles.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_particles.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_particles.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_particles.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_shadowmap_pointlight</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">10.96% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap_pointlight.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_shadowmap_pointlight.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap_pointlight.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_shadowmap_pointlight.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap_pointlight.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_shadowmap_pointlight.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_postprocessing_fxaa</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">10.95% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_fxaa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_fxaa.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_fxaa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_fxaa.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_fxaa.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_fxaa.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_points_dynamic</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">10.85% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_points_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_points_dynamic.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_points_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_points_dynamic.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_points_dynamic.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_points_dynamic.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_loader_xyz</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">10.84% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_xyz.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_xyz.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_xyz.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_xyz.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_xyz.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_xyz.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_materials_physical_transmission</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">10.56% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_physical_transmission.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_materials_physical_transmission.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_physical_transmission.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_materials_physical_transmission.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_physical_transmission.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_materials_physical_transmission.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_animation_keyframes</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">10.29% · 80×48</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_keyframes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_animation_keyframes.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_keyframes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_animation_keyframes.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_keyframes.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_animation_keyframes.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_particles_buffer</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">9.27% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_particles_buffer.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_particles_buffer.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_particles_buffer.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_particles_buffer.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_particles_buffer.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_particles_buffer.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_postprocessing_afterimage</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">8.13% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_afterimage.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_afterimage.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_afterimage.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_afterimage.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_afterimage.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_afterimage.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_lights_rectarea</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">7.90% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lights_rectarea.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lights_rectarea.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lights_rectarea.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lights_rectarea.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lights_rectarea.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lights_rectarea.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_interactive_raycasting_points</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">6.61% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_raycasting_points.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_interactive_raycasting_points.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_raycasting_points.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_interactive_raycasting_points.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_raycasting_points.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_interactive_raycasting_points.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_camera</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">5.81% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_camera.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_camera.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_camera.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_camera.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_camera.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_camera.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>misc_controls_transform</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">5.18% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/misc_controls_transform.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/misc_controls_transform.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/misc_controls_transform.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/misc_controls_transform.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/misc_controls_transform.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/misc_controls_transform.png"></a></div>
+  <div data-v="minor" class="id">
+    <div>webgl_loader_3ds</div>
+    <div class="verdict" style="background:#f59e0b">minor</div>
+    <div class="ratio">5.03% · 1264×569</div>
+  </div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_3ds.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_3ds.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_3ds.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_3ds.png"></a></div>
+  <div data-v="minor"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_3ds.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_3ds.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webgl_postprocessing_transition</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">4.12% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_transition.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_postprocessing_transition.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_transition.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_postprocessing_transition.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_transition.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_postprocessing_transition.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webgl_loader_pcd</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">3.14% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_pcd.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_pcd.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_pcd.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_pcd.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_pcd.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_pcd.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webgl_lines_dashed</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">2.51% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lines_dashed.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_lines_dashed.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lines_dashed.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_lines_dashed.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lines_dashed.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_lines_dashed.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webgl_loader_pdb</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">1.97% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_pdb.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_pdb.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_pdb.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_pdb.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_pdb.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_pdb.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webxr_ar_plane_detection</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">1.83% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webxr_ar_plane_detection.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webxr_ar_plane_detection.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webxr_ar_plane_detection.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webxr_ar_plane_detection.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webxr_ar_plane_detection.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webxr_ar_plane_detection.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webxr_ar_cones</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">1.79% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webxr_ar_cones.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webxr_ar_cones.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webxr_ar_cones.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webxr_ar_cones.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webxr_ar_cones.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webxr_ar_cones.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webgl_loader_md2</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">1.66% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_md2.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_md2.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_md2.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_md2.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_md2.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_md2.png"></a></div>
+  <div data-v="match" class="id">
+    <div>webgl_loader_nrrd</div>
+    <div class="verdict" style="background:#10b981">match</div>
+    <div class="ratio">1.63% · 1264×569</div>
+  </div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_nrrd.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/ported/webgl_loader_nrrd.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_nrrd.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/reference/webgl_loader_nrrd.png"></a></div>
+  <div data-v="match"><a href="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_nrrd.png" target="_blank"><img loading="lazy" src="file:///D:/Developments/tslib/@woby/three/playwright.test/screenshots/diff/webgl_loader_nrrd.png"></a></div>
+</div>
+
+<div class="section">no_reference (111) — need capture from threejs.org</div>
+<div class="no-ref-list">canvas_fix_verify<br>css3d_periodictable<br>current_state<br>plane_verify<br>test_home<br>test_manual2<br>test_ply_current<br>test_ply_loaded<br>water<br>water_debug<br>webgl_animation_keyframe<br>webgl_animation_multiple<br>webgl_animation_skinning_blending_check<br>webgl_animation_walk<br>webgl_audio<br>webgl_batch_lod_bvh<br>webgl_boxes<br>webgl_boxes_click<br>webgl_camera_logarithmic_depth_buffer<br>webgl_canvas_texture<br>webgl_clipping_intersection_check2<br>webgl_clipping_stencil<br>webgl_color_grading<br>webgl_css2d<br>webgl_css3d<br>webgl_css3d_demo<br>webgl_custom_shader<br>webgl_d_lines<br>webgl_effects_anaglyph_check<br>webgl_effects_anaglyph_check2<br>webgl_effects_anaglyph_check3<br>webgl_effects_anaglyph_check4<br>webgl_effects_ascii<br>webgl_effects_stereo2<br>webgl_effects_stereo3<br>webgl_effects_stereo_check<br>webgl_fat_lines<br>webgl_fat_lines_advanced<br>webgl_fog_check<br>webgl_geometries_showcase<br>webgl_geometry_colors_lut<br>webgl_geometry_csg<br>webgl_geometry_cube<br>webgl_geometry_cube2<br>webgl_geometry_text_stroke<br>webgl_group<br>webgl_helpers_debug<br>webgl_html_text<br>webgl_instancing<br>webgl_instancing_animated<br>webgl_instancing_billboards<br>webgl_instancing_dynamic_current<br>webgl_instancing_scatter<br>webgl_interactive_buffer_geometry<br>webgl_interactive_cubes_raycaster<br>webgl_lights_hemisphere<br>webgl_line3<br>webgl_lines_test<br>webgl_loader_gltf_2<br>webgl_loader_gltf_anisotropy<br>webgl_loader_gltf_demo<br>webgl_materials_all<br>webgl_materials_colors<br>webgl_materials_normal<br>webgl_modifier_curve<br>webgl_modifier_simplify<br>webgl_morph_targets<br>webgl_multiple_geometries<br>webgl_normal_map<br>webgl_object3d<br>webgl_particles<br>webgl_physics<br>webgl_plane<br>webgl_point_cloud<br>webgl_postprocessing_bokeh<br>webgl_postprocessing_chromatic<br>webgl_postprocessing_demo<br>webgl_postprocessing_depth<br>webgl_postprocessing_glitch<br>webgl_postprocessing_godrays<br>webgl_postprocessing_nodes<br>webgl_postprocessing_taa_fixed<br>webgl_postprocessing_temporal<br>webgl_postprocessing_vignette<br>webgl_reflection<br>webgl_reflector<br>webgl_shaders_ocean<br>webgl_shaders_sky<br>webgl_shader_lava<br>webgl_simple_line<br>webgl_static_text<br>webgl_svg<br>webgl_terrain<br>webgl_textures_cube<br>webgl_text_geometry<br>webgl_tone_mapping<br>webgl_toon<br>webgl_useframe_test<br>webgl_uvs<br>webgl_vr<br>webgl_webgpu<br>webgl_webxr<br>webgl_webxr_anchors<br>webgl_webxr_ar<br>webgl_webxr_hit_test<br>webgl_webxr_layers<br>webgl_webxr_vr<br>webgl_wireframes<br>webxr_sandbox<br>webxr_vr_ballshooter<br>webxr_vr_paint</div>
+
+
+
+<script>
+document.querySelectorAll('.filter button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filter button').forEach(x => x.classList.remove('on'))
+    b.classList.add('on')
+    const f = b.dataset.f
+    document.querySelectorAll('.grid [data-v]').forEach(el => {
+        el.style.display = (f === 'all' || el.dataset.v === f) ? '' : 'none'
+    })
+}))
+</script>
+</body></html>

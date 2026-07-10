@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import ClippingNode, { ClippingNodeScope } from 'three/src/nodes/accessors/ClippingNode.js'
 export { ClippingNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.clippingNode = clippingNode
 
 
 
-const _clippingNode = ([...objProps.node,
+const _clippingNode = ([...(objProps.node ?? []),
     'scope',
 ] as const).distinct()
 objProps.clippingNode = _clippingNode

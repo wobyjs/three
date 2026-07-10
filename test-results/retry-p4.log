@@ -1,0 +1,64 @@
+[capture-via-dv] 58 demos, profile=profile-4, port=5300, wait=4000ms (single tab reuse)
+[profile-4] warmup ... 
+  warmup ok in 2.4s
+[profile-4] webgl_animation_particles ... NO-CANVAS
+[profile-4] webgl_animation_skinning ... NO-CANVAS
+[profile-4] webgl_clipping_advanced ... NO-CANVAS
+[profile-4] webgl_geometry_convex ... NO-CANVAS
+[profile-4] webgl_geometry_csg ... NO-CANVAS
+[profile-4] webgl_geometry_cube ... ok
+[profile-4] webgl_geometry_cube2 ... ok
+[profile-4] webgl_geometry_extrude_shapes ... ok
+[profile-4] webgl_geometry_lathe ... NO-CANVAS
+[profile-4] webgl_geometry_minecraft ... ok
+[profile-4] webgl_geometry_shapes ... ok
+[profile-4] webgl_geometry_spline_editor ... NO-CANVAS
+[profile-4] webgl_helpers ... NO-CANVAS
+[profile-4] webgl_html_text ... NO-CANVAS
+[profile-4] webgl_instancing_billboards ... NO-CANVAS
+[profile-4] webgl_instancing_dynamic ... NO-CANVAS
+[profile-4] webgl_instancing_raycast ... NO-CANVAS
+[profile-4] webgl_instancing_scatter ... ok
+[profile-4] webgl_interactive_buffer_geometry ... ok
+[profile-4] webgl_interactive_cubes ... ok
+[profile-4] webgl_interactive_cubes_gpu ... ok
+[profile-4] webgl_interactive_cubes_ortho ... ok
+[profile-4] webgl_interactive_cubes_raycaster ... ok
+[profile-4] webgl_interactive_lines ... ok
+[profile-4] webgl_interactive_raycasting_points ... ok
+[profile-4] webgl_interactive_voxelpainter ... NO-CANVAS
+[profile-4] webgl_lensflares ... ok
+[profile-4] webgl_lightprobe ... ok
+[profile-4] webgl_lights ... ok
+[profile-4] webgl_lights_hemisphere ... ok
+[profile-4] webgl_lights_rectarea ... ok
+[profile-4] webgl_lights_spotlight ... ok
+[profile-4] webgl_line3 ... ok
+[profile-4] webgl_lines ... ok
+[profile-4] webgl_lines_dashed ... ok
+[profile-4] webgl_lines_test ... ok
+[profile-4] webgl_loader_3dm ... ok
+[profile-4] webgl_loader_3ds ... ok
+[profile-4] webgl_loader_amf ... NO-CANVAS
+[profile-4] webgl_loader_bvh ... NO-CANVAS
+[profile-4] webgl_loader_collada ... NO-CANVAS
+[profile-4] webgl_loader_fbx ... NO-CANVAS
+[profile-4] webgl_loader_kmz ... NO-CANVAS
+[profile-4] webgl_loader_lwo ... NO-CANVAS
+[profile-4] webgl_loader_svg ... NO-CANVAS
+[profile-4] webgl_materials_car ... NO-CANVAS
+[profile-4] webgl_materials_normal ... NO-CANVAS
+[profile-4] webgl_materials_normalmap ... NO-CANVAS
+[profile-4] webgl_materials_physical ... NO-CANVAS
+[profile-4] webgl_materials_physical_clearcoat ... NO-CANVAS
+[profile-4] webgl_materials_physical_transmission ... NO-CANVAS
+[profile-4] webgl_materials_transparency ... NO-CANVAS
+[profile-4] webgl_mirror ... NO-CANVAS
+[profile-4] webgl_modifier_curve ... NO-CANVAS
+[profile-4] webgl_modifier_simplify ... NO-CANVAS
+[profile-4] webgl_morph_targets ... NO-CANVAS
+[profile-4] webgl_multiple_geometries ... NO-CANVAS
+[profile-4] webgl_normal_map ... NO-CANVAS
+
+[capture-via-dv] done: ok=25 syntax=0 console_err=0 no_canvas=33 failed=0
+summary → D:\Developments\tslib\@woby\three\test-results\capture-via-dv-summary.json

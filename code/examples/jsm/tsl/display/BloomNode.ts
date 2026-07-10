@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import BloomNode from 'three/examples/jsm/tsl/display/BloomNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
 import { Node } from '../../../../three-types'
@@ -39,7 +39,7 @@ consParams.bloomNode = bloomNode
 
 // Inherits from TempNode and adds its own specific properties
 const _bloomNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'inputNode',
 	'strength',
 	'radius',

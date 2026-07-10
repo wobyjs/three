@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { CubicInterpolant } from 'three/src/math/interpolants/CubicInterpolant.js'
 export { CubicInterpolant } from 'three/src/math/interpolants/CubicInterpolant.js'
 import { Three } from '../../../lib/3/three'
@@ -39,7 +39,7 @@ declare module '../../../lib/3/objProps' {
 
 const cubicInterpolant = ([
     'parameterPositions',
-    'samplesValues',
+    'sampleValues',
     'sampleSize',
     'resultBuffer',
 ] as const).distinct()
@@ -47,7 +47,7 @@ consParams.cubicInterpolant = cubicInterpolant
 
 
 
-const _cubicInterpolant = ([...objProps.interpolant,
+const _cubicInterpolant = ([...(objProps.interpolant ?? []),
 ] as const).distinct()
 objProps.cubicInterpolant = _cubicInterpolant
 

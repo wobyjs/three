@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { StereoCamera } from 'three/src/cameras/StereoCamera.js'
 export { StereoCamera } from 'three/src/cameras/StereoCamera.js'
 import { Three } from '../../lib/3/three'
@@ -65,7 +65,7 @@ consParams.stereoCamera = stereoCamera
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/StereoCamera.js | Source}
  */
 
-const _stereoCamera = ([...objProps.camera,
+const _stereoCamera = ([...(objProps.camera ?? []),
     /**
      * @remarks Expects a `Float`
      * @defaultValue `1`

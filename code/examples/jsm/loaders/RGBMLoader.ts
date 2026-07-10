@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { RGBMLoader } from 'three/examples/jsm/loaders/RGBMLoader.js'
 export * from 'three/examples/jsm/loaders/RGBMLoader.js'
@@ -71,7 +71,7 @@ const _rgbm = ([
 objProps.rgbm = _rgbm
 
 
-const _rgbmLoader = ([...objProps.dataTextureLoader,
+const _rgbmLoader = ([...(objProps.dataTextureLoader ?? []),
     'type',
     'maxrange',
 ] as const).distinct()

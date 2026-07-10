@@ -1,4 +1,4 @@
-import { Object3D } from 'three/src/core/Object3D.js'
+﻿import { Object3D } from 'three/src/core/Object3D.js'
 import { type Node } from '../../../three-types'
 import Object3DNode_ from 'three/src/nodes/accessors/Object3DNode.js'
 import { Three } from '../../../lib/3/three'
@@ -43,7 +43,7 @@ consParams.object3dNode = object3dNode
 
 
 
-const _object3dNode = ([...objProps.node,
+const _object3dNode = ([...(objProps.node ?? []),
     'scope',
     'object3d',
 ] as const).distinct()

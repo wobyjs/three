@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js'
 export * from 'three/examples/jsm/loaders/DDSLoader.js'
@@ -70,7 +70,7 @@ const _dds = ([
 objProps.dds = _dds
 
 
-const _ddsLoader = ([...objProps.compressedTextureLoader,
+const _ddsLoader = ([...(objProps.compressedTextureLoader ?? []),
 ] as const).distinct()
 objProps.ddsLoader = _ddsLoader
 

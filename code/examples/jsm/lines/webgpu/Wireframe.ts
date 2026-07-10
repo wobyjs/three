@@ -38,7 +38,7 @@ declare module '../../../../lib/3/objProps' {
 	}
 }
 
-const webGPUWireframe2 = ([//...consParams.lineSegments2,
+const webGPUWireframe2 = ([//...(consParams.lineSegments2 ?? []),
 	'geometry',
 	'material',
 ] as const).distinct()

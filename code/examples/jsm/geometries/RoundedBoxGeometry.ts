@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 export * from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 
@@ -49,7 +49,7 @@ consParams.roundedBoxGeometry = roundedBoxGeometry
 
 
 
-const _roundedBoxGeometry = ([...objProps.boxGeometry,
+const _roundedBoxGeometry = ([...(objProps.boxGeometry ?? []),
 ] as const).distinct()
 objProps.roundedBoxGeometry = _roundedBoxGeometry
 

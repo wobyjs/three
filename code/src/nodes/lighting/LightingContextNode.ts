@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import LightingModel from 'three/src/nodes/core/LightingModel.js'
 import { Node } from '../../../three-types'
 import LightingContextNode from 'three/src/nodes/lighting/LightingContextNode.js'
@@ -50,7 +50,7 @@ consParams.lightingContextNode = lightingContextNode
 
 
 
-const _lightingContextNode = ([...objProps.contextNode,
+const _lightingContextNode = ([...(objProps.contextNode ?? []),
     'lightingModelNode',
     'backdropNode',
     'backdropAlphaNode',

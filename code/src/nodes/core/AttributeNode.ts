@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import AttributeNode from 'three/src/nodes/core/AttributeNode.js'
 export { AttributeNode }
@@ -46,7 +46,7 @@ consParams.attributeNode = attributeNode
 
 
 
-const _attributeNode = ([...objProps.node,
+const _attributeNode = ([...(objProps.node ?? []),
 ] as const).distinct()
 objProps.attributeNode = _attributeNode
 

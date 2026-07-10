@@ -97,9 +97,9 @@ export type UniformProps<T = any> = Node<Uniform<T>, typeof Uniform<T>, { value:
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        uniforms: Partial<{ value: any }>
+        uniform: Partial<{ value: any }>
     }
 }
 
-defaults.uniforms = {}
+defaults.uniform = {}
 

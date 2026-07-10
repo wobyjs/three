@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { Vector2 } from 'three/src/math/Vector2.js'
 import { Curve } from 'three/src/extras/core/Curve.js'
 import { Vector3 } from 'three/src/math/Vector3.js'
@@ -118,7 +118,7 @@ consParams.tubeGeometry = tubeGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/TubeGeometry.js | Source}
  */
 
-const _tubeGeometry = ([...objProps.bufferGeometry, ...(objProps.parametricGeometry ?? []),
+const _tubeGeometry = ([...(objProps.bufferGeometry ?? []), ...(objProps.parametricGeometry ?? []),
     /**
      * An array of {@link THREE.Vector3 | Vector3} tangents
      */

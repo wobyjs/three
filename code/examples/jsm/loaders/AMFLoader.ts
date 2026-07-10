@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { AMFLoader } from 'three/examples/jsm/loaders/AMFLoader.js'
 export * from 'three/examples/jsm/loaders/AMFLoader.js'
@@ -47,7 +47,7 @@ consParams.amfLoader = amfLoader
 
 
 
-const _amfLoader = ([...objProps.loader,
+const _amfLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.amfLoader = _amfLoader
 

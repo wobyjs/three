@@ -51,6 +51,10 @@ const euler = ([
      * @default 0
      */
     'z',
+    /**
+     * @default THREE.Euler.DEFAULT_ORDER
+     */
+    'order',
 ] as const).distinct()
 consParams.euler = euler
 

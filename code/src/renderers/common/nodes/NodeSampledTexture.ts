@@ -1,4 +1,4 @@
-import { Node } from '../../../../three-types'
+﻿import { Node } from '../../../../three-types'
 // These are internal classes for the renderer's node system.
 import { NodeSampledTexture, NodeSampledCubeTexture, NodeSampledTexture3D } from 'three/src/renderers/common/nodes/NodeSampledTexture.js'
 export * from 'three/src/renderers/common/nodes/NodeSampledTexture.js'
@@ -59,11 +59,11 @@ const nodeSampledTexture = ([
 consParams.nodeSampledTexture = nodeSampledTexture
 
 // Inherits from base
-const nodeSampledCubeTexture = ([...consParams.nodeSampledTexture] as const).distinct()
+const nodeSampledCubeTexture = ([...(consParams.nodeSampledTexture ?? [])] as const).distinct()
 consParams.nodeSampledCubeTexture = nodeSampledCubeTexture
 
 // Inherits from base
-const nodeSampledTexture3D = ([...consParams.nodeSampledTexture] as const).distinct()
+const nodeSampledTexture3D = ([...(consParams.nodeSampledTexture ?? [])] as const).distinct()
 consParams.nodeSampledTexture3D = nodeSampledTexture3D
 
 
@@ -81,13 +81,13 @@ const _nodeSampledTexture = ([
 objProps.nodeSampledTexture = _nodeSampledTexture
 
 const _nodeSampledCubeTexture = ([
-	...objProps.nodeSampledTexture,
+	...(objProps.nodeSampledTexture ?? []),
 	'isSampledCubeTexture',
 ] as const).distinct()
 objProps.nodeSampledCubeTexture = _nodeSampledCubeTexture
 
 const _nodeSampledTexture3D = ([
-	...objProps.nodeSampledTexture,
+	...(objProps.nodeSampledTexture ?? []),
 	'isSampledTexture3D',
 ] as const).distinct()
 objProps.nodeSampledTexture3D = _nodeSampledTexture3D

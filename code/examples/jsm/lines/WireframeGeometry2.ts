@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { WireframeGeometry2 } from 'three/examples/jsm/lines/WireframeGeometry2.js'
 export * from 'three/examples/jsm/lines/WireframeGeometry2.js'
@@ -47,7 +47,7 @@ consParams.wireframeGeometry2 = wireframeGeometry2
 
 
 
-const _wireframeGeometry2 = ([...objProps.lineSegmentsGeometry,
+const _wireframeGeometry2 = ([...(objProps.lineSegmentsGeometry ?? []),
 ] as const).distinct()
 objProps.wireframeGeometry2 = _wireframeGeometry2
 

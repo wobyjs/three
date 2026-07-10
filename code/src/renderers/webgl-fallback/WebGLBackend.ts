@@ -1,4 +1,4 @@
-import { Node, WrapAsString } from '../../../three-types'
+﻿import { Node, WrapAsString } from '../../../three-types'
 import { BackendParameters } from 'three/src/renderers/common/Backend.js'
 import WebGLBackend, { WebGLBackendParameters } from 'three/src/renderers/webgl-fallback/WebGLBackend.js'
 export { WebGLBackend }
@@ -46,7 +46,7 @@ declare module '../../../lib/3/objProps' {
 // }
 
 consParams.webglBackendParameters = {
-    // ...consParams.backendParameters,
+    // ...(consParams.backendParameters ?? []),
     ...(['canvas', 'trackTimestamp',
     ] as const).toObject()
 }
@@ -56,13 +56,13 @@ consParams.webglBackend = { ...consParams.webglBackendParameters }
 
 
 
-const _webglBackendParameters = ([ //...objProps.backendParameters,
+const _webglBackendParameters = ([ //...(objProps.backendParameters ?? []),
     'trackTimestamp',
 ] as const).distinct()
 objProps.webglBackendParameters = _webglBackendParameters
 
 
-const _webglBackend = ([...objProps.backend,
+const _webglBackend = ([...(objProps.backend ?? []),
 ] as const).distinct()
 objProps.webglBackend = _webglBackend
 

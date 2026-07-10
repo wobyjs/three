@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import InputNode from 'three/src/nodes/core/InputNode.js'
 export { InputNode }
 import { consParams } from '../../../lib/3/consParams'
@@ -35,7 +35,7 @@ consParams.inputNode = inputNode
 
 
 
-const _inputNode = ([...objProps.node,
+const _inputNode = ([...(objProps.node ?? []),
     'isInputNode',
     'value',
     'precision',

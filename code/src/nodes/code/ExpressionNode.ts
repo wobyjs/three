@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import ExpressionNode from 'three/src/nodes/code/ExpressionNode.js'
 export { ExpressionNode }
 import { Three } from '../../../lib/3/three'
@@ -45,7 +45,7 @@ consParams.expressionNode = expressionNode
 
 
 
-const _expressionNode = ([...objProps.tempNode,
+const _expressionNode = ([...(objProps.tempNode ?? []),
     'snipped',
 ] as const).distinct()
 objProps.expressionNode = _expressionNode

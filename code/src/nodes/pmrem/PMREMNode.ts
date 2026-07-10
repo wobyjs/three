@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import PMREMNode from 'three/src/nodes/pmrem/PMREMNode.js'
 import { Texture } from 'three/src/textures/Texture.js'
@@ -49,7 +49,7 @@ consParams.pmremNode = pmremNode
 
 
 
-const _pmremNode = ([...objProps.tempNode,
+const _pmremNode = ([...(objProps.tempNode ?? []),
     'uvNode',
     'levelNode',
     'value',

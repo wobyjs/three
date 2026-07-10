@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import JoinNode from 'three/src/nodes/utils/JoinNode.js'
 export { JoinNode }
@@ -52,7 +52,7 @@ consParams.joinNode = joinNode
  * This node constructs given type from elements, like vec3(a,b,c)
  */
 
-const _joinNode = ([...objProps.tempNode,
+const _joinNode = ([...(objProps.tempNode ?? []),
     'nodes',
 ] as const).distinct()
 objProps.joinNode = _joinNode

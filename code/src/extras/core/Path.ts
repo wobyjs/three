@@ -1,4 +1,4 @@
-import { Node, Vector2 } from '../../../three-types'
+﻿import { Node, Vector2 } from '../../../three-types'
 import { Path } from 'three/src/extras/core/Path.js'
 export { Path } from 'three/src/extras/core/Path.js'
 import { consParams } from '../../../lib/3/consParams'
@@ -87,7 +87,7 @@ consParams.path3 = path3
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/core/Path.js | Source}
  */
 
-const _path3 = ([...objProps.curvePath,
+const _path3 = ([...(objProps.curvePath ?? []),
     /**
      * The current offset of the path. Any new {@link THREE.Curve | Curve} added will start here.
      * @defaultValue `new THREE.Vector2()`

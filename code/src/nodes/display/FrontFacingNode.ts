@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import FrontFacingNode from 'three/src/nodes/display/FrontFacingNode.js'
 export { FrontFacingNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.frontFacingNode = frontFacingNode
 
 
 
-const _frontFacingNode = ([...objProps.node,
+const _frontFacingNode = ([...(objProps.node ?? []),
     'isFrontFacingNode',
 ] as const).distinct()
 objProps.frontFacingNode = _frontFacingNode

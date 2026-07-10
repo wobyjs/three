@@ -93,7 +93,7 @@ consParams.transformControlsPlane = transformControlsPlane
 
 
 
-const _transformControlsEventMap = ([...objProps.object3dEventMap,
+const _transformControlsEventMap = ([...(objProps.object3dEventMap ?? []),
     'change',
     'mouseDown',
     'mouseUp',
@@ -126,7 +126,7 @@ const _transformControlsEventMap = ([...objProps.object3dEventMap,
 ] as const).distinct()
 objProps.transformControlsEventMap = _transformControlsEventMap
 
-const _transformControls = ([...objProps.object3d,
+const _transformControls = ([...(objProps.object3d ?? []),
     'domElement',
     // API
     'camera',
@@ -147,7 +147,7 @@ const _transformControls = ([...objProps.object3d,
 ] as const).distinct()
 objProps.transformControls = _transformControls
 
-const _transformControlsGizmo = ([...objProps.object3d,
+const _transformControlsGizmo = ([...(objProps.object3d ?? []),
     'isTransformControlsGizmo',
     'gizmo',
     'helper',

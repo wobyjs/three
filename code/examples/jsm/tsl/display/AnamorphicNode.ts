@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import AnamorphicNode from 'three/examples/jsm/tsl/display/AnamorphicNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js' // Aliased to avoid name clash
@@ -40,7 +40,7 @@ consParams.anamorphicNode = anamorphicNode
 
 // Inherits from TempNode and adds its own specific properties
 const _anamorphicNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'textureNode',
 	'tresholdNode',
 	'scaleNode',

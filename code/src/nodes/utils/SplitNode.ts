@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import SplitNode from 'three/src/nodes/utils/SplitNode.js'
 export { SplitNode }
@@ -52,7 +52,7 @@ consParams.splitNode = splitNode
 
 /** swizzle node */
 
-const _splitNode = ([...objProps.node,
+const _splitNode = ([...(objProps.node ?? []),
     'node',
     'components',
     /**

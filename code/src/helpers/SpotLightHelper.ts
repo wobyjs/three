@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Light } from 'three/src/lights/Light.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { SpotLightHelper } from 'three/src/helpers/SpotLightHelper.js'
@@ -81,7 +81,7 @@ consParams.spotLightHelper = spotLightHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/SpotLightHelper.js | Source}
  */
 
-const _spotLightHelper = ([...objProps.object3d,
+const _spotLightHelper = ([...(objProps.object3d ?? []),
     /**
      * {@link THREE.LineSegments | LineSegments} used to visualize the light.
      */

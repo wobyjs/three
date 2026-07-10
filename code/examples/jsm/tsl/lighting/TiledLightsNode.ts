@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import TiledLightsNode from 'three/examples/jsm/tsl/lighting/TiledLightsNode.js'
 import { Node } from '../../../../three-types'
 import { consParams } from '../../../../lib/3/consParams'
@@ -36,7 +36,7 @@ consParams.tiledLightsNode = tiledLightsNode
 
 // Inherits from LightsNode and adds its own specific properties
 const _tiledLightsNode = ([
-	...objProps.lightsNode, // <-- Inherits parent properties
+	...(objProps.lightsNode ?? []), // <-- Inherits parent properties
 	'materialLights',
 	'tiledLights',
 	'maxLights',

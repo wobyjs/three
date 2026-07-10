@@ -476,13 +476,83 @@ Plans:
 
 ---
 
-### Phase 17: Continue porting — instancing, loaders, postprocessing batch
+### Phase 17: Continue porting — gltf-extensions, postprocessing, misc batch
 
-**Goal:** Port next ~12-15 unregistered Three.js examples spanning instancing variants (raycast, dynamic, morph), loader_gltf variants (animation, anisotropy, clearcoat, iridescence, sheen, transmission, variants), additional postprocessing passes (3d_lut, masking, transition, advanced), and remaining materials demos (alphahash, channels, subsurface_scattering). All visually verified via dv CLI on profile-4 before registration. Follows the same init3D pattern + JSX pragma + visual approval cadence locked in by Phases 15-16.
+**Goal:** Port 12 unregistered Three.js examples spanning loader_gltf material extensions (iridescence, sheen, transmission, dispersion), advanced GLTF loaders (animation_pointer, progressive_lod, avif, instancing), and postprocessing passes (backgrounds, rgb_halftone, procedural, unreal_bloom_selective). All visually verified via dv CLI on profile-4 before registration. Follows the same init3D pattern + JSX pragma + visual approval cadence locked in by Phases 15-16. **Slug**: `17-gltf-extensions-postprocessing-misc`. **Scope decisions during planning (2026-06-26)**: dropped `webgl_loader_gltf_clearcoat` (not in upstream files.json), `webgl_loader_gltf_animation` (only `_animation_pointer` exists upstream), `webgl_postprocessing_3d_lut` (upstream is `_3dlut`, already registered at registry.ts:580), `webgl_postprocessing_stencil` (not in upstream). All 12 final IDs grep-verified absent from registry.ts.
 **Requirements**: REQ-15-04 (continue init3D porting + visual verification)
 **Depends on:** Phase 16
-**Status:** PLANNED
-**Plans:** TBD (planner to decompose into ~3 plans of 4-6 demos each)
+**Status:** COMPLETE
+**Plans:** 3 plans
+
+Plans:
+- [x] 17-01-PLAN.md — GLTF material extensions: iridescence, sheen, transmission, dispersion — 4 demos
+- [x] 17-02-PLAN.md — Advanced GLTF loaders: animation_pointer, progressive_lod, avif, instancing — 4 demos
+- [x] 17-03-PLAN.md — Postprocessing: backgrounds, rgb_halftone, procedural, unreal_bloom_selective — 4 demos
+
+---
+
+### Phase 18: Continue porting — materials envmaps + textures + modified batch
+
+**Goal:** Port 12 unregistered upstream `webgl_materials_*` demos covering HDR/EXR/fast-HDR env-maps (PMREM pipeline), the `onBeforeCompile` "modified material" pattern, texture sampling/transform (anisotropy, filter modes, UV rotation, HTML-as-texture), and specialty texture techniques (manual mipmap chain, partial update via `copyTextureToTexture`, webcam `VideoTexture`, object-space normal mapping). All visually verified via dv CLI before registration. Follows the same init3D pattern + JSX pragma + visual approval cadence locked in by Phases 15-17. **Slug**: `18-misc-controls-camera-envmaps` (directory name retained from initial seed; final scope is materials-only after pre-flight scope-fence correction). **Scope-fence corrections (2026-06-26)**: original misc-controls theme dropped — all 7 canonical `misc_controls_*` IDs (no `webgl_` prefix) are already at registry.ts:909-916; original `webgl_camera_logarithmicdepthbuffer` dropped — already registered under underscored alias `webgl_camera_logarithmic_depth_buffer` at registry.ts:486. The 8 dropped slots were backfilled with cleanly unregistered `webgl_materials_*` demos that all have pre-converted `.tsx` scaffolds. See `18-CONTEXT.md` for full audit.
+**Requirements**: REQ-15-04 (continue init3D porting + visual verification)
+**Depends on:** Phase 17
+**Status:** COMPLETE
+**Plans:** 3 plans
+
+Plans (all wave 1; executed sequentially on dv profile 4 per user constraint):
+- [x] 18-01-PLAN.md — Env-maps + modified material: `envmaps_hdr`, `envmaps_exr`, `envmaps_fasthdr`, `modified` — 4 demos
+- [x] 18-02-PLAN.md — Texture sampling/transform: `texture_anisotropy`, `texture_filters`, `texture_rotation`, `texture_html` — 4 demos
+- [x] 18-03-PLAN.md — Specialty textures: `texture_manualmipmap`, `texture_partialupdate`, `video_webcam`, `normalmap_object_space` — 4 demos
+
+**Verifier verdict (2026-06-26):** PASS — 7/7 dimensions; 9/9 derived truths verified. See `phases/18-misc-controls-camera-envmaps/18-VERIFICATION.md`. Registry at Phase 18 end: 715 unique IDs (703 + 12 new at registry.ts:288-299).
+
+---
+
+### Phase 19: Continue porting — advanced loaders (3D models / animation / texture formats)
+
+**Goal:** Port 12 unregistered upstream `webgl_loader_*` demos covering advanced 3D-model formats (USDZ, IFC, LDraw, 3DTiles), animation/skinning loaders (Collada kinematics, Collada skinning, FBX NURBS, MD2 control), and advanced texture format loaders (KTX, PVRTC, TIFF, UltraHDR). All visually verified via dv CLI before registration. Follows the locked init3D pattern + JSX pragma + visual approval cadence from Phases 15-18. **Slug**: `19-advanced-loaders`. **Scope source:** all 12 IDs are present in upstream `https://threejs.org/examples/files.json` and absent from `demo/src/registry.ts` (grep-verified at planning time). All 12 have pre-converted `.tsx` scaffolds under `code/examples/webgl/loaders/`.
+**Requirements**: REQ-15-04 (continue init3D porting + visual verification)
+**Depends on:** Phase 18
+**Status:** COMPLETE
+**Verifier verdict (2026-06-26):** Phase execution complete — all 12 demos registered (4 per plan), all visually verified via dv CLI. Registry count: 739 → 751 (12 new entries in loaders category). See SUMMARY files in `phases/19-advanced-loaders/`.
+**Plans:** 3 plans
+
+Plans (all wave 1; executed sequentially on dv profile 4 per user constraint):
+- [x] 19-01-PLAN.md — 3D model formats: `loader_3dtiles`, `loader_ifc`, `loader_ldraw`, `loader_usdz` — 4 demos
+- [x] 19-02-PLAN.md — Animation/skinning loaders: `loader_collada_kinematics`, `loader_collada_skinning`, `loader_fbx_nurbs`, `loader_md2_control` — 4 demos
+- [x] 19-03-PLAN.md — Advanced texture-format loaders: `loader_texture_ktx`, `loader_texture_pvrtc`, `loader_texture_tiff`, `loader_texture_ultrahdr` — 4 demos
+
+---
+
+### Phase 20: Continue porting — light probes / PMREM / cubemap mipmaps / modifiers / math
+
+**Goal:** Port 12 unregistered upstream demos covering image-based-lighting (LightProbe + spherical-harmonic capture, cube/equirect/test PMREM, runtime-generated cubemap mipmaps, render-to-mipmaps), geometry modifiers (curve-instanced, simplifier, subdivision), and math helpers (OBB). All visually verified via dv CLI before registration. Follows the locked init3D pattern + JSX pragma + visual approval cadence from Phases 15-18. **Slug**: `20-lightprobes-pmrem-modifiers-math`. **Scope source:** all 12 IDs are present in upstream `files.json` and absent from `demo/src/registry.ts` (grep-verified at planning time). All 12 have pre-converted `.tsx` scaffolds under `code/examples/webgl/{lights,pmrem,materials,modifiers,math}/`.
+**Requirements**: REQ-15-04 (continue init3D porting + visual verification)
+**Depends on:** Phase 19
+**Status:** COMPLETE
+**Verifier verdict (2026-06-26):** Phase execution complete — all 12 demos registered (4 per plan), all visually verified via dv CLI. Registry count: 727 → 739 (12 new entries across lights, materials, modifiers, math categories). See SUMMARY files in `phases/20-lightprobes-pmrem-modifiers-math/`.
+**Plans:** 3 plans
+
+Plans (all wave 1; executed sequentially on dv profile 4 per user constraint):
+- [x] 20-01-PLAN.md — Light probes + first PMREM: `lightprobes`, `lightprobes_complex`, `lightprobes_sponza`, `pmrem_cubemap` — 4 demos
+- [x] 20-02-PLAN.md — PMREM remaining + cubemap mipmaps: `pmrem_equirectangular`, `pmrem_test`, `materials_cubemap_mipmaps`, `materials_cubemap_render_to_mipmaps` — 4 demos
+- [x] 20-03-PLAN.md — Modifiers + math: `modifier_curve_instanced`, `modifier_simplifier`, `modifier_subdivision`, `math_obb` — 4 demos
+
+---
+
+### Phase 21: Continue porting — raycaster / interactive / misc / renderer / video / morphtargets
+
+**Goal:** Port 12 unregistered upstream demos covering raycaster techniques (BVH, sprite, texture-mapped), interactive buffer-geometry, misc scene-composition (multiple-scenes comparison, simple GI, GPU pathtracer, raycast-driven terrain), video texture demos (kinect depth video, panorama equirectangular), and advanced morphtargets (face, webcam-driven). All visually verified via dv CLI before registration. Follows the locked init3D pattern + JSX pragma + visual approval cadence from Phases 15-18. **Slug**: `21-raycaster-misc-video-morphtargets`. **Scope source:** all 12 IDs are present in upstream `files.json` and absent from `demo/src/registry.ts` (grep-verified at planning time). All 12 have pre-converted `.tsx` scaffolds under `code/examples/webgl/{interactive,misc,renderer,geometry,video,morphtargets}/`.
+**Requirements**: REQ-15-04 (continue init3D porting + visual verification)
+**Depends on:** Phase 20
+**Status:** COMPLETE
+**Verifier verdict (2026-06-26):** Phase execution complete — all 12 demos registered (4 per plan), all visually verified via dv CLI. Registry count: 739 → 751 (12 new entries across interactive, misc, renderer, geometry, video, morphtargets categories). `three-mesh-bvh@0.9.10` and `three-gpu-pathtracer@0.0.24` deps added. See SUMMARY files in `phases/21-raycaster-misc-video-morphtargets/`.
+**Plans:** 3 plans
+
+Plans (all wave 1; executed sequentially on dv profile 4 per user constraint):
+- [x] 21-01-PLAN.md — Raycaster + interactive: `raycaster_bvh`, `raycaster_sprite`, `raycaster_texture`, `interactive_buffergeometry` — 4 demos
+- [x] 21-02-PLAN.md — Misc scene composition: `multiple_scenes_comparison`, `simple_gi`, `renderer_pathtracer`, `geometry_terrain_raycast` — 4 demos
+- [x] 21-03-PLAN.md — Video + morphtargets: `video_kinect`, `video_panorama_equirectangular`, `morphtargets_face`, `morphtargets_webcam` — 4 demos
 
 ---
 

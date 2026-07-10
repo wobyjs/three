@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import MatcapUVNode from 'three/src/nodes/utils/MatcapUVNode.js'
 export { MatcapUVNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.matcapUvNode = matcapUvNode
 
 
 
-const _matcapUvNode = ([...objProps.tempNode,
+const _matcapUvNode = ([...(objProps.tempNode ?? []),
 ] as const).distinct()
 objProps.matcapUvNode = _matcapUvNode
 

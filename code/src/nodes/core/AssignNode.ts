@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import AssignNode from 'three/src/nodes/core/AssignNode.js'
 export { AssignNode }
@@ -46,7 +46,7 @@ consParams.assignNode = assignNode
 
 
 
-const _assignNode = ([...objProps.tempNode,
+const _assignNode = ([...(objProps.tempNode ?? []),
 ] as const).distinct()
 objProps.assignNode = _assignNode
 

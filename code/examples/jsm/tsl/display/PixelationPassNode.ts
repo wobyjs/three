@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import PixelationPassNode from 'three/examples/jsm/tsl/display/PixelationPassNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
@@ -48,7 +48,7 @@ const pixelationPassNode = ([
 consParams.pixelationPassNode = pixelationPassNode
 
 const _pixelationPassNode = ([
-	...objProps.passNode, // <-- Inherits from PassNode
+	...(objProps.passNode ?? []), // <-- Inherits from PassNode
 	'pixelSize',
 	'normalEdgeStrength',
 	'depthEdgeStrength',
@@ -69,7 +69,7 @@ const _internal_pixelationNode_params = ([
 consParams.pixelationNode = _internal_pixelationNode_params
 
 const _internal_pixelationNode_props = ([
-	...objProps.tempNode, // <-- Inherits from TempNode
+	...(objProps.tempNode ?? []), // <-- Inherits from TempNode
 	'textureNode',
 	'depthNode',
 	'normalNode',

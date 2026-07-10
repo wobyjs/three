@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshPhongMaterial, MeshPhongMaterialParameters } from 'three/src/materials/MeshPhongMaterial.js'
 export { MeshPhongMaterial } from 'three/src/materials/MeshPhongMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -43,7 +43,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshPhongMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     /** geometry color in hexadecimal. Default is 0xffffff. */
     ...(['color',
         'specular',
@@ -86,7 +86,7 @@ consParams.meshPhongMaterial = { ...consParams.meshPhongMaterialParameters }
 
 
 
-const _meshPhongMaterialParameters = ([...objProps.materialParameters,
+const _meshPhongMaterialParameters = ([...(objProps.materialParameters ?? []),
     /** geometry color in hexadecimal. Default is 0xffffff. */
     'color',
     'specular',
@@ -125,7 +125,7 @@ const _meshPhongMaterialParameters = ([...objProps.materialParameters,
 objProps.meshPhongMaterialParameters = _meshPhongMaterialParameters
 
 
-const _meshPhongMaterial = ([...objProps.material,
+const _meshPhongMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshNormalMaterial'
      */

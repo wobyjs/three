@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { SVGRenderer } from 'three/examples/jsm/renderers/SVGRenderer.js'
 export * from 'three/examples/jsm/renderers/SVGRenderer.js'
 
@@ -52,7 +52,7 @@ const svgRenderer = ([
 consParams.svgRenderer = svgRenderer
 
 
-const _svgObject = ([...objProps.object3d,
+const _svgObject = ([...(objProps.object3d ?? []),
     'node',
 ] as const).distinct()
 objProps.svgObject = _svgObject

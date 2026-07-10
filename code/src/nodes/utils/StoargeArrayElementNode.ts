@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import StorageBufferNode from 'three/src/nodes/accessors/StorageBufferNode.js'
 import StoargeArrayElementNode from 'three/src/nodes/utils/StorageArrayElementNode.js'
@@ -48,7 +48,7 @@ consParams.storageArrayElementNode = storageArrayElementNode
 
 
 
-const _storageArrayElementNode = ([...objProps.arrayElementNode,
+const _storageArrayElementNode = ([...(objProps.arrayElementNode ?? []),
     'node',
     'storageBufferNode',
 ] as const).distinct()

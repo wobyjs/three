@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { BufferGeometryLoader } from 'three/src/loaders/BufferGeometryLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -44,7 +44,7 @@ const bufferGeometryLoader = ([
 consParams.bufferGeometryLoader = bufferGeometryLoader
 
 
-const _bufferGeometryLoader = ([...objProps.loader] as const).distinct()
+const _bufferGeometryLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.bufferGeometryLoader = _bufferGeometryLoader
 
 export type BufferGeometryLoaderProps = Node<BufferGeometryLoader, typeof BufferGeometryLoader, { manager?: LoadingManager }>

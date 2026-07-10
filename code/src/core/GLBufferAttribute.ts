@@ -148,9 +148,9 @@ export type GLBufferAttributeProps = Node<GLBufferAttribute, typeof GLBufferAttr
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        gLBufferAttribute: Partial<{ buffer: WebGLBuffer; type: GLenum; itemSize: number; elementSize: 1 | 2 | 4; count: number; }>
+        glBufferAttribute: Partial<{ buffer: WebGLBuffer; type: GLenum; itemSize: number; elementSize: 1 | 2 | 4; count: number; }>
     }
 }
 
-defaults.gLBufferAttribute = {}
+defaults.glBufferAttribute = {}
 

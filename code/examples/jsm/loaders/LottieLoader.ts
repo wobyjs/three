@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { LottieLoader } from 'three/examples/jsm/loaders/LottieLoader.js'
 export * from 'three/examples/jsm/loaders/LottieLoader.js'
@@ -47,7 +47,7 @@ consParams.lottieLoader = lottieLoader
 
 
 
-const _lottieLoader = ([...objProps.loader,
+const _lottieLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.lottieLoader = _lottieLoader
 

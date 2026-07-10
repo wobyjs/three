@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import PhongLightingModel from 'three/src/nodes/functions/PhongLightingModel.js'
 export { PhongLightingModel }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.phongLightingModel = phongLightingModel
 
 
 
-const _phongLightingModel = ([...objProps.lightingModel,
+const _phongLightingModel = ([...(objProps.lightingModel ?? []),
     'specular',
 ] as const).distinct()
 objProps.phongLightingModel = _phongLightingModel

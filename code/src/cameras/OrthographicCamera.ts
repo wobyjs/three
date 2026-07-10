@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'
 export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'
 import { Three } from '../../lib/3/three'
@@ -103,7 +103,7 @@ consParams.orthographicCamera = orthographicCamera
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/OrthographicCamera.js | Source}
  */
 
-const _orthographicCamera = ([...objProps.camera,
+const _orthographicCamera = ([...(objProps.camera ?? []),
     /**
      * Gets or sets the zoom factor of the camera.
      * @defaultValue `1`

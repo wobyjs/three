@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 export * from 'three/examples/jsm/loaders/3MFLoader.js'
@@ -46,7 +46,7 @@ consParams.threeMfLoader = threeMfLoader
 
 
 
-const _threeMfLoader = ([...objProps.loader,
+const _threeMfLoader = ([...(objProps.loader ?? []),
     'availableExtensions',
 ] as const).distinct()
 objProps.threeMfLoader = _threeMfLoader

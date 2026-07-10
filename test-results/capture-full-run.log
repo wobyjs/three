@@ -1,0 +1,75 @@
+[capture-via-dv] 180 demos, profile=profile-4, port=5174, wait=5000ms (single tab reuse)
+[profile-4] webgl_alpha ... ok
+[profile-4] webgl_animation_keyframe ... ok
+[profile-4] webgl_animation_keyframes ... ok
+[profile-4] webgl_animation_multiple ... ok
+[profile-4] webgl_animation_particles ... NO-CANVAS
+[profile-4] webgl_animation_skinning ... NO-CANVAS
+[profile-4] webgl_animation_skinning_blending ... ok
+[profile-4] webgl_animation_skinning_blending_check ... ok
+[profile-4] webgl_animation_walk ... ok
+[profile-4] webgl_boxes ... ok
+[profile-4] webgl_boxes_click ... ok
+[profile-4] webgl_buffergeometry ... ok
+[profile-4] webgl_camera ... ok
+[profile-4] webgl_camera_array ... ok
+[profile-4] webgl_canvas_texture ... ok
+[profile-4] webgl_clipping ... ok
+[profile-4] webgl_clipping_advanced ... ok
+[profile-4] webgl_clipping_intersection ... error:dv eval -s (() => {
+    const overlay = document.querySelector('vite-error-overl
+[profile-4] webgl_clipping_intersection_check2 ... ok
+[profile-4] webgl_clipping_stencil ... ok
+[profile-4] webgl_color_grading ... ok
+[profile-4] webgl_custom_shader ... ok
+[profile-4] webgl_decals ... ok
+[profile-4] webgl_d_lines ... ok
+[profile-4] webgl_effects_ascii ... ok
+[profile-4] webgl_fat_lines ... ok
+[profile-4] webgl_fat_lines_advanced ... ok
+[profile-4] webgl_fog ... ok
+[profile-4] webgl_fog_check ... ok
+[profile-4] webgl_geometries ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/Geometries.tsx [plugin:vite:esbuild] 
+[profile-4] webgl_geometries_showcase ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometries.tsx [plugin:vite:esbu
+[profile-4] webgl_geometry_colors ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometries.tsx [plugin:vite:esbu
+[profile-4] webgl_geometry_colors_lut ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometries.tsx [plugin:vite:esbu
+[profile-4] webgl_geometry_convex ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometries.tsx [plugin:vite:esbu
+[profile-4] webgl_geometry_csg ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx [plugin:vite:esb
+[profile-4] webgl_geometry_cube ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx [plugin:vite:esb
+[profile-4] webgl_geometry_cube2 ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx [plugin:vite:esb
+[profile-4] webgl_geometry_extrude_shapes ... error:dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\p
+[profile-4] webgl_geometry_lathe ... error:dv navigate -u http://localhost:5174/#webgl_geometry_lathe exit 1: Error: No pag
+[profile-4] webgl_geometry_minecraft ... error:dv navigate -u http://localhost:5174/#webgl_geometry_minecraft exit 1: Error: No
+[profile-4] webgl_geometry_shapes ... error:dv navigate -u http://localhost:5174/#webgl_geometry_shapes exit 1: Error: No pa
+[profile-4] webgl_geometry_spline_editor ... error:dv navigate -u http://localhost:5174/#webgl_geometry_spline_editor exit 1: Error
+[profile-4] webgl_geometry_teapot ... error:dv navigate -u http://localhost:5174/#webgl_geometry_teapot exit 1: Error: No pa
+[profile-4] webgl_geometry_text_stroke ... error:dv navigate -u http://localhost:5174/#webgl_geometry_text_stroke exit 1: Error: 
+[profile-4] webgl_group ... error:dv navigate -u http://localhost:5174/#webgl_group exit 1: Error: No page found. 
+[profile-4] webgl_helpers ... error:dv navigate -u http://localhost:5174/#webgl_helpers exit 1: Error: No page found
+[profile-4] webgl_html_text ... error:dv navigate -u http://localhost:5174/#webgl_html_text exit 1: Error: No page fou
+[profile-4] webgl_instancing ... error:dv navigate -u http://localhost:5174/#webgl_instancing exit 1: Error: No page fo
+[profile-4] webgl_instancing_animated ... error:dv navigate -u http://localhost:5174/#webgl_instancing_animated exit 1: Error: N
+[profile-4] webgl_instancing_billboards ... error:dv navigate -u http://localhost:5174/#webgl_instancing_billboards exit 1: Error:
+[profile-4] webgl_instancing_dynamic ... error:dv navigate -u http://localhost:5174/#webgl_instancing_dynamic exit 1: Error: No
+[profile-4] webgl_instancing_morph ... error:dv navigate -u http://localhost:5174/#webgl_instancing_morph exit 1: Error: No p
+[profile-4] webgl_instancing_performance ... error:dv navigate -u http://localhost:5174/#webgl_instancing_performance exit 1: Error
+[profile-4] webgl_instancing_raycast ... error:dv navigate -u http://localhost:5174/#webgl_instancing_raycast exit 1: Error: No
+[profile-4] webgl_instancing_scatter ... error:dv navigate -u http://localhost:5174/#webgl_instancing_scatter exit 1: Error: No
+[profile-4] webgl_interactive_buffer_geometry ... error:dv navigate -u http://localhost:5174/#webgl_interactive_buffer_geometry exit 1: 
+[profile-4] webgl_interactive_cubes ... error:dv navigate -u http://localhost:5174/#webgl_interactive_cubes exit 1: Error: No 
+[profile-4] webgl_interactive_cubes_gpu ... error:dv navigate -u http://localhost:5174/#webgl_interactive_cubes_gpu exit 1: Error:
+[profile-4] webgl_interactive_cubes_ortho ... error:dv navigate -u http://localhost:5174/#webgl_interactive_cubes_ortho exit 1: Erro
+[profile-4] webgl_interactive_cubes_raycaster ... error:dv navigate -u http://localhost:5174/#webgl_interactive_cubes_raycaster exit 1: 
+[profile-4] webgl_interactive_lines ... error:dv navigate -u http://localhost:5174/#webgl_interactive_lines exit 1: Error: No 
+[profile-4] webgl_interactive_raycasting_points ... error:dv navigate -u http://localhost:5174/#webgl_interactive_raycasting_points exit 1
+[profile-4] webgl_interactive_voxelpainter ... error:dv navigate -u http://localhost:5174/#webgl_interactive_voxelpainter exit 1: Err
+[profile-4] webgl_lensflares ... error:dv navigate -u http://localhost:5174/#webgl_lensflares exit 3221226505: 
+[profile-4] webgl_lightprobe ... error:dv navigate -u http://localhost:5174/#webgl_lightprobe exit 1: Error: No page fo
+[profile-4] webgl_lights ... error:dv navigate -u http://localhost:5174/#webgl_lights exit 1: Error: No page found.
+[profile-4] webgl_lights_hemisphere ... error:dv navigate -u http://localhost:5174/#webgl_lights_hemisphere exit 1: Error: No 
+[profile-4] webgl_lights_rectarea ... error:dv navigate -u http://localhost:5174/#webgl_lights_rectarea exit 1: Error: No pa
+[profile-4] webgl_lights_spotlight ... error:dv navigate -u http://localhost:5174/#webgl_lights_spotlight exit 1: Error: No p
+[profile-4] webgl_line3 ... error:dv navigate -u http://localhost:5174/#webgl_line3 exit 1: Error: No page found. 
+[profile-4] webgl_lines ... error:dv navigate -u http://localhost:5174/#webgl_lines exit 1: Error: No page found. 
+[profile-4] webgl_lines_dashed ... error:dv navigate -u http://localhost:5174/#webgl_lines_dashed exit 1: Error: No page 
+[profile-4] webgl_lines_test ... 

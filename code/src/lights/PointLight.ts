@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { PointLight } from 'three/src/lights/PointLight.js'
 export { PointLight } from 'three/src/lights/PointLight.js'
@@ -113,7 +113,7 @@ consParams.pointLight = pointLight
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/PointLight.js | Source}
  */
 
-const _pointLight = ([...objProps.light,
+const _pointLight = ([...(objProps.light ?? []),
     /**
      * @default 'PointLight'
      */

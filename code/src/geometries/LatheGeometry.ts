@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { Vector2 } from '../../three-types'
 import { LatheGeometry } from 'three/src/geometries/LatheGeometry.js'
 export { LatheGeometry } from 'three/src/geometries/LatheGeometry.js'
@@ -100,7 +100,7 @@ consParams.latheGeometry = latheGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/LatheGeometry.js | Source}
  */
 
-const _latheGeometry = ([...objProps.bufferGeometry,
+const _latheGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.latheGeometry = _latheGeometry
 

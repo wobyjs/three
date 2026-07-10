@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Timer } from 'three/examples/jsm/misc/Timer.js'
 export * from 'three/examples/jsm/misc/Timer.js'
 
@@ -112,7 +112,7 @@ objProps.timer = _timer
  * A timer that uses a fixed delta.
  */
 
-const _fixedTimer = ([...objProps.timer,
+const _fixedTimer = ([...(objProps.timer ?? []),
 ] as const).distinct()
 objProps.fixedTimer = _fixedTimer
 

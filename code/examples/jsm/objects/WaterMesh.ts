@@ -42,7 +42,7 @@ declare module '../../../lib/3/objProps' {
 	}
 }
 
-const water = ([...consParams.mesh,
+const water = ([...(consParams.mesh ?? []),
 	'geometry',
 	'options',
 ] as const).distinct()

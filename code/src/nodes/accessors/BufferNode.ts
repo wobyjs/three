@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import BufferNode from 'three/src/nodes/accessors/BufferNode.js'
 export { BufferNode }
 import { Three } from '../../../lib/3/three'
@@ -46,7 +46,7 @@ consParams.bufferNode = bufferNode
 
 
 
-const _bufferNode = ([...objProps.uniformNode,
+const _bufferNode = ([...(objProps.uniformNode ?? []),
     'isBufferNode',
     'bufferType',
     'bufferCount',

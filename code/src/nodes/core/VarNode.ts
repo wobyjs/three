@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import VarNode from 'three/src/nodes/core/VarNode.js'
 export { VarNode }
@@ -46,7 +46,7 @@ consParams.varNode = varNode
 
 
 
-const _varNode = ([...objProps.node,
+const _varNode = ([...(objProps.node ?? []),
     'node',
     'name',
 ] as const).distinct()

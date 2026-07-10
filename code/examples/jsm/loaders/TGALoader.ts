@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { TGALoader } from 'three/examples/jsm/loaders/TGALoader.js'
 export * from 'three/examples/jsm/loaders/TGALoader.js'
@@ -46,7 +46,7 @@ consParams.tgaLoader = tgaLoader
 
 
 
-const _tgaLoader = ([...objProps.dataTextureLoader,
+const _tgaLoader = ([...(objProps.dataTextureLoader ?? []),
 ] as const).distinct()
 objProps.tgaLoader = _tgaLoader
 

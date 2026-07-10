@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { CompressedTextureLoader } from 'three/src/loaders/CompressedTextureLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const compressedTextureLoader = ([
 ] as const).distinct()
 consParams.compressedTextureLoader = compressedTextureLoader
 
-const _compressedTextureLoader = ([...objProps.loader] as const).distinct()
+const _compressedTextureLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.compressedTextureLoader = _compressedTextureLoader
 
 export type CompressedTextureLoaderProps = Node<CompressedTextureLoader, typeof CompressedTextureLoader, { manager?: LoadingManager }>

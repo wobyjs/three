@@ -104,7 +104,7 @@ const _sessionLightProbe = ([
 ] as const).distinct()
 objProps.sessionLightProbe = _sessionLightProbe
 
-const _xrEstimatedLightEventMap = ([...objProps.object3dEventMap,
+const _xrEstimatedLightEventMap = ([...(objProps.object3dEventMap ?? []),
     /**
      * Fires when the estimated lighting values start being updated.
      */

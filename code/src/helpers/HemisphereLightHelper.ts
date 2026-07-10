@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { HemisphereLight } from 'three/src/lights/HemisphereLight.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { HemisphereLightHelper } from 'three/src/helpers/HemisphereLightHelper.js'
@@ -77,7 +77,7 @@ consParams.hemisphereLightHelper = hemisphereLightHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/HemisphereLightHelper.js | Source}
  */
 
-const _hemisphereLightHelper = ([...objProps.object3d,
+const _hemisphereLightHelper = ([...(objProps.object3d ?? []),
     /**
      * Reference to the HemisphereLight being visualized.
      */

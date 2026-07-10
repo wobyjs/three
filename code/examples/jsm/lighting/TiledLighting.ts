@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import '../../../src/lights/Light'
 import { TiledLighting } from 'three/examples/jsm/lighting/TiledLighting.js'
 
@@ -37,11 +37,11 @@ declare module '../../../lib/3/objProps' {
 	}
 }
 
-const tiledLighting = ([//...consParams.lineSegments2,
+const tiledLighting = ([//...(consParams.lineSegments2 ?? []),
 ] as const).distinct()
 consParams.tiledLighting = tiledLighting
 
-const _tiledLighting = ([...objProps.light,
+const _tiledLighting = ([...(objProps.light ?? []),
 	// 'geometry',
 	// 'material',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node, Vector3 } from '../../../three-types'
+﻿import { Node, Vector3 } from '../../../three-types'
 import { CatmullRomCurve3, CurveType } from 'three/src/extras/curves/CatmullRomCurve3.js'
 export { CatmullRomCurve3 } from 'three/src/extras/curves/CatmullRomCurve3.js'
 import { Three } from '../../../lib/3/three'
@@ -103,7 +103,7 @@ consParams.catmullRomCurve3 = catmullRomCurve3
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/CatmullRomCurve3.js | Source}
  */
 
-const _catmullRomCurve3 = ([...objProps.curve,
+const _catmullRomCurve3 = ([...(objProps.curve ?? []),
     /**
      * The curve will loop back onto itself when this is true.
      * @defaultValue `false`

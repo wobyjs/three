@@ -1,4 +1,4 @@
-import { Node, WrapAsString } from '../../three-types'
+﻿import { Node, WrapAsString } from '../../three-types'
 import { WebGLRenderer, type WebGLRendererParameters } from 'three/src/renderers/WebGLRenderer.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -255,7 +255,7 @@ objProps.webglDebug = _webglDebug
  * see {@link https://github.com/mrdoob/three.js/blob/master/src/renderers/WebGlRenderer.js|src/renderers/WebGlRenderer.js}
  */
 
-const _webglRenderer = ([...objProps.renderer,
+const _webglRenderer = ([...(objProps.renderer ?? []),
     /**
      * parameters is an optional object with properties defining the renderer's behaviour.
      * The constructor also accepts no parameters at all.

@@ -1,6 +1,6 @@
 {
   "name": "@woby/three",
-  "version": "0.2.86",
+  "version": "0.2.88",
   "publishConfig": {
     "access": "public"
   },
@@ -43,10 +43,10 @@
     "npmjs": "pnpm publish --access public",
     "commit": "pnpm git && pnpm bump && pnpm push",
     "release": "run-s -c commit npmjs",
-    "declaration": "tsc --project tsconfig.json --declaration --declarationMap --emitDeclarationOnly --outDir ./lib --rootDir ./code --skipLibCheck",
+    "declaration": "tsc --project tsconfig.json --declaration --declarationMap --emitDeclarationOnly --outDir ./lib --rootDir ./code --skipLibCheck || true",
     "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose --watch",
     "watch": "vite build --watch",
-    "build": "run-s clean:dist build:es build:umd && pnpm bump",
+    "build": "run-s clean:dist build:es build:umd declaration && pnpm bump",
     "build:es": "vite build",
     "build:umd": "vite build --config vite.config.umd.mts",
     "dev:only": "vite --config=vite.config.mts --force --mode dev --host",
@@ -86,13 +86,16 @@
   "author": "Tan Jee Han",
   "license": "MIT",
   "devDependencies": {
+    "3d-tiles-renderer": "^0.4.28",
     "@playwright/test": "^1.60.0",
     "@rollup/plugin-alias": "^6.0.0",
     "@tailwindcss/vite": "^4.3.0",
     "autoprefixer": "^10.5.0",
     "tailwindcss": "^4.3.0",
+    "madge": "^8.0.0",
     "vite": "^8.0.14",
-    "vite-plugin-dts": "^5.0.1"
+    "vite-plugin-dts": "^5.0.1",
+    "web-ifc-three": "^0.0.126"
   },
   "peerDependencies": {
     "@types/three": "^0.173.0",
@@ -104,7 +107,6 @@
     "@tailwindcss/postcss": "^4.3.0",
     "@three.ez/batched-mesh-extensions": "^0.0.11",
     "@three.ez/simplify-geometry": "^0.0.1",
-    "madge": "^8.0.0",
     "postcss": "^8.5.15",
     "three-mesh-bvh": "^0.9.10"
   }

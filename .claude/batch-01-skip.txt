@@ -1,0 +1,2 @@
+demo/src/WebGLEffectsPeppersGhost.tsx:custom PeppersGhostEffect renderer conflicts with Canvas3D auto-render
+demo/src/WebGLEffectsStereo.tsx:custom StereoEffect renderer conflicts with Canvas3D auto-render

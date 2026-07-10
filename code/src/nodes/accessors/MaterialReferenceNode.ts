@@ -1,4 +1,4 @@
-import { Material } from 'three/src/materials/Material.js'
+﻿import { Material } from 'three/src/materials/Material.js'
 import { Node } from '../../../three-types'
 import MaterialReferenceNode from 'three/src/nodes/accessors/MaterialReferenceNode.js'
 export { MaterialReferenceNode }
@@ -47,7 +47,7 @@ consParams.materialReferenceNode = materialReferenceNode
 
 
 
-const _materialReferenceNode = ([...objProps.referenceNode,
+const _materialReferenceNode = ([...(objProps.referenceNode ?? []),
 ] as const).distinct()
 objProps.materialReferenceNode = _materialReferenceNode
 

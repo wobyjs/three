@@ -1,0 +1,212 @@
+
+> @woby/three@0.2.86 dev D:\Developments\tslib\@woby\three
+> run-p dev:only
+
+
+> @woby/three@0.2.86 dev:only D:\Developments\tslib\@woby\three
+> vite --config=vite.config.mts --force --mode dev --host
+
+Port 5173 is in use, trying another one...
+[2m8:01:01 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Forced re-optimization of dependencies
+
+  [32m[1mVITE[22m v8.0.14[39m  [42m [1mdev[22m [49m  [2mready in [0m[1m2470[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.0.4.77:[1m5174[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.12:[1m5174[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.25.1:[1m5174[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.35.1:[1m5174[22m/[39m
+[2m8:01:03 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] scanning dependencies...
+[31m(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error: [31m  Failed to scan for dependencies from entries:
+  D:/Developments/tslib/@woby/three/playwright-report/index.html
+D:/Developments/tslib/@woby/three/playwright.test/test-woby.html
+D:/Developments/tslib/@woby/three/demo/css3d.html
+D:/Developments/tslib/@woby/three/demo/css3d_webgl.html
+D:/Developments/tslib/@woby/three/demo/fatlines_vanilla.html
+D:/Developments/tslib/@woby/three/demo/gltf_anisotropy.html
+D:/Developments/tslib/@woby/three/demo/index.html
+D:/Developments/tslib/@woby/three/demo/test.html
+D:/Developments/tslib/@woby/three/test-results/diff-report.html
+D:/Developments/tslib/@woby/three/test1/components.chk.test.html
+D:/Developments/tslib/@woby/three/playwright.test/playwright-report/index.html
+D:/Developments/tslib/@woby/three/playwright.test/test-results/kimi-comparison-report.html
+D:/Developments/tslib/@woby/three/playwright.test/test-results/visual-comparison-report.html
+D:/Developments/tslib/@woby/three/demo/playwright-report/index.html
+D:/Developments/tslib/@woby/three/demo/public/canvas-frame.html
+D:/Developments/tslib/@woby/three/demo/public/menu-frame.html
+D:/Developments/tslib/@woby/three/demo/public/split-frame.html
+D:/Developments/tslib/@woby/three/profile-4/WasmTtsEngine/20260611.1/offscreen.html
+D:/Developments/tslib/@woby/three/profile-5/WasmTtsEngine/20260611.1/offscreen.html
+D:/Developments/tslib/@woby/three/profile-6/WasmTtsEngine/20260611.1/offscreen.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/extension-detection.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/localFileSignInRedirection.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/sessionExpired.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/signInAdobeYolo.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/signInHandler.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/viewer.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.107.1_0/offscreendocument.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/extension-detection.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/localFileSignInRedirection.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/sessionExpired.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/signInAdobeYolo.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/signInHandler.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/viewer.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.107.1_0/offscreendocument.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.107.1_0/offscreendocument.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/extension-detection.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/localFileSignInRedirection.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/sessionExpired.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/signInAdobeYolo.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/signInHandler.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/viewer.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/nmmhkkegccagdldgiimedpiccmgmieda/1.0.0.6_0/html/craw_window.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/nmmhkkegccagdldgiimedpiccmgmieda/1.0.0.6_0/html/craw_window.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/nmmhkkegccagdldgiimedpiccmgmieda/1.0.0.6_0/html/craw_window.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/check-cookies.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/download-banner.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/express.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/failToast.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/frame.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/frameUI.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/hermes-bridge.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/legacy-options.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-fte.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/lsCopy.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/newAssistantPopup.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/options.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/popup.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/preference-page.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/progress.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/searchWidget.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/searchWidgetSkeleton.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/successToast.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/addWebpage/index.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressContextualFTE.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressHoverCTA.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressSingleClickCTA.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/imageToolsDropdown.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/chromeOS/handler.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/outlook/error-toast.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/toast/toast.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/ActionableCoachmark.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/FABIcon.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/FABViewSettings.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/index.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/sidePanelButton.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/sidePanelUpsellSuccess.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/signInSuccess.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/check-cookies.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/download-banner.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/express.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/failToast.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/frame.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/frameUI.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/hermes-bridge.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/legacy-options.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-fte.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/lsCopy.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/newAssistantPopup.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/options.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/popup.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/preference-page.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/progress.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/searchWidget.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/searchWidgetSkeleton.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/successToast.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/addWebpage/index.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/chromeOS/handler.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressContextualFTE.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressHoverCTA.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressSingleClickCTA.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/imageToolsDropdown.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/outlook/error-toast.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/toast/toast.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/ActionableCoachmark.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/FABIcon.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/FABViewSettings.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/index.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/sidePanelButton.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/sidePanelUpsellSuccess.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/signInSuccess.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/check-cookies.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/download-banner.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/express.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/failToast.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/frame.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/frameUI.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/hermes-bridge.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/legacy-options.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-fte.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/lsCopy.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/newAssistantPopup.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/options.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/popup.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/preference-page.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/progress.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/searchWidget.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/searchWidgetSkeleton.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/successToast.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/addWebpage/index.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/chromeOS/handler.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/outlook/error-toast.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressContextualFTE.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressHoverCTA.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/expressSingleClickCTA.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/express/imageToolsDropdown.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/ActionableCoachmark.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/FABIcon.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/FABViewSettings.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/index.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/sidePanelButton.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/sidePanelUpsellSuccess.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/SidePanel/signInSuccess.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/resources/toast/toast.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-file/local-file-blocking-page.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-file/local-file-prompt.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/offscreen/offscreen.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/extension-detection.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/localFileSignInRedirection.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/sessionExpired.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/signInAdobeYolo.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/signInHandler.html
+D:/Developments/tslib/@woby/three/profile-4/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/viewer.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-file/local-file-blocking-page.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-file/local-file-prompt.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/offscreen/offscreen.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/extension-detection.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/localFileSignInRedirection.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/sessionExpired.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/signInAdobeYolo.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/signInHandler.html
+D:/Developments/tslib/@woby/three/profile-5/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/viewer.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-file/local-file-blocking-page.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/local-file/local-file-prompt.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/offscreen/offscreen.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/extension-detection.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/localFileSignInRedirection.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/sessionExpired.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/signInAdobeYolo.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/signInHandler.html
+D:/Developments/tslib/@woby/three/profile-6/Default/Extensions/efaidnbmnnnibpcajpcglclefindmkaj/26.6.1.0_0/browser/js/viewer/viewer.html
+
+  [31mBuild failed with 1 error:
+
+[31m[ILLEGAL_REASSIGNMENT] [0mUnexpected re-assignment of const variable `pos`
+    [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m demo/src/WebGLPostprocessing.tsx:71:9 [38;5;246m][0m
+    [38;5;246m│[0m
+ [38;5;246m65 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m [0mpos[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m[[0m
+ [38;5;240m   │[0m               ─┬─  
+ [38;5;240m   │[0m                ╰─── `pos` is declared here as const
+ [38;5;240m   │[0m 
+ [38;5;246m71 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0mpos[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m.[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mp[0m[38;5;249m([0m[38;5;249mp[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249m [0m[38;5;249m/[0m[38;5;249m [0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249m [0m[38;5;249m*[0m[38;5;249m [0m[38;5;249m([0m[38;5;249mM[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mh[0m[38;5;249m.[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m([0m[38;5;249m)[0m[38;5;249m [0m[38;5;249m*[0m[38;5;249m [0m[38;5;249m4[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m)[0m[38;5;249m)[0m
+ [38;5;240m   │[0m         ─┬─  
+ [38;5;240m   │[0m          ╰─── `pos` is re-assigned here
+[38;5;246m────╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///D:/Developments/tslib/node_modules/.pnpm/rolldown@1.0.2/node_modules/rolldown/dist/shared/error-B8po7KiL.mjs:48:18)
+    at unwrapBindingResult (file:///D:/Developments/tslib/node_modules/.pnpm/rolldown@1.0.2/node_modules/rolldown/dist/shared/error-B8po7KiL.mjs:18:128)
+    at scan (file:///D:/Developments/tslib/node_modules/.pnpm/rolldown@1.0.2/node_modules/rolldown/dist/experimental-index.mjs:178:3)
+    at async Object.build (file:///D:/Developments/tslib/node_modules/.pnpm/vite@8.0.14_@types+node@25.9.1_esbuild@0.28.0_jiti@2.7.0_terser@5.48.0_tsx@4.22.3_yaml@2.9.0/node_modules/vite/dist/node/chunks/node.js:30829:3)
+    at async scan (file:///D:/Developments/tslib/node_modules/.pnpm/vite@8.0.14_@types+node@25.9.1_esbuild@0.28.0_jiti@2.7.0_terser@5.48.0_tsx@4.22.3_yaml@2.9.0/node_modules/vite/dist/node/chunks/node.js:30773:4)
+    at async file:///D:/Developments/tslib/node_modules/.pnpm/vite@8.0.14_@types+node@25.9.1_esbuild@0.28.0_jiti@2.7.0_terser@5.48.0_tsx@4.22.3_yaml@2.9.0/node_modules/vite/dist/node/chunks/node.js:23242:15[39m
+ERROR: "dev:only" exited with 1073807364.

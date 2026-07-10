@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 export * from 'three/examples/jsm/environments/RoomEnvironment.js'
@@ -46,7 +46,7 @@ consParams.roomEnvironment = roomEnvironment
 
 
 
-const _roomEnvironment = ([...objProps.scene,
+const _roomEnvironment = ([...(objProps.scene ?? []),
 ] as const).distinct()
 objProps.roomEnvironment = _roomEnvironment
 

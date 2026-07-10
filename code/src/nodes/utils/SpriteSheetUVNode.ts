@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import SpriteSheetUVNode from 'three/src/nodes/utils/SpriteSheetUVNode.js'
 export { SpriteSheetUVNode }
@@ -48,7 +48,7 @@ consParams.spriteSheetUvNode = spriteSheetUvNode
 
 
 
-const _spriteSheetUvNode = ([...objProps.node,
+const _spriteSheetUvNode = ([...(objProps.node ?? []),
     'countNode',
     'uvNode',
     'frameNode',

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { BufferAttribute as TBufferAttribute, type TypedArray as TTypedArray } from 'three/src/core/BufferAttribute.js'
 export * from 'three/src/core/BufferAttribute.js'
 export { TBufferAttribute as BufferAttribute, TTypedArray as TypedArray }
@@ -198,7 +198,7 @@ consParams.uint8ClampedBufferAttribute = uint8ClampedBufferAttribute
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-const _uint8ClampedBufferAttribute = ([...objProps.bufferAttribute,
+const _uint8ClampedBufferAttribute = ([...(objProps.bufferAttribute ?? []),
 ] as const).distinct()
 objProps.uint8ClampedBufferAttribute = _uint8ClampedBufferAttribute
 

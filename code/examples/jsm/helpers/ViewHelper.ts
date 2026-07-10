@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
 import { ViewHelper } from 'three/examples/jsm/helpers/ViewHelper.js'
 export * from 'three/examples/jsm/helpers/ViewHelper.js'
@@ -47,7 +47,7 @@ consParams.viewHelper = viewHelper
 
 
 
-const _viewHelper = ([...objProps.object3d,
+const _viewHelper = ([...(objProps.object3d ?? []),
     'animating',
     'center',
 ] as const).distinct()

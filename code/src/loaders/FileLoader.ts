@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { FileLoader } from 'three/src/loaders/FileLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const fileLoader = ([
 ] as const).distinct()
 consParams.fileLoader = fileLoader
 
-const _fileLoader = ([...objProps.loader] as const).distinct()
+const _fileLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.fileLoader = _fileLoader
 
 export type FileLoaderProps = Node<FileLoader, typeof FileLoader, { manager?: LoadingManager }>

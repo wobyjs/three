@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { CubeTextureLoader } from 'three/src/loaders/CubeTextureLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const cubeTextureLoader = ([
 ] as const).distinct()
 consParams.cubeTextureLoader = cubeTextureLoader
 
-const _cubeTextureLoader = ([...objProps.loader] as const).distinct()
+const _cubeTextureLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.cubeTextureLoader = _cubeTextureLoader
 
 export type CubeTextureLoaderProps = Node<CubeTextureLoader, typeof CubeTextureLoader, { manager?: LoadingManager }>

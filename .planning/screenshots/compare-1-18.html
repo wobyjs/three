@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Comparison – Phases 1-18 (182 demos)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        h1 { margin-bottom: 5px; }
+        .subtitle { color: #aaa; margin-bottom: 20px; }
+        h2 {
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e94560;
+            position: sticky;
+            top: 54px;
+            background: #1a1a2e;
+            z-index: 9;
+        }
+        h2 .count { color: #aaa; font-size: 14px; font-weight: normal; }
+        .phase-section { margin-bottom: 30px; }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        .comparison-card {
+            background: #16213e;
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.15s;
+        }
+        .comparison-card:hover { transform: translateY(-2px); }
+        .comparison-card h3 {
+            font-size: 13px;
+            margin: 0;
+            color: #e94560;
+            word-break: break-all;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 8px;
+        }
+        .upstream-link {
+            font-size: 11px;
+            color: #4a9eff;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .upstream-link:hover { text-decoration: underline; }
+        .images-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .image-box {
+            flex: 1;
+            min-width: 170px;
+            cursor: pointer;
+        }
+        .image-box label {
+            display: block;
+            font-size: 11px;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            background: #0f3460;
+            min-height: 80px;
+            border: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+        .image-box img:hover { border-color: #e94560; }
+        .verdict-row {
+            margin-top: 10px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .verdict-badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+        }
+        .verdict-badge.pending { background: #f39c12; color: black; }
+        .verdict-badge.pass { background: #27ae60; color: white; }
+        .verdict-badge.fail { background: #e74c3c; color: white; }
+        .verdict-badge.mismatch { background: #8e44ad; color: white; }
+        .verdict-row button {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid #555;
+            background: #2a2a4a;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .verdict-row button:hover { background: #3a3a6a; }
+        .verdict-row button.active { border-color: #e94560; color: #e94560; }
+        .hidden-card { display: none !important; }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 1000;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+        }
+        .lightbox .caption {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 14px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        .stats {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-item .num { font-size: 28px; font-weight: bold; color: #e94560; }
+        .stat-item .label { font-size: 12px; color: #aaa; }
+        .filter-bar {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: #1a1a2e;
+            padding: 10px 0;
+        }
+        .filter-bar input {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #0f3460;
+            background: #16213e;
+            color: white;
+            font-size: 14px;
+            min-width: 250px;
+        }
+        .filter-bar input::placeholder { color: #666; }
+        .filter-bar select, .filter-bar button {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #0f3460;
+            background: #16213e;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .filter-bar button:hover { background: #1e2d50; }
+    </style>
+</head>
+<body>
+    <h1>Screenshot Comparison – Phases 1-18</h1>
+    <p class="subtitle">Comparing 182 ported @woby/three demos against upstream Three.js examples at 1409×1376</p>
+
+    <div class="stats" id="stats">
+        <div class="stat-item"><div class="num" id="totalCount">182</div><div class="label">Total Demos</div></div>
+        <div class="stat-item"><div class="num" id="passCount">-</div><div class="label">Pass</div></div>
+        <div class="stat-item"><div class="num" id="failCount">-</div><div class="label">Fail</div></div>
+        <div class="stat-item"><div class="num" id="mismatchCount">-</div><div class="label">Mismatch</div></div>
+        <div class="stat-item"><div class="num" id="pendingCount">182</div><div class="label">Pending</div></div>
+    </div>
+
+    <div class="filter-bar">
+        <input type="text" id="filterInput" placeholder="Filter by demo name..." oninput="filterDemos()">
+        <select id="verdictFilter" onchange="filterDemos()">
+            <option value="all">All verdicts</option>
+            <option value="pending">Pending</option>
+            <option value="pass">Pass</option>
+            <option value="fail">Fail</option>
+            <option value="mismatch">Mismatch</option>
+        </select>
+        <button onclick="resetAllVerdicts()" title="Clear all verdicts">Reset All</button>
+        <button onclick="exportVerdicts()" style="margin-left:auto;background:#0f3460">Export Verdicts</button>
+    </div>
+
+    <div id="sections"></div>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="">
+        <div class="caption" id="lightboxCaption"></div>
+    </div>
+
+    <script>
+        const VERDICT_KEY = 'phase22_verdicts';
+        const categories = [
+            { name: 'Animation', demos: [
+                'webgl_animation_keyframes', 'webgl_animation_multiple',
+                'webgl_animation_skinning_additive_blending', 'webgl_animation_skinning_blending',
+                'webgl_animation_skinning_ik', 'webgl_animation_skinning_morph',
+                'webgl_animation_walk'
+            ]},
+            { name: 'Batch / BufferGeometry', demos: [
+                'webgl_batch_lod_bvh', 'webgl_buffergeometry', 'webgl_buffergeometry_drawrange',
+                'webgl_buffergeometry_lines', 'webgl_buffergeometry_lines_indexed',
+                'webgl_performance'
+            ]},
+            { name: 'Camera', demos: [
+                'webgl_camera', 'webgl_camera_array'
+            ]},
+            { name: 'Clipping', demos: [
+                'webgl_clipping', 'webgl_clipping_advanced',
+                'webgl_clipping_intersection', 'webgl_clipping_stencil'
+            ]},
+            { name: 'Decals / Depth', demos: [
+                'webgl_decals', 'webgl_depth_texture'
+            ]},
+            { name: 'Effects', demos: [
+                'webgl_effects_anaglyph', 'webgl_effects_ascii',
+                'webgl_effects_parallaxbarrier', 'webgl_effects_peppersghost',
+                'webgl_effects_stereo'
+            ]},
+            { name: 'Geometry', demos: [
+                'webgl_geometry_colors', 'webgl_geometry_convex',
+                'webgl_geometry_cube', 'webgl_geometry_extrude_shapes',
+                'webgl_geometry_extrude_splines', 'webgl_geometry_hierarchy',
+                'webgl_geometry_minecraft', 'webgl_geometry_nurbs',
+                'webgl_geometry_shapes', 'webgl_geometry_spline_editor',
+                'webgl_geometry_teapot', 'webgl_geometry_text',
+                'webgl_geometry_text_shapes'
+            ]},
+            { name: 'Instancing', demos: [
+                'webgl_instancing_dynamic', 'webgl_instancing_morph',
+                'webgl_instancing_performance', 'webgl_instancing_raycast',
+                'webgl_instancing_scatter'
+            ]},
+            { name: 'Interactive', demos: [
+                'webgl_interactive_cubes', 'webgl_interactive_cubes_gpu',
+                'webgl_interactive_lines', 'webgl_interactive_points',
+                'webgl_interactive_raycasting_points', 'webgl_interactive_voxelpainter'
+            ]},
+            { name: 'Lights', demos: [
+                'webgl_lights_area', 'webgl_lights_hemisphere',
+                'webgl_lights_physical', 'webgl_lights_pointlights',
+                'webgl_lights_rectarealight', 'webgl_lights_spotlight',
+                'webgl_lights_spotlights', 'webgl_refraction'
+            ]},
+            { name: 'Lines', demos: [
+                'webgl_lines_dashed', 'webgl_lines_fat',
+                'webgl_lines_fat_raycasting', 'webgl_lines_fat_wireframe',
+                'webgl_lines_sphere'
+            ]},
+            { name: 'Loaders', demos: [
+                'webgl_loader_3dm', 'webgl_loader_3mf', 'webgl_loader_amf',
+                'webgl_loader_bvh', 'webgl_loader_collada',
+                'webgl_loader_draco', 'webgl_loader_fbx', 'webgl_loader_gltf',
+                'webgl_loader_gltf_compressed', 'webgl_loader_gltf_sheen',
+                'webgl_loader_gltf_transmission', 'webgl_loader_gltf_variants',
+                'webgl_loader_ifc', 'webgl_loader_kmz', 'webgl_loader_ldraw',
+                'webgl_loader_obj', 'webgl_loader_pcd', 'webgl_loader_pdb',
+                'webgl_loader_ply', 'webgl_loader_stl', 'webgl_loader_svg',
+                'webgl_loader_texture_exr', 'webgl_loader_texture_hdr',
+                'webgl_loader_ttf', 'webgl_loader_usdz', 'webgl_loader_vox',
+                'webgl_loader_vrml'
+            ]},
+            { name: 'Materials', demos: [
+                'webgl_materials_anisotropy', 'webgl_materials_bumpmap',
+                'webgl_materials_car', 'webgl_materials_channels',
+                'webgl_materials_cubemap', 'webgl_materials_cubemap_dynamic',
+                'webgl_materials_cubemap_refraction', 'webgl_materials_cubemap_render_to_mipmaps',
+                'webgl_materials_displacementmap', 'webgl_materials_envmaps',
+                'webgl_materials_envmaps_exr', 'webgl_materials_envmaps_hdr',
+                'webgl_materials_lightmap', 'webgl_materials_modified',
+                'webgl_materials_normalmap', 'webgl_materials_normalmap_object_space',
+                'webgl_materials_physical_clearcoat', 'webgl_materials_physical_transmission',
+                'webgl_materials_subsurface_scattering',
+                'webgl_materials_texture_anisotropy', 'webgl_materials_texture_filters',
+                'webgl_materials_texture_manualmipmap', 'webgl_materials_texture_rotation',
+                'webgl_materials_video_webcam', 'webgl_materials_wireframe'
+            ]},
+            { name: 'Mirror / MorphTargets / Multi*', demos: [
+                'webgl_mirror', 'webgl_morphtargets', 'webgl_morphtargets_face',
+                'webgl_morphtargets_horse', 'webgl_morphtargets_sphere',
+                'webgl_morphtargets_webcam', 'webgl_multiple_elements',
+                'webgl_multiple_elements_text', 'webgl_multiple_rendertargets',
+                'webgl_multiple_scenes_comparison', 'webgl_multiple_views',
+                'webgl_pmrem_test'
+            ]},
+            { name: 'Panorama / Particles / Plane / Points', demos: [
+                'webgl_panorama_cube', 'webgl_panorama_equirectangular',
+                'webgl_particles', 'webgl_particles_dynamic',
+                'webgl_plane', 'webgl_points_dynamic', 'webgl_points_waves'
+            ]},
+            { name: 'Postprocessing', demos: [
+                'webgl_postprocessing', 'webgl_postprocessing_3dlut',
+                'webgl_postprocessing_advanced', 'webgl_postprocessing_afterimage',
+                'webgl_postprocessing_bloom', 'webgl_postprocessing_dof',
+                'webgl_postprocessing_film', 'webgl_postprocessing_glitch',
+                'webgl_postprocessing_godrays', 'webgl_postprocessing_gtao',
+                'webgl_postprocessing_mask', 'webgl_postprocessing_pixel',
+                'webgl_postprocessing_procedural', 'webgl_postprocessing_rgb_halftone',
+                'webgl_postprocessing_sao', 'webgl_postprocessing_smaa',
+                'webgl_postprocessing_sobel', 'webgl_postprocessing_ssaa',
+                'webgl_postprocessing_ssr', 'webgl_postprocessing_taa',
+                'webgl_postprocessing_unreal_bloom',
+                'webgl_postprocessing_unreal_bloom_selective'
+            ]},
+            { name: 'Shaders / Shadows / GI / Sprites / Tone / Video', demos: [
+                'webgl_shaders', 'webgl_shaders_ocean', 'webgl_shaders_sky',
+                'webgl_shadow_contact', 'webgl_shadowmap', 'webgl_shadowmap_pcss',
+                'webgl_shadowmap_progressive', 'webgl_shadowmap_vsm',
+                'webgl_simple_gi', 'webgl_sprites', 'webgl_tonemapping',
+                'webgl_video_kinect', 'webgl_video_panorama_equirectangular'
+            ]},
+            { name: 'Wireframe', demos: [
+                'webgl_wireframe', 'webgl_wireframes'
+            ]},
+            { name: 'WebXR', demos: [
+                'webxr_ar_cones', 'webxr_ar_hittest', 'webxr_ar_lighting',
+                'webxr_vr_ballshooter', 'webxr_vr_cubes', 'webxr_vr_dragging',
+                'webxr_vr_handinput', 'webxr_vr_haptics', 'webxr_vr_paint',
+                'webxr_vr_panorama', 'webxr_vr_rollercoaster'
+            ]}
+        ];
+
+        function loadVerdicts() {
+            try {
+                return JSON.parse(localStorage.getItem(VERDICT_KEY) || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveVerdict(demoId, verdict) {
+            const verdicts = loadVerdicts();
+            verdicts[demoId] = verdict;
+            localStorage.setItem(VERDICT_KEY, JSON.stringify(verdicts));
+        }
+
+        function getVerdict(demoId) {
+            return loadVerdicts()[demoId] || 'pending';
+        }
+
+        function createCard(demoId) {
+            const card = document.createElement('div');
+            card.className = 'comparison-card';
+            card.dataset.demo = demoId;
+
+            const header = document.createElement('div');
+            header.className = 'card-header';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = demoId;
+            header.appendChild(h3);
+
+            const upstreamLink = document.createElement('a');
+            upstreamLink.className = 'upstream-link';
+            upstreamLink.href = 'https://threejs.org/examples/' + demoId + '.html';
+            upstreamLink.target = '_blank';
+            upstreamLink.textContent = '↗ upstream';
+            upstreamLink.title = 'Open upstream Three.js example';
+            header.appendChild(upstreamLink);
+
+            card.appendChild(header);
+
+            const imagesRow = document.createElement('div');
+            imagesRow.className = 'images-row';
+
+            const portedBox = document.createElement('div');
+            portedBox.className = 'image-box';
+            const portedLabel = document.createElement('label');
+            portedLabel.textContent = 'Ported';
+            const portedImg = document.createElement('img');
+            portedImg.src = 'phase22/ported/' + demoId + '.png';
+            portedImg.alt = 'Ported ' + demoId;
+            portedImg.loading = 'lazy';
+            portedImg.onclick = function() {
+                openLightbox(portedImg.src, 'Ported: ' + demoId);
+            };
+            portedBox.appendChild(portedLabel);
+            portedBox.appendChild(portedImg);
+
+            const upstreamBox = document.createElement('div');
+            upstreamBox.className = 'image-box';
+            const upstreamLabel = document.createElement('label');
+            upstreamLabel.textContent = 'Upstream';
+            const upstreamImg = document.createElement('img');
+            upstreamImg.src = 'phase22/upstream/' + demoId + '.png';
+            upstreamImg.alt = 'Upstream ' + demoId;
+            upstreamImg.loading = 'lazy';
+            upstreamImg.onclick = function() {
+                openLightbox(upstreamImg.src, 'Upstream: ' + demoId);
+            };
+            upstreamBox.appendChild(upstreamLabel);
+            upstreamBox.appendChild(upstreamImg);
+
+            imagesRow.appendChild(portedBox);
+            imagesRow.appendChild(upstreamBox);
+            card.appendChild(imagesRow);
+
+            const verdictRow = document.createElement('div');
+            verdictRow.className = 'verdict-row';
+
+            const verdictBadge = document.createElement('span');
+            verdictBadge.className = 'verdict-badge';
+
+            var currentVerdict = getVerdict(demoId);
+            verdictBadge.textContent = currentVerdict.toUpperCase();
+            verdictBadge.className = 'verdict-badge ' + currentVerdict;
+
+            function setVerdict(v) {
+                currentVerdict = v;
+                verdictBadge.textContent = v.toUpperCase();
+                verdictBadge.className = 'verdict-badge ' + v;
+                saveVerdict(demoId, v);
+                var btnGroup = verdictRow.querySelector('.verdict-btns');
+                if (btnGroup) {
+                    var allBtns = btnGroup.querySelectorAll('button');
+                    allBtns.forEach(function(b) { b.classList.remove('active'); });
+                    var activeBtn = btnGroup.querySelector('[data-v="' + v + '"]');
+                    if (activeBtn) activeBtn.classList.add('active');
+                }
+                updateStats();
+            }
+
+            var btnGroup = document.createElement('div');
+            btnGroup.className = 'verdict-btns';
+
+            var verdicts = [
+                { v: 'pass', label: '✅ Pass' },
+                { v: 'fail', label: '❌ Fail' },
+                { v: 'mismatch', label: '⚠️ Mismatch' },
+                { v: 'pending', label: '⏳ Pending' }
+            ];
+
+            verdicts.forEach(function(vd) {
+                var btn = document.createElement('button');
+                btn.className = 'verdict-btn';
+                if (vd.v === currentVerdict) btn.classList.add('active');
+                btn.textContent = vd.label;
+                btn.dataset.v = vd.v;
+                btn.onclick = function(e) {
+                    e.stopPropagation();
+                    setVerdict(vd.v);
+                };
+                btnGroup.appendChild(btn);
+            });
+
+            verdictRow.appendChild(verdictBadge);
+            verdictRow.appendChild(btnGroup);
+            card.appendChild(verdictRow);
+
+            return card;
+        }
+
+        function buildPage() {
+            var sectionsDiv = document.getElementById('sections');
+            sectionsDiv.innerHTML = '';
+
+            categories.forEach(function(cat) {
+                var section = document.createElement('div');
+                section.className = 'phase-section';
+
+                var headerDiv = document.createElement('div');
+                headerDiv.style.display = 'flex';
+                headerDiv.style.alignItems = 'baseline';
+                headerDiv.style.gap = '10px';
+
+                var h2 = document.createElement('h2');
+                h2.textContent = cat.name;
+
+                var countSpan = document.createElement('span');
+                countSpan.className = 'count';
+                countSpan.textContent = cat.demos.length + ' demos';
+
+                headerDiv.appendChild(h2);
+                headerDiv.appendChild(countSpan);
+                section.appendChild(headerDiv);
+
+                var grid = document.createElement('div');
+                grid.className = 'comparison-grid';
+
+                cat.demos.forEach(function(demoId) {
+                    grid.appendChild(createCard(demoId));
+                });
+
+                section.appendChild(grid);
+                sectionsDiv.appendChild(section);
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            var verdicts = loadVerdicts();
+            var total = 0, pass = 0, fail = 0, mismatch = 0, pending = 0;
+
+            categories.forEach(function(cat) {
+                cat.demos.forEach(function(demoId) {
+                    total++;
+                    var v = verdicts[demoId] || 'pending';
+                    if (v === 'pass') pass++;
+                    else if (v === 'fail') fail++;
+                    else if (v === 'mismatch') mismatch++;
+                    else pending++;
+                });
+            });
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('passCount').textContent = pass;
+            document.getElementById('failCount').textContent = fail;
+            document.getElementById('mismatchCount').textContent = mismatch;
+            document.getElementById('pendingCount').textContent = pending;
+        }
+
+        function filterDemos() {
+            var textFilter = document.getElementById('filterInput').value.toLowerCase();
+            var verdictFilter = document.getElementById('verdictFilter').value;
+            var verdicts = loadVerdicts();
+
+            categories.forEach(function(cat) {
+                var section = null;
+                var allSections = document.querySelectorAll('.phase-section');
+                allSections.forEach(function(s) {
+                    var h2 = s.querySelector('h2');
+                    if (h2 && h2.textContent === cat.name) {
+                        section = s;
+                    }
+                });
+
+                var visibleCount = 0;
+                cat.demos.forEach(function(demoId) {
+                    var card = document.querySelector('.comparison-card[data-demo="' + demoId + '"]');
+                    if (!card) return;
+
+                    var matchesText = demoId.toLowerCase().indexOf(textFilter) >= 0;
+                    var demoVerdict = verdicts[demoId] || 'pending';
+                    var matchesVerdict = verdictFilter === 'all' || demoVerdict === verdictFilter;
+
+                    if (matchesText && matchesVerdict) {
+                        card.classList.remove('hidden-card');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden-card');
+                    }
+                });
+
+                if (section) {
+                    if (visibleCount === 0) {
+                        section.style.display = 'none';
+                    } else {
+                        section.style.display = '';
+                        var countSpan = section.querySelector('.count');
+                        if (countSpan) {
+                            countSpan.textContent = visibleCount + ' / ' + cat.demos.length + ' demos';
+                        }
+                    }
+                }
+            });
+        }
+
+        function resetAllVerdicts() {
+            if (confirm('Reset ALL verdicts? This cannot be undone.')) {
+                localStorage.removeItem(VERDICT_KEY);
+                var allBadges = document.querySelectorAll('.verdict-badge');
+                allBadges.forEach(function(badge) {
+                    badge.textContent = 'PENDING';
+                    badge.className = 'verdict-badge pending';
+                });
+                var allBtns = document.querySelectorAll('.verdict-btn.active');
+                allBtns.forEach(function(b) { b.classList.remove('active'); });
+                var pendingBtns = document.querySelectorAll('.verdict-btn[data-v="pending"]');
+                pendingBtns.forEach(function(b) { b.classList.add('active'); });
+                updateStats();
+                filterDemos();
+            }
+        }
+
+        function exportVerdicts() {
+            var verdicts = loadVerdicts();
+            var lines = ['demo_id,verdict'];
+            categories.forEach(function(cat) {
+                cat.demos.forEach(function(demoId) {
+                    lines.push(demoId + ',' + (verdicts[demoId] || 'pending'));
+                });
+            });
+            var blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'phase22_verdicts.csv';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+
+        function openLightbox(src, caption) {
+            var lb = document.getElementById('lightbox');
+            var img = document.getElementById('lightboxImg');
+            var cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            cap.textContent = caption;
+            lb.classList.add('active');
+        }
+
+        function closeLightbox() {
+            var lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        buildPage();
+    </script>
+</body>
+</html>

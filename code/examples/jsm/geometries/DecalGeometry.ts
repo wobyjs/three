@@ -1,4 +1,4 @@
-import { Vector3, Euler, Node } from '../../../three-types'
+﻿import { Vector3, Euler, Node } from '../../../three-types'
 import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
 import { Mesh } from 'three/src/objects/Mesh.js'
 import { DecalGeometry, DecalVertex } from 'three/examples/jsm/geometries/DecalGeometry.js'
@@ -51,7 +51,7 @@ consParams.decalVertex = decalVertex
 
 
 
-const _decalGeometry = ([...objProps.bufferGeometry,
+const _decalGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.decalGeometry = _decalGeometry
 

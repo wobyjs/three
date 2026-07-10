@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import {
     ClampToEdgeWrapping, DepthFormat, DepthTexturePixelFormat, MagnificationTextureFilter, Mapping,
     MinificationTextureFilter, NearestFilter, TextureDataType, UnsignedIntType, Wrapping
@@ -84,7 +84,7 @@ consParams.depthTexture = depthTexture
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DepthTexture.js | Source}
  */
 
-const _depthTexture = ([...objProps.texture,
+const _depthTexture = ([...(objProps.texture ?? []),
     /**
      * Overridden with a record type holding width and height.
      * @override

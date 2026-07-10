@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 export * from 'three/examples/jsm/loaders/OBJLoader.js'
@@ -47,7 +47,7 @@ consParams.objLoader = objLoader
 
 
 
-const _objLoader = ([...objProps.loader,
+const _objLoader = ([...(objProps.loader ?? []),
     'materials',
 ] as const).distinct()
 objProps.objLoader = _objLoader

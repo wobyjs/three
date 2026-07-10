@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { VTKLoader } from 'three/examples/jsm/loaders/VTKLoader.js'
 export * from 'three/examples/jsm/loaders/VTKLoader.js'
@@ -47,7 +47,7 @@ consParams.vtkLoader = vtkLoader
 
 
 
-const _vtkLoader = ([...objProps.loader,
+const _vtkLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.vtkLoader = _vtkLoader
 

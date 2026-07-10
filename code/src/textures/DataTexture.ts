@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import {
     ColorSpace, MagnificationTextureFilter, Mapping, MinificationTextureFilter, NearestFilter, PixelFormat,
     RGBAFormat, TextureDataType, UnsignedByteType, UVMapping, Wrapping
@@ -74,7 +74,7 @@ declare module '../../lib/3/objProps' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/DataTexture.js | Source}
  */
 
-const _dataTexture = ([...objProps.texture,
+const _dataTexture = ([...(objProps.texture ?? []),
     /**
      * Overridden with a record type holding data, width and height and depth.
      * @override

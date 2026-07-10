@@ -1,4 +1,4 @@
-import { PointLight } from 'three/src/lights/PointLight.js'
+﻿import { PointLight } from 'three/src/lights/PointLight.js'
 import { Node } from '../../../three-types'
 import PointLightNode from 'three/src/nodes/lighting/PointLightNode.js'
 export { PointLightNode }
@@ -45,7 +45,7 @@ consParams.pointLightNode = pointLightNode
 
 
 
-const _pointLightNode = ([...objProps.analyticLightNode,
+const _pointLightNode = ([...(objProps.analyticLightNode ?? []),
     'cutoffDistanceNode',
     'decayExponentNode',
     'directionNode',

@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import CubeMapNode from 'three/src/nodes/utils/CubeMapNode.js'
 export { CubeMapNode }
@@ -45,7 +45,7 @@ consParams.cubeMapNode = cubeMapNode
 
 
 
-const _cubeMapNode = ([...objProps.tempNode,
+const _cubeMapNode = ([...(objProps.tempNode ?? []),
     'envNode',
 ] as const).distinct()
 objProps.cubeMapNode = _cubeMapNode

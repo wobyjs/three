@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { PCDLoader } from 'three/examples/jsm/loaders/PCDLoader.js'
 export * from 'three/examples/jsm/loaders/PCDLoader.js'
@@ -47,7 +47,7 @@ consParams.pcdLoader = pcdLoader
 
 
 
-const _pcdLoader = ([...objProps.loader,
+const _pcdLoader = ([...(objProps.loader ?? []),
     'littleEndian',
 ] as const).distinct()
 objProps.pcdLoader = _pcdLoader

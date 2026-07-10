@@ -66,7 +66,7 @@ consParams.interactiveGroup = interactiveGroup
 
 
 
-const _interactiveObject3dEventMap = ([...objProps.object3dEventMap,
+const _interactiveObject3dEventMap = ([...(objProps.object3dEventMap ?? []),
     'hoveron',
     'pointerdown',
     'pointerup',
@@ -79,7 +79,7 @@ const _interactiveObject3dEventMap = ([...objProps.object3dEventMap,
 objProps.interactiveObject3dEventMap = _interactiveObject3dEventMap
 
 
-const _interactiveObject3d = ([...objProps.object3d,
+const _interactiveObject3d = ([...(objProps.object3d ?? []),
 ] as const).distinct()
 objProps.interactiveObject3d = _interactiveObject3d
 

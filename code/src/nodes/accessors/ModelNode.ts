@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import ModelNode from 'three/src/nodes/accessors/ModelNode.js'
 export { ModelNode }
 import { Three } from '../../../lib/3/three'
@@ -50,7 +50,7 @@ consParams.modelNode = modelNode
  * Similar to {@link Object3dNode} but the object comes from {@link NodeFrame}
  */
 
-const _modelNode = ([...objProps.object3dNode,
+const _modelNode = ([...(objProps.object3dNode ?? []),
 ] as const).distinct()
 objProps.modelNode = _modelNode
 

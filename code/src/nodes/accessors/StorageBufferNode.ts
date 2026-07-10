@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import StorageBufferAttribute from 'three/src/renderers/common/StorageBufferAttribute.js'
 import StorageInstancedBufferAttribute from 'three/src/renderers/common/StorageInstancedBufferAttribute.js'
 import StorageBufferNode from 'three/src/nodes/accessors/StorageBufferNode.js'
@@ -48,7 +48,7 @@ consParams.storageBufferNode = storageBufferNode
 
 
 
-const _storageBufferNode = ([...objProps.bufferNode,
+const _storageBufferNode = ([...(objProps.bufferNode ?? []),
     'bufferObject',
 ] as const).distinct()
 objProps.storageBufferNode = _storageBufferNode

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { LDrawLoader } from 'three/examples/jsm/loaders/LDrawLoader.js'
 export * from 'three/examples/jsm/loaders/LDrawLoader.js'
@@ -47,7 +47,7 @@ consParams.lDrawLoader = lDrawLoader
 
 
 
-const _lDrawLoader = ([...objProps.loader,
+const _lDrawLoader = ([...(objProps.loader ?? []),
     'materials',
     'materialsLibrary',
     'fileMap',

@@ -1,4 +1,4 @@
-// import { CompressedPixelFormat, TextureDataType } from "../constants.js";
+﻿// import { CompressedPixelFormat, TextureDataType } from "../constants.js";
 // import { CompressedCubeTexture } from "./CompressedCubeTexture.js";
 
 // export class CompressedCubeTexture extends CompressedCubeTexture {
@@ -63,7 +63,7 @@ consParams.compressedCubeTexture = compressedCubeTexture
 
 
 
-const _compressedCubeTexture = ([...objProps.compressedTexture,
+const _compressedCubeTexture = ([...(objProps.compressedTexture ?? []),
 ] as const).distinct()
 objProps.compressedCubeTexture = _compressedCubeTexture
 

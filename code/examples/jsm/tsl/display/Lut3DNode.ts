@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import Lut3DNode from 'three/examples/jsm/tsl/display/Lut3DNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
@@ -40,7 +40,7 @@ consParams.lut3DNode = lut3DNode
 
 // Inherits from TempNode and adds its own specific properties
 const _lut3DNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'inputNode',
 	'lutNode',
 	'size',

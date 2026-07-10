@@ -1,0 +1,1384 @@
+{
+  "at": "2026-06-22T05:40:10.350Z",
+  "total": 227,
+  "match": 8,
+  "minor": 33,
+  "major": 21,
+  "diverged": 54,
+  "no_reference": 111,
+  "error": 0,
+  "results": [
+    {
+      "id": "canvas_fix_verify",
+      "status": "no_reference"
+    },
+    {
+      "id": "css3d_periodictable",
+      "status": "no_reference"
+    },
+    {
+      "id": "current_state",
+      "status": "no_reference"
+    },
+    {
+      "id": "misc_controls_transform",
+      "status": "compared",
+      "ratio": 0.0518,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "physics_ammo_break",
+      "status": "compared",
+      "ratio": 0.981,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "physics_ammo_cloth",
+      "status": "compared",
+      "ratio": 0.9847,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "physics_rapier_basic",
+      "status": "compared",
+      "ratio": 0.9913,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "physics_rapier_instancing",
+      "status": "compared",
+      "ratio": 0.9764,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "physics_rapier_joints",
+      "status": "compared",
+      "ratio": 0.7216,
+      "verdict": "diverged",
+      "w": 300,
+      "h": 150
+    },
+    {
+      "id": "plane_verify",
+      "status": "no_reference"
+    },
+    {
+      "id": "test_home",
+      "status": "no_reference"
+    },
+    {
+      "id": "test_manual2",
+      "status": "no_reference"
+    },
+    {
+      "id": "test_ply_current",
+      "status": "no_reference"
+    },
+    {
+      "id": "test_ply_loaded",
+      "status": "no_reference"
+    },
+    {
+      "id": "water",
+      "status": "no_reference"
+    },
+    {
+      "id": "water_debug",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_alpha",
+      "status": "compared",
+      "ratio": 0.6089,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_animation_keyframe",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_animation_keyframes",
+      "status": "compared",
+      "ratio": 0.1029,
+      "verdict": "minor",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_animation_multiple",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_animation_particles",
+      "status": "compared",
+      "ratio": 0.1107,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_animation_skinning",
+      "status": "compared",
+      "ratio": 0.8524,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_animation_skinning_blending",
+      "status": "compared",
+      "ratio": 0.8116,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_animation_skinning_blending_check",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_animation_walk",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_audio",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_batch_lod_bvh",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_boxes",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_boxes_click",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_buffergeometry",
+      "status": "compared",
+      "ratio": 0.1876,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_camera",
+      "status": "compared",
+      "ratio": 0.0581,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_camera_array",
+      "status": "compared",
+      "ratio": 0.3326,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_camera_logarithmic_depth_buffer",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_canvas_texture",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_clipping",
+      "status": "compared",
+      "ratio": 0.4702,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_clipping_advanced",
+      "status": "compared",
+      "ratio": 0.1707,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_clipping_intersection",
+      "status": "compared",
+      "ratio": 0.1775,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_clipping_intersection_check2",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_clipping_stencil",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_color_grading",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_css2d",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_css3d",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_css3d_demo",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_custom_shader",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_decals",
+      "status": "compared",
+      "ratio": 0.1688,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_d_lines",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_anaglyph",
+      "status": "compared",
+      "ratio": 0.5481,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_effects_anaglyph_check",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_anaglyph_check2",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_anaglyph_check3",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_anaglyph_check4",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_ascii",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_parallaxbarrier",
+      "status": "compared",
+      "ratio": 0.7243,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_effects_stereo",
+      "status": "compared",
+      "ratio": 0.7319,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_effects_stereo2",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_stereo3",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_effects_stereo_check",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_fat_lines",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_fat_lines_advanced",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_fog",
+      "status": "compared",
+      "ratio": 0.887,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_fog_check",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_geometries",
+      "status": "compared",
+      "ratio": 0.9833,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometries_showcase",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_geometry_colors",
+      "status": "compared",
+      "ratio": 0.9699,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_colors_lut",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_geometry_convex",
+      "status": "compared",
+      "ratio": 0.1943,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_csg",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_geometry_cube",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_geometry_cube2",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_geometry_extrude_shapes",
+      "status": "compared",
+      "ratio": 0.2716,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_lathe",
+      "status": "compared",
+      "ratio": 0.9043,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_minecraft",
+      "status": "compared",
+      "ratio": 0.7892,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_shapes",
+      "status": "compared",
+      "ratio": 0.5065,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_spline_editor",
+      "status": "compared",
+      "ratio": 0.9461,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_geometry_teapot",
+      "status": "compared",
+      "ratio": 0.5946,
+      "verdict": "major",
+      "w": 1409,
+      "h": 1399
+    },
+    {
+      "id": "webgl_geometry_text_stroke",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_group",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_helpers",
+      "status": "compared",
+      "ratio": 0.2391,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_helpers_debug",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_html_text",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_instancing",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_instancing_animated",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_instancing_billboards",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_instancing_dynamic",
+      "status": "compared",
+      "ratio": 0.9989,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_instancing_dynamic_current",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_instancing_morph",
+      "status": "compared",
+      "ratio": 0.4148,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_instancing_performance",
+      "status": "compared",
+      "ratio": 0.8063,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_instancing_raycast",
+      "status": "compared",
+      "ratio": 0.6489,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_instancing_scatter",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_interactive_buffer_geometry",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_interactive_cubes",
+      "status": "compared",
+      "ratio": 0.9046,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_interactive_cubes_gpu",
+      "status": "compared",
+      "ratio": 0.876,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_interactive_cubes_ortho",
+      "status": "compared",
+      "ratio": 0.7475,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_interactive_cubes_raycaster",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_interactive_lines",
+      "status": "compared",
+      "ratio": 0.2319,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_interactive_raycasting_points",
+      "status": "compared",
+      "ratio": 0.0661,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_interactive_voxelpainter",
+      "status": "compared",
+      "ratio": 0.9894,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lensflares",
+      "status": "compared",
+      "ratio": 0.2883,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lightprobe",
+      "status": "compared",
+      "ratio": 0.8484,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lights",
+      "status": "compared",
+      "ratio": 0.9866,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lights_hemisphere",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_lights_rectarea",
+      "status": "compared",
+      "ratio": 0.079,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lights_spotlight",
+      "status": "compared",
+      "ratio": 0.9897,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_line3",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_lines",
+      "status": "compared",
+      "ratio": 0.8426,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lines_dashed",
+      "status": "compared",
+      "ratio": 0.0251,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lines_test",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_loader_3dm",
+      "status": "compared",
+      "ratio": 0.9954,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_3ds",
+      "status": "compared",
+      "ratio": 0.0503,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_3mf",
+      "status": "compared",
+      "ratio": 0.9889,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_amf",
+      "status": "compared",
+      "ratio": 0.9985,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_bvh",
+      "status": "compared",
+      "ratio": 0.1366,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_collada",
+      "status": "compared",
+      "ratio": 0.1529,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_draco",
+      "status": "compared",
+      "ratio": 0.99,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_fbx",
+      "status": "compared",
+      "ratio": 0.9897,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_gcode",
+      "status": "compared",
+      "ratio": 0.9145,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_gltf",
+      "status": "compared",
+      "ratio": 0.8229,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_gltf_2",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_loader_gltf_anisotropy",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_loader_gltf_demo",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_loader_kmz",
+      "status": "compared",
+      "ratio": 0.9984,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_lwo",
+      "status": "compared",
+      "ratio": 0.4597,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_md2",
+      "status": "compared",
+      "ratio": 0.0166,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_nrrd",
+      "status": "compared",
+      "ratio": 0.0163,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_obj",
+      "status": "compared",
+      "ratio": 0.974,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_pcd",
+      "status": "compared",
+      "ratio": 0.0314,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_pdb",
+      "status": "compared",
+      "ratio": 0.0197,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_ply",
+      "status": "compared",
+      "ratio": 0.6336,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_stl",
+      "status": "compared",
+      "ratio": 0.7945,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_svg",
+      "status": "compared",
+      "ratio": 0.5516,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_ttf",
+      "status": "compared",
+      "ratio": 0.4187,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_vox",
+      "status": "compared",
+      "ratio": 0.1349,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_vrml",
+      "status": "compared",
+      "ratio": 0.9871,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_loader_xyz",
+      "status": "compared",
+      "ratio": 0.1084,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_lod",
+      "status": "compared",
+      "ratio": 0.2679,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials",
+      "status": "compared",
+      "ratio": 0.2188,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_all",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_materials_blending",
+      "status": "compared",
+      "ratio": 0.7401,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_car",
+      "status": "compared",
+      "ratio": 0.2782,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_channels",
+      "status": "compared",
+      "ratio": 0.9616,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_colors",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_materials_cubemap",
+      "status": "compared",
+      "ratio": 0.3627,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_cubemap_dynamic",
+      "status": "compared",
+      "ratio": 0.9617,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_matcap",
+      "status": "compared",
+      "ratio": 0.9731,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_normal",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_materials_normalmap",
+      "status": "compared",
+      "ratio": 0.7345,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_physical",
+      "status": "compared",
+      "ratio": 0.3617,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_physical_clearcoat",
+      "status": "compared",
+      "ratio": 0.7107,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_physical_transmission",
+      "status": "compared",
+      "ratio": 0.1056,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_materials_transparency",
+      "status": "compared",
+      "ratio": 0.778,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_mirror",
+      "status": "compared",
+      "ratio": 0.4947,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_modifier_curve",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_modifier_simplify",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_morph_targets",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_multiple_geometries",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_normal_map",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_object3d",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_panorama_equirectangular",
+      "status": "compared",
+      "ratio": 0.4622,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_particles",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_particles_buffer",
+      "status": "compared",
+      "ratio": 0.0927,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_physics",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_plane",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_points_dynamic",
+      "status": "compared",
+      "ratio": 0.1085,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_points_sprites",
+      "status": "compared",
+      "ratio": 0.2979,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_points_waves",
+      "status": "compared",
+      "ratio": 0.1246,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_point_cloud",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing",
+      "status": "compared",
+      "ratio": 0.9902,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_advanced",
+      "status": "compared",
+      "ratio": 0.3466,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_afterimage",
+      "status": "compared",
+      "ratio": 0.0813,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_bokeh",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_chromatic",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_demo",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_depth",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_dof",
+      "status": "compared",
+      "ratio": 0.8453,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_film",
+      "status": "compared",
+      "ratio": 0.989,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_fxaa",
+      "status": "compared",
+      "ratio": 0.1095,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_glitch",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_godrays",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_nodes",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_outline",
+      "status": "compared",
+      "ratio": 0.1352,
+      "verdict": "minor",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_postprocessing_pixel",
+      "status": "compared",
+      "ratio": 0.2752,
+      "verdict": "major",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_smaa",
+      "status": "compared",
+      "ratio": 0.1349,
+      "verdict": "minor",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_postprocessing_ssao",
+      "status": "compared",
+      "ratio": 0.1203,
+      "verdict": "minor",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_postprocessing_ssr",
+      "status": "compared",
+      "ratio": 0.662,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_taa",
+      "status": "compared",
+      "ratio": 0.1362,
+      "verdict": "minor",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_postprocessing_taa_fixed",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_temporal",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_postprocessing_transition",
+      "status": "compared",
+      "ratio": 0.0412,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_postprocessing_vignette",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_reflection",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_reflector",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_shaders_ocean",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_shaders_sky",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_shader_lava",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_shadowmap",
+      "status": "compared",
+      "ratio": 0.8809,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_shadowmap_advanced",
+      "status": "compared",
+      "ratio": 0.9269,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_shadowmap_pointlight",
+      "status": "compared",
+      "ratio": 0.1096,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_shadowmap_vsm",
+      "status": "compared",
+      "ratio": 0.1237,
+      "verdict": "minor",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_shadows",
+      "status": "compared",
+      "ratio": 0.9715,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_shadow_contact",
+      "status": "compared",
+      "ratio": 0.5497,
+      "verdict": "major",
+      "w": 80,
+      "h": 48
+    },
+    {
+      "id": "webgl_simple_line",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_sky",
+      "status": "compared",
+      "ratio": 0.1315,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_sprites",
+      "status": "compared",
+      "ratio": 0.1661,
+      "verdict": "minor",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_static_text",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_svg",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_terrain",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_textures_cube",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_text_geometry",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_tone_mapping",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_toon",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_useframe_test",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_uvs",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_vr",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_water",
+      "status": "compared",
+      "ratio": 0.9836,
+      "verdict": "diverged",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webgl_webgpu",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_webxr",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_webxr_anchors",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_webxr_ar",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_webxr_hit_test",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_webxr_layers",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_webxr_vr",
+      "status": "no_reference"
+    },
+    {
+      "id": "webgl_wireframes",
+      "status": "no_reference"
+    },
+    {
+      "id": "webxr_ar_cones",
+      "status": "compared",
+      "ratio": 0.0179,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webxr_ar_plane_detection",
+      "status": "compared",
+      "ratio": 0.0183,
+      "verdict": "match",
+      "w": 1264,
+      "h": 569
+    },
+    {
+      "id": "webxr_sandbox",
+      "status": "no_reference"
+    },
+    {
+      "id": "webxr_vr_ballshooter",
+      "status": "no_reference"
+    },
+    {
+      "id": "webxr_vr_paint",
+      "status": "no_reference"
+    }
+  ]
+}

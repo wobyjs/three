@@ -1,4 +1,4 @@
-import { MaterialNode } from '../../../src/materials/MaterialNode'
+﻿import { MaterialNode } from '../../../src/materials/MaterialNode'
 import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
 export * from 'three/examples/jsm/lines/LineMaterial.js'
 import { Three } from '../../../lib/3/three'
@@ -46,7 +46,7 @@ declare module '../../../lib/3/objProps' {
 
 
 consParams.lineMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['alphaToCoverage',
         'color',
         'dashed',
@@ -66,7 +66,7 @@ consParams.lineMaterial = { ...consParams.lineMaterialParameters }
 
 
 
-const _lineMaterialParameters = ([...objProps.materialParameters,
+const _lineMaterialParameters = ([...(objProps.materialParameters ?? []),
     'alphaToCoverage',
     'color',
     'dashed',
@@ -83,7 +83,7 @@ objProps.lineMaterialParameters = _lineMaterialParameters
 
 
 
-const _lineMaterial = ([...objProps.shaderMaterial,
+const _lineMaterial = ([...(objProps.shaderMaterial ?? []),
     'color',
     'dashed',
     'dashScale',

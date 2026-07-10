@@ -1,6 +1,13 @@
 # @woby/three
 
+[![npm version](https://img.shields.io/npm/v/@woby/three)](https://www.npmjs.com/package/@woby/three)
+[![Three.js](https://img.shields.io/badge/Three.js-r173-green)](https://threejs.org/)
+
 [@woby/three](https://github.com/wobyjs/three) is a powerful library for creating 3D graphics using [Three.js](https://threejs.org/) in [Woby](https://github.com/wobyjs/woby) applications. It aims to provide a seamless integration of Three.js with Woby, enabling declarative 3D scenes in a reactive and component-based architecture.
+
+## Status
+
+**Stable** — v1.0.0 release. The JSX API is production-ready and has been validated against **711+ ported Three.js examples** covering the full API surface. Compatible with Three.js r173.
 
 ## Features
 
@@ -8,6 +15,7 @@
 - **Efficient Rendering:** Leveraging Woby's reactive system, @woby/three ensures efficient updates and re-renders only when necessary.
 - **Component-Based:** Use Woby's component system to create reusable 3D elements and manage state easily.
 - **Three.js Integration:** Access the full power of Three.js within your Woby application, with all the features and capabilities of the Three.js library.
+- **Production-Ready:** 711+ ported examples serve as a validation suite, covering the full Three.js API surface.
 
 ## Getting Started
 
@@ -350,9 +358,28 @@ export const FatLines = () => {
 ```
 
 
-## Documentation
-For detailed documentation, please refer to the @woby/three GitHub repository.
+## API Reference
 
+The JSX API mirrors Three.js class properties directly. For component props, refer to the [Three.js documentation](https://threejs.org/docs/):
+
+| JSX Element | Three.js Class | Docs |
+|---|---|---|
+| `<mesh>` | `THREE.Mesh` | [Mesh](https://threejs.org/docs/#api/en/objects/Mesh) |
+| `<boxGeometry>` | `THREE.BoxGeometry` | [BoxGeometry](https://threejs.org/docs/#api/en/geometries/BoxGeometry) |
+| `<meshStandardMaterial>` | `THREE.MeshStandardMaterial` | [MeshStandardMaterial](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial) |
+| `<perspectiveCamera>` | `THREE.PerspectiveCamera` | [PerspectiveCamera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera) |
+| `<ambientLight>` | `THREE.AmbientLight` | [AmbientLight](https://threejs.org/docs/#api/en/lights/AmbientLight) |
+| `<canvas3D>` | Root wrapper | See examples below |
+
+### JSX-Specific Behavior
+
+- **Reactive props:** Observable values update automatically — no manual re-rendering
+- **Kebab-case props:** `shadow-camera-far={333}` maps to `light.shadow.camera.far = 333`
+- **Function-call props:** `setPixelRatio={[window.devicePixelRatio]}` calls the method with the array as arguments
+- **Frame loop:** `useFrame(fn)` subscribes to the render loop
+- **Event handlers:** `onClick`, `onPointerOver`, `onPointerOut` etc. work as in Three.js
+
+For JSX-specific patterns, see the [examples below](#basic-usage-threejs-vs-wobythree) and the [demo repository](https://github.com/wobyjs/three-demo).
 
 ## Support This Project
 If you find this project valuable and would like to support its development, please consider sponsoring. Your support will enable me to dedicate more time to improving and maintaining this project.

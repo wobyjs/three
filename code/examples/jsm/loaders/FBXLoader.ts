@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
 export * from 'three/examples/jsm/loaders/FBXLoader.js'
@@ -48,7 +48,7 @@ consParams.fbxLoader = fbxLoader
 
 
 
-const _fbxLoader = ([...objProps.loader,
+const _fbxLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.fbxLoader = _fbxLoader
 

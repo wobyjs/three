@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshPhysicalMaterial, MeshPhysicalMaterialParameters } from 'three/src/materials/MeshPhysicalMaterial.js'
 export { MeshPhysicalMaterial } from 'three/src/materials/MeshPhysicalMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -45,7 +45,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshPhysicalMaterialParameters = {
-    ...consParams.meshStandardMaterialParameters,
+    ...(consParams.meshStandardMaterialParameters ?? []),
     ...(['anisotropyRotation',
         'anisotropyMap',
         'clearcoatMap',
@@ -86,7 +86,7 @@ consParams.meshPhysicalMaterial = { ...consParams.meshPhysicalMaterialParameters
 
 
 
-const _meshPhysicalMaterialParameters = ([...objProps.meshStandardMaterialParameters,
+const _meshPhysicalMaterialParameters = ([...(objProps.meshStandardMaterialParameters ?? []),
     'anisotropyRotation',
     'anisotropyMap',
     'clearcoatMap',
@@ -123,7 +123,7 @@ const _meshPhysicalMaterialParameters = ([...objProps.meshStandardMaterialParame
 objProps.meshPhysicalMaterialParameters = _meshPhysicalMaterialParameters
 
 
-const _meshPhysicalMaterial = ([...objProps.meshStandardMaterial,
+const _meshPhysicalMaterial = ([...(objProps.meshStandardMaterial ?? []),
     /**
      * @default { 'STANDARD': '', 'PHYSICAL': '' }
      */

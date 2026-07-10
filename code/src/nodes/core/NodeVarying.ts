@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import NodeVarying from 'three/src/nodes/core/NodeVarying.js'
 export { NodeVarying }
 import { Three } from '../../../lib/3/three'
@@ -45,7 +45,7 @@ consParams.nodeVarying = nodeVarying
 
 
 
-const _nodeVarying = ([...objProps.nodeVar,
+const _nodeVarying = ([...(objProps.nodeVar ?? []),
     'needsInterpolation',
     'isNodeVarying',
 ] as const).distinct()

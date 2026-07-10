@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import ReferenceBaseNode from 'three/src/nodes/accessors/ReferenceBaseNode.js'
 export { ReferenceBaseNode }
 import { consParams } from '../../../lib/3/consParams'
@@ -36,7 +36,7 @@ consParams.referenceBaseNode = referenceBaseNode
 
 
 
-const _referenceBaseNode = ([...objProps.node,
+const _referenceBaseNode = ([...(objProps.node ?? []),
     'property',
     'uniformType',
     'object',

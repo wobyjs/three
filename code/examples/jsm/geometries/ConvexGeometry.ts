@@ -1,4 +1,4 @@
-import { Vector3 } from '../../../three-types'
+﻿import { Vector3 } from '../../../three-types'
 import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
 import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry.js'
 export * from 'three/examples/jsm/geometries/ConvexGeometry.js'
@@ -47,7 +47,7 @@ consParams.convexGeometry = convexGeometry
 
 
 
-const _convexGeometry = ([...objProps.bufferGeometry,
+const _convexGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.convexGeometry = _convexGeometry
 

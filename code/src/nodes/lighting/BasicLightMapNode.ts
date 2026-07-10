@@ -1,4 +1,4 @@
-import { Light } from 'three/src/lights/Light.js'
+﻿import { Light } from 'three/src/lights/Light.js'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import BasicLightMapNode from 'three/src/nodes/lighting/BasicLightMapNode.js'
@@ -44,7 +44,7 @@ const basicLightMapNode = ([
 ] as const).distinct()
 consParams.basicLightMapNode = basicLightMapNode
 
-const _basicLightMapNode = ([...objProps.lightingNode,
+const _basicLightMapNode = ([...(objProps.lightingNode ?? []),
 ] as const).distinct()
 objProps.basicLightMapNode = _basicLightMapNode
 

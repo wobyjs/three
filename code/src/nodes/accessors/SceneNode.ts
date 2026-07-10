@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import SceneNode, { SceneNodeScope } from 'three/src/nodes/accessors/SceneNode.js'
 export { SceneNode }
 import { Three } from '../../../lib/3/three'
@@ -45,7 +45,7 @@ consParams.sceneNode = sceneNode
 
 
 
-const _sceneNode = ([...objProps.node,
+const _sceneNode = ([...(objProps.node ?? []),
     'scope',
     'scene',
 ] as const).distinct()

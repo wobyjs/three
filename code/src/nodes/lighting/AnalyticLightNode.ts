@@ -1,4 +1,4 @@
-import { Light } from 'three/src/lights/Light.js'
+﻿import { Light } from 'three/src/lights/Light.js'
 import { Node } from '../../../three-types'
 import { Three } from '../../../lib/3/three'
 import AnalyticLightNode from 'three/src/nodes/lighting/AnalyticLightNode.js'
@@ -46,7 +46,7 @@ consParams.analyticLightNode = analyticLightNode
 
 
 
-const _analyticLightNode = ([...objProps.lightingNode,
+const _analyticLightNode = ([...(objProps.lightingNode ?? []),
     'light',
 ] as const).distinct()
 objProps.analyticLightNode = _analyticLightNode

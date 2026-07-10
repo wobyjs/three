@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshNormalMaterial, MeshNormalMaterialParameters } from 'three/src/materials/MeshNormalMaterial.js'
 export { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -44,7 +44,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshNormalMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['bumpMap',
         'bumpScale',
         'normalMap',
@@ -64,7 +64,7 @@ consParams.meshNormalMaterial = { ...consParams.meshNormalMaterialParameters }
 
 
 
-const _meshNormalMaterialParameters = ([...objProps.materialParameters,
+const _meshNormalMaterialParameters = ([...(objProps.materialParameters ?? []),
     'bumpMap',
     'bumpScale',
     'normalMap',
@@ -79,7 +79,7 @@ const _meshNormalMaterialParameters = ([...objProps.materialParameters,
 ] as const).distinct()
 objProps.meshNormalMaterialParameters = _meshNormalMaterialParameters
 
-const _meshNormalMaterial = ([...objProps.material,
+const _meshNormalMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshNormalMaterial'
      */

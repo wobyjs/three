@@ -1,4 +1,4 @@
-import { Line2 as WebGPULine2 } from 'three/examples/jsm/lines/webgpu/Line2.js'
+﻿import { Line2 as WebGPULine2 } from 'three/examples/jsm/lines/webgpu/Line2.js'
 import { Line2NodeMaterial } from '../../../../src/materials/nodes/Line2NodeMaterial'
 import { LineGeometry } from '../LineGeometry'
 
@@ -39,13 +39,13 @@ declare module '../../../../lib/3/objProps' {
 	}
 }
 
-const webGPULine2 = ([//...consParams.lineSegments2,
+const webGPULine2 = ([//...(consParams.lineSegments2 ?? []),
 	'geometry',
 	'material',
 ] as const).distinct()
 consParams.webGPULine2 = webGPULine2
 
-const _webGPULine2 = ([...objProps.lineSegments2,
+const _webGPULine2 = ([...(objProps.lineSegments2 ?? []),
 	'geometry',
 	'material',
 	'isLine2'

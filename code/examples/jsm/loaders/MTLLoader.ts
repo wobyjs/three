@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 export * from 'three/examples/jsm/loaders/MTLLoader.js'
@@ -150,7 +150,7 @@ const _materialCreatorOptions = ([
 objProps.materialCreatorOptions = _materialCreatorOptions
 
 
-const _mtlLoader = ([...objProps.loader,
+const _mtlLoader = ([...(objProps.loader ?? []),
     'materialOptions',
 ] as const).distinct()
 objProps.mtlLoader = _mtlLoader

@@ -1,4 +1,4 @@
-import { TextGeometryParameters, TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+﻿import { TextGeometryParameters, TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import { WrapFont } from '../loaders/FontLoader'
 import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode';
 export * from 'three/examples/jsm/geometries/TextGeometry.js'
@@ -45,7 +45,7 @@ declare module '../../../lib/3/objProps' {
 
 
 consParams.textGeometryParameters = {
-    ...consParams.extrudeGeometryOptions,
+    ...(consParams.extrudeGeometryOptions ?? []),
     ...(['font',
         /**
          * Size of the text
@@ -145,7 +145,7 @@ consParams.textGeometry = textGeometry
 
 
 
-const _textGeometryParameters = ([...objProps.extrudeGeometryOptions,
+const _textGeometryParameters = ([...(objProps.extrudeGeometryOptions ?? []),
     'font',
     /**
      * Size of the text
@@ -231,7 +231,7 @@ objProps.textGeometryParameters = _textGeometryParameters
  * @see {@link https://github.com/mrdoob/three.js/blob/master/examples/jsm/geometries/TextGeometry.js | Source}
  */
 
-const _textGeometry = ([...objProps.extrudeGeometry,
+const _textGeometry = ([...(objProps.extrudeGeometry ?? []),
 ] as const).distinct()
 objProps.textGeometry = _textGeometry
 

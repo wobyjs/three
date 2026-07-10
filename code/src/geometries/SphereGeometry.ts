@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { SphereGeometry } from 'three/src/geometries/SphereGeometry.js'
 export { SphereGeometry } from 'three/src/geometries/SphereGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -99,7 +99,7 @@ consParams.sphereGeometry = sphereGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/SphereGeometry.js | Source}
  */
 
-const _sphereGeometry = ([...objProps.bufferGeometry, ...objProps.parametricGeometry,
+const _sphereGeometry = ([...(objProps.bufferGeometry ?? []), ...(objProps.parametricGeometry ?? []),
 ] as const).distinct()
 objProps.sphereGeometry = _sphereGeometry
 

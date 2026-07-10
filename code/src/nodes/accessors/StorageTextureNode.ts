@@ -1,4 +1,4 @@
-import { Node as Object3DNode } from '../../../three-types'
+﻿import { Node as Object3DNode } from '../../../three-types'
 import StorageTextureNode from 'three/src/nodes/accessors/StorageTextureNode.js'
 export { StorageTextureNode }
 import { Three } from '../../../lib/3/three'
@@ -48,7 +48,7 @@ const storageTextureNode = ([
 consParams.storageTextureNode = storageTextureNode
 
 
-const _storageTextureNode = ([...objProps.textureNode,
+const _storageTextureNode = ([...(objProps.textureNode ?? []),
     'storeNode',
     'isStorageTextureNode',
     'access',

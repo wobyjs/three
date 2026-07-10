@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import OutlineNode from 'three/examples/jsm/tsl/display/OutlineNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -49,7 +49,7 @@ consParams.outlineNode = outlineNode
 
 // Inherits from TempNode and adds its own specific properties
 const _outlineNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'scene',
 	'camera',
 	'selectedObjects',

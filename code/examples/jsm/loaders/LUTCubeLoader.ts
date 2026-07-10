@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { LUTCubeLoader } from 'three/examples/jsm/loaders/LUTCubeLoader.js'
 export * from 'three/examples/jsm/loaders/LUTCubeLoader.js'
@@ -86,7 +86,7 @@ objProps.lutCubeResult = _lutCubeResult
  * https://wwwimages2.adobe.com/content/dam/acom/en/products/speedgrade/cc/pdfs/cube-lut-specification-1.0.pdf
  */
 
-const _lutCubeLoader = ([...objProps.loader,
+const _lutCubeLoader = ([...(objProps.loader ?? []),
     'type',
 ] as const).distinct()
 objProps.lutCubeLoader = _lutCubeLoader

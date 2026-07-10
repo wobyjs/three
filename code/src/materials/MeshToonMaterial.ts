@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshToonMaterial, MeshToonMaterialParameters } from 'three/src/materials/MeshToonMaterial.js'
 export { MeshToonMaterial } from 'three/src/materials/MeshToonMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -43,7 +43,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshToonMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     /** geometry color in hexadecimal. Default is 0xffffff. */
     ...(['color',
         'opacity',
@@ -78,7 +78,7 @@ consParams.meshToonMaterial = { ...consParams.meshToonMaterialParameters }
 
 
 
-const _meshToonMaterialParameters = ([...objProps.materialParameters,
+const _meshToonMaterialParameters = ([...(objProps.materialParameters ?? []),
     /** geometry color in hexadecimal. Default is 0xffffff. */
     'color',
     'opacity',
@@ -109,7 +109,7 @@ const _meshToonMaterialParameters = ([...objProps.materialParameters,
 objProps.meshToonMaterialParameters = _meshToonMaterialParameters
 
 
-const _meshToonMaterial = ([...objProps.material,
+const _meshToonMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshToonMaterial'
      */

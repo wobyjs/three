@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import NodeBuilderContext from 'three/src/nodes/core/NodeBuilder.js'
 import ContextNode from 'three/src/nodes/core/ContextNode.js'
@@ -47,7 +47,7 @@ consParams.contextNode = contextNode
 
 
 
-const _contextNode = ([...objProps.node,
+const _contextNode = ([...(objProps.node ?? []),
     'isContextNode',
     'node',
     'context',

@@ -82,7 +82,7 @@ const _chunk = ([
 objProps.chunk = _chunk
 
 
-const _voxLoader = ([...objProps.loader,
+const _voxLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.voxLoader = _voxLoader
 
@@ -94,7 +94,7 @@ objProps.voxMesh = _voxMesh
 
 
 
-const _voxData3dTexture = ([...objProps.data3dTexture,
+const _voxData3dTexture = ([...(objProps.data3dTexture ?? []),
 ] as const).distinct()
 objProps.voxData3dTexture = _voxData3dTexture
 

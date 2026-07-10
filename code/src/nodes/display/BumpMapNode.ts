@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import BumpMapNode from 'three/src/nodes/display/BumpMapNode.js'
 export { BumpMapNode }
@@ -46,7 +46,7 @@ consParams.bumpMapNode = bumpMapNode
 
 
 
-const _bumpMapNode = ([...objProps.tempNode,
+const _bumpMapNode = ([...(objProps.tempNode ?? []),
     'textureNode',
     'scaleNode',
 ] as const).distinct()

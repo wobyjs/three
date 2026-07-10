@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { RectAreaLight } from 'three/src/lights/RectAreaLight.js'
 export { RectAreaLight } from 'three/src/lights/RectAreaLight.js'
@@ -105,7 +105,7 @@ consParams.rectAreaLight = rectAreaLight
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/RectAreaLight.js | Source}
  */
 
-const _rectAreaLight = ([...objProps.light,
+const _rectAreaLight = ([...(objProps.light ?? []),
     /**
      * The width of the light.
      * @remarks Expects a `Float`

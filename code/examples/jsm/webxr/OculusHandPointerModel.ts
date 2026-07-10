@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { OculusHandPointerModel } from 'three/examples/jsm/webxr/OculusHandPointerModel.js'
 export * from 'three/examples/jsm/webxr/OculusHandPointerModel.js'
@@ -46,7 +46,7 @@ consParams.oculusHandPointerModel = oculusHandPointerModel
 
 
 
-const _oculusHandPointerModel = ([...objProps.object3d,
+const _oculusHandPointerModel = ([...(objProps.object3d ?? []),
     'hand',
     'controller',
     'motionController',

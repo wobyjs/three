@@ -4,6 +4,20 @@ import { Texture } from "../src/textures/Texture"
 import { Color } from "../src/math/Color"
 import { CubeTexture } from "../src/textures/CubeTexture"
 
+/** Standalone distinct — returns unique elements of an array. Use instead of Array.prototype.distinct(). */
+export const distinct = <T, K>(arr: T[], key?: (v: T) => K): T[] => {
+    return [...new Set(arr)]
+}
+
+/** Standalone toObject — converts a tuple of string keys to { [key]: key }. Use instead of Array.prototype.toObject(). */
+export const toObject = <T extends string>(arr: readonly T[]): { [K in T]: K } => {
+    if (!arr) return null as any
+    return arr.reduce((acc, key) => {
+        (acc as any)[key] = key
+        return acc
+    }, {} as { [key: string]: string }) as any
+}
+
 export const toUpper = (s: string) => {
     s = s.replace('gl', 'GL')
 

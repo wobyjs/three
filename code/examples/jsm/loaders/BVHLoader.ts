@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { BVHLoader } from 'three/examples/jsm/loaders/BVHLoader.js'
 export * from 'three/examples/jsm/loaders/BVHLoader.js'
@@ -63,7 +63,7 @@ const _bvh = ([
 objProps.bvh = _bvh
 
 
-const _bvhLoader = ([...objProps.loader,
+const _bvhLoader = ([...(objProps.loader ?? []),
     'animateBonePositions',
     'animateBoneRotations',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import ViewportDepthNode, { ViewportDepthNodeScope } from 'three/src/nodes/display/ViewportDepthNode.js'
 export { ViewportDepthNode }
@@ -46,7 +46,7 @@ consParams.viewportDepthNode = viewportDepthNode
 
 
 
-const _viewportDepthNode = ([...objProps.node,
+const _viewportDepthNode = ([...(objProps.node ?? []),
     'scope',
     'valueNode',
 ] as const).distinct()

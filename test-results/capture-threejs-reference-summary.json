@@ -1,0 +1,23 @@
+{
+  "at": "2026-06-22T01:20:43.327Z",
+  "profile": "profile-5",
+  "total": 3,
+  "ok": 0,
+  "notFound": 0,
+  "noCanvas": 3,
+  "failed": 0,
+  "results": [
+    {
+      "id": "webgl_alpha",
+      "status": "no_canvas"
+    },
+    {
+      "id": "webgl_reflection",
+      "status": "no_canvas"
+    },
+    {
+      "id": "webgl_terrain",
+      "status": "no_canvas"
+    }
+  ]
+}

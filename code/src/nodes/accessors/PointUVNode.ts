@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import PointUVNode from 'three/src/nodes/accessors/PointUVNode.js'
 export { PointUVNode }
 import { Three } from '../../../lib/3/three'
@@ -43,7 +43,7 @@ consParams.pointUvNode = pointUvNode
 
 
 
-const _pointUvNode = ([...objProps.node,
+const _pointUvNode = ([...(objProps.node ?? []),
     'isPointUvNode',
 ] as const).distinct()
 objProps.pointUvNode = _pointUvNode

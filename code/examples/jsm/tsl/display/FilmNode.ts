@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import FilmNode from 'three/examples/jsm/tsl/display/FilmNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
 import { Node } from '../../../../three-types'
@@ -38,7 +38,7 @@ consParams.filmNode = filmNode
 
 // Inherits from TempNode and adds its own specific properties
 const _filmNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'inputNode',
 	'intensityNode',
 	'uvNode',

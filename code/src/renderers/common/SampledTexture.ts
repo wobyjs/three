@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 // Import all classes from the source file
 import { SampledTexture, SampledArrayTexture, Sampled3DTexture, SampledCubeTexture } from 'three/src/renderers/common/SampledTexture.js'
 export * from 'three/src/renderers/common/SampledTexture.js'
@@ -56,13 +56,13 @@ declare module '../../../lib/3/objProps' {
 const sampledTexture = (['name', 'texture'] as const).distinct()
 consParams.sampledTexture = sampledTexture
 
-const sampledArrayTexture = ([...consParams.sampledTexture] as const).distinct()
+const sampledArrayTexture = ([...(consParams.sampledTexture ?? [])] as const).distinct()
 consParams.sampledArrayTexture = sampledArrayTexture
 
-const sampled3DTexture = ([...consParams.sampledTexture] as const).distinct()
+const sampled3DTexture = ([...(consParams.sampledTexture ?? [])] as const).distinct()
 consParams.sampled3DTexture = sampled3DTexture
 
-const sampledCubeTexture = ([...consParams.sampledTexture] as const).distinct()
+const sampledCubeTexture = ([...(consParams.sampledTexture ?? [])] as const).distinct()
 consParams.sampledCubeTexture = sampledCubeTexture
 
 // ---[ Object Properties ]---
@@ -81,19 +81,19 @@ const _sampledTexture = ([
 objProps.sampledTexture = _sampledTexture
 
 const _sampledArrayTexture = ([
-	...objProps.sampledTexture,
+	...(objProps.sampledTexture ?? []),
 	'isSampledArrayTexture',
 ] as const).distinct()
 objProps.sampledArrayTexture = _sampledArrayTexture
 
 const _sampled3DTexture = ([
-	...objProps.sampledTexture,
+	...(objProps.sampledTexture ?? []),
 	'isSampled3DTexture',
 ] as const).distinct()
 objProps.sampled3DTexture = _sampled3DTexture
 
 const _sampledCubeTexture = ([
-	...objProps.sampledTexture,
+	...(objProps.sampledTexture ?? []),
 	'isSampledCubeTexture',
 ] as const).distinct()
 objProps.sampledCubeTexture = _sampledCubeTexture

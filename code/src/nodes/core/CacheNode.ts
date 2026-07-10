@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import NodeCache from 'three/src/nodes/core/NodeCache.js'
 import CacheNode from 'three/src/nodes/core/CacheNode.js'
@@ -47,7 +47,7 @@ consParams.cacheNode = cacheNode
 
 
 
-const _cacheNode = ([...objProps.node,
+const _cacheNode = ([...(objProps.node ?? []),
     'isCacheNode',
     'node',
     'cache',

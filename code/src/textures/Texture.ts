@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { Texture } from 'three/src/textures/Texture.js'
 import { ClampToEdgeWrapping, ColorSpace, MagnificationTextureFilter, Mapping, MinificationTextureFilter, NearestFilter, PixelFormat, RGBAFormat, TextureDataType, UnsignedByteType, UVMapping, Wrapping } from 'three/src/constants.js'
 export { Texture } from 'three/src/textures/Texture.js'
@@ -108,7 +108,7 @@ objProps.eventTarget = _eventTarget
 /** Shim for OffscreenCanvas. */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface    
 //@ts-ignore
-const _offscreenCanvas = ([...objProps.eventTarget,
+const _offscreenCanvas = ([...(objProps.eventTarget ?? []),
 ] as const).distinct()
 objProps.offscreenCanvas = _offscreenCanvas
 

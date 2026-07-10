@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import TempNode from 'three/src/nodes/core/TempNode.js'
 export { TempNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.tempNode = tempNode
 
 
 
-const _tempNode = ([...objProps.node,
+const _tempNode = ([...(objProps.node ?? []),
     'isTempNode',
 ] as const).distinct()
 objProps.tempNode = _tempNode

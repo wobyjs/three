@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Gyroscope } from 'three/examples/jsm/misc/Gyroscope.js'
 export * from 'three/examples/jsm/misc/Gyroscope.js'
 
@@ -44,7 +44,7 @@ consParams.gyroscope = gyroscope
 
 
 
-const _gyroscope = ([...objProps.object3d,
+const _gyroscope = ([...(objProps.object3d ?? []),
 ] as const).distinct()
 objProps.gyroscope = _gyroscope
 

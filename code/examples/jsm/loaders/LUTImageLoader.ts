@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { LUTImageLoader } from 'three/examples/jsm/loaders/LUTImageLoader.js'
 export * from 'three/examples/jsm/loaders/LUTImageLoader.js'
@@ -47,7 +47,7 @@ consParams.lutImageLoader = lutImageLoader
 
 
 
-const _lutImageLoader = ([...objProps.loader,
+const _lutImageLoader = ([...(objProps.loader ?? []),
     'flip',
 ] as const).distinct()
 objProps.lutImageLoader = _lutImageLoader

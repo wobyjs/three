@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import ConditionalNode from 'three/src/nodes/math/ConditionalNode.js'
 export { ConditionalNode }
@@ -47,7 +47,7 @@ consParams.condNode = condNode
 
 
 
-const _condNode = ([...objProps.node,
+const _condNode = ([...(objProps.node ?? []),
     'condNode',
     'ifNode',
     'elseNode',

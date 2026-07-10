@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import MorphNode from 'three/src/nodes/accessors/MorphNode.js'
 export { MorphNode }
 import { Three } from '../../../lib/3/three'
@@ -45,7 +45,7 @@ consParams.morphNode = morphNode
 
 
 
-const _morphNode = ([...objProps.node,
+const _morphNode = ([...(objProps.node ?? []),
     'mesh',
     'morphBaseInfluence',
 ] as const).distinct()

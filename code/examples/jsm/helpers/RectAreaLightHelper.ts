@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { RectAreaLight } from 'three/src/lights/RectAreaLight.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js'
@@ -48,7 +48,7 @@ consParams.rectAreaLightHelper = rectAreaLightHelper
 
 
 
-const _rectAreaLightHelper = ([...objProps.line,
+const _rectAreaLightHelper = ([...(objProps.line ?? []),
     'light',
     'color',
 ] as const).distinct()

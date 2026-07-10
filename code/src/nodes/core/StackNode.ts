@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import StackNode from 'three/src/nodes/core/StackNode.js'
 export { StackNode }
 import { Three } from '../../../lib/3/three'
@@ -43,7 +43,7 @@ consParams.stackNode = stackNode
 
 
 
-const _stackNode = ([...objProps.node,
+const _stackNode = ([...(objProps.node ?? []),
     'isStackNode',
     'nodes',
     'outputNode',

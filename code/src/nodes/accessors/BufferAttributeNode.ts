@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import BufferAttributeNode from 'three/src/nodes/accessors/BufferAttributeNode.js'
 export { BufferAttributeNode }
 import { Three } from '../../../lib/3/three'
@@ -39,7 +39,7 @@ declare module '../../../lib/3/objProps' {
 }
 
 
-const bufferAttributeNode = ([...consParams.inputNode,
+const bufferAttributeNode = ([...(consParams.inputNode ?? []),
     'value',
     'bufferType',
     'bufferStride',
@@ -49,7 +49,7 @@ consParams.bufferAttributeNode = bufferAttributeNode
 
 
 
-const _bufferAttributeNode = ([...objProps.inputNode,
+const _bufferAttributeNode = ([...(objProps.inputNode ?? []),
     'isBufferNode',
     'bufferType',
     'bufferStride',

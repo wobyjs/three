@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import ParallaxBarrierPassNode from 'three/examples/jsm/tsl/display/ParallaxBarrierPassNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -38,7 +38,7 @@ consParams.parallaxBarrierPassNode = parallaxBarrierPassNode
 
 // Inherits from StereoCompositePassNode and adds its own specific property
 const _parallaxBarrierPassNode = ([
-	...objProps.stereoCompositePassNode, // <-- Inherits parent properties
+	...(objProps.stereoCompositePassNode ?? []), // <-- Inherits parent properties
 	'isParallaxBarrierPassNode',
 ] as const).distinct()
 objProps.parallaxBarrierPassNode = _parallaxBarrierPassNode

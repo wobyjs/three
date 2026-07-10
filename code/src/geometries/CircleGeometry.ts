@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { CircleGeometry } from 'three/src/geometries/CircleGeometry.js'
 export { CircleGeometry } from 'three/src/geometries/CircleGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -92,7 +92,7 @@ consParams.circleGeometry = circleGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CircleGeometry.js | Source}
  */
 
-const _circleGeometry = ([...objProps.bufferGeometry,
+const _circleGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.circleGeometry = _circleGeometry
 

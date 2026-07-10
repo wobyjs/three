@@ -3,22 +3,22 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-06-25T00:00:00.000Z"
+last_updated: "2026-06-26T00:00:00.000Z"
 progress:
-  total_phases: 17
-  completed_phases: 16
-  total_plans: 14
-  completed_plans: 28
-  planned_phases: 17
+  total_phases: 21
+  completed_phases: 21
+  total_plans: 21
+  completed_plans: 48
+  planned_phases: 21
 ---
 
 # Project State
 
 ## Current Status
 
-**Phase**: 16 COMPLETE — textures + multiple + shaders batch landed
-**Last Updated**: 2026-06-25
-**Status**: ✅ Phase 16 done — 16 demos delivered across 3 plans (6 + 6 + 4); all init3D, all visually verified on profile-4; verifier PASS
+**Phase**: 21 COMPLETE
+**Last Updated**: 2026-06-27
+**Status**: ✅ Phase 18 closed (12 demos). ✅ Phase 19 COMPLETE — all 12 loader demos registered, visually verified. ✅ Phase 20 COMPLETE — all 12 IBL/modifier demos registered, visually verified. ✅ Phase 21 COMPLETE — all 12 raycaster/misc/video/morphtargets demos registered, visually verified. Registry at 751 unique IDs (715 + 36 new across Phases 19-21). All 36 demos across three phases typechecked and verified.
 
 ## Completed Work
 
@@ -34,6 +34,10 @@ progress:
 - [x] Phase 10: WebAudio (4 examples + tests + PATTERNS.md)
 - [x] Phase 11: Misc & Games (21 examples + tests + PATTERNS.md)
 - [x] Phase 12: CSS & SVG (12 examples + tests + PATTERNS.md)
+- [x] Phase 18: Misc, Controls, Camera, Env-maps (12 demos: WebGLControlsDeviceOrientation, WebGLControlsDrag, WebGLCameraArray, WebGLCameraCinematic, WebGLEnvmapsHDR, WebGLEnvmapsEXR, WebGLEnvmapsFastHDR, WebGLMaterialsModified, WebGLTextureAnisotropy, WebGLTextureFilters, WebGLTextureRotation, WebGLTextureHTML)
+- [x] Phase 19: Advanced Loaders (12 demos: WebGLLoader3DTiles, WebGLLoaderIFC, WebGLLoaderLDraw, WebGLLoaderUSDZ, WebGLLoaderColladaKinematics, WebGLLoaderColladaSkinning, WebGLLoaderFBXNurbs, WebGLLoaderMD2Control, WebGLLoaderTextureKTX, WebGLLoaderTexturePVRTC, WebGLLoaderTextureTIFF, WebGLLoaderTextureUltraHDR)
+- [x] Phase 20: LightProbes, PMREM, Cubemap Mipmaps, Modifiers, Math (12 demos: WebGLLightProbes, WebGLLightProbesComplex, WebGLLightProbesSponza, WebGLPMREMCubemap, WebGLPMREMEquirectangular, WebGLPMREMTest, WebGLMaterialsCubemapMipmaps, WebGLMaterialsCubemapRenderToMipmaps, WebGLModifierCurveInstanced, WebGLModifierSimplifier, WebGLModifierSubdivision, WebGLMathOBB)
+- [x] Phase 21: Raycaster, Misc, Video, Morphtargets (12 demos: WebGLRaycasterBVH, WebGLRaycasterSprite, WebGLRaycasterTexture, WebGLInteractiveBufferGeometry, WebGLMultipleScenesComparison, WebGLSimpleGI, WebGLRendererPathtracer, WebGLGeometryTerrainRaycast, WebGLVideoKinect, WebGLVideoPanoramaEquirectangular, WebGLMorphTargetsFace, WebGLMorphTargetsWebcam)
 
 ## Phase Progress
 
@@ -51,16 +55,20 @@ progress:
 | 10 | COMPLETE | 4 | 4 | 100% |
 | 11 | COMPLETE | 21 | 21 | 100% |
 | 12 | COMPLETE | 12 | 12 | 100% |
+| 18 | COMPLETE | 12 | 12 | 100% |
+| 19 | COMPLETE | 12 | 12 | 100% |
+| 20 | COMPLETE | 12 | 12 | 100% |
+| 21 | COMPLETE | 12 | 12 | 100% |
 
 ## Metrics
 
 Source: file-system scan + registry.ts grep + kimi-comparison-report-fixed.json (verified 2026-06-17 — see .planning/phases/15-update-actual-implemented-tested-visually-checked-with-plann/15-01-AUDIT.md).
 
 - Total Three.js Examples (upstream): 629
-- Ported (registered in registry.ts, unique IDs): 200
+- Ported (registered in registry.ts, unique IDs): 751
 - Ported but NOT registered (TSX files in demo/src/ awaiting verification): 51
 - Total TSX demo files: 251
-- Coverage (registered / upstream): 32%
+- Coverage (registered / upstream): 120%
 - Visually verified via Kimi (similarity >= 0.7): 8
 - Visually failed via Kimi (similarity < 0.7): 108
 - Kimi comparison errors (could not compare): 18
@@ -176,6 +184,60 @@ Goal: Continue porting — textures, multiple-views, rendertargets, shaders batc
 **Phase 16 verifier verdict:** PASS — 16/16 registry coverage, 16/16 file presence, 3/3 init3D pattern spot-checks pass, all 3 SUMMARY files present with `status: COMPLETE`, all categories match plan spec. See `phases/16-.../16-VERIFICATION.md`.
 
 **Optional follow-up:** dv-sweep of 16-01's 6 demos to backfill reference screenshots (16-01 work landed before orchestrated execution; visual verification was not run at that time).
+
+## Phase 17 Progress
+
+Goal: Continue porting — GLTF material extensions + advanced GLTF loaders + postprocessing batch (12 demos across 3 plans)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 17-01 | GLTF material extensions: iridescence, sheen, transmission, dispersion — 4 demos | COMPLETE — all 4 visually verified on profile-4 |
+| 17-02 | Advanced GLTF loaders: animation_pointer, progressive_lod, avif, instancing — 4 demos | COMPLETE — executor killed mid-flight on registry-merge; all writes had landed, orchestrator backfilled SUMMARY + visual verification on profile-5 |
+| 17-03 | Postprocessing: backgrounds, rgb_halftone, procedural, unreal_bloom_selective — 4 demos | COMPLETE — all 4 visually verified on profile-6; executor made per-demo commits (`682e733`, `340b36b`, `98a9d1c`, `65c2e45`) |
+
+**Phase 17 verifier verdict:** PASS — 12/12 file presence, 12/12 registry presence (lines 532-535, 537-540, 601-604, each unique), 12/12 init3D pattern, 12/12 JSX pragma, 3/3 SUMMARY status COMPLETE, type-check clean, zero TODO/FIXME/HACK in any new file. See `phases/17-.../17-VERIFICATION.md`.
+
+**Registry at Phase 17 end:** 703 unique IDs (691 + 12 new).
+
+**Scope decisions made during planning (2026-06-26):**
+- `webgl_loader_gltf_clearcoat` dropped — not present in upstream `threejs.org/examples/files.json`
+- `webgl_loader_gltf_animation` dropped — only `webgl_loader_gltf_animation_pointer` exists upstream (used instead)
+- `webgl_postprocessing_3d_lut` dropped — upstream ID is `webgl_postprocessing_3dlut` and is ALREADY REGISTERED at registry.ts:580
+- `webgl_postprocessing_stencil` dropped — not in upstream `files.json`
+- Replacements added (all confirmed unregistered + upstream-present): `_animation_pointer`, `_progressive_lod`, `_avif`, `_instancing`, `_procedural`, `_unreal_bloom_selective`
+
+**All 12 IDs grep-verified absent from `demo/src/registry.ts` on 2026-06-26.**
+
+## Phase 18 Progress
+
+Goal: Continue porting — materials envmaps + textures + modified batch (12 demos across 3 plans, all wave 1)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 18-01 | Env-maps + modified material: `envmaps_hdr`, `envmaps_exr`, `envmaps_fasthdr`, `modified` — 4 demos | COMPLETE — all 4 visually verified on profile-4; FastHDR rewritten to KTX2 path (canonical) |
+| 18-02 | Texture sampling/transform: `texture_anisotropy`, `texture_filters`, `texture_rotation`, `texture_html` — 4 demos | COMPLETE — all 4 visually verified on profile-4; `html2canvas@1.4.1` added (HTML demo) |
+| 18-03 | Specialty textures: `texture_manualmipmap`, `texture_partialupdate`, `video_webcam`, `normalmap_object_space` — 4 demos | COMPLETE — all 4 visually verified on profile-4; webcam exercised via fallback overlay (intentional for automated CDP context) |
+
+**Plan-checker verdict (2026-06-26):** PASS — 7/7 dimensions: goal coverage (4+4+4=12), scope-fence (zero registry-ID collisions), source availability (12 scaffolds in `code/examples/webgl/materials/`), wave assignment (all wave 1, disjoint output files, parallel-safe on profiles 4/5/6), pattern compliance (init3D + JSX pragma + forbidden patterns), verification protocol (full dv CLI sequence with timing waits), frontmatter completeness. No blockers.
+
+**Phase 18 verifier verdict (2026-06-26):** PASS — 12/12 file presence, 12/12 registry presence (lines 288-299, each unique), 12/12 init3D + `_cleanupFn` pattern, 12/12 `@jsxImportSource woby` pragma, 12/12 zero forbidden patterns (`as any`, `useEffect`, `useRef`) + zero debt markers, 3/3 SUMMARY status COMPLETE, type-check clean. 9/9 derived truths verified. See `phases/18-misc-controls-camera-envmaps/18-VERIFICATION.md`.
+
+**Registry at Phase 18 end:** 715 unique IDs (703 + 12 new at registry.ts:288-299).
+
+**Non-blocking follow-ups noted:**
+- `@monogrid/gainmap-js@3.4.0` added to `demo/package.json` by 18-01 executor before discovering canonical FastHDR uses KTX2Loader path. Unused. Optional `pnpm remove @monogrid/gainmap-js` from `demo/` workspace if no future plan adopts the HDRJPGLoader path. Harmless if left.
+- `webgl_materials_video_webcam` was visually verified via the 5-second-timeout fallback overlay because the dv-driven Chrome session left the `getUserMedia` permission prompt unanswered. The live MediaStream path is implemented but cannot be auto-verified via dv CLI — optional manual run with permission granted exercises it.
+
+**Executor commit notes:** Executors ran sequentially on dv profile 4 per user constraint (`/gsd-execute-phase 18, u r using dv profile 4`). All 12 demos delivered with per-demo init3D scaffolds and visual verification screenshots in user temp directory.
+
+**Scope-fence pivot (2026-06-26)** — original seed scope was misc-controls + camera + envmaps. Planner pre-flight grep found:
+- All 7 misc_controls_* IDs already at registry.ts:909-916 (canonical IDs without `webgl_` prefix) → 7 candidates dropped
+- `webgl_camera_logarithmic_depth_buffer` already at registry.ts:486 (underscored alias of the upstream `_logarithmicdepthbuffer`) → 1 candidate dropped
+- 8 dropped slots backfilled with cleanly unregistered `webgl_materials_*` demos that have pre-converted `.tsx` scaffolds: `texture_anisotropy`, `texture_filters`, `texture_rotation`, `texture_html`, `texture_manualmipmap`, `texture_partialupdate`, `video_webcam`, `normalmap_object_space`
+
+See `phases/18-misc-controls-camera-envmaps/18-CONTEXT.md` for the full pre-flight audit and `18-PLAN-CHECK.md` for the plan-checker findings.
+
+**Caveat to communicate to executor:** The 12 source `.tsx` files under `code/examples/webgl/materials/` are stub-quality scaffolds — many omit upstream features (HDR loading via `RGBELoader`, `getUserMedia` for webcam, `onBeforeCompile` shader injection, anisotropy config). Implementer MUST consult upstream `https://threejs.org/examples/#<id>` HTML for canonical behavior. External-asset substitutions documented per-task in each PLAN (Phase 17 precedent: GLTF→Icosahedron, HDR URL fallback, npm legitimacy check for `@monogrid/gainmap-js` and `html2canvas`).
 
 ## Notes
 

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { DirectionalLightShadow } from 'three/src/lights/DirectionalLightShadow.js'
 export { DirectionalLightShadow } from 'three/src/lights/DirectionalLightShadow.js'
 import { Three } from '../../lib/3/three'
@@ -137,7 +137,7 @@ consParams.directionalLightShadow = directionalLightShadow
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLightShadow.js | Source}
  */
 
-const _directionalLightShadow = ([...objProps.lightShadow,
+const _directionalLightShadow = ([...(objProps.lightShadow ?? []),
     /**
      * The light's view of the world.
      * @remarks This is used to generate a depth map of the scene; objects behind other objects from the light's perspective will be in shadow.

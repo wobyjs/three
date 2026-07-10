@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import PosterizeNode from 'three/src/nodes/display/PosterizeNode.js'
 export { PosterizeNode }
@@ -47,7 +47,7 @@ consParams.posterizeNode = posterizeNode
 
 
 
-const _posterizeNode = ([...objProps.node,
+const _posterizeNode = ([...(objProps.node ?? []),
     'sourceNode',
     'stepsNode',
 ] as const).distinct()

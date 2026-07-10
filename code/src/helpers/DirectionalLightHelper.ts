@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { DirectionalLight } from 'three/src/lights/DirectionalLight.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { DirectionalLightHelper } from 'three/src/helpers/DirectionalLightHelper.js'
@@ -85,7 +85,7 @@ consParams.directionalLightHelper = directionalLightHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/DirectionalLightHelper.js | Source}
  */
 
-const _directionalLightHelper = ([...objProps.object3d,
+const _directionalLightHelper = ([...(objProps.object3d ?? []),
     /**
      * Contains the line mesh showing the location of the directional light.
      */

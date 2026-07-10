@@ -1,4 +1,4 @@
-import { Shape } from 'three/src/extras/core/Shape.js'
+﻿import { Shape } from 'three/src/extras/core/Shape.js'
 import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { ExtrudeGeometry, ExtrudeGeometryOptions } from 'three/src/geometries/ExtrudeGeometry.js'
 export * from 'three/src/geometries/ExtrudeGeometry.js'
@@ -252,7 +252,7 @@ objProps.uvGenerator = _uvGenerator
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ExtrudeGeometry.js | Source}
  */
 
-const _extrudeGeometry = ([...objProps.bufferGeometry,
+const _extrudeGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.extrudeGeometry = _extrudeGeometry
 

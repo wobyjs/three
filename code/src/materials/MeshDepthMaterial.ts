@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshDepthMaterial, MeshDepthMaterialParameters } from 'three/src/materials/MeshDepthMaterial.js'
 export { MeshDepthMaterial } from 'three/src/materials/MeshDepthMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -44,7 +44,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshDepthMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ... (['map',
         'alphaMap',
         'depthPacking',
@@ -61,7 +61,7 @@ consParams.meshDepthMaterial = { ...consParams.meshDepthMaterialParameters }
 
 
 
-const _meshDepthMaterialParameters = ([...objProps.materialParameters,
+const _meshDepthMaterialParameters = ([...(objProps.materialParameters ?? []),
     'map',
     'alphaMap',
     'depthPacking',
@@ -74,7 +74,7 @@ const _meshDepthMaterialParameters = ([...objProps.materialParameters,
 objProps.meshDepthMaterialParameters = _meshDepthMaterialParameters
 
 
-const _meshDepthMaterial = ([...objProps.material,
+const _meshDepthMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshDepthMaterial'
      */

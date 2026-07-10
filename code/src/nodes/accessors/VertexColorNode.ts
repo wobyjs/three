@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import VertexColorNode from 'three/src/nodes/accessors/VertexColorNode.js'
 export { VertexColorNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.vertexColorNode = vertexColorNode
 
 
 
-const _vertexColorNode = ([...objProps.attributeNode,
+const _vertexColorNode = ([...(objProps.attributeNode ?? []),
     'index',
 ] as const).distinct()
 objProps.vertexColorNode = _vertexColorNode

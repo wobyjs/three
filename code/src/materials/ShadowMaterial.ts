@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { ShadowMaterial, ShadowMaterialParameters } from 'three/src/materials/ShadowMaterial.js'
 export { ShadowMaterial } from 'three/src/materials/ShadowMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -43,7 +43,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.shadowMaterialParameters = {
-    ...consParams.shaderMaterialParameters,
+    ...(consParams.shaderMaterialParameters ?? []),
     ...(['color',
         'fog',
     ] as const).toObject()
@@ -51,7 +51,7 @@ consParams.shadowMaterialParameters = {
 
 
 consParams.shadowMaterial = {
-    ...consParams.shadowMaterialParameters,
+    ...(consParams.shadowMaterialParameters ?? []),
     ...([            /**
              * Read-only flag to check if a given object is of type {@link ShadowMaterial}.
              * @remarks This is a _constant_ value
@@ -79,14 +79,14 @@ consParams.shadowMaterial = {
 
 
 
-const _shadowMaterialParameters = ([...objProps.materialParameters,
+const _shadowMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'fog',
 ] as const).distinct()
 objProps.shadowMaterialParameters = _shadowMaterialParameters
 
 
-const _shadowMaterial = ([...objProps.material,
+const _shadowMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'ShadowMaterial'
      */

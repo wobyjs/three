@@ -2,6 +2,7 @@
 
 import { TextGeometry, TextGeometryParameters } from 'three/examples/jsm/geometries/TextGeometry'
 import { $, $$, Observable, ObservableMaybe, useEffect, useMemo } from "woby"
+import { distinct } from "../utils"
 import { useFont } from "../hooks"
 import { Three } from '../3/three'
 import { consParams } from '../3/consParams'
@@ -53,12 +54,12 @@ export const Text = ({ material: mat, text, pathToFont, ...props }: textProps): 
 // }
 
 //@ts-ignore
-consParams.text = [
+consParams.text = distinct([
     ...consParams.textGeometry,
     'pathToFont',
     'text',
     'material',
-].distinct()
+])
 
 //@ts-ignore
 objProps.text = [...objProps.textGeometry,

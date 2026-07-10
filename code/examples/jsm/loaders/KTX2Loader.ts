@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js'
 export * from 'three/examples/jsm/loaders/KTX2Loader.js'
@@ -71,7 +71,7 @@ const _ktx2LoaderWorkerConfig = ([
 objProps.ktx2LoaderWorkerConfig = _ktx2LoaderWorkerConfig
 
 
-const _ktx2Loader = ([...objProps.loader,
+const _ktx2Loader = ([...(objProps.loader ?? []),
     'transcoderPath',
     'transcoderBinary',
     'transcoderPending',

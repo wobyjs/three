@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { BatchedMesh } from 'three/src/objects/BatchedMesh.js'
 import BatchNode from 'three/src/nodes/accessors/BatchNode.js'
 export { BatchNode }
@@ -45,7 +45,7 @@ consParams.batchNode = batchNode
 
 
 
-const _batchNode = ([...objProps.node,
+const _batchNode = ([...(objProps.node ?? []),
     'batchMesh',
     'instanceColorNode',
     'batchingIdNode',

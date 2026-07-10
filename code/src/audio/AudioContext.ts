@@ -3,6 +3,7 @@ export * from 'three/src/audio/AudioContext.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
+import { defaults } from '../../lib/3/defaults'
 
 declare module '../../lib/3/three'
 {
@@ -40,3 +41,13 @@ consParams.audioContext = audioContext
 // AudioContext has no instances, so there are no instance properties.
 const _audioContext = ([] as const).distinct()
 objProps.audioContext = _audioContext
+
+// ---[ Defaults ]---
+
+declare module '../../lib/3/defaults' {
+    interface defaults {
+        audioContext: {}
+    }
+}
+
+defaults.audioContext = {}

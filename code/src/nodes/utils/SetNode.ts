@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import SetNode from 'three/src/nodes/utils/SetNode.js'
 export { SetNode }
@@ -45,7 +45,7 @@ const setNode = ([
 ] as const).distinct()
 consParams.setNode = setNode
 
-const _setNode = ([...objProps.tempNode,
+const _setNode = ([...(objProps.tempNode ?? []),
     'sourceNode',
     'components',
     'targetNode',

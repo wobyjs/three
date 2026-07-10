@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import PhysicalLightingModel from 'three/src/nodes/functions/PhysicalLightingModel.js'
 export { PhysicalLightingModel }
@@ -50,7 +50,7 @@ consParams.physicalLightingModel = physicalLightingModel
 
 
 
-const _physicalLightingModel = ([...objProps.lightingModel,
+const _physicalLightingModel = ([...(objProps.lightingModel ?? []),
     'clearcoat',
     'sheen',
     'iridescence',

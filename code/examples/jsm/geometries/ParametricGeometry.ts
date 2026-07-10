@@ -1,4 +1,4 @@
-import { Vector3 } from '../../../three-types'
+﻿import { Vector3 } from '../../../three-types'
 import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js'
 export * from 'three/examples/jsm/geometries/ParametricGeometry.js'
@@ -47,7 +47,7 @@ const parametricGeometry = ([
 ] as const).distinct()
 consParams.parametricGeometry = parametricGeometry
 
-const _parametricGeometry = ([...objProps.bufferGeometry,
+const _parametricGeometry = ([...(objProps.bufferGeometry ?? []),
     /**
      * @default 'ParametricGeometry'
      */

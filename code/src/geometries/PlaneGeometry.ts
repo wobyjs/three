@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { PlaneGeometry } from 'three/src/geometries/PlaneGeometry.js'
 export { PlaneGeometry } from 'three/src/geometries/PlaneGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -86,7 +86,7 @@ consParams.planeGeometry = planeGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/PlaneGeometry.js | Source}
  */
 
-const _planeGeometry = ([...objProps.bufferGeometry,
+const _planeGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.planeGeometry = _planeGeometry
 

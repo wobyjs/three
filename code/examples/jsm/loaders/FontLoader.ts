@@ -1,4 +1,4 @@
-import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+﻿import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { Font as TFont, FontLoader as TFontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { Node, PromiseMaybe } from '../../../three-types'
 import { ObservableMaybe } from 'woby'
@@ -84,7 +84,7 @@ const _fontData = ([
 ] as const).distinct()
 objProps.fontData = _fontData
 
-const _fontLoader = ([...objProps.loader,
+const _fontLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.fontLoader = _fontLoader
 

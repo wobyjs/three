@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import VelocityNode from 'three/src/nodes/accessors/VelocityNode.js'
 export { VelocityNode }
 import { Three } from '../../../lib/3/three'
@@ -44,7 +44,7 @@ consParams.velocityNode = velocityNode
 
 
 
-const _velocityNode = ([...objProps.tempNode,
+const _velocityNode = ([...(objProps.tempNode ?? []),
     'previousProjectionMatrix',
     'previousModelViewMatrix',
 ] as const).distinct()

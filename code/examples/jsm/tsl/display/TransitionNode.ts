@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import TransitionNode from 'three/examples/jsm/tsl/display/TransitionNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
@@ -42,7 +42,7 @@ consParams.transitionNode = transitionNode
 
 // Inherits from TempNode and adds its own specific properties
 const _transitionNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'textureNodeA',
 	'textureNodeB',
 	'mixTextureNode',

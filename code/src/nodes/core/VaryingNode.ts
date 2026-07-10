@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import VaryingNode from 'three/src/nodes/core/VaryingNode.js'
 export { VaryingNode }
@@ -46,7 +46,7 @@ consParams.varyingNode = varyingNode
 
 
 
-const _varyingNode = ([...objProps.node,
+const _varyingNode = ([...(objProps.node ?? []),
     'node',
     'name',
 ] as const).distinct()

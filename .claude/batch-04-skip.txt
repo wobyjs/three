@@ -1,0 +1,22 @@
+demo/src/WebGLPostprocessingNodes.tsx:uses three/webgpu and three/tsl - no WebGPU intrinsics
+demo/src/WebGLWebGPU.tsx:webgpu renderer - no intrinsics
+demo/src/WebGLWebgpuCompute.tsx:webgpu compute - no intrinsics
+demo/src/WebGLWebXR.tsx:webxr session - no intrinsic support
+demo/src/WebGLWebXRAR.tsx:webxr session
+demo/src/WebGLWebXRHitTest.tsx:webxr session
+demo/src/WebGLWebXRLayers.tsx:webxr session
+demo/src/WebGLWebXRVR.tsx:webxr session
+demo/src/WebXRARCones.tsx:webxr session
+demo/src/WebXRARPlaneDetection.tsx:webxr session
+demo/src/WebXRSandbox.tsx:webxr session
+demo/src/WebXRVRBallshooter.tsx:webxr session
+demo/src/WebXRVRPaint.tsx:webxr session
+demo/src/WebGLPostprocessingMask.tsx:multiple scenes with MaskPass/ClearMaskPass — too complex
+demo/src/WebGLPostprocessingDepth.tsx:separate orthographic composite scene with render targets — too complex
+demo/src/WebGLPostprocessingDOF.tsx:custom depth pass + separate orthographic composite scene + render targets — too complex
+demo/src/WebGLPostprocessingGodRays.tsx:uses third-party libraries postprocessing and three-good-godrays
+demo/src/WebGLPostprocessingOutline.tsx:uses FXAAPass (in skip list)
+demo/src/WebGLPostprocessingPixel.tsx:orthographic camera + pixel-aligned frustum logic + SpotLight
+demo/src/WebGLPostprocessingPixelArt.tsx:separate scene + WebGLRenderTarget blit composite
+demo/src/WebGLPostprocessingSSR.tsx:ReflectorForSSRPass + DRACO loader + complex selects system
+demo/src/WebGLPostprocessingTransition.tsx:two scenes/cameras with RenderTransitionPass + tween + InstancedMesh — multi-scene transition not supported declaratively

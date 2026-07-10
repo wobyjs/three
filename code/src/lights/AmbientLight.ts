@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { AmbientLight, Color } from 'three'
 export { AmbientLight }
 import { ColorRepresentation } from 'three'
@@ -93,7 +93,7 @@ consParams.ambientLight = ambientLight
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/AmbientLight.js | Source}
  */
 
-const _ambientLight = ([...objProps.light,
+const _ambientLight = ([...(objProps.light ?? []),
 ] as const).distinct()
 objProps.ambientLight = _ambientLight
 

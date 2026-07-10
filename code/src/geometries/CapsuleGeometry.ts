@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { CapsuleGeometry } from 'three/src/geometries/CapsuleGeometry.js'
 export { CapsuleGeometry } from 'three/src/geometries/CapsuleGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -86,7 +86,7 @@ consParams.capsuleGeometry = capsuleGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/CapsuleGeometry.js | Source}
  */
 
-const _capsuleGeometry = ([...objProps.bufferGeometry,
+const _capsuleGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.capsuleGeometry = _capsuleGeometry
 

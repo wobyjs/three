@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 export * from 'three/examples/jsm/loaders/PLYLoader.js'
@@ -47,7 +47,7 @@ consParams.plyLoader = plyLoader
 
 
 
-const _plyLoader = ([...objProps.loader,
+const _plyLoader = ([...(objProps.loader ?? []),
     'propertyNameMapping',
     'customPropertyMapping',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { XRPlanes } from 'three/examples/jsm/webxr/XRPlanes.js'
 export * from 'three/examples/jsm/webxr/XRPlanes.js'
@@ -45,7 +45,7 @@ consParams.xrPlanes = xrPlanes
 
 
 
-const _xrPlanes = ([...objProps.object3d,
+const _xrPlanes = ([...(objProps.object3d ?? []),
 ] as const).distinct()
 objProps.xrPlanes = _xrPlanes
 

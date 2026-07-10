@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { LineSegments } from 'three/src/objects/LineSegments.js'
@@ -72,7 +72,7 @@ consParams.lineSegments = lineSegments
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/LineSegments.js | Source}
  */
 
-const _lineSegments = ([...objProps.line,
+const _lineSegments = ([...(objProps.line ?? []),
 ] as const).distinct()
 objProps.lineSegments = _lineSegments
 

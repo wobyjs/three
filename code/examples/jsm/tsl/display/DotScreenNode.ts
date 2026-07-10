@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import DotScreenNode from 'three/examples/jsm/tsl/display/DotScreenNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
 import { Node } from '../../../../three-types'
@@ -38,7 +38,7 @@ consParams.dotScreenNode = dotScreenNode
 
 // Inherits from TempNode and adds its own specific properties
 const _dotScreenNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'inputNode',
 	'angle',
 	'scale',

@@ -216,6 +216,116 @@ Each wrapper file:
 3. Registers in `Three`, `consParams`, `objProps`, `defaults`
 4. Declares JSX.IntrinsicElements types
 
+## Demo Porting Pattern (MANDATORY)
+
+**This section is the authoritative rule for all demo porting work. Plans created by /gsd-plan-phase MUST follow this pattern. /gsd-verify-work MUST reject demos that violate it.**
+
+### Required Pattern: Canvas3D JSX
+
+Every ported demo MUST use the `@woby/three` JSX pragma and Canvas3D component:
+
+```tsx
+/** @jsxImportSource @woby/three */
+// One-line description
+
+import { useEffect } from "woby"
+import { ... } from "three"
+
+import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
+import { Event } from '@woby/three/lib/components/Event'
+import { useThree } from '@woby/three/lib/hooks/useThree'
+
+// Register intrinsics BEFORE use
+import '@woby/three/src/scenes/Scene'
+import '@woby/three/src/cameras/PerspectiveCamera'
+import '@woby/three/src/renderers/WebGLRenderer'
+
+export const DemoName = () => {
+    return <Canvas3D>
+        <webglRenderer setPixelRatio={[window.devicePixelRatio]} setSize={[window.innerWidth, window.innerHeight]} />
+        <scene>
+            {/* declarative children */}
+        </scene>
+        <perspectiveCamera args={[...]} position={[...]} />
+        <Event />
+    </Canvas3D>
+}
+
+export default DemoName
+```
+
+### Sub-component Pattern (for complex setup)
+
+When a demo needs postprocessing, custom render loops, or imperative scene setup (e.g. EffectComposer, OrbitControls, loaded assets), wrap setup in a child component placed **inside** Canvas3D. This gives proper ThreeContext access via `useContext`.
+
+```tsx
+/** @jsxImportSource @woby/three */
+
+import { useEffect } from "woby"
+import { Canvas3D } from '@woby/three/lib/components/Canvas3D'
+import { Event } from '@woby/three/lib/components/Event'
+import { useThree } from '@woby/three/lib/hooks/useThree'
+
+const SceneSetup = () => {
+    const ctx = useThree()          // <-- has context because it IS inside Canvas3D
+
+    useEffect(() => {
+        const gl = ctx.renderers?.[0]
+        const scene = ctx.scenes?.[0]
+        const camera = ctx.cameras?.[0]
+        if (!gl || !scene || !camera) return
+
+        // Imperative setup: add meshes, create composer, etc.
+        const mesh = new THREE.Mesh(...)
+        scene.add(mesh)
+
+        // Override default render loop
+        if (ctx.frames) {
+            ctx.frames.length = 0           // MUST clear to prevent double-render
+            ctx.frames.push(() => {
+                composer.render()
+            })
+        }
+
+        return () => { scene.remove(mesh); mesh.geometry.dispose() }
+    })
+
+    return null
+}
+
+export const DemoName = () => (
+    <Canvas3D>
+        <webglRenderer ... />
+        <scene />
+        <perspectiveCamera ... />
+        <SceneSetup />
+        <Event />
+    </Canvas3D>
+)
+```
+
+### Rules (ENFORCED)
+
+| Rule | Required | Forbidden |
+|------|----------|-----------|
+| JSX pragma | `/** @jsxImportSource @woby/three */` | `/** @jsxImportSource woby */` |
+| Root element | `<Canvas3D>` | Raw `init3D` / container-ref pattern |
+| `useThree()` location | Inside a component rendered by Canvas3D | At top level of the page component |
+| `ctx.frames` override | Clear before push: `ctx.frames.length = 0; ctx.frames.push(...)` | Pushing without clearing (causes double-render) |
+| Intrinsic imports | `import '@woby/three/src/...'` for every JSX element used | Skipping registration |
+
+### /gsd-verify-work Checklist
+
+When verifying a ported demo, confirm all of the following:
+
+- [ ] File starts with `/** @jsxImportSource @woby/three */`
+- [ ] Root JSX is `<Canvas3D>` (not a `<div ref>` container)
+- [ ] Every JSX intrinsic element has a corresponding `import '@woby/three/src/...'`
+- [ ] `useThree()` is called only inside a component that lives inside `<Canvas3D>`
+- [ ] If `ctx.frames` is overridden, it clears before pushing: `ctx.frames.length = 0`
+- [ ] Demo renders visually (screenshot via dv CLI, approval from human)
+- [ ] Demo is registered in `demo/src/registry.ts` with correct snake_case id
+
 ---
 
-*Convention analysis: 2026-05-06*
+*Convention analysis: 2026-05-06 | Demo porting rules added: 2026-06-24*

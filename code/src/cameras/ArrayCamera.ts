@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 import { ArrayCamera } from 'three/src/cameras/ArrayCamera.js'
 export { ArrayCamera } from 'three/src/cameras/ArrayCamera.js'
@@ -55,6 +55,7 @@ const arrayCamera = ([
      * @param array. Default `[]`.
      */
     'cameras',
+    'array',
 ] as const).distinct()
 consParams.arrayCamera = arrayCamera
 
@@ -70,7 +71,7 @@ consParams.arrayCamera = arrayCamera
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/ArrayCamera.js | Source}
  */
 
-const _arrayCamera = ([...objProps.perspectiveCamera,
+const _arrayCamera = ([...(objProps.perspectiveCamera ?? []),
     /**
      * An array of cameras.
      * @defaultValue []

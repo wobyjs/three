@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { DebugEnvironment } from 'three/examples/jsm/environments/DebugEnvironment.js'
 export * from 'three/examples/jsm/environments/DebugEnvironment.js'
 
@@ -44,7 +44,7 @@ consParams.debugEnvironment = debugEnvironment
 
 
 
-const _debugEnvironment = ([...objProps.scene,
+const _debugEnvironment = ([...(objProps.scene ?? []),
 ] as const).distinct()
 objProps.debugEnvironment = _debugEnvironment
 

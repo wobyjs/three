@@ -1,4 +1,4 @@
-import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
+﻿import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Node } from '../../../three-types'
 import { Loader } from 'three/src/loaders/Loader.js'
 import { Group } from 'three/src/objects/Group.js'
@@ -55,7 +55,7 @@ consParams.xrControllerModelFactory = xrControllerModelFactory
 
 
 
-const _xrControllerModel = ([...objProps.object3d,
+const _xrControllerModel = ([...(objProps.object3d ?? []),
     'motionController',
     'envMap',
 ] as const).distinct()

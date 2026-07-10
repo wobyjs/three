@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { PointLight } from 'three/src/lights/PointLight.js'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { PointLightHelper } from 'three/src/helpers/PointLightHelper.js'
@@ -85,7 +85,7 @@ consParams.pointLightHelper = pointLightHelper
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/helpers/PointLightHelper.js | Source}
  */
 
-const _pointLightHelper = ([...objProps.object3d,
+const _pointLightHelper = ([...(objProps.object3d ?? []),
     /**
      * The {@link THREE.PointLight | PointLight} that is being visualized.
      */

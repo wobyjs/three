@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import PropertyNode from 'three/src/nodes/core/PropertyNode.js'
 export { PropertyNode }
 import { Three } from '../../../lib/3/three'
@@ -46,7 +46,7 @@ consParams.propertyNode = propertyNode
 
 
 
-const _propertyNode = ([...objProps.node,
+const _propertyNode = ([...(objProps.node ?? []),
     'name',
     'varying',
 ] as const).distinct()

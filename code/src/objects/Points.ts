@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { BufferGeometry, NormalOrGLBufferAttributes } from 'three/src/core/BufferGeometry.js'
 import { Material } from 'three/src/materials/Material.js'
 import { Points } from 'three/src/objects/Points.js'
@@ -67,7 +67,7 @@ consParams.points = points
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/objects/Points.js | Source}
  */
 
-const _points = ([...objProps.object3d,
+const _points = ([...(objProps.object3d ?? []),
     /**
      * An array of weights typically from `0-1` that specify how much of the morph is applied.
      * @defaultValue `undefined`, _but reset to a blank array by {@link updateMorphTargets | .updateMorphTargets()}._

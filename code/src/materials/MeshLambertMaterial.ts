@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshLambertMaterial, MeshLambertMaterialParameters } from 'three/src/materials/MeshLambertMaterial.js'
 export { MeshLambertMaterial } from 'three/src/materials/MeshLambertMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -44,7 +44,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.meshLambertMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['bumpMap',
         'bumpScale',
         'color',
@@ -79,7 +79,7 @@ consParams.meshLambertMaterialParameters = {
 
 
 
-const _meshLambertMaterialParameters = ([...objProps.materialParameters,
+const _meshLambertMaterialParameters = ([...(objProps.materialParameters ?? []),
     'bumpMap',
     'bumpScale',
     'color',
@@ -113,7 +113,7 @@ const _meshLambertMaterialParameters = ([...objProps.materialParameters,
 objProps.meshLambertMaterialParameters = _meshLambertMaterialParameters
 
 
-const _meshLambertMaterial = ([...objProps.material,
+const _meshLambertMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshLambertMaterial'
      */

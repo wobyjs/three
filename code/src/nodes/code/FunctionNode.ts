@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { CodeNodeInclude } from 'three/src/nodes/code/CodeNode.js'
 import Node_ from 'three/src/nodes/core/Node.js'
 import FunctionNode from 'three/src/nodes/code/FunctionNode.js'
@@ -38,7 +38,7 @@ consParams.functionNode = functionNode
 
 
 
-const _functionNode = ([...objProps.codeNode,
+const _functionNode = ([...(objProps.codeNode ?? []),
     'keywords',
 ] as const).distinct()
 objProps.functionNode = _functionNode

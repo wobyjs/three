@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { MD2Loader } from 'three/examples/jsm/loaders/MD2Loader.js'
 export * from 'three/examples/jsm/loaders/MD2Loader.js'
@@ -47,7 +47,7 @@ consParams.md2Loader = md2Loader
 
 
 
-const _md2Loader = ([...objProps.loader,
+const _md2Loader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.md2Loader = _md2Loader
 

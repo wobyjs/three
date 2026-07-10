@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { VRMLLoader } from 'three/examples/jsm/loaders/VRMLLoader.js'
 export * from 'three/examples/jsm/loaders/VRMLLoader.js'
@@ -47,7 +47,7 @@ consParams.vrmlLoader = vrmlLoader
 
 
 
-const _vrmlLoader = ([...objProps.loader,
+const _vrmlLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.vrmlLoader = _vrmlLoader
 

@@ -1,23 +1,30 @@
+/**
+ * @deprecated Array.prototype polyfills.
+ *
+ * Kept as backwards-compatibility shim for files that import this module.
+ * New code should use the standalone `distinct()` function from `../utils` instead.
+ *
+ * These polyfills will be removed in v2.0.
+ */
+
 declare global {
     interface Array<T> {
+        /** @deprecated Use `distinct(arr)` from `@woby/three/lib/utils` */
         distinct<K>(key?: (v: T) => K): ReadonlyArray<T>
     }
     interface ReadonlyArray<T> {
+        /** @deprecated Use `distinct(arr)` from `@woby/three/lib/utils` */
         distinct<K>(key?: (v: T) => K): ReadonlyArray<T>
     }
-
 }
 
 if (!Array.prototype.distinct) {
     Array.prototype.distinct = function <T, K>(this: T[], key?: (v: T) => K): T[] {
-        // Create a new Set for distinct values
         const distinctValues = key
             ? [...new Set(this.map(item => key(item)))]
-            : [...new Set(this)];
+            : [...new Set(this)]
 
-        // If you want to return the result as a literal type, 
-        // you can return it directly as distinctValues.
-        return distinctValues as T[]; // Return type is still T[] to maintain type safety
+        return distinctValues as T[]
     }
 }
 export { }

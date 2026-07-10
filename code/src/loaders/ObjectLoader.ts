@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { ObjectLoader } from 'three/src/loaders/ObjectLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const objectLoader = ([
 ] as const).distinct()
 consParams.objectLoader = objectLoader
 
-const _objectLoader = ([...objProps.loader] as const).distinct()
+const _objectLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.objectLoader = _objectLoader
 
 export type ObjectLoaderProps = Node<ObjectLoader, typeof ObjectLoader, { manager?: LoadingManager }>

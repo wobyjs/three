@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import ShaderToyDecoder from 'three/examples/jsm/transpiler/ShaderToyDecoder.js'
 export * from 'three/examples/jsm/transpiler/ShaderToyDecoder.js'
 import { Three } from '../../../lib/3/three'
@@ -43,7 +43,7 @@ consParams.shaderToyDecoder = shaderToyDecoder
 
 
 
-const _shaderToyDecoder = ([...objProps.glslDecoder,
+const _shaderToyDecoder = ([...(objProps.glslDecoder ?? []),
 ] as const).distinct()
 objProps.shaderToyDecoder = _shaderToyDecoder
 

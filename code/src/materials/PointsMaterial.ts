@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { PointsMaterial } from 'three/src/materials/PointsMaterial.js'
 export { PointsMaterial } from 'three/src/materials/PointsMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -43,7 +43,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.pointsMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['color',
         'map',
         'alphaMap',
@@ -58,7 +58,7 @@ consParams.pointsMaterial = { ...consParams.pointsMaterialParameters }
 
 
 
-const _pointsMaterialParameters = ([...objProps.materialParameters,
+const _pointsMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'map',
     'alphaMap',
@@ -69,7 +69,7 @@ const _pointsMaterialParameters = ([...objProps.materialParameters,
 objProps.pointsMaterialParameters = _pointsMaterialParameters
 
 
-const _pointsMaterial = ([...objProps.material,
+const _pointsMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'PointsMaterial'
      */

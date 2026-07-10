@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 // Import all classes from the source file
 import {
 	NumberUniform, Vector2Uniform, Vector3Uniform, Vector4Uniform,
@@ -119,28 +119,28 @@ const sharedUniformProps = ['name', 'value', 'setValue', 'getValue'] as const
 const _uniform = (['boundary', 'itemSize', ...sharedUniformProps] as const).distinct()
 objProps.renderer_uniform = _uniform
 
-const _numberUniform = ([...objProps.uniform, 'isNumberUniform'] as const).distinct()
+const _numberUniform = ([...(objProps.uniform ?? []), 'isNumberUniform'] as const).distinct()
 objProps.numberUniform = _numberUniform
 
-const _vector2Uniform = ([...objProps.uniform, 'isVector2Uniform'] as const).distinct()
+const _vector2Uniform = ([...(objProps.uniform ?? []), 'isVector2Uniform'] as const).distinct()
 objProps.vector2Uniform = _vector2Uniform
 
-const _vector3Uniform = ([...objProps.uniform, 'isVector3Uniform'] as const).distinct()
+const _vector3Uniform = ([...(objProps.uniform ?? []), 'isVector3Uniform'] as const).distinct()
 objProps.vector3Uniform = _vector3Uniform
 
-const _vector4Uniform = ([...objProps.uniform, 'isVector4Uniform'] as const).distinct()
+const _vector4Uniform = ([...(objProps.uniform ?? []), 'isVector4Uniform'] as const).distinct()
 objProps.vector4Uniform = _vector4Uniform
 
-const _colorUniform = ([...objProps.uniform, 'isColorUniform'] as const).distinct()
+const _colorUniform = ([...(objProps.uniform ?? []), 'isColorUniform'] as const).distinct()
 objProps.colorUniform = _colorUniform
 
-const _matrix2Uniform = ([...objProps.uniform, 'isMatrix2Uniform'] as const).distinct()
+const _matrix2Uniform = ([...(objProps.uniform ?? []), 'isMatrix2Uniform'] as const).distinct()
 objProps.matrix2Uniform = _matrix2Uniform
 
-const _matrix3Uniform = ([...objProps.uniform, 'isMatrix3Uniform'] as const).distinct()
+const _matrix3Uniform = ([...(objProps.uniform ?? []), 'isMatrix3Uniform'] as const).distinct()
 objProps.matrix3Uniform = _matrix3Uniform
 
-const _matrix4Uniform = ([...objProps.uniform, 'isMatrix4Uniform'] as const).distinct()
+const _matrix4Uniform = ([...(objProps.uniform ?? []), 'isMatrix4Uniform'] as const).distinct()
 objProps.matrix4Uniform = _matrix4Uniform
 
 // ---[ Props & Defaults ]---

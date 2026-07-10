@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 // Path assumed based on its child AnaglyphPassNode's location
 import StereoCompositePassNode from 'three/examples/jsm/tsl/display/StereoCompositePassNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
@@ -39,7 +39,7 @@ consParams.stereoCompositePassNode = stereoCompositePassNode
 
 // Inherits from PassNode and adds its own specific properties
 const _stereoCompositePassNode = ([
-	...objProps.passNode, // <-- Inherits parent properties
+	...(objProps.passNode ?? []), // <-- Inherits parent properties
 	'isStereoCompositePassNode',
 	'stereo',
 ] as const).distinct()

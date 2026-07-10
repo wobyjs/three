@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 export * from 'three/examples/jsm/loaders/ColladaLoader.js'
@@ -64,7 +64,7 @@ const _collada = ([
 objProps.collada = _collada
 
 
-const _colladaLoader = ([...objProps.loader,
+const _colladaLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.colladaLoader = _colladaLoader
 

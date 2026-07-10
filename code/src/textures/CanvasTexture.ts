@@ -1,4 +1,4 @@
-import { CanvasTexture } from 'three/src/textures/CanvasTexture.js'
+﻿import { CanvasTexture } from 'three/src/textures/CanvasTexture.js'
 export { CanvasTexture } from 'three/src/textures/CanvasTexture.js'
 import { Node } from '../../three-types'
 import {
@@ -88,7 +88,7 @@ consParams.canvasTexture = canvasTexture
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/CanvasTexture.js | Source}
  */
 
-const _canvasTexture = ([...objProps.texture,
+const _canvasTexture = ([...(objProps.texture ?? []),
 ] as const).distinct()
 objProps.canvasTexture = _canvasTexture
 

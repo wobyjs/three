@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { GLTFLoader as TGLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 export * from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -117,7 +117,7 @@ const _gltf = ([
 objProps.gltf = _gltf
 
 
-const _gltfLoader = ([...objProps.loader,
+const _gltfLoader = ([...(objProps.loader ?? []),
     'dracoLoader',
 ] as const).distinct()
 objProps.gltfLoader = _gltfLoader

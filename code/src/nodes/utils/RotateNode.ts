@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import RotateNode from 'three/src/nodes/utils/RotateNode.js'
 export { RotateNode }
@@ -47,7 +47,7 @@ consParams.rotateNode = rotateNode
 
 
 
-const _rotateNode = ([...objProps.tempNode,
+const _rotateNode = ([...(objProps.tempNode ?? []),
     'positionNode',
     'rotationNode',
 ] as const).distinct()

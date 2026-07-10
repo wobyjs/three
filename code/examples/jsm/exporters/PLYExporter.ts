@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { PLYExporter } from 'three/examples/jsm/exporters/PLYExporter.js'
 export * from 'three/examples/jsm/exporters/PLYExporter.js'
 
@@ -79,17 +79,17 @@ const _plyExporterOptionsBase = ([
 ] as const).distinct()
 objProps.plyExporterOptionsBase = _plyExporterOptionsBase
 
-const _plyExporterOptionsBinary = ([...objProps.plyExporterOptionsBase,
+const _plyExporterOptionsBinary = ([...(objProps.plyExporterOptionsBase ?? []),
     'binary',
 ] as const).distinct()
 objProps.plyExporterOptionsBinary = _plyExporterOptionsBinary
 
-const _plyExporterOptionsString = ([...objProps.plyExporterOptionsBase,
+const _plyExporterOptionsString = ([...(objProps.plyExporterOptionsBase ?? []),
     'binary',
 ] as const).distinct()
 objProps.plyExporterOptionsString = _plyExporterOptionsString
 
-const _plyExporterOptions = ([...objProps.plyExporterOptionsBase,
+const _plyExporterOptions = ([...(objProps.plyExporterOptionsBase ?? []),
     'binary',
 ] as const).distinct()
 objProps.plyExporterOptions = _plyExporterOptions

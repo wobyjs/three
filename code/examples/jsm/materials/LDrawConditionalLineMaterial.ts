@@ -1,4 +1,4 @@
-import { MaterialNode } from '../../../src/materials/MaterialNode'
+﻿import { MaterialNode } from '../../../src/materials/MaterialNode'
 import { LDrawConditionalLineMaterial } from 'three/examples/jsm/materials/LDrawConditionalLineMaterial.js'
 export * from 'three/examples/jsm/materials/LDrawConditionalLineMaterial.js'
 
@@ -54,7 +54,7 @@ consParams.lDrawConditionalLineMaterial = { ...consParams.shaderMaterialParamete
  * Lambert illumination model with Gouraud (per-vertex) shading
  */
 
-const _lDrawConditionalLineMaterial = ([...objProps.shaderMaterial,
+const _lDrawConditionalLineMaterial = ([...(objProps.shaderMaterial ?? []),
 	'opacity',
 	'color',
 	'isLDrawConditionalLineMaterial',

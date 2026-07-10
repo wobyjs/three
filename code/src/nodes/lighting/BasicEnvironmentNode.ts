@@ -1,4 +1,4 @@
-import { Light } from 'three/src/lights/Light.js'
+﻿import { Light } from 'three/src/lights/Light.js'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import BasicEnvironmentNode from 'three/src/nodes/lighting/BasicEnvironmentNode.js'
@@ -44,7 +44,7 @@ const basicEnvironmentNode = ([
 ] as const).distinct()
 consParams.basicEnvironmentNode = basicEnvironmentNode
 
-const _basicEnvironmentNode = ([...objProps.lightingNode,
+const _basicEnvironmentNode = ([...(objProps.lightingNode ?? []),
     'envNode',
 ] as const).distinct()
 objProps.basicEnvironmentNode = _basicEnvironmentNode

@@ -111,7 +111,7 @@ const _xrHandInputState = ([
 objProps.xrHandInputState = _xrHandInputState
 
 
-const _webXrSpaceEventMap = ([...objProps.object3dEventMap,
+const _webXrSpaceEventMap = ([...(objProps.object3dEventMap ?? []),
     'select',
     'selectstart',
     'selectend',

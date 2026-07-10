@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { RGBELoader as TRGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 export * from 'three/examples/jsm/loaders/RGBELoader.js'
@@ -74,7 +74,7 @@ const _rgbe = ([
 objProps.rgbe = _rgbe
 
 
-const _rgbeLoader = ([...objProps.dataTextureLoader,
+const _rgbeLoader = ([...(objProps.dataTextureLoader ?? []),
     'type',
 ] as const).distinct()
 objProps.rgbeLoader = _rgbeLoader

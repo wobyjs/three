@@ -1,4 +1,4 @@
-import { Node, WrapAsString } from '../../../three-types'
+﻿import { Node, WrapAsString } from '../../../three-types'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 import { WebGLExtensions } from 'three/src/renderers/webgl/WebGLExtensions.js'
 import { WebGLCapabilities } from 'three/src/renderers/webgl/WebGLCapabilities.js'
@@ -341,7 +341,7 @@ const webglPrograms = ([
 consParams.webglPrograms = webglPrograms
 
 
-const _webglProgramParametersWithUniforms = ([...objProps.webglProgramParameters,
+const _webglProgramParametersWithUniforms = ([...(objProps.webglProgramParameters ?? []),
     'uniforms',
 ] as const).distinct()
 objProps.webglProgramParametersWithUniforms = _webglProgramParametersWithUniforms

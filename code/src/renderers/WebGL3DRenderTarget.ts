@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { WebGL3DRenderTarget } from 'three/src/renderers/WebGL3DRenderTarget.js'
 import { RenderTargetOptions } from 'three/src/core/RenderTarget.js'
 export { WebGL3DRenderTarget } from 'three/src/renderers/WebGL3DRenderTarget.js'
@@ -64,7 +64,7 @@ consParams.webgl3dRenderTarget = webgl3dRenderTarget
  * Represents a three-dimensional render target.
  */
 
-const _webgl3dRenderTarget = ([...objProps.webglRenderTarget,
+const _webgl3dRenderTarget = ([...(objProps.webglRenderTarget ?? []),
     /**
      * Creates a new WebGl3dRenderTarget.
      *
@@ -87,8 +87,8 @@ export type WebGL3DRenderTargetProps = Node<WebGL3DRenderTarget, typeof WebGL3DR
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        webgl3DRenderTarget: { width?: number; height?: number; depth?: number; options?: RenderTargetOptions; }
+        webgl3dRenderTarget: { width?: number; height?: number; depth?: number; options?: RenderTargetOptions; }
     }
 }
 
-defaults.webgl3DRenderTarget = { width: 1, height: 1, depth: 1 }
+defaults.webgl3dRenderTarget = { width: 1, height: 1, depth: 1 }

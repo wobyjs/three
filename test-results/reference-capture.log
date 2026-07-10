@@ -1,0 +1,116 @@
+[ref-capture] 111 demos, profile=profile-5, wait=8000ms (single tab reuse)
+[profile-5] canvas_fix_verify ... error:dv eval -s (() => {
+    if (document.title.toLowerCase().inc
+[profile-5] css3d_periodictable ... error:dv navigate -u https://threejs.org/examples/css3d_periodicta
+[profile-5] current_state ... error:dv navigate -u https://threejs.org/examples/current_state.ht
+[profile-5] plane_verify ... error:dv navigate -u https://threejs.org/examples/plane_verify.htm
+[profile-5] test_home ... error:dv navigate -u https://threejs.org/examples/test_home.html e
+[profile-5] test_manual2 ... error:dv navigate -u https://threejs.org/examples/test_manual2.htm
+[profile-5] test_ply_current ... error:dv navigate -u https://threejs.org/examples/test_ply_current
+[profile-5] test_ply_loaded ... error:dv navigate -u https://threejs.org/examples/test_ply_loaded.
+[profile-5] water ... error:dv navigate -u https://threejs.org/examples/water.html exit 
+[profile-5] water_debug ... error:dv navigate -u https://threejs.org/examples/water_debug.html
+[profile-5] webgl_animation_keyframe ... error:dv navigate -u https://threejs.org/examples/webgl_animation_
+[profile-5] webgl_animation_multiple ... error:dv navigate -u https://threejs.org/examples/webgl_animation_
+[profile-5] webgl_animation_skinning_blending_check ... error:dv navigate -u https://threejs.org/examples/webgl_animation_
+[profile-5] webgl_animation_walk ... error:dv navigate -u https://threejs.org/examples/webgl_animation_
+[profile-5] webgl_audio ... error:dv navigate -u https://threejs.org/examples/webgl_audio.html
+[profile-5] webgl_batch_lod_bvh ... error:dv navigate -u https://threejs.org/examples/webgl_batch_lod_
+[profile-5] webgl_boxes ... error:dv navigate -u https://threejs.org/examples/webgl_boxes.html
+[profile-5] webgl_boxes_click ... error:dv navigate -u https://threejs.org/examples/webgl_boxes_clic
+[profile-5] webgl_camera_logarithmic_depth_buffer ... error:dv navigate -u https://threejs.org/examples/webgl_camera_log
+[profile-5] webgl_canvas_texture ... error:dv navigate -u https://threejs.org/examples/webgl_canvas_tex
+[profile-5] webgl_clipping_intersection_check2 ... error:dv navigate -u https://threejs.org/examples/webgl_clipping_i
+[profile-5] webgl_clipping_stencil ... error:dv navigate -u https://threejs.org/examples/webgl_clipping_s
+[profile-5] webgl_color_grading ... error:dv navigate -u https://threejs.org/examples/webgl_color_grad
+[profile-5] webgl_css2d ... error:dv navigate -u https://threejs.org/examples/webgl_css2d.html
+[profile-5] webgl_css3d ... error:dv navigate -u https://threejs.org/examples/webgl_css3d.html
+[profile-5] webgl_css3d_demo ... error:dv navigate -u https://threejs.org/examples/webgl_css3d_demo
+[profile-5] webgl_custom_shader ... error:dv navigate -u https://threejs.org/examples/webgl_custom_sha
+[profile-5] webgl_d_lines ... error:dv navigate -u https://threejs.org/examples/webgl_d_lines.ht
+[profile-5] webgl_effects_anaglyph_check ... error:dv navigate -u https://threejs.org/examples/webgl_effects_an
+[profile-5] webgl_effects_anaglyph_check2 ... error:dv navigate -u https://threejs.org/examples/webgl_effects_an
+[profile-5] webgl_effects_anaglyph_check3 ... error:dv navigate -u https://threejs.org/examples/webgl_effects_an
+[profile-5] webgl_effects_anaglyph_check4 ... error:dv navigate -u https://threejs.org/examples/webgl_effects_an
+[profile-5] webgl_effects_ascii ... error:dv navigate -u https://threejs.org/examples/webgl_effects_as
+[profile-5] webgl_effects_stereo2 ... error:dv navigate -u https://threejs.org/examples/webgl_effects_st
+[profile-5] webgl_effects_stereo3 ... error:dv navigate -u https://threejs.org/examples/webgl_effects_st
+[profile-5] webgl_effects_stereo_check ... error:dv navigate -u https://threejs.org/examples/webgl_effects_st
+[profile-5] webgl_fat_lines ... error:dv navigate -u https://threejs.org/examples/webgl_fat_lines.
+[profile-5] webgl_fat_lines_advanced ... error:dv navigate -u https://threejs.org/examples/webgl_fat_lines_
+[profile-5] webgl_fog_check ... error:dv navigate -u https://threejs.org/examples/webgl_fog_check.
+[profile-5] webgl_geometries_showcase ... error:dv navigate -u https://threejs.org/examples/webgl_geometries
+[profile-5] webgl_geometry_colors_lut ... error:dv navigate -u https://threejs.org/examples/webgl_geometry_c
+[profile-5] webgl_geometry_csg ... error:dv navigate -u https://threejs.org/examples/webgl_geometry_c
+[profile-5] webgl_geometry_cube ... error:dv navigate -u https://threejs.org/examples/webgl_geometry_c
+[profile-5] webgl_geometry_cube2 ... error:dv navigate -u https://threejs.org/examples/webgl_geometry_c
+[profile-5] webgl_geometry_text_stroke ... error:dv navigate -u https://threejs.org/examples/webgl_geometry_t
+[profile-5] webgl_group ... error:dv navigate -u https://threejs.org/examples/webgl_group.html
+[profile-5] webgl_helpers_debug ... error:dv navigate -u https://threejs.org/examples/webgl_helpers_de
+[profile-5] webgl_html_text ... error:dv navigate -u https://threejs.org/examples/webgl_html_text.
+[profile-5] webgl_instancing ... error:dv navigate -u https://threejs.org/examples/webgl_instancing
+[profile-5] webgl_instancing_animated ... error:dv navigate -u https://threejs.org/examples/webgl_instancing
+[profile-5] webgl_instancing_billboards ... error:dv navigate -u https://threejs.org/examples/webgl_instancing
+[profile-5] webgl_instancing_dynamic_current ... error:dv navigate -u https://threejs.org/examples/webgl_instancing
+[profile-5] webgl_instancing_scatter ... error:dv navigate -u https://threejs.org/examples/webgl_instancing
+[profile-5] webgl_interactive_buffer_geometry ... error:dv navigate -u https://threejs.org/examples/webgl_interactiv
+[profile-5] webgl_interactive_cubes_raycaster ... error:dv navigate -u https://threejs.org/examples/webgl_interactiv
+[profile-5] webgl_lights_hemisphere ... error:dv navigate -u https://threejs.org/examples/webgl_lights_hem
+[profile-5] webgl_line3 ... error:dv navigate -u https://threejs.org/examples/webgl_line3.html
+[profile-5] webgl_lines_test ... error:dv navigate -u https://threejs.org/examples/webgl_lines_test
+[profile-5] webgl_loader_gltf_2 ... error:dv navigate -u https://threejs.org/examples/webgl_loader_glt
+[profile-5] webgl_loader_gltf_anisotropy ... error:dv navigate -u https://threejs.org/examples/webgl_loader_glt
+[profile-5] webgl_loader_gltf_demo ... error:dv navigate -u https://threejs.org/examples/webgl_loader_glt
+[profile-5] webgl_materials_all ... error:dv navigate -u https://threejs.org/examples/webgl_materials_
+[profile-5] webgl_materials_colors ... error:dv navigate -u https://threejs.org/examples/webgl_materials_
+[profile-5] webgl_materials_normal ... error:dv navigate -u https://threejs.org/examples/webgl_materials_
+[profile-5] webgl_modifier_curve ... error:dv navigate -u https://threejs.org/examples/webgl_modifier_c
+[profile-5] webgl_modifier_simplify ... error:dv navigate -u https://threejs.org/examples/webgl_modifier_s
+[profile-5] webgl_morph_targets ... error:dv navigate -u https://threejs.org/examples/webgl_morph_targ
+[profile-5] webgl_multiple_geometries ... error:dv navigate -u https://threejs.org/examples/webgl_multiple_g
+[profile-5] webgl_normal_map ... error:dv navigate -u https://threejs.org/examples/webgl_normal_map
+[profile-5] webgl_object3d ... error:dv navigate -u https://threejs.org/examples/webgl_object3d.h
+[profile-5] webgl_particles ... error:dv navigate -u https://threejs.org/examples/webgl_particles.
+[profile-5] webgl_physics ... error:dv navigate -u https://threejs.org/examples/webgl_physics.ht
+[profile-5] webgl_plane ... error:dv navigate -u https://threejs.org/examples/webgl_plane.html
+[profile-5] webgl_point_cloud ... error:dv navigate -u https://threejs.org/examples/webgl_point_clou
+[profile-5] webgl_postprocessing_bokeh ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_chromatic ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_demo ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_depth ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_glitch ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_godrays ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_nodes ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_taa_fixed ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_temporal ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_postprocessing_vignette ... error:dv navigate -u https://threejs.org/examples/webgl_postproces
+[profile-5] webgl_reflection ... error:dv navigate -u https://threejs.org/examples/webgl_reflection
+[profile-5] webgl_reflector ... error:dv navigate -u https://threejs.org/examples/webgl_reflector.
+[profile-5] webgl_shaders_ocean ... error:dv navigate -u https://threejs.org/examples/webgl_shaders_oc
+[profile-5] webgl_shaders_sky ... error:dv navigate -u https://threejs.org/examples/webgl_shaders_sk
+[profile-5] webgl_shader_lava ... error:dv navigate -u https://threejs.org/examples/webgl_shader_lav
+[profile-5] webgl_simple_line ... error:dv navigate -u https://threejs.org/examples/webgl_simple_lin
+[profile-5] webgl_static_text ... error:dv navigate -u https://threejs.org/examples/webgl_static_tex
+[profile-5] webgl_svg ... error:dv navigate -u https://threejs.org/examples/webgl_svg.html e
+[profile-5] webgl_terrain ... error:dv navigate -u https://threejs.org/examples/webgl_terrain.ht
+[profile-5] webgl_textures_cube ... error:dv navigate -u https://threejs.org/examples/webgl_textures_c
+[profile-5] webgl_text_geometry ... error:dv navigate -u https://threejs.org/examples/webgl_text_geome
+[profile-5] webgl_tone_mapping ... error:dv navigate -u https://threejs.org/examples/webgl_tone_mappi
+[profile-5] webgl_toon ... error:dv navigate -u https://threejs.org/examples/webgl_toon.html 
+[profile-5] webgl_useframe_test ... error:dv navigate -u https://threejs.org/examples/webgl_useframe_t
+[profile-5] webgl_uvs ... error:dv navigate -u https://threejs.org/examples/webgl_uvs.html e
+[profile-5] webgl_vr ... error:dv navigate -u https://threejs.org/examples/webgl_vr.html ex
+[profile-5] webgl_webgpu ... error:dv navigate -u https://threejs.org/examples/webgl_webgpu.htm
+[profile-5] webgl_webxr ... error:dv navigate -u https://threejs.org/examples/webgl_webxr.html
+[profile-5] webgl_webxr_anchors ... error:dv navigate -u https://threejs.org/examples/webgl_webxr_anch
+[profile-5] webgl_webxr_ar ... error:dv navigate -u https://threejs.org/examples/webgl_webxr_ar.h
+[profile-5] webgl_webxr_hit_test ... error:dv navigate -u https://threejs.org/examples/webgl_webxr_hit_
+[profile-5] webgl_webxr_layers ... error:dv navigate -u https://threejs.org/examples/webgl_webxr_laye
+[profile-5] webgl_webxr_vr ... error:dv navigate -u https://threejs.org/examples/webgl_webxr_vr.h
+[profile-5] webgl_wireframes ... error:dv navigate -u https://threejs.org/examples/webgl_wireframes
+[profile-5] webxr_sandbox ... error:dv navigate -u https://threejs.org/examples/webxr_sandbox.ht
+[profile-5] webxr_vr_ballshooter ... error:dv navigate -u https://threejs.org/examples/webxr_vr_ballsho
+[profile-5] webxr_vr_paint ... error:dv navigate -u https://threejs.org/examples/webxr_vr_paint.h
+
+[ref-capture] done: ok=0 404=0 no_canvas=0 failed=111
+summary → D:\Developments\tslib\@woby\three\test-results\capture-threejs-reference-summary.json

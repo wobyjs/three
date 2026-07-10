@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import BypassNode from 'three/src/nodes/core/BypassNode.js'
 export { BypassNode }
@@ -46,7 +46,7 @@ consParams.bypassNode = bypassNode
 
 
 
-const _bypassNode = ([...objProps.node,
+const _bypassNode = ([...(objProps.node ?? []),
     'isBypassNode',
     'outputNode',
     'callNode',

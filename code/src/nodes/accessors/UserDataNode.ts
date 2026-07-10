@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import UserDataNode, { NodeUserData } from 'three/src/nodes/accessors/UserDataNode.js'
 export { UserDataNode }
 import { Three } from '../../../lib/3/three'
@@ -46,7 +46,7 @@ consParams.userDataNode = userDataNode
 
 
 
-const _userDataNode = ([...objProps.referenceNode,
+const _userDataNode = ([...(objProps.referenceNode ?? []),
     'userData',
 ] as const).distinct()
 objProps.userDataNode = _userDataNode

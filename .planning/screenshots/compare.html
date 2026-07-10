@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Comparison - Phases 19-21</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+        .phase-section {
+            margin-bottom: 30px;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        .comparison-card {
+            background: #16213e;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .comparison-card h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #e94560;
+        }
+        .images-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .image-box {
+            flex: 1;
+            min-width: 180px;
+        }
+        .image-box label {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            background: #0f3460;
+        }
+        .verdict {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .verdict.pending { background: #f39c12; color: black; }
+        .verdict.pass { background: #27ae60; color: white; }
+        .verdict.fail { background: #e74c3c; color: white; }
+        .stats {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Screenshot Comparison - Phases 19-21</h1>
+    <p>Comparing 36 ported demos against upstream Three.js examples</p>
+
+    <div class="stats">
+        <strong>Status:</strong> Click on images to view full size. Compare visually and record verdict.
+    </div>
+
+    <div class="phase-section">
+        <h2>Phase 19: Advanced Loaders (12 demos)</h2>
+        <div class="comparison-grid" id="phase19-grid"></div>
+    </div>
+
+    <div class="phase-section">
+        <h2>Phase 20: LightProbes/PMREM/Modifiers/Math (12 demos)</h2>
+        <div class="comparison-grid" id="phase20-grid"></div>
+    </div>
+
+    <div class="phase-section">
+        <h2>Phase 21: Raycaster/Misc/Video/MorphTargets (12 demos)</h2>
+        <div class="comparison-grid" id="phase21-grid"></div>
+    </div>
+
+    <script>
+        const phase19Demos = [
+            'webgl_loader_3dtiles', 'webgl_loader_ifc', 'webgl_loader_ldraw', 'webgl_loader_usdz',
+            'webgl_loader_collada_kinematics', 'webgl_loader_collada_skinning',
+            'webgl_loader_fbx_nurbs', 'webgl_loader_md2_control',
+            'webgl_loader_texture_ktx', 'webgl_loader_texture_pvrtc',
+            'webgl_loader_texture_tiff', 'webgl_loader_texture_ultrahdr'
+        ];
+
+        const phase20Demos = [
+            'webgl_lightprobes', 'webgl_lightprobes_complex', 'webgl_lightprobes_sponza',
+            'webgl_pmrem_cubemap', 'webgl_pmrem_equirectangular', 'webgl_pmrem_test',
+            'webgl_materials_cubemap_mipmaps', 'webgl_materials_cubemap_render_to_mipmaps',
+            'webgl_modifier_curve_instanced', 'webgl_modifier_simplifier',
+            'webgl_modifier_subdivision', 'webgl_math_obb'
+        ];
+
+        const phase21Demos = [
+            'webgl_raycaster_bvh', 'webgl_raycaster_sprite', 'webgl_raycaster_texture',
+            'webgl_interactive_buffergeometry', 'webgl_multiple_scenes_comparison',
+            'webgl_simple_gi', 'webgl_renderer_pathtracer', 'webgl_geometry_terrain_raycast',
+            'webgl_video_kinect', 'webgl_video_panorama_equirectangular',
+            'webgl_morphtargets_face', 'webgl_morphtargets_webcam'
+        ];
+
+        function createCard(demoId, phase) {
+            const card = document.createElement('div');
+            card.className = 'comparison-card';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = demoId;
+            card.appendChild(h3);
+
+            const imagesRow = document.createElement('div');
+            imagesRow.className = 'images-row';
+
+            const portedBox = document.createElement('div');
+            portedBox.className = 'image-box';
+            const portedLabel = document.createElement('label');
+            portedLabel.textContent = 'Ported';
+            const portedImg = document.createElement('img');
+            portedImg.src = '../screenshots/phase' + phase + '/' + demoId + '.png';
+            portedImg.alt = 'Ported ' + demoId;
+            portedBox.appendChild(portedLabel);
+            portedBox.appendChild(portedImg);
+
+            const upstreamBox = document.createElement('div');
+            upstreamBox.className = 'image-box';
+            const upstreamLabel = document.createElement('label');
+            upstreamLabel.textContent = 'Upstream';
+            const upstreamImg = document.createElement('img');
+            upstreamImg.src = '../screenshots/upstream/phase' + phase + '/' + demoId + '.png';
+            upstreamImg.alt = 'Upstream ' + demoId;
+            upstreamBox.appendChild(upstreamLabel);
+            upstreamBox.appendChild(upstreamImg);
+
+            imagesRow.appendChild(portedBox);
+            imagesRow.appendChild(upstreamBox);
+            card.appendChild(imagesRow);
+
+            const verdict = document.createElement('div');
+            verdict.className = 'verdict pending';
+            verdict.textContent = 'PENDING';
+            card.appendChild(verdict);
+
+            return card;
+        }
+
+        function populateGrid(demos, gridId, phase) {
+            const grid = document.getElementById(gridId);
+            demos.forEach(function(demoId) {
+                grid.appendChild(createCard(demoId, phase));
+            });
+        }
+
+        populateGrid(phase19Demos, 'phase19-grid', 19);
+        populateGrid(phase20Demos, 'phase20-grid', 20);
+        populateGrid(phase21Demos, 'phase21-grid', 21);
+    </script>
+</body>
+</html>

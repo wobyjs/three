@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import '../../../src/lights/Light'
 import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator.js'
 export { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator.js'
@@ -38,11 +38,11 @@ declare module '../../../lib/3/objProps' {
 	}
 }
 
-const lightProbeGenerator = ([//...consParams.lineSegments2,
+const lightProbeGenerator = ([//...(consParams.lineSegments2 ?? []),
 ] as const).distinct()
 consParams.lightProbeGenerator = lightProbeGenerator
 
-const _lightProbeGenerator = ([...objProps.light,
+const _lightProbeGenerator = ([...(objProps.light ?? []),
 ] as const).distinct()
 objProps.lightProbeGenerator = _lightProbeGenerator
 

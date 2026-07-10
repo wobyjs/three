@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import UniformGroupNode from 'three/src/nodes/core/UniformGroupNode.js'
 export { UniformGroupNode }
 import { Three } from '../../../lib/3/three'
@@ -46,7 +46,7 @@ consParams.uniformGroupNode = uniformGroupNode
 
 
 
-const _uniformGroupNode = ([...objProps.node,
+const _uniformGroupNode = ([...(objProps.node ?? []),
     'version',
     'shared',
     'isUniformGroup',

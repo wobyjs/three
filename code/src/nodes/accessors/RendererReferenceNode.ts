@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import Renderer from 'three/src/renderers/common/Renderer.js'
 import RendererReferenceNode from 'three/src/nodes/accessors/RendererReferenceNode.js'
 export { RendererReferenceNode }
@@ -47,7 +47,7 @@ consParams.rendererReferenceNode = rendererReferenceNode
 
 
 
-const _rendererReferenceNode = ([...objProps.referenceNode,
+const _rendererReferenceNode = ([...(objProps.referenceNode ?? []),
     'renderer',
 ] as const).distinct()
 objProps.rendererReferenceNode = _rendererReferenceNode

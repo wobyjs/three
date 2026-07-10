@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import FunctionOverloadingNode from 'three/src/nodes/utils/FunctionOverloadingNode.js'
 export { FunctionOverloadingNode }
@@ -45,7 +45,7 @@ const functionOverloadingNode = ([
 consParams.functionOverloadingNode = functionOverloadingNode
 
 
-const _functionOverloadingNode = ([...objProps.node,
+const _functionOverloadingNode = ([...(objProps.node ?? []),
     'functionNodes',
     'parameterNodes',
 ] as const).distinct()

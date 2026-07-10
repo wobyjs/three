@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import NormalMapNode from 'three/src/nodes/display/NormalMapNode.js'
 export { NormalMapNode }
@@ -47,7 +47,7 @@ consParams.normalMapNode = normalMapNode
 
 
 
-const _normalMapNode = ([...objProps.tempNode,
+const _normalMapNode = ([...(objProps.tempNode ?? []),
     'node',
     'scaleNode',
     'normalMapType',

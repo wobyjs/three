@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader.js'
 export * from 'three/examples/jsm/loaders/3DMLoader.js'
@@ -47,7 +47,7 @@ consParams.rhino3dmLoader = rhino3dmLoader
 
 
 
-const _rhino3dmLoader = ([...objProps.loader,
+const _rhino3dmLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.rhino3dmLoader = _rhino3dmLoader
 

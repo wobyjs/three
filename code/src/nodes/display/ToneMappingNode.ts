@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import ToneMappingNode from 'three/src/nodes/display/ToneMappingNode.js'
 import { ToneMapping } from 'three/src/constants.js'
@@ -52,7 +52,7 @@ consParams.toneMappingNode = toneMappingNode
 
 // exposure only    
 
-const _toneMappingNode = ([...objProps.tempNode,
+const _toneMappingNode = ([...(objProps.tempNode ?? []),
     'toneMapping',
     'exposureNode',
     'colorNode',

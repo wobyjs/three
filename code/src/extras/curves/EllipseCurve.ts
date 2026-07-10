@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { EllipseCurve } from 'three/src/extras/curves/EllipseCurve.js'
 export { EllipseCurve } from 'three/src/extras/curves/EllipseCurve.js'
 import { Three } from '../../../lib/3/three'
@@ -85,6 +85,7 @@ const ellipseCurve = ([
      * @defaultValue `1`
      */
     'xradius',
+    'xRadius',
     /**
      * The radius of the ellipse in the y direction.
      * @defaultValue `1`
@@ -141,7 +142,7 @@ consParams.ellipseCurve = ellipseCurve
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/EllipseCurve.js | Source}
  */
 
-const _ellipseCurve = ([...objProps.curve,
+const _ellipseCurve = ([...(objProps.curve ?? []),
     /**
      * The X center of the ellipse.
      * @remarks Expects a `Float`

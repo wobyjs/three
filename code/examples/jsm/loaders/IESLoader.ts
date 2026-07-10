@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { IESLoader } from 'three/examples/jsm/loaders/IESLoader.js'
 export * from 'three/examples/jsm/loaders/IESLoader.js'
@@ -46,7 +46,7 @@ consParams.iesLoader = iesLoader
 
 
 
-const _iesLoader = ([...objProps.loader,
+const _iesLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.iesLoader = _iesLoader
 

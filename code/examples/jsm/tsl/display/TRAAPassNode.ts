@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import TRAAPassNode from 'three/examples/jsm/tsl/display/TRAAPassNode.js'
 import { Scene } from 'three/src/scenes/Scene.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -38,7 +38,7 @@ consParams.traapassNode = traapassNode
 
 // Inherits from PassNode and adds its own specific properties
 const _traapassNode = ([
-	...objProps.passNode, // <-- Inherits parent properties
+	...(objProps.passNode ?? []), // <-- Inherits parent properties
 	'isTRAAPassNode',
 	'clearColor',
 	'clearAlpha',

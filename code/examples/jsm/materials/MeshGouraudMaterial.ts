@@ -1,4 +1,4 @@
-import { MaterialNode } from '../../../src/materials/MaterialNode'
+﻿import { MaterialNode } from '../../../src/materials/MaterialNode'
 import { MeshGouraudMaterial } from 'three/examples/jsm/materials/MeshGouraudMaterial.js'
 export * from 'three/examples/jsm/materials/MeshGouraudMaterial.js'
 
@@ -54,7 +54,7 @@ consParams.meshGouraudMaterial = { ...consParams.shaderMaterialParameters }
  * Lambert illumination model with Gouraud (per-vertex) shading
  */
 
-const _meshGouraudMaterial = ([...objProps.shaderMaterial,
+const _meshGouraudMaterial = ([...(objProps.shaderMaterial ?? []),
     'isMeshGouraudMaterial',
 ] as const).distinct()
 objProps.meshGouraudMaterial = _meshGouraudMaterial

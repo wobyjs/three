@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { Matrix2 } from 'three/src/math/Matrix2.js'
 export * from 'three/src/math/Matrix2.js'
 import { Three } from '../../lib/3/three'
@@ -96,7 +96,7 @@ consParams.matrix2 = matrix2
  * ( class Matrix2 implements Matrix )
  */
 
-const _matrix2 = ([...objProps.matrix,
+const _matrix2 = ([...(objProps.matrix ?? []),
     /**
      * Array with matrix values.
      * @default [1, 0, 0, 0, 1, 0, 0, 0, 1]
@@ -110,9 +110,9 @@ export type Matrix2Props = Node<Matrix2, typeof Matrix2, { n11: number; n12: num
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        Matrix2: Partial<{ n11: number; n12: number; n21: number; n22: number; }>
+        matrix2: Partial<{ n11: number; n12: number; n21: number; n22: number; }>
     }
 }
 
-defaults.Matrix2 = {}
+defaults.matrix2 = {}
 

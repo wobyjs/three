@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import ShadowMaskModel from 'three/src/nodes/functions/ShadowMaskModel.js'
 export { ShadowMaskModel }
 import { Three } from '../../../lib/3/three'
@@ -43,7 +43,7 @@ consParams.shadowMaskModel = shadowMaskModel
 
 
 
-const _shadowMaskModel = ([...objProps.lightingModel,
+const _shadowMaskModel = ([...(objProps.lightingModel ?? []),
     'shadowNode',
 ] as const).distinct()
 objProps.shadowMaskModel = _shadowMaskModel

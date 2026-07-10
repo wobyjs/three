@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { UltraHDRLoader } from 'three/examples/jsm/loaders/UltraHDRLoader.js'
 export * from 'three/examples/jsm/loaders/UltraHDRLoader.js'
@@ -46,7 +46,7 @@ consParams.ultraHdrLoader = ultraHdrLoader
 
 
 
-const _ultraHdrLoader = ([...objProps.loader,
+const _ultraHdrLoader = ([...(objProps.loader ?? []),
     'type',
 ] as const).distinct()
 objProps.ultraHdrLoader = _ultraHdrLoader

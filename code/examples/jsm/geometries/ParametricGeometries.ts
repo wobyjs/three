@@ -1,4 +1,4 @@
-
+﻿
 import { BufferGeometryNode } from '../../../src/core/BufferGeometryNode'
 import { ParametricGeometries } from 'three/examples/jsm/geometries/ParametricGeometries.js'
 export * from 'three/examples/jsm/geometries/ParametricGeometries.js'
@@ -65,7 +65,7 @@ const tubeGeometry = ([
 ] as const).distinct()
 consParams.parametricGeometries_tubeGeometry = tubeGeometry
 
-const _tubeGeometry = ([...objProps.parametricGeometry,
+const _tubeGeometry = ([...(objProps.parametricGeometry ?? []),
     'tangents',
     'normals',
     'binormals',
@@ -87,7 +87,7 @@ const torusKnotGeometry = ([
 ] as const).distinct()
 consParams.parametricGeometries_torusKnotGeometry = torusKnotGeometry
 
-const _torusKnotGeometry = ([...objProps.tubeGeometry,
+const _torusKnotGeometry = ([...(objProps.tubeGeometry ?? []),
     'radius',
     'tube',
     'segmentsT',
@@ -107,7 +107,7 @@ const sphereGeometry = ([
 ] as const).distinct()
 consParams.parametricGeometries_torusKnotGeometry = sphereGeometry
 
-const _sphereGeometry = ([...objProps.parametricGeometry,
+const _sphereGeometry = ([...(objProps.parametricGeometry ?? []),
 ] as const).distinct()
 objProps.parametricGeometries_sphereGeometry = _sphereGeometry
 
@@ -121,7 +121,7 @@ const planeGeometry = ([
 ] as const).distinct()
 consParams.parametricGeometries_planeGeometry = sphereGeometry
 
-const _planeGeometry = ([...objProps.parametricGeometry,
+const _planeGeometry = ([...(objProps.parametricGeometry ?? []),
 ] as const).distinct()
 objProps.parametricGeometries_planeGeometry = _planeGeometry
 

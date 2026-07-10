@@ -4,7 +4,7 @@
 import { $$, $, useEffect, type JSX, isObservable, callStack, defaults as wobyDefaults, SYMBOL_CONTEXT_WRAP, setPendingContextWrap } from "woby"
 import { setNestedValue, } from "../three/fixReactiveProps"
 
-import { ThreeContext } from "../hooks/useThree"
+import { ThreeContext, bumpCanvasCtxVersion } from "../hooks/useThree"
 import { context, createElement, HTMLAttributes } from 'woby'
 
 // type Observable2Maybe<T> = {
@@ -95,6 +95,7 @@ export const Canvas3D = wobyDefaults(def, (props: HTMLAttributes<HTMLDivElement>
     })
 
     const ctx = { frames: [], scenes: [], cameras: [], renderers: [], update: $(0) }
+    if (typeof window !== 'undefined') (window as any).__canvas3dCtx = ctx
     const containerEl = $<HTMLDivElement | null>(null)
 
     // Build the context-wrap function for this Canvas3D instance and register it
@@ -120,6 +121,25 @@ export const Canvas3D = wobyDefaults(def, (props: HTMLAttributes<HTMLDivElement>
     useEffect(() => {
         $$(ctx.update)
         resizeRenderers()
+        // Expose globals for ported demos that read window.__WOBY_SCENE__ etc.
+        if (typeof window !== 'undefined') {
+            const w = window as any
+            if (ctx.scenes[0]) w.__WOBY_SCENE__ = ctx.scenes[0]
+            if (ctx.cameras[0]) w.__WOBY_CAMERA__ = ctx.cameras[0]
+            if (ctx.cameras[1]) w.__WOBY_ORTHO_CAMERA__ = ctx.cameras[1]
+            if (ctx.renderers[0]) {
+                w.__WOBY_RENDERER__ = ctx.renderers[0]
+                w.__WOBY_WEBGL_RENDERER__ = ctx.renderers[0]
+            }
+            w.__WOBY_RENDERERS__ = ctx.renderers
+            w.__WOBY_CAMERAS__ = ctx.cameras
+            w.__WOBY_SCENES__ = ctx.scenes
+            // Notify listeners (event) and reactive effects (canvasCtxVersion) that ctx is ready.
+            if (ctx.scenes[0] && ctx.cameras[0] && ctx.renderers[0]) {
+                bumpCanvasCtxVersion()
+                window.dispatchEvent(new CustomEvent('__wobyContextReady', { detail: ctx }))
+            }
+        }
     })
 
     // Re-size when the container element itself resizes

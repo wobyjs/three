@@ -1,4 +1,4 @@
-// import { BufferGeometry, Curve, DataTexture, InstancedMesh, IUniform, Material, Mesh, Vector3 } ;
+﻿// import { BufferGeometry, Curve, DataTexture, InstancedMesh, IUniform, Material, Mesh, Vector3 } ;
 
 // export interface SplineUniform {
 //     spineTexture: IUniform;
@@ -132,7 +132,7 @@ const _flow = ([
 objProps.flow = _flow
 
 
-const _instancedFlow = ([...objProps.flow,
+const _instancedFlow = ([...(objProps.flow ?? []),
     'object3d',
     'offsets',
     'whichCurve',

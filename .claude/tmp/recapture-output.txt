@@ -1,0 +1,17 @@
+[recapture] 14 failing demos, wait=12000ms
+[profile-4] webgl_loader_ifc ... ok (17.3KB)
+[profile-4] webgl_loader_usdz ... ok (17.3KB)
+[profile-4] webgl_loader_texture_pvrtc ... ok (17.3KB)
+[profile-4] webgl_loader_texture_tiff ... ok (17.3KB)
+[profile-4] webgl_materials_cubemap_mipmaps ... ok (17.3KB)
+[profile-4] webgl_materials_cubemap_render_to_mipmaps ... ok (17.3KB)
+[profile-4] webgl_loader_fbx_nurbs ... ok (17.3KB)
+[profile-4] webgl_modifier_simplifier ... ok (17.3KB)
+[profile-4] webgl_loader_collada_skinning ... ok (17.3KB)
+[profile-4] webgl_geometry_terrain_raycast ... ok (17.3KB)
+[profile-4] webgl_morphtargets_face ... ok (17.3KB)
+[profile-4] webgl_modifier_curve ... ok (17.3KB)
+[profile-4] webgl_multiple_scenes_comparison ... ok (17.3KB)
+[profile-4] webgl_morphtargets_webcam ... ok (17.3KB)
+
+[recapture] done: ok=14 failed=0

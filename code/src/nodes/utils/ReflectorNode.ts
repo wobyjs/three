@@ -1,4 +1,4 @@
-import { Node, WrapAsString } from '../../../three-types'
+﻿import { Node, WrapAsString } from '../../../three-types'
 import ReflectorNode, { ReflectorNodeParameters } from 'three/src/nodes/utils/ReflectorNode.js'
 export { ReflectorNode }
 import { Three } from '../../../lib/3/three'
@@ -62,7 +62,7 @@ const _reflectorNodeParameters = ([
 objProps.reflectorNodeParameters = _reflectorNodeParameters
 
 
-const _reflectorNode = ([...objProps.textureNode,
+const _reflectorNode = ([...(objProps.textureNode ?? []),
     'target',
     'resolution',
     'generateMipmaps',

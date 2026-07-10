@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { ConeGeometry } from 'three/src/geometries/ConeGeometry.js'
 export { ConeGeometry } from 'three/src/geometries/ConeGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -91,7 +91,7 @@ consParams.coneGeometry = coneGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ConeGeometry.js | Source}
  */
 
-const _coneGeometry = ([...objProps.cylinderGeometry,
+const _coneGeometry = ([...(objProps.cylinderGeometry ?? []),
 ] as const).distinct()
 objProps.coneGeometry = _coneGeometry
 

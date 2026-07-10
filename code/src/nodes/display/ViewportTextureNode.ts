@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import ViewportTextureNode from 'three/src/nodes/display/ViewportTextureNode.js'
 import { FramebufferTexture } from 'three/src/textures/FramebufferTexture.js'
@@ -49,7 +49,7 @@ consParams.viewportTextureNode = viewportTextureNode
 
 
 
-const _viewportTextureNode = ([...objProps.textureNode,
+const _viewportTextureNode = ([...(objProps.textureNode ?? []),
     'generateMipmaps',
     'updateBeforeType',
 ] as const).distinct()

@@ -3,6 +3,7 @@ export * from 'three/src/extras/ImageUtils.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
 import { objProps } from '../../lib/3/objProps'
+import { defaults } from '../../lib/3/defaults'
 
 declare module '../../lib/3/three'
 {
@@ -42,3 +43,13 @@ consParams.imageUtils = imageUtils
 // The methods are static.
 const _imageUtils = ([] as const).distinct()
 objProps.imageUtils = _imageUtils
+
+// ---[ Defaults ]---
+
+declare module '../../lib/3/defaults' {
+    interface defaults {
+        imageUtils: {}
+    }
+}
+
+defaults.imageUtils = {}

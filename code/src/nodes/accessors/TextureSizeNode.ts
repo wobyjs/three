@@ -1,4 +1,4 @@
-import { Node as Object3DNode } from '../../../three-types'
+﻿import { Node as Object3DNode } from '../../../three-types'
 import TextureSizeNode from 'three/src/nodes/accessors/TextureSizeNode.js'
 export * from 'three/src/textures/Texture.js'
 
@@ -47,7 +47,7 @@ consParams.textureSizeNode = textureSizeNode
 
 
 
-const _textureSizeNode = ([...objProps.node,
+const _textureSizeNode = ([...(objProps.node ?? []),
     'textureNode',
     'levelNode',
 ] as const).distinct()

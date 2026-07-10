@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { XYZLoader } from 'three/examples/jsm/loaders/XYZLoader.js'
 export * from 'three/examples/jsm/loaders/XYZLoader.js'
@@ -47,7 +47,7 @@ consParams.xyzLoader = xyzLoader
 
 
 
-const _xyzLoader = ([...objProps.loader,
+const _xyzLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.xyzLoader = _xyzLoader
 

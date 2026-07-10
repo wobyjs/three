@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { SpriteMaterial, SpriteMaterialParameters } from 'three/src/materials/SpriteMaterial.js'
 export { SpriteMaterial } from 'three/src/materials/SpriteMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -44,7 +44,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.spriteMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['color',
         'map',
         'alphaMap',
@@ -59,7 +59,7 @@ consParams.spriteMaterial = { ...consParams.spriteMaterialParameters }
 
 
 
-const _spriteMaterialParameters = ([...objProps.materialParameters,
+const _spriteMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'map',
     'alphaMap',
@@ -70,7 +70,7 @@ const _spriteMaterialParameters = ([...objProps.materialParameters,
 objProps.spriteMaterialParameters = _spriteMaterialParameters
 
 
-const _spriteMaterial = ([...objProps.material,
+const _spriteMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'SpriteMaterial'
      */

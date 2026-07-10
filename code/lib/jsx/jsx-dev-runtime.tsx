@@ -1,6 +1,7 @@
 import { useRoot, getSetters, type JSX } from "woby"
 import { jsx } from "../three/jsx"
 import { FragmentUtils } from "woby"
+import '../../src/index'
 
 const render = (children: JSX.Child, parent: JSX.Child) => {
     const { setChild, } = getSetters() //browser

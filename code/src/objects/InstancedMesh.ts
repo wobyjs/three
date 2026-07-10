@@ -75,7 +75,7 @@ consParams.instancedMesh = instancedMesh
 
 
 
-const _instancedMeshEventMap = ([...objProps.object3dEventMap,
+const _instancedMeshEventMap = ([...(objProps.object3dEventMap ?? []),
 ] as const).distinct()
 objProps.instancedMeshEventMap = _instancedMeshEventMap
 

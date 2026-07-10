@@ -1,4 +1,4 @@
-import { Node, Vector2 } from '../../../three-types'
+﻿import { Node, Vector2 } from '../../../three-types'
 import { SplineCurve } from 'three/src/extras/curves/SplineCurve.js'
 export { SplineCurve } from 'three/src/extras/curves/SplineCurve.js'
 import { Three } from '../../../lib/3/three'
@@ -94,7 +94,7 @@ consParams.splineCurve = splineCurve
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/SplineCurve.js | Source}
  */
 
-const _splineCurve = ([...objProps.curve,
+const _splineCurve = ([...(objProps.curve ?? []),
     /**
      * The array of {@link THREE.Vector2 | Vector2} points that define the curve.
      * @defaultValue []

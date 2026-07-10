@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import CodeNode, { CodeNodeInclude } from 'three/src/nodes/code/CodeNode.js'
 export { CodeNode }
 import { Three } from '../../../lib/3/three'
@@ -52,7 +52,7 @@ const codeNode = ([
 consParams.codeNode = codeNode
 
 
-const _codeNode = ([...objProps.node,
+const _codeNode = ([...(objProps.node ?? []),
     'isCodeNode',
     'code',
     'language',

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { TypedArray } from 'three/src/core/BufferAttribute.js'
 import { InstancedBufferAttribute } from 'three/src/core/InstancedBufferAttribute.js'
 export { InstancedBufferAttribute } from 'three/src/core/InstancedBufferAttribute.js'
@@ -67,7 +67,7 @@ consParams.instancedBufferAttribute = instancedBufferAttribute
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedBufferAttribute.js | Source}
  */
 
-const _instancedBufferAttribute = ([...objProps.bufferAttribute,
+const _instancedBufferAttribute = ([...(objProps.bufferAttribute ?? []),
     /**
      * Defines how often a value of this buffer attribute should be repeated.
      * A value of one means that each value of the instanced attribute is used for a single instance.

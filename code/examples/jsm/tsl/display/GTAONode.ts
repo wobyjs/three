@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import GTAONode from 'three/examples/jsm/tsl/display/GTAONode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -39,7 +39,7 @@ consParams.gtaoNode = gtaoNode
 
 // Inherits from TempNode and adds its own specific properties
 const _gtaoNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'depthNode',
 	'normalNode',
 	'resolutionScale',

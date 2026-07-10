@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import TriplanarTexturesNode from 'three/src/nodes/utils/TriplanarTexturesNode.js'
@@ -54,7 +54,7 @@ consParams.triplanarTexturesNode = triplanarTexturesNode
 
 
 
-const _triplanarTexturesNode = ([...objProps.node,
+const _triplanarTexturesNode = ([...(objProps.node ?? []),
     'textureXNode',
     'textureYNode',
     'textureZNode',

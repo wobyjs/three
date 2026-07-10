@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import RGBShiftNode from 'three/examples/jsm/tsl/display/RGBShiftNode.js'
 import TextureNode from 'three/src/nodes/accessors/TextureNode.js'
 import { Node } from '../../../../three-types'
@@ -38,7 +38,7 @@ consParams.rgbShiftNode = rgbShiftNode
 
 // Inherits from TempNode and adds its own specific properties
 const _rgbShiftNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'textureNode',
 	'amount',
 	'angle',

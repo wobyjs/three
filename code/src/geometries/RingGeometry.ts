@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { RingGeometry } from 'three/src/geometries/RingGeometry.js'
 export { RingGeometry } from 'three/src/geometries/RingGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -91,7 +91,7 @@ consParams.ringGeometry = ringGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/RingGeometry.js | Source}
  */
 
-const _ringGeometry = ([...objProps.bufferGeometry,
+const _ringGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.ringGeometry = _ringGeometry
 

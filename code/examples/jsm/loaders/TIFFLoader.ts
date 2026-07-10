@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { TIFFLoader } from 'three/examples/jsm/loaders/TIFFLoader.js'
 export * from 'three/examples/jsm/loaders/TIFFLoader.js'
@@ -70,7 +70,7 @@ const _tiffResult = ([
 objProps.tiffResult = _tiffResult
 
 
-const _tiffLoader = ([...objProps.dataTextureLoader,
+const _tiffLoader = ([...(objProps.dataTextureLoader ?? []),
 ] as const).distinct()
 objProps.tiffLoader = _tiffLoader
 

@@ -1,4 +1,4 @@
-// 1. Imports
+﻿// 1. Imports
 import SSRNode from 'three/examples/jsm/tsl/display/SSRNode.js'
 import TSLNode from 'three/src/nodes/core/Node.js'
 import { Camera } from 'three/src/cameras/Camera.js'
@@ -41,7 +41,7 @@ consParams.ssrNode = ssrNode
 
 // Inherits from TempNode and adds its own specific properties
 const _ssrNode = ([
-	...objProps.tempNode, // <-- Inherits parent properties
+	...(objProps.tempNode ?? []), // <-- Inherits parent properties
 	'colorNode',
 	'depthNode',
 	'normalNode',

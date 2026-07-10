@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { PVRLoader } from 'three/examples/jsm/loaders/PVRLoader.js'
 export * from 'three/examples/jsm/loaders/PVRLoader.js'
@@ -70,7 +70,7 @@ const _pvr = ([
 objProps.pvr = _pvr
 
 
-const _pvrLoader = ([...objProps.compressedTextureLoader,
+const _pvrLoader = ([...(objProps.compressedTextureLoader ?? []),
 ] as const).distinct()
 objProps.pvrLoader = _pvrLoader
 

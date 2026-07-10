@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { GCodeLoader } from 'three/examples/jsm/loaders/GCodeLoader.js'
 export * from 'three/examples/jsm/loaders/GCodeLoader.js'
@@ -47,7 +47,7 @@ consParams.gCodeLoader = gCodeLoader
 
 
 
-const _gCodeLoader = ([...objProps.loader,
+const _gCodeLoader = ([...(objProps.loader ?? []),
     'splitLayer',
 ] as const).distinct()
 objProps.gCodeLoader = _gCodeLoader

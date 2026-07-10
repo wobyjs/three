@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { ImageBitmapLoader } from 'three/src/loaders/ImageBitmapLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -44,7 +44,7 @@ const imageBitmapLoader = ([
 consParams.imageBitmapLoader = imageBitmapLoader
 
 
-const _imageBitmapLoader = ([...objProps.loader,
+const _imageBitmapLoader = ([...(objProps.loader ?? []),
     /**
     * @default { premultiplyAlpha: 'none' }
     */

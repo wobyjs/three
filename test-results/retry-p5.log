@@ -1,0 +1,64 @@
+[capture-via-dv] 58 demos, profile=profile-5, port=5300, wait=4000ms (single tab reuse)
+[profile-5] warmup ... 
+  warmup ok in 2.3s
+[profile-5] webgl_object3d ... ok
+[profile-5] webgl_panorama_equirectangular ... ok
+[profile-5] webgl_particles ... ok
+[profile-5] webgl_particles_buffer ... ok
+[profile-5] webgl_physics ... ok
+[profile-5] webgl_plane ... ok
+[profile-5] webgl_points_dynamic ... ok
+[profile-5] webgl_points_sprites ... ok
+[profile-5] webgl_points_waves ... ok
+[profile-5] webgl_point_cloud ... ok
+[profile-5] webgl_postprocessing ... NO-CANVAS
+[profile-5] webgl_postprocessing_advanced ... ok
+[profile-5] webgl_postprocessing_afterimage ... NO-CANVAS
+[profile-5] webgl_postprocessing_bokeh ... ok
+[profile-5] webgl_postprocessing_chromatic ... ok
+[profile-5] webgl_postprocessing_demo ... NO-CANVAS
+[profile-5] webgl_postprocessing_depth ... ok
+[profile-5] webgl_postprocessing_dof ... ok
+[profile-5] webgl_postprocessing_film ... NO-CANVAS
+[profile-5] webgl_postprocessing_fxaa ... NO-CANVAS
+[profile-5] webgl_postprocessing_glitch ... NO-CANVAS
+[profile-5] webgl_postprocessing_godrays ... NO-CANVAS
+[profile-5] webgl_postprocessing_nodes ... NO-CANVAS
+[profile-5] webgl_postprocessing_outline ... NO-CANVAS
+[profile-5] webgl_postprocessing_pixel ... NO-CANVAS
+[profile-5] webgl_postprocessing_smaa ... NO-CANVAS
+[profile-5] webgl_postprocessing_ssao ... NO-CANVAS
+[profile-5] webgl_postprocessing_ssr ... NO-CANVAS
+[profile-5] webgl_postprocessing_taa ... NO-CANVAS
+[profile-5] webgl_postprocessing_temporal ... NO-CANVAS
+[profile-5] webgl_postprocessing_transition ... NO-CANVAS
+[profile-5] webgl_postprocessing_vignette ... NO-CANVAS
+[profile-5] webgl_reflection ... NO-CANVAS
+[profile-5] webgl_reflector ... NO-CANVAS
+[profile-5] webgl_shaders_ocean ... NO-CANVAS
+[profile-5] webgl_shaders_sky ... NO-CANVAS
+[profile-5] webgl_shader_lava ... NO-CANVAS
+[profile-5] webgl_shadowmap ... NO-CANVAS
+[profile-5] webgl_shadowmap_advanced ... NO-CANVAS
+[profile-5] webgl_shadowmap_pointlight ... NO-CANVAS
+[profile-5] webgl_shadowmap_vsm ... NO-CANVAS
+[profile-5] webgl_shadows ... NO-CANVAS
+[profile-5] webgl_shadow_contact ... ok
+[profile-5] webgl_simple_line ... ok
+[profile-5] webgl_sky ... ok
+[profile-5] webgl_sprites ... ok
+[profile-5] webgl_static_text ... ok
+[profile-5] webgl_svg ... ok
+[profile-5] webgl_terrain ... ok
+[profile-5] webgl_textures_cube ... ok
+[profile-5] webgl_text_geometry ... ok
+[profile-5] webgl_tone_mapping ... ok
+[profile-5] webgl_toon ... ok
+[profile-5] webgl_useframe_test ... ok
+[profile-5] webgl_uvs ... ok
+[profile-5] webgl_vr ... ok
+[profile-5] webgl_water ... ok
+[profile-5] webgl_wireframes ... ok
+
+[capture-via-dv] done: ok=31 syntax=0 console_err=0 no_canvas=27 failed=0
+summary → D:\Developments\tslib\@woby\three\test-results\capture-via-dv-summary.json

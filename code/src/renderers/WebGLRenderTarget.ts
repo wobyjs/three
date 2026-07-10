@@ -56,9 +56,9 @@ export type WebGLRenderTargetProps = Node<WebGLRenderTarget, typeof WebGLRenderT
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        webGLRenderTarget: { width?: number; height?: number; options?: RenderTargetOptions; }
+        webglRenderTarget: { width?: number; height?: number; options?: RenderTargetOptions; }
     }
 }
 
-defaults.webGLRenderTarget = {}
+defaults.webglRenderTarget = {}
 

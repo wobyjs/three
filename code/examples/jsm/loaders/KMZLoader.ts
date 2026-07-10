@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { KMZLoader } from 'three/examples/jsm/loaders/KMZLoader.js'
 export * from 'three/examples/jsm/loaders/KMZLoader.js'
@@ -47,7 +47,7 @@ consParams.kmzLoader = kmzLoader
 
 
 
-const _kmzLoader = ([...objProps.loader,
+const _kmzLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.kmzLoader = _kmzLoader
 

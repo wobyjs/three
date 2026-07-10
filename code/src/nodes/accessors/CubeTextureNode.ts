@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { CubeTexture } from 'three/src/textures/CubeTexture.js'
 import CubeTextureNode from 'three/src/nodes/accessors/CubeTextureNode.js'
@@ -48,7 +48,7 @@ consParams.cubeTextureNode = cubeTextureNode
 
 
 
-const _cubeTextureNode = ([...objProps.textureNode,
+const _cubeTextureNode = ([...(objProps.textureNode ?? []),
     'isCubeTextureNode',
     'uvNode',
     'levelNode',

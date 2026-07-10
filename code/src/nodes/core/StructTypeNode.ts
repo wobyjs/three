@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import StructTypeNode from 'three/src/nodes/core/StructTypeNode.js'
 export { StructTypeNode }
 import { Three } from '../../../lib/3/three'
@@ -45,7 +45,7 @@ consParams.structTypeNode = structTypeNode
 
 
 
-const _structTypeNode = ([...objProps.node,
+const _structTypeNode = ([...(objProps.node ?? []),
     'isStructTypeNode',
 ] as const).distinct()
 objProps.structTypeNode = _structTypeNode

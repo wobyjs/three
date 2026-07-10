@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { BoxGeometry } from 'three/src/geometries/BoxGeometry.js'
 export { BoxGeometry } from 'three/src/geometries/BoxGeometry.js'
 import { Three } from '../../lib/3/three'
@@ -134,7 +134,7 @@ consParams.boxGeometry = boxGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/BoxGeometry.js | Source}
  */
 
-const _boxGeometry = ([...objProps.bufferGeometry,
+const _boxGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.boxGeometry = _boxGeometry
 

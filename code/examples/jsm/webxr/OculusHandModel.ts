@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Object3D } from 'three/src/core/Object3D.js'
 import { Loader } from 'three/src/loaders/Loader.js'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -49,7 +49,7 @@ consParams.oculusHandModel = oculusHandModel
 
 
 
-const _oculusHandModel = ([...objProps.object3d,
+const _oculusHandModel = ([...(objProps.object3d ?? []),
     'controller',
     'motionController',
     'envMap',

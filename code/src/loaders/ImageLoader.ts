@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { ImageLoader } from 'three/src/loaders/ImageLoader.js'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -43,7 +43,7 @@ const imageLoader = ([
 ] as const).distinct()
 consParams.imageLoader = imageLoader
 
-const _imageLoader = ([...objProps.loader] as const).distinct()
+const _imageLoader = ([...(objProps.loader ?? [])] as const).distinct()
 objProps.imageLoader = _imageLoader
 
 export type ImageLoaderProps = Node<ImageLoader, typeof ImageLoader, { manager?: LoadingManager }>

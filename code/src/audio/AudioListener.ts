@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { AudioListener } from 'three/src/audio/AudioListener.js'
 export { AudioListener } from 'three/src/audio/AudioListener.js'
 import { Three } from '../../lib/3/three'
@@ -103,7 +103,7 @@ consParams.audioListener = audioListener
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/AudioListener.js | Source}
  */
 
-const _audioListener = ([...objProps.object3d,
+const _audioListener = ([...(objProps.object3d ?? []),
     /**
      * The {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioContext | AudioContext} of the {@link {@link AudioListener} | listener} given in the constructor.
      */

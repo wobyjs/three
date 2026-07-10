@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { VideoTexture } from 'three/src/textures/VideoTexture.js'
 import {
     ClampToEdgeWrapping, LinearFilter, MagnificationTextureFilter, Mapping, MinificationTextureFilter, PixelFormat,
@@ -118,7 +118,7 @@ objProps.textureImageData = _textureImageData
 
 
 
-const _texture3dImageData = ([...objProps.textureImageData,
+const _texture3dImageData = ([...(objProps.textureImageData ?? []),
     'depth',
 ] as const).distinct()
 objProps.texture3dImageData = _texture3dImageData
@@ -145,7 +145,7 @@ objProps.texture3dImageData = _texture3dImageData
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/VideoTexture.js | Source}
  */
 
-const _videoTexture = ([...objProps.texture,
+const _videoTexture = ([...(objProps.texture ?? []),
     /**
      * @override
      * @defaultValue {@link THREE.LinearFilter}

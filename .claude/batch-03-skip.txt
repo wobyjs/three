@@ -1,0 +1,2 @@
+demo/src/WebGLMaterialsGradient.tsx:dat.gui not in deps
+demo/src/WebGLMaterialsNormal.tsx:FXAAPass not in skip-criteria allow list

@@ -42,7 +42,7 @@ declare module '../../../lib/3/objProps' {
 
 
 
-const lineSegments2 = ([//...consParams.mesh,
+const lineSegments2 = ([//...(consParams.mesh ?? []),
     'geometry',
     'material',
 ] as const).distinct()

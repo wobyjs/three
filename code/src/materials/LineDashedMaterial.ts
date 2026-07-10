@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three/src/materials/LineDashedMaterial.js'
 export { LineDashedMaterial } from 'three/src/materials/LineDashedMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -50,7 +50,7 @@ consParams.lineDashedMaterialParameters = (['scale',
 
 
 consParams.lineDashedMaterial = {
-    ...consParams.lineBasicMaterial,
+    ...(consParams.lineBasicMaterial ?? []),
     ...([
         'scale',
         'dashSize',
@@ -60,7 +60,7 @@ consParams.lineDashedMaterial = {
 
 
 
-const _lineDashedMaterialParameters = ([...objProps.lineBasicMaterialParameters,
+const _lineDashedMaterialParameters = ([...(objProps.lineBasicMaterialParameters ?? []),
     'scale',
     'dashSize',
     'gapSize',
@@ -68,7 +68,7 @@ const _lineDashedMaterialParameters = ([...objProps.lineBasicMaterialParameters,
 objProps.lineDashedMaterialParameters = _lineDashedMaterialParameters
 
 
-const _lineDashedMaterial = ([...objProps.lineBasicMaterial,
+const _lineDashedMaterial = ([...(objProps.lineBasicMaterial ?? []),
     /**
      * @default 'LineDashedMaterial'
      */

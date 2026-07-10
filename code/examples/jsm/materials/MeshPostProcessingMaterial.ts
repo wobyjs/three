@@ -1,4 +1,4 @@
-import { MaterialNode } from '../../../src/materials/MaterialNode'
+﻿import { MaterialNode } from '../../../src/materials/MaterialNode'
 import { MeshPostProcessingMaterial } from 'three/examples/jsm/materials/MeshPostProcessingMaterial.js'
 export * from 'three/examples/jsm/materials/MeshPostProcessingMaterial.js'
 
@@ -49,14 +49,14 @@ consParams.meshPostProcessingMaterial = { ...consParams.meshPostProcessingMateri
 
 
 
-const _meshPostProcessingMaterialParameters = ([...objProps.meshPhysicalMaterial,
+const _meshPostProcessingMaterialParameters = ([...(objProps.meshPhysicalMaterial ?? []),
     'aoPassMap',
     'aoPassMapScale',
 ] as const).distinct()
 objProps.meshPostProcessingMaterialParameters = _meshPostProcessingMaterialParameters
 
 
-const _meshPostProcessingMaterial = ([...objProps.meshPhysicalMaterial,
+const _meshPostProcessingMaterial = ([...(objProps.meshPhysicalMaterial ?? []),
     'aoPassMap',
 ] as const).distinct()
 objProps.meshPostProcessingMaterial = _meshPostProcessingMaterial

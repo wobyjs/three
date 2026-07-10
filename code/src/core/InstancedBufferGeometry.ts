@@ -1,4 +1,4 @@
-import { BufferGeometryNode } from '../core/BufferGeometryNode'
+﻿import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.js'
 export { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.js'
 import { consParams } from '../../lib/3/consParams'
@@ -55,7 +55,7 @@ consParams.instancedBufferGeometry = instancedBufferGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/InstancedBufferGeometry.js | Source}
  */
 
-const _instancedBufferGeometry = ([...objProps.bufferGeometry,
+const _instancedBufferGeometry = ([...(objProps.bufferGeometry ?? []),
     /**
     * @defaultValue `InstancedBufferGeometry`
     */

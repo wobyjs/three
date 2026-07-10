@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { Camera } from 'three/src/cameras/Camera.js'
 export { Camera } from 'three/src/cameras/Camera.js'
 import { Three } from '../../lib/3/three'
@@ -59,7 +59,7 @@ consParams.camera = camera
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/Camera.js | Source}
  */
 
-const _camera = ([...objProps.object3d,
+const _camera = ([...(objProps.object3d ?? []),
     /**
      * @override
      * The {@link THREE.Layers | layers} that the {@link Camera} is a member of.

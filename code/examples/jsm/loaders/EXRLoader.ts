@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js'
 export * from 'three/examples/jsm/loaders/EXRLoader.js'
@@ -71,7 +71,7 @@ const _exr = ([
 objProps.exr = _exr
 
 
-const _exrLoader = ([...objProps.dataTextureLoader,
+const _exrLoader = ([...(objProps.dataTextureLoader ?? []),
     'type',
 ] as const).distinct()
 objProps.exrLoader = _exrLoader

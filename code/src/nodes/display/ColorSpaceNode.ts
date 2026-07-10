@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import ColorSpaceNode from 'three/src/nodes/display/ColorSpaceNode.js'
 export { ColorSpaceNode }
@@ -48,7 +48,7 @@ consParams.colorSpaceNode = colorSpaceNode
 
 
 
-const _colorSpaceNode = ([...objProps.tempNode,
+const _colorSpaceNode = ([...(objProps.tempNode ?? []),
     'method',
     'node',
 ] as const).distinct()

@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { Fog } from 'three/src/scenes/Fog.js'
 export { Fog } from 'three/src/scenes/Fog.js'
@@ -110,7 +110,7 @@ objProps.fogBase = _fogBase
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/scenes/Fog.js | Source}
  */
 
-const _fog = ([...objProps.fogBase,
+const _fog = ([...(objProps.fogBase ?? []),
     /**
      * Optional name of the object
      * @remarks _(doesn't need to be unique)_.

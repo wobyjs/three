@@ -1,4 +1,4 @@
-import { Shape } from 'three/src/extras/core/Shape.js'
+﻿import { Shape } from 'three/src/extras/core/Shape.js'
 import { BufferGeometryNode } from '../core/BufferGeometryNode'
 import { ShapeGeometry } from 'three/src/geometries/ShapeGeometry.js'
 export { ShapeGeometry } from 'three/src/geometries/ShapeGeometry.js'
@@ -101,7 +101,7 @@ consParams.shapeGeometry = shapeGeometry
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/geometries/ShapeGeometry.js | Source}
  */
 
-const _shapeGeometry = ([...objProps.bufferGeometry,
+const _shapeGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.shapeGeometry = _shapeGeometry
 

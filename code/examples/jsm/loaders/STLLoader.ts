@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 export * from 'three/examples/jsm/loaders/STLLoader.js'
@@ -47,7 +47,7 @@ consParams.stlLoader = stlLoader
 
 
 
-const _stlLoader = ([...objProps.loader,
+const _stlLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.stlLoader = _stlLoader
 

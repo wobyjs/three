@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 import { Three } from '../../lib/3/three'
@@ -112,7 +112,7 @@ consParams.perspectiveCamera = perspectiveCamera
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/cameras/PerspectiveCamera.js | Source}
  */
 
-const _perspectiveCamera = ([...objProps.camera,
+const _perspectiveCamera = ([...(objProps.camera ?? []),
     /**
   * Gets or sets the zoom factor of the camera.
   * @defaultValue `1`

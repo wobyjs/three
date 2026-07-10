@@ -1,4 +1,4 @@
-import { type LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
+﻿import { type LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
 import { type LineGeometry } from 'three/examples/jsm/lines/LineGeometry.js'
 import { Object3DNode } from '../../../three-types'
 import { Line2 } from 'three/examples/jsm/lines/Line2.js'
@@ -41,13 +41,13 @@ declare module '../../../lib/3/objProps' {
     }
 }
 
-const line2 = ([//...consParams.lineSegments2,
+const line2 = ([//...(consParams.lineSegments2 ?? []),
     'geometry',
     'material',
 ] as const).distinct()
 consParams.line2 = line2
 
-const _line2 = ([...objProps.lineSegments2,
+const _line2 = ([...(objProps.lineSegments2 ?? []),
     // 'geometry',
     // 'material',
 ] as const).distinct()

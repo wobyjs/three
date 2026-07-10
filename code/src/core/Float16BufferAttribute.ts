@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { Float16BufferAttribute } from 'three/src/core/BufferAttribute.js'
 export { Float16BufferAttribute } from 'three/src/core/BufferAttribute.js'
 import { Three } from '../../lib/3/three'
@@ -78,7 +78,7 @@ consParams.float16BufferAttribute = float16BufferAttribute
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js | Source}
  */
 
-const _float16BufferAttribute = ([...objProps.bufferAttribute,
+const _float16BufferAttribute = ([...(objProps.bufferAttribute ?? []),
 ] as const).distinct()
 objProps.float16BufferAttribute = _float16BufferAttribute
 

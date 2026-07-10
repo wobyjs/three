@@ -1,0 +1,437 @@
+[capture-via-dv] 125 demos, profile=profile-4, port=5300, wait=5000ms (single tab reuse)
+[profile-4] warmup ... 
+  warmup ok in 4.2s
+[profile-4] webgl_animation_particles ... NO-CANVAS
+[profile-4] webgl_animation_skinning ... NO-CANVAS
+[profile-4] webgl_clipping_advanced ... NO-CANVAS
+[profile-4] webgl_d_lines ... ok
+[profile-4] webgl_geometries_showcase ... ok
+[profile-4] webgl_geometry_convex ... NO-CANVAS
+[profile-4] webgl_geometry_csg ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_cube ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_cube2 ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_extrude_shapes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_lathe ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_minecraft ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_shapes ... SYNTAX:D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vi
+[profile-4] webgl_geometry_spline_editor ... NO-CANVAS
+[profile-4] webgl_geometry_teapot ... ok
+[profile-4] webgl_geometry_text_stroke ... ok
+[profile-4] webgl_group ... ok
+[profile-4] webgl_helpers ... NO-CANVAS
+[profile-4] webgl_html_text ... NO-CANVAS
+[profile-4] webgl_instancing ... ok
+[profile-4] webgl_instancing_animated ... ok
+[profile-4] webgl_instancing_billboards ... NO-CANVAS
+[profile-4] webgl_instancing_dynamic ... NO-CANVAS
+[profile-4] webgl_instancing_morph ... ok
+[profile-4] webgl_instancing_performance ... ok
+[profile-4] webgl_instancing_raycast ... NO-CANVAS
+[profile-4] webgl_instancing_scatter ... error:screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\s
+[profile-4] webgl_interactive_buffer_geometry ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_cubes ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_cubes_gpu ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_cubes_ortho ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_cubes_raycaster ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_lines ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_raycasting_points ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_interactive_voxelpainter ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lensflares ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lightprobe ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lights ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lights_hemisphere ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lights_rectarea ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lights_spotlight ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_line3 ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lines ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lines_dashed ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_lines_test ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_3dm ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_3ds ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_amf ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_bvh ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_collada ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_fbx ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_kmz ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_lwo ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_loader_svg ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_car ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_normal ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_normalmap ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_physical ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_physical_clearcoat ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_physical_transmission ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_materials_transparency ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_mirror ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_modifier_curve ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_modifier_simplify ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_morph_targets ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_multiple_geometries ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_normal_map ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_object3d ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_panorama_equirectangular ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_particles ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_particles_buffer ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_physics ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_plane ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_points_dynamic ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_points_sprites ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_points_waves ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_point_cloud ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_advanced ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_afterimage ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_bokeh ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_chromatic ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_demo ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_depth ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_dof ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_film ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_fxaa ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_glitch ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_godrays ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_nodes ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_outline ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_pixel ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_smaa ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_ssao ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_ssr ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_taa ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_temporal ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_transition ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_postprocessing_vignette ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_reflection ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_reflector ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shaders_ocean ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shaders_sky ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shader_lava ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shadowmap ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shadowmap_advanced ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shadowmap_pointlight ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shadowmap_vsm ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shadows ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_shadow_contact ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_simple_line ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_sky ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_sprites ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_static_text ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_svg ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_terrain ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_textures_cube ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_text_geometry ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_tone_mapping ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_toon ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_useframe_test ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_uvs ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_vr ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_water ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+[profile-4] webgl_wireframes ... error:tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+
+[capture-via-dv] done: ok=9 syntax=7 console_err=0 no_canvas=10 failed=99
+
+SYNTAX ERRORS (sticky overlay):
+  webgl_geometry_csg: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_cube: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_cube2: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_extrude_shapes: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_lathe: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_minecraft: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+  webgl_geometry_shapes: D:/Developments/tslib/@woby/three/demo/src/WebGLGeometryCSG.tsx:14:70 [plugin:vite:import-analysis] Failed to resolve import "three-bvh-csg" from "demo/src/WebGLGeometryCSG.tsx". Does the file exist?
+
+FAILED:
+  webgl_instancing_scatter: screenshot: dv screenshot -o D:\Developments\tslib\@woby\three\playwright.test\screenshots\ported\webgl_instancing_scatter.png exit 1: Error: Chrome is not runnin
+  webgl_interactive_buffer_geometry: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_cubes: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_cubes_gpu: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_cubes_ortho: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_cubes_raycaster: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_lines: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_raycasting_points: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_interactive_voxelpainter: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lensflares: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lightprobe: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lights: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lights_hemisphere: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lights_rectarea: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lights_spotlight: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_line3: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lines: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lines_dashed: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_lines_test: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_3dm: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_3ds: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_amf: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_bvh: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_collada: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_fbx: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_kmz: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_lwo: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_loader_svg: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_car: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_normal: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_normalmap: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_physical: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_physical_clearcoat: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_physical_transmission: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_materials_transparency: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_mirror: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_modifier_curve: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_modifier_simplify: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_morph_targets: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_multiple_geometries: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_normal_map: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_object3d: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_panorama_equirectangular: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_particles: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_particles_buffer: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_physics: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_plane: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_points_dynamic: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_points_sprites: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_points_waves: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_point_cloud: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_advanced: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_afterimage: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_bokeh: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_chromatic: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_demo: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_depth: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_dof: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_film: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_fxaa: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_glitch: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_godrays: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_nodes: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_outline: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_pixel: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_smaa: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_ssao: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_ssr: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_taa: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_temporal: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_transition: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_postprocessing_vignette: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_reflection: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_reflector: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shaders_ocean: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shaders_sky: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shader_lava: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shadowmap: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shadowmap_advanced: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shadowmap_pointlight: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shadowmap_vsm: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shadows: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_shadow_contact: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_simple_line: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_sky: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_sprites: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_static_text: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_svg: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_terrain: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_textures_cube: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_text_geometry: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_tone_mapping: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_toon: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_useframe_test: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_uvs: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_vr: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_water: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+  webgl_wireframes: tab-recover: dv new -u http://localhost:5300/demo/ exit 1: Error: 
+
+summary → D:\Developments\tslib\@woby\three\test-results\capture-via-dv-summary.json

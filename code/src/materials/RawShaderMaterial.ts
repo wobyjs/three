@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { type ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
 import { RawShaderMaterial } from 'three/src/materials/RawShaderMaterial.js'
 export { RawShaderMaterial } from 'three/src/materials/RawShaderMaterial.js'
@@ -47,7 +47,7 @@ consParams.rawShaderMaterial = { ...consParams.shaderMaterialParameters }
 
 
 
-const _rawShaderMaterial = ([...objProps.shaderMaterial,
+const _rawShaderMaterial = ([...(objProps.shaderMaterial ?? []),
 ] as const).distinct()
 objProps.rawShaderMaterial = _rawShaderMaterial
 

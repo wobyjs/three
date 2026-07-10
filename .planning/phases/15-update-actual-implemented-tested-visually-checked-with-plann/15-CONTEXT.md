@@ -22,12 +22,13 @@ This phase does NOT hallucinate new features — every ported file must exactly 
 <decisions>
 ## Implementation Decisions
 
-### D-01: Porting Pattern (LOCKED)
-Use the established `init3D` container-ref pattern — NOT reactive JSX element wrappers:
-- File header: `/** @jsxImportSource woby */`
-- Imperative Three.js code inside `const init3D = (container: HTMLElement) => { ... }`
-- Cleanup closure: `let _cleanupFn: (() => void) | null = null`
-- Export: `export default () => <div ref={(el) => { if (el) init3D(el) }} style="width:100%;height:100%" />`
+### D-01: Porting Pattern (CORRECTED — init3D was wrong, use Canvas3D JSX)
+Use the Canvas3D JSX pattern — NOT the `init3D` container-ref pattern (which causes blank-canvas regressions):
+- File header: `/** @jsxImportSource @woby/three */`
+- Declarative `<Canvas3D>` root component with JSX intrinsic elements
+- Complex setup (postprocessing, ctx.frames overrides) goes in a sub-component inside `<Canvas3D>`
+- `useThree()` called only inside components rendered by Canvas3D
+- See `.planning/codebase/CONVENTIONS.md` "Demo Porting Pattern" section for full rules
 - No `as any` type assertions (FR NFR-2.1)
 
 ### D-02: 1:1 Fidelity Rule (LOCKED)
@@ -61,7 +62,8 @@ The `component` field must lazy-import the new TSX file.
 ### D-05: Skills to Apply (LOCKED)
 - **`/dom` skill** — use `dv` CLI (Chrome DevTools Protocol) for browser automation, screenshots, console reading
 - **`/woby` skill (Woby reactive patterns)** — for any reactive/signal patterns needed in the JSX
-- dv CLI binary location: `D:\Developments\tslib\dv-cli` (globally installed as `dv`)
+- dv CLI binary location: `D:\Developments\tslib\dv` (run as `node dist/cli.js`, profiles: profile-4/5/6, port 5300)
+- Demo server: `http://localhost:5300` (NOT 5173)
 
 ### D-06: Documentation Audit (LOCKED)
 Before porting work begins, the executor must:

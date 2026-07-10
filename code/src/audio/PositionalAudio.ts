@@ -1,4 +1,4 @@
-import { PositionalAudio } from 'three/src/audio/PositionalAudio.js'
+﻿import { PositionalAudio } from 'three/src/audio/PositionalAudio.js'
 import { Object3DNode } from '../../three-types'
 import { Three } from '../../lib/3/three'
 import { consParams } from '../../lib/3/consParams'
@@ -115,7 +115,7 @@ consParams.positionalAudio = positionalAudio
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/PositionalAudio.js | Source}
  */
 
-const _positionalAudio = ([...objProps.audio,
+const _positionalAudio = ([...(objProps.audio ?? []),
     /**
      * The PositionalAudio's {@link https://developer.mozilla.org/en-US/docs/Web/API/PannerNode | PannerNode}.
      */

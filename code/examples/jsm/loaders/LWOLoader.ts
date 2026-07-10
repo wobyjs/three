@@ -1,4 +1,4 @@
-import { LWOLoaderParameters, LWOLoader } from 'three/examples/jsm/loaders/LWOLoader.js'
+﻿import { LWOLoaderParameters, LWOLoader } from 'three/examples/jsm/loaders/LWOLoader.js'
 export * from 'three/examples/jsm/loaders/LWOLoader.js'
 import { Functionant, Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
@@ -83,7 +83,7 @@ const _lwoLoaderParameters = ([
 objProps.lwoLoaderParameters = _lwoLoaderParameters
 
 
-const _lwoLoader = ([...objProps.loader,
+const _lwoLoader = ([...(objProps.loader ?? []),
 ] as const).distinct()
 objProps.lwoLoader = _lwoLoader
 

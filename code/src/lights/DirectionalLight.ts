@@ -1,4 +1,4 @@
-import { LightNode } from './LightNode'
+﻿import { LightNode } from './LightNode'
 import { ColorRepresentation } from 'three/src/math/Color.js'
 import { DirectionalLight } from 'three/src/lights/DirectionalLight.js'
 export { DirectionalLight } from 'three/src/lights/DirectionalLight.js'
@@ -103,7 +103,7 @@ consParams.directionalLight = directionalLight
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLight.js | Source}
  */
 
-const _directionalLight = ([...objProps.light,
+const _directionalLight = ([...(objProps.light ?? []),
     /**
      * Whether the object gets rendered into shadow map.
      * @remarks

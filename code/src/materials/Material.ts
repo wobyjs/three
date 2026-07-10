@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { Material, MaterialParameters } from 'three/src/materials/Material.js'
 export { Material } from 'three/src/materials/Material.js'
 import { Three } from '../../lib/3/three'
@@ -104,7 +104,7 @@ consParams.materialParameters = ([
  */
 
 consParams.meshBasicMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['color',
         'opacity',
         'map',

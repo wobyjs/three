@@ -1,4 +1,4 @@
-import { Node, Vector2 } from '../../../three-types'
+﻿import { Node, Vector2 } from '../../../three-types'
 import { CubicBezierCurve } from 'three/src/extras/curves/CubicBezierCurve.js'
 export { CubicBezierCurve } from 'three/src/extras/curves/CubicBezierCurve.js'
 import { Three } from '../../../lib/3/three'
@@ -106,7 +106,7 @@ consParams.cubicBezierCurve = cubicBezierCurve
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/curves/CubicBezierCurve.js | Source}
  */
 
-const _cubicBezierCurve = ([...objProps.curve,
+const _cubicBezierCurve = ([...(objProps.curve ?? []),
     /**
      * The starting point.
      * @defaultValue `new THREE.Vector2()`

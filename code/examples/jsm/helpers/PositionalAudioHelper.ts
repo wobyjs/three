@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { PositionalAudio } from 'three/src/audio/PositionalAudio.js'
 import { PositionalAudioHelper } from 'three/examples/jsm/helpers/PositionalAudioHelper.js'
 export * from 'three/examples/jsm/helpers/PositionalAudioHelper.js'
@@ -49,7 +49,7 @@ consParams.positionalAudioHelper = positionalAudioHelper
 
 
 
-const _positionalAudioHelper = ([...objProps.line,
+const _positionalAudioHelper = ([...(objProps.line ?? []),
     'audio',
     'range',
     'divisionsInnerAngle',

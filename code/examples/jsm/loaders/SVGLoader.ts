@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js'
 export * from 'three/examples/jsm/loaders/SVGLoader.js'
@@ -78,7 +78,7 @@ consParams.svgLoader = svgLoader
 
 
 
-const _svgResultPaths = ([...objProps.shapePath,
+const _svgResultPaths = ([...(objProps.shapePath ?? []),
     'userData',
 ] as const).distinct()
 objProps.svgResultPaths = _svgResultPaths
@@ -101,7 +101,7 @@ const _strokeStyle = ([
 objProps.strokeStyle = _strokeStyle
 
 
-const _svgLoader = ([...objProps.loader,
+const _svgLoader = ([...(objProps.loader ?? []),
     'defaultDPI',
     'defaultUnit',
 ] as const).distinct()

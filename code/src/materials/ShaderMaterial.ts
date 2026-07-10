@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { ShaderMaterial, type ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
 export { ShaderMaterial, type ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -43,7 +43,7 @@ declare module '../../lib/3/objProps' {
 
 
 consParams.shaderMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['uniforms',
         'uniformsGroups',
         'vertexShader',
@@ -64,7 +64,7 @@ consParams.shaderMaterial = { ...consParams.shaderMaterialParameters }
 
 
 
-const _shaderMaterialParameters = ([...objProps.materialParameters,
+const _shaderMaterialParameters = ([...(objProps.materialParameters ?? []),
     'uniforms',
     'cloneUniformsGroups',
     'vertexShader',
@@ -81,7 +81,7 @@ const _shaderMaterialParameters = ([...objProps.materialParameters,
 objProps.shaderMaterialParameters = _shaderMaterialParameters
 
 
-const _shaderMaterial = ([...objProps.material,
+const _shaderMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'ShaderMaterial'
      */

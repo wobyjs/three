@@ -100,9 +100,9 @@ export type LODProps = Object3DNode<LOD, typeof LOD, {}>
 
 declare module '../../lib/3/defaults' {
     interface defaults {
-        lOD: {}
+        lod: {}
     }
 }
 
-defaults.lOD = {}
+defaults.lod = {}
 

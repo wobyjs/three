@@ -1,4 +1,4 @@
-
+﻿
 import { Node } from '../../../three-types'
 import { Flow, SplineUniform } from 'three/examples/jsm/modifiers/CurveModifierGPU.js'
 // export * from 'three/examples/jsm/modifiers/CurveModifier.js'
@@ -83,7 +83,7 @@ const _flow = ([
 objProps.flow = _flow
 
 
-const _instancedFlow = ([...objProps.flow,
+const _instancedFlow = ([...(objProps.flow ?? []),
     'object3d',
     'offsets',
     'whichCurve',

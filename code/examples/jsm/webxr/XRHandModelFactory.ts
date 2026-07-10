@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Loader } from 'three/src/loaders/Loader.js'
 import { Object3D } from 'three/src/core/Object3D.js'
@@ -52,7 +52,7 @@ consParams.xrHandModelFactory = xrHandModelFactory
 
 
 
-const _xrHandModel = ([...objProps.object3d,
+const _xrHandModel = ([...(objProps.object3d ?? []),
     'motionController',
 ] as const).distinct()
 objProps.xrHandModel = _xrHandModel

@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 // @ts-ignore: THREE.js examples not included in type definitions
 import { RangeNode, RangeMode } from 'three/examples/jsm/nodes/math/RangeNode.js'
 export { RangeNode, RangeMode }
@@ -42,7 +42,7 @@ const rangeNode = ([
 ] as const).distinct()
 consParams.rangeNode = rangeNode
 
-const _rangeNode = ([...objProps.node,
+const _rangeNode = ([...(objProps.node ?? []),
     'isComputeNode',
     'count',
     'workgroupSize',

@@ -1,4 +1,4 @@
-import { RollerCoasterGeometry, RollerCoasterLiftersGeometry, RollerCoasterShadowGeometry, SkyGeometry, TreesGeometry } from 'three/examples/jsm/misc/RollerCoaster.js'
+﻿import { RollerCoasterGeometry, RollerCoasterLiftersGeometry, RollerCoasterShadowGeometry, SkyGeometry, TreesGeometry } from 'three/examples/jsm/misc/RollerCoaster.js'
 import { Vector3, Node } from '../../../three-types'
 import { Mesh } from 'three/src/objects/Mesh.js'
 import { consParams } from '../../../lib/3/consParams'
@@ -77,27 +77,27 @@ consParams.treesGeometry = treesGeometry
 
 
 
-const _rollerCoasterGeometry = ([...objProps.bufferGeometry,
+const _rollerCoasterGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.rollerCoasterGeometry = _rollerCoasterGeometry
 
 
-const _rollerCoasterLiftersGeometry = ([...objProps.bufferGeometry,
+const _rollerCoasterLiftersGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.rollerCoasterLiftersGeometry = _rollerCoasterLiftersGeometry
 
 
-const _rollerCoasterShadowGeometry = ([...objProps.bufferGeometry,
+const _rollerCoasterShadowGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.rollerCoasterShadowGeometry = _rollerCoasterShadowGeometry
 
 
-const _skyGeometry = ([...objProps.bufferGeometry,
+const _skyGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.skyGeometry = _skyGeometry
 
 
-const _treesGeometry = ([...objProps.bufferGeometry,
+const _treesGeometry = ([...(objProps.bufferGeometry ?? []),
 ] as const).distinct()
 objProps.treesGeometry = _treesGeometry
 

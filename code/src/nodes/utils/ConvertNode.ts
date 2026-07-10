@@ -1,4 +1,4 @@
-import { Node as ENode } from 'three/src/nodes/Nodes.js'
+﻿import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import { Node } from '../../../three-types'
 import ConvertNode from 'three/src/nodes/utils/ConvertNode.js'
 export { ConvertNode }
@@ -47,7 +47,7 @@ consParams.convertNode = convertNode
 
 
 
-const _convertNode = ([...objProps.node,
+const _convertNode = ([...(objProps.node ?? []),
     'node',
     'convertTo',
 ] as const).distinct()

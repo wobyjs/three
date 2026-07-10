@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { LineBasicMaterial, LineBasicMaterialParameters } from 'three/src/materials/LineBasicMaterial'
 export * from 'three/src/materials/LineBasicMaterial'
 import { Three } from '../../lib/3/three'
@@ -48,7 +48,7 @@ consParams.lineBasicMaterial = (['color',
 ] as const).toObject() //as LineBasicMaterialParameters
 
 
-const _lineBasicMaterial = ([...objProps.material,
+const _lineBasicMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'LineBasicMaterial'
      */
@@ -84,7 +84,7 @@ objProps.lineBasicMaterial = _lineBasicMaterial
 
 
 consParams.lineBasicMaterialParameters = {
-    ...consParams.materialParameters,
+    ...(consParams.materialParameters ?? []),
     ...(['color',
         'fog',
         'linewidth',
@@ -95,7 +95,7 @@ consParams.lineBasicMaterialParameters = {
 
 
 
-const _lineBasicMaterialParameters = ([...objProps.materialParameters,
+const _lineBasicMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'fog',
     'linewidth',

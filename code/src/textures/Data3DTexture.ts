@@ -1,4 +1,4 @@
-import { Node } from '../../three-types'
+﻿import { Node } from '../../three-types'
 import { Data3DTexture } from 'three/src/textures/Data3dTexture.js'
 export { Data3DTexture } from 'three/src/textures/Data3dTexture.js'
 import { Three } from '../../lib/3/three'
@@ -71,7 +71,7 @@ declare module '../../lib/3/objProps' {
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/textures/Data3dTexture.js | Source}
  */
 
-const _data3dTexture = ([...objProps.texture,
+const _data3dTexture = ([...(objProps.texture ?? []),
     /**
      * Create a new instance of {@link Data3dTexture}
      * @param data {@link https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView | ArrayBufferView} of the texture. Default `null`.

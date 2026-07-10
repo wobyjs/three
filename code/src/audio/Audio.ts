@@ -1,4 +1,4 @@
-import { Object3DNode } from '../../three-types'
+﻿import { Object3DNode } from '../../three-types'
 import { AudioListener } from 'three/src/audio/AudioListener.js'
 import { Audio as TAudio } from 'three/src/audio/Audio.js'
 export { TAudio as Audio }
@@ -103,7 +103,7 @@ consParams.audio = audio
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/audio/Audio.js | Source}
  */
 
-const _audio = ([...objProps.object3d,
+const _audio = ([...(objProps.object3d ?? []),
     /**
      * A reference to the listener object of this audio.
      */

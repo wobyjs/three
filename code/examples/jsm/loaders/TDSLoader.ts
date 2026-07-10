@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { LoadingManager } from 'three/src/loaders/LoadingManager.js'
 import { TDSLoader } from 'three/examples/jsm/loaders/TDSLoader.js'
 export * from 'three/examples/jsm/loaders/TDSLoader.js'
@@ -47,7 +47,7 @@ consParams.tdsLoader = tdsLoader
 
 
 
-const _tdsLoader = ([...objProps.loader,
+const _tdsLoader = ([...(objProps.loader ?? []),
     'debug',
     'group',
     'manager',

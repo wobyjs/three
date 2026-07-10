@@ -1,4 +1,4 @@
-import { MaterialNode } from './MaterialNode'
+﻿import { MaterialNode } from './MaterialNode'
 import { MeshBasicMaterial, MeshBasicMaterialParameters } from 'three/src/materials/MeshBasicMaterial.js'
 export { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js'
 import { Three } from '../../lib/3/three'
@@ -48,7 +48,7 @@ consParams.meshBasicMaterial = { ...consParams.meshBasicMaterialParameters }
  * parameters is an object with one or more properties defining the material's appearance.
  */
 
-const _meshBasicMaterialParameters = ([...objProps.materialParameters,
+const _meshBasicMaterialParameters = ([...(objProps.materialParameters ?? []),
     'color',
     'opacity',
     'map',
@@ -72,7 +72,7 @@ const _meshBasicMaterialParameters = ([...objProps.materialParameters,
 objProps.meshBasicMaterialParameters = _meshBasicMaterialParameters
 
 
-const _meshBasicMaterial = ([...objProps.material,
+const _meshBasicMaterial = ([...(objProps.material ?? []),
     /**
      * @default 'MeshBasicMaterial'
      */

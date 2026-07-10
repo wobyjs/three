@@ -1,4 +1,4 @@
-import { Node } from '../../../three-types'
+﻿import { Node } from '../../../three-types'
 import { Node as ENode } from 'three/src/nodes/Nodes.js'
 import RTTNode, { RTTNodeOptions } from 'three/src/nodes/utils/RTTNode.js'
 export { RTTNode }
@@ -46,7 +46,7 @@ const rttNode = ([
 consParams.rttNode = rttNode
 
 
-const _rttNode = ([...objProps.textureNode,
+const _rttNode = ([...(objProps.textureNode ?? []),
     'node',
     'width',
     'height',

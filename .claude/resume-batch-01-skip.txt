@@ -1,0 +1,42 @@
+demo/src/WebGLGPGPUBirds.tsx :uses GPGPU ping-pong render targets with imperative renderer.setRenderTarget — incompatible with Canvas3D auto-render
+demo/src/WebGLGeometrySphereShader.tsx :already converted
+demo/src/WebGLGeometrySpiral.tsx :already converted
+demo/src/WebGLGeometrySpline.tsx :already converted
+demo/src/WebGLGeometrySpring.tsx :already converted
+demo/src/WebGLGeometrySteiner.tsx :already converted
+demo/src/WebGLGeometryStellated.tsx :already converted
+demo/src/WebGLGeometrySubdivision.tsx :already converted
+demo/src/WebGLGeometrySuperquadric.tsx :already converted
+demo/src/WebGLGeometrySurfaceOfRevolution.tsx :already converted
+demo/src/WebGLGeometrySweep.tsx :already converted
+demo/src/WebGLGeometryTeapot.tsx :already converted
+demo/src/WebGLGeometryTerrain.tsx :already converted
+demo/src/WebGLGeometryTerrainLOD.tsx :already converted
+demo/src/WebGLGeometryTessellation.tsx :already converted
+demo/src/WebGLGeometryTorusKnotShader.tsx :already converted
+demo/src/WebGLGeometryTorusKnotUnravel.tsx :already converted
+demo/src/WebGLGeometryTorusLink.tsx :already converted
+demo/src/WebGLGeometryTwistedBox.tsx :already converted
+demo/src/WebGLGeometryVoronoi.tsx :already converted
+demo/src/WebGLGeometryVoxel.tsx :already converted
+demo/src/WebGLGeometryWarp.tsx :already converted
+demo/src/WebGLGeometryWhitneyUmbrella.tsx :already converted
+demo/src/WebGLGeometryWireframe.tsx :already converted
+demo/src/WebGLGeometryWormhole.tsx :already converted
+demo/src/WebGLInstancedMesh.tsx :already converted
+demo/src/WebGLInstancingAnimated.tsx :already converted
+demo/src/WebGLInstancingBatched.tsx :already converted
+demo/src/WebGLInstancingBillboards.tsx :already converted
+demo/src/WebGLInstancingDynamic.tsx :already converted
+demo/src/WebGLInstancingGrass.tsx :already converted
+demo/src/WebGLInstancingLOD.tsx :already converted
+demo/src/WebGLInstancingMorph.tsx :already converted
+demo/src/WebGLInteractiveCubesGPU.tsx :uses GPU picking with renderer.setRenderTarget for off-screen picking pass — incompatible with Canvas3D auto-render
+demo/src/WebGLMaterialsGradient.tsx :uses dat.gui (skip criterion)
+demo/src/WebGLMaterialsNormal.tsx :uses FXAAPass (skip criterion)
+demo/src/WebGLMaterialsVariants.tsx :already converted
+demo/src/WebGLMaterialsVelvet.tsx :already converted
+demo/src/WebGLMaterialsWax.tsx :already converted
+demo/src/WebGLMultipleCameras.tsx :uses multi-viewport scissor + 4 manual renderer.render calls — incompatible with Canvas3D auto-render
+demo/src/WebGLMultipleElements.tsx :uses DOM-grid scissor-test per-element rendering with manual renderer.render loop — incompatible with Canvas3D auto-render
+demo/src/WebGLMultipleGeometries.tsx :uses 40 DOM scenes with scissor-test per-element rendering — incompatible with Canvas3D auto-render
