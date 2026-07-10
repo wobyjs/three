@@ -46,7 +46,8 @@
         "noImplicitAny": false,
         "noUncheckedIndexedAccess": false,
         "rootDir": "./code",
-        "composite": false
+        "composite": false,
+        "typeRoots": []
     },
     "include": [
         "code/**/*",
